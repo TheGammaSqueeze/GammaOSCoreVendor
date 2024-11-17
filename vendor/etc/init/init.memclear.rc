@@ -1,0 +1,63 @@
+service drop_caches /system/bin/sh -c "echo 200 > /proc/sys/vm/vfs_cache_pressure; sleep 35; /vendor/bin/memallocator; /vendor/bin/memallocator; swapon /dev/block/zram0 -p 1; while true; do echo 3 > /proc/sys/vm/drop_caches; sleep 15; done;"
+    class main
+    user root
+    group root
+    oneshot
+
+service mount_swap /system/bin/sh -c "mkswap /dev/block/by-name/swap; swapon /dev/block/by-name/swap -p 1"
+    class main
+    user root
+    group root
+    oneshot
+
+service mem_clear /system/bin/sh -c "/vendor/bin/memallocator"
+    class main
+    user root
+    group root
+    oneshot
+	
+service set_zygote_64 /system/bin/sh -c "mount -o rw,remount /vendor; cp /vendor/build64.prop /vendor/build.prop;"
+    class main
+    user root
+    group root
+    oneshot
+	
+service set_zygote_64_32 /system/bin/sh -c "mount -o rw,remount /vendor; cp /vendor/build64_32.prop /vendor/build.prop;"
+    class main
+    user root
+    group root
+    oneshot
+	
+service disable_webview /system/bin/sh -c "pm disable-user --user 0 com.android.webview;"
+    class main
+    user root
+    group root
+    oneshot
+	
+service enable_webview /system/bin/sh -c "pm enable com.android.webview;"
+    class main
+    user root
+    group root
+    oneshot
+
+on property:init.svc.bootanim=stopped && property:sys.boot_completed=1 && property:persist.sys.device_provisioned=1
+    start drop_caches
+
+on property:sys.boot_completed=1
+    start mount_swap
+
+on property:sys.mem_clear=1 && property:persist.sys.enable_mem_clear=1
+    start mem_clear
+	
+on property:persist.sys.disable_32bit_mode=1
+    start set_zygote_64
+	
+on property:persist.sys.disable_32bit_mode=0
+    start set_zygote_64_32
+	
+on property:persist.sys.disable_webview=1
+    start disable_webview
+	
+on property:persist.sys.disable_webview=0
+    start enable_webview
+	
