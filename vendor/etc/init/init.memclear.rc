@@ -1,4 +1,4 @@
-service drop_caches /system/bin/sh -c "echo 200 > /proc/sys/vm/vfs_cache_pressure; sleep 35; /vendor/bin/memallocator; /vendor/bin/memallocator; swapon /dev/block/zram0 -p 1; while true; do echo 3 > /proc/sys/vm/drop_caches; sleep 15; done;"
+service drop_caches /system/bin/sh -c "echo 200 > /proc/sys/vm/vfs_cache_pressure; sleep 35; start mem_clear; swapon /dev/block/zram0 -p 1; while true; do echo 3 > /proc/sys/vm/drop_caches; sleep 15; done;"
     class main
     user root
     group root
@@ -10,7 +10,7 @@ service mount_swap /system/bin/sh -c "mkswap /dev/block/by-name/swap; swapon /de
     group root
     oneshot
 
-service mem_clear /system/bin/sh -c "/vendor/bin/memallocator"
+service mem_clear /system/bin/sh -c "am start -n com.gammaos.displayloading/.OverlayActivity; sleep 2; /vendor/bin/memallocator; am force-stop com.gammaos.displayloading"
     class main
     user root
     group root
