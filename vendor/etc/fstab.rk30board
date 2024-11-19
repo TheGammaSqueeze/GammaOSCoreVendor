@@ -16,6 +16,7 @@ system_ext  /system_ext ext4 ro,barrier=1 wait,logical,first_stage_mount
 /dev/block/zram0            none  swap defaults zramsize=35%,max_comp_streams=10,zram_backingdev_size=400M
 # For sdmmc
 /devices/platform/fe2c0000.dwmmc/mmc_host*        auto  auto    defaults        voldmanaged=sdcard1:auto
+/devices/platform/fe000000.dwmmc/mmc_host*        auto  auto    defaults        voldmanaged=sdcard2:auto
 # /devices/platform/fe2c0000.dwmmc/mmc_host*        auto  auto    defaults        voldmanaged=sdcard2:auto
 #  Full disk encryption has less effect on rk3326, so default to enable this.
 /dev/block/by-name/userdata /data f2fs noatime,nosuid,nodev,discard,reserve_root=32768,resgid=1065 latemount,wait,check,quota,formattable,reservedsize=128M,checkpoint=fs
