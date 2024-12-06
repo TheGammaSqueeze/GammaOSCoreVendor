@@ -1,44 +1,51 @@
-service drop_caches /system/bin/sh -c "echo 200 > /proc/sys/vm/vfs_cache_pressure; sleep 35; start mem_clear; swapon /dev/block/zram0 -p 1; while true; do echo 3 > /proc/sys/vm/drop_caches; sleep 15; done;"
+service drop_caches /system/bin/sh -c "echo 200 > /proc/sys/vm/vfs_cache_pressure; sleep 25; start mem_clear; swapon /dev/block/zram0 -p 1; while true; do echo 3 > /proc/sys/vm/drop_caches; sleep 15; done;"
     class main
     user root
     group root
     oneshot
+    disabled
 
 service mount_swap /system/bin/sh -c "mkswap /dev/block/by-name/swap; swapon /dev/block/by-name/swap -p 1"
     class main
     user root
     group root
     oneshot
+    disabled
 
 service mem_clear /system/bin/sh -c "am start -n com.gammaos.displayloading/.OverlayActivity; sleep 2; /vendor/bin/memallocator; am force-stop com.gammaos.displayloading"
     class main
     user root
     group root
     oneshot
-	
+    disabled
+
 service set_zygote_64 /system/bin/sh -c "mount -o rw,remount /vendor; cp /vendor/build64.prop /vendor/build.prop;"
     class main
     user root
     group root
     oneshot
-	
+    disabled
+
 service set_zygote_64_32 /system/bin/sh -c "mount -o rw,remount /vendor; cp /vendor/build64_32.prop /vendor/build.prop;"
     class main
     user root
     group root
     oneshot
-	
+    disabled
+
 service disable_webview /system/bin/sh -c "pm disable-user --user 0 com.android.webview;"
     class main
     user root
     group root
     oneshot
-	
+    disabled
+
 service enable_webview /system/bin/sh -c "pm enable com.android.webview;"
     class main
     user root
     group root
     oneshot
+    disabled
 
 on property:init.svc.bootanim=stopped && property:sys.boot_completed=1 && property:persist.sys.device_provisioned=1
     start drop_caches
@@ -48,16 +55,19 @@ on property:sys.boot_completed=1
 
 on property:sys.mem_clear=1 && property:persist.sys.enable_mem_clear=1
     start mem_clear
-	
-on property:persist.sys.disable_32bit_mode=1
+
+on property:persist.sys.disable_32bit_mode=1 && property:sys.gamma_tweak_update=1
     start set_zygote_64
-	
-on property:persist.sys.disable_32bit_mode=0
+    setprop sys.gamma_tweak_update 0
+
+on property:persist.sys.disable_32bit_mode=0 && property:sys.gamma_tweak_update=1
     start set_zygote_64_32
-	
-on property:persist.sys.disable_webview=1
+    setprop sys.gamma_tweak_update 0
+
+on property:persist.sys.disable_webview=1 && property:sys.gamma_tweak_update=1
     start disable_webview
-	
-on property:persist.sys.disable_webview=0
+    setprop sys.gamma_tweak_update 0
+
+on property:persist.sys.disable_webview=0 && property:sys.gamma_tweak_update=1
     start enable_webview
-	
+    setprop sys.gamma_tweak_update 0
