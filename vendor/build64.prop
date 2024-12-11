@@ -152,4 +152,4 @@ debug.sf.hw=1                       # Enable hardware acceleration if supported
 ro.hwui.text_large_cache_height=1024 # Reduce the size of large text cache
 ro.hwui.text_large_cache_width=2048  # Reduce the width of large text cache
 debug.hwui.use_buffer_cache=false    # Disable buffer cache to free memory
-ro.surface_flinger.primary_display_orientation=ORIENTATION_90
+#ro.surface_flinger.primary_display_orientation=ORIENTATION_90
