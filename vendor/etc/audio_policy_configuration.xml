@@ -28,6 +28,7 @@
                 <mixPort name="primary output" role="source" flags="AUDIO_OUTPUT_FLAG_PRIMARY|AUDIO_OUTPUT_FLAG_FAST">
                     <profile name="" format="AUDIO_FORMAT_PCM_16_BIT"
                              samplingRates="32000 44100 48000" channelMasks="AUDIO_CHANNEL_OUT_STEREO"/>
+                    <deviceTypes>AUDIO_DEVICE_OUT_WIRED_HEADSET</deviceTypes>
                 </mixPort>
                 <mixPort name="spdif_passthrough" role="source" flags="AUDIO_OUTPUT_FLAG_DIRECT|AUDIO_OUTPUT_FLAG_FAST">
                     <profile name="ac3" format="AUDIO_FORMAT_AC3"
