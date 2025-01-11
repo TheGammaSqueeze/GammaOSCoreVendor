@@ -13,7 +13,8 @@ system_ext  /system_ext ext4 ro,barrier=1 wait,logical,first_stage_mount
 
 /devices/platform/*usb*     auto  vfat defaults voldmanaged=usb:auto
 /devices/platform/*.sata*   auto  vfat defaults voldmanaged=sata:auto
-/dev/block/zram0            none  swap defaults zramsize=35%,max_comp_streams=10,zram_backingdev_size=400M
+/dev/block/zram0                                       none         swap     defaults                     zramsize=75%
+#/dev/block/zram0            none  swap defaults zramsize=8%,max_comp_streams=4,zram_backingdev_size=0M
 # For sdmmc
 /devices/platform/fe2c0000.dwmmc/mmc_host*        auto  auto    defaults        voldmanaged=sdcard1:auto
 /devices/platform/fe000000.dwmmc/mmc_host*        auto  auto    defaults        voldmanaged=sdcard2:auto

@@ -719,6 +719,10 @@
 /etc/firmware/fw_bcm4356a2_ag_apsta.bin u:object_r:vendor_configs_file:s0
 /etc/firmware/fw_RK901a0.bin u:object_r:vendor_configs_file:s0
 /etc/firmware/rtl8761cs_fw u:object_r:vendor_configs_file:s0
+/etc/firmware/rtl8723fu_fw.bin u:object_r:vendor_configs_file:s0
+/etc/firmware/rtl8723fu_config.bin u:object_r:vendor_configs_file:s0
+/etc/firmware/rtl8733b_8723f_config u:object_r:vendor_configs_file:s0
+/etc/firmware/rtl8733b_8723f_fw u:object_r:vendor_configs_file:s0
 /etc/firmware/BCM4345C5.hcd u:object_r:vendor_configs_file:s0
 /etc/firmware/nvram_ap6275p.txt u:object_r:vendor_configs_file:s0
 /etc/firmware/fw_bcm40183b2_ag_apsta.bin u:object_r:vendor_configs_file:s0
@@ -1003,6 +1007,7 @@
 /lib/modules/8723cs.ko u:object_r:vendor_file:s0
 /lib/modules/8821cs.ko u:object_r:vendor_file:s0
 /lib/modules/8822bs.ko u:object_r:vendor_file:s0
+/lib/modules/8733bu.ko u:object_r:vendor_file:s0
 /lib/modules/bcmdhd.ko u:object_r:vendor_file:s0
 /lib/modules/mali_kbase.ko u:object_r:vendor_file:s0
 /lib/modules/modules.alias u:object_r:vendor_file:s0

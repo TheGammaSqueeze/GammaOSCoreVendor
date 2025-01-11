@@ -66,11 +66,11 @@ external_storage.casefold.enabled=1
 external_storage.sdcardfs.enabled=0
 drm.service.enabled=false
 dalvik.vm.heapstartsize=8m
-dalvik.vm.heapgrowthlimit=192m
-dalvik.vm.heapsize=512m
-dalvik.vm.heaptargetutilization=0.85
+dalvik.vm.heapgrowthlimit=128m
+dalvik.vm.heapsize=256m
+dalvik.vm.heaptargetutilization=0.75
 dalvik.vm.heapminfree=512k
-dalvik.vm.heapmaxfree=8m
+dalvik.vm.heapmaxfree=4m
 
 # OEM specific properties
 persist.dbg.keep_debugfs_mounted=0
@@ -152,4 +152,18 @@ debug.sf.hw=1                       # Enable hardware acceleration if supported
 ro.hwui.text_large_cache_height=1024 # Reduce the size of large text cache
 ro.hwui.text_large_cache_width=2048  # Reduce the width of large text cache
 debug.hwui.use_buffer_cache=false    # Disable buffer cache to free memory
-#ro.surface_flinger.primary_display_orientation=ORIENTATION_90
+#ro.surface_flinger.primary_display_orientation=ORIENTATION_270
+
+ril.function.dataonly=1
+config.disable_vrmanager=true
+ro.boot.noril=true
+config.disable_consumerir=true
+ro.camera.enableLazyHal=true
+ro.config.low_ram=true
+
+persist.device_config.lmkd_native.kill_heaviest_task=true
+persist.device_config.lmkd_native.kill_timeout_ms=10000
+persist.device_config.lmkd_native.swap_util_max=25
+persist.device_config.lmkd_native.thrashing_limit=80
+persist.device_config.lmkd_native.thrashing_limit_critical=150
+persist.device_config.lmkd_native.thrashing_limit_decay=60
