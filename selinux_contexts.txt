@@ -1008,6 +1008,7 @@
 /lib/modules/8821cs.ko u:object_r:vendor_file:s0
 /lib/modules/8822bs.ko u:object_r:vendor_file:s0
 /lib/modules/8733bu.ko u:object_r:vendor_file:s0
+/lib/modules/8733bs.ko u:object_r:vendor_file:s0
 /lib/modules/bcmdhd.ko u:object_r:vendor_file:s0
 /lib/modules/mali_kbase.ko u:object_r:vendor_file:s0
 /lib/modules/modules.alias u:object_r:vendor_file:s0
