@@ -1,7 +1,9 @@
 mali_kbase.ko
+8723cs.ko
+8733bs.ko
+bcmdhd.ko
 8188fu.ko
 8822bs.ko
-8723cs.ko
-bcmdhd.ko
-8188eu.ko
 8821cs.ko
+8189fs.ko
+8723ds.ko

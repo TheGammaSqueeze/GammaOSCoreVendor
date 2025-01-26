@@ -1,17 +1,19 @@
 # Aliases extracted from modules themselves.
+alias sdio:c*v024CdF179* 8189fs
 alias of:N*T*Carm,mali-bifrostC* mali_kbase
 alias of:N*T*Carm,mali-bifrost mali_kbase
 alias of:N*T*Carm,mali-midgardC* mali_kbase
 alias of:N*T*Carm,mali-midgard mali_kbase
 alias of:N*T*Carm,malit6xxC* mali_kbase
 alias of:N*T*Carm,malit6xx mali_kbase
-alias usb:v07B8p8179d*dc*dsc*dp*ic*isc*ip*in* 8188eu
-alias usb:v0BDAp0179d*dc*dsc*dp*ic*isc*ip*in* 8188eu
-alias usb:v0BDAp8179d*dc*dsc*dp*ic*isc*ip*in* 8188eu
 alias sdio:c*v024CdC80C* 8821cs
 alias sdio:c*v024Cd8733* 8821cs
 alias sdio:c*v024CdC821* 8821cs
 alias sdio:c*v024CdB821* 8821cs
+alias sdio:c*v024CdD724* 8723ds
+alias sdio:c*v024CdD723* 8723ds
+alias sdio:c07v024CdB73A* 8733bs
+alias sdio:c07v024CdB733* 8733bs
 alias usb:v0BDApF179d*dc*dsc*dp*icFFiscFFipFFin* 8188fu
 alias sdio:c*v024CdB822* 8822bs
 alias sdio:c*v024CdB703* 8723cs
