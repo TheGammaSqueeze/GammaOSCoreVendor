@@ -163,4 +163,4 @@ ro.config.low_ram=true
 
 #ro.sensors.primary_sensor_orientation=ORIENTATION_90
 #ro.input_flinger.primary_touch_orientation=ORIENTATION_90
-ro.surface_flinger.primary_display_orientation=ORIENTATION_90
+#ro.surface_flinger.primary_display_orientation=ORIENTATION_90
