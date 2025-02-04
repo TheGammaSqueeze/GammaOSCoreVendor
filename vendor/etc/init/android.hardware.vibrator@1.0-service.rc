@@ -3,9 +3,3 @@ service vendor.vibrator-1-0 /vendor/bin/hw/android.hardware.vibrator@1.0-service
     class hal
     user system
     group system
-    disabled
-    oneshot
-	
-# Start the main vibrator service once the boot is completed
-on property:sys.boot_completed=1
-    start vendor.vibrator-1-0
