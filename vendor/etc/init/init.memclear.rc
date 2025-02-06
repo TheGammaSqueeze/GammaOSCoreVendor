@@ -1,4 +1,4 @@
-service drop_caches /system/bin/sh -c "echo 200 > /proc/sys/vm/vfs_cache_pressure; sleep 25; start mem_clear; swapon /dev/block/zram0 -p 1; while true; do echo 3 > /proc/sys/vm/drop_caches; sleep 15; done;"
+service drop_caches /system/bin/sh -c "echo 200 > /proc/sys/vm/vfs_cache_pressure; sleep 5; start mem_clear; swapon /dev/block/zram0 -p 2; while true; do echo 3 > /proc/sys/vm/drop_caches; sleep 15; done;"
     class main
     user root
     group root
