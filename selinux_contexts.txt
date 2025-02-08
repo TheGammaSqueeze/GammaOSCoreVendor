@@ -244,6 +244,7 @@
 /bin/lspci u:object_r:vendor_file:s0
 /bin/i2cget u:object_r:vendor_file:s0
 /bin/rmdir u:object_r:vendor_file:s0
+/bin/rgp2xbox u:object_r:vendor_file:s0
 /bin/insmod u:object_r:vendor_file:s0
 /bin/watch u:object_r:vendor_file:s0
 /bin/lsof u:object_r:vendor_file:s0
@@ -1008,6 +1009,7 @@
 /lib/modules/8821cs.ko u:object_r:vendor_file:s0
 /lib/modules/8822bs.ko u:object_r:vendor_file:s0
 /lib/modules/8733bu.ko u:object_r:vendor_file:s0
+/lib/modules/8733bs.ko u:object_r:vendor_file:s0
 /lib/modules/bcmdhd.ko u:object_r:vendor_file:s0
 /lib/modules/mali_kbase.ko u:object_r:vendor_file:s0
 /lib/modules/modules.alias u:object_r:vendor_file:s0
@@ -1016,6 +1018,7 @@
 /lib/modules/modules.softdep u:object_r:vendor_file:s0
 /lib/modules/8723ds.ko u:object_r:vendor_file:s0
 /lib/modules/dhd_static_buf.ko u:object_r:vendor_file:s0
+/lib/android.hardware.graphics.allocator-V2-ndk.so u:object_r:vendor_file:s0
 /lib/android.hardware.wifi.supplicant@1.0.so u:object_r:vendor_file:s0
 /lib/android.hardware.wifi.supplicant@1.1.so u:object_r:vendor_file:s0
 /lib/android.hardware.wifi.supplicant@1.2.so u:object_r:vendor_file:s0
@@ -1043,3 +1046,8 @@
 /lib/hw/android.hardware.vibrator@1.0.so u:object_r:vendor_file:s0
 /lib64/hw/android.hardware.vibrator@1.0.so u:object_r:vendor_file:s0
 /bin/vibrator_stub.sh u:object_r:vendor_file:s0
+/lib64/android.hardware.graphics.allocator-V2-ndk.so u:object_r:vendor_file:s0
+/lib/android.hardware.graphics.common-V4-ndk.so u:object_r:vendor_file:s0
+/lib64/android.hardware.graphics.common-V4-ndk.so u:object_r:vendor_file:s0
+/lib/android.hardware.graphics.composer3-V2-ndk.so u:object_r:vendor_file:s0
+/lib64/android.hardware.graphics.composer3-V2-ndk.so u:object_r:vendor_file:s0
