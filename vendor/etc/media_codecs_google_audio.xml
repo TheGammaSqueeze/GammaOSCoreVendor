@@ -38,12 +38,12 @@
         </MediaCodec>
         <MediaCodec name="OMX.google.g711.alaw.decoder" type="audio/g711-alaw">
             <Limit name="channel-count" max="1" />
-            <Limit name="sample-rate" ranges="8000" />
+            <Limit name="sample-rate" ranges="8000-48000" />
             <Limit name="bitrate" range="64000" />
         </MediaCodec>
         <MediaCodec name="OMX.google.g711.mlaw.decoder" type="audio/g711-mlaw">
             <Limit name="channel-count" max="1" />
-            <Limit name="sample-rate" ranges="8000" />
+            <Limit name="sample-rate" ranges="8000-48000" />
             <Limit name="bitrate" range="64000" />
         </MediaCodec>
         <MediaCodec name="OMX.google.vorbis.decoder" type="audio/vorbis">
@@ -63,8 +63,8 @@
         </MediaCodec>
         <MediaCodec name="OMX.google.flac.decoder" type="audio/flac">
             <Limit name="channel-count" max="8" />
-            <Limit name="sample-rate" ranges="8000-96000" />
-            <Limit name="bitrate" range="1-10000000" />
+            <Limit name="sample-rate" ranges="1-655350" />
+            <Limit name="bitrate" range="1-21000000" />
         </MediaCodec>
     </Decoders>
     <Encoders>

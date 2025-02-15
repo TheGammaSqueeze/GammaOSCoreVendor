@@ -1,0 +1,80 @@
+import /vendor/etc/init/hw/init.common.rc
+import /vendor/etc/init/hw/init.device.rc
+import /vendor/etc/init/hw/init.sun50iw10p1.usb.rc
+
+on early-init
+    chown system system /proc/bootevent
+    chmod 0666 /proc/bootevent
+    write /proc/bootevent "INIT:early-init"
+
+on init
+    # Set permissions for persist partition
+    mkdir /persist 0771 system system
+    mkdir /firmware 0771 system system
+
+    # Support legacy paths
+    symlink /sdcard /mnt/sdcard
+    symlink /sdcard /storage/sdcard0
+
+    # Setup zram options
+    write /sys/block/zram0/comp_algorithm lz4
+    mkdir /oem 0550 system system
+    export PATH /vendor/xbin:/sbin:/system/sbin:/system/bin:/system/xbin:/vendor/bin
+
+on late-init
+    write /proc/bootevent "INIT:late-init"
+
+#on early-fs
+#    wait /dev/block/by-name/media_data
+#    mount vfat /dev/block/by-name/media_data /oem ro nosuid nodev utf8,context=u:object_r:oemfs:s0
+
+on fs
+    write /proc/bootevent "INIT:Mount_START"
+    mount_all /vendor/etc/fstab.sun50iw10p1
+    write /proc/bootevent "INIT:Mount_END"
+    swapon_all /vendor/etc/fstab.sun50iw10p1
+    restorecon_recursive /persist
+    start console
+
+on post-fs
+    write /proc/bootevent "INIT:post-fs"
+
+on late-fs
+    # gpu
+    #insmod /vendor/modules/pvrsrvkm.ko
+    service pvrsrvinit /vendor/bin/pvrsrvctl --start
+    class core
+    user root
+    group root
+    oneshot
+
+on post-fs-data
+    write /proc/bootevent "INIT:post-fs-data"
+    # Set indication (checked by vold) that we have finished this action
+    setprop vold.post_fs_data_done 1
+
+on boot
+    write /proc/bootevent "INIT:boot"
+    chown system system /sys/kernel/debug/sync/sw_sync
+    chmod 0660 /sys/kernel/debug/sync/sw_sync
+
+on post-fs-data
+    # create file for audio dump data
+    mkdir /data/vendor/hardware/audio_d 0777 audio audio
+    mkdir /data/audio_d 0777 media media
+    chown system system /dev/nsi
+
+on charger
+    chown system system /dev/alarm
+    chmod 0660 /dev/alarm
+    mkdir /config/usb_gadget/g1 0770 shell shell
+    mkdir /config/usb_gadget/g1/strings/0x409 0770 shell shell
+    write /config/usb_gadget/g1/idVendor 0x18d1
+    write /config/usb_gadget/g1/idProduct 0x0001
+    mkdir /config/usb_gadget/g1/functions/mass_storage.usb0
+    mkdir /config/usb_gadget/g1/configs/c.1
+    write /config/usb_gadget/g1/configs/c.1/bmAttributes 0xc0
+    write /config/usb_gadget/g1/configs/c.1/MaxPower 500
+    mkdir /config/usb_gadget/g1/configs/c.1/strings/0x409
+    symlink /config/usb_gadget/g1/functions/mass_storage.usb0 /config/usb_gadget/g1/configs/c.1/f1
+    write /config/usb_gadget/g1/UDC "5100000.udc-controller"
