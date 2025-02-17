@@ -1,13 +1,13 @@
-#on init
+on init
     # Load persistent dm-verity state
-#    verity_load_state
+    verity_load_state
 
-#on early-boot
+on early-boot
     # Update dm-verity state and set partition.*.verified properties
-#    verity_update_state
+    verity_update_state
 
-#on verity-logging
-#    exec u:r:slideshow:s0 -- /sbin/slideshow warning/verity_red_1 warning/verity_red_2
+on verity-logging
+    exec u:r:slideshow:s0 -- /sbin/slideshow warning/verity_red_1 warning/verity_red_2
 
 on boot
     chown system system /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor
