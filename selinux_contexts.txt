@@ -245,6 +245,7 @@
 /bin/i2cget u:object_r:vendor_file:s0
 /bin/rmdir u:object_r:vendor_file:s0
 /bin/rgp2xbox u:object_r:vendor_file:s0
+/bin/rgp2xbox_bin u:object_r:vendor_file:s0
 /bin/trimui u:object_r:vendor_file:s0
 /bin/insmod u:object_r:vendor_file:s0
 /bin/watch u:object_r:vendor_file:s0

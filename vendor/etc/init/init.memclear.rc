@@ -1,11 +1,11 @@
-service drop_caches /system/bin/sh -c "echo 200 > /proc/sys/vm/vfs_cache_pressure; sleep 5; start mem_clear; swapon /dev/block/zram0 -p 2; while true; do echo 3 > /proc/sys/vm/drop_caches; sleep 15; done;"
+service drop_caches /system/bin/sh -c "echo 200 > /proc/sys/vm/vfs_cache_pressure; sleep 5; swapoff /dev/block/zram0; start mem_clear; swapon /dev/block/zram0 -p 2; while true; do echo 3 > /proc/sys/vm/drop_caches; sleep 15; done;"
     class main
     user root
     group root
     oneshot
     disabled
 
-service mount_swap /system/bin/sh -c "mkswap /dev/block/by-name/swap; swapoff /dev/block/zram0; swapon /dev/block/by-name/swap -p 1; swapon /dev/block/zram0 -p 2"
+service mount_swap /system/bin/sh -c "mkswap /dev/block/by-name/swap; swapon /dev/block/by-name/swap -p 1;"
     class main
     user root
     group root

@@ -79,19 +79,9 @@ on charger
     symlink /config/usb_gadget/g1/functions/mass_storage.usb0 /config/usb_gadget/g1/configs/c.1/f1
     write /config/usb_gadget/g1/UDC "5100000.udc-controller"
 
-on property:sys.boot_completed=1
-    start trimui
 
-on property:sys.rgp2xboxstart=1
-   start rgp
-
-service trimui /system/bin/sh -c "stop rgp2xbox; setprop ctl.stop rgp2xbox; setprop sys.rgp2xboxstart 1; /vendor/bin/trimui"
-        class core
-        user root
-        group root
-
-service rgp /system/bin/sh -c "sleep 10; setprop ctl.stop rgp2xbox; stop rgp2xbox; killall rgp2xbox; setprop ctl.start rgp2xbox; "
+service trimui /system/bin/sh -c "/vendor/bin/trimui"
 	disabled
-        class core
-        user root
-        group root
+    class core
+    user root
+    group root
