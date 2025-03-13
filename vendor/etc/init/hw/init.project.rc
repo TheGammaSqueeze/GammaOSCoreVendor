@@ -1,0 +1,92 @@
+import /vendor/etc/init/hw/init.mtkgki.rc
+
+# MTK project .rc configure
+
+on init
+    mkdir /mnt/media_rw/usbotg 0700 media_rw media_rw
+    mkdir /storage/usbotg 0700 root root
+
+on post-fs-data
+
+#Camera
+    chmod 0660 /dev/MAINAF
+    chown system camera /dev/MAINAF
+
+    chmod 0660 /dev/MAINAF2
+    chown system camera /dev/MAINAF2
+
+    chmod 0660 /dev/SUBAF
+    chown system camera /dev/SUBAF
+
+    chmod 0660 /dev/GAF001AF
+    chown system camera /dev/GAF001AF
+
+    chmod 0660 /dev/DW9714AF
+    chown system camera /dev/DW9714AF
+
+    chmod 0660 /dev/LC898212AF
+    chown system camera /dev/LC898212AF
+
+    chmod 0660 /dev/BU64745GWZAF
+    chown system camera /dev/BU64745GWZAF
+
+#SMB
+    chown system system /proc/smb/ScreenComm
+    chmod 0660 /proc/smb/ScreenComm
+
+    chmod 0660 /dev/spm
+    chown system system /dev/spm
+
+#USB SWITCH
+    chmod 0777 /sys/devices/platform/soc/soc:extcon_usb/manual_switch
+    chown system system /sys/devices/platform/soc/soc:extcon_usb/manual_switch
+    chmod 0777 /sys/bus/platform/devices/soc:odm:yt_fan/yt_fan_start
+    chown system system /sys/bus/platform/devices/soc:odm:yt_fan/yt_fan_start
+    chmod 0777 /sys/bus/platform/devices/soc:odm:yt_fan/yt_fan_duty
+    chown system system /sys/bus/platform/devices/soc:odm:yt_fan/yt_fan_duty
+    chmod 0777 /sys/bus/i2c/devices/2-0045/led_switch
+    chmod 0777 /sys/bus/i2c/devices/2-0045/red
+    chmod 0777 /sys/bus/i2c/devices/2-0045/green
+    chmod 0777 /sys/bus/i2c/devices/2-0045/blue
+    chmod 0777 /sys/bus/i2c/devices/2-0045/breath_led_switch
+    chmod 0777 /sys/bus/i2c/devices/2-0045/breath_red
+    chmod 0777 /sys/bus/i2c/devices/2-0045/breath_green
+    chmod 0777 /sys/bus/i2c/devices/2-0045/breath_blue
+    chown system system /sys/bus/i2c/devices/2-0045/led_switch
+    chown system system /sys/bus/i2c/devices/2-0045/red
+    chown system system /sys/bus/i2c/devices/2-0045/green
+    chown system system /sys/bus/i2c/devices/2-0045/blue
+    chown system system /sys/bus/i2c/devices/2-0045/breath_led_switch
+    chown system system /sys/bus/i2c/devices/2-0045/breath_red
+    chown system system /sys/bus/i2c/devices/2-0045/breath_green
+    chown system system /sys/bus/i2c/devices/2-0045/breath_blue
+    chmod 0777 /sys/devices/platform/soc/soc:extcon_usb/default_mode_otg
+    chown system system /sys/devices/platform/soc/soc:extcon_usb/default_mode_otg
+	
+#UART 
+    chmod 0777 /dev/ttyS0
+    chown system system /dev/ttyS0
+    chmod 0777 /dev/ttyS1
+    chown system system /dev/ttyS1
+
+on init
+    # Refer to http://source.android.com/devices/tech/storage/index.html
+    # It said, "Starting in Android 4.4, multiple external storage devices are surfaced to developers through
+    #           Context.getExternalFilesDirs(), Context.getExternalCacheDirs(), and Context.getObbDirs().
+    #           External storage devices surfaced through these APIs must be a semi-permanent part of the device (such as an SD card slot in a battery compartment).
+    #           Developers expect data stored in these locations to be available over long periods of time."
+    # Therefore, if the target doesn't support sd hot-plugging (Ex: the SD card slot in a battery compartment), we need to export SECONDARY_STORAGE in 'boot' section
+    #
+    # export SECONDARY_STORAGE /storage/sdcard1
+
+service fuse_usbotg /system/bin/sdcard -u 1023 -g 1023 -w 1023 -d /mnt/media_rw/usbotg /storage/usbotg
+    class late_start
+    disabled
+
+# start mmstat
+on property:sys.boot_completed=1
+    mkdir /sys/kernel/tracing/instances/mmstat 711
+    write /sys/kernel/tracing/instances/mmstat/tracing_on 0
+    write /sys/kernel/tracing/instances/mmstat/buffer_size_kb 16
+    write /sys/kernel/tracing/instances/mmstat/events/mmstat/enable 1
+    write /sys/kernel/tracing/instances/mmstat/tracing_on 1
