@@ -268,11 +268,11 @@
             <Feature name="adaptive-playback" />
         </MediaCodec>
         <MediaCodec name="c2.android.av1.decoder" type="video/av01" update="true">
-            <Limit name="size" min="2x2" max="1920x1088" />
+            <Limit name="size" min="2x2" max="1920x1080" />
             <Limit name="alignment" value="2x2" />
             <Limit name="block-size" value="16x16" />
-            <Limit name="block-count" range="1-8160" />
-            <Limit name="blocks-per-second" range="1-244800" />
+            <Limit name="block-count" range="1-16384" />
+            <Limit name="blocks-per-second" range="1-2073600" />
             <Limit name="bitrate" range="1-120000000" />
             <Feature name="adaptive-playback" />
         </MediaCodec>
@@ -329,18 +329,17 @@
             <Limit name="size" min="160x160" max="2560x1440" />
             <Limit name="alignment" value="16x16" />
             <Limit name="block-size" value="16x16" />
-            <Limit name="concurrent-instances" max="10" />
+            <Limit name="concurrent-instances" max="16" />
+            <Feature name="can-swap-width-height" value="1"/>
             <Limit name="performance-point-1920x1088" value="30" />
-            <Feature name="bitrate-modes" value="VBR,CBR,CQ" />
         </MediaCodec>
         <MediaCodec name="c2.mtk.avc.encoder.secure" type="video/avc" >
             <Limit name="size" min="160x128" max="1920x1088" />
             <Limit name="alignment" value="16x16" />
             <Limit name="block-size" value="16x16" />
-            <Limit name="concurrent-instances" max="10" />
+            <Limit name="concurrent-instances" max="16" />
             <Limit name="performance-point-1920x1088" value="30" />
             <Feature name="special-codec" required="true" />
-            <Feature name="bitrate-modes" value="VBR,CBR,CQ" />
         </MediaCodec>
         <MediaCodec name="c2.mtk.hevc.encoder" type="video/hevc" >
             <Alias name="OMX.MTK.VIDEO.ENCODER.HEVC" />
@@ -348,7 +347,7 @@
             <Limit name="alignment" value="16x16" />
             <Limit name="block-size" value="16x16" />
             <Limit name="quality" range="0-100" default="50" />
-            <Limit name="concurrent-instances" max="10" />
+            <Limit name="concurrent-instances" max="12" />
             <Feature name="bitrate-modes" value="VBR,CBR,CQ" />
             <Limit name="performance-point-1920x1088" value="30" />
         </MediaCodec>
@@ -361,17 +360,6 @@
             <Limit name="concurrent-instances" max="2" />
             <Feature name="bitrate-modes" value="VBR,CBR,CQ" />
             <Limit name="performance-point-1920x1088" value="30" />
-        </MediaCodec>
-        <MediaCodec name="c2.android.av1.encoder" type="video/av01" update="true" enabled="false" minsdk="34">
-            <Limit name="alignment" value="2x2" />
-            <Limit name="block-size" value="16x16" />
-            <Limit name="size" min="2x2" max="720x720" />
-            <Limit name="block-count" range="1-1350" /> <!-- max 720x480 -->
-            <Limit name="bitrate" range="1-5000000" />
-            <Limit name="quality" range="0-100"  default="80" />
-            <Limit name="complexity" range="0-5"  default="0" />
-            <Feature name="bitrate-modes" value="VBR,CBR,CQ" />
-            <Attribute name="software-codec" />
         </MediaCodec>
         <MediaCodec name="c2.android.h263.encoder" type="video/3gpp" update="true">
             <Alias name="OMX.google.h263.encoder" />

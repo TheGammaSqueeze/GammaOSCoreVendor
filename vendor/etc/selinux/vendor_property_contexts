@@ -53,7 +53,6 @@ vendor.a2dp.             u:object_r:vendor_mtk_audiohal_prop:s0
 vendor.audiohal.         u:object_r:vendor_mtk_audiohal_prop:s0
 persist.vendor.audiohal. u:object_r:vendor_mtk_audiohal_prop:s0
 persist.vendor.vow.      u:object_r:vendor_mtk_audiohal_prop:s0
-vendor.vow.              u:object_r:vendor_mtk_audiohal_prop:s0
 
 persist.vendor.connsys.coredump.mode u:object_r:vendor_mtk_coredump_prop:s0
 persist.vendor.connsys.              u:object_r:vendor_mtk_wmt_prop:s0
@@ -319,7 +318,7 @@ ro.vendor.bluetooth.noconsyschip u:object_r:vendor_mtk_default_prop:s0
 ro.vendor.arm.     u:object_r:vendor_mtk_gpu_prop:s0
 vendor.debug.gpu.  u:object_r:vendor_mtk_gpu_prop:s0
 vendor.debug.gpud. u:object_r:vendor_mtk_gpu_prop:s0
-vendor.mali. u:object_r:vendor_mtk_gpu_prop:s0
+vendor.mali.config u:object_r:vendor_mtk_gpu_prop:s0
 ro.vendor.game_aisr_enable u:object_r:vendor_mtk_gpu_prop:s0
 ro.vendor.mtk.gpu. u:object_r:vendor_mtk_gpu_prop:s0
 
@@ -377,7 +376,6 @@ persist.vendor.bluetooth.a2dp_src_sink_both_enable     u:object_r:vendor_mtk_def
 persist.vendor.bluetooth.blemesh_enable                u:object_r:vendor_mtk_default_prop:s0
 persist.vendor.bluetooth.mtk_bt_consumer_feature       u:object_r:vendor_mtk_default_prop:s0
 persist.vendor.bluetooth.fw_log_switch                 u:object_r:vendor_mtk_default_prop:s0
-persist.vendor.bluetooth.broadcaster.enabled           u:object_r:vendor_mtk_default_prop:s0
 
 vendor.bluetooth.performance. u:object_r:vendor_mtk_bt_perf_prop:s0
 

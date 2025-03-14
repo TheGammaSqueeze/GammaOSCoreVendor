@@ -134,12 +134,6 @@ on property:sys.usb.config=hid && property:sys.usb.configfs=1
 on property:sys.usb.config=adb && property:vendor.usb.acm_cnt=0 && \
 property:sys.usb.configfs=1
     setprop vendor.usb.pid 0x201C
-on property:sys.usb.config=adb && property:vendor.usb.acm_cnt=0 && \
-property:sys.usb.configfs=1 && property:ro.product.device=Pocket_Pixel
-    setprop vendor.usb.pid 0x201B
-on property:sys.usb.config=adb && property:vendor.usb.acm_cnt=0 && \
-property:sys.usb.configfs=1 && property:ro.product.device=Pocket_Micro
-    setprop vendor.usb.pid 0x201E
 on property:sys.usb.config=adb && property:vendor.usb.acm_cnt=1 && \
 property:sys.usb.configfs=1
     setprop vendor.usb.pid 0x2006
@@ -172,12 +166,6 @@ property:vendor.usb.acm_enable=0 && property:sys.usb.configfs=1
 on property:sys.usb.config=mtp && property:vendor.usb.acm_cnt=0 && \
 property:sys.usb.configfs=1
     setprop vendor.usb.pid 0x2008
-on property:sys.usb.config=mtp && property:vendor.usb.acm_cnt=0 && \
-property:sys.usb.configfs=1 && property:ro.product.device=Pocket_Pixel
-    setprop vendor.usb.pid 0x2018
-on property:sys.usb.config=mtp && property:vendor.usb.acm_cnt=0 && \
-property:sys.usb.configfs=1 && property:ro.product.device=Pocket_Micro
-    setprop vendor.usb.pid 0x2019
 on property:sys.usb.config=mtp && property:vendor.usb.acm_cnt=1 && \
 property:sys.usb.configfs=1
     setprop vendor.usb.pid 0x2012
@@ -211,12 +199,6 @@ property:sys.usb.configfs=1 && property:vendor.usb.ffs.mtp.ready=1
 on property:sys.usb.config=mtp,adb && property:vendor.usb.acm_cnt=0 && \
 property:sys.usb.configfs=1
     setprop vendor.usb.pid 0x201D
-on property:sys.usb.config=mtp,adb && property:vendor.usb.acm_cnt=0 && \
-property:sys.usb.configfs=1 && property:ro.product.device=Pocket_Pixel
-    setprop vendor.usb.pid 0x201A
-on property:sys.usb.config=mtp,adb && property:vendor.usb.acm_cnt=0 && \
-property:sys.usb.configfs=1 && property:ro.product.device=Pocket_Micro
-    setprop vendor.usb.pid 0x201F
 on property:sys.usb.config=mtp,adb && property:vendor.usb.acm_cnt=1 && \
 property:sys.usb.configfs=1
     setprop vendor.usb.pid 0x200A
@@ -252,12 +234,6 @@ property:vendor.usb.acm_enable=0 && property:sys.usb.configfs=1 && property:vend
 on property:sys.usb.config=ptp && property:vendor.usb.acm_cnt=0 && \
 property:sys.usb.configfs=1
     setprop vendor.usb.pid 0x200B
-on property:sys.usb.config=ptp && property:vendor.usb.acm_cnt=0 && \
-property:sys.usb.configfs=1 && property:ro.product.device=Pocket_Pixel
-    setprop vendor.usb.pid 0x203B
-on property:sys.usb.config=ptp && property:vendor.usb.acm_cnt=0 && \
-property:sys.usb.configfs=1 && property:ro.product.device=Pocket_Micro
-    setprop vendor.usb.pid 0x203C
 on property:sys.usb.config=ptp && property:vendor.usb.acm_cnt=1 && \
 property:sys.usb.configfs=1
     setprop vendor.usb.pid 0x2013
@@ -289,12 +265,6 @@ property:sys.usb.configfs=1 && property:vendor.usb.ffs.ptp.ready=1
 on property:sys.usb.config=ptp,adb && property:vendor.usb.acm_cnt=0 && \
 property:sys.usb.configfs=1
     setprop vendor.usb.pid 0x200C
-on property:sys.usb.config=ptp,adb && property:vendor.usb.acm_cnt=0 && \
-property:sys.usb.configfs=1 && property:ro.product.device=Pocket_Pixel
-    setprop vendor.usb.pid 0x2001
-on property:sys.usb.config=ptp,adb && property:vendor.usb.acm_cnt=0 && \
-property:sys.usb.configfs=1 && property:ro.product.device=Pocket_Micro
-    setprop vendor.usb.pid 0x200E
 on property:sys.usb.config=ptp,adb && property:vendor.usb.acm_cnt=1 && \
 property:sys.usb.configfs=1
     setprop vendor.usb.pid 0x200D
@@ -328,12 +298,6 @@ property:vendor.usb.acm_enable=0 && property:sys.usb.configfs=1 && property:vend
 on property:sys.usb.config=rndis && property:vendor.usb.acm_cnt=0 && \
 property:sys.usb.configfs=1
     setprop vendor.usb.pid 0x2004
-on property:sys.usb.config=rndis && property:vendor.usb.acm_cnt=0 && \
-property:sys.usb.configfs=1 && property:ro.product.device=Pocket_Pixel
-    setprop vendor.usb.pid 0x2014
-on property:sys.usb.config=rndis && property:vendor.usb.acm_cnt=0 && \
-property:sys.usb.configfs=1 && property:ro.product.device=Pocket_Micro
-    setprop vendor.usb.pid 0x2015
 on property:sys.usb.config=rndis && property:vendor.usb.acm_cnt=1 && \
 property:sys.usb.configfs=1
     setprop vendor.usb.pid 0x2011
@@ -366,12 +330,6 @@ property:sys.usb.configfs=1
 on property:sys.usb.config=rndis,adb && property:vendor.usb.acm_cnt=0 && \
 property:sys.usb.configfs=1
     setprop vendor.usb.pid 0x2005
-on property:sys.usb.config=rndis,adb && property:vendor.usb.acm_cnt=0 && \
-property:sys.usb.configfs=1 && property:ro.product.device=Pocket_Pixel
-    setprop vendor.usb.pid 0x2007
-on property:sys.usb.config=rndis,adb && property:vendor.usb.acm_cnt=0 && \
-property:sys.usb.configfs=1 && property:ro.product.device=Pocket_Micro
-    setprop vendor.usb.pid 0x2009
 on property:sys.usb.config=rndis,adb && property:vendor.usb.acm_cnt=1 && \
 property:sys.usb.configfs=1
     setprop vendor.usb.pid 0x2010
@@ -406,17 +364,9 @@ property:vendor.usb.acm_enable=0 && property:sys.usb.configfs=1
 ### main function : midi ###
 on property:sys.usb.config=midi && property:sys.usb.configfs=1
     write /config/usb_gadget/g1/idProduct 0x2046
-on property:sys.usb.config=midi && property:sys.usb.configfs=1 && property:ro.product.device=Pocket_Pixel
-    write /config/usb_gadget/g1/idProduct 0x2045
-on property:sys.usb.config=midi && property:sys.usb.configfs=1 && property:ro.product.device=Pocket_Micro
-    write /config/usb_gadget/g1/idProduct 0x2047
 
 on property:sys.usb.config=midi,adb && property:sys.usb.configfs=1
     write /config/usb_gadget/g1/idProduct 0x2048
-on property:sys.usb.config=midi,adb && property:sys.usb.configfs=1 && property:ro.product.device=Pocket_Pixel
-    write /config/usb_gadget/g1/idProduct 0x2049
-on property:sys.usb.config=midi,adb && property:sys.usb.configfs=1 && property:ro.product.device=Pocket_Micro
-    write /config/usb_gadget/g1/idProduct 0x204a
 
 ### main function : accessory ###
 on property:sys.usb.config=accessory && property:sys.usb.configfs=1

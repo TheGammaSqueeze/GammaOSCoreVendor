@@ -104,12 +104,6 @@
 # MDDP node
 /dev/mddp                 0660   system     system
 
-
-#VIBRATOR	 
-/sys/class/leds/xpad0_vibrator   duration      0660 system system
-/sys/class/leds/xpad0_vibrator   activate      0660 system system
-/sys/class/leds/xpad0_vibrator   state      0660 system system
-	
 # add the read write right of ttyUSB*
 /dev/bus/usb/*     	  0660   root       usb
 /dev/ttyUSB0              0660   radio      radio
@@ -199,8 +193,3 @@
 
 #MTK In-House TEE
 /dev/ttyACM0              0660   radio      radio
-# ------------------- focal fingerprint begin -------------------
-/dev/focaltech_fp         0660   system     system
-/dev/focaltech_fpspi      0660   system     system
-# ------------------- focal fingerprint end ---------------------
-/dev/input/event*      0665  system     system

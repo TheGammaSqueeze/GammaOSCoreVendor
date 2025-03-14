@@ -7,7 +7,6 @@
 # 1 "vendor/mediatek/proprietary/hardware/fstab/mt6789/fstab.in.emmc" 2
 # 156 "vendor/mediatek/proprietary/hardware/fstab/mt6789/fstab.in.emmc"
 system /system ext4 ro wait,slotselect,avb=vbmeta_system,logical,first_stage_mount,avb_keys=/avb/q-gsi.avbpubkey:/avb/r-gsi.avbpubkey:/avb/s-gsi.avbpubkey
-system_ext /system_ext ext4 ro wait,slotselect,avb=vbmeta_system,logical,first_stage_mount,avb_keys=/avb/q-gsi.avbpubkey:/avb/r-gsi.avbpubkey:/avb/s-gsi.avbpubkey
 
 vendor /vendor ext4 ro wait,slotselect,avb,logical,first_stage_mount
 
@@ -34,10 +33,9 @@ odm_dlkm /odm_dlkm ext4 ro wait,slotselect,avb,logical,first_stage_mount
 /dev/block/by-name/protect2 /mnt/vendor/protect_s ext4 noatime,nosuid,nodev,noauto_da_alloc,commit=1,nodelalloc wait,check,formattable
 /dev/block/by-name/nvdata /mnt/vendor/nvdata ext4 noatime,nosuid,nodev,noauto_da_alloc,commit=1,nodelalloc wait,check,formattable
 /dev/block/by-name/nvcfg /mnt/vendor/nvcfg ext4 noatime,nosuid,nodev,noauto_da_alloc,commit=1,nodelalloc wait,check,formattable
-# 192 "vendor/mediatek/proprietary/hardware/fstab/mt6789/fstab.in.emmc"
+# 191 "vendor/mediatek/proprietary/hardware/fstab/mt6789/fstab.in.emmc"
 /devices/platform/soc/11240000.mmc* auto auto defaults voldmanaged=sdcard1:auto,encryptable=userdata
 /devices/platform/soc/soc:odm/11230000.msdc* auto auto defaults voldmanaged=sdcard1:auto,encryptable=userdata
-/devices/platform/soc/11230000.mmc* auto auto defaults voldmanaged=sdcard1:auto,encryptable=userdata
 
 /devices/platform/soc/mt_usb* auto vfat defaults voldmanaged=usbotg:auto
 

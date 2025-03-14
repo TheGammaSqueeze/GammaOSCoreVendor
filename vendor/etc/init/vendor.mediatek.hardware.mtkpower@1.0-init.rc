@@ -145,22 +145,6 @@ on post-fs-data
     chmod 0660 /sys/devices/system/cpu/cpufreq/policy6/sugov_ext/down_rate_limit_us
     chown system system /sys/devices/system/cpu/cpufreq/policy7/sugov_ext/down_rate_limit_us
     chmod 0660 /sys/devices/system/cpu/cpufreq/policy7/sugov_ext/down_rate_limit_us
-    chown system system /sys/devices/system/cpu/cpufreq/policy0/schedutil/down_rate_limit_us
-    chmod 0660 /sys/devices/system/cpu/cpufreq/policy0/schedutil/down_rate_limit_us
-    chown system system /sys/devices/system/cpu/cpufreq/policy4/schedutil/down_rate_limit_us
-    chmod 0660 /sys/devices/system/cpu/cpufreq/policy4/schedutil/down_rate_limit_us
-    chown system system /sys/devices/system/cpu/cpufreq/policy6/schedutil/down_rate_limit_us
-    chmod 0660 /sys/devices/system/cpu/cpufreq/policy6/schedutil/down_rate_limit_us
-    chown system system /sys/devices/system/cpu/cpufreq/policy7/schedutil/down_rate_limit_us
-    chmod 0660 /sys/devices/system/cpu/cpufreq/policy7/schedutil/down_rate_limit_us
-    chown system system /sys/devices/system/cpu/cpufreq/policy0/schedutil/up_rate_limit_us
-    chmod 0660 /sys/devices/system/cpu/cpufreq/policy0/schedutil/up_rate_limit_us
-    chown system system /sys/devices/system/cpu/cpufreq/policy4/schedutil/up_rate_limit_us
-    chmod 0660 /sys/devices/system/cpu/cpufreq/policy4/schedutil/up_rate_limit_us
-    chown system system /sys/devices/system/cpu/cpufreq/policy6/schedutil/up_rate_limit_us
-    chmod 0660 /sys/devices/system/cpu/cpufreq/policy6/schedutil/up_rate_limit_us
-    chown system system /sys/devices/system/cpu/cpufreq/policy7/schedutil/up_rate_limit_us
-    chmod 0660 /sys/devices/system/cpu/cpufreq/policy7/schedutil/up_rate_limit_us
     chown system system /sys/module/mtk_core_ctl/parameters/policy_enable
     chmod 0660 /sys/module/mtk_core_ctl/parameters/policy_enable
     chown system system /sys/devices/system/cpu/sched_ctl/sched_core_pause_info
@@ -169,10 +153,6 @@ on post-fs-data
     chmod 0660 /sys/devices/system/cpu/cpufreq/sugov_ext/up_rate_limit_us
     chown system system /sys/devices/system/cpu/cpufreq/sugov_ext/down_rate_limit_us
     chmod 0660 /sys/devices/system/cpu/cpufreq/sugov_ext/down_rate_limit_us
-    chown system system /sys/devices/system/cpu/cpu4/core_ctl/up_thres
-    chmod 0660 /sys/devices/system/cpu/cpu4/core_ctl/up_thres
-    chown system system /sys/devices/system/cpu/cpu4/core_ctl/thermal_up_thres
-    chmod 0660 /sys/devices/system/cpu/cpu4/core_ctl/thermal_up_thres
 
 # Task turbo
     chown system system /sys/module/task_turbo/parameters/feats
@@ -724,8 +704,6 @@ on post-fs-data
     chmod 0664 /sys/module/mtk_fpsgo/parameters/loading_enable
     chown system system /sys/kernel/fpsgo/fbt/blc_boost
     chmod 0660 /sys/kernel/fpsgo/fbt/blc_boost
-    chown system system sys/module/mtk_fpsgo/parameters/bhr_opp_l
-    chmod 0660 sys/module/mtk_fpsgo/parameters/bhr_opp_l
 
 # NET
     chown system system /proc/net/wlan/setCAM

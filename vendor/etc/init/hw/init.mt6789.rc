@@ -734,32 +734,35 @@ on boot
 
     chown system system /sys/devices/system/cpu/cpufreq/hotplug/cpu_num_base
     chmod 0660 /sys/devices/system/cpu/cpufreq/hotplug/cpu_num_base
-    chmod 0666 /sys/devices/system/cpu/cpufreq/policy0/scaling_governor
     chown system system /sys/devices/system/cpu/cpufreq/policy0/scaling_governor
+    chmod 0660 /sys/devices/system/cpu/cpufreq/policy0/scaling_governor
     chown system system /sys/devices/system/cpu/cpufreq/policy4/scaling_governor
     chmod 0660 /sys/devices/system/cpu/cpufreq/policy4/scaling_governor
-    chmod 0666 /sys/devices/system/cpu/cpufreq/policy6/scaling_governor
-    chown system system /sys/devices/system/cpu/cpufreq/policy6/scaling_governor
-    chmod 0666 /proc/gpufreqv2/fix_target_opp_index
-    chown system system /proc/gpufreqv2/fix_target_opp_index
-    chmod 0666 /proc/gpufreqv2/gpufreq_status
-    chown system system /proc/gpufreqv2/gpufreq_status
-    chmod 0666 /proc/gpufreqv2/gpu_working_opp_table
-    chown system system /proc/gpufreqv2/gpu_working_opp_table
-    chmod 0666 /sys/devices/system/cpu/cpufreq/policy0/scaling_max_freq
-    chown system system /sys/devices/system/cpu/cpufreq/policy0/scaling_max_freq
-    chmod 0666 /sys/devices/system/cpu/cpufreq/policy6/scaling_max_freq
-    chown system system /sys/devices/system/cpu/cpufreq/policy6/scaling_max_freq
-    chmod 0666 /sys/devices/system/cpu/cpufreq/policy0/scaling_min_freq
-    chown system system /sys/devices/system/cpu/cpufreq/policy0/scaling_min_freq
-    chmod 0666 /sys/devices/system/cpu/cpufreq/policy6/scaling_min_freq
-    chown system system /sys/devices/system/cpu/cpufreq/policy6/scaling_min_freq
     chown root   system /sys/kernel/debug/binder/transaction_log_enable
     chown root   system /sys/kernel/debug/binder/perf_evalue
     chown system system /sys/devices/system/cpu/rq-stats/htasks_thresh
     chmod 0660 /sys/devices/system/cpu/rq-stats/htasks_thresh
     chown system system /sys/devices/system/cpu/rq-stats/avg_htasks_thresh
     chmod 0660 /sys/devices/system/cpu/rq-stats/avg_htasks_thresh
+
+	#add by jyj
+	chmod 0666 /sys/devices/system/cpu/cpufreq/policy6/scaling_governor
+	chmod 0666 /sys/devices/system/cpu/cpufreq/policy0/scaling_governor
+	chmod 0666 /sys/devices/system/cpu/cpufreq/policy6/scaling_setspeed
+	chmod 0666 /sys/devices/system/cpu/cpufreq/policy0/scaling_setspeed
+	chmod 0666 /sys/devices/system/cpu/cpufreq/policy6/scaling_max_freq
+	chmod 0666 /sys/devices/system/cpu/cpufreq/policy0/scaling_max_freq
+	chmod 0666 /sys/devices/system/cpu/cpufreq/policy6/scaling_min_freq
+	chmod 0666 /sys/devices/system/cpu/cpufreq/policy0/scaling_min_freq
+
+    #add by tzt
+    chmod 0666 /proc/gpufreqv2/fix_target_opp_index
+
+    #add by tzt
+    chmod 0666 /sys/devices/platform/gpio_keys/joystick_mode_set
+
+    #add by tzt
+    chmod 0666 /sys/devices/platform/gpio_keys/adc_keys_value
 
     chown system /sys/module/mlog/parameters/do_mlog
     chown system /sys/module/mlog/parameters/timer_intval
@@ -908,6 +911,12 @@ on boot
     chown root radio /proc/net/netfilter/nfnetlink_log
     chown root radio /proc/net/netfilter/nfnetlink_queue
 
+#pwm_fan
+    chmod 777 /sys/devices/platform/pwm_fan/pwm_fan_set
+
+#mtk_gpio
+	chmod 777 /proc/mtk_gpio/soc.pinctrl
+
 # WMT proc
     chown shell system /proc/driver/wmt_dbg
     chown shell system /proc/driver/wmt_aee
@@ -1023,6 +1032,13 @@ on property:persist.vendor.mediatek.fg.force25c=0
 
 on property:persist.vendor.mediatek.fg.log.enable=1
     write /dev/gauge/FG_daemon_log_level 7
+
+# add loghidl client
+service loghidlsysservice /system/bin/loghidlsysservice
+    class main
+    user root
+    group system
+    disabled
 
 # add meta_tst for ATM
 service meta_tst /vendor/bin/meta_tst

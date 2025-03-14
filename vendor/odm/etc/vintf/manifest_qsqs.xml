@@ -2,6 +2,7 @@
     Input:
         odm_manifest_qsqs.xml
         odm_manifest_op_qsqs.xml
+        odm_manifest_secure_element_qsqs.xml
 -->
 <manifest version="4.0" type="device">
     <hal format="hidl" override="true">
@@ -70,6 +71,22 @@
         <fqname>@1.6::IRadio/slot2</fqname>
         <fqname>@1.6::IRadio/slot3</fqname>
         <fqname>@1.6::IRadio/slot4</fqname>
+    </hal>
+    <hal format="hidl" override="true">
+        <name>android.hardware.secure_element</name>
+        <transport>hwbinder</transport>
+        <version>1.2</version>
+        <interface>
+            <name>ISecureElement</name>
+            <instance>SIM1</instance>
+            <instance>SIM2</instance>
+            <instance>SIM3</instance>
+            <instance>SIM4</instance>
+        </interface>
+        <fqname>@1.2::ISecureElement/SIM1</fqname>
+        <fqname>@1.2::ISecureElement/SIM2</fqname>
+        <fqname>@1.2::ISecureElement/SIM3</fqname>
+        <fqname>@1.2::ISecureElement/SIM4</fqname>
     </hal>
     <hal format="hidl" override="true">
         <name>vendor.mediatek.hardware.mtkradioex</name>
