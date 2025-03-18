@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<postproc_cfg>
+    <sensor_name>ov08a10_back_sunny</sensor_name>
+    <versionid>0x000D0013</versionid>
+    <scenario_num>8</scenario_num>
+    <scenario alia="com">
+        <id>0x0000000000000000</id>
+        <postprocfile_num>1</postprocfile_num>
+        <postprocfile name="mfnr5.2.xml">
+            <param>com</param>
+        </postprocfile>
+    </scenario>
+    <scenario alia="prv0">
+        <id>0x0000010000000000</id>
+        <postprocfile_num>0</postprocfile_num>
+    </scenario>
+    <scenario alia="prv1">
+        <id>0x0000020000000000</id>
+        <postprocfile_num>0</postprocfile_num>
+    </scenario>
+    <scenario alia="cap0">
+        <id>0x0000050000000000</id>
+        <postprocfile_num>0</postprocfile_num>
+    </scenario>
+    <scenario alia="cap1">
+        <id>0x0000060000000000</id>
+        <postprocfile_num>0</postprocfile_num>
+    </scenario>
+    <scenario alia="video0">
+        <id>0x0000090000000000</id>
+        <postprocfile_num>0</postprocfile_num>
+    </scenario>
+    <scenario alia="video1">
+        <id>0x00000A0000000000</id>
+        <postprocfile_num>0</postprocfile_num>
+    </scenario>
+    <scenario alia="video2">
+        <id>0x00000B0000000000</id>
+        <postprocfile_num>0</postprocfile_num>
+    </scenario>
+</postproc_cfg>

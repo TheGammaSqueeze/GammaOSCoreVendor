@@ -1,0 +1,4 @@
+service neuralnetworks_hal_service_xtensa /vendor/bin/hw/android.hardware.neuralnetworks@1.3-service-xtensa
+    class hal
+    user system
+    group system

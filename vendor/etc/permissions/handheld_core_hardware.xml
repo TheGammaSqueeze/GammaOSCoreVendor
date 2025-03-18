@@ -14,24 +14,26 @@
      limitations under the License.
 -->
 
-<!-- These are the hardware components that all handheld devices except Android Go
-     must include, for Android Go devices include go_handheld_core_hardware.xml.
-     Devices with optional hardware must also include extra hardware files, per the comments below.
+<!-- These are the hardware components that all handheld devices
+     must include. Devices with optional hardware must also include extra
+     hardware files, per the comments below.
 
      Handheld devices include phones, mobile Internet devices (MIDs),
      Personal Media Players (PMPs), small tablets (7" or less), and similar
      devices.
 -->
 <permissions>
-    <!-- This is Android and fully CTS compatible.  Basically this is for CTS tests to use. -->
-    <feature name="android.software.cts" />
-
     <feature name="android.hardware.audio.output" />
     <feature name="android.hardware.camera" />
-    <feature name="android.hardware.location" />
-    <feature name="android.hardware.location.network" />
-    <feature name="android.hardware.sensor.compass" />
-    <feature name="android.hardware.sensor.accelerometer" />
+    <!-- <feature name="android.hardware.location" /> -->
+    <!-- <feature name="android.hardware.location.network" /> -->
+    <!-- <feature name="android.hardware.sensor.stepcounter" /> -->
+    <!-- <feature name="android.hardware.sensor.stepdetector" /> -->
+    <!-- <feature name="android.hardware.sensor.compass" /> -->
+    <!-- <feature name="android.hardware.sensor.accelerometer" /> -->
+    <!-- <feature name="android.hardware.sensor.gyroscope" /> -->
+    <!-- <feature name="android.hardware.sensor.light" /> -->
+    <!-- <feature name="android.hardware.sensor.proximity" /> -->
     <feature name="android.hardware.bluetooth" />
     <feature name="android.hardware.touchscreen" />
     <feature name="android.hardware.microphone" />
@@ -47,29 +49,18 @@
     <feature name="android.software.backup" />
     <feature name="android.software.home_screen" />
     <feature name="android.software.input_methods" />
-    <feature name="android.software.picture_in_picture" notLowRam="true" />
-    <feature name="android.software.activities_on_secondary_displays" notLowRam="true" />
     <feature name="android.software.print" />
     <feature name="android.software.companion_device_setup" />
+    <feature name="android.software.picture_in_picture" notLowRam="true" />
+    <feature name="android.software.activities_on_secondary_displays" notLowRam="true" />
     <feature name="android.software.autofill" />
     <feature name="android.software.cant_save_state" />
-    <feature name="android.software.secure_lock_screen" />
 
     <!-- Feature to specify if the device supports adding device admins. -->
     <feature name="android.software.device_admin" />
 
     <!-- Feature to specify if the device support managed users. -->
-    <feature name="android.software.managed_users" notLowRam="true"/>
-
-    <!-- Feature to specify if the device supports controls. -->
-    <feature name="android.software.controls" />
-
-    <!-- Devices with all optimizations required to support VR Mode and
-         pass all CDD requirements for this feature may include
-         android.hardware.vr.high_performance -->
-    <!-- Devices that support VR headtracking features and pass all CDD
-         requirements may include
-         android.hardware.vr.headtracking -->
+    <feature name="android.software.managed_users" />
 
     <!-- devices with GPS must include android.hardware.location.gps.xml -->
     <!-- devices with an autofocus camera and/or flash must include either

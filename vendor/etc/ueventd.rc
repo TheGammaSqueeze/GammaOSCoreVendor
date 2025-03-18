@@ -1,195 +1,207 @@
-#change partition permission
-# eMMC only
-/dev/block/mmcblk0                               0660    root    system
-/dev/block/mmcblk0boot0                          0660    root    system
-/dev/block/mmcblk0boot1                          0660    root    system
-/dev/misc-sd                                     0660    root    system
+# device/sprd/mpool/module/vendor/audio/main.ueventd.rc
+# SPDX-FileCopyrightText: 2016-2023 Unisoc (Shanghai) Technologies Co., Ltd
+# SPDX-License-Identifier: LicenseRef-Unisoc-General-1.0
+/dev/apipe-pcm          0660     system      audio
+/dev/apipe-cmd-in       0660     system      audio
+/dev/apipe-cmd-out      0660     system      audio
+/dev/vbc_turning        0660     audioserver      audio
+/dev/vbc_turning*        0660     audioserver      audio
+# device/sprd/mpool/module/vendor/audio/msoc/qogirn6pro/qogirn6pro.ueventd.rc
+# SPDX-FileCopyrightText: 2016-2023 Unisoc (Shanghai) Technologies Co., Ltd
+# SPDX-License-Identifier: LicenseRef-Unisoc-General-1.0
+/sys/devices/platform/audiocp_boot agdsp 0660 audioserver audio
+/sys/devices/platform/audiocp_boot ldinfo 0660 audioserver audio
+/sys/devices/platform/audiocp_boot start 0660 audioserver audio
+/sys/devices/platform/audiocp_boot status 0660 audioserver audio
+/sys/devices/platform/audiocp_boot stop 0660 audioserver audio
+/dev/block/by-name/l_agdsp_a 0660 audioserver audio
+/dev/block/by-name/l_agdsp_b 0660 audioserver audio
+/dev/audio_dsp* 666 audioserver audio
+/dev/audio_pipe* 660 audioserver audio
+/dev/audio_dsp_call_info 0660 audioserver audio
+# device/sprd/mpool/module/vendor/display/sr/main.ueventd.rc
+# SPDX-FileCopyrightText: 2016-2023 Unisoc (Shanghai) Technologies Co., Ltd
+# SPDX-License-Identifier: LicenseRef-Unisoc-General-1.0
+/dev/block/by-name/logo          0660     system      system
+# device/sprd/mpool/module/vendor/modem/msoc/qogirn6pro/qogirn6pro.ueventd.rc
+# SPDX-FileCopyrightText: 2016-2023 Unisoc (Shanghai) Technologies Co., Ltd
+# SPDX-License-Identifier: LicenseRef-Unisoc-General-1.0
+/dev/block/by-name/nr_*       0660     system      system
+/dev/block/by-name/calinv        0660     system      system
+/dev/block/by-name/pm_sys*       0660     system      system
+/dev/block/by-name/ch_sys*       0660     system      system
+/vendor/odm/etc/ncfg_def/Operator_Bin/*       0660     system      system
+/odm/etc/ncfg_def/Operator_Bin/*       0660     system      system
+# device/sprd/mpool/module/vendor/vdsp/msoc/qogirn6pro/qogirn6pro.ueventd.rc
+# SPDX-FileCopyrightText: 2016-2023 Unisoc (Shanghai) Technologies Co., Ltd
+# SPDX-License-Identifier: LicenseRef-Unisoc-General-1.0
+/dev/vdsp* 660 cameraserver system
+# device/sprd/mpool/module/vendor/sensor/main.ueventd.rc
+# SPDX-FileCopyrightText: 2016-2023 Unisoc (Shanghai) Technologies Co., Ltd
+# SPDX-License-Identifier: LicenseRef-Unisoc-General-1.0
+/dev/iio:device*          0660     system     root
+/sys/class/sprd_sensorhub/sensor_hub          batch                      0660         system root
+/sys/class/sprd_sensorhub/sensor_hub          enable                     0660         system root
+/sys/class/sprd_sensorhub/sensor_hub          flush                      0660         system root
+/sys/class/sprd_sensorhub/sensor_hub          version                    0660         system root
+/sys/class/sprd_sensorhub/sensor_hub          logctl                     0660         system root
+/sys/class/sprd_sensorhub/sensor_hub          calibrator_cmd             0660         system root
+/sys/class/sprd_sensorhub/sensor_hub          calibrator_data            0660         system root
+/sys/class/sprd_sensorhub/sensor_hub          cali_download              0660         system root
+/sys/class/sprd_sensorhub/sensor_hub          mag_cali_flag              0660         system root
+/sys/class/sprd_sensorhub/sensor_hub          sensorhub                  0660         system root
+/sys/class/sprd_sensorhub/sensor_hub          raw_data_als               0660         system root
+/sys/class/sprd_sensorhub/sensor_hub          raw_data_ps                0660         system root
+/sys/class/sprd_sensorhub/sensor_hub          light_sensor_calibrator    0660         system root
+/sys/class/sprd_sensorhub/sensor_hub          sensor_info                0660         system system
+# device/sprd/mpool/module/vendor/wcn/gnss/main.ueventd.rc
+# SPDX-FileCopyrightText: 2016-2023 Unisoc (Shanghai) Technologies Co., Ltd
+# SPDX-License-Identifier: LicenseRef-Unisoc-General-1.0
+/dev/data0_gnss         0666     system      system
+/dev/block/by-name/gnssmodem_a   0660   system  root
+/dev/block/by-name/gnssmodem_b   0660   system  root
+# device/sprd/mpool/module/vendor/ueventd/main.ueventd.rc
+# SPDX-FileCopyrightText: 2016-2023 Unisoc (Shanghai) Technologies Co., Ltd
+# SPDX-License-Identifier: LicenseRef-Unisoc-General-1.0
+/dev/sttygnss0          0660     system      system
+/dev/spipe_gnss0        0660     system      system
+/dev/spipe_gnss1        0660     system      system
+/dev/stime_pm           0660     system      system
+/dev/stime_ch           0660     system      system
 
-# UFS only
-/dev/block/sda                                   0660    root    system
-/dev/block/sdb                                   0660    root    system
-/dev/block/sdc                                   0660    root    system
+/dev/wcn_gnss_dump      0660     system      system
+/dev/slog_gnss          0660     system      system
+/dev/slog_wcn0          0660     system      system
+/dev/ttyS3              0660     system      system
+/dev/ttyS4              0660     system      system
+/dev/ttyS0              0660     system      system
+/dev/gnss_pmnotify_ctl  0660     system      system
+/dev/power_ctl          0660     system      system
+/dev/gnss_dbg           0660     system      system
+/dev/fm                 0660     media       media
+/dev/ttyM0              0660     bluetooth   net_bt_admin
+/dev/ttyM1              0660     bluetooth   net_bt_admin
+/dev/trusty-ipc-dev0    0660     system      system
+/dev/tshm               0660     system      system
+/dev/tui_dev            0660     system      system
+/dev/madev0             0660     system      system
+/dev/sttybt0            0660     bluetooth   net_bt_admin
+/dev/ttyBT0             0660     bluetooth   net_bt_admin
 
-# eMMC/UFS common
-/dev/block/by-name/misc2     0660    root    system
-/dev/block/by-name/boot      0640    root    system
-/dev/block/by-name/recovery  0640    root    system
-/dev/block/by-name/secro     0640    root    system
-/dev/block/by-name/seccfg    0660    root    system
-/dev/block/by-name/proinfo   0660    root    system
-/dev/block/by-name/nvram     0660    root    system
-/dev/block/by-name/para      0660    root    system
-/dev/block/by-name/logo      0660    root    system
-/dev/block/by-name/frp       0660    root    system
-/dev/block/by-name/md1img    0640    root    system
-/dev/block/by-name/md1img_a  0640    root    system
-/dev/block/by-name/md1img_b  0640    root    system
-/dev/block/by-name/md1dsp    0660    root    system
-/dev/block/by-name/boot_para 0640    root    system
+/dev/trusty-ipc-dev0    0660     system      system
+/dev/stty_lte*          0660     radio       system
+/dev/slog_lte           0660     system      system
+/dev/slog_pm            0660     system      system
+/dev/slog_ch            0660     system      system
+/dev/sctl_pm            0660     system      system
+/dev/sctl_ch            0660     system      system
+/dev/sdiag_lte          0660     system      system
+/dev/slog_ldsp          0660     system      system
+/dev/spipe_lte*         0660     system      system
+/dev/sprd_time_sync     0660     system      system
+/dev/spipe_lte5         0660     radio      system
+/dev/spipe_lte4         0660     media       audio
+/dev/spipe_lte6         0660     media       audio
+/dev/spipe_lte9         0660     radio       radio
+/dev/spipe_lte14        0660     audioserver audio
+/dev/spipe_pm*          0666     system      system
+/dev/spipe_ch*          0660     system      system
+/dev/snv_lte            0660     system      system
 
-# OTP
-/dev/otp                  0660   system     system
-/dev/block/by-name/otp       0660    root    system
+/dev/stty_nr*           0660     radio       system
+/dev/slog_nr            0660     system      system
+/dev/slog_phy           0660     system      system
+/dev/sdiag_nr           0660     system      system
+/dev/spipe_nr*          0660     system      system
+/dev/spipe_nr5          0660     radio      system
+/dev/spipe_nr4          0660     media       audio
+/dev/spipe_nr6          0660     media       audio
+/dev/spipe_nr9          0660     radio       radio
+/dev/spipe_nr14         0660     media       audio
+/dev/snv_nr		0660     system      system
+/dev/vser               0660     system      system
+/dev/ttyGS*             0660     system      system
 
-# Connectivity
-/dev/stpwmt               0660   system     system
-/dev/wmtdetect            0660   system     system
-/dev/fw_log_wmt           0660   system     system
-/dev/conninfra_dev        0660   system     system
-/dev/conn_pwr_dev         0660   system     system
+/dev/ion                0666     system      graphics
+/dev/sprd_ion           0666     system      graphics
+/dev/sprd_dmabuf           0666     system      graphics
+/dev/dma_heap/uncached_carveout_mm			0666     system      graphics
+/dev/dma_heap/uncached_carveout_oem			0666     system      graphics
+/dev/dma_heap/carveout_fd			0666     system      graphics
+/dev/gsp                0660     system      graphics
 
-# BT
-/dev/stpbt                0660   bluetooth  bluetooth
-/dev/fw_log_bt            0660   bluetooth  bluetooth
+/dev/mali0              0666     system      graphics
+/dev/pvr_sync           0666     system      graphics
+/dev/sprd_jpg           0666     system      camera
+/dev/sprd_jpg1          0660     system      camera
+/dev/sprd_vsp           0660     system      camera
+/dev/vdma               0660     system      camera
+/dev/vpu_enc0           0660     system      camera
+/dev/vpu_enc1           0660     system      camera
+/dev/sprd_vpp           0660     system      camera
+/dev/sprd_vsp_enc       0660     system      camera
 
-# GPS
-/dev/gpsdl0               0660   gps        gps
-/dev/gpsdl1               0660   gps        gps
-/dev/stpgps               0660   gps        gps
-/dev/gps                  0660   gps        system
-/dev/gps_emi              0660   gps        gps
-/dev/gps2scp              0660   gps        gps
-/dev/gps_pwr              0660   gps        gps
-/dev/fw_log_gps           0660   gps        gps
-# ANT
-/dev/stpant               0660   system     system
+/dev/sprd_image         0660     system      camera
+/dev/sprd_isp           0660     system      camera
+/dev/sprd_sensor        0660     system      camera
+/dev/sprd_cpp           0660     system      camera
 
-# WIFI
-/dev/wmtWifi              0660   wifi     wifi
-/dev/fw_log_wifi          0660   wifi     wifi
+/sys/devices/system/cpu/cpu* /cpufreq/interactive/boost 0660 media system
+/sys/devices/system/cpu/cpu* /cpufreq/interactive/boostpulse 0660 system system
+/sys/devices/system/cpu/cpu* /cpufreq/interactive/boostpulse_duration 0660 system system
+/sys/devices/system/cpu/cpu* /cpufreq/interactive/timer_rate 0660 system system
+/sys/devices/system/cpu/cpu* /cpufreq/interactive/hispeed_freq 0660 system system
+/sys/devices/system/cpu/cpu* /cpufreq/interactive/target_loads 0660 system system
+/sys/devices/system/cpu/cpu* /cpufreq/interactive/above_hispeed_delay 0660 system system
+/sys/devices/system/cpu/cpu* /cpufreq/interactive/timer_slack 0660 system system
+/sys/devices/system/cpu/cpu* /cpufreq/interactive/min_sample_time 0660 system system
+/sys/devices/system/cpu/cpu* /cpufreq/interactive/io_is_busy 0660 system system
 
-# FMRadio
-/dev/fm                   0660   media     media
+/sys/class/misc/gnss_common_ctl gnss_power_enable 0220 system system
+/sys/class/misc/gnss_common_ctl gnss_dump         0660 system system
+/sys/class/misc/gnss_common_ctl gnss_subsys       0660 system system
 
-# NFC
-/dev/st21nfc              0660   nfc        radio
-/dev/st54spi              0660   secure_element        secure_element
+/sys/devices/system/cpu/cpu* /cpufreq/scaling_governor 0664 system system
+/sys/devices/system/cpu/cpu* /cpufreq/scaling_setspeed 0660 system system
 
-# MTK BTIF driver
-/dev/btif                 0600   system     system
+/dev/input/event*   0660     system      input
+/dev/map_user       0660     system      system
 
-# Trusty driver
-/dev/trusty-ipc-dev0      0660   system     system
-/dev/nebula-ipc-dev0      0660   system     system
+/dev/iio:device*    0660     system      system
 
-# RPMB (for Trusty)
-/dev/block/mmcblk0rpmb    0660   root       system
+/dev/rtc*           0660     system      system
 
-# TrustonicTEE driver
-/dev/mobicore             0600   system     system
-/dev/mobicore-user        0666   system     system
-/dev/t-base-tui           0666   system     system
+/dev/block/by-name/gnssmodem       0660     system      root
+/dev/block/by-name/gnssmodem_a     0660     system      root
 
-# teeperf driver
-/dev/teeperf              0666   system     system
+/dev/rpmb0           0660     system      system
+/dev/tmc_etb         0660     system      system
 
-#v4l2 device
-/dev/video*      0660 camera system
-/dev/media*      0660 camera system
-/dev/v4l-subdev* 0660 camera system
-
-#v4l2 codec
-/dev/vcu    0660 camera system
-
-#vdec-fmt
-/dev/vdec-fmt   0660 media system
-/dev/fmt_sync   0660 system system
-
-#v4l2 camera
-/dev/mtk_hcp     0660 camera system
-
-# DRM node
-/dev/dri/card0            0660   system     system
-
-# MDDP node
-/dev/mddp                 0660   system     system
-
-# add the read write right of ttyUSB*
-/dev/bus/usb/*     	  0660   root       usb
-/dev/ttyUSB0              0660   radio      radio
-/dev/ttyUSB1              0660   radio      radio
-/dev/ttyUSB2              0660   radio      radio
-/dev/ttyUSB3              0660   radio      radio
-/dev/ttyUSB4              0660   radio      radio
-
-# Anyone can read the logs, but if they're not in the "logs"
-# group, then they'll only see log entries for their UID.
-/dev/log/ksystem          0600   root       log
-
-/dev/ccci*                0660   radio      radio
-/dev/ttyC*                0660   radio      radio
-/sys/kernel/ccci          modem_info   0644   radio       radio
-/sys/kernel/ccci          md1_postfix  0644   radio       radio
-/sys/kernel/ccci          md2_postfix  0644   radio       radio
-/dev/eemcs*               0660   radio      radio
-/dev/emd*                 0660   radio      radio
-/dev/ccci_pcm_rx          0660   audio      audio
-/dev/ccci_pcm_tx          0660   audio      audio
-/dev/ccci_aud             0660   audio      audio
-/dev/ccci2_aud            0660   audio      audio
-/dev/ccci3_aud            0660   audio      audio
-/dev/ccci_raw_audio            0660   audio      audio
-/dev/ccci3_raw_audio            0660   audio      audio
-/dev/eemcs_aud            0660   audio      audio
-/dev/irtx                 0660   system     system
-/dev/lirc*                0660   root       system
-/dev/ir-learning          0660   system     system
-# SGX device node
-/dev/pvrsrvkm             0666   root       root
-/dev/pvr_sync             0666   root       root
-
-
-/sys/devices/platform/leds-mt65xx/leds/green   delay_on      0664  system   system
-/sys/devices/platform/leds-mt65xx/leds/green   delay_off      0664  system   system
-/sys/devices/platform/leds-mt65xx/leds/red   delay_on      0664  system   system
-/sys/devices/platform/leds-mt65xx/leds/red   delay_off      0664  system   system
-/sys/devices/platform/leds-mt65xx/leds/blue   delay_on      0664  system   system
-/sys/devices/platform/leds-mt65xx/leds/blue   delay_off      0664  system   system
-
-#GPIO
-/dev/mtgpio               0600   radio      root
-
-# Camera
-/dev/camera_eeprom*       0660   system     camera
-
-#FOR VIA MODEM
-/dev/ttySDIO*             0660   radio      sdcard_rw
-/dev/ttyRB*               0660   radio      radio
-
-# Mali node
-/dev/mali0                0666   system     graphics
-
-# Change ION driver permission
-/dev/ion                  0666   system     graphics
-
-# Change DMA_HEAP deice permission
-#     refs: /system/core/rootdir/uevent.rc
-#           /dev/dma_heap/system      0444   system     system
-/dev/dma_heap/mtk_mm                        0444   system     system
-/dev/dma_heap/mtk_mm-uncached               0444   system     system
-/dev/dma_heap/mtk_svp_page-uncached                 0444   system     system
-/dev/dma_heap/mtk_prot_page-uncached                0444   system     system
-/dev/dma_heap/mtk_svp_region                        0444   system     system
-/dev/dma_heap/mtk_svp_region-aligned                0444   system     system
-/dev/dma_heap/mtk_prot_region                       0444   system     system
-/dev/dma_heap/mtk_prot_region-aligned               0444   system     system
-/dev/dma_heap/mtk_2d_fr_region                      0444   system     system
-/dev/dma_heap/mtk_2d_fr_region-aligned              0444   system     system
-/dev/dma_heap/mtk_wfd_region                        0444   system     system
-/dev/dma_heap/mtk_wfd_region-aligned                0444   system     system
-/dev/dma_heap/mtk_wfd_page-uncached                 0444   system     system
-/dev/dma_heap/mtk_sapu_data_shm_region              0444   system     system
-/dev/dma_heap/mtk_sapu_data_shm_region-aligned      0444   system     system
-/dev/dma_heap/mtk_sapu_engine_shm_region            0444   system     system
-/dev/dma_heap/mtk_sapu_engine_shm_region-aligned    0444   system     system
-
-#touch
-/dev/touch                0660   root       system
-/dev/hotknot              0660   root       system
-
-#hang_detect
-/dev/RT_Monitor           0660   system     system
-/dev/kick_powerkey        0660   system     system
-
-#MTK In-House TEE
-/dev/ttyACM0              0660   radio      radio
+/sys/class/modem/debug-log/channel 0664    system    system
+/sys/class/modem/serdes0/channel   0664    system    system
+/sys/class/modem/serdes1/channel   0664    system    system
+/sys/class/modem/serdes0/freq	   0664    system    system
+/sys/class/modem/serdes1/freq      0664    system    system
+# device/sprd/mpool/module/vendor/ueventd/msoc/qogirn6pro/mfeature/kernel/kernel5.4/kernel5.4.ueventd.rc
+# SPDX-FileCopyrightText: 2016-2023 Unisoc (Shanghai) Technologies Co., Ltd
+# SPDX-License-Identifier: LicenseRef-Unisoc-General-1.0
+/sys/devices/platform/soc/soc:aon/64400000.spi/spi_master/spi4/spi4.0/sc27xx-bltc/leds/sc27xx:red hw_pattern 0660 system system
+/sys/devices/platform/soc/soc:aon/64400000.spi/spi_master/spi4/spi4.0/sc27xx-bltc/leds/sc27xx:green hw_pattern 0660 system system
+/sys/devices/platform/soc/soc:aon/64400000.spi/spi_master/spi4/spi4.0/sc27xx-bltc/leds/sc27xx:blue hw_pattern 0660 system system
+# device/sprd/mpool/module/vendor/ueventd/msoc/qogirn6pro/qogirn6pro.ueventd.rc
+# SPDX-FileCopyrightText: 2016-2023 Unisoc (Shanghai) Technologies Co., Ltd
+# SPDX-License-Identifier: LicenseRef-Unisoc-General-1.0
+/dev/block/by-name/miscdata      0660     root        system
+/dev/block/by-name/persist       0660     system      system
+/dev/block/by-name/sysdumpdb     0660     system      system
+# device/sprd/mpool/module/vendor/partition/main.ueventd.rc
+# SPDX-FileCopyrightText: 2016-2023 Unisoc (Shanghai) Technologies Co., Ltd
+# SPDX-License-Identifier: LicenseRef-Unisoc-General-1.0
+/dev/block/mmcblk1p*    0660     root      system
+/dev/block/mmcblk0rpmb  0660     system      system
+/dev/mmcblk0rpmb        0660     system      system
+# device/sprd/mpool/module/vendor/rebootescrow/march/arm64/arm64.ueventd.rc
+# SPDX-FileCopyrightText: 2016-2023 Unisoc (Shanghai) Technologies Co., Ltd
+# SPDX-License-Identifier: LicenseRef-Unisoc-General-1.0
+/dev/block/memdisk0p1 0770 system system
+/dev/block/pmem0 0770 system system
