@@ -1,0 +1,19 @@
+service joypad_control_screen_off /system/bin/sh -c "echo 0 > /sys/devices/platform/singleadc-joypad/enable"
+    class main
+    user root
+    group root system
+    oneshot
+    disabled
+
+service joypad_control_screen_on /system/bin/sh -c "echo 1 > /sys/devices/platform/singleadc-joypad/enable"
+    class main
+    user root
+    group root system
+    oneshot
+    disabled
+
+on property:sys.screen.state=off
+    start joypad_control_screen_off
+
+on property:sys.screen.state=on
+    start joypad_control_screen_on

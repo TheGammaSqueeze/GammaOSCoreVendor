@@ -1,0 +1,3 @@
+#!/system/bin/sh
+setprop ctl.stop rgp2xbox
+killall rgp2xbox
