@@ -458,6 +458,7 @@
 /etc/operator_config/in_config.xml u:object_r:vendor_configs_file:s0
 /etc/operator_config/pl_config.xml u:object_r:vendor_configs_file:s0
 /etc/init u:object_r:vendor_configs_file:s0
+/etc/init/init.joypad_control.rc u:object_r:vendor_configs_file:s0
 /etc/init/yloglite.rc u:object_r:vendor_configs_file:s0
 /etc/init/init.md.rc u:object_r:vendor_configs_file:s0
 /etc/init/vendor.sprd.hardware.broadcastradio@2.0-service.rc u:object_r:vendor_configs_file:s0
