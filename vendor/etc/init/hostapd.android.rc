@@ -12,7 +12,10 @@ on post-fs-data
     mkdir /data/vendor/wifi/hostapd/sockets 0770 wifi wifi
 
 service hostapd /vendor/bin/hw/hostapd
-    interface aidl android.hardware.wifi.hostapd.IHostapd/default
+    interface android.hardware.wifi.hostapd@1.0::IHostapd default
+    interface android.hardware.wifi.hostapd@1.1::IHostapd default
+    interface android.hardware.wifi.hostapd@1.2::IHostapd default
+    interface android.hardware.wifi.hostapd@1.3::IHostapd default
     class main
     capabilities NET_ADMIN NET_RAW
     user wifi

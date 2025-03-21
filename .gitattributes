@@ -1,0 +1,2 @@
+vendor/lib64/libmvpu_clc_cl_compiler.so filter=lfs diff=lfs merge=lfs -text
+vendor/app/PDA_FactoryMode/PDA_FactoryMode.apk filter=lfs diff=lfs merge=lfs -text

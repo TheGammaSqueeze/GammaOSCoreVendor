@@ -1,0 +1,63 @@
+import /vendor/etc/init/hw/init.mtkgki.rc
+
+mkdir /data/misc/sensors 0664 system system
+
+service msensord /system/bin/msensord
+    user system
+    group system
+    oneshot
+
+service akmd8963 /system/bin/akmd8963
+    disabled
+    user system
+    group system
+
+
+on post-fs
+    # disable HPS
+    write /proc/hps/enabled 0
+
+
+    chmod 0660 /dev/spm
+    chown system system /dev/spm
+
+on boot
+
+    chmod 0664 /sys/class/leds/red/brightness
+    chown system system /sys/class/leds/red/brightness
+	
+    chmod 0664 /sys/class/leds/green/brightness
+    chown system system /sys/class/leds/green/brightness
+	
+    chmod 0664 /sys/class/leds/blue/brightness
+    chown system system /sys/class/leds/blue/brightness
+
+    chmod 0666 /sys/class/fan/fan_ctrl
+    chown system system /sys/class/fan/fan_ctrl
+
+    chmod 0664 /sys/bus/iio/devices/iio:device2/in_voltage2_input
+    chmod 0664 /sys/bus/iio/devices/iio:device2/in_voltage3_input
+    chmod 0664 /sys/bus/iio/devices/iio:device2/in_voltage4_input
+    chmod 0664 /sys/bus/iio/devices/iio:device2/in_voltage5_input
+    chowm system system /sys/bus/iio/devices/iio:device2/in_voltage2_input
+    chowm system system /sys/bus/iio/devices/iio:device2/in_voltage3_input
+    chowm system system /sys/bus/iio/devices/iio:device2/in_voltage4_input
+    chowm system system /sys/bus/iio/devices/iio:device2/in_voltage5_input
+
+service spm_script /vendor/bin/spm_loader
+    user system
+    group system
+    oneshot
+
+on property:sys.usb.config=gs1gs3
+      write /sys/class/android_usb/android0/enable 0
+      write /sys/class/android_usb/android0/idVendor ${sys.usb.vid}
+      write /sys/class/android_usb/android0/idProduct 2029
+      write /sys/class/android_usb/android0/f_acm/port_index 2,4
+      write /sys/devices/platform/mt_usb/saving 1
+      write /sys/class/android_usb/android0/functions mass_storage,adb,acm
+      write /sys/class/android_usb/android0/enable 1
+      start adbd
+      setprop sys.usb.state ${sys.usb.config}
+      setprop sys.usb.acm_idx 2,4
+
