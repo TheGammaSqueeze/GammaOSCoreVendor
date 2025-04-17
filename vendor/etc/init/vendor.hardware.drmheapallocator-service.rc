@@ -1,0 +1,5 @@
+service vendor.hardware.drmheapallocator-service /vendor/bin/hw/vendor.hardware.drmheapallocator-service
+        interface aidl vendor.hardware.drmheapallocator.IDrmHeapAllocator/default
+        class hal
+        user system
+        group system

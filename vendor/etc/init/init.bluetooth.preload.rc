@@ -1,0 +1,10 @@
+service preload_bt_service /vendor/bin/hw/preload_bt
+    user root
+    group bluetooth net_bt_admin root
+    oneshot
+
+on property:persist.vendor.bluetooth_vendor=xradio && property:vendor.init.lpm.load=1
+    start preload_bt_service
+
+on property:persist.log.tag.bluetooth_vendor=xradio && property:vendor.init.lpm.load=1
+    start preload_bt_service

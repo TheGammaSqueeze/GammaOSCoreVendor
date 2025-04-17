@@ -1,0 +1,5 @@
+service vendor.power-aw /vendor/bin/hw/android.hardware.power-service.aw
+    class hal
+    user root
+    group root system readproc
+    capabilities BLOCK_SUSPEND NET_ADMIN SYS_NICE

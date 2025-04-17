@@ -1,0 +1,17 @@
+<mixer>
+    <!-- These are the initial mixer settings -->
+    <ctl name="rx sync mode" value="Off" />
+    <ctl name="ADC1 PGA Gain" value="26" />
+    <ctl name="ADC2 PGA Gain" value="26" />
+    <path name="cae-mixer-path">
+        <ctl name="rx sync mode" value="On" />
+        <ctl name="ADC1 PGA Gain" value="10" />
+        <ctl name="ADC2 PGA Gain" value="10" />
+    </path>
+    <path name="in-reset">
+        <ctl name="rx sync mode" value="Off" />
+        <ctl name="ADC1 PGA Gain" value="26" />
+        <ctl name="ADC2 PGA Gain" value="26" />
+    </path>
+    <path name="null"></path>
+</mixer>

@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<audio_device_desc version="2.10.0-later">
+    <platform_info>
+        <platform name="A523" board="pro3" kernel_version="linux5.15"/>
+        <hwsfx base="0xF0" size="0x2BC"/>
+        <!-- dump dirpath="./out/" -->
+    </platform_info>
+
+    <platform_devices>
+        <!-- dump running time of all plugin of the audio device when dump_time==1 -->
+        <!-- play_device type="Speaker" dump_time="1" -->
+        <play_device type="Speaker">
+            <!-- <sw_effect sw="VOLUME"/> -->
+            <!-- <sw_effect sw="EQ"/> -->
+
+            <!-- sw_effect support list -->
+            <!-- sw_effect sw="EQ" -->
+            <!-- sw_effect sw="RTC_AGC" -->
+            <!-- sw_effect sw="RTC_ANS" -->
+            <!-- sw_effect sw="RTC_AEC" -->
+            <!-- sw_effect sw="SPEEX_ANS" -->
+            <!-- sw_effect sw="PASS_FILTER" -->
+            <!-- sw_effect sw="ROUTE" -->
+            <!-- sw_effect sw="DELAY" -->
+            <!-- sw_effect sw="VOLUME" -->
+            <!-- sw_effect sw="INVERTER" -->
+
+            <!-- hw_effect support list -->
+            <!-- hw_effect hw="HW_DRC" -->
+            <!-- hw_effect hw="HW_HPF" -->
+
+            <!-- rp_effect support list -->
+            <!-- rp_effect rp="RP_EQ" -->
+            <!-- rp_effect rp="RP_SPEEX_ANS" -->
+            <!-- rp_effect rp="RP_PASS_FILTER" -->
+
+            <!-- e.g.1 multiple effect use -->
+            <!-- sw_effect sw="xxx" -->
+            <!-- rp_effect rp="xxx" -->
+            <!-- sw_effect sw="xxx" -->
+            <!-- hw_effect hw="xxx" -->
+
+            <!-- e.g.2 single device reuse effect -->
+            <!-- sw_effect sw="VOLUME" sub_id="0" -->
+            <!-- sw_effect sw="VOLUME" sub_id="1" -->
+
+            <!-- e.g.3 dump specified effect data, dump_pcm_cnt should > 0 -->
+            <!-- sw_effect sw="xxx" dump_pcm_cnt="3" -->
+            <!-- sw_effect sw="VOLUME" sub_id="0" dump_pcm_cnt="1" -->
+            <!-- sw_effect sw="VOLUME" sub_id="1" -->
+        </play_device>
+        <play_device type="Hpout">
+            <!-- sw_effect sw="xxx" -->
+            <!-- rp_effect rp="xxx" -->
+            <!-- hw_effect hw="xxx" -->
+        </play_device>
+        <cap_device type="MIC">
+            <!-- hw_effect hw="xxx" -->
+            <!-- rp_effect rp="xxx" -->
+            <!-- sw_effect sw="xxx" -->
+        </cap_device>
+        <cap_device type="HMIC">
+            <!-- hw_effect hw="xxx" -->
+            <!-- sw_effect sw="xxx" -->
+            <!-- rp_effect rp="xxx" -->
+        </cap_device>
+    </platform_devices>
+
+    <!-- effect_pool>
+        <effect_unit effect_name="RTC_AGC">
+            <param name="param_path" value="./config/audio_rtc_agc_param.xml"/>
+        </effect_unit>
+        <effect_unit effect_name="EQ">
+            <param name="param_path" value="./config/audio_eq_param.xml"/>
+        </effect_unit>
+    </effect_pool -->
+</audio_device_desc>

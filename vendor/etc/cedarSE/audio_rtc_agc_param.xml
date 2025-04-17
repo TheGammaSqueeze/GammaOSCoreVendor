@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<audio_rtc_agc_param version="2.10.0-later">
+  <!-- test: sw_effect channels_map -->
+  <param_tree>
+    <param path="Speaker" param_id="0" enable="1" />
+    <param path="Hpout" param_id="1" enable="1" />
+    <param path="MIC" param_id="2" enable="1" />
+    <param path="HMIC" param_id="3" enable="1" />
+  </param_tree>
+  <param_unit_pool>
+    <param_unit param_id="0">
+      <param name="mode" value="adaptive_analog" />
+      <param name="tgt_lv" value="4" />
+      <param name="comp_gain" value="20" />
+      <param name="limit" value="1" />
+      <param name="level_min" value="0" />
+      <param name="level_max" value="255" />
+    </param_unit>
+    <param_unit param_id="1">
+      <param name="mode" value="adaptive_analog" />
+      <param name="tgt_lv" value="2" />
+      <param name="comp_gain" value="20" />
+      <param name="limit" value="1" />
+      <param name="level_min" value="0" />
+      <param name="level_max" value="255" />
+    </param_unit>
+    <param_unit param_id="2">
+      <param name="mode" value="adaptive_analog" />
+      <param name="tgt_lv" value="2" />
+      <param name="comp_gain" value="20" />
+      <param name="limit" value="1" />
+      <param name="level_min" value="0" />
+      <param name="level_max" value="255" />
+    </param_unit>
+    <param_unit param_id="3">
+      <param name="mode" value="adaptive_analog" />
+      <param name="tgt_lv" value="2" />
+      <param name="comp_gain" value="20" />
+      <param name="limit" value="1" />
+      <param name="level_min" value="0" />
+      <param name="level_max" value="255" />
+    </param_unit>
+  </param_unit_pool>
+</audio_rtc_agc_param>

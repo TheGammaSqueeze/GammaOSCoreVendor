@@ -1,0 +1,8 @@
+on early-boot
+    write /sys/devices/virtual/misc/sunxi-rfkill/modem/state 1
+
+service radio_monitor-daemon /vendor/bin/hw/radio_monitor
+    class main
+    user root
+    group system
+    capabilities BLOCK_SUSPEND

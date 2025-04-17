@@ -1,0 +1,10 @@
+{
+    "MaxFrequency":  900000000,
+    "MinFrequency":  150000000,
+
+    "BandwidthFrequencyTable": [
+        {"BoostBandwidth": 27648000,  "BuckBandwidth": 18432000, "Frequency": 900000000 },
+        {"BoostBandwidth": 23040000,  "BuckBandwidth": 9216000,  "Frequency": 700000000 },
+        {"BoostBandwidth": 13824000,  "BuckBandwidth": 3000000,  "Frequency": 400000000 }
+    ]
+}

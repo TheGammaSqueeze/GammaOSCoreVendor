@@ -1,0 +1,36 @@
+debug: false
+limit: -1,-1
+threadCheck: true
+memoryCheck: true
+memoryLimit: 450,200
+memoryTrim: true
+stopTaskTime: 60
+skipService: true
+blockBroadcast: false
+lmk_level: 100,150,250
+
+whitelist:
+android
+com.android
+com.android.phone
+com.android.server.telecom
+com.google
+com.android.vending
+com.google.android.gms
+com.softwinner
+com.clock
+com.pt1
+com.baidu.input
+com.sohu.inputmethod.sogou
+com.allwinnertech
+com.xy.forqa
+com.facebook.katana
+com.mobileer.example.midibtlepairing
+foo.bar.multipleservices
+
+action:
+android.service.wallpaper.WallpaperService
+com.android.cts.verifier.camera.its.START
+
+relative:
+com.antutu.ABenchMark,com.antutu.benchmark.full,com.antutu.benchmark.full.lite

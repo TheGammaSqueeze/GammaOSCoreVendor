@@ -1,0 +1,9 @@
+service android-hardware-media-aw-c2-hal-1-0 /vendor/bin/hw/android.hardware.media.aw.c2@1.0-service
+    class hal
+    user mediacodec
+    group camera mediadrm drmrpc media
+    ioprio rt 4
+    writepid /dev/cpuset/foreground/tasks
+
+on property:init.svc.android-hardware-media-aw-c2-hal-1-0=running
+    mkdir /data/vendor/codec2 0770 mediacodec mediacodec

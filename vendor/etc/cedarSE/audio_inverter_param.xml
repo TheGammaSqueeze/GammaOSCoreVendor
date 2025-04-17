@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<audio_inverter_param version="2.10.0-later">
+  <!-- test: sw_effect channels_map -->
+  <param_tree>
+    <param path="Speaker" param_id="0" enable="1" />
+    <param path="Hpout" param_id="1" enable="1" />
+  </param_tree>
+  <param_unit_pool>
+    <param_unit param_id="0">
+      <param name="ch_cnt" value="2" />
+      <param name="ch0_i" value="0" />
+      <param name="ch1_i" value="1" />
+    </param_unit>
+    <param_unit param_id="1">
+      <param name="ch_cnt" value="2" />
+      <param name="ch0_i" value="1" />
+      <param name="ch1_i" value="0" />
+    </param_unit>
+  </param_unit_pool>
+</audio_inverter_param>

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<audio_volume_param version="2.10.0-later">
+  <!-- test: sw_effect volume_set -->
+  <param_tree>
+    <param path="Speaker"          param_id="0" enable="1" />
+    <param path="Hpout" sub_id="0" param_id="1" enable="1" />
+    <param path="Hpout" sub_id="1" param_id="2" enable="1" />
+  </param_tree>
+  <param_unit_pool>
+    <param_unit param_id="0">
+      <param name="dB_max" value="0" />
+      <param name="dB_min" value="-80" />
+      <param name="level_max" value="100" />
+      <param name="level_min" value="0" />
+      <param name="ch_cnt" value="2" />
+      <param name="ch_volume_0" value="80" />
+      <param name="ch_volume_1" value="80" />
+    </param_unit>
+    <param_unit param_id="1">
+      <param name="dB_max" value="0" />
+      <param name="dB_min" value="-80" />
+      <param name="level_max" value="100" />
+      <param name="level_min" value="0" />
+      <param name="ch_cnt" value="2" />
+      <param name="ch_volume_0" value="60" />
+      <param name="ch_volume_1" value="60" />
+    </param_unit>
+    <param_unit param_id="2">
+      <param name="dB_max" value="0" />
+      <param name="dB_min" value="-80" />
+      <param name="level_max" value="100" />
+      <param name="level_min" value="0" />
+      <param name="ch_cnt" value="2" />
+      <param name="ch_volume_0" value="50" />
+      <param name="ch_volume_1" value="50" />
+    </param_unit>
+  </param_unit_pool>
+</audio_volume_param>

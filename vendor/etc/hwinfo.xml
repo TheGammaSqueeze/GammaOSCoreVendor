@@ -1,0 +1,99 @@
+<?xml version="1.0"?>
+<hwinfo>
+  <!-- System path config -->
+  <system>
+    <entry fw_path="/vendor/etc/firmware" />
+    <entry drv_path="/vendor/lib/modules" />
+    <entry cfg_version="1.0.0" />
+  </system>
+
+  <!-- Wi-Fi Hal config -->
+  <wifi-hal>
+    <entry vendor="broadcom" name="libwifi-hal-bcm.so" />
+    <entry vendor="realtek" name="libwifi-hal-rtk.so" />
+    <entry vendor="xradio" name="libwifi-hal-xradio.so" />
+    <entry vendor="qualcomm" name="libwifi-hal-qcom.so" />
+    <entry vendor="ssv" name="libwifi-hal-ssv.so" />
+    <entry vendor="atbm" name="libwifi-hal-atbm.so" />
+    <entry vendor="sprd" name="libwifi-hal-sprd.so" />
+    <entry vendor="aic" name="libwifi-hal-aic.so" />
+  </wifi-hal>
+
+  <!-- Driver parameter config -->
+  <drv-para>
+    <entry vendor="broadcom" para="nvram_path=${fw_path}/nvram_${module_name}.txt config_path=${fw_path}/config_${module_name}.txt" />
+    <entry vendor="realtek" para="ifname=wlan0 if2name=p2p0" />
+    <entry vendor="ssv" para="stacfgpath=${fw_path}/${module_name}/${module_name}-wifi.cfg" />
+  </drv-para>
+
+  <!-- Bluetooth libbt-vendor config -->
+  <libbt>
+    <entry vendor="broadcom" name="libbt-broadcom.so" />
+    <entry vendor="realtek" name="libbt-realtek.so" />
+    <entry vendor="xradio" name="libbt-xradio.so" />
+    <entry vendor="qualcomm" name="libbt-qualcomm.so" />
+    <entry vendor="sprd" name="libbt-sprd.so" />
+    <entry vendor="aic" name="libbt-aic.so" />
+  </libbt>
+
+  <!-- Preload driver module for vendor -->
+  <driver>
+    <entry vendor="broadcom" >
+      <preload name="bcm_btlpm" para="assert_level=1" />
+      <preload name="dhd_static_buf" />
+    </entry>
+    <entry vendor="realtek" >
+      <preload name="rtl_btlpm" para="assert_level=3" />
+      <preload name="rtk_btusb" />
+      <preload name="rtkm" />
+    </entry>
+    <entry vendor="xradio" >
+      <preload name="xradio_btlpm" para="assert_level=3" />
+    </entry>
+    <entry vendor="sprd" >
+      <preload name="uwe5622_bsp_sdio" />
+      <preload name="sprdbt_tty" />
+    </entry>
+    <entry vendor="aic" >
+      <preload name="aic8800_bsp" />
+      <preload name="aic8800_btlpm" para="assert_level=3" />
+      <preload name="aic_btusb" />
+    </entry>
+  </driver>
+
+  <!-- Hardware info for detection -->
+  <module>
+    <entry id="0x024c8179" bus="0x1" name="rtl8189es" driver="8189es" module="8189es" vendor="realtek" btsup="0" />
+    <entry id="0x024cb723" bus="0x1" name="rtl8723bs_vq0" driver="8723bs-vq0" module="8723bs_vq0" vendor="realtek" btsup="1" />
+    <entry id="0x024cb703" bus="0x1" name="rtl8723cs" driver="8723cs" module="8723cs" vendor="realtek" btsup="1" />
+    <entry id="0x024cd723" bus="0x1" name="rtl8723ds" driver="8723ds" module="8723ds" vendor="realtek" btsup="1" />
+    <entry id="0x024cf179" bus="0x1" name="rtl8189fs" driver="8189fs" module="8189fs" vendor="realtek" btsup="0" />
+	<entry id="0x0bdaf72b" bus="0x0" name="rtl8733bu" driver="8733bu" module="8733bu" vendor="realtek" btsup="0" />
+    <entry id="0x024cb822" bus="0x1" name="rtl88x2bs" driver="88x2bs" module="88x2bs" vendor="realtek" btsup="1" />
+    <entry id="0x024cb852" bus="0x1" name="rtl8852bs" driver="8852bs" module="8852bs" vendor="realtek" btsup="1" />
+    <entry id="0x0bdad723" bus="0x0" name="rtl8723du" driver="8723du" module="8723du" vendor="realtek" btsup="1" />
+    <entry id="0x0bda8179" bus="0x0" name="rtl8188etv" driver="8188eu" module="8188eu" vendor="realtek" btsup="0" />
+    <entry id="0x0bda0179" bus="0x0" name="rtl8188eu" driver="8188eu" module="8188eu" vendor="realtek" btsup="0" />
+    <entry id="0x0bda818b" bus="0x0" name="rtl8192eu" driver="8192eu" module="8192eu" vendor="realtek" btsup="0" />
+    <entry id="0x0bdab720" bus="0x0" name="rtl8723bu" driver="8723bu" module="8723bu" vendor="realtek" btsup="1" />
+    <entry id="0x0bdac82c" bus="0x0" name="rtl8822cu" driver="88x2cu" module="88x2cu" vendor="realtek" btsup="1" />
+    <entry id="0x0bdaf179" bus="0x0" name="rtl8188fu" driver="8188fu" module="8188fu" vendor="realtek" btsup="0" />
+    <entry id="0x02d0a9a6" bus="0x1" name="ap6212" driver="bcmdhd" module="bcmdhd" vendor="broadcom" btsup="1" />
+    <entry id="0x02d04330" bus="0x1" name="ap6330" driver="bcmdhd" module="bcmdhd" vendor="broadcom" btsup="1" />
+    <entry id="0x02d04356" bus="0x1" name="ap6356s" driver="bcmdhd" module="bcmdhd" vendor="broadcom" btsup="1" />
+    <entry id="0x02d04359" bus="0x1" name="ap6398s" driver="bcmdhd" module="bcmdhd" vendor="broadcom" btsup="1" />
+    <entry id="0x02d0a9bf" bus="0x1" name="ap6255" driver="bcmdhd" module="bcmdhd" vendor="broadcom" btsup="1" />
+    <entry id="0x02d04381" bus="0x1" name="ap6281s" driver="bcmdhd" module="bcmdhd" vendor="broadcom" btsup="1" />
+    <entry id="0x14e4449d" bus="0x2" name="ap6275p" driver="bcmdhd" module="bcmdhd" vendor="broadcom" btsup="1" />
+    <entry id="0x00202281" bus="0x1" name="xr819" driver="xr819" module="xr819" vendor="xradio" btsup="0" />
+    <entry id="0x0a9e2282" bus="0x1" name="xr829" driver="xr829" module="xr829" vendor="xradio" btsup="1" />
+    <entry id="0x0271050a" bus="0x1" name="qca6174a" driver="qualcomm" module="qualcomm" vendor="atheros" btsup="0" />
+    <entry id="0x30303030" bus="0x1" name="ssv6x5x" driver="ssv6x5x" module="ssv6x5x" vendor="ssv" btsup="0" />
+    <entry id="0x00000000" bus="0x1" name="uwe5622" driver="sprdwl_ng" module="sprdwl_ng" vendor="sprd" btsup="1" />
+    <entry id="0x54490145" bus="0x1" name="aic8800d-sdio" driver="aic8800_fdrv" module="aic8800_fdrv" vendor="aic" btsup="1" />
+    <entry id="0xc8a1c08d" bus="0x1" name="aic8800dc-sdio" driver="aic8800_fdrv" module="aic8800_fdrv" vendor="aic" btsup="1" />
+    <entry id="0xc8a10182" bus="0x1" name="aic8800d80-sdio" driver="aic8800_fdrv" module="aic8800_fdrv" vendor="aic" btsup="1" />
+    <entry id="0xa69c8800" bus="0x0" name="aic8800d-usb" driver="aic8800_fdrv" module="aic8800_fdrv" vendor="aic" btsup="1" />
+    <entry id="0x007a8888" bus="0x0" name="atbm6023is" driver="atbm602x_wifi_usb" module="atbm602x_wifi_usb" vendor="atbm" btsup="0" />
+  </module>
+</hwinfo>

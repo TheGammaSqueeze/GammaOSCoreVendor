@@ -1,0 +1,5 @@
+# Auto-generated
+# date: Fri Jan 24 19:53:43 CST 2025
+on init
+    setprop ro.hardware.vulkan mali
+    setprop ro.opengles.version 196610

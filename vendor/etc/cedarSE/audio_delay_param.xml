@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<audio_delay_param version="2.10.0-later">
+  <!-- test: sw_effect volume_set -->
+  <param_tree>
+    <param path="Speaker" param_id="0" enable="1" />
+    <param path="Hpout" param_id="1" enable="1" />
+  </param_tree>
+  <param_unit_pool>
+    <param_unit param_id="0">
+      <!-- delay_unit-value: "0: frame, 1: ms"(supporting...) -->
+      <param name="delay_unit" value="0" />
+      <param name="delay_max" value="1000" />
+      <param name="ch_cnt" value="2" />
+      <param name="ch0_delay" value="100" />
+      <param name="ch1_delay" value="500" />
+    </param_unit>
+    <param_unit param_id="1">
+      <param name="delay_unit" value="0" />
+      <param name="delay_max" value="2000" />
+      <param name="ch_cnt" value="2" />
+      <param name="ch0_delay" value="1000" />
+      <param name="ch1_delay" value="500" />
+    </param_unit>
+  </param_unit_pool>
+</audio_delay_param>

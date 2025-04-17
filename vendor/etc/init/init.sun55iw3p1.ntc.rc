@@ -1,0 +1,33 @@
+on boot
+    chmod 666 /sys/class/power_supply/axp2202-battery/temp_alert_max
+    chown system system /sys/class/power_supply/axp2202-battery/temp_alert_max
+    chmod 666 /sys/class/power_supply/axp2202-battery/temp_alert_min
+    chown system system /sys/class/power_supply/axp2202-battery/temp_alert_min
+    chmod 666 /sys/class/power_supply/axp2202-battery/temp_ambient_alert_max
+    chown system system /sys/class/power_supply/axp2202-battery/temp_ambient_alert_max
+    chmod 666 /sys/class/power_supply/axp2202-battery/temp_ambient_alert_min
+    chown system system /sys/class/power_supply/axp2202-battery/temp_ambient_alert_min
+    chmod 666 /sys/class/power_supply/axp2202-battery/energy_full_design
+    chown system system /sys/class/power_supply/axp2202-battery/energy_full_design
+
+    chmod 666 /sys/class/power_supply/axp803-battery/temp_alert_max
+    chown system system /sys/class/power_supply/axp803-battery/temp_alert_max
+    chmod 666 /sys/class/power_supply/axp803-battery/temp_alert_min
+    chown system system /sys/class/power_supply/axp803-battery/temp_alert_min
+    chmod 666 /sys/class/power_supply/axp803-battery/temp_ambient_alert_max
+    chown system system /sys/class/power_supply/axp803-battery/temp_ambient_alert_max
+    chmod 666 /sys/class/power_supply/axp803-battery/temp_ambient_alert_min
+    chown system system /sys/class/power_supply/axp803-battery/temp_ambient_alert_min
+    chmod 666 /sys/class/power_supply/axp803-battery/energy_full_design
+    chown system system /sys/class/power_supply/axp803-battery/energy_full_design
+
+    chmod 666 /sys/class/power_supply/axp2601-battery/temp_alert_max
+    chown system system /sys/class/power_supply/axp2601-battery/temp_alert_max
+    chmod 666 /sys/class/power_supply/axp2601-battery/temp_alert_min
+    chown system system /sys/class/power_supply/axp2601-battery/temp_alert_min
+    chmod 666 /sys/class/power_supply/axp2601-battery/temp_ambient_alert_max
+    chown system system /sys/class/power_supply/axp2601-battery/temp_ambient_alert_max
+    chmod 666 /sys/class/power_supply/axp2601-battery/temp_ambient_alert_min
+    chown system system /sys/class/power_supply/axp2601-battery/temp_ambient_alert_min
+    chmod 666 /sys/class/power_supply/axp2601-battery/energy_full_design
+    chown system system /sys/class/power_supply/axp2601-battery/energy_full_design

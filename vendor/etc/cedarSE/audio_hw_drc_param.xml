@@ -1,0 +1,330 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<audio_hw_drc_param version="2.10.0-later">
+  <!-- test: hw_effect drc -->
+  <param_tree>
+    <param path="Speaker" param_id="0" enable="1" />
+    <param path="Hpout" param_id="1" enable="1" />
+    <param path="MIC" param_id="2" enable="1" />
+    <param path="HMIC" param_id="3" enable="1" />
+  </param_tree>
+    <param_unit_record>
+      <param_unit param_id="0">
+        <param name="channels" value="1,2" />
+        <param name="ET_EN" value="1" />
+        <param name="LT_EN" value="1" />
+        <param name="Detect_Noise" value="1" />
+        <param name="Max_Gain_Limit" value="1" />
+        <param name="Min_Gain_Limit" value="0" />
+        <param name="Max_Gain" value="20" />
+        <param name="Min_Gain" value="-40" />
+        <param name="Ke" value="2.666667" />
+        <param name="Kn" value="1" />
+        <param name="Kc" value="0.6333333" />
+        <param name="Kl" value="0.2" />
+        <param name="ET" value="-30" />
+        <param name="OPE" value="-20" />
+        <param name="CT" value="-20" />
+        <param name="OPC" value="-10" />
+        <param name="LT" value="-10" />
+        <param name="OPL" value="-3.666667" />
+        <param name="X" value="-60" />
+        <param name="Y" value="-1.666667" />
+        <param name="Peak Filter" value="1" />
+        <param name="Left Attack Time" value="19" />
+        <param name="Left Release Time" value="17" />
+        <param name="Right Attack Time" value="1" />
+        <param name="Right Release Time" value="10" />
+        <param name="Left Average Time" value="10" />
+        <param name="Right Average Time" value="10" />
+        <param name="Smooth Attack Time" value="8" />
+        <param name="Smooth Release Time" value="200" />
+        <param name="Expander Smooth Time" value="5" />
+        <param name="Optimum" value="17" />
+      </param_unit>
+      <param_unit param_id="1">
+        <param name="channels" value="1,2" />
+        <param name="ET_EN" value="1" />
+        <param name="LT_EN" value="1" />
+        <param name="Detect_Noise" value="1" />
+        <param name="Max_Gain_Limit" value="1" />
+        <param name="Min_Gain_Limit" value="1" />
+        <param name="Max_Gain" value="30" />
+        <param name="Min_Gain" value="-40" />
+        <param name="Ke" value="72.00027" />
+        <param name="Kn" value="1.782608" />
+        <param name="Kc" value="0.6376811" />
+        <param name="Kl" value="0.1505376" />
+        <param name="ET" value="-69.33334" />
+        <param name="OPE" value="-52" />
+        <param name="CT" value="-54" />
+        <param name="OPC" value="-24.66667" />
+        <param name="LT" value="-31" />
+        <param name="OPL" value="-10" />
+        <param name="X" value="-70" />
+        <param name="Y" value="-5.333333" />
+        <param name="Peak Filter" value="1" />
+        <param name="Left Attack Time" value="8" />
+        <param name="Left Release Time" value="10" />
+        <param name="Right Attack Time" value="1" />
+        <param name="Right Release Time" value="10" />
+        <param name="Left Average Time" value="10" />
+        <param name="Right Average Time" value="10" />
+        <param name="Smooth Attack Time" value="8" />
+        <param name="Smooth Release Time" value="200" />
+        <param name="Expander Smooth Time" value="5" />
+        <param name="Optimum" value="17" />
+      </param_unit>
+      <param_unit param_id="2">
+        <param name="channels" value="1,2" />
+        <param name="ET_EN" value="1" />
+        <param name="LT_EN" value="1" />
+        <param name="Detect_Noise" value="1" />
+        <param name="Max_Gain_Limit" value="1" />
+        <param name="Min_Gain_Limit" value="0" />
+        <param name="Max_Gain" value="20" />
+        <param name="Min_Gain" value="-40" />
+        <param name="Ke" value="2.666667" />
+        <param name="Kn" value="1" />
+        <param name="Kc" value="0.6333333" />
+        <param name="Kl" value="0.2" />
+        <param name="ET" value="-30" />
+        <param name="OPE" value="-20" />
+        <param name="CT" value="-20" />
+        <param name="OPC" value="-10" />
+        <param name="LT" value="-10" />
+        <param name="OPL" value="-3.666667" />
+        <param name="X" value="-60" />
+        <param name="Y" value="-1.666667" />
+        <param name="Peak Filter" value="1" />
+        <param name="Left Attack Time" value="19" />
+        <param name="Left Release Time" value="17" />
+        <param name="Right Attack Time" value="1" />
+        <param name="Right Release Time" value="10" />
+        <param name="Left Average Time" value="10" />
+        <param name="Right Average Time" value="10" />
+        <param name="Smooth Attack Time" value="8" />
+        <param name="Smooth Release Time" value="200" />
+        <param name="Expander Smooth Time" value="5" />
+        <param name="Optimum" value="17" />
+      </param_unit>
+      <param_unit param_id="3">
+        <param name="channels" value="1,2" />
+        <param name="ET_EN" value="1" />
+        <param name="LT_EN" value="1" />
+        <param name="Detect_Noise" value="1" />
+        <param name="Max_Gain_Limit" value="1" />
+        <param name="Min_Gain_Limit" value="1" />
+        <param name="Max_Gain" value="30" />
+        <param name="Min_Gain" value="-40" />
+        <param name="Ke" value="72.00027" />
+        <param name="Kn" value="1.782608" />
+        <param name="Kc" value="0.6376811" />
+        <param name="Kl" value="0.1505376" />
+        <param name="ET" value="-69.33334" />
+        <param name="OPE" value="-52" />
+        <param name="CT" value="-54" />
+        <param name="OPC" value="-24.66667" />
+        <param name="LT" value="-31" />
+        <param name="OPL" value="-10" />
+        <param name="X" value="-70" />
+        <param name="Y" value="-5.333333" />
+        <param name="Peak Filter" value="1" />
+        <param name="Left Attack Time" value="8" />
+        <param name="Left Release Time" value="10" />
+        <param name="Right Attack Time" value="1" />
+        <param name="Right Release Time" value="10" />
+        <param name="Left Average Time" value="10" />
+        <param name="Right Average Time" value="10" />
+        <param name="Smooth Attack Time" value="8" />
+        <param name="Smooth Release Time" value="200" />
+        <param name="Expander Smooth Time" value="5" />
+        <param name="Optimum" value="17" />
+      </param_unit>
+    </param_unit_record>
+    <param_unit_pool>
+      <param_unit param_id="0">
+        <param addr="0x00F0" mask="0xA0000000" value="0xA0000000" />
+        <param addr="0x0108" mask="0xFFFFFFFF" value="0x000000DB" />
+        <param addr="0x010C" mask="0xFFFFFFFF" value="0x00000000" />
+        <param addr="0x0110" mask="0xFFFFFFFF" value="0x00009DE7" />
+        <param addr="0x0114" mask="0xFFFFFFFF" value="0x0000000B" />
+        <param addr="0x0118" mask="0xFFFFFFFF" value="0x000077F0" />
+        <param addr="0x011C" mask="0xFFFFFFFF" value="0x000000FF" />
+        <param addr="0x0120" mask="0xFFFFFFFF" value="0x00004F8C" />
+        <param addr="0x0124" mask="0xFFFFFFFF" value="0x000000FE" />
+        <param addr="0x0128" mask="0xFFFFFFFF" value="0x0000D450" />
+        <param addr="0x012C" mask="0xFFFFFFFF" value="0x00000001" />
+        <param addr="0x0130" mask="0xFFFFFFFF" value="0x00002BB0" />
+        <param addr="0x0134" mask="0xFFFFFFFF" value="0x00000001" />
+        <param addr="0x0138" mask="0xFFFFFFFF" value="0x00002BB0" />
+        <param addr="0x013C" mask="0xFFFFFFFF" value="0x00000352" />
+        <param addr="0x0140" mask="0xFFFFFFFF" value="0x000069E0" />
+        <param addr="0x0144" mask="0xFFFFFFFF" value="0x000000A2" />
+        <param addr="0x0148" mask="0xFFFFFFFF" value="0x00002222" />
+        <param addr="0x014C" mask="0xFFFFFFFF" value="0x0000FE56" />
+        <param addr="0x0150" mask="0xFFFFFFFF" value="0x0000CB10" />
+        <param addr="0x0154" mask="0xFFFFFFFF" value="0x000001A9" />
+        <param addr="0x0158" mask="0xFFFFFFFF" value="0x000034F0" />
+        <param addr="0x015C" mask="0xFFFFFFFF" value="0x00000033" />
+        <param addr="0x0160" mask="0xFFFFFFFF" value="0x00003334" />
+        <param addr="0x0164" mask="0xFFFFFFFF" value="0x0000FF64" />
+        <param addr="0x0168" mask="0xFFFFFFFF" value="0x00001741" />
+        <param addr="0x016C" mask="0xFFFFFFFF" value="0x000004FB" />
+        <param addr="0x0170" mask="0xFFFFFFFF" value="0x00009ED1" />
+        <param addr="0x0174" mask="0xFFFFFFFF" value="0x000002AA" />
+        <param addr="0x0178" mask="0xFFFFFFFF" value="0x0000AAAC" />
+        <param addr="0x017C" mask="0xFFFFFFFF" value="0x0000FCAD" />
+        <param addr="0x0180" mask="0xFFFFFFFF" value="0x00009620" />
+        <param addr="0x0184" mask="0xFFFFFFFF" value="0x00000100" />
+        <param addr="0x0188" mask="0xFFFFFFFF" value="0x00000000" />
+        <param addr="0x018C" mask="0xFFFFFFFF" value="0x00000001" />
+        <param addr="0x0190" mask="0xFFFFFFFF" value="0x00007665" />
+        <param addr="0x0194" mask="0xFFFFFFFF" value="0x00000000" />
+        <param addr="0x0198" mask="0xFFFFFFFF" value="0x00000F04" />
+        <param addr="0x019C" mask="0xFFFFFFFF" value="0x00000352" />
+        <param addr="0x01A0" mask="0xFFFFFFFF" value="0x000069E0" />
+        <param addr="0x01A4" mask="0xFFFFFFFF" value="0x0000F95B" />
+        <param addr="0x01A8" mask="0xFFFFFFFF" value="0x00002C3F" />
+        <param addr="0x01AC" mask="0xFFFFFFFF" value="0x00000002" />
+        <param addr="0x01B0" mask="0xFFFFFFFF" value="0x00005600" />
+      </param_unit>
+      <param_unit param_id="1">
+        <param addr="0x00F0" mask="0xA0000000" value="0xA0000000" />
+        <param addr="0x0108" mask="0xFFFFFFFF" value="0x000000DB" />
+        <param addr="0x010C" mask="0xFFFFFFFF" value="0x00000000" />
+        <param addr="0x0110" mask="0xFFFFFFFF" value="0x00009DE7" />
+        <param addr="0x0114" mask="0xFFFFFFFF" value="0x0000000B" />
+        <param addr="0x0118" mask="0xFFFFFFFF" value="0x000077F0" />
+        <param addr="0x011C" mask="0xFFFFFFFF" value="0x000000FF" />
+        <param addr="0x0120" mask="0xFFFFFFFF" value="0x00004F8C" />
+        <param addr="0x0124" mask="0xFFFFFFFF" value="0x000000FE" />
+        <param addr="0x0128" mask="0xFFFFFFFF" value="0x0000D450" />
+        <param addr="0x012C" mask="0xFFFFFFFF" value="0x00000001" />
+        <param addr="0x0130" mask="0xFFFFFFFF" value="0x00002BB0" />
+        <param addr="0x0134" mask="0xFFFFFFFF" value="0x00000001" />
+        <param addr="0x0138" mask="0xFFFFFFFF" value="0x00002BB0" />
+        <param addr="0x013C" mask="0xFFFFFFFF" value="0x00000352" />
+        <param addr="0x0140" mask="0xFFFFFFFF" value="0x000069E0" />
+        <param addr="0x0144" mask="0xFFFFFFFF" value="0x000000A2" />
+        <param addr="0x0148" mask="0xFFFFFFFF" value="0x00002222" />
+        <param addr="0x014C" mask="0xFFFFFFFF" value="0x0000FE56" />
+        <param addr="0x0150" mask="0xFFFFFFFF" value="0x0000CB10" />
+        <param addr="0x0154" mask="0xFFFFFFFF" value="0x000001A9" />
+        <param addr="0x0158" mask="0xFFFFFFFF" value="0x000034F0" />
+        <param addr="0x015C" mask="0xFFFFFFFF" value="0x00000033" />
+        <param addr="0x0160" mask="0xFFFFFFFF" value="0x00003334" />
+        <param addr="0x0164" mask="0xFFFFFFFF" value="0x0000FF64" />
+        <param addr="0x0168" mask="0xFFFFFFFF" value="0x00001741" />
+        <param addr="0x016C" mask="0xFFFFFFFF" value="0x000004FB" />
+        <param addr="0x0170" mask="0xFFFFFFFF" value="0x00009ED1" />
+        <param addr="0x0174" mask="0xFFFFFFFF" value="0x000002AA" />
+        <param addr="0x0178" mask="0xFFFFFFFF" value="0x0000AAAC" />
+        <param addr="0x017C" mask="0xFFFFFFFF" value="0x0000FCAD" />
+        <param addr="0x0180" mask="0xFFFFFFFF" value="0x00009620" />
+        <param addr="0x0184" mask="0xFFFFFFFF" value="0x00000100" />
+        <param addr="0x0188" mask="0xFFFFFFFF" value="0x00000000" />
+        <param addr="0x018C" mask="0xFFFFFFFF" value="0x00000001" />
+        <param addr="0x0190" mask="0xFFFFFFFF" value="0x00007665" />
+        <param addr="0x0194" mask="0xFFFFFFFF" value="0x00000000" />
+        <param addr="0x0198" mask="0xFFFFFFFF" value="0x00000F04" />
+        <param addr="0x019C" mask="0xFFFFFFFF" value="0x00000352" />
+        <param addr="0x01A0" mask="0xFFFFFFFF" value="0x000069E0" />
+        <param addr="0x01A4" mask="0xFFFFFFFF" value="0x0000F95B" />
+        <param addr="0x01A8" mask="0xFFFFFFFF" value="0x00002C3F" />
+        <param addr="0x01AC" mask="0xFFFFFFFF" value="0x00000002" />
+        <param addr="0x01B0" mask="0xFFFFFFFF" value="0x00005600" />
+      </param_unit>
+      <param_unit param_id="2">
+        <param addr="0x00F8" mask="0xA0000000" value="0xA0000000" />
+        <param addr="0x0208" mask="0xFFFFFFFF" value="0x000000DB" />
+        <param addr="0x020C" mask="0xFFFFFFFF" value="0x00000000" />
+        <param addr="0x0210" mask="0xFFFFFFFF" value="0x00009DE7" />
+        <param addr="0x0214" mask="0xFFFFFFFF" value="0x0000000B" />
+        <param addr="0x0218" mask="0xFFFFFFFF" value="0x000077F0" />
+        <param addr="0x021C" mask="0xFFFFFFFF" value="0x000000FF" />
+        <param addr="0x0220" mask="0xFFFFFFFF" value="0x00004F8C" />
+        <param addr="0x0224" mask="0xFFFFFFFF" value="0x000000FE" />
+        <param addr="0x0228" mask="0xFFFFFFFF" value="0x0000D450" />
+        <param addr="0x022C" mask="0xFFFFFFFF" value="0x00000001" />
+        <param addr="0x0230" mask="0xFFFFFFFF" value="0x00002BB0" />
+        <param addr="0x0234" mask="0xFFFFFFFF" value="0x00000001" />
+        <param addr="0x0238" mask="0xFFFFFFFF" value="0x00002BB0" />
+        <param addr="0x023C" mask="0xFFFFFFFF" value="0x00000352" />
+        <param addr="0x0240" mask="0xFFFFFFFF" value="0x000069E0" />
+        <param addr="0x0244" mask="0xFFFFFFFF" value="0x000000A2" />
+        <param addr="0x0248" mask="0xFFFFFFFF" value="0x00002222" />
+        <param addr="0x024C" mask="0xFFFFFFFF" value="0x0000FE56" />
+        <param addr="0x0250" mask="0xFFFFFFFF" value="0x0000CB10" />
+        <param addr="0x0254" mask="0xFFFFFFFF" value="0x000001A9" />
+        <param addr="0x0258" mask="0xFFFFFFFF" value="0x000034F0" />
+        <param addr="0x025C" mask="0xFFFFFFFF" value="0x00000033" />
+        <param addr="0x0260" mask="0xFFFFFFFF" value="0x00003334" />
+        <param addr="0x0264" mask="0xFFFFFFFF" value="0x0000FF64" />
+        <param addr="0x0268" mask="0xFFFFFFFF" value="0x00001741" />
+        <param addr="0x026C" mask="0xFFFFFFFF" value="0x000004FB" />
+        <param addr="0x0270" mask="0xFFFFFFFF" value="0x00009ED1" />
+        <param addr="0x0274" mask="0xFFFFFFFF" value="0x000002AA" />
+        <param addr="0x0278" mask="0xFFFFFFFF" value="0x0000AAAC" />
+        <param addr="0x027C" mask="0xFFFFFFFF" value="0x0000FCAD" />
+        <param addr="0x0280" mask="0xFFFFFFFF" value="0x00009620" />
+        <param addr="0x0284" mask="0xFFFFFFFF" value="0x00000100" />
+        <param addr="0x0288" mask="0xFFFFFFFF" value="0x00000000" />
+        <param addr="0x028C" mask="0xFFFFFFFF" value="0x00000001" />
+        <param addr="0x0290" mask="0xFFFFFFFF" value="0x00007665" />
+        <param addr="0x0294" mask="0xFFFFFFFF" value="0x00000000" />
+        <param addr="0x0298" mask="0xFFFFFFFF" value="0x00000F04" />
+        <param addr="0x029C" mask="0xFFFFFFFF" value="0x00000352" />
+        <param addr="0x02A0" mask="0xFFFFFFFF" value="0x000069E0" />
+        <param addr="0x02A4" mask="0xFFFFFFFF" value="0x0000F95B" />
+        <param addr="0x02A8" mask="0xFFFFFFFF" value="0x00002C3F" />
+        <param addr="0x02AC" mask="0xFFFFFFFF" value="0x00000002" />
+        <param addr="0x02B0" mask="0xFFFFFFFF" value="0x00005600" />
+      </param_unit>
+      <param_unit param_id="3">
+        <param addr="0x00F8" mask="0x0A000000" value="0x0A000000" />
+        <param addr="0x0208" mask="0xFFFFFFFF" value="0x000000DB" />
+        <param addr="0x020C" mask="0xFFFFFFFF" value="0x00000000" />
+        <param addr="0x0210" mask="0xFFFFFFFF" value="0x00009DE7" />
+        <param addr="0x0214" mask="0xFFFFFFFF" value="0x0000000B" />
+        <param addr="0x0218" mask="0xFFFFFFFF" value="0x000077F0" />
+        <param addr="0x021C" mask="0xFFFFFFFF" value="0x000000FF" />
+        <param addr="0x0220" mask="0xFFFFFFFF" value="0x00004F8C" />
+        <param addr="0x0224" mask="0xFFFFFFFF" value="0x000000FE" />
+        <param addr="0x0228" mask="0xFFFFFFFF" value="0x0000D450" />
+        <param addr="0x022C" mask="0xFFFFFFFF" value="0x00000001" />
+        <param addr="0x0230" mask="0xFFFFFFFF" value="0x00002BB0" />
+        <param addr="0x0234" mask="0xFFFFFFFF" value="0x00000001" />
+        <param addr="0x0238" mask="0xFFFFFFFF" value="0x00002BB0" />
+        <param addr="0x023C" mask="0xFFFFFFFF" value="0x00000352" />
+        <param addr="0x0240" mask="0xFFFFFFFF" value="0x000069E0" />
+        <param addr="0x0244" mask="0xFFFFFFFF" value="0x000000A2" />
+        <param addr="0x0248" mask="0xFFFFFFFF" value="0x00002222" />
+        <param addr="0x024C" mask="0xFFFFFFFF" value="0x0000FE56" />
+        <param addr="0x0250" mask="0xFFFFFFFF" value="0x0000CB10" />
+        <param addr="0x0254" mask="0xFFFFFFFF" value="0x000001A9" />
+        <param addr="0x0258" mask="0xFFFFFFFF" value="0x000034F0" />
+        <param addr="0x025C" mask="0xFFFFFFFF" value="0x00000033" />
+        <param addr="0x0260" mask="0xFFFFFFFF" value="0x00003334" />
+        <param addr="0x0264" mask="0xFFFFFFFF" value="0x0000FF64" />
+        <param addr="0x0268" mask="0xFFFFFFFF" value="0x00001741" />
+        <param addr="0x026C" mask="0xFFFFFFFF" value="0x000004FB" />
+        <param addr="0x0270" mask="0xFFFFFFFF" value="0x00009ED1" />
+        <param addr="0x0274" mask="0xFFFFFFFF" value="0x000002AA" />
+        <param addr="0x0278" mask="0xFFFFFFFF" value="0x0000AAAC" />
+        <param addr="0x027C" mask="0xFFFFFFFF" value="0x0000FCAD" />
+        <param addr="0x0280" mask="0xFFFFFFFF" value="0x00009620" />
+        <param addr="0x0284" mask="0xFFFFFFFF" value="0x00000100" />
+        <param addr="0x0288" mask="0xFFFFFFFF" value="0x00000000" />
+        <param addr="0x028C" mask="0xFFFFFFFF" value="0x00000001" />
+        <param addr="0x0290" mask="0xFFFFFFFF" value="0x00007665" />
+        <param addr="0x0294" mask="0xFFFFFFFF" value="0x00000000" />
+        <param addr="0x0298" mask="0xFFFFFFFF" value="0x00000F04" />
+        <param addr="0x029C" mask="0xFFFFFFFF" value="0x00000352" />
+        <param addr="0x02A0" mask="0xFFFFFFFF" value="0x000069E0" />
+        <param addr="0x02A4" mask="0xFFFFFFFF" value="0x0000F95B" />
+        <param addr="0x02A8" mask="0xFFFFFFFF" value="0x00002C3F" />
+        <param addr="0x02AC" mask="0xFFFFFFFF" value="0x00000002" />
+        <param addr="0x02B0" mask="0xFFFFFFFF" value="0x00005600" />
+      </param_unit>
+    </param_unit_pool>
+</audio_hw_drc_param>

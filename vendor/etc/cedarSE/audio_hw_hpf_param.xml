@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<audio_hw_hpf_param version="2.10.0-later">
+  <!-- test: hw_effect drc -->
+  <param_tree>
+    <param path="Speaker" param_id="0" enable="1" />
+    <param path="Hpout" param_id="1" enable="1" />
+    <param path="MIC" param_id="2" enable="1" />
+    <param path="HMIC" param_id="3" enable="1" />
+  </param_tree>
+    <param_unit_record>
+      <param_unit param_id="0">
+        <param name="channels" value="1,2" />
+        <param name="Fs" value="88200" />
+        <param name="Fpass" value="9" />
+        <param name="Gain" value="1.07" />
+      </param_unit>
+      <param_unit param_id="1">
+        <param name="channels" value="1,2" />
+        <param name="Fs" value="44100" />
+        <param name="Fpass" value="6" />
+        <param name="Gain" value="1" />
+      </param_unit>
+      <param_unit param_id="2">
+        <param name="channels" value="1,2" />
+        <param name="Fs" value="88200" />
+        <param name="Fpass" value="6" />
+        <param name="Gain" value="1.08" />
+      </param_unit>
+      <param_unit param_id="3">
+        <param name="channels" value="1,2" />
+        <param name="Fs" value="96000" />
+        <param name="Fpass" value="13" />
+        <param name="Gain" value="1.02" />
+      </param_unit>
+    </param_unit_record>
+    <param_unit_pool>
+      <param_unit param_id="0">
+        <param addr="0x00F8" mask="0x90000000" value="0x84000000" />
+        <param addr="0x0200" mask="0xFFFFFFFF" value="0x00FF" />
+        <param addr="0x0204" mask="0xFFFFFFFF" value="0xD5FE" />
+        <param addr="0x02B8" mask="0xFFFFFFFF" value="0x0111" />
+        <param addr="0x02BC" mask="0xFFFFFFFF" value="0xEB85" />
+      </param_unit>
+      <param_unit param_id="1">
+        <param addr="0x00F0" mask="0xa0000000" value="0xA0000000" />
+        <param addr="0x0108" mask="0xa0000000" value="0x00F3" />
+        <param addr="0x010C" mask="0xa0000000" value="0x0001" />
+      </param_unit>
+      <param_unit param_id="2">
+        <param addr="0x00F8" mask="0x90000000" value="0x90000000" />
+        <param addr="0x0200" mask="0xFFFFFFFF" value="0x00FF" />
+        <param addr="0x0204" mask="0xFFFFFFFF" value="0xE3FE" />
+        <param addr="0x02B8" mask="0xFFFFFFFF" value="0x0114" />
+        <param addr="0x02BC" mask="0xFFFFFFFF" value="0x7AE1" />
+      </param_unit>
+      <param_unit param_id="3">
+        <param addr="0x00F8" mask="0x90000000" value="0x90000000" />
+        <param addr="0x0200" mask="0xFFFFFFFF" value="0x00FF" />
+        <param addr="0x0204" mask="0xFFFFFFFF" value="0xC843" />
+        <param addr="0x02B8" mask="0xFFFFFFFF" value="0x0105" />
+        <param addr="0x02BC" mask="0xFFFFFFFF" value="0x1EB8" />
+      </param_unit>
+    </param_unit_pool>
+</audio_hw_hpf_param>

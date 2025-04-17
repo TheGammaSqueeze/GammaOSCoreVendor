@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<audio_route_param version="2.10.0-later">
+  <!-- test: sw_effect channels_map -->
+  <param_tree>
+    <param path="Speaker" param_id="0" enable="1" />
+    <param path="Hpout" param_id="1" enable="1" />
+  </param_tree>
+  <param_unit_pool>
+    <param_unit param_id="0">
+      <param name="frame_max" value="4096" />
+      <param name="sch_max" value="2" />
+      <param name="dch_max" value="6" />
+      <param name="sch_cnt" value="2" />
+      <param name="dch_cnt" value="6" />
+      <param name="dch_map0" value="0" />
+      <param name="dch_map1" value="1" />
+      <param name="dch_map2" value="0" />
+      <param name="dch_map3" value="1" />
+      <param name="dch_map4" value="0" />
+      <param name="dch_map5" value="1" />
+    </param_unit>
+    <param_unit param_id="1">
+      <param name="frame_max" value="1024" />
+      <param name="sch_max" value="2" />
+      <param name="dch_max" value="6" />
+      <param name="sch_cnt" value="2" />
+      <param name="dch_cnt" value="4" />
+      <param name="dch_map0" value="0" />
+      <param name="dch_map1" value="1" />
+      <param name="dch_map2" value="1" />
+      <param name="dch_map3" value="1" />
+    </param_unit>
+  </param_unit_pool>
+</audio_route_param>

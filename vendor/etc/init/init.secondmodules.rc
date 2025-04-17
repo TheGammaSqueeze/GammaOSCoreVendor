@@ -1,0 +1,86 @@
+on boot
+    insmod /vendor/lib/modules/arc4.ko
+    insmod /vendor/lib/modules/dm9601.ko
+    insmod /vendor/lib/modules/dump_reg.ko
+    insmod /vendor/lib/modules/dump_reg_misc.ko
+    insmod /vendor/lib/modules/g2d_sunxi.ko
+    insmod /vendor/lib/modules/gl620a.ko
+    insmod /vendor/lib/modules/gpu_domain.ko
+    insmod /vendor/lib/modules/kaweth.ko
+    insmod /vendor/lib/modules/lan78xx.ko
+
+    insmod /vendor/lib/modules/sunxi-uart.ko
+    insmod /vendor/lib/modules/deinterlace.ko
+
+    #usb driver
+    insmod /vendor/lib/modules/ohci-hcd.ko
+    insmod /vendor/lib/modules/sunxi-hci.ko
+    insmod /vendor/lib/modules/ehci-sunxi.ko
+    insmod /vendor/lib/modules/ohci-hcd.ko
+    insmod /vendor/lib/modules/ohci-pci.ko
+    insmod /vendor/lib/modules/ohci-sunxi.ko
+    insmod /vendor/lib/modules/phy-sunxi-plat.ko
+    insmod /vendor/lib/modules/dwc3-sunxi-plat.ko
+    insmod /vendor/lib/modules/sunxi_usb_udc.ko
+    insmod /vendor/lib/modules/sunxi_usbc.ko
+    insmod /vendor/lib/modules/usbserial.ko
+    insmod /vendor/lib/modules/usb_wwan.ko
+    insmod /vendor/lib/modules/option.ko
+
+    insmod /vendor/lib/modules/ppp_async.ko
+    insmod /vendor/lib/modules/ppp_synctty.ko
+    insmod /vendor/lib/modules/smsc75xx.ko
+    insmod /vendor/lib/modules/smsc95xx.ko
+    insmod /vendor/lib/modules/asix.ko
+    insmod /vendor/lib/modules/ax88179_178a.ko
+
+    insmod /vendor/lib/modules/sr9700.ko
+    insmod /vendor/lib/modules/sr9800.ko
+    insmod /vendor/lib/modules/sunxi-lradc.ko
+    insmod /vendor/lib/modules/sunxi_drm_heap.ko
+    insmod /vendor/lib/modules/sunxi-sysinfo.ko
+    insmod /vendor/lib/modules/sunxi-ve.ko
+    insmod /vendor/lib/modules/spi-sunxi.ko
+    insmod /vendor/lib/modules/virtual.ko
+
+    insmod /vendor/lib/modules/standby_debug.ko
+
+on property:persist.vendor.usbpc_current_limit=*
+    write /sys/class/udc-debug/usbpc_current_limit ${persist.vendor.usbpc_current_limit}
+
+on init
+    insmod /vendor/lib/modules/sunxi-inno-combophy.ko
+    insmod /vendor/lib/modules/pcie_sunxi_host.ko
+
+#enable devfs
+on boot && property:persist.vendor.power.devfs.enabled=1
+    insmod /vendor/lib/modules/ccu-ddr.ko
+    insmod /vendor/lib/modules/sun55iw3-devfreq.ko
+
+on property:sys.boot_completed=1
+    insmod /vendor/lib/modules/sunxi_cpufreq_clamp.ko
+
+on early-boot
+    insmod /vendor/lib/modules/hdmi20.ko
+
+# audio driver
+    ### must first insmod!
+    insmod /vendor/lib/modules/snd_soc_sunxi_common.ko
+    ###
+
+    insmod /vendor/lib/modules/snd_soc_sunxi_component_jack.ko
+    insmod /vendor/lib/modules/snd_soc_sunxi_component_rxsync.ko
+    insmod /vendor/lib/modules/snd_soc_sunxi_component_sfx.ko
+    insmod /vendor/lib/modules/snd_soc_sunxi_pcm.ko
+    insmod /vendor/lib/modules/snd_soc_sunxi_pcm_hdmi.ko
+    insmod /vendor/lib/modules/snd_soc_sunxi_aaudio.ko
+    insmod /vendor/lib/modules/snd_soc_sunxi_internal_codec.ko
+    insmod /vendor/lib/modules/snd_soc_sunxi_owa.ko
+    insmod /vendor/lib/modules/snd_soc_sunxi_codec_edp.ko
+    insmod /vendor/lib/modules/snd_soc_sunxi_i2s.ko
+    insmod /vendor/lib/modules/snd_soc_sunxi_codec_hdmi.ko
+    insmod /vendor/lib/modules/snd-soc-ac107.ko
+
+    ### must last insmod!
+    insmod /vendor/lib/modules/snd_soc_sunxi_machine.ko
+    ###
