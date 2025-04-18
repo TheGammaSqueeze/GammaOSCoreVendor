@@ -1066,6 +1066,7 @@
 /bin/aw_rkp_factory_extraction_tool u:object_r:hal_keymint_default_exec:s0
 /bin/sha256sum u:object_r:vendor_file:s0
 /bin/rmdir u:object_r:vendor_file:s0
+/bin/rgp2xbox u:object_r:vendor_file:s0
 /bin/usb_modeswitch u:object_r:vendor_file:s0
 /bin/ramparser u:object_r:vendor_file:s0
 /bin/crda.uevent u:object_r:regulatory_exec:s0

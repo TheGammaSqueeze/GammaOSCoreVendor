@@ -198,8 +198,13 @@ persist.sys.ramconfig=none
 ro.vendor.spk_dul.used=true
 ro.lmk.downgrade_pressure=90
 ro.lmk.upgrade_pressure=60
-ro.sf.lcd_density=160
+ro.sf.lcd_density=220
 ro.surface_flinger.primary_display_orientation=ORIENTATION_90
+ro.sensors.gyroscope_orientation=ORIENTATION_90
+ro.surface_flinger.supports_background_blur=1
+ro.input_flinger.primary_touch_orientation=ORIENTATION_90
+ro.sensors.accelerometer_orientation=ORIENTATION_90
+ro.sensors.magnetometer_orientation=ORIENTATION_90
 ro.vendor.sf.rotation=270
 ro.minui.default_rotation=ROTATION_RIGHT
 ro.vendor.gsi_gsen_rotation=180
@@ -255,4 +260,10 @@ dalvik.vm.heaptargetutilization=0.75
 dalvik.vm.heapminfree=512k
 dalvik.vm.heapmaxfree=8m
 # end of file
-
+ro.sensors.gyroscope_orientation=ORIENTATION_90
+ro.surface_flinger.supports_background_blur=1
+ro.input_flinger.primary_touch_orientation=ORIENTATION_90
+ro.sensors.accelerometer_orientation=ORIENTATION_90
+ro.sensors.magnetometer_orientation=ORIENTATION_90
+persist.gammaos.ultra_low_power_saving_mode=1
+persist.gammaos.retroarchoverride.backbutton=1
