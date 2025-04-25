@@ -12,8 +12,17 @@ service joypad_control_screen_on /system/bin/sh -c "echo 1 > /sys/devices/platfo
     oneshot
     disabled
 
+service led_control_screen_on /vendor/bin/gammargb 960 720
+    class main
+    user root
+    group root system
+    oneshot
+    disabled
+
 on property:sys.screen.state=off
     start joypad_control_screen_off
+    stop led_control_screen_on
 
 on property:sys.screen.state=on
     start joypad_control_screen_on
+    start led_control_screen_on
