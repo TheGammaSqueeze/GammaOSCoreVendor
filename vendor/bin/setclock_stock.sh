@@ -3,6 +3,7 @@
 echo "384000000" > /sys/devices/platform/soc/soc:mm/23140000.gpu/devfreq/23140000.gpu/min_freq
 echo "850000000" > /sys/devices/platform/soc/soc:mm/23140000.gpu/devfreq/23140000.gpu/max_freq
 echo "simple_ondemand" > /sys/devices/platform/soc/soc:mm/23140000.gpu/devfreq/23140000.gpu/governor
+echo "200" > /sys/devices/platform/soc/soc:mm/23140000.gpu/devfreq/23140000.gpu/polling_interval
 
 echo "0" > /sys/devices/system/cpu/cpufreq/policy0/scaling_fix_freq
 echo "614400" > /sys/devices/system/cpu/cpufreq/policy0/scaling_min_freq
