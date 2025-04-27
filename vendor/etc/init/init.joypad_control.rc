@@ -26,3 +26,6 @@ on property:sys.screen.state=off
 on property:sys.screen.state=on
     start joypad_control_screen_on
     start led_control_screen_on
+
+on property:sys.boot_completed=1
+    start led_control_screen_on
