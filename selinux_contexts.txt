@@ -459,6 +459,7 @@
 /etc/operator_config/pl_config.xml u:object_r:vendor_configs_file:s0
 /etc/init u:object_r:vendor_configs_file:s0
 /etc/init/init.joypad_control.rc u:object_r:vendor_configs_file:s0
+/etc/init/init.gammaos_power.rc u:object_r:vendor_configs_file:s0
 /etc/init/yloglite.rc u:object_r:vendor_configs_file:s0
 /etc/init/init.md.rc u:object_r:vendor_configs_file:s0
 /etc/init/vendor.sprd.hardware.broadcastradio@2.0-service.rc u:object_r:vendor_configs_file:s0
@@ -2046,6 +2047,9 @@
 /framework u:object_r:vendor_framework_file:s0
 /framework/androidx.camera.extensions.impl.jar u:object_r:vendor_framework_file:s0
 /bin u:object_r:vendor_file:s0
+/bin/setclock_max.sh u:object_r:vendor_file:s0
+/bin/setclock_stock.sh u:object_r:vendor_file:s0
+/bin/setclock_powersave.sh u:object_r:vendor_file:s0
 /bin/mountpoint u:object_r:vendor_file:s0
 /bin/systemDebuggerd u:object_r:systemDebuggerd_exec:s0
 /bin/nvmerge u:object_r:vendor_file:s0
