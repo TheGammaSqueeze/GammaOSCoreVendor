@@ -19,6 +19,13 @@ service led_control_screen_on /vendor/bin/gammargb 960 720
     oneshot
     disabled
 
+service led_control_off /system/bin/sh -c "echo 0 > /sys/devices/platform/singleadc-joypad/led_switch; echo 1 > /sys/devices/platform/singleadc-joypad/led_set;"
+    class main
+    user root
+    group root system
+    oneshot
+    disabled
+
 on property:sys.screen.state=off
     start joypad_control_screen_off
     stop led_control_screen_on
@@ -31,6 +38,7 @@ on property:sys.boot_completed=1
 
 on property:persist.gammargb.control=off
     stop led_control_screen_on
+    start led_control_off
 
 on property:persist.gammargb.control=on && property:sys.screen.state=on
     start led_control_screen_on
