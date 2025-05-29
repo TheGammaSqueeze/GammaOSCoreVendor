@@ -107,26 +107,26 @@ on property:persist.gammargb.control=off
 on property:persist.gammargb.control=on && property:sys.screen.state=on
     start led_control_screen_on
 
-on persist.gamma.abxyswap=1 && property:sys.boot_completed=1 && property:sys.screen.state=on
+on persist.gammaos.abxyswap=1 && property:sys.boot_completed=1 && property:sys.screen.state=on
     start gammapad_abxy_on
 
-on persist.gamma.abxyswap=0 && property:sys.boot_completed=1 && property:sys.screen.state=on
+on persist.gammaos.abxyswap=0 && property:sys.boot_completed=1 && property:sys.screen.state=on
     start gammapad_abxy_off
 
-on persist.gamma.dpadanalogswap=1 && property:sys.boot_completed=1 && property:sys.screen.state=on
+on persist.gammaos.dpadanalogswap=1 && property:sys.boot_completed=1 && property:sys.screen.state=on
     start gammapad_dpadanalogswap_on
 
-on persist.gamma.dpadanalogswap=0 && property:sys.boot_completed=1 && property:sys.screen.state=on
+on persist.gammaos.dpadanalogswap=0 && property:sys.boot_completed=1 && property:sys.screen.state=on
     start gammapad_dpadanalogswap_off
 
-on persist.gamma.leftstickinvert=1 && property:sys.boot_completed=1 && property:sys.screen.state=on
+on persist.gammaos.leftstickinvert=1 && property:sys.boot_completed=1 && property:sys.screen.state=on
     start gammapad_leftstickinvert_on
 
-on persist.gamma.leftstickinvert=0 && property:sys.boot_completed=1 && property:sys.screen.state=on
+on persist.gammaos.leftstickinvert=0 && property:sys.boot_completed=1 && property:sys.screen.state=on
     start gammapad_leftstickinvert_off
 
-on persist.gamma.rightstickinvert=1 && property:sys.boot_completed=1 && property:sys.screen.state=on
+on persist.gammaos.rightstickinvert=1 && property:sys.boot_completed=1 && property:sys.screen.state=on
     start gammapad_rightstickinvert_on
 
-on persist.gamma.rightstickinvert=0 && property:sys.boot_completed=1 && property:sys.screen.state=on
+on persist.gammaos.rightstickinvert=0 && property:sys.boot_completed=1 && property:sys.screen.state=on
     start gammapad_rightstickinvert_off
