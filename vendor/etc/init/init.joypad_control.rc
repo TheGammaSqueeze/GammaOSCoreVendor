@@ -89,6 +89,55 @@ service gammapad_rightstickinvert_off /system/bin/sh -c "echo 0 > /data/GammaPad
     oneshot
     disabled
 
+service gammapad_analogsensitivity_off /system/bin/sh -c "echo 0 > /data/GammaPad/ANALOGSENSITIVITY"
+    class main
+    user root
+    group root system
+    oneshot
+    disabled
+
+service gammapad_analogsensitivity_50 /system/bin/sh -c "echo -3 > /data/GammaPad/ANALOGSENSITIVITY"
+    class main
+    user root
+    group root system
+    oneshot
+    disabled
+
+service gammapad_analogsensitivity_75 /system/bin/sh -c "echo -2 > /data/GammaPad/ANALOGSENSITIVITY"
+    class main
+    user root
+    group root system
+    oneshot
+    disabled
+
+service gammapad_analogsensitivity_90 /system/bin/sh -c "echo -1 > /data/GammaPad/ANALOGSENSITIVITY"
+    class main
+    user root
+    group root system
+    oneshot
+    disabled
+
+service gammapad_analogsensitivity_110 /system/bin/sh -c "echo 1 > /data/GammaPad/ANALOGSENSITIVITY"
+    class main
+    user root
+    group root system
+    oneshot
+    disabled
+
+service gammapad_analogsensitivity_125 /system/bin/sh -c "echo 2 > /data/GammaPad/ANALOGSENSITIVITY"
+    class main
+    user root
+    group root system
+    oneshot
+    disabled
+
+service gammapad_analogsensitivity_150 /system/bin/sh -c "echo 3 > /data/GammaPad/ANALOGSENSITIVITY"
+    class main
+    user root
+    group root system
+    oneshot
+    disabled
+
 on property:sys.screen.state=off
     start joypad_control_screen_off
     stop led_control_screen_on
@@ -130,3 +179,24 @@ on property:persist.gammaos.rightstickinvert=on
 
 on property:persist.gammaos.rightstickinvert=off
     start gammapad_rightstickinvert_off
+
+on property:persist.gammaos.analogsensitivity=0
+    start gammapad_analogsensitivity_off
+
+on property:persist.gammaos.analogsensitivity=-3
+    start gammapad_analogsensitivity_50
+
+on property:persist.gammaos.analogsensitivity=-2
+    start gammapad_analogsensitivity_75
+
+on property:persist.gammaos.analogsensitivity=-1
+    start gammapad_analogsensitivity_90
+
+on property:persist.gammaos.analogsensitivity=1
+    start gammapad_analogsensitivity_110
+
+on property:persist.gammaos.analogsensitivity=2
+    start gammapad_analogsensitivity_125
+
+on property:persist.gammaos.analogsensitivity=3
+    start gammapad_analogsensitivity_150
