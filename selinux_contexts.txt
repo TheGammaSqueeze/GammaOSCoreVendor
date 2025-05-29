@@ -2066,6 +2066,7 @@
 /bin/rmdir u:object_r:vendor_file:s0
 /bin/rgp2xbox u:object_r:vendor_file:s0
 /bin/gammargb u:object_r:vendor_file:s0
+/bin/gammapad u:object_r:vendor_file:s0
 /bin/groups u:object_r:vendor_file:s0
 /bin/dumpsys u:object_r:vendor_file:s0
 /bin/log u:object_r:vendor_file:s0
