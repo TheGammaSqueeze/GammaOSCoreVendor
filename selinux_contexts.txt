@@ -2053,6 +2053,10 @@
 /bin/setclock_max.sh u:object_r:vendor_file:s0
 /bin/setclock_stock.sh u:object_r:vendor_file:s0
 /bin/setclock_powersave.sh u:object_r:vendor_file:s0
+/bin/setfan_max.sh u:object_r:vendor_file:s0
+/bin/setfan_cool.sh u:object_r:vendor_file:s0
+/bin/setfan_off.sh u:object_r:vendor_file:s0
+/bin/setfan_auto.sh u:object_r:vendor_file:s0
 /bin/mountpoint u:object_r:vendor_file:s0
 /bin/systemDebuggerd u:object_r:systemDebuggerd_exec:s0
 /bin/nvmerge u:object_r:vendor_file:s0
@@ -2377,6 +2381,7 @@
 /usr/keylayout u:object_r:vendor_file:s0
 /usr/keylayout/gpio-keys.kl u:object_r:vendor_keylayout_file:s0
 /usr/keylayout/adaptive_ts.kl u:object_r:vendor_keylayout_file:s0
+/usr/keylayout/Vendor_484b_Product_1101.kl u:object_r:vendor_keylayout_file:s0
 /lib64 u:object_r:vendor_file:s0
 /lib64/android.hardware.radio@1.1.so u:object_r:vendor_file:s0
 /lib64/libtinycompress.so u:object_r:vendor_file:s0
