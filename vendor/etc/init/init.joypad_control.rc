@@ -138,6 +138,48 @@ service gammapad_analogsensitivity_150 /system/bin/sh -c "echo 3 > /data/GammaPa
     oneshot
     disabled
 
+service gammapad_analogdeadzone_off /system/bin/sh -c "echo 0 > /data/GammaPad/DEADZONE"
+    class main
+    user root
+    group root system
+    oneshot
+    disabled
+
+service gammapad_analogdeadzone_5 /system/bin/sh -c "echo 5 > /data/GammaPad/DEADZONE"
+    class main
+    user root
+    group root system
+    oneshot
+    disabled
+
+service gammapad_analogdeadzone_10 /system/bin/sh -c "echo 10 > /data/GammaPad/DEADZONE"
+    class main
+    user root
+    group root system
+    oneshot
+    disabled
+
+service gammapad_analogdeadzone_15 /system/bin/sh -c "echo 15 > /data/GammaPad/DEADZONE"
+    class main
+    user root
+    group root system
+    oneshot
+    disabled
+
+service gammapad_analogdeadzone_20 /system/bin/sh -c "echo 20 > /data/GammaPad/DEADZONE"
+    class main
+    user root
+    group root system
+    oneshot
+    disabled
+
+service gammapad_calibration_on /system/bin/sh -c "echo 1 > /data/GammaPad/CALIBRATION_MODE; sleep 1; setprop persist.gammaos.calibrationmode 0"
+    class main
+    user root
+    group root system
+    oneshot
+    disabled
+
 on property:sys.screen.state=off
     start joypad_control_screen_off
     stop led_control_screen_on
@@ -200,3 +242,21 @@ on property:persist.gammaos.analogsensitivity=2
 
 on property:persist.gammaos.analogsensitivity=3
     start gammapad_analogsensitivity_150
+
+on property:persist.gammaos.analogdeadzone=0
+    start gammapad_analogdeadzone_0
+
+on property:persist.gammaos.analogdeadzone=1
+    start gammapad_analogdeadzone_5
+
+on property:persist.gammaos.analogdeadzone=2
+    start gammapad_analogdeadzone_10
+
+on property:persist.gammaos.analogdeadzone=3
+    start gammapad_analogdeadzone_15
+
+on property:persist.gammaos.analogdeadzone=4
+    start gammapad_analogdeadzone_20
+
+on property:persist.gammaos.calibrationmode=1
+    start gammapad_calibration_on
