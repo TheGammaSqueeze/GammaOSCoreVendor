@@ -369,4 +369,4 @@ ro.surface_flinger.supports_background_blur=1
 ro.input_flinger.primary_touch_orientation=ORIENTATION_90
 ro.sensors.accelerometer_orientation=ORIENTATION_90
 ro.sensors.magnetometer_orientation=ORIENTATION_90
-ro.sf.lcd_density=193
+ro.sf.lcd_density=192
