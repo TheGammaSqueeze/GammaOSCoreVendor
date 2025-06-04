@@ -1,11 +1,11 @@
-service gammapad /vendor/bin/retroidpad "Retroid Pocket Controller"
+service retroidpad /vendor/bin/retroidpad "Retroid Pocket Controller"
     class main
     user root
     group root system
     oneshot
     disabled
 
-service gammapad /vendor/bin/gammapad "Retroid Pocket Controller"
+service gammapad /vendor/bin/gammapad "Retroid Pocket Controller"  --gasbrakeemulation
     class main
     user root
     group root system

@@ -72,7 +72,7 @@ graphics.gpu.profiler.support=true
 ####################################
 # from variable PRODUCT_DEFAULT_PROPERTY_OVERRIDES
 ####################################
-ro.adb.secure=1
+ro.adb.secure=0
 ro.oem_unlock_supported=1
 ro.surface_flinger.use_color_management=true
 ro.surface_flinger.protected_contents=true
@@ -316,3 +316,6 @@ ro.surface_flinger.supports_background_blur=1
 ro.input_flinger.primary_touch_orientation=ORIENTATION_90
 ro.sensors.accelerometer_orientation=ORIENTATION_90
 ro.sensors.magnetometer_orientation=ORIENTATION_90
+ro.surface_flinger.primary_display_orientation=ORIENTATION_90
+log.tag.HWComposer=ERROR
+log.tag.FrameTracker=ERROR

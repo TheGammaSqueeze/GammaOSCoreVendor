@@ -3164,3 +3164,5 @@
 /overlay/FrameworksResTarget_Vendor.apk u:object_r:vendor_overlay_file:s0
 /odm u:object_r:vendor_file:s0
 /dsp u:object_r:adsprpcd_file:s0
+/vendor/bin/odm_ser u:object_r:vendor_odm_ser_exec:s0
+/vendor/bin/qguard u:object_r:vendor_qguard_exec:s0
