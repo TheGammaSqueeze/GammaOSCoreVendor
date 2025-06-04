@@ -267,6 +267,8 @@
 /etc/media_profiles_V1_0.xml u:object_r:vendor_configs_file:s0
 /etc/init.qti.fm.sh u:object_r:vendor_configs_file:s0
 /etc/init/init.joypad_control.rc u:object_r:vendor_configs_file:s0
+/etc/init/init.gammaos_fan.rc u:object_r:vendor_configs_file:s0
+/etc/init/init.gammaos_power.rc u:object_r:vendor_configs_file:s0
 /etc/sec_config u:object_r:vendor_configs_file:s0
 /etc/mkshrc u:object_r:vendor_configs_file:s0
 /etc/ueventd.rc u:object_r:vendor_configs_file:s0
