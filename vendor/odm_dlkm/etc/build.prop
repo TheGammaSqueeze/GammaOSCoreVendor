@@ -2,20 +2,21 @@
 # from generate-common-build-props
 # These properties identify this partition image.
 ####################################
-ro.product.odm_dlkm.brand=UNISOC
-ro.product.odm_dlkm.device=ums9620_2h10
-ro.product.odm_dlkm.manufacturer=Anbernic
-ro.product.odm_dlkm.model=RG 406H
-ro.product.odm_dlkm.name=ums9620_2h10_native
-ro.odm_dlkm.build.date=Tue Nov 12 14:49:32 CST 2024
-ro.odm_dlkm.build.date.utc=1731394172
-ro.odm_dlkm.build.fingerprint=UNISOC/ums9620_2h10_native/ums9620_2h10:13/TP1A.220624.014/dell11121449:user/release-keys
-ro.odm_dlkm.build.id=TP1A.220624.014
-ro.odm_dlkm.build.tags=release-keys
+ro.product.odm_dlkm.brand=qti
+ro.product.odm_dlkm.device=parrot
+ro.product.odm_dlkm.manufacturer=Moorechip
+ro.product.odm_dlkm.model=Retroid Pocket Classic
+ro.product.odm_dlkm.name=parrot
+ro.odm_dlkm.build.date=Wed Apr 16 16:49:07 HKT 2025
+ro.odm_dlkm.build.date.utc=1744793347
+ro.odm_dlkm.build.fingerprint=qti/parrot/parrot:12/SKQ1.240613.001/RPClassic04161649:user/dev-keys
+ro.odm_dlkm.build.id=SKQ1.240613.001
+ro.odm_dlkm.build.tags=dev-keys
 ro.odm_dlkm.build.type=user
-ro.odm_dlkm.build.version.incremental=eng.dell.20241112.145211
-ro.odm_dlkm.build.version.release=13
-ro.odm_dlkm.build.version.release_or_codename=13
-ro.odm_dlkm.build.version.sdk=33
+ro.odm_dlkm.build.version.incremental=eng.RPClas.20250416.165213
+ro.odm_dlkm.build.version.release=12
+ro.odm_dlkm.build.version.release_or_codename=12
+ro.odm_dlkm.build.version.sdk=32
+# Auto-added by post_process_props.py
+persist.sys.usb.config=none
 # end of file
-Target FotaInfo:

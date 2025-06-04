@@ -1,0 +1,15 @@
+
+on property:sys.boot_completed=1 && property:persist.vendor.customized.pcba_result=*
+    start odm_ser.set_cit
+
+service odm_ser.set_cit /vendor/bin/odm_ser --set cit_flag ${persist.vendor.customized.pcba_result}
+    user root
+    group system
+    disabled
+    oneshot
+
+service odm_ser.load /vendor/bin/odm_ser --load
+   class hal
+   user root
+   group system
+   oneshot

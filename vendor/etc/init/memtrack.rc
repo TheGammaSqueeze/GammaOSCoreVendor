@@ -1,4 +1,0 @@
-service vendor.sprd.hardware.memtrack-service  /vendor/bin/hw/vendor.sprd.hardware.memtrack-service
-    class hal
-    user nobody
-    group system

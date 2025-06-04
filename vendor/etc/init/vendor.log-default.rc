@@ -1,4 +1,0 @@
-service vendor.log-default /vendor/bin/hw/vendor.sprd.hardware.log-service
-    class hal
-    user system
-    group system

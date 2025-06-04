@@ -1,16 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!--
-     SPDX-FileCopyrightText: 2016-2023 Unisoc (Shanghai) Technologies Co., Ltd
-     SPDX-License-Identifier: LicenseRef-Unisoc-General-1.0
--->
 <!-- A2dp Audio HAL Audio Policy Configuration file -->
 <module name="a2dp" halVersion="2.0">
     <mixPorts>
         <mixPort name="a2dp output" role="source"/>
         <mixPort name="a2dp input" role="sink">
             <profile name="" format="AUDIO_FORMAT_PCM_16_BIT"
-                     samplingRates="44100 48000"
-                     channelMasks="AUDIO_CHANNEL_IN_MONO AUDIO_CHANNEL_IN_STEREO"/>
+                     samplingRates="44100,48000"
+                     channelMasks="AUDIO_CHANNEL_IN_MONO,AUDIO_CHANNEL_IN_STEREO"/>
         </mixPort>
     </mixPorts>
     <devicePorts>
@@ -31,8 +27,8 @@
         </devicePort>
         <devicePort tagName="BT A2DP In" type="AUDIO_DEVICE_IN_BLUETOOTH_A2DP" role="source">
             <profile name="" format="AUDIO_FORMAT_PCM_16_BIT"
-                     samplingRates="44100 48000"
-                     channelMasks="AUDIO_CHANNEL_IN_MONO AUDIO_CHANNEL_IN_STEREO"/>
+                     samplingRates="44100,48000"
+                     channelMasks="AUDIO_CHANNEL_IN_MONO,AUDIO_CHANNEL_IN_STEREO"/>
         </devicePort>
     </devicePorts>
     <routes>

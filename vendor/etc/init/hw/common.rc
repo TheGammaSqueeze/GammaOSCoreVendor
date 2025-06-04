@@ -1,0 +1,29 @@
+#add start connect adb with wifi
+on property:sys.connect.adb.wifi=1
+    setprop service.adb.tcp.port 5555
+    stop adbd
+    start adbd
+
+on property:sys.connect.adb.wifi=0
+    setprop service.adb.tcp.port ""
+    stop adbd
+    start adbd
+
+#on property:dev.bootcomplete=1
+on boot
+    start pservice
+    chmod 666 /dev/rstouch
+    chmod 0777 /sys/devices/platform/rsgpio/driver_ctl
+	chmod 0777 /dev/block/sde65
+    chmod 666 /dev/rsgpio
+    chmod 640 /sys/fs/selinux/enforce
+    chmod 440 /sys/fs/selinux/policy
+    setprop persist.vendor.app.version ""
+#    setprop persist.vendor.wlan.cnssdiag 0
+
+service pservice /system/bin/pservice
+    class core
+    disabled
+    user root
+    group root
+    seclabel u:r:pservice:s0

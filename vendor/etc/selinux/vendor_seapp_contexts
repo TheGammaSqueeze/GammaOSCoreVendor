@@ -1,13 +1,12 @@
-user=system seinfo=platform name=com.tencent.soter.soterserver domain=app_soterserver levelFrom=user
-user=system seinfo=platform name=com.sprd.validationtools domain=sprd_validationtools_app type=system_app_data_file levelFrom=user
-user=system seinfo=platform name=com.sprd.runtime domain=sprd_validationtools_app type=system_app_data_file levelFrom=user
-user=system seinfo=platform name=com.sprd.autoslt domain=sprd_autoslt_app type=app_data_file levelFrom=user
-user=_app seinfo=platform name=com.sprd.logmanager domain=sprd_logmanager_app type=app_data_file levelFrom=user
-user=system seinfo=platform name=com.unisoc.gnsstool domain=unisoc_gnsstool_app type=app_data_file levelFrom=user
-user=system seinfo=platform name=com.sprd.engineerinternal domain=sprd_engineerinternal_app type=system_app_data_file levelFrom=user
-user=system seinfo=platform name=com.sprd.engineermode domain=sprd_engineermode_app type=system_app_data_file levelFrom=user
-user=_app seinfo=platform name=com.sprd.cameraipcontrol domain=sprd_cameraipcontrol_app type=app_data_file levelFrom=user
-user=system seinfo=platform name=com.spreadst.validator domain=sprd_validator_app type=system_app_data_file levelFrom=user
-user=_app seinfo=platform name=com.spreadtrum.sgps domain=sprd_sgps_app type=app_data_file levelFrom=user
-user=system seinfo=platform name=com.sprd.bmte.coulomb domain=sprd_coulomb_app type=app_data_file levelFrom=user
-user=system seinfo=platform name=com.sprd.camta domain=sprd_camta_app type=system_app_data_file levelFrom=user
+user=system seinfo=platform name=com.meigsmart.meigrs32 domain=meig_cit_app type=cit_app_data_file levelFrom=user
+user=_app seinfo=platform name=com.retrostation.keytest domain=meig_cit_app type=cit_app_data_file levelFrom=user
+user=_app seinfo=tango name=com.google.tango:app domain=untrusted_app type=app_data_file levelFrom=user
+user=_app seinfo=platform name=com.qualcomm.timeservice domain=vendor_timeservice_app type=app_data_file levelFrom=all
+user=_app seinfo=platform name=.qtidataservices domain=vendor_qtidataservices_app type=app_data_file levelFrom=all
+user=radio seinfo=platform name=.imshelperservice domain=vendor_imshelper_app type=radio_data_file
+user=_app seinfo=platform name=com.qualcomm.qti.poweroffalarm domain=vendor_poweroffalarm_app type=app_data_file levelFrom=all
+user=_app seinfo=platform name=com.qualcomm.qti.qms.service.trustzoneaccess domain=vendor_tzas_app type=app_data_file levelFrom=all
+user=_app seinfo=platform name=com.qti.ltebc domain=vendor_embmssl_app type=app_data_file levelFrom=all
+user=_app seinfo=ssgapp domain=vendor_ssg_app name=com.qualcomm.qti.qms.service.connectionsecurity type=app_data_file levelFrom=all
+user=system seinfo=platform name=com.qualcomm.qti.perfdump domain=vendor_perfdump_app type=system_app_data_file
+user=_app seinfo=platform name=.pasr domain=vendor_powerservice_app type=app_data_file levelFrom=all
