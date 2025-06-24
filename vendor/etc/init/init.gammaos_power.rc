@@ -19,6 +19,20 @@ service setclock_powersave /vendor/bin/setclock_powersave.sh
     oneshot
     disabled
 
+service cpu_screen_off /system/bin/sh -c "echo 0 | tee /sys/devices/system/cpu/cpu[1-7]/online >/dev/null; echo mem > /sys/power/state"
+    class main
+    user root
+    group root system
+    oneshot
+    disabled
+
+service cpu_screen_on /system/bin/sh -c "echo 1 | tee /sys/devices/system/cpu/cpu[1-7]/online >/dev/null"
+    class main
+    user root
+    group root system
+    oneshot
+    disabled
+
 on property:persist.gammaos.performance_mode=max
     start setclock_max
 
@@ -26,4 +40,20 @@ on property:persist.gammaos.performance_mode=stock
     start setclock_stock
 
 on property:persist.gammaos.performance_mode=powersave
+    start setclock_powersave
+
+on property:sys.screen.state=off
+    start setclock_powersave
+    start cpu_screen_off
+
+on property:sys.screen.state=on
+    start cpu_screen_on
+
+on property:persist.gammaos.performance_mode=max && property:sys.screen.state=on
+    start setclock_max
+
+on property:persist.gammaos.performance_mode=stock && property:sys.screen.state=on
+    start setclock_stock
+
+on property:persist.gammaos.performance_mode=powersave && property:sys.screen.state=on
     start setclock_powersave
