@@ -235,3 +235,7 @@ on property:persist.gammaos.analogdeadzone=4
 
 on property:persist.gammaos.calibrationmode=1
     start gammapad_calibration_on
+
+on shutdown
+   stop gammapad
+   stop retroidpad
