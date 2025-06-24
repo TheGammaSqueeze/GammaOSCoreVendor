@@ -260,10 +260,6 @@ dalvik.vm.heaptargetutilization=0.75
 dalvik.vm.heapminfree=512k
 dalvik.vm.heapmaxfree=8m
 # end of file
-ro.sensors.gyroscope_orientation=ORIENTATION_90
 ro.surface_flinger.supports_background_blur=1
 ro.input_flinger.primary_touch_orientation=ORIENTATION_90
-ro.sensors.accelerometer_orientation=ORIENTATION_90
-ro.sensors.magnetometer_orientation=ORIENTATION_90
-persist.gammaos.ultra_low_power_saving_mode=1
-persist.gammaos.retroarchoverride.backbutton=1
+ro.sensors.accelerometer_orientation=ORIENTATION_180
