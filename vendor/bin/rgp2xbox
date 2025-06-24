@@ -1,5 +1,0 @@
-#!/system/bin/sh
-echo performance > /sys/devices/platform/soc@3000000/1800000.gpu/devfreq/1800000.gpu/governor
-echo 0 > /sys/class/leds/button-backlight/brightness
-setprop ctl.stop rgp2xbox
-killall rgp2xbox

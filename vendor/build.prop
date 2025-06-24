@@ -262,4 +262,4 @@ dalvik.vm.heapmaxfree=8m
 # end of file
 ro.surface_flinger.supports_background_blur=1
 ro.input_flinger.primary_touch_orientation=ORIENTATION_90
-ro.sensors.accelerometer_orientation=ORIENTATION_180
+ro.sensors.accelerometer_orientation=ORIENTATION_0
