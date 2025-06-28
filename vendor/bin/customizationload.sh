@@ -3,7 +3,8 @@ if [ ! -e /data/isGammaNewInstall ]; then
 
   echo "This is an upgrade"
   settings put --lineage system key_back_long_press_action 11
-
+  setprop persist.gammaos.retroarchoverride.backbutton 0
+  setprop persist.gammaos.retroarchoverride.backbutton 1
   settings put secure sysui_qs_tiles \
     internet,bt,performance,abxy,mappingeditor,deepsleepmode,rotation, \
     dpadAnalogToggle,analogsensitivity,analogdeadzone,analogcalibration, \
