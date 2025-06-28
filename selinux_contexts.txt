@@ -20,9 +20,6 @@
 /app/InProcessTetheringResOverlay u:object_r:vendor_app_file:s0
 /app/InProcessTetheringResOverlay/InProcessTetheringResOverlay.apk u:object_r:vendor_app_file:s0
 /etc u:object_r:vendor_configs_file:s0
-/etc/customization.sh u:object_r:vendor_configs_file:s0
-/etc/customizationload.sh u:object_r:vendor_configs_file:s0
-/etc/setup.sh u:object_r:vendor_configs_file:s0
 /etc/virtual-spn-conf-by-efspn.xml u:object_r:vendor_configs_file:s0
 /etc/passwd u:object_r:vendor_configs_file:s0
 /etc/media_codecs_mediatek_audio.xml u:object_r:vendor_configs_file:s0
@@ -2176,6 +2173,9 @@
 /lib/libCamera_imx350mipiraw_Face_Capture.so u:object_r:vendor_file:s0
 /lib/libCamera_imx350mipiraw_HDR_Reconfig_Video.so u:object_r:vendor_file:s0
 /bin u:object_r:vendor_file:s0
+/bin/customization.sh u:object_r:vendor_file:s0
+/bin/customizationload.sh u:object_r:vendor_file:s0
+/bin/setup.sh u:object_r:vendor_configs_file:s0
 /bin/setclock_max.sh u:object_r:vendor_file:s0
 /bin/setclock_stock.sh u:object_r:vendor_file:s0
 /bin/setclock_powersave.sh u:object_r:vendor_file:s0
