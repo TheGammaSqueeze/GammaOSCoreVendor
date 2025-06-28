@@ -641,10 +641,13 @@ ro.fota.app=5
 ro.fota.battery=30
 ro.fota.display=2
 ro.fota.oem=jintaiyi6789_12.0
-ERROR: model do not exist in system/build.prop,Please define it
-# vext_d98_xh_6789_u254_v1_fhd end
+
 ro.sensors.gyroscope_orientation=ORIENTATION_90
 ro.surface_flinger.supports_background_blur=1
 ro.input_flinger.primary_touch_orientation=ORIENTATION_90
 ro.sensors.accelerometer_orientation=ORIENTATION_90
 ro.sensors.magnetometer_orientation=ORIENTATION_90
+
+log.tag.hwcomposer=WARN
+log.tag.FrameTracker=WARN
+
