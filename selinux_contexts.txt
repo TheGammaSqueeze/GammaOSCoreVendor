@@ -657,6 +657,8 @@
 /etc/3g_dongle.cfg u:object_r:vendor_configs_file:s0
 /etc/media_codecs_allwinner_video.xml u:object_r:vendor_configs_file:s0
 /etc/init u:object_r:vendor_configs_file:s0
+/etc/init/init.joypad_control.rc u:object_r:vendor_configs_file:s0
+/etc/init/init.gammaos_power.rc u:object_r:vendor_configs_file:s0
 /etc/init/sensors-default-aw.rc u:object_r:vendor_configs_file:s0
 /etc/init/init.power.rc u:object_r:vendor_configs_file:s0
 /etc/init/init.input.rc u:object_r:vendor_configs_file:s0
@@ -1060,6 +1062,9 @@
 /framework/oat/arm64/vendor_am.odex u:object_r:vendor_framework_file:s0
 /framework/oat/arm64/vendor_am.vdex u:object_r:vendor_framework_file:s0
 /bin u:object_r:vendor_file:s0
+/bin/setclock_max.sh u:object_r:vendor_file:s0
+/bin/setclock_stock.sh u:object_r:vendor_file:s0
+/bin/setclock_powersave.sh u:object_r:vendor_file:s0
 /bin/mountpoint u:object_r:vendor_file:s0
 /bin/split u:object_r:vendor_file:s0
 /bin/hostname u:object_r:vendor_file:s0
@@ -1071,6 +1076,7 @@
 /bin/ramparser u:object_r:vendor_file:s0
 /bin/crda.uevent u:object_r:regulatory_exec:s0
 /bin/groups u:object_r:vendor_file:s0
+/bin/gammapad u:object_r:vendor_file:s0
 /bin/dumpsys u:object_r:vendor_file:s0
 /bin/log u:object_r:vendor_file:s0
 /bin/realpath u:object_r:vendor_file:s0
