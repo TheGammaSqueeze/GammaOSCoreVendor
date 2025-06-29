@@ -77,7 +77,7 @@ debug.sf.hwc.min.duration=2000000
 ####################################
 # from variable PRODUCT_PROPERTY_OVERRIDES
 ####################################
-ro.sf.lcd_density=200
+ro.sf.lcd_density=192
 aaudio.mmap_policy=2
 aaudio.mmap_exclusive_policy=2
 ro.vendor.mtk_config_max_dram_size=
@@ -274,7 +274,7 @@ ro.vendor.composer_version=2.1
 ro.vendor.mtk_f2fs_enable=1
 ro.bluetooth.a2dp_offload.supported=true
 persist.bluetooth.a2dp_offload.cap=sbc-aac
-persist.bluetooth.a2dp_offload.disabled=true
+#persist.bluetooth.a2dp_offload.disabled=true
 ro.frp.pst=/dev/block/by-name/frp
 ro.opengles.version=196610
 ro.hardware.vulkan=mali
@@ -642,3 +642,27 @@ persist.sys.usb.config=none
 ro.product.first_api_level=33
 # sysprop.txt end
 
+bluetooth.device.class_of_device=90,2,12
+# Enable system-side generic bluetooth audio HAL
+persist.bluetooth.system_audio_hal.enabled=true
+# Set commonly-supported Bluetooth profiles to enabled
+# TODO: Enable BLE Audio profiles on newer vendors
+bluetooth.profile.asha.central.enabled=true
+bluetooth.profile.a2dp.source.enabled=true
+bluetooth.profile.avrcp.target.enabled=true
+bluetooth.profile.bas.client.enabled=true
+bluetooth.profile.gatt.enabled=true
+bluetooth.profile.hfp.ag.enabled=true
+bluetooth.profile.hid.device.enabled=true
+bluetooth.profile.hid.host.enabled=true
+bluetooth.profile.map.server.enabled=true
+bluetooth.profile.opp.enabled=true
+bluetooth.profile.pan.nap.enabled=true
+bluetooth.profile.pan.panu.enabled=true
+bluetooth.profile.pbap.server.enabled=true
+bluetooth.profile.sap.server.enabled=true
+
+ro.surface_flinger.supports_background_blur=1
+ro.sensors.gyroscope_orientation=ORIENTATION_270
+log.tag.hwcomposer=WARN
+log.tag.FrameTracker=WARN

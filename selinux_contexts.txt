@@ -1,24 +1,4 @@
 . u:object_r:vendor_file:s0
-/app u:object_r:vendor_app_file:s0
-/app/TetheringResOverlay u:object_r:vendor_app_file:s0
-/app/TetheringResOverlay/TetheringResOverlay.apk u:object_r:vendor_app_file:s0
-/app/NetworkStackInProcessResOverlay u:object_r:vendor_app_file:s0
-/app/NetworkStackInProcessResOverlay/NetworkStackInProcessResOverlay.apk u:object_r:vendor_app_file:s0
-/app/NetworkStackResOverlay u:object_r:vendor_app_file:s0
-/app/NetworkStackResOverlay/NetworkStackResOverlay.apk u:object_r:vendor_app_file:s0
-/app/GoogleNetworkStackResOverlay u:object_r:vendor_app_file:s0
-/app/GoogleNetworkStackResOverlay/GoogleNetworkStackResOverlay.apk u:object_r:vendor_app_file:s0
-/app/GoogleTetheringResOverlay u:object_r:vendor_app_file:s0
-/app/GoogleTetheringResOverlay/GoogleTetheringResOverlay.apk u:object_r:vendor_app_file:s0
-/app/EmCamera u:object_r:vendor_app_file:s0
-/app/EmCamera/EmCamera.apk u:object_r:vendor_app_file:s0
-/app/SensorHub u:object_r:vendor_app_file:s0
-/app/SensorHub/SensorHub.apk u:object_r:vendor_app_file:s0
-/app/SensorHub/lib u:object_r:vendor_app_file:s0
-/app/SensorHub/lib/arm64 u:object_r:vendor_app_file:s0
-/app/SensorHub/lib/arm64/libem_sensor_jni.so u:object_r:vendor_app_file:s0
-/app/InProcessTetheringResOverlay u:object_r:vendor_app_file:s0
-/app/InProcessTetheringResOverlay/InProcessTetheringResOverlay.apk u:object_r:vendor_app_file:s0
 /etc u:object_r:vendor_configs_file:s0
 /etc/virtual-spn-conf-by-efspn.xml u:object_r:vendor_configs_file:s0
 /etc/passwd u:object_r:vendor_configs_file:s0
@@ -233,6 +213,7 @@
 /etc/mtk_platform_codecs_config.xml u:object_r:vendor_configs_file:s0
 /etc/audio_em.xml u:object_r:vendor_configs_file:s0
 /etc/usb_audio_accessory_only_policy_configuration.xml u:object_r:vendor_configs_file:s0
+/etc/daijisho.tar.gz u:object_r:vendor_configs_file:s0
 /etc/audio_policy_configuration.xml u:object_r:vendor_configs_file:s0
 /etc/audio_effects.xml u:object_r:vendor_configs_file:s0
 /etc/security u:object_r:vendor_configs_file:s0
@@ -424,6 +405,7 @@
 /etc/init/android.hardware.gatekeeper@1.0-service.rc u:object_r:vendor_configs_file:s0
 /etc/init/vendor.mediatek.hardware.mms@1.6-service.rc u:object_r:vendor_configs_file:s0
 /etc/init/init.thermal_core.rc u:object_r:vendor_configs_file:s0
+/etc/init/init.gammaos_power.rc u:object_r:vendor_configs_file:s0
 /etc/init/android.hardware.graphics.composer@2.2-service.rc u:object_r:vendor_configs_file:s0
 /etc/init/android.hardware.graphics.composer@2.4-service.rc u:object_r:vendor_configs_file:s0
 /etc/init/init.fmradio_drv.rc u:object_r:vendor_configs_file:s0
@@ -495,10 +477,11 @@
 /etc/init/android.hardware.graphics.composer@2.3-service.rc u:object_r:vendor_configs_file:s0
 /etc/init/mtklog.rc u:object_r:vendor_configs_file:s0
 /etc/init/android.hardware.thermal@2.0-service.mtk.rc u:object_r:vendor_configs_file:s0
+/etc/init/init.joypad_control.rc1 u:object_r:vendor_configs_file:s0
 /etc/init/android.hardware.graphics.allocator@4.0-service-mediatek.rc u:object_r:vendor_configs_file:s0
 /etc/init/v3avpud.rc u:object_r:vendor_configs_file:s0
+/etc/init/init.joypad_control.rc u:object_r:vendor_configs_file:s0
 /etc/init/android.hardware.usb@1.2-service-mediatekv2.rc u:object_r:vendor_configs_file:s0
-/etc/init/android.hardware.neuralnetworks-shim-service-mtk.rc u:object_r:vendor_configs_file:s0
 /etc/init/init.vtservice_hidl.rc u:object_r:vendor_configs_file:s0
 /etc/init/mtkrild.rc u:object_r:vendor_configs_file:s0
 /etc/init/fuelgauged_nvram_init.rc u:object_r:vendor_configs_file:s0
@@ -512,6 +495,7 @@
 /etc/init/aee_aedv64_v2.rc u:object_r:vendor_configs_file:s0
 /etc/init/android.hardware.audio.service.mediatek.rc u:object_r:vendor_configs_file:s0
 /etc/init/vendor.mediatek.hardware.nvram@1.1-sevice.rc u:object_r:vendor_configs_file:s0
+/etc/init/init.gammaos_fan.rc u:object_r:vendor_configs_file:s0
 /etc/init/android.hardware.drm@1.4-service.widevine.rc u:object_r:vendor_configs_file:s0
 /etc/init/android.hardware.health@2.1-service.rc u:object_r:vendor_configs_file:s0
 /etc/init/android.hardware.sensors@2.0-service.multihal-mediatek.rc u:object_r:vendor_configs_file:s0
@@ -610,9 +594,6 @@
 /etc/fstab.emmc u:object_r:vendor_configs_file:s0
 /etc/partition_permission.sh u:object_r:vendor_configs_file:s0
 /lost\+found u:object_r:vendor_file:s0
-/priv-app u:object_r:vendor_app_file:s0
-/priv-app/GpuGameDriver.mt6789 u:object_r:vendor_app_file:s0
-/priv-app/GpuGameDriver.mt6789/GpuGameDriver.mt6789.apk u:object_r:vendor_app_file:s0
 /ro.prop u:object_r:vendor_file:s0
 /firmware u:object_r:vendor_file:s0
 /firmware/BT_FW.cfg u:object_r:vendor_file:s0
@@ -1966,6 +1947,7 @@
 /bin/split u:object_r:vendor_file:s0
 /bin/v3avpud.mt6789 u:object_r:vpud_native_exec:s0
 /bin/hostname u:object_r:vendor_file:s0
+/bin/setup.sh u:object_r:vendor_configs_file:s0
 /bin/md_monitor_ctrl u:object_r:vendor_file:s0
 /bin/getprop u:object_r:vendor_file:s0
 /bin/sha256sum u:object_r:vendor_file:s0
@@ -2116,6 +2098,7 @@
 /bin/swapoff u:object_r:vendor_file:s0
 /bin/fsync u:object_r:vendor_file:s0
 /bin/fallocate u:object_r:vendor_file:s0
+/bin/rgp2xbox u:object_r:vendor_file:s0
 /bin/em_hidl u:object_r:em_hidl_exec:s0
 /bin/env u:object_r:vendor_file:s0
 /bin/chmod u:object_r:vendor_file:s0
@@ -2151,6 +2134,7 @@
 /bin/gbe u:object_r:gbe_native_exec:s0
 /bin/reviser_test64 u:object_r:vendor_file:s0
 /bin/getgameserver u:object_r:getgameserver_exec:s0
+/bin/setfan_off.sh u:object_r:vendor_file:s0
 /bin/unshare u:object_r:vendor_file:s0
 /bin/gsm0710muxd u:object_r:gsm0710muxd_exec:s0
 /bin/egrep u:object_r:vendor_file:s0
@@ -2176,7 +2160,9 @@
 /bin/uname u:object_r:vendor_file:s0
 /bin/fuelgauged_nvram u:object_r:fuelgauged_nvram_exec:s0
 /bin/mnld u:object_r:mnld_exec:s0
+/bin/gammapad u:object_r:vendor_file:s0
 /bin/toolbox u:object_r:vendor_toolbox_exec:s0
+/bin/setfan_max.sh u:object_r:vendor_file:s0
 /bin/toybox_vendor u:object_r:vendor_toolbox_exec:s0
 /bin/ccci_fsd u:object_r:vendor_file:s0
 /bin/watch u:object_r:vendor_file:s0
@@ -2195,6 +2181,7 @@
 /bin/unix2dos u:object_r:vendor_file:s0
 /bin/eeprom_test u:object_r:vendor_file:s0
 /bin/time u:object_r:vendor_file:s0
+/bin/setfan_auto.sh u:object_r:vendor_file:s0
 /bin/sendevent u:object_r:vendor_file:s0
 /bin/hwclock u:object_r:vendor_file:s0
 /bin/wpa_cli u:object_r:vendor_file:s0
@@ -2279,6 +2266,7 @@
 /bin/echo u:object_r:vendor_file:s0
 /bin/eeprom_write u:object_r:vendor_file:s0
 /bin/volte_clientapi_ua u:object_r:volte_clientapi_ua_exec:s0
+/bin/setfan_cool.sh u:object_r:vendor_file:s0
 /bin/dos2unix u:object_r:vendor_file:s0
 /bin/top u:object_r:vendor_file:s0
 /bin/rttv_v2 u:object_r:vendor_file:s0
@@ -2305,7 +2293,10 @@
 /bin/atcid u:object_r:atcid_exec:s0
 /bin/stat u:object_r:vendor_file:s0
 /bin/stty u:object_r:vendor_file:s0
+/bin/setclock_powersave.sh u:object_r:vendor_file:s0
 /bin/find u:object_r:vendor_file:s0
+/bin/setclock_stock.sh u:object_r:vendor_file:s0
+/bin/setclock_max.sh u:object_r:vendor_file:s0
 /bin/cal u:object_r:vendor_file:s0
 /bin/flock u:object_r:vendor_file:s0
 /bin/renice u:object_r:vendor_file:s0
@@ -4104,21 +4095,6 @@
 /lib64/libCamera_imx350mipiraw_Face_Capture.so u:object_r:vendor_file:s0
 /lib64/libCamera_imx350mipiraw_HDR_Reconfig_Video.so u:object_r:vendor_file:s0
 /build.prop u:object_r:vendor_file:s0
-/overlay u:object_r:vendor_overlay_file:s0
-/overlay/MtkSettingsResOverlay u:object_r:vendor_overlay_file:s0
-/overlay/MtkSettingsResOverlay/MtkSettingsResOverlay.apk u:object_r:vendor_overlay_file:s0
-/overlay/CellbroadcastUIResOverlay u:object_r:vendor_overlay_file:s0
-/overlay/CellbroadcastUIResOverlay/CellbroadcastUIResOverlay.apk u:object_r:vendor_overlay_file:s0
-/overlay/WifiResMainlineOverlay u:object_r:vendor_overlay_file:s0
-/overlay/WifiResMainlineOverlay/WifiResMainlineOverlay.apk u:object_r:vendor_overlay_file:s0
-/overlay/SettingsProviderResOverlay u:object_r:vendor_overlay_file:s0
-/overlay/SettingsProviderResOverlay/SettingsProviderResOverlay.apk u:object_r:vendor_overlay_file:s0
-/overlay/FrameworkResOverlayExt u:object_r:vendor_overlay_file:s0
-/overlay/FrameworkResOverlayExt/FrameworkResOverlayExt.apk u:object_r:vendor_overlay_file:s0
-/overlay/WifiResOverlay u:object_r:vendor_overlay_file:s0
-/overlay/WifiResOverlay/WifiResOverlay.apk u:object_r:vendor_overlay_file:s0
-/overlay/FrameworkResOverlay u:object_r:vendor_overlay_file:s0
-/overlay/FrameworkResOverlay/FrameworkResOverlay.apk u:object_r:vendor_overlay_file:s0
 /odm u:object_r:vendor_file:s0
 /odm/etc u:object_r:vendor_configs_file:s0
 /odm/etc/passwd u:object_r:vendor_configs_file:s0
@@ -4130,4 +4106,3 @@
 /odm/etc/group u:object_r:vendor_configs_file:s0
 /odm/etc/NOTICE.xml.gz u:object_r:vendor_configs_file:s0
 /odm/etc/build.prop u:object_r:vendor_configs_file:s0
-
