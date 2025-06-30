@@ -1,6 +1,7 @@
 / u:object_r:vendor_file:s0
 /app u:object_r:vendor_app_file:s0
 /etc u:object_r:vendor_configs_file:s0
+/etc/daijisho.tar.gz u:object_r:vendor_configs_file:s0
 /etc/passwd u:object_r:vendor_configs_file:s0
 /etc/seccomp_policy u:object_r:vendor_configs_file:s0
 /etc/seccomp_policy/codec2.vendor.base-arm64.policy u:object_r:vendor_configs_file:s0
@@ -1751,6 +1752,7 @@
 /lib/libperipheral_client.so u:object_r:vendor_file:s0
 /firmware_mnt u:object_r:vendor_file:s0
 /bin u:object_r:vendor_file:s0
+/bin/setup.sh u:object_r:vendor_file:s0
 /bin/ppd u:object_r:vendor_file:s0
 /bin/init.qcom.sdio.sh u:object_r:vendor_qti_init_shell_exec:s0
 /bin/qms u:object_r:vendor_qms_exec:s0
