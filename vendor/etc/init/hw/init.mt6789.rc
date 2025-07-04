@@ -34,7 +34,7 @@ on early-init && property:ro.build.type=userdebug
 
 on init
     write /proc/bootprof "INIT:init"
-
+    write /proc/sys/vm/swappiness 100
     # Support legacy paths
     symlink /sdcard /mnt/sdcard
 
