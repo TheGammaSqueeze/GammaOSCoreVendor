@@ -5,7 +5,7 @@ service retroidpad /vendor/bin/retroidpad "Retroid Pocket Controller"
     oneshot
     disabled
 
-service gammapad /vendor/bin/gammapad "Retroid Pocket Controller"  --gasbrakeemulation
+service gammapad /system/bin/sh -c "sleep 3; cmd vibrator_manager synced oneshot 100; /vendor/bin/gammapad 'Retroid Pocket Controller' --gasbrakeemulation --rpclassic"
     class main
     user root
     group root system
