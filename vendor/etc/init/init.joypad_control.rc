@@ -12,7 +12,7 @@ service joypad_control_screen_on /system/bin/sh -c "sleep 1; echo 1 > /sys/devic
     oneshot
     disabled
 
-service gammapad /system/bin/sh -c "sleep 5; /vendor/bin/gammapad 'Microsoft X-Box 360 pad' gpio_keys --ffdev='Microsoft X-Box 360 pad'"
+service gammapad /system/bin/sh -c "setprop persist.gammaos.usbcontrollerswitch on; sleep 3; /vendor/bin/gammapad 'Microsoft X-Box 360 pad' gpio_keys --ffdev='Microsoft X-Box 360 pad'"
     class main
     user root
     group root system
@@ -166,10 +166,13 @@ service gammapad_calibration_on /system/bin/sh -c "echo 1 > /data/GammaPad/CALIB
     oneshot
     disabled
 
+on property:persist.gammaos.usbcontrollerswitch=off
+    start joypad_control_screen_off
+
 on property:sys.screen.state=off
     start joypad_control_screen_off
 
-on property:sys.screen.state=on
+on property:sys.screen.state=on && property:persist.gammaos.usbcontrollerswitch=on
     start joypad_control_screen_on
 
 on property:sys.boot_completed=1
