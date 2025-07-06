@@ -5,7 +5,7 @@ service retroidpad /vendor/bin/retroidpad "Retroid Pocket Controller"
     oneshot
     disabled
 
-service gammapad /system/bin/sh -c "sleep 3; cmd vibrator_manager synced oneshot 100; /vendor/bin/gammapad 'Retroid Pocket Controller' --gasbrakeemulation --rpclassic"
+service gammapad /system/bin/sh -c "if [ ! -d /data/GammaPad ]; then mkdir -p /data/GammaPad && chmod 777 /data/GammaPad; fi; if [ ! -f /data/GammaPad/ffpwmmax ]; then echo 14000 > /data/GammaPad/ffpwmmax; fi; sleep 3; cmd vibrator_manager synced oneshot 100; /vendor/bin/gammapad 'Retroid Pocket Controller' --gasbrakeemulation --rpclassic --ffpwm"
     class main
     user root
     group root system
