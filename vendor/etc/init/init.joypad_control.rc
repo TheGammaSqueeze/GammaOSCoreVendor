@@ -12,10 +12,10 @@ service joypad_control_screen_on /system/bin/sh -c "sleep 1; echo 1 > /sys/devic
     oneshot
     disabled
 
-service gammapad /system/bin/sh -c "setprop persist.gammaos.usbcontrollerswitch on; sleep 3; /vendor/bin/gammapad 'Microsoft X-Box 360 pad' gpio_keys --ffdev='Microsoft X-Box 360 pad'"
-    class main
-    user root
-    group root system
+service gammapad /system/bin/sh -c "if [ ! -d /data/GammaPad ]; then mkdir -p /data/GammaPad && chmod 777 /data/GammaPad; fi; if [ ! -f /data/GammaPad/ffpwmmax ]; then echo 16000 > /data/GammaPad/ffpwmmax; fi; setprop persist.gammaos.usbcontrollerswitch on; sleep 3; /vendor/bin/gammapad 'Microsoft X-Box 360 pad' gpio_keys --ffdev='Microsoft X-Box 360 pad' --ffpwm"
+    class   main
+    user    root
+    group   root system
     oneshot
     disabled
 
