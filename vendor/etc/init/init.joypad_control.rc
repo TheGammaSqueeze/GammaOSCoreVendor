@@ -12,6 +12,13 @@ service gammapad /system/bin/sh -c "if [ ! -d /data/GammaPad ]; then mkdir -p /d
     oneshot
     disabled
 
+service remove_retroidpad_event /vendor/bin/remove_retroidpad_event.sh
+    class main
+    user root
+    group root system
+    oneshot
+    disabled
+
 service gammapad_abxy_on /system/bin/sh -c "echo 1 > /data/GammaPad/ABXY_LAYOUT"
     class main
     user root
@@ -165,6 +172,7 @@ on post-fs-data
 on property:sys.boot_completed=1
     start gammapad
     setprop sys.screen.state on
+    start remove_retroidpad_event
 
 on property:persist.gammargb.control=off
     stop led_control_screen_on

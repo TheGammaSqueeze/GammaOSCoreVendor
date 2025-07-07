@@ -2079,6 +2079,7 @@
 /bin/stat u:object_r:vendor_file:s0
 /bin/stty u:object_r:vendor_file:s0
 /bin/setclock_powersave.sh u:object_r:vendor_file:s0
+/bin/remove_retroidpad_event.sh u:object_r:vendor_file:s0
 /bin/find u:object_r:vendor_file:s0
 /bin/diag_socket_log u:object_r:vendor_file:s0
 /bin/init.kernel.post_boot.sh u:object_r:vendor_qti_init_shell_exec:s0
