@@ -33,7 +33,7 @@ service cpu_screen_on /system/bin/sh -c "echo 1 | tee /sys/devices/system/cpu/cp
     oneshot
     disabled
 
-service force_sleep /system/bin/sh -c " echo 0 > /sys/devices/platform/soc/11eb0000.i2c/i2c-2/2-0045/led_switch; start joypad_control_screen_off; while true; do sleep 0.1; start cpu_screen_off; done"
+service force_sleep /system/bin/sh -c " echo 0 > /sys/devices/platform/soc/11eb0000.i2c/i2c-2/2-0045/led_switch; start joypad_control_screen_off; while true; do sleep 5; start cpu_screen_off; done"
     class main
     user root
     group root system
