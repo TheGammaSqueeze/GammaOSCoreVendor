@@ -34,10 +34,10 @@ while true; do
     fi
 
     # Determine GPU mode:
-    #   <39 → off, 39–45 → cool, >45 → max
-    if [ "$gpu" -gt 45 ]; then
+    #   <45 → off, 45–55 → cool, >55 → max
+    if [ "$gpu" -gt 55 ]; then
       gpu_mode="max"
-    elif [ "$gpu" -gt 39 ]; then
+    elif [ "$gpu" -gt 45 ]; then
       gpu_mode="cool"
     else
       gpu_mode="off"
