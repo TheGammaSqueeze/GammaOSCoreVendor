@@ -1,0 +1,6 @@
+vendor/preinstall/apk/RetroArch_64.apk filter=lfs diff=lfs merge=lfs -text
+vendor/preinstall/apk/PokeMMO.apk filter=lfs diff=lfs merge=lfs -text
+vendor/preinstall/apk/PojavLauncher.apk filter=lfs diff=lfs merge=lfs -text
+vendor/preinstall/apk/SteamLink.apk filter=lfs diff=lfs merge=lfs -text
+vendor/etc/res/rp3launcher/db/game_box_info.db filter=lfs diff=lfs merge=lfs -text
+vendor/etc/res/rp3launcher/defaultcores.zip filter=lfs diff=lfs merge=lfs -text

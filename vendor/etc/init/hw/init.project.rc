@@ -1,10 +1,9 @@
-import /vendor/etc/init/hw/init.mtkgki.rc
-
 # MTK project .rc configure
 
 on init
     mkdir /mnt/media_rw/usbotg 0700 media_rw media_rw
     mkdir /storage/usbotg 0700 root root
+    write /sys/module/musb_hdrc/parameters/mu3d_force_on 1
 
 on post-fs-data
 
@@ -37,37 +36,6 @@ on post-fs-data
     chmod 0660 /dev/spm
     chown system system /dev/spm
 
-#USB SWITCH
-    chmod 0777 /sys/devices/platform/soc/soc:extcon_usb/manual_switch
-    chown system system /sys/devices/platform/soc/soc:extcon_usb/manual_switch
-    chmod 0777 /sys/bus/platform/devices/soc:odm:yt_fan/yt_fan_start
-    chown system system /sys/bus/platform/devices/soc:odm:yt_fan/yt_fan_start
-    chmod 0777 /sys/bus/platform/devices/soc:odm:yt_fan/yt_fan_duty
-    chown system system /sys/bus/platform/devices/soc:odm:yt_fan/yt_fan_duty
-    chmod 0777 /sys/bus/i2c/devices/2-0045/led_switch
-    chmod 0777 /sys/bus/i2c/devices/2-0045/red
-    chmod 0777 /sys/bus/i2c/devices/2-0045/green
-    chmod 0777 /sys/bus/i2c/devices/2-0045/blue
-    chmod 0777 /sys/bus/i2c/devices/2-0045/breath_led_switch
-    chmod 0777 /sys/bus/i2c/devices/2-0045/breath_red
-    chmod 0777 /sys/bus/i2c/devices/2-0045/breath_green
-    chmod 0777 /sys/bus/i2c/devices/2-0045/breath_blue
-    chown system system /sys/bus/i2c/devices/2-0045/led_switch
-    chown system system /sys/bus/i2c/devices/2-0045/red
-    chown system system /sys/bus/i2c/devices/2-0045/green
-    chown system system /sys/bus/i2c/devices/2-0045/blue
-    chown system system /sys/bus/i2c/devices/2-0045/breath_led_switch
-    chown system system /sys/bus/i2c/devices/2-0045/breath_red
-    chown system system /sys/bus/i2c/devices/2-0045/breath_green
-    chown system system /sys/bus/i2c/devices/2-0045/breath_blue
-    chmod 0777 /sys/devices/platform/soc/soc:extcon_usb/default_mode_otg
-    chown system system /sys/devices/platform/soc/soc:extcon_usb/default_mode_otg
-	
-#UART 
-    chmod 0777 /dev/ttyS0
-    chown system system /dev/ttyS0
-    chmod 0777 /dev/ttyS1
-    chown system system /dev/ttyS1
 
 on init
     # Refer to http://source.android.com/devices/tech/storage/index.html
@@ -83,10 +51,4 @@ service fuse_usbotg /system/bin/sdcard -u 1023 -g 1023 -w 1023 -d /mnt/media_rw/
     class late_start
     disabled
 
-# start mmstat
-on property:sys.boot_completed=1
-    mkdir /sys/kernel/tracing/instances/mmstat 711
-    write /sys/kernel/tracing/instances/mmstat/tracing_on 0
-    write /sys/kernel/tracing/instances/mmstat/buffer_size_kb 16
-    write /sys/kernel/tracing/instances/mmstat/events/mmstat/enable 1
-    write /sys/kernel/tracing/instances/mmstat/tracing_on 1
+

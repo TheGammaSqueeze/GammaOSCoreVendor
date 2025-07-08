@@ -29,13 +29,14 @@
 
 # OTP
 /dev/otp                  0660   system     system
-/dev/block/by-name/otp       0660    root    system
+/dev/block/platform/bootdevice/by-name/otp       0660    root    system
 
 # Connectivity
 /dev/stpwmt               0660   system     system
 /dev/wmtdetect            0660   system     system
 /dev/fw_log_wmt           0660   system     system
 /dev/conninfra_dev        0660   system     system
+/dev/conn_scp             0660   system     system
 /dev/conn_pwr_dev         0660   system     system
 
 # BT
@@ -50,7 +51,7 @@
 /dev/gps_emi              0660   gps        gps
 /dev/gps2scp              0660   gps        gps
 /dev/gps_pwr              0660   gps        gps
-/dev/fw_log_gps           0660   gps        gps
+
 # ANT
 /dev/stpant               0660   system     system
 
@@ -60,6 +61,9 @@
 
 # FMRadio
 /dev/fm                   0660   media     media
+
+# ConnFem
+/dev/connfem              0660   system     system
 
 # NFC
 /dev/st21nfc              0660   nfc        radio
@@ -80,9 +84,6 @@
 /dev/mobicore-user        0666   system     system
 /dev/t-base-tui           0666   system     system
 
-# teeperf driver
-/dev/teeperf              0666   system     system
-
 #v4l2 device
 /dev/video*      0660 camera system
 /dev/media*      0660 camera system
@@ -90,10 +91,6 @@
 
 #v4l2 codec
 /dev/vcu    0660 camera system
-
-#vdec-fmt
-/dev/vdec-fmt   0660 media system
-/dev/fmt_sync   0660 system system
 
 #v4l2 camera
 /dev/mtk_hcp     0660 camera system
@@ -104,12 +101,6 @@
 # MDDP node
 /dev/mddp                 0660   system     system
 
-
-#VIBRATOR	 
-/sys/class/leds/xpad0_vibrator   duration      0660 system system
-/sys/class/leds/xpad0_vibrator   activate      0660 system system
-/sys/class/leds/xpad0_vibrator   state      0660 system system
-	
 # add the read write right of ttyUSB*
 /dev/bus/usb/*     	  0660   root       usb
 /dev/ttyUSB0              0660   radio      radio
@@ -163,7 +154,7 @@
 /dev/ttyRB*               0660   radio      radio
 
 # Mali node
-/dev/mali0                0666   system     graphics
+/dev/mali                 0666   system     graphics
 
 # Change ION driver permission
 /dev/ion                  0666   system     graphics
@@ -173,21 +164,8 @@
 #           /dev/dma_heap/system      0444   system     system
 /dev/dma_heap/mtk_mm                        0444   system     system
 /dev/dma_heap/mtk_mm-uncached               0444   system     system
-/dev/dma_heap/mtk_svp_page-uncached                 0444   system     system
-/dev/dma_heap/mtk_prot_page-uncached                0444   system     system
-/dev/dma_heap/mtk_svp_region                        0444   system     system
-/dev/dma_heap/mtk_svp_region-aligned                0444   system     system
-/dev/dma_heap/mtk_prot_region                       0444   system     system
-/dev/dma_heap/mtk_prot_region-aligned               0444   system     system
-/dev/dma_heap/mtk_2d_fr_region                      0444   system     system
-/dev/dma_heap/mtk_2d_fr_region-aligned              0444   system     system
-/dev/dma_heap/mtk_wfd_region                        0444   system     system
-/dev/dma_heap/mtk_wfd_region-aligned                0444   system     system
-/dev/dma_heap/mtk_wfd_page-uncached                 0444   system     system
-/dev/dma_heap/mtk_sapu_data_shm_region              0444   system     system
-/dev/dma_heap/mtk_sapu_data_shm_region-aligned      0444   system     system
-/dev/dma_heap/mtk_sapu_engine_shm_region            0444   system     system
-/dev/dma_heap/mtk_sapu_engine_shm_region-aligned    0444   system     system
+/dev/dma_heap/mtk_prot_region-uncached      0444   system     system
+/dev/dma_heap/mtk_svp_region-uncached       0444   system     system
 
 #touch
 /dev/touch                0660   root       system
@@ -199,8 +177,3 @@
 
 #MTK In-House TEE
 /dev/ttyACM0              0660   radio      radio
-# ------------------- focal fingerprint begin -------------------
-/dev/focaltech_fp         0660   system     system
-/dev/focaltech_fpspi      0660   system     system
-# ------------------- focal fingerprint end ---------------------
-/dev/input/event*      0665  system     system

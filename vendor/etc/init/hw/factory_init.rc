@@ -102,16 +102,16 @@ sysclktz 0
 # Link /vendor to /system/vendor for devices without a vendor partition.
     symlink /system/vendor /vendor
 # Temp Backward compatibility
-    symlink /dev/block/by-name/boot /dev/bootimg
-    symlink /dev/block/by-name/recovery /dev/recovery
-    symlink /dev/block/by-name/secro  /dev/sec_ro
-    symlink /dev/block/by-name/kb /dev/kb
-    symlink /dev/block/by-name/dkb /dev/dkb
-    symlink /dev/block/by-name/seccfg /dev/seccfg
-    symlink /dev/block/by-name/proinfo /dev/pro_info
-    symlink /dev/block/by-name/nvram /dev/nvram
-    symlink /dev/block/by-name/para /dev/misc
-    symlink /dev/block/by-name/logo /dev/logo
+    symlink /dev/block/platform/bootdevice/by-name/boot /dev/bootimg
+    symlink /dev/block/platform/bootdevice/by-name/recovery /dev/recovery
+    symlink /dev/block/platform/bootdevice/by-name/secro  /dev/sec_ro
+    symlink /dev/block/platform/bootdevice/by-name/kb /dev/kb
+    symlink /dev/block/platform/bootdevice/by-name/dkb /dev/dkb
+    symlink /dev/block/platform/bootdevice/by-name/seccfg /dev/seccfg
+    symlink /dev/block/platform/bootdevice/by-name/proinfo /dev/pro_info
+    symlink /dev/block/platform/bootdevice/by-name/nvram /dev/nvram
+    symlink /dev/block/platform/bootdevice/by-name/para /dev/misc
+    symlink /dev/block/platform/bootdevice/by-name/logo /dev/logo
 
 
     # Mount cgroup mount point for cpu accounting
@@ -436,7 +436,6 @@ on late-fs
     start vendor.keymaster-4-0-trustonic
     start vendor.keymaster-4-0-beanpod
     start vendor.keymaster-4-1-beanpod
-    start vendor.keymint-default
     start keymaster_attestation-1-1
     exec_start wait_for_keymaster
     mount_all --late
@@ -446,8 +445,8 @@ on post-fs-data
     wait_for_prop vendor.all.modules.ready 1
     write /proc/bootprof "modprobe: Load_Module_DONE"
 
-	#Thermal
-	mkdir /data/.tp/ 0775 system system
+    #Thermal
+    mkdir /data/.tp/ 0775 system system
 
     # symlink to bugreport storage location
     rm /data/bugreports
@@ -559,8 +558,7 @@ on zygote-start && property:ro.crypto.state=encrypted && property:ro.crypto.type
 
 on boot
     setprop sys.usb.configfs 1
-    setprop sys.usb.controller "11201000.usb0"
-    setprop sys.usb.ffs.aio_compat 1
+	setprop sys.usb.ffs.aio_compat 1
     setprop vendor.usb.clear boot
 
     # TTY
@@ -654,7 +652,7 @@ on defaultcrypto
 #   To speed up the booting in meta/factory mode, we don't encrypt the device.
 #   And then handle it as 'unencrypted' state.
 on encrypt
-    mount ext4 /dev/block/by-name/userdata /data noatime nosuid nodev noauto_da_alloc discard wait
+    mount ext4 /dev/block/platform/bootdevice/by-name/userdata /data noatime nosuid nodev noauto_da_alloc discard wait
     setprop vendor.crypto.fake_encrypt 1
     setprop vold.post_fs_data_done 0
     trigger post-fs-data
@@ -714,6 +712,7 @@ service permission_check /vendor/bin/permission_check
     user root
     group system radio
     oneshot
+
 
 service ccci_mdinit /vendor/bin/ccci_mdinit 0
     user system
@@ -817,18 +816,13 @@ property:sys.usb.configfs=1 && property:vendor.usb.clear=boot
     write /config/usb_gadget/g1/UDC ${sys.usb.controller}
     setprop vendor.usb.acm_idx "1"
 
+#acm (does not set serialnumber)
 on property:ro.boot.usbconfig=1 && property:sys.usb.configfs=1 && property:vendor.usb.clear=boot
-    start adbd
-
-on property:sys.usb.ffs.ready=1 && property:ro.boot.usbconfig=1 && \
-property:sys.usb.configfs=1 && property:vendor.usb.clear=boot
     write /config/usb_gadget/g1/UDC "none"
-    write /config/usb_gadget/g1/strings/0x409/serialnumber ${ro.serialno}
-    write /config/usb_gadget/g1/configs/b.1/strings/0x409/configuration "adb_acm"
-    write /config/usb_gadget/g1/idProduct 0x2006
-    symlink /config/usb_gadget/g1/functions/mass_storage.usb0 /config/usb_gadget/g1/configs/b.1/f1
-    symlink /config/usb_gadget/g1/functions/ffs.adb /config/usb_gadget/g1/configs/b.1/f2
-    symlink /config/usb_gadget/g1/functions/acm.gs0 /config/usb_gadget/g1/configs/b.1/f3
+    write /config/usb_gadget/g1/configs/b.1/strings/0x409/configuration "acm"
+    write /config/usb_gadget/g1/idProduct 0x2007
+    write /config/usb_gadget/g1/bDeviceClass 02
+    symlink /config/usb_gadget/g1/functions/acm.gs0 /config/usb_gadget/g1/configs/b.1/f1
     write /config/usb_gadget/g1/UDC ${sys.usb.controller}
     setprop vendor.usb.acm_idx "1"
 

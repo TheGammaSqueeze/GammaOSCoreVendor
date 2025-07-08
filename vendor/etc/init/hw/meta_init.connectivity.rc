@@ -8,15 +8,12 @@ on boot
 # Connectivity related services (Begin)
 #
 
-# WMT
-service wmt_loader /vendor/bin/wmt_loader
+# conninfra
+service conninfra_loader /vendor/bin/conninfra_loader
+    class core
     user system
     group system
     oneshot
-
-service wmt_launcher /vendor/bin/wmt_launcher -p /vendor/firmware/
-    user system
-    group system
 
 #
 # Connectivity related services (End)
@@ -26,9 +23,9 @@ service wmt_launcher /vendor/bin/wmt_launcher -p /vendor/firmware/
 # Connectivity related kernel objects (Begin)
 #
 
-# load wmt_drv
+# load conninfra driver
 on boot
-    insmod /vendor/lib/modules/wmt_drv.ko
+    insmod /vendor/lib/modules/conninfra.ko
 
 #
 # Connectivity related kernel objects (End)

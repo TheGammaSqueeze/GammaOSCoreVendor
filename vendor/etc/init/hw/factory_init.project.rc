@@ -1,5 +1,3 @@
-import /vendor/etc/init/hw/init.mtkgki.rc
-
 mkdir /data/misc/sensors 0664 system system
 
 service msensord /system/bin/msensord
@@ -12,6 +10,11 @@ service akmd8963 /system/bin/akmd8963
     user system
     group system
 
+#26M Clock calibration
+service dcxosetcap /vendor/bin/dcxosetcap
+    class main
+    oneshot
+    disabled
 
 on post-fs
     # disable HPS
