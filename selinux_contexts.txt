@@ -291,6 +291,7 @@
 /etc/init u:object_r:vendor_configs_file:s0
 /etc/init/vendor.mediatek.hardware.mmagent@1.1-service.rc u:object_r:vendor_configs_file:s0
 /etc/init/android.hardware.cas@1.2-service-lazy.rc u:object_r:vendor_configs_file:s0
+/etc/init/init.joypad_control.rc u:object_r:vendor_configs_file:s0
 /etc/init/init.cccirpcd.rc u:object_r:vendor_configs_file:s0
 /etc/init/init.bt_drv.rc u:object_r:vendor_configs_file:s0
 /etc/init/android.hardware.keymaster@4.0-service.rc u:object_r:vendor_configs_file:s0
@@ -1400,6 +1401,8 @@
 /vendor_dlkm/etc/NOTICE.xml.gz u:object_r:vendor_file:s0
 /vendor_dlkm/etc/build.prop u:object_r:vendor_file:s0
 /bin u:object_r:vendor_file:s0
+/bin/gammapad u:object_r:vendor_file:s0
+/bin/retroidpad u:object_r:vendor_file:s0
 /bin/mountpoint u:object_r:vendor_file:s0
 /bin/wlan_assistant u:object_r:wlan_assistant_exec:s0
 /bin/edma_test64 u:object_r:vendor_file:s0
