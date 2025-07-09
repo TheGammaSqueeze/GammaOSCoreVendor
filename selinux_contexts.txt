@@ -1402,6 +1402,7 @@
 /vendor_dlkm/etc/build.prop u:object_r:vendor_file:s0
 /bin u:object_r:vendor_file:s0
 /bin/gammapad u:object_r:vendor_file:s0
+/bin/remove_retroidpad_event.sh u:object_r:vendor_file:s0
 /bin/retroidpad u:object_r:vendor_file:s0
 /bin/mountpoint u:object_r:vendor_file:s0
 /bin/wlan_assistant u:object_r:wlan_assistant_exec:s0
