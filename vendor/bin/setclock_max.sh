@@ -1,8 +1,8 @@
 #!/system/bin/sh
 
-echo 0 > /sys/kernel/ged/hal/custom_boost_gpu_freq
+echo 32 > /sys/kernel/ged/hal/custom_boost_gpu_freq
 
-echo 836000 > /proc/gpufreq/gpufreq_opp_freq
+echo 0 > /proc/gpufreq/gpufreq_opp_freq
 
 echo 0 > /sys/devices/platform/10012000.dvfsrc/helio-dvfsrc/dvfsrc_force_vcore_dvfs_opp
 
