@@ -1,5 +1,7 @@
 #!/system/bin/sh
 
+sleep 1
+
 echo 32 > /sys/kernel/ged/hal/custom_boost_gpu_freq
 
 echo 0 > /proc/gpufreq/gpufreq_opp_freq
