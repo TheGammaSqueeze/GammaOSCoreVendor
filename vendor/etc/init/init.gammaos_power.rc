@@ -19,7 +19,14 @@ service setclock_powersave /vendor/bin/setclock_powersave.sh
     oneshot
     disabled
 
-service cpu_screen_off /system/bin/sh -c "echo 0 | tee /sys/devices/system/cpu/cpu[1-7]/online >/dev/null; echo mem > /sys/power/state; echo 0 > /sys/devices/platform/soc/11eb0000.i2c/i2c-2/2-0045/led_switch"
+service cpu_screen_off /system/bin/sh -c "echo 0 | tee /sys/devices/system/cpu/cpu[1-7]/online >/dev/null; echo mem > /sys/power/state;"
+    class main
+    user root
+    group root system
+    oneshot
+    disabled
+
+service led_screen_off /system/bin/sh -c "echo 0 > /sys/devices/platform/soc/11eb0000.i2c/i2c-2/2-0045/led_switch"
     class main
     user root
     group root system
@@ -51,7 +58,7 @@ on property:persist.gammaos.performance_mode=powersave
 
 on property:sys.screen.state=off
     start setclock_powersave
-    start cpu_screen_off
+    start led_screen_off
 
 on property:sys.screen.state=on
     stop force_sleep

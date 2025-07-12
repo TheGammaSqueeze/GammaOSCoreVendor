@@ -1,5 +1,7 @@
 #!/system/bin/sh
 
+sleep 1
+
 echo "1100000000" > /sys/devices/platform/soc/13000000.mali/devfreq/13000000.mali/min_freq
 echo "1100000000" > /sys/devices/platform/soc/13000000.mali/devfreq/13000000.mali/max_freq
 echo "performance" > /sys/devices/platform/soc/13000000.mali/devfreq/13000000.mali/governor
