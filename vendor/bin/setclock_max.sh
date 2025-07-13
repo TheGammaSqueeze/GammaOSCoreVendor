@@ -1,5 +1,7 @@
 #!/system/bin/sh
 
+sleep 1
+
 echo "1010000000" > /sys/devices/platform/soc/3d00000.qcom,kgsl-3d0/devfreq/3d00000.qcom,kgsl-3d0/min_freq
 echo "1010000000" > /sys/devices/platform/soc/3d00000.qcom,kgsl-3d0/devfreq/3d00000.qcom,kgsl-3d0/max_freq
 echo "msm-adreno-tz" > /sys/devices/platform/soc/3d00000.qcom,kgsl-3d0/devfreq/3d00000.qcom,kgsl-3d0/governor
