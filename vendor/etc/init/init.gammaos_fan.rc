@@ -52,4 +52,5 @@ on property:persist.gammaos.fan_mode=auto && property:persist.gammaos.fan_mode_a
 
 on property:sys.screen.state=off
    stop setfan_auto
+   setprop persist.gammaos.fan_mode_auto off
    start setfan_off
