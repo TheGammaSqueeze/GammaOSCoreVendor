@@ -1,5 +1,7 @@
 #!/system/bin/sh
 
+sleep 1
+
 echo "150000000" > /sys/devices/platform/soc@3000000/1800000.gpu/devfreq/1800000.gpu/min_freq
 echo "150000000" > /sys/devices/platform/soc@3000000/1800000.gpu/devfreq/1800000.gpu/max_freq
 echo "powersave" > /sys/devices/platform/soc@3000000/1800000.gpu/devfreq/1800000.gpu/governor

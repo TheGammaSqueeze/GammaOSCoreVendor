@@ -1,5 +1,7 @@
 #!/system/bin/sh
 
+sleep 1
+
 echo "925000000" > /sys/devices/platform/soc@3000000/1800000.gpu/devfreq/1800000.gpu/min_freq
 echo "925000000" > /sys/devices/platform/soc@3000000/1800000.gpu/devfreq/1800000.gpu/max_freq
 echo "performance" > /sys/devices/platform/soc@3000000/1800000.gpu/devfreq/1800000.gpu/governor

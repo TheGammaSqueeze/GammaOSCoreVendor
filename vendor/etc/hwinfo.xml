@@ -43,8 +43,8 @@
       <preload name="dhd_static_buf" />
     </entry>
     <entry vendor="realtek" >
+	  <preload name="rtk_btusb" />
       <preload name="rtl_btlpm" para="assert_level=3" />
-      <preload name="rtk_btusb" />
       <preload name="rtkm" />
     </entry>
     <entry vendor="xradio" >
@@ -69,6 +69,7 @@
     <entry id="0x024cd723" bus="0x1" name="rtl8723ds" driver="8723ds" module="8723ds" vendor="realtek" btsup="1" />
     <entry id="0x024cf179" bus="0x1" name="rtl8189fs" driver="8189fs" module="8189fs" vendor="realtek" btsup="0" />
 	<entry id="0x0bdaf72b" bus="0x0" name="rtl8733bu" driver="8733bu" module="8733bu" vendor="realtek" btsup="0" />
+	<entry id="0x0bdab733" bus="0x0" name="rtl8733bu" driver="8733bu" module="8733bu" vendor="realtek" btsup="1" />
     <entry id="0x024cb822" bus="0x1" name="rtl88x2bs" driver="88x2bs" module="88x2bs" vendor="realtek" btsup="1" />
     <entry id="0x024cb852" bus="0x1" name="rtl8852bs" driver="8852bs" module="8852bs" vendor="realtek" btsup="1" />
     <entry id="0x0bdad723" bus="0x0" name="rtl8723du" driver="8723du" module="8723du" vendor="realtek" btsup="1" />
