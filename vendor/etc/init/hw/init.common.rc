@@ -1,8 +1,12 @@
 on early-init
-    export TMPDIR /data/local/tmp
-    setrlimit memlock 8388608 8388608
     mount debugfs debugfs /sys/kernel/debug
     chmod 0755 /sys/kernel/debug
+
+service vendor.charger /charger
+    class charger
+    user root
+    group shell root system wakelock input log
+    seclabel u:r:charger:s0
 
 # bugreport is triggered by holding down volume down, volume up and power
 
@@ -13,44 +17,10 @@ service bugreport /system/bin/dumpstate -d -p -B -z \
     oneshot
     keycodes 114 115 116
 
-on post-fs-data
-    mkdir data/vendor/camera 0777 cameraserver camera
+
 on property:sys.drop_cache=1
     write /proc/sys/vm/drop_caches 3
     setprop sys.drop_cache 0
 
 on charger
     chmod 660 /sys/power/wakeup_count
-
-on property:ro.debuggable=1 && property:ro.product.name="gsi_arm"
-  setprop vendor.codec2.disable.hw 1
-  restart android-hardware-media-aw-c2-hal-1-0
-
-on property:ro.debuggable=1 && property:ro.product.name="gsi_arm64"
-  setprop vendor.codec2.disable.hw 1
-    restart android-hardware-media-aw-c2-hal-1-0
-
-on property:ro.product.name="gsi_arm"
-  setprop vendor.codec2.disable.vp9_scaledown 1
-  setprop vendor.codec2.disable.afbc 1
-  restart android-hardware-media-aw-c2-hal-1-0
-
-on property:ro.product.name="gsi_arm64"
-  setprop vendor.codec2.disable.vp9_scaledown 1
-  setprop vendor.codec2.disable.afbc 1
-  restart android-hardware-media-aw-c2-hal-1-0
-
-on property:persist.sys.cts="com.amazon.avod.thirdpartyclient"
-   setprop vendor.amazon.avod 1
-
-on property:persist.sys.cts="0"
-   setprop vendor.amazon.avod 0
-
-on property:persist.sys.cts="android.mediav2.cts"
-  setprop vendor.codec2.disable.vp9_scaledown 1
-  setprop vendor.codec2.disable.afbc 1
-
-on property:sys.keeptesting.bfq=1
-   write /sys/block/mmcblk0/queue/scheduler bfq
-on property:sys.keeptesting.bfq=0
-   write /sys/block/mmcblk0/queue/scheduler mq-deadline

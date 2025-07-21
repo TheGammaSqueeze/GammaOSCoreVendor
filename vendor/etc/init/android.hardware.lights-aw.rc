@@ -1,5 +1,0 @@
-service vendor.light-aw /vendor/bin/hw/android.hardware.lights-service.aw
-    class hal
-    user system
-    group system
-    shutdown critical

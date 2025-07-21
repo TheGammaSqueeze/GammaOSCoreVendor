@@ -1,4 +1,4 @@
-on init
+on boot
     # display color enhance
     chown system system /sys/class/disp/disp/attr/color_temperature
     chown system system /sys/class/disp/disp/attr/cvbs_enhacne_mode

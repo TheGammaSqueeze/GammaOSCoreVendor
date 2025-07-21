@@ -11,7 +11,6 @@
         <plugin name="dump_data" status="off"/>
         <plugin name="audio_3d_surround" status="off"/>
         <plugin name="bp" status="off"/>
-        <plugin name="audio_ns" status="on"/>
     </platform_audio_plugins_config>
 
     <!--
@@ -47,10 +46,10 @@
 
     <!-- main output profile -->
     <platform_devices_profile>
-        <platform_devices devices="OUT_SPK|OUT_EAR|OUT_HP|OUT_DULSPK|OUT_DULSPK_HP|OUT_SPK_HP"/>
+        <platform_devices devices="OUT_SPK|OUT_EAR|OUT_HP|OUT_SPK_AND_HP|OUT_DULSPK|OUT_DULSPK_HP"/>
         <snd_card_config
             type="frontend" card_name="audiocodec" device="0"
-            channels="2" rate="48000" period_size="960" period_count="6"
+            channels="2" rate="48000" period_size="1024" period_count="2"
             />
     </platform_devices_profile>
 
@@ -59,16 +58,7 @@
         <platform_devices devices="IN_AMIC|IN_DMIC|IN_HPMIC"/>
         <snd_card_config
             type="frontend" card_name="audiocodec" device="0"
-            channels="2" rate="48000" period_size="960" period_count="2"
-            />
-    </platform_devices_profile>
-
-    <!-- ref input profile -->
-    <platform_devices_profile>
-        <platform_devices devices="IN_REF"/>
-        <snd_card_config
-            type="frontend" card_name="sndi2s0" device="0"
-            channels="2" rate="48000" period_size="960" period_count="2"
+            channels="2" rate="48000" period_size="1024" period_count="2"
             />
     </platform_devices_profile>
 
@@ -77,16 +67,7 @@
         <platform_devices devices="OUT_HDMI"/>
         <snd_card_config
             type="frontend" card_name="sndhdmi" device="0"
-            channels="2" rate="48000" period_size="960" period_count="6"
-            />
-    </platform_devices_profile>
-
-    <!-- hdmi raw -->
-    <platform_devices_profile>
-        <platform_devices devices="OUT_HDMI_RAW"/>
-        <snd_card_config
-            type="frontend" card_name="sndhdmi" device="0"
-            channels="2" rate="48000" period_size="960" period_count="6"
+            channels="2" rate="48000" period_size="512" period_count="2"
             />
     </platform_devices_profile>
 
@@ -94,39 +75,28 @@
     <platform_devices_profile>
         <platform_devices devices="OUT_SPDIF"/>
         <snd_card_config
-            type="frontend" card_name="sndowa" device="0"
-            channels="2" rate="48000" period_size="960" period_count="6"
+            type="frontend" card_name="sndspdif" device="0"
+            channels="2" rate="48000" period_size="512" period_count="2"
             />
-    </platform_devices_profile>
-
-    <!-- spdif raw -->
-    <platform_devices_profile>
-        <platform_devices devices="OUT_SPDIF_RAW"/>
-        <snd_card_config
-            type="frontend" card_name="sndowa" device="0"
-            channels="2" rate="48000" period_size="960" period_count="6"
-            />
-
     </platform_devices_profile>
 
     <!-- bt sco -->
     <platform_devices_profile>
-        <platform_devices devices="OUT_BTSCO"/>
+        <platform_devices devices="OUT_BTSCO|IN_BTSCO"/>
 
         <snd_card_config
-            type="frontend" card_name="sndi2s1" device="0"
-            channels="2" rate="8000" period_size="480" period_count="2"
+            type="frontend" card_name="audiocodec" device="0"
+            channels="2" rate="8000" period_size="512" period_count="2"
             />
-
-    </platform_devices_profile>
-
-    <platform_devices_profile>
-        <platform_devices devices="IN_BTSCO"/>
-
         <snd_card_config
-            type="frontend" card_name="sndi2s1" device="0"
-            channels="1" rate="8000" period_size="480" period_count="2"
+            type="backend" card_name="audiocodec" device="3"
+            channels="1" rate="8000" period_size="512" period_count="2"
             />
+        <snd_card_config
+            type="backend" card_name="audiocodec" device="4"
+            channels="1" rate="8000" period_size="512" period_count="2"
+            />
+        />
     </platform_devices_profile>
 
     <!-- digital phone -->
@@ -178,11 +148,11 @@
         <platform_devices devices="OUT_SPK_HDMI|OUT_DULSPK_HDMI|OUT_HP_HDMI"/>
         <snd_card_config
             type="frontend" card_name="audiocodec" device="0"
-            channels="2" rate="48000" period_size="960" period_count="6"
+            channels="2" rate="48000" period_size="1024" period_count="2"
             />
         <snd_card_config
-            type="out_backend" card_name="sndhdmi" device="0"
-            channels="2" rate="48000" period_size="960" period_count="6"
+            type="out_backend" card_name="audiocodec" device="4"
+            channels="2" rate="48000" period_size="1024" period_count="2"
             />
     </platform_devices_profile>
 
@@ -191,41 +161,28 @@
         <platform_devices devices="OUT_SPK_SPDIF|OUT_DULSPK_SPDIF|OUT_HP_SPDIF"/>
         <snd_card_config
             type="frontend" card_name="audiocodec" device="0"
-            channels="2" rate="48000" period_size="960" period_count="6"
+            channels="2" rate="48000" period_size="1024" period_count="2"
             />
         <snd_card_config
-            type="out_backend" card_name="sndowa" device="0"
-            channels="2" rate="48000" period_size="960" period_count="6"
+            type="out_backend" card_name="audiocodec" device="5"
+            channels="2" rate="48000" period_size="1024" period_count="2"
             />
     </platform_devices_profile>
 
     <!-- audio hub: codec, hdmi and spdif -->
     <platform_devices_profile>
-        <platform_devices devices="OUT_HDMI_SPDIF"/>
-        <snd_card_config
-            type="frontend" card_name="sndhdmi" device="0"
-            channels="2" rate="48000" period_size="960" period_count="6"
-            />
-        <snd_card_config
-            type="out_backend" card_name="sndowa" device="0"
-            channels="2" rate="48000" period_size="960" period_count="6"
-            />
-    </platform_devices_profile>
-
-    <!-- audio hub: codec, hdmi and spdif -->
-    <platform_devices_profile>
-        <platform_devices devices="OUT_SPK_HDMI_SPDIF|OUT_DULSPK_HDMI_SPDIF|OUT_HP_HDMI_SPDIF"/>
+        <platform_devices devices="OUT_HDMI_SPDIF|OUT_SPK_HDMI_SPDIF|OUT_DULSPK_HDMI_SPDIF|OUT_HP_HDMI_SPDIF"/>
         <snd_card_config
             type="frontend" card_name="audiocodec" device="0"
-            channels="2" rate="48000" period_size="960" period_count="6"
+            channels="2" rate="48000" period_size="1024" period_count="2"
             />
         <snd_card_config
-            type="out_backend" card_name="sndhdmi" device="0"
-            channels="2" rate="48000" period_size="960" period_count="6"
+            type="out_backend" card_name="audiocodec" device="4"
+            channels="2" rate="48000" period_size="1024" period_count="2"
             />
         <snd_card_config
-            type="out_backend" card_name="sndowa" device="0"
-            channels="2" rate="48000" period_size="960" period_count="6"
+            type="out_backend" card_name="audiocodec" device="5"
+            channels="2" rate="48000" period_size="1024" period_count="2"
             />
     </platform_devices_profile>
 
@@ -251,22 +208,20 @@
         <device_path_map device="OUT_DPH_PLAY" path="null"/>
         <device_path_map device="OUT_APH_PLAY" path="null"/>
         <device_path_map device="OUT_HDMI" path="null"/>
-        <device_path_map device="OUT_HDMI_RAW" path="null"/>
         <device_path_map device="OUT_SPDIF" path="null"/>
-        <device_path_map device="OUT_SPDIF_RAW" path="null"/>
 
-        <device_path_map device="OUT_SPK_HDMI" path="media-single-speaker"/>
-        <device_path_map device="OUT_DULSPK_HDMI" path="media-speaker"/>
-        <device_path_map device="OUT_HP_HDMI" path="media-headphones"/>
+        <device_path_map device="OUT_SPK_HDMI" path="null"/>
+        <device_path_map device="OUT_DULSPK_HDMI" path="null"/>
+        <device_path_map device="OUT_HP_HDMI" path="null"/>
 
-        <device_path_map device="OUT_SPK_SPDIF" path="media-single-speaker"/>
-        <device_path_map device="OUT_DULSPK_SPDIF" path="media-speaker"/>
-        <device_path_map device="OUT_HP_SPDIF" path="media-headphones"/>
+        <device_path_map device="OUT_SPK_SPDIF" path="null"/>
+        <device_path_map device="OUT_DULSPK_SPDIF" path="null"/>
+        <device_path_map device="OUT_HP_SPDIF" path="null"/>
 
         <device_path_map device="OUT_HDMI_SPDIF" path="null"/>
-        <device_path_map device="OUT_SPK_HDMI_SPDIF" path="media-single-speaker"/>
-        <device_path_map device="OUT_DULSPK_HDMI_SPDIF" path="media-speaker"/>
-        <device_path_map device="OUT_HP_HDMI_SPDIF" path="media-headphones"/>
+        <device_path_map device="OUT_SPK_HDMI_SPDIF" path="null"/>
+        <device_path_map device="OUT_DULSPK_HDMI_SPDIF" path="null"/>
+        <device_path_map device="OUT_HP_HDMI_SPDIF" path="null"/>
 
         <!-- platform record device path -->
         <device_path_map device="IN_AMIC" path="media-main-mic"/>

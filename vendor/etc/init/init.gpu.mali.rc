@@ -1,4 +1,0 @@
-on late-fs
-    # gpu
-    insmod /vendor/lib/modules/mali_kbase.ko
-

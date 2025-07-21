@@ -1,56 +1,13 @@
-#line 1 "out/soong/.intermediates/system/sepolicy/contexts/vendor_property_contexts/android_common/gen/namespace_checked/device/softwinner/common/sepolicy/vendor/property_contexts"
+#line 1 "device/softwinner/common/sepolicy/vendor/property_contexts"
 vendor.ril.                           u:object_r:vendor_ril_prop:s0
-persist.vendor.display.               u:object_r:vendor_awdisplayoutput_prop:s0
-vendor.init.lpm.                      u:object_r:vendor_lpm_prop:s0
-
-persist.vendor.debug.awface       u:object_r:vendor_face_prop:s0
-persist.vendor.faceid.            u:object_r:vendor_face_prop:s0
-ro.vendor.faceid.                 u:object_r:vendor_face_prop:s0
+vendor.wlan.                          u:object_r:exported_wifi_prop:s0
+vendor.driver.lpm.load                u:object_r:bluetooth_prop:s0
 
 ## property for audio
-vendor.audio.output.active        u:object_r:vendor_audio_prop:s0
-vendor.mediasw.sft.rawdata        u:object_r:vendor_audio_prop:s0
-vendor.audio.input.active         u:object_r:vendor_audio_prop:s0
-persist.vendor.audio.use_sfxmgmt  u:object_r:vendor_audio_prop:s0
-vendor.audio.btsco.pcm_support    u:object_r:vendor_audio_prop:s0
-
-# bluetooth
-vendor.driver.lpm.load                   u:object_r:vendor_wireless_prop:s0
-
-# For thermal hal
-vendor.thermal.             u:object_r:vendor_thermal_prop:s0
-
-# For usb gadget hal
-persist.vendor.usb.config  u:object_r:vendor_usb_config_prop:s0
-vendor.usb.config          u:object_r:vendor_usb_config_prop:s0
-vendor.usb.                u:object_r:vendor_usb_prop:s0
-persist.vendor.usb.        u:object_r:vendor_usb_prop:s0
-
-persist.vendor.tp.name    u:object_r:vendor_tp_prop:s0
-persist.vendor.tp.path    u:object_r:vendor_tp_prop:s0
-
-vendor.codec2.disable.hw  u:object_r:vendor_codec2_prop:s0
-persist.vendor.codec2.debug  u:object_r:vendor_codec2_prop:s0
-vendor.codec2.disable.afbc u:object_r:vendor_codec2_prop:s0
-vendor.codec2.disable.vp9_scaledown u:object_r:vendor_codec2_prop:s0
-
-
-vendor.amazon.avod  u:object_r:vendor_amazon_prop:s0
-
-# For hdmi cec hal
-vendor.cec. u:object_r:vendor_cec_prop:s0
-
-# property for hdmi graphics
-vendor.sys.tv_vdid_fex u:object_r:vendor_graphics_prop:s0
-vendor.sys.disp_config u:object_r:vendor_graphics_prop:s0
-vendor.sys.disp_rsl_fex u:object_r:vendor_graphics_prop:s0
-#line 1 "out/soong/.intermediates/system/sepolicy/contexts/vendor_property_contexts/android_common/gen/namespace_checked/hardware/aw/gpu/mali-valhall/gralloc/etc/sepolicy/property_contexts"
-# Graphics related properties
-ro.vendor.arm.egl.configs.       u:object_r:vendor_graphics_config_prop:s0
-ro.vendor.arm.gralloc.           u:object_r:vendor_graphics_config_prop:s0
-vendor.mali.                     u:object_r:vendor_graphics_config_prop:s0
-persist.vendor.ui_compress       u:object_r:vendor_graphics_config_prop:s0
-#line 1 "out/soong/.intermediates/system/sepolicy/contexts/vendor_property_contexts/android_common/gen/namespace_checked/system/sepolicy/reqd_mask/property_contexts"
+vendor.audio.output.active        u:object_r:audio_hal_prop:s0
+vendor.mediasw.sft.rawdata        u:object_r:audio_hal_prop:s0
+vendor.audio.input.active         u:object_r:audio_hal_prop:s0
+#line 1 "system/sepolicy/reqd_mask/property_contexts"
 # empty property_contexts file - this file is used to generate an empty
 # non-platform property context for devices without any property_contexts
 # customizations.

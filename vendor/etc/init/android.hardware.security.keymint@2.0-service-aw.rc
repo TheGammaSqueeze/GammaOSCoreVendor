@@ -1,3 +1,0 @@
-service vendor.keymint-default /vendor/bin/hw/android.hardware.security.keymint@2.0-service-aw
-    class early_hal
-    user nobody

@@ -1,3 +1,0 @@
-on property:sys.boot_completed=1
-    chmod 0666 sys/class/power_supply/axp2202-usb/input_current_limit
-    restorecon sys/class/power_supply/axp2202-usb/input_current_limit

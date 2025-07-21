@@ -10,4 +10,4 @@ service vohci /vendor/bin/vohci
     group bluetooth net_bt net_bt_admin wakelock audio media root
     disabled
     oneshot
-    task_profiles ProcessCapacityHigh HighPerformance
+    # task_profiles ProcessCapacityHigh HighPerformance

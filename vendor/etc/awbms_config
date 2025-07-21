@@ -1,13 +1,14 @@
 debug: false
-limit: -1,-1
+limit: 12
 threadCheck: true
 memoryCheck: true
-memoryLimit: 450,200
+memoryLimit: 450,0
 memoryTrim: true
-stopTaskTime: 60
 skipService: true
 blockBroadcast: false
+lmk: false
 lmk_level: 100,150,250
+lmk_adj: 99,200,600
 
 whitelist:
 android
@@ -15,22 +16,22 @@ com.android
 com.android.phone
 com.android.server.telecom
 com.google
-com.android.vending
-com.google.android.gms
 com.softwinner
 com.clock
 com.pt1
+com.wandoujia.phoenix2.usbproxy
+com.antutu.ABenchMark
+com.into.stability
+com.quicinc.vellamo
+com.hp.android
+com.tencent.mobileqq
 com.baidu.input
 com.sohu.inputmethod.sogou
 com.allwinnertech
 com.xy.forqa
-com.facebook.katana
-com.mobileer.example.midibtlepairing
-foo.bar.multipleservices
+org.liskovsoft.androidtv.rukeyboard
+rkr.simplekeyboard.inputmethod
 
 action:
 android.service.wallpaper.WallpaperService
 com.android.cts.verifier.camera.its.START
-
-relative:
-com.antutu.ABenchMark,com.antutu.benchmark.full,com.antutu.benchmark.full.lite

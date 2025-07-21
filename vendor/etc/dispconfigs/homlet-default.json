@@ -1,9 +1,6 @@
 {
     "DisplayEngineVersion": 2,
-    "DisplayNumber": 2, /*Display0, Display1*/
-
-    "PrimaryDisplay": ["Display0"],
-    "ExternalDisplay": ["Display1"],
+    "DisplayNumber": 2,
 
     /* Primary display */
     "Display0": {

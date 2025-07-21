@@ -1,4 +1,0 @@
-service vendor.memtrack-aw /vendor/bin/hw/android.hardware.memtrack-service.aw
-    class hal
-    user graphics
-    group system
