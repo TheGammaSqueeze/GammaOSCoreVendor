@@ -28,6 +28,7 @@ on boot
     # Read one page at a time for swap (default is 8)
     write /proc/sys/vm/page-cluster 0
     setprop persist.vendor.overlay.user_rotation ${ro.primary_display.user_rotation}
+    setprop sys.screen.state on
 
 on late-fs
 ### csi module
