@@ -27,13 +27,15 @@
     </hal>
     <hal format="hidl">
         <name>android.hardware.bluetooth</name>
+        <version>1.1</version>
         <transport>hwbinder</transport>
-        <version>1.0</version>
         <interface>
             <name>IBluetoothHci</name>
             <instance>default</instance>
         </interface>
-        <fqname>@1.0::IBluetoothHci/default</fqname>
+        <fqname>@1.1::IBluetoothHci/default</fqname>
+        <!-- reuse the existing 1.0 service binary under the 1.1 interface -->
+        <service instance="default">bluetooth@1.0-service</service>
     </hal>
     <hal format="hidl">
         <name>android.hardware.boot</name>
