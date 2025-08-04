@@ -1,0 +1,9 @@
+312260,USACL,USACL
+312180,Limitless Mobile,LMUSA
+312480,Nemont,Nemont
+312630,NetGenuity,NetGenui
+312420,Nex-Tech Wireless USA,NTW
+312870,GigSky,GigSky
+312720,Southern Linc,SLINC
+312280,Pioneer,CNP
+312290,Strata Networks USA,Strata

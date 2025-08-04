@@ -1,0 +1,10 @@
+20815,Free,Free
+20816,Free,Free
+20813,F - Contact,Contact
+20811,SFR FEMTO,SFRFEMTO
+20809,F SFR,SFR
+20810,F SFR,SFR
+20802,F-Contact,Contact
+20801,Orange F,Orange
+20888,F - Contact,Contact
+20820,F-Bouygues Telecom,BYTEL

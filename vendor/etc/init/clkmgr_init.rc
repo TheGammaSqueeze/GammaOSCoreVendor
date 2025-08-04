@@ -1,0 +1,4 @@
+on early-fs && property:ro.build.type=userdebug
+    write /sys/kernel/tracing/tracing_on 1
+on early-fs && property:ro.build.type=eng
+    write /sys/kernel/tracing/tracing_on 1

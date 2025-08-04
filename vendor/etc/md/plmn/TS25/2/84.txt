@@ -1,0 +1,3 @@
+28403,Vivacom BG,Vivacom
+28405,Yettel BG,Yettel
+28401,A1 BG,A1 BG

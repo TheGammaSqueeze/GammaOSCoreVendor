@@ -1,0 +1,6 @@
+52508,StarHub,StarHub
+52505,StarHub,StarHub
+52501,Singtel,Singtel
+52502,Singtel,Singtel
+52503,SGP-M1,M1
+52510,SIMBA,SIMBA

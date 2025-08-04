@@ -1,0 +1,4 @@
+21670,vodafone HU,voda HU
+21630,Telekom HU,THU
+21601,Yettel HU,Yettel
+21603,Digi.Mobil HU,Digi HU

@@ -1,0 +1,5 @@
+45608,Metfone,Metfone
+45602,Smart,Smart
+45606,Smart,Smart
+45605,Smart,Smart
+45601,Cellcard,Cellcard

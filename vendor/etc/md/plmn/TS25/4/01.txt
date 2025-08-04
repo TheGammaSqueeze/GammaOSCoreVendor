@@ -1,0 +1,4 @@
+40177,Tele2,Tele2
+40107,ALTEL,ALTEL
+40101,Beeline KZ,Beeline
+40102,Kcell,Kcell

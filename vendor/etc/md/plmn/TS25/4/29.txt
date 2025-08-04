@@ -1,0 +1,2 @@
+42902,Ncell,Ncell
+42901,Nepal Telecom,NT

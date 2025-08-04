@@ -1,0 +1,4 @@
+63907,Telkom,Telkom
+63903,Airtel,Airtel
+63902,Safaricom,SAF-COM
+63910,FAIBA,FAIBA

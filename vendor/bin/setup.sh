@@ -1,1 +1,0 @@
-settings put secure sysui_qs_tiles internet,bt,performance,abxy,mappingeditor,deepsleepmode,rotation,dpadAnalogToggle,analogsensitivity,analogdeadzone,analogcalibration,analogaxis,rightanalogaxis,dcdimmingemulation,retroarchmenubuttonoverride

@@ -1,0 +1,3 @@
+23003,Vodafone CZ,Vodafone
+23001,T-Mobile CZ,TMO CZ
+23002,O2 - CZ,O2 - CZ

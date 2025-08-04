@@ -1,0 +1,4 @@
+60203,Etisalat,Etisalat
+60202,vodafone EG,voda EG
+60201,Orange EG,Orange
+60204,EGYwe,we

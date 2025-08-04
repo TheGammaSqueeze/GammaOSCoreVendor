@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<DemoDynamicSettings>
+	<Category name="Set property">
+		<Group name="" ui_type="default">
+			<Command id="set_prop_enable_1" name="Enable" ui_type="checkbox" checked="1" unchecked="0" cmd_type="set_property" property="vendor.mbrain.enabled"/>
+		</Group>
+	</Category>
+	<Category name="Operation">
+		<Group name="" ui_type="default">
+			<Command id="step1" name="Start Test" ui_type="hidden" button_action="adb shell mbrain_client --profile 50" cmd_type="adb shell"/>
+			<Command id="step2" name="End Test" ui_type="hidden" button_action="adb shell mbrain_client --profile 1;sleep 1;" cmd_type="adb shell"/>
+			<Command id="step3" name="End Test" ui_type="hidden" button_action="adb shell mbrain_client --control 1;sleep 30" cmd_type="adb shell"/>
+			<Command id="copy_db" name="Close and Copy DB to Sdcard" ui_type="hidden" button_action="copy /data/vendor/mbrain to /sdcard/mbrain" cmd_type="copy"/>
+			<Command id="view_db" name="View DB Folder" ui_type="hidden" button_action="adb shell ls -la /data/vendor/mbrain" cmd_type="adb shell"/>
+			<Actions name ="Start Test" ui_type="button">
+				<Action cmd_id="step1" value="1"/>
+			</Actions>
+			<Actions name ="End Test" ui_type="button">
+				<Action cmd_id="step2" value="1"/>
+				<Action cmd_id="step3" value="1"/>
+				<Action cmd_id="copy_db" value="1"/>
+			</Actions>
+		</Group>
+	</Category>
+	<Category name="!!After Press [End Test], Please wait 30 second for Data Aggregation !!">
+		<Group name="" ui_type="default">
+			<Command id="dummy" name="aa" ui_type="hidden" button_action="copy /data/vendor/ to /sdcard/test" cmd_type="copy"/>
+		</Group>
+	</Category>
+</DemoDynamicSettings>

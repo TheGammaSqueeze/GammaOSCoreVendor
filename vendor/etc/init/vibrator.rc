@@ -1,4 +1,0 @@
-service android.aw.hardware.vibrator-service /vendor/bin/hw/android.aw.hardware.vibrator@1.0-service
-    class hal
-    user system
-    group system

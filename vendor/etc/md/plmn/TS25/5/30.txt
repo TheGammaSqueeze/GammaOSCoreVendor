@@ -1,0 +1,3 @@
+53024,2degrees,2degrees
+53005,Spark NZ,Spark NZ
+53001,vodafone NZ,voda NZ

@@ -1,0 +1,15 @@
+302380,KNET,KNET
+302340,Execulink Telecom,ETI
+302940,Wightman,Wightman
+302270,Eastlink,Eastlink
+302880,FastRoam,FastRoam
+302780,SaskTel,SaskTel
+302520,Videotron,CANVT
+302500,Videotron,CANVT
+302610,Bell,Bell
+302490,Freedom,Freedom
+302220,TELUS,TELUS
+302620,Ice Wireless Inc,Ice
+302370,Fido,Fido
+302720,Rogers Wireless,ROGERS
+302480,SSi,SSi

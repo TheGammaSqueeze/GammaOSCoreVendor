@@ -1,0 +1,9 @@
+23403,Airtel-Vodafone,ATL-VOD
+23415,vodafone UK,voda UK
+23458,Manx Telecom,MANX
+23450,JT,JT
+23455,Sure,Sure
+23410,O2 - UK,O2 - UK
+23430,EE,EE
+23433,EE,EE
+23420,3 UK,3 UK

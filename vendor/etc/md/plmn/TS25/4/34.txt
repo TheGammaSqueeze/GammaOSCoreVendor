@@ -1,0 +1,4 @@
+43404,Beeline UZ,Beeline
+43405,UZB Ucell,Ucell
+43407,UMS-UZB,UMS
+43408,UzMobile,UzMobile

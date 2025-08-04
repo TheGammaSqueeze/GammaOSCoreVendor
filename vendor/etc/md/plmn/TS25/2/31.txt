@@ -1,0 +1,4 @@
+23106,O2 - SK,O2 - SK
+23101,Orange SK,Orange
+23102,Telekom SK,Telekom
+23103,SWAN SK,SWAN SK

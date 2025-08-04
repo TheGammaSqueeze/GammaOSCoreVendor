@@ -1,0 +1,4 @@
+42004,Zain KSA,Zain KSA
+42003,Mobily-KSA,Mobily
+42001,stc,stc
+42009,salam mobile,salam

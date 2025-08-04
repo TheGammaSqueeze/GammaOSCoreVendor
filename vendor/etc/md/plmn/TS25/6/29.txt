@@ -1,0 +1,2 @@
+62910,COG MTN,MTN-CG
+62901,Airtel,Airtel

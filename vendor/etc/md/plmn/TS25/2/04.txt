@@ -1,0 +1,4 @@
+20416,T-Mobile NL,TMO NL
+20408,NL KPN,NL KPN
+20412,NL Telfort,NL Tlfrt
+20404,vodafone NL,voda NL

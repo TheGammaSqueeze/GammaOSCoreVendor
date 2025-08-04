@@ -1,0 +1,3 @@
+61404,Orange,Orange
+61402,Airtel,Airtel
+61403,ETISALAT NER,ETISALAT

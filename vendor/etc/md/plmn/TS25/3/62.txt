@@ -1,0 +1,4 @@
+36291,CHIPPIE,CHIPPIE
+36251,Telcell GSM,Telcell
+36269,Digicel,Digicel
+36278,Kla,Kla

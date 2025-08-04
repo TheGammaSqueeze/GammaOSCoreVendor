@@ -1,0 +1,3 @@
+64005,Airtel,Airtel
+64002,TIGO - TZ,TIGO
+64004,VodaCom,VodaCom

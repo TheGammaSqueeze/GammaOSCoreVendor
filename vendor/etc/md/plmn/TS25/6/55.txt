@@ -1,0 +1,6 @@
+65505,TelkomSA-R,Telkom-R
+65502,TelkomSA,Telkom
+65507,Cell C,Cell C
+65501,VodaCom-SA,Vodacom
+65510,MTN-SA,MTN
+65538,rain,rain

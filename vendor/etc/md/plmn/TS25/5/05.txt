@@ -1,0 +1,7 @@
+50503,vodafone AU,voda AU
+50571,Telstra Mobile,Telstra
+50572,Telstra Mobile,Telstra
+50501,Telstra Mobile,Telstra
+50502,YES OPTUS,Optus
+50550,Pivotel,Pivotel
+50510,Norfolk Telecom,NT

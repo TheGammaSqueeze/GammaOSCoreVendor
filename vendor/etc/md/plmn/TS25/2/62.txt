@@ -1,0 +1,4 @@
+26203,o2 - de,o2 - de
+26207,o2 - de,o2 - de
+26202,vodafone.de,Vodafone
+26201,Telekom.de,TDG

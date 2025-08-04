@@ -1,0 +1,4 @@
+26006,Play,Play
+26003,Orange PL,Orange
+26002,T-Mobile.pl,TM PL
+26001,Plus,PLUS

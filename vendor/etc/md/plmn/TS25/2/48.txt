@@ -1,0 +1,3 @@
+24803,Tele2 EE,Tele2 EE
+24802,Elisa EE,ELISA
+24801,Telia,Telia

@@ -1,0 +1,6 @@
+41305,SRI AIRTEL,Airtel
+41301,Mobitel LK,Mobitel
+41308,Hutch,Hutch
+41303,Hutch,Hutch
+41309,Hutch,Hutch
+41302,DIALOG,DIALOG

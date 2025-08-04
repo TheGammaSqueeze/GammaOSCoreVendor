@@ -1,0 +1,57 @@
+40492,IND airtel,airtel
+40490,IND airtel,airtel
+40498,IND airtel,airtel
+40494,IND airtel,airtel
+40496,IND airtel,airtel
+40497,IND airtel,airtel
+40495,IND airtel,airtel
+40493,IND airtel,airtel
+40402,IND airtel,airtel
+40410,IND airtel,airtel
+40403,IND airtel,airtel
+40445,IND airtel,airtel
+40449,IND airtel,airtel
+40431,IND airtel,airtel
+40440,IND airtel,airtel
+40479,CellOne,CellOne
+40473,CellOne,CellOne
+40438,CellOne,CellOne
+40475,CellOne,CellOne
+40481,CellOne,CellOne
+40464,CellOne,CellOne
+40457,CellOne,CellOne
+40451,CellOne,CellOne
+40434,CellOne,CellOne
+40462,CellOne,CellOne
+40472,CellOne,CellOne
+40471,CellOne,CellOne
+40466,CellOne,CellOne
+40458,CellOne,CellOne
+40477,CellOne,CellOne
+40476,CellOne,CellOne
+40453,CellOne,CellOne
+40459,CellOne,CellOne
+40480,CellOne,CellOne
+40455,CellOne,CellOne
+40454,CellOne,CellOne
+40474,CellOne,CellOne
+40416,IND airtel,airtel
+40470,IND airtel,airtel
+40407,Vi India,Vi India
+40484,Vi India,Vi India
+40486,Vi India,Vi India
+40405,Vi India,Vi India
+40419,Vi India,Vi India
+40422,Vi India,Vi India
+40427,Vi India,Vi India
+40443,Vi India,Vi India
+40430,Vi India,Vi India
+40411,Vi India,Vi India
+40401,Vi India,Vi India
+40460,Vi India,Vi India
+40415,Vi India,Vi India
+40414,Vi India,Vi India
+40456,Vi India,Vi India
+40420,Vi India,Vi India
+40482,Vi India,Vi India
+40478,Vi India,Vi India

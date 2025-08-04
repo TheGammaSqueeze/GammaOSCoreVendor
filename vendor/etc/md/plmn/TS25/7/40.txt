@@ -1,0 +1,3 @@
+74000,Movistar,Movistar
+74001,CLARO,CLARO
+74002,CNT,CNT

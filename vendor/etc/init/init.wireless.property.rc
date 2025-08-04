@@ -1,9 +1,0 @@
-# Auto-generated
-# date: Mon Jun 16 10:14:19 CST 2025
-on init
-    setprop wifi.interface wlan0
-    setprop persist.vendor.wlan_vendor xradio
-    setprop wifi.direct.interface p2p-dev-wlan0
-    setprop persist.vendor.bluetooth_port /dev/ttyS1
-    setprop ro.bt.bdaddr_path /sys/class/addr_mgt/addr_bt
-    setprop persist.vendor.bluetooth_vendor xradio

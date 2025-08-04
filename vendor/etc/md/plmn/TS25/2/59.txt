@@ -1,0 +1,4 @@
+25905,Moldtelecom,Mtelecom
+25902,Moldcell,Moldcell
+25901,Orange MD,Orange
+25915,IDC,IDC

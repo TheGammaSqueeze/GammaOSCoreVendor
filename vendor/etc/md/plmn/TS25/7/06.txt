@@ -1,0 +1,4 @@
+70604,Movistar,Movistar
+70603,Tigo SV,Tigo
+70602,Digicel,DIGICEL
+70601,CLARO SLV,ClaroSLV

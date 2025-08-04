@@ -1,0 +1,2 @@
+54001,Our Telekom,Telekom
+54002,bmobile,bmobile

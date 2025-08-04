@@ -1,0 +1,7 @@
+24436,DNA - Telia FI,SuomenYV
+24412,FI DNA,DNA
+24403,FI DNA,DNA
+24491,Telia FI,Telia
+24421,FI elisa,elisa
+24405,FI elisa,elisa
+24414,FI AMT,FI AMT

@@ -1,0 +1,2 @@
+64304,VodaCom-MZ,VodaCom
+64301,MOZ - mCel,mCel

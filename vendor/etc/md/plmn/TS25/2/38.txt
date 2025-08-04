@@ -1,0 +1,5 @@
+23806,3 DK,3 DK
+23866,Telia-Telenor DK,TT DK
+23820,Telia DK,Telia
+23801,TDC,TDC
+23802,Telenor DK,TelenoDK

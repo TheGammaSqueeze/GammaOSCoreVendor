@@ -1,0 +1,3 @@
+65001,TNM,TNM
+65010,Airtel,Airtel
+65002,Access,Access

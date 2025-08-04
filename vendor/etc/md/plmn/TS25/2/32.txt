@@ -1,0 +1,7 @@
+23205,3 AT,3 AT
+23210,3 AT,3 AT
+23201,A1,A1
+23213,Magenta-T-,MagentaT
+23203,Magenta-T-,MagentaT
+23207,telering,telering
+23217,spusu,spusu
