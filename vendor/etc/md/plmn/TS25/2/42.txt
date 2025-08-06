@@ -1,3 +1,0 @@
-24201,N Telenor,TELENOR
-24202,N Telia,N Telia
-24214,N ice,ice

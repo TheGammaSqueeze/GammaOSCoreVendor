@@ -1,0 +1,237 @@
+{
+    "config":
+    {
+		"hw_platform": ["IDP", "IOT"],
+		"soc_id": ["417", "420", "444", "445", "469", "470", "518", "585", "586", "561", "562"]
+    },
+    "stk83xx_0":{
+    "owner": "sns_stk83xx",
+      ".accel":{
+        "owner": "sns_stk83xx",
+        ".config":{
+          "owner": "sns_stk83xx",
+          "is_dri":{ "type": "int", "ver": "0",
+            "data": "1"
+          },
+          "hw_id":{ "type": "int", "ver": "0",
+            "data": "0"
+          },
+          "res_idx":{ "type": "int", "ver": "0",
+            "data": "2"
+          },
+          "sync_stream":{ "type": "int", "ver": "0",
+            "data": "0"
+          }
+        }
+      },
+	  ".md":{
+        "owner": "sns_stk83xx",
+        ".config":{
+          "owner": "sns_stk83xx",
+          "is_dri":{ "type": "int", "ver": "0",
+            "data": "1"
+          },
+          "hw_id":{ "type": "int", "ver": "0",
+            "data": "0"
+          },
+          "res_idx":{ "type": "int", "ver": "0",
+            "data": "2"
+          },
+          "sync_stream":{ "type": "int", "ver": "0",
+            "data": "0"
+          }
+        }
+      },
+	  ".hd":{
+	    "owner": "sns_stk83xx",
+	    ".config":{
+	    	"owner": "sns_stk83xx",
+	    	"is_dri":{ "type": "int","ver": "0",
+	    	  "data": "0"
+	    	},
+	    	"hw_id":{ "type": "int","ver": "0",
+	    	  "data": "0"
+	    	},
+	    	"res_idx":{ "type": "int","ver": "0",
+	    	  "data": "0"
+	    	},
+	    	"sync_stream":{ "type": "int","ver": "0",
+	    	  "data": "0"
+	    	}
+	    }
+	  }
+    },
+    "stk83xx_0_platform": {
+        "owner": "sns_stk83xx",
+        ".config": {
+            "owner": "sns_stk83xx",
+            "bus_type": {
+                "type": "int",
+                "ver": "0",
+                "data": "0"
+            },
+            "bus_instance": {
+                "type": "int",
+                "ver": "0",
+                "data": "1"
+            },
+            "slave_config": {
+                "type": "int",
+                "ver": "0",
+                "data": "0x1F"
+            },
+            "min_bus_speed_khz": {
+                "type": "int",
+                "ver": "0",
+                "data": "400"
+            },
+            "max_bus_speed_khz": {
+                "type": "int",
+                "ver": "0",
+                "data": "400"
+            },
+            "reg_addr_type": {
+                "type": "int",
+                "ver": "0",
+                "data": "0"
+            },
+            "dri_irq_num": {
+                "type": "int",
+                "ver": "0",
+                "data": "32"
+            },
+            "irq_pull_type": {
+                "type": "int",
+                "ver": "0",
+                "data": "3"
+            },
+            "irq_is_chip_pin": {
+                "type": "int",
+                "ver": "0",
+                "data": "1"
+            },
+            "irq_drive_strength": {
+                "type": "int",
+                "ver": "0",
+                "data": "0"
+            },
+            "irq_trigger_type": {
+                "type": "int",
+                "ver": "0",
+                "data": "0"
+            },
+            "num_rail": {
+                "type": "int",
+                "ver": "0",
+                "data": "2"
+            },
+            "rail_on_state": {
+                "type": "int",
+                "ver": "0",
+                "data": "1"
+            },
+            "vdd_rail": {
+                "type": "str",
+                "ver": "0",
+                "data": "/pmic/client/sensor_vdd"
+            },
+            "vddio_rail": {
+                "type": "str",
+                "ver": "0",
+                "data": "/pmic/client/sensor_vddio"
+            },
+            "rigid_body_type": {
+                "type": "int",
+                "ver": "0",
+                "data": "0"
+            }
+        },
+        ".orient": {
+            "owner": "sns_stk83xx",
+            "x": {
+                "type": "str",
+                "ver": "0",
+                "data": "-y"
+            },
+            "y": {
+                "type": "str",
+                "ver": "0",
+                "data": "-x"
+            },
+            "z": {
+                "type": "str",
+                "ver": "0",
+                "data": "+z"
+            }
+        },
+        ".accel": {
+          "owner": "sns_stk83xx",
+          ".fac_cal": {
+            "owner": "sns_stk83xx",
+            ".corr_mat": {
+              "owner": "sns_stk83xx",
+              "0_0":{ "type": "flt", "ver": "0",
+                "data": "1.0"
+              },
+              "0_1":{ "type": "flt", "ver": "0",
+                "data": "0.0"
+              },
+              "0_2":{ "type": "flt", "ver": "0",
+                "data": "0.0"
+              },
+              "1_0":{ "type": "flt", "ver": "0",
+                "data": "0.0"
+              },
+              "1_1":{ "type": "flt", "ver": "0",
+                "data": "1.0"
+              },
+              "1_2":{ "type": "flt", "ver": "0",
+                "data": "0.0"
+              },
+              "2_0":{ "type": "flt", "ver": "0",
+                "data": "0.0"
+              },
+              "2_1":{ "type": "flt", "ver": "0",
+                "data": "0.0"
+              },
+              "2_2":{ "type": "flt", "ver": "0",
+                "data": "1.0"
+              }
+            },
+            ".bias": {
+              "owner": "sns_stk83xx",
+              "x":{ "type": "flt", "ver": "0",
+                "data": "0.0"
+              },
+              "y":{ "type": "flt", "ver": "0",
+                "data": "0.0"
+              },
+              "z":{ "type": "flt", "ver": "0",
+                "data": "0.0"
+              }
+            }
+          }
+        },
+        ".md": {
+            "owner": "sns_stk83xx",
+            ".config": {
+                "owner": "sns_stk83xx",
+                "thresh": {
+                    "type": "flt",
+                    "ver": "0",
+                    "data": "0.6132"
+                },
+                "disable": {
+                    "type": "int",
+                    "ver": "0",
+                    "data": "0"
+                },
+                "win": {
+                    "type": "flt",
+                    "ver": "0",
+                    "data": "0.0"
+                }
+            }
+        }
+    }
+}

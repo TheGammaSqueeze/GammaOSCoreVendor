@@ -1,3 +1,0 @@
-51505,PH Sun Cellular,SUN
-51503,SMART,SMART
-51502,Globe Telecom-PH,GLOBE

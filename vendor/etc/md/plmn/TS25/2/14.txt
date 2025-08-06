@@ -1,4 +1,0 @@
-21404,YOIGO,YOIGO
-21403,Orange SP,ESPRT
-21407,Movistar,Movistar
-21401,vodafone ES,voda ES

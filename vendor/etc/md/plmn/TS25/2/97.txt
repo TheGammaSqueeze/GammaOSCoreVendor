@@ -1,3 +1,0 @@
-29703,MTEL,MTEL
-29702,Telekom.me,T.me
-29701,One,One

@@ -1,4 +1,0 @@
-service vendor.gatekeeper /vendor/bin/hw/android.hardware.gatekeeper.libSoftGatekeeper
-    class early_hal
-    user system
-    group system

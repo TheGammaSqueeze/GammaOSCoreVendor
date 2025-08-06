@@ -1,2 +1,0 @@
-21201,vala,vala
-21210,Monaco,MONACO

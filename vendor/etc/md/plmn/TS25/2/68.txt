@@ -1,3 +1,0 @@
-26803,NOS,NOS
-26806,MEO,MEO
-26801,vodafone P,voda P

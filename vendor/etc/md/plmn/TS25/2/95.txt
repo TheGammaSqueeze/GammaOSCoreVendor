@@ -1,3 +1,0 @@
-29501,SwisscomFL,Swiss FL
-29502,Salt.li,Salt.li
-29505,FL1,FL1

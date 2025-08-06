@@ -1,3 +1,0 @@
-74807,Movistar,Movistar
-74810,CLARO URUGUAY,CLARO UY
-74801,Antel,Antel

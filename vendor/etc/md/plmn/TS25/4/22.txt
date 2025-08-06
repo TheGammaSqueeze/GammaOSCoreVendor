@@ -1,3 +1,0 @@
-42203,Ooredoo Oman,Ooredoo
-42202,Omantel,Omantel
-42206,Vodafone,Vodafone

@@ -1,2 +1,0 @@
-62601,STP CSTmovel,CSTmovel
-62602,Unitel STP,Unitel

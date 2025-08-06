@@ -1,3 +1,0 @@
-60802,SEN,Free
-60801,Orange SN,OrangeSN
-60803,SEN expresso,Expresso

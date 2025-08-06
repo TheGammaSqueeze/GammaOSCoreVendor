@@ -1,3 +1,0 @@
-64604,TELMA,TELMA
-64602,Orange,Orange
-64601,Airtel,Airtel

@@ -1,3 +1,0 @@
-27603,ALBtelecom,ATmobile
-27602,Voda AL,Voda AL
-27601,One.al,One.al

@@ -1,2 +1,0 @@
-61105,GINCL,Cellcom
-61101,Orange GN,ORANGEGN
