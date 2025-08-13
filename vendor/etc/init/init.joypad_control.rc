@@ -47,14 +47,14 @@ service gammapad_leftstickinvert_off /system/bin/sh -c "echo 0 > /data/GammaPad/
     oneshot
     disabled
 
-service gammapad_rightstickinvert_on /system/bin/sh -c "echo 1 > /data/GammaPad/RIGHTSTICKINVERT"
+service gammapad_rightstickinvert_on /system/bin/sh -c "echo 1 > /data/GammaPad/RIGHTSTICKINVERT_Z_RZ"
     class main
     user root
     group root system
     oneshot
     disabled
 
-service gammapad_rightstickinvert_off /system/bin/sh -c "echo 0 > /data/GammaPad/RIGHTSTICKINVERT"
+service gammapad_rightstickinvert_off /system/bin/sh -c "echo 0 > /data/GammaPad/RIGHTSTICKINVERT_Z_RZ"
     class main
     user root
     group root system
