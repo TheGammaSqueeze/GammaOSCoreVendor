@@ -57,6 +57,7 @@
 /etc/vintf/manifest/vendor.qti.hardware.power.powermodule.xml u:object_r:vendor_configs_file:s0
 /etc/vintf/manifest/c2_manifest_vendor_audio.xml u:object_r:vendor_configs_file:s0
 /etc/vintf/manifest/manifest_android.hardware.drm@1.4-service.clearkey.xml u:object_r:vendor_configs_file:s0
+/etc/vintf/manifest/manifest_android.hardware.drm@1.4-service.widevine.xml u:object_r:vendor_configs_file:s0
 /etc/vintf/manifest/dataconnection-saidl.xml u:object_r:vendor_configs_file:s0
 /etc/vintf/manifest/android.hardware.gnss@2.1-service-qti.xml u:object_r:vendor_configs_file:s0
 /etc/vintf/manifest/android.hardware.wifi.hostapd.xml u:object_r:vendor_configs_file:s0
@@ -378,6 +379,7 @@
 /etc/init/init.qdmastats.rc u:object_r:vendor_configs_file:s0
 /etc/init/vendor.qti.hardware.display.demura-service.rc u:object_r:vendor_configs_file:s0
 /etc/init/android.hardware.drm@1.4-service.clearkey.rc u:object_r:vendor_configs_file:s0
+/etc/init/android.hardware.drm@1.4-service-lazy.widevine.rc u:object_r:vendor_configs_file:s0
 /etc/init/vendor.dpmd.rc u:object_r:vendor_configs_file:s0
 /etc/init/android.hardware.keymaster@4.1-service-qti.rc u:object_r:vendor_configs_file:s0
 /etc/init/android.hardware.boot@1.2-service.rc u:object_r:vendor_configs_file:s0
@@ -1993,6 +1995,7 @@
 /bin/hw/vendor.qti.secure_element@1.2-service u:object_r:hal_secure_element_default_exec:s0
 /bin/hw/vendor.qti.hardware.AGMIPC@1.0-service u:object_r:vendor_agmservice_qti_exec:s0
 /bin/hw/android.hardware.drm@1.4-service.clearkey u:object_r:vendor_hal_drm_clearkey_exec:s0
+/bin/hw/android.hardware.drm@1.4-service-lazy.widevine u:object_r:vendor_hal_drm_widevine_exec:s0
 /bin/hw/qcrilNrd u:object_r:rild_exec:s0
 /bin/hw/wpa_supplicant u:object_r:hal_wifi_supplicant_default_exec:s0
 /bin/hw/android.hardware.health@2.1-service u:object_r:hal_health_default_exec:s0
@@ -3109,3 +3112,5 @@
 /lib64/libc2d30_bltlib.so u:object_r:vendor_file:s0
 /lib/libdmabufheap.so u:object_r:vendor_file:s0
 /lib64/libdmabufheap.so u:object_r:vendor_file:s0
+/lib/libwvhidl.so u:object_r:vendor_file:s0
+/lib64/libwvhidl.so u:object_r:vendor_file:s0
