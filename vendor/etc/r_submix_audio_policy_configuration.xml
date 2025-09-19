@@ -14,7 +14,7 @@
      limitations under the License.
 -->
 <!-- Remote Submix Audio Policy Configuration file -->
-<module name="r_submix" halVersion="2.0">
+<module name="r_submix" halVersion="2.0" >
     <attachedDevices>
         <item>Remote Submix In</item>
     </attachedDevices>

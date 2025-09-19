@@ -4,3 +4,6 @@ vendor/lib64/mt6897/libaiseg_model.so filter=lfs diff=lfs merge=lfs -text
 vendor/lib64/mt6897/libaibc_tuning_p2.so filter=lfs diff=lfs merge=lfs -text
 vendor/lib64/libmvpu_clc_14_cl_compiler_25.so filter=lfs diff=lfs merge=lfs -text
 vendor/lib64/libmvpu_clc_cl_compiler.so filter=lfs diff=lfs merge=lfs -text
+vendor/etc/models/noahark/gesture/tsn_gesture filter=lfs diff=lfs merge=lfs -text
+vendor/lib/libsprdfaceid.so filter=lfs diff=lfs merge=lfs -text
+vendor/lib64/libsprdfaceid.so filter=lfs diff=lfs merge=lfs -text

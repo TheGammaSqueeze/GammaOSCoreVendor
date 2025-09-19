@@ -16,5 +16,5 @@
 
 <!-- Feature for devices that support IMS via ImsService APIs. -->
 <permissions>
-    <!-- <feature name="android.hardware.telephony.ims" /> -->
+    <feature name="android.hardware.telephony.ims" />
 </permissions>

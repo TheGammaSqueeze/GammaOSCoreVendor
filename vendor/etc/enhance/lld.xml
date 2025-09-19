@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!--
+     SPDX-FileCopyrightText: 2016-2023 Unisoc (Shanghai) Technologies Co., Ltd
+     SPDX-License-Identifier: LicenseRef-Unisoc-General-1.0
+-->
+<root>
+  <enhance major_version="13"/>
+  <enhance version="2206281454"/>
+  <enhance chip_version="ums9620"/>
+  <lowlight_mode>
+    <ud>
+        <param u0="0"/>
+        <param u1="20"/>
+        <param u2="60"/>
+        <param u3="103"/>
+        <param u4="2"/>
+        <param u5="1"/>
+    </ud>
+    <cm>
+        <param c00="1024"/>
+        <param c01="0"/>
+        <param c02="0"/>
+        <param c03="0"/>
+        <param c10="0"/>
+        <param c11="980"/>
+        <param c12="0"/>
+        <param c13="0"/>
+        <param c20="0"/>
+        <param c21="0"/>
+        <param c22="960"/>
+        <param c23="0"/>
+    </cm>
+  </lowlight_mode>
+</root>

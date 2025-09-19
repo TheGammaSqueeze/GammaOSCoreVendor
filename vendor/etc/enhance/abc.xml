@@ -1,0 +1,1042 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!--
+     SPDX-FileCopyrightText: 2016-2023 Unisoc (Shanghai) Technologies Co., Ltd
+     SPDX-License-Identifier: LicenseRef-Unisoc-General-1.0
+-->
+<root>
+  <enhance major_version="13"/>
+  <enhance version="2109231448"/>
+  <enhance chip_version="ums9620"/>
+  <sunlight_protector>
+    <normal>
+      <config index="0">
+        <epf>
+            <param e0="100"/>
+            <param e1="300"/>
+            <param e2="0"/>
+            <param e3="-8"/>
+            <param e4="20"/>
+            <param e5="52"/>
+            <param e6="48"/>
+            <param e7="20"/>
+            <param e8="80"/>
+            <param e9="130"/>
+            <param e10="10"/>
+            <param e11="16"/>
+        </epf>
+        <slp>
+            <param s0="64"/>
+            <param s1="16"/>
+            <param s2="0"/>
+            <param s3="0"/>
+            <param s4="0"/>
+            <param s5="64"/>
+            <param s6="0"/>
+            <param s7="3"/>
+            <param s8="0"/>
+            <param s9="0"/>
+            <param s10="0"/>
+            <param s11="0"/>
+            <param s12="0"/>
+            <param s13="0"/>
+            <param s14="0"/>
+            <param s15="128"/>
+            <param s16="64"/>
+            <param s17="32"/>
+            <param s18="0"/>
+            <param s19="235"/>
+            <param s20="200"/>
+            <param s21="180"/>
+            <param s22="160"/>
+            <param s23="120"/>
+            <param s24="60"/>
+            <param s25="20"/>
+            <param s26="252"/>
+            <param s27="0"/>
+            <param s28="0"/>
+            <param s29="180"/>
+            <param s30="64"/>
+            <param s31="0"/>
+            <param s32="0"/>
+            <param s33="0"/>
+            <param s34="0"/>
+            <param s35="200"/>
+            <param s36="100"/>
+        </slp>
+        <slp_mapping_table>
+            <item a="2000" s21="0"/>
+            <item a="3500" s21="16"/>
+            <item a="4000" s21="20"/>
+            <item a="4500" s21="24"/>
+            <item a="5000" s21="26"/>
+            <item a="5500" s21="28"/>
+            <item a="6000" s21="30"/>
+            <item a="7000" s21="32"/>
+            <item a="8000" s21="34"/>
+            <item a="10000" s21="36"/>
+            <item a="15000" s21="40"/>
+            <item a="20000" s21="42"/>
+        </slp_mapping_table>
+      </config>
+      <config index="1">
+        <epf>
+            <param e0="100"/>
+            <param e1="300"/>
+            <param e2="0"/>
+            <param e3="-8"/>
+            <param e4="20"/>
+            <param e5="52"/>
+            <param e6="48"/>
+            <param e7="20"/>
+            <param e8="80"/>
+            <param e9="130"/>
+            <param e10="10"/>
+            <param e11="16"/>
+        </epf>
+        <slp>
+            <param s0="64"/>
+            <param s1="16"/>
+            <param s2="0"/>
+            <param s3="0"/>
+            <param s4="0"/>
+            <param s5="64"/>
+            <param s6="0"/>
+            <param s7="3"/>
+            <param s8="0"/>
+            <param s9="0"/>
+            <param s10="0"/>
+            <param s11="0"/>
+            <param s12="0"/>
+            <param s13="0"/>
+            <param s14="0"/>
+            <param s15="128"/>
+            <param s16="64"/>
+            <param s17="32"/>
+            <param s18="0"/>
+            <param s19="235"/>
+            <param s20="200"/>
+            <param s21="180"/>
+            <param s22="160"/>
+            <param s23="120"/>
+            <param s24="60"/>
+            <param s25="20"/>
+            <param s26="252"/>
+            <param s27="0"/>
+            <param s28="0"/>
+            <param s29="180"/>
+            <param s30="64"/>
+            <param s31="0"/>
+            <param s32="0"/>
+            <param s33="0"/>
+            <param s34="0"/>
+            <param s35="200"/>
+            <param s36="100"/>
+        </slp>
+        <slp_mapping_table>
+            <item a="2000" s21="0"/>
+            <item a="3500" s21="16"/>
+            <item a="4000" s21="20"/>
+            <item a="4500" s21="24"/>
+            <item a="5000" s21="26"/>
+            <item a="5500" s21="28"/>
+            <item a="6000" s21="30"/>
+            <item a="7000" s21="32"/>
+            <item a="8000" s21="34"/>
+            <item a="10000" s21="36"/>
+            <item a="15000" s21="40"/>
+            <item a="20000" s21="42"/>
+        </slp_mapping_table>
+      </config>
+      <config index="2">
+        <epf>
+            <param e0="100"/>
+            <param e1="300"/>
+            <param e2="0"/>
+            <param e3="-8"/>
+            <param e4="20"/>
+            <param e5="52"/>
+            <param e6="48"/>
+            <param e7="20"/>
+            <param e8="80"/>
+            <param e9="130"/>
+            <param e10="10"/>
+            <param e11="16"/>
+        </epf>
+        <slp>
+            <param s0="64"/>
+            <param s1="16"/>
+            <param s2="0"/>
+            <param s3="0"/>
+            <param s4="0"/>
+            <param s5="64"/>
+            <param s6="0"/>
+            <param s7="3"/>
+            <param s8="0"/>
+            <param s9="0"/>
+            <param s10="0"/>
+            <param s11="0"/>
+            <param s12="0"/>
+            <param s13="0"/>
+            <param s14="0"/>
+            <param s15="128"/>
+            <param s16="64"/>
+            <param s17="32"/>
+            <param s18="0"/>
+            <param s19="235"/>
+            <param s20="200"/>
+            <param s21="180"/>
+            <param s22="160"/>
+            <param s23="120"/>
+            <param s24="60"/>
+            <param s25="20"/>
+            <param s26="252"/>
+            <param s27="0"/>
+            <param s28="0"/>
+            <param s29="180"/>
+            <param s30="64"/>
+            <param s31="0"/>
+            <param s32="0"/>
+            <param s33="0"/>
+            <param s34="0"/>
+            <param s35="200"/>
+            <param s36="100"/>
+        </slp>
+        <slp_mapping_table>
+            <item a="2000" s21="0"/>
+            <item a="3500" s21="16"/>
+            <item a="4000" s21="20"/>
+            <item a="4500" s21="24"/>
+            <item a="5000" s21="26"/>
+            <item a="5500" s21="28"/>
+            <item a="6000" s21="30"/>
+            <item a="7000" s21="32"/>
+            <item a="8000" s21="34"/>
+            <item a="10000" s21="36"/>
+            <item a="15000" s21="40"/>
+            <item a="20000" s21="42"/>
+        </slp_mapping_table>
+      </config>
+      <config index="3">
+        <epf>
+            <param e0="100"/>
+            <param e1="300"/>
+            <param e2="0"/>
+            <param e3="-8"/>
+            <param e4="20"/>
+            <param e5="52"/>
+            <param e6="48"/>
+            <param e7="20"/>
+            <param e8="80"/>
+            <param e9="130"/>
+            <param e10="10"/>
+            <param e11="16"/>
+        </epf>
+        <slp>
+            <param s0="64"/>
+            <param s1="16"/>
+            <param s2="0"/>
+            <param s3="0"/>
+            <param s4="0"/>
+            <param s5="64"/>
+            <param s6="0"/>
+            <param s7="3"/>
+            <param s8="0"/>
+            <param s9="0"/>
+            <param s10="0"/>
+            <param s11="0"/>
+            <param s12="0"/>
+            <param s13="0"/>
+            <param s14="0"/>
+            <param s15="128"/>
+            <param s16="64"/>
+            <param s17="32"/>
+            <param s18="0"/>
+            <param s19="235"/>
+            <param s20="200"/>
+            <param s21="180"/>
+            <param s22="160"/>
+            <param s23="120"/>
+            <param s24="60"/>
+            <param s25="20"/>
+            <param s26="252"/>
+            <param s27="0"/>
+            <param s28="0"/>
+            <param s29="180"/>
+            <param s30="64"/>
+            <param s31="0"/>
+            <param s32="0"/>
+            <param s33="0"/>
+            <param s34="0"/>
+            <param s35="200"/>
+            <param s36="100"/>
+        </slp>
+        <slp_mapping_table>
+            <item a="2000" s21="0"/>
+            <item a="3500" s21="16"/>
+            <item a="4000" s21="20"/>
+            <item a="4500" s21="24"/>
+            <item a="5000" s21="26"/>
+            <item a="5500" s21="28"/>
+            <item a="6000" s21="30"/>
+            <item a="7000" s21="32"/>
+            <item a="8000" s21="34"/>
+            <item a="10000" s21="36"/>
+            <item a="15000" s21="40"/>
+            <item a="20000" s21="42"/>
+        </slp_mapping_table>
+      </config>
+      <config index="4">
+        <epf>
+            <param e0="100"/>
+            <param e1="300"/>
+            <param e2="0"/>
+            <param e3="-8"/>
+            <param e4="20"/>
+            <param e5="52"/>
+            <param e6="48"/>
+            <param e7="20"/>
+            <param e8="80"/>
+            <param e9="130"/>
+            <param e10="10"/>
+            <param e11="16"/>
+        </epf>
+        <slp>
+            <param s0="64"/>
+            <param s1="16"/>
+            <param s2="0"/>
+            <param s3="0"/>
+            <param s4="0"/>
+            <param s5="64"/>
+            <param s6="0"/>
+            <param s7="3"/>
+            <param s8="0"/>
+            <param s9="0"/>
+            <param s10="0"/>
+            <param s11="0"/>
+            <param s12="0"/>
+            <param s13="0"/>
+            <param s14="0"/>
+            <param s15="128"/>
+            <param s16="64"/>
+            <param s17="32"/>
+            <param s18="0"/>
+            <param s19="235"/>
+            <param s20="200"/>
+            <param s21="180"/>
+            <param s22="160"/>
+            <param s23="120"/>
+            <param s24="60"/>
+            <param s25="20"/>
+            <param s26="252"/>
+            <param s27="0"/>
+            <param s28="0"/>
+            <param s29="180"/>
+            <param s30="64"/>
+            <param s31="0"/>
+            <param s32="0"/>
+            <param s33="0"/>
+            <param s34="0"/>
+            <param s35="200"/>
+            <param s36="100"/>
+        </slp>
+        <slp_mapping_table>
+            <item a="2000" s21="0"/>
+            <item a="3500" s21="16"/>
+            <item a="4000" s21="20"/>
+            <item a="4500" s21="24"/>
+            <item a="5000" s21="26"/>
+            <item a="5500" s21="28"/>
+            <item a="6000" s21="30"/>
+            <item a="7000" s21="32"/>
+            <item a="8000" s21="34"/>
+            <item a="10000" s21="36"/>
+            <item a="15000" s21="40"/>
+            <item a="20000" s21="42"/>
+        </slp_mapping_table>
+      </config>
+      <config index="5">
+        <epf>
+            <param e0="100"/>
+            <param e1="300"/>
+            <param e2="0"/>
+            <param e3="-8"/>
+            <param e4="20"/>
+            <param e5="52"/>
+            <param e6="48"/>
+            <param e7="20"/>
+            <param e8="80"/>
+            <param e9="130"/>
+            <param e10="10"/>
+            <param e11="16"/>
+        </epf>
+        <slp>
+            <param s0="64"/>
+            <param s1="16"/>
+            <param s2="0"/>
+            <param s3="0"/>
+            <param s4="0"/>
+            <param s5="64"/>
+            <param s6="0"/>
+            <param s7="3"/>
+            <param s8="0"/>
+            <param s9="0"/>
+            <param s10="0"/>
+            <param s11="0"/>
+            <param s12="0"/>
+            <param s13="0"/>
+            <param s14="0"/>
+            <param s15="128"/>
+            <param s16="64"/>
+            <param s17="32"/>
+            <param s18="0"/>
+            <param s19="235"/>
+            <param s20="200"/>
+            <param s21="180"/>
+            <param s22="160"/>
+            <param s23="120"/>
+            <param s24="60"/>
+            <param s25="20"/>
+            <param s26="252"/>
+            <param s27="0"/>
+            <param s28="0"/>
+            <param s29="180"/>
+            <param s30="64"/>
+            <param s31="0"/>
+            <param s32="0"/>
+            <param s33="0"/>
+            <param s34="0"/>
+            <param s35="200"/>
+            <param s36="100"/>
+        </slp>
+        <slp_mapping_table>
+            <item a="2000" s21="0"/>
+            <item a="3500" s21="16"/>
+            <item a="4000" s21="20"/>
+            <item a="4500" s21="24"/>
+            <item a="5000" s21="26"/>
+            <item a="5500" s21="28"/>
+            <item a="6000" s21="30"/>
+            <item a="7000" s21="32"/>
+            <item a="8000" s21="34"/>
+            <item a="10000" s21="36"/>
+            <item a="15000" s21="40"/>
+            <item a="20000" s21="42"/>
+        </slp_mapping_table>
+      </config>
+    </normal>
+    <low_power>
+      <config index="0">
+        <epf>
+            <param e0="100"/>
+            <param e1="300"/>
+            <param e2="0"/>
+            <param e3="-8"/>
+            <param e4="20"/>
+            <param e5="52"/>
+            <param e6="48"/>
+            <param e7="20"/>
+            <param e8="80"/>
+            <param e9="130"/>
+            <param e10="10"/>
+            <param e11="16"/>
+        </epf>
+        <slp>
+            <param s0="64"/>
+            <param s1="16"/>
+            <param s2="0"/>
+            <param s3="0"/>
+            <param s4="0"/>
+            <param s5="64"/>
+            <param s6="0"/>
+            <param s7="3"/>
+            <param s8="0"/>
+            <param s9="0"/>
+            <param s10="0"/>
+            <param s11="0"/>
+            <param s12="0"/>
+            <param s13="0"/>
+            <param s14="0"/>
+            <param s15="128"/>
+            <param s16="64"/>
+            <param s17="32"/>
+            <param s18="0"/>
+            <param s19="235"/>
+            <param s20="200"/>
+            <param s21="180"/>
+            <param s22="160"/>
+            <param s23="120"/>
+            <param s24="60"/>
+            <param s25="20"/>
+            <param s26="252"/>
+            <param s27="0"/>
+            <param s28="0"/>
+            <param s29="180"/>
+            <param s30="64"/>
+            <param s31="0"/>
+            <param s32="0"/>
+            <param s33="0"/>
+            <param s34="0"/>
+            <param s35="200"/>
+            <param s36="100"/>
+        </slp>
+        <slp_mapping_table>
+            <item a="2000" s21="0"/>
+            <item a="3500" s21="16"/>
+            <item a="4000" s21="20"/>
+            <item a="4500" s21="24"/>
+            <item a="5000" s21="26"/>
+            <item a="5500" s21="28"/>
+            <item a="6000" s21="30"/>
+            <item a="7000" s21="32"/>
+            <item a="8000" s21="34"/>
+            <item a="10000" s21="36"/>
+            <item a="15000" s21="40"/>
+            <item a="20000" s21="42"/>
+        </slp_mapping_table>
+      </config>
+      <config index="1">
+        <epf>
+            <param e0="100"/>
+            <param e1="300"/>
+            <param e2="0"/>
+            <param e3="-8"/>
+            <param e4="20"/>
+            <param e5="52"/>
+            <param e6="48"/>
+            <param e7="20"/>
+            <param e8="80"/>
+            <param e9="130"/>
+            <param e10="10"/>
+            <param e11="16"/>
+        </epf>
+        <slp>
+            <param s0="64"/>
+            <param s1="16"/>
+            <param s2="0"/>
+            <param s3="0"/>
+            <param s4="0"/>
+            <param s5="64"/>
+            <param s6="0"/>
+            <param s7="3"/>
+            <param s8="0"/>
+            <param s9="0"/>
+            <param s10="0"/>
+            <param s11="0"/>
+            <param s12="0"/>
+            <param s13="0"/>
+            <param s14="0"/>
+            <param s15="128"/>
+            <param s16="64"/>
+            <param s17="32"/>
+            <param s18="0"/>
+            <param s19="235"/>
+            <param s20="200"/>
+            <param s21="180"/>
+            <param s22="160"/>
+            <param s23="120"/>
+            <param s24="60"/>
+            <param s25="20"/>
+            <param s26="252"/>
+            <param s27="0"/>
+            <param s28="0"/>
+            <param s29="180"/>
+            <param s30="64"/>
+            <param s31="0"/>
+            <param s32="0"/>
+            <param s33="0"/>
+            <param s34="0"/>
+            <param s35="200"/>
+            <param s36="100"/>
+        </slp>
+        <slp_mapping_table>
+            <item a="2000" s21="0"/>
+            <item a="3500" s21="16"/>
+            <item a="4000" s21="20"/>
+            <item a="4500" s21="24"/>
+            <item a="5000" s21="26"/>
+            <item a="5500" s21="28"/>
+            <item a="6000" s21="30"/>
+            <item a="7000" s21="32"/>
+            <item a="8000" s21="34"/>
+            <item a="10000" s21="36"/>
+            <item a="15000" s21="40"/>
+            <item a="20000" s21="42"/>
+        </slp_mapping_table>
+      </config>
+      <config index="2">
+        <epf>
+            <param e0="100"/>
+            <param e1="300"/>
+            <param e2="0"/>
+            <param e3="-8"/>
+            <param e4="20"/>
+            <param e5="52"/>
+            <param e6="48"/>
+            <param e7="20"/>
+            <param e8="80"/>
+            <param e9="130"/>
+            <param e10="10"/>
+            <param e11="16"/>
+        </epf>
+        <slp>
+            <param s0="64"/>
+            <param s1="16"/>
+            <param s2="0"/>
+            <param s3="0"/>
+            <param s4="0"/>
+            <param s5="64"/>
+            <param s6="0"/>
+            <param s7="3"/>
+            <param s8="0"/>
+            <param s9="0"/>
+            <param s10="0"/>
+            <param s11="0"/>
+            <param s12="0"/>
+            <param s13="0"/>
+            <param s14="0"/>
+            <param s15="128"/>
+            <param s16="64"/>
+            <param s17="32"/>
+            <param s18="0"/>
+            <param s19="235"/>
+            <param s20="200"/>
+            <param s21="180"/>
+            <param s22="160"/>
+            <param s23="120"/>
+            <param s24="60"/>
+            <param s25="20"/>
+            <param s26="252"/>
+            <param s27="0"/>
+            <param s28="0"/>
+            <param s29="180"/>
+            <param s30="64"/>
+            <param s31="0"/>
+            <param s32="0"/>
+            <param s33="0"/>
+            <param s34="0"/>
+            <param s35="200"/>
+            <param s36="100"/>
+        </slp>
+        <slp_mapping_table>
+            <item a="2000" s21="0"/>
+            <item a="3500" s21="16"/>
+            <item a="4000" s21="20"/>
+            <item a="4500" s21="24"/>
+            <item a="5000" s21="26"/>
+            <item a="5500" s21="28"/>
+            <item a="6000" s21="30"/>
+            <item a="7000" s21="32"/>
+            <item a="8000" s21="34"/>
+            <item a="10000" s21="36"/>
+            <item a="15000" s21="40"/>
+            <item a="20000" s21="42"/>
+        </slp_mapping_table>
+      </config>
+      <config index="3">
+        <epf>
+            <param e0="100"/>
+            <param e1="300"/>
+            <param e2="0"/>
+            <param e3="-8"/>
+            <param e4="20"/>
+            <param e5="52"/>
+            <param e6="48"/>
+            <param e7="20"/>
+            <param e8="80"/>
+            <param e9="130"/>
+            <param e10="10"/>
+            <param e11="16"/>
+        </epf>
+        <slp>
+            <param s0="64"/>
+            <param s1="16"/>
+            <param s2="0"/>
+            <param s3="0"/>
+            <param s4="0"/>
+            <param s5="64"/>
+            <param s6="0"/>
+            <param s7="3"/>
+            <param s8="0"/>
+            <param s9="0"/>
+            <param s10="0"/>
+            <param s11="0"/>
+            <param s12="0"/>
+            <param s13="0"/>
+            <param s14="0"/>
+            <param s15="128"/>
+            <param s16="64"/>
+            <param s17="32"/>
+            <param s18="0"/>
+            <param s19="235"/>
+            <param s20="200"/>
+            <param s21="180"/>
+            <param s22="160"/>
+            <param s23="120"/>
+            <param s24="60"/>
+            <param s25="20"/>
+            <param s26="252"/>
+            <param s27="0"/>
+            <param s28="0"/>
+            <param s29="180"/>
+            <param s30="64"/>
+            <param s31="0"/>
+            <param s32="0"/>
+            <param s33="0"/>
+            <param s34="0"/>
+            <param s35="200"/>
+            <param s36="100"/>
+        </slp>
+        <slp_mapping_table>
+            <item a="2000" s21="0"/>
+            <item a="3500" s21="16"/>
+            <item a="4000" s21="20"/>
+            <item a="4500" s21="24"/>
+            <item a="5000" s21="26"/>
+            <item a="5500" s21="28"/>
+            <item a="6000" s21="30"/>
+            <item a="7000" s21="32"/>
+            <item a="8000" s21="34"/>
+            <item a="10000" s21="36"/>
+            <item a="15000" s21="40"/>
+            <item a="20000" s21="42"/>
+        </slp_mapping_table>
+      </config>
+      <config index="4">
+        <epf>
+            <param e0="100"/>
+            <param e1="300"/>
+            <param e2="0"/>
+            <param e3="-8"/>
+            <param e4="20"/>
+            <param e5="52"/>
+            <param e6="48"/>
+            <param e7="20"/>
+            <param e8="80"/>
+            <param e9="130"/>
+            <param e10="10"/>
+            <param e11="16"/>
+        </epf>
+        <slp>
+            <param s0="64"/>
+            <param s1="16"/>
+            <param s2="0"/>
+            <param s3="0"/>
+            <param s4="0"/>
+            <param s5="64"/>
+            <param s6="0"/>
+            <param s7="3"/>
+            <param s8="0"/>
+            <param s9="0"/>
+            <param s10="0"/>
+            <param s11="0"/>
+            <param s12="0"/>
+            <param s13="0"/>
+            <param s14="0"/>
+            <param s15="128"/>
+            <param s16="64"/>
+            <param s17="32"/>
+            <param s18="0"/>
+            <param s19="235"/>
+            <param s20="200"/>
+            <param s21="180"/>
+            <param s22="160"/>
+            <param s23="120"/>
+            <param s24="60"/>
+            <param s25="20"/>
+            <param s26="252"/>
+            <param s27="0"/>
+            <param s28="0"/>
+            <param s29="180"/>
+            <param s30="64"/>
+            <param s31="0"/>
+            <param s32="0"/>
+            <param s33="0"/>
+            <param s34="0"/>
+            <param s35="200"/>
+            <param s36="100"/>
+        </slp>
+        <slp_mapping_table>
+            <item a="2000" s21="0"/>
+            <item a="3500" s21="16"/>
+            <item a="4000" s21="20"/>
+            <item a="4500" s21="24"/>
+            <item a="5000" s21="26"/>
+            <item a="5500" s21="28"/>
+            <item a="6000" s21="30"/>
+            <item a="7000" s21="32"/>
+            <item a="8000" s21="34"/>
+            <item a="10000" s21="36"/>
+            <item a="15000" s21="40"/>
+            <item a="20000" s21="42"/>
+        </slp_mapping_table>
+      </config>
+      <config index="5">
+        <epf>
+            <param e0="100"/>
+            <param e1="300"/>
+            <param e2="0"/>
+            <param e3="-8"/>
+            <param e4="20"/>
+            <param e5="52"/>
+            <param e6="48"/>
+            <param e7="20"/>
+            <param e8="80"/>
+            <param e9="130"/>
+            <param e10="10"/>
+            <param e11="16"/>
+        </epf>
+        <slp>
+            <param s0="64"/>
+            <param s1="16"/>
+            <param s2="0"/>
+            <param s3="0"/>
+            <param s4="0"/>
+            <param s5="64"/>
+            <param s6="0"/>
+            <param s7="3"/>
+            <param s8="0"/>
+            <param s9="0"/>
+            <param s10="0"/>
+            <param s11="0"/>
+            <param s12="0"/>
+            <param s13="0"/>
+            <param s14="0"/>
+            <param s15="128"/>
+            <param s16="64"/>
+            <param s17="32"/>
+            <param s18="0"/>
+            <param s19="235"/>
+            <param s20="200"/>
+            <param s21="180"/>
+            <param s22="160"/>
+            <param s23="120"/>
+            <param s24="60"/>
+            <param s25="20"/>
+            <param s26="252"/>
+            <param s27="0"/>
+            <param s28="0"/>
+            <param s29="180"/>
+            <param s30="64"/>
+            <param s31="0"/>
+            <param s32="0"/>
+            <param s33="0"/>
+            <param s34="0"/>
+            <param s35="200"/>
+            <param s36="100"/>
+        </slp>
+        <slp_mapping_table>
+            <item a="2000" s21="0"/>
+            <item a="3500" s21="16"/>
+            <item a="4000" s21="20"/>
+            <item a="4500" s21="24"/>
+            <item a="5000" s21="26"/>
+            <item a="5500" s21="28"/>
+            <item a="6000" s21="30"/>
+            <item a="7000" s21="32"/>
+            <item a="8000" s21="34"/>
+            <item a="10000" s21="36"/>
+            <item a="15000" s21="40"/>
+            <item a="20000" s21="42"/>
+        </slp_mapping_table>
+      </config>
+    </low_power>
+  </sunlight_protector>
+  <super_resolution>
+    <normal>
+      <config index="0">
+        <epf>
+            <param e0="100"/>
+            <param e1="300"/>
+            <param e2="0"/>
+            <param e3="-8"/>
+            <param e4="20"/>
+            <param e5="52"/>
+            <param e6="48"/>
+            <param e7="20"/>
+            <param e8="80"/>
+            <param e9="130"/>
+            <param e10="10"/>
+            <param e11="16"/>
+        </epf>
+      </config>
+      <config index="1">
+        <epf>
+            <param e0="100"/>
+            <param e1="300"/>
+            <param e2="0"/>
+            <param e3="-8"/>
+            <param e4="20"/>
+            <param e5="52"/>
+            <param e6="48"/>
+            <param e7="20"/>
+            <param e8="80"/>
+            <param e9="130"/>
+            <param e10="10"/>
+            <param e11="16"/>
+        </epf>
+      </config>
+      <config index="2">
+        <epf>
+            <param e0="100"/>
+            <param e1="300"/>
+            <param e2="0"/>
+            <param e3="-8"/>
+            <param e4="20"/>
+            <param e5="52"/>
+            <param e6="48"/>
+            <param e7="20"/>
+            <param e8="80"/>
+            <param e9="130"/>
+            <param e10="10"/>
+            <param e11="16"/>
+        </epf>
+      </config>
+      <config index="3">
+        <epf>
+            <param e0="100"/>
+            <param e1="300"/>
+            <param e2="0"/>
+            <param e3="-8"/>
+            <param e4="20"/>
+            <param e5="52"/>
+            <param e6="48"/>
+            <param e7="20"/>
+            <param e8="80"/>
+            <param e9="130"/>
+            <param e10="10"/>
+            <param e11="16"/>
+        </epf>
+      </config>
+      <config index="4">
+        <epf>
+            <param e0="100"/>
+            <param e1="300"/>
+            <param e2="0"/>
+            <param e3="-8"/>
+            <param e4="20"/>
+            <param e5="52"/>
+            <param e6="48"/>
+            <param e7="20"/>
+            <param e8="80"/>
+            <param e9="130"/>
+            <param e10="10"/>
+            <param e11="16"/>
+        </epf>
+      </config>
+      <config index="5">
+        <epf>
+            <param e0="100"/>
+            <param e1="300"/>
+            <param e2="0"/>
+            <param e3="-8"/>
+            <param e4="20"/>
+            <param e5="52"/>
+            <param e6="48"/>
+            <param e7="20"/>
+            <param e8="80"/>
+            <param e9="130"/>
+            <param e10="10"/>
+            <param e11="16"/>
+        </epf>
+      </config>
+    </normal>
+    <low_power>
+      <config index="0">
+        <epf>
+            <param e0="100"/>
+            <param e1="300"/>
+            <param e2="0"/>
+            <param e3="-8"/>
+            <param e4="20"/>
+            <param e5="52"/>
+            <param e6="48"/>
+            <param e7="20"/>
+            <param e8="80"/>
+            <param e9="130"/>
+            <param e10="10"/>
+            <param e11="16"/>
+        </epf>
+      </config>
+      <config index="1">
+        <epf>
+            <param e0="100"/>
+            <param e1="300"/>
+            <param e2="0"/>
+            <param e3="-8"/>
+            <param e4="20"/>
+            <param e5="52"/>
+            <param e6="48"/>
+            <param e7="20"/>
+            <param e8="80"/>
+            <param e9="130"/>
+            <param e10="10"/>
+            <param e11="16"/>
+        </epf>
+      </config>
+      <config index="2">
+        <epf>
+            <param e0="100"/>
+            <param e1="300"/>
+            <param e2="0"/>
+            <param e3="-8"/>
+            <param e4="20"/>
+            <param e5="52"/>
+            <param e6="48"/>
+            <param e7="20"/>
+            <param e8="80"/>
+            <param e9="130"/>
+            <param e10="10"/>
+            <param e11="16"/>
+        </epf>
+      </config>
+      <config index="3">
+        <epf>
+            <param e0="100"/>
+            <param e1="300"/>
+            <param e2="0"/>
+            <param e3="-8"/>
+            <param e4="20"/>
+            <param e5="52"/>
+            <param e6="48"/>
+            <param e7="20"/>
+            <param e8="80"/>
+            <param e9="130"/>
+            <param e10="10"/>
+            <param e11="16"/>
+        </epf>
+      </config>
+      <config index="4">
+        <epf>
+            <param e0="100"/>
+            <param e1="300"/>
+            <param e2="0"/>
+            <param e3="-8"/>
+            <param e4="20"/>
+            <param e5="52"/>
+            <param e6="48"/>
+            <param e7="20"/>
+            <param e8="80"/>
+            <param e9="130"/>
+            <param e10="10"/>
+            <param e11="16"/>
+        </epf>
+      </config>
+      <config index="5">
+        <epf>
+            <param e0="100"/>
+            <param e1="300"/>
+            <param e2="0"/>
+            <param e3="-8"/>
+            <param e4="20"/>
+            <param e5="52"/>
+            <param e6="48"/>
+            <param e7="20"/>
+            <param e8="80"/>
+            <param e9="130"/>
+            <param e10="10"/>
+            <param e11="16"/>
+        </epf>
+      </config>
+    </low_power>
+  </super_resolution>
+</root>

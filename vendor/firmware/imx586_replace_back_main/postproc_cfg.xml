@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<postproc_cfg>
+    <sensor_name>imx586_replace_back_main</sensor_name>
+    <versionid>0x000D0013</versionid>
+    <scenario_num>23</scenario_num>
+    <scenario alia="com">
+        <id>0x0000000000000000</id>
+        <postprocfile_num>1</postprocfile_num>
+        <postprocfile name="mfnr5.2.xml">
+            <param>com</param>
+        </postprocfile>
+    </scenario>
+    <scenario alia="prv1">
+        <id>0x0000020000000000</id>
+        <postprocfile_num>0</postprocfile_num>
+    </scenario>
+    <scenario alia="cap0">
+        <id>0x0000050000000000</id>
+        <postprocfile_num>0</postprocfile_num>
+    </scenario>
+    <scenario alia="cap1">
+        <id>0x0000060000000000</id>
+        <postprocfile_num>0</postprocfile_num>
+    </scenario>
+    <scenario alia="video1">
+        <id>0x00000A0000000000</id>
+        <postprocfile_num>0</postprocfile_num>
+    </scenario>
+    <scenario alia="video3_sm120">
+        <id>0x00000C0800000000</id>
+        <postprocfile_num>0</postprocfile_num>
+    </scenario>
+    <scenario alia="prv1_night">
+        <id>0x0000020100000000</id>
+        <postprocfile_num>0</postprocfile_num>
+    </scenario>
+    <scenario alia="cap1_night">
+        <id>0x0000060100000000</id>
+        <postprocfile_num>0</postprocfile_num>
+    </scenario>
+    <scenario alia="prv1_hdr">
+        <id>0x0000020001000000</id>
+        <postprocfile_num>0</postprocfile_num>
+    </scenario>
+    <scenario alia="cap1_hdr">
+        <id>0x0000060001000000</id>
+        <postprocfile_num>0</postprocfile_num>
+    </scenario>
+    <scenario alia="prv1_flash">
+        <id>0x0000020002000000</id>
+        <postprocfile_num>0</postprocfile_num>
+    </scenario>
+    <scenario alia="cap1_flash">
+        <id>0x0000060002000000</id>
+        <postprocfile_num>0</postprocfile_num>
+    </scenario>
+    <scenario alia="prv1_panorama">
+        <id>0x0000020400000000</id>
+        <postprocfile_num>0</postprocfile_num>
+    </scenario>
+    <scenario alia="wechat_prv1">
+        <id>0x0001020000000000</id>
+        <postprocfile_num>0</postprocfile_num>
+    </scenario>
+    <scenario alia="facebook_prv1">
+        <id>0x0006020000000000</id>
+        <postprocfile_num>0</postprocfile_num>
+    </scenario>
+    <scenario alia="facebook_cap1">
+        <id>0x0006060000000000</id>
+        <postprocfile_num>0</postprocfile_num>
+    </scenario>
+    <scenario alia="messenger_prv1">
+        <id>0x0009020000000000</id>
+        <postprocfile_num>0</postprocfile_num>
+    </scenario>
+    <scenario alia="messenger_cap1">
+        <id>0x0009060000000000</id>
+        <postprocfile_num>0</postprocfile_num>
+    </scenario>
+    <scenario alia="thirdapp_prv1">
+        <id>0x000A020000000000</id>
+        <postprocfile_num>0</postprocfile_num>
+    </scenario>
+    <scenario alia="thirdapp_cap1">
+        <id>0x000A060000000000</id>
+        <postprocfile_num>0</postprocfile_num>
+    </scenario>
+    <scenario alia="cap1_night_hdr">
+        <id>0x0000060101000000</id>
+        <postprocfile_num>0</postprocfile_num>
+    </scenario>
+    <scenario alia="video1_eis">
+        <id>0x00000A0003000000</id>
+        <postprocfile_num>0</postprocfile_num>
+    </scenario>
+    <scenario alia="prv1_professional">
+        <id>0x0000020500000000</id>
+        <postprocfile_num>0</postprocfile_num>
+    </scenario>
+</postproc_cfg>

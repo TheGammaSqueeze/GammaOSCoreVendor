@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<postproc_cfg>
+    <sensor_name>ov08a10_back_tele</sensor_name>
+    <versionid>0x000D0013</versionid>
+    <scenario_num>15</scenario_num>
+    <scenario alia="com">
+        <id>0x0000000000000000</id>
+        <postprocfile_num>1</postprocfile_num>
+        <postprocfile name="mfnr5.2.xml">
+            <param>com</param>
+        </postprocfile>
+    </scenario>
+    <scenario alia="prv0">
+        <id>0x0000010000000000</id>
+        <postprocfile_num>0</postprocfile_num>
+    </scenario>
+    <scenario alia="prv1">
+        <id>0x0000020000000000</id>
+        <postprocfile_num>0</postprocfile_num>
+    </scenario>
+    <scenario alia="cap0">
+        <id>0x0000050000000000</id>
+        <postprocfile_num>0</postprocfile_num>
+    </scenario>
+    <scenario alia="cap1">
+        <id>0x0000060000000000</id>
+        <postprocfile_num>0</postprocfile_num>
+    </scenario>
+    <scenario alia="video0">
+        <id>0x0000090000000000</id>
+        <postprocfile_num>0</postprocfile_num>
+    </scenario>
+    <scenario alia="video1">
+        <id>0x00000A0000000000</id>
+        <postprocfile_num>0</postprocfile_num>
+    </scenario>
+    <scenario alia="video2">
+        <id>0x00000B0000000000</id>
+        <postprocfile_num>0</postprocfile_num>
+    </scenario>
+    <scenario alia="cap0_hdr">
+        <id>0x0000050001000000</id>
+        <postprocfile_num>0</postprocfile_num>
+    </scenario>
+    <scenario alia="cap0_zoom">
+        <id>0x0000050000000001</id>
+        <postprocfile_num>0</postprocfile_num>
+    </scenario>
+    <scenario alia="cap0_zoom2x">
+        <id>0x0000050000000002</id>
+        <postprocfile_num>0</postprocfile_num>
+    </scenario>
+    <scenario alia="cap0_zoom4x">
+        <id>0x0000050000000003</id>
+        <postprocfile_num>0</postprocfile_num>
+    </scenario>
+    <scenario alia="cap0_zoom6x">
+        <id>0x0000050000000004</id>
+        <postprocfile_num>0</postprocfile_num>
+    </scenario>
+    <scenario alia="cap0_zoom8x">
+        <id>0x0000050000000005</id>
+        <postprocfile_num>0</postprocfile_num>
+    </scenario>
+    <scenario alia="cap0_zoom10x">
+        <id>0x0000050000000006</id>
+        <postprocfile_num>0</postprocfile_num>
+    </scenario>
+</postproc_cfg>

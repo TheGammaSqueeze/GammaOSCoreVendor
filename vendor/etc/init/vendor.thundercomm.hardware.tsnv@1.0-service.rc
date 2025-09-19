@@ -1,7 +1,0 @@
-on post-fs-data
-    chown system system /dev/tsnv
-
-service tsnv-1-0 /vendor/bin/hw/vendor.thundercomm.hardware.tsnv@1.0-service
-    class hal
-    user system
-    group system
