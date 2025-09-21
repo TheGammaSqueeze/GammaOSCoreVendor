@@ -36,7 +36,7 @@
     <!-- End of Modules section -->
 
     <!-- Volume section -->
-
+    <xi:include href="dp_audio_policy_configuration.xml"/>
     <xi:include href="audio_policy_volumes.xml"/>
     <xi:include href="default_volume_tables.xml"/>
 
