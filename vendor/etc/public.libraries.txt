@@ -1,11 +1,4 @@
-# vendor public libraries
-libBokeh2Frames.so
-libbokeh_gaussian_cap.so
-libsprdbokeh.so
-libSegLite.so
-libjpeg_hw_sprd.so
 libOpenCL.so
-libOpenCL.so.1
-libOpenCL.so.1.1
-libOpenCL.so.1.2
-libDefog.so
+libnir_neon_driver_ndk.mtk.so
+libcmdl_ndk.mtk.so
+libarmnn_ndk.mtk.so

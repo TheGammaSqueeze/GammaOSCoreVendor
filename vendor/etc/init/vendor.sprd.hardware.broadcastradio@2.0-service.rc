@@ -1,4 +1,0 @@
-service vendor.sprd.broadcastradio-hal2 /vendor/bin/hw/vendor.sprd.hardware.broadcastradio@2.0-service
-    class hal
-    user audioserver
-    group audio media

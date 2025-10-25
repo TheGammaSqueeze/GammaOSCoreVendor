@@ -1,4 +1,0 @@
-service vendor.charged /vendor/bin/charged
-   class main
-   user root
-   group system

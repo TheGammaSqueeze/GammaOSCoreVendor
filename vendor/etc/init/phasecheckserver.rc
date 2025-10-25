@@ -1,4 +1,0 @@
-service phasecheckserver /vendor/bin/phasecheckserver
-    class main
-    user system
-    group system root
