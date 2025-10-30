@@ -1,0 +1,22 @@
+# Copyright (c) 2021-2023 Qualcomm Technologies, Inc.
+# All Rights Reserved.
+# Confidential and Proprietary - Qualcomm Technologies, Inc.
+#
+
+# msm specific files that need to be created on /data
+on post-fs-data
+    #Create DLSC daemon log dir
+    mkdir /data/vendor/dlsc 0770 radio radio
+    chmod 0770 /data/vendor/dlsc
+
+service vendor.dlsc /system/vendor/bin/dlsc
+    class main
+    user radio
+    group radio
+    disabled
+
+on property:ro.board.platform=kalama
+    enable vendor.dlsc
+
+on property:ro.board.platform=crow
+    enable vendor.dlsc

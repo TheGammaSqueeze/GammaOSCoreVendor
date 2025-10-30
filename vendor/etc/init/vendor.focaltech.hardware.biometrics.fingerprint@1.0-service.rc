@@ -1,0 +1,13 @@
+
+service vendor.focaltech.fps_hal /vendor/bin/hw/vendor.focaltech.hardware.biometrics.fingerprint@1.0-service
+    class hal
+    user system
+    group system
+    oneshot
+    disabled
+
+on property:persist.vendor.fingerprint.enable=1
+    start vendor.focaltech.fps_hal
+
+on property:persist.vendor.fingerprint.enable=0
+    stop vendor.focaltech.fps_hal

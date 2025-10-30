@@ -1,0 +1,8 @@
+service gatekeeper-spu-1-0 /vendor/bin/hw/android.hardware.gatekeeper@1.0-service-spu-qti
+    class early_hal
+    user system
+    group system
+    disabled
+
+on property:vendor.gatekeeper.is_security_level_spu=1
+    enable gatekeeper-spu-1-0

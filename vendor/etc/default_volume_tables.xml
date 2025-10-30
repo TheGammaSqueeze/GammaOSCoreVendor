@@ -27,17 +27,39 @@
     </reference>
     <reference name="DEFAULT_SYSTEM_VOLUME_CURVE">
     <!-- Default System reference Volume Curve -->
-        <point>1,-2400</point>
-        <point>33,-1800</point>
-        <point>66,-1200</point>
-        <point>100,-600</point>
+<point>1,-5800</point>
+<point>8,-4400</point>
+<point>15,-3400</point>
+<point>22,-2400</point>
+<point>29,-1600</point>
+<point>36,-1200</point>
+<point>43,-1000</point>
+<point>50,-800</point>
+<point>57,-600</point>
+<point>64,-500</point>
+<point>71,-400</point>
+<point>78,-300</point>
+<point>85,-200</point>
+<point>92,-100</point>
+<point>100,0</point>
     </reference>
     <reference name="DEFAULT_MEDIA_VOLUME_CURVE">
     <!-- Default Media reference Volume Curve -->
-        <point>1,-5800</point>
-        <point>20,-4000</point>
-        <point>60,-1700</point>
-        <point>100,0</point>
+<point>1,-5800</point>
+<point>8,-4400</point>
+<point>15,-3400</point>
+<point>22,-2400</point>
+<point>29,-1600</point>
+<point>36,-1200</point>
+<point>43,-1000</point>
+<point>50,-800</point>
+<point>57,-600</point>
+<point>64,-500</point>
+<point>71,-400</point>
+<point>78,-300</point>
+<point>85,-200</point>
+<point>92,-100</point>
+<point>100,0</point>
     </reference>
     <reference name="DEFAULT_DEVICE_CATEGORY_HEADSET_VOLUME_CURVE">
     <!--Default Volume Curve -->
@@ -49,9 +71,22 @@
     <reference name="DEFAULT_DEVICE_CATEGORY_SPEAKER_VOLUME_CURVE">
     <!-- Default is Speaker Media Volume Curve -->
         <point>1,-5800</point>
-        <point>20,-4000</point>
-        <point>60,-1700</point>
-        <point>100,0</point>
+        <point>7,-4972</point>
+        <point>13,-4233</point>
+        <point>20,-3578</point>
+        <point>26,-3000</point>
+        <point>32,-2493</point>
+        <point>38,-2053</point>
+        <point>44,-1673</point>
+        <point>51,-1347</point>
+        <point>57,-1069</point>
+        <point>63,-835</point>
+        <point>69,-637</point>
+        <point>75,-470</point>
+        <point>81,-329</point>
+        <point>88,-208</point>
+        <point>94,-100</point>
+        <point>99,0</point>
     </reference>
     <reference name="DEFAULT_DEVICE_CATEGORY_EARPIECE_VOLUME_CURVE">
     <!--Default Volume Curve -->

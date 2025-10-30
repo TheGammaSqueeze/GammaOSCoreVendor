@@ -1,0 +1,17 @@
+on post-fs && property:ro.boot.product.vendor.sku=kalama
+    start vendor.spdaemon
+    start vendor.sec_nvm
+
+service vendor.spdaemon /vendor/bin/spdaemon
+    class core
+    user system
+    group system
+    disabled
+    shutdown critical
+
+service vendor.sec_nvm /vendor/bin/sec_nvm
+    class core
+    user system
+    group system
+    disabled
+

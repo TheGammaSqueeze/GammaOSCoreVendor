@@ -1,0 +1,20 @@
+####################################
+# from generate-common-build-props
+# These properties identify this partition image.
+####################################
+ro.product.odm_dlkm.brand=qti
+ro.product.odm_dlkm.device=kalama
+ro.product.odm_dlkm.manufacturer=AYN
+ro.product.odm_dlkm.model=AYN Thor
+ro.product.odm_dlkm.name=kalama
+ro.odm_dlkm.build.date=Sat Oct 11 16:51:41 HKT 2025
+ro.odm_dlkm.build.date.utc=1760172701
+ro.odm_dlkm.build.fingerprint=qti/kalama/kalama:13/TKQ1.231222.001/Thor10111651:user/release-keys
+ro.odm_dlkm.build.id=TKQ1.231222.001
+ro.odm_dlkm.build.tags=release-keys
+ro.odm_dlkm.build.type=user
+ro.odm_dlkm.build.version.incremental=eng.Thor.20251011.165438
+ro.odm_dlkm.build.version.release=13
+ro.odm_dlkm.build.version.release_or_codename=13
+ro.odm_dlkm.build.version.sdk=33
+# end of file

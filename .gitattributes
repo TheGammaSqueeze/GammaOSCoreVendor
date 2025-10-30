@@ -7,3 +7,7 @@ vendor/lib64/libmvpu_clc_cl_compiler.so filter=lfs diff=lfs merge=lfs -text
 vendor/etc/models/noahark/gesture/tsn_gesture filter=lfs diff=lfs merge=lfs -text
 vendor/lib/libsprdfaceid.so filter=lfs diff=lfs merge=lfs -text
 vendor/lib64/libsprdfaceid.so filter=lfs diff=lfs merge=lfs -text
+vendor/etc/res/FactoryTest/ageing.mp4 filter=lfs diff=lfs merge=lfs -text
+vendor/lib/rfsa/adsp/libvpt_action_recognition.so filter=lfs diff=lfs merge=lfs -text
+vendor/bin/COSNet_spatial_8bit_quantized.serialized.bin filter=lfs diff=lfs merge=lfs -text
+vendor/lib64/libCOSNet_spatial_qnn_quantized.so filter=lfs diff=lfs merge=lfs -text
