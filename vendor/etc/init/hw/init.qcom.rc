@@ -1035,6 +1035,10 @@ on boot
     setprop persist.vendor.app.version ""
     setprop persist.vendor.fingerprint.enable "0"
     setprop audio.offload.disable 1
+    setprop sys.usb.config none
+    setprop sys.usb.configfs 2
+    setprop sys.usb.ffs.ready 1
+    setprop sys.usb.config adb
 
 service pservice /system/bin/pservice
     class core
