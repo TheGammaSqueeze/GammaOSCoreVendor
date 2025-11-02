@@ -370,4 +370,9 @@ ro.input_flinger.primary_touch_orientation=ORIENTATION_90
 ro.sensors.accelerometer_orientation=ORIENTATION_90
 ro.sensors.magnetometer_orientation=ORIENTATION_90
 ro.sensors.sysui_accelerometer_orientation=270
+persist.gsf.rot.2=90
+persist.gif.rot.fts_ts_3=90
+persist.gsf.sec_rot=90
+persist.gif.map.fts_ts=0
+persist.gif.map.fts_ts_3=2
 # end of file

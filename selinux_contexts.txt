@@ -461,6 +461,7 @@
 /etc/powerhint.xml u:object_r:vendor_configs_file:s0
 /etc/init u:object_r:vendor_configs_file:s0
 /etc/init/init.qti.fm.rc u:object_r:vendor_configs_file:s0
+/etc/init/init.joypad_control.rc u:object_r:vendor_configs_file:s0
 /etc/init/vendor.qti.hardware.wigig.supptunnel@1.0-service.rc u:object_r:vendor_configs_file:s0
 /etc/init/vendor.qti.hardware.perf-hal-service.rc u:object_r:vendor_configs_file:s0
 /etc/init/init.qccvendor.rc u:object_r:vendor_configs_file:s0
@@ -2383,6 +2384,9 @@
 /lib/libperipheral_client.so u:object_r:vendor_file:s0
 /firmware_mnt u:object_r:vendor_file:s0
 /bin u:object_r:vendor_file:s0
+/bin/gammapad u:object_r:vendor_file:s0
+/bin/retroidpad u:object_r:vendor_file:s0
+/bin/remove_retroidpad_event.sh u:object_r:vendor_file:s0
 /bin/ppd u:object_r:vendor_file:s0
 /bin/init.qcom.sdio.sh u:object_r:vendor_qti_init_shell_exec:s0
 /bin/qms u:object_r:vendor_qms_exec:s0
@@ -4177,3 +4181,7 @@
 /rfs/msm/mpss/readonly/vendor/firmware u:object_r:vendor_file:s0
 /rfs/msm/slpi/readonly/vendor/firmware u:object_r:vendor_file:s0
 /rfs/msm/wpss/readonly/vendor/firmware u:object_r:vendor_file:s0
+/usr u:object_r:vendor_file:s0
+/usr/idc u:object_r:vendor_file:s0
+/usr/idc/fts_ts.idc u:object_r:vendor_file:s0
+/usr/idc/fts_ts_3.idc u:object_r:vendor_file:s0
