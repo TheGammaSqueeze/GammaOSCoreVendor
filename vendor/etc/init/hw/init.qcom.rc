@@ -298,6 +298,19 @@ on boot
 
 # msm specific files that need to be created on /data
 on post-fs-data
+
+    # Seed defaults if not already set in /data/property
+    # Secondary display rotation (90° as your default)
+    setprop persist.gsf.sec_rot 90
+
+    # (Optional) Touch mappings so both panels are independent on first boot
+    # Primary touch -> display 0
+    setprop persist.gif.map.fts_ts 0
+    # Secondary touch -> display 2
+    setprop persist.gif.map.fts_ts_3 2
+    # Secondary touch orientation
+    setprop persist.gif.rot.fts_ts_3 90
+
     mkdir /data/vendor/misc 01771 system system
 
     # Create directory used for dump collection
