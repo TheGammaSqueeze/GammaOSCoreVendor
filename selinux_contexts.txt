@@ -2449,6 +2449,7 @@
 /bin/cnss-daemon u:object_r:vendor_wcnss_service_exec:s0
 /bin/id u:object_r:vendor_file:s0
 /bin/seq u:object_r:vendor_file:s0
+/bin/setup.sh u:object_r:vendor_file:s0
 /bin/ims_rtp_daemon u:object_r:vendor_hal_imsrtp_exec:s0
 /bin/init.qcom.early_boot.sh u:object_r:vendor_qti_init_shell_exec:s0
 /bin/vppserviceunittest u:object_r:vendor_file:s0
