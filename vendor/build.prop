@@ -385,4 +385,16 @@ debug.sf.vsync_reactor_ignore_present_fences=1
 ro.surface_flinger.present_time_offset_from_vsync_ns=0
 debug.sf.vsync_reactor_ignore_app_fences=1
 persist.gammaos.desktop.fullscreen=1
+persist.gammaos.rgb.allow_protected=1
+persist.gammaos.rgb.black_avg_threshold=1
+persist.gammaos.rgb.brightness_curve_exp=1.6
+persist.gammaos.rgb.fade.enable=true
+persist.gammaos.rgb.fade.fps=60
+persist.gammaos.rgb.fps=10
+persist.gammaos.rgb.sample.pre_fx=true
+persist.gammaos.rgb.sample_size_px=64
+persist.gammaos.rgb.saturation_boost=1.6
+persist.gammaos.rgb.scale_with_brightness=1
+persist.gammaos.rgb.use_hwc=0
+persist.gammaos.rgb.use_re_readback=1
 # end of file

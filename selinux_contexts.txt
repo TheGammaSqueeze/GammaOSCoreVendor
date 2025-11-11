@@ -2385,6 +2385,7 @@
 /firmware_mnt u:object_r:vendor_file:s0
 /bin u:object_r:vendor_file:s0
 /bin/gammapad u:object_r:vendor_file:s0
+/bin/gammargb u:object_r:vendor_file:s0
 /bin/retroidpad u:object_r:vendor_file:s0
 /bin/remove_retroidpad_event.sh u:object_r:vendor_file:s0
 /bin/ppd u:object_r:vendor_file:s0

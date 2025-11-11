@@ -166,6 +166,20 @@ service gammapad_calibration_on /system/bin/sh -c "echo 1 > /data/GammaPad/CALIB
     oneshot
     disabled
 
+service led_control_screen_on /system/bin/sh -c "echo 1 > /sys/class/sn3112l/led/enable; echo 1 > /sys/class/sn3112r/led/enable; sleep 1; /vendor/bin/gammargb"
+    class main
+    user root
+    group root system
+    oneshot
+    disabled
+
+service led_control_off /system/bin/sh -c "echo 0 > /sys/class/sn3112l/led/enable; echo 0 > /sys/class/sn3112r/led/enable"
+    class main
+    user root
+    group root system
+    oneshot
+    disabled
+
 on post-fs-data
     start retroidpad
 
