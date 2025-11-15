@@ -166,7 +166,7 @@ service gammapad_calibration_on /system/bin/sh -c "echo 1 > /data/GammaPad/CALIB
     oneshot
     disabled
 
-service led_control_screen_on /system/bin/sh -c "echo 1 > /sys/class/sn3112l/led/enable; echo 1 > /sys/class/sn3112r/led/enable; sleep 1; /vendor/bin/gammargb"
+service led_control_screen_on /system/bin/sh -c "echo 1 > /sys/class/sn3112l/led/enable; echo 1 > /sys/class/sn3112r/led/enable; sleep 1; /vendor/bin/gammargb --y-red=1.0 --y-green=0.6 --c-green=1.0 --c-blue=0.9 --m-red=1.0 --m-blue=0.2"
     class main
     user root
     group root system
