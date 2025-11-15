@@ -415,4 +415,6 @@ persist.gammaos.rgb.split=1
 persist.gammaos.rgb.use_hwc=0
 persist.gammaos.rgb.use_re_readback=1
 persist.gammaos.rgb.enable=1
+persist.gammaos.rgb.min_led_brightness=2
+ persist.gammaos.rgb.brightness_override_threshold=-1
 # end of file
