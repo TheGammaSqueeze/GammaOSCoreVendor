@@ -3211,6 +3211,7 @@
 /dsp u:object_r:adsprpcd_file:s0
 /rfs(/.*)?    u:object_r:vendor_file:s0
 /bin/gammapad u:object_r:vendor_file:s0
+/bin/gammargb u:object_r:vendor_file:s0
 /bin/setclock_max.sh u:object_r:vendor_file:s0
 /bin/setclock_stock.sh u:object_r:vendor_file:s0
 /bin/setclock_powersave.sh u:object_r:vendor_file:s0
@@ -3218,3 +3219,5 @@
 /bin/setfan_cool.sh u:object_r:vendor_file:s0
 /bin/setfan_off.sh u:object_r:vendor_file:s0
 /bin/setfan_auto.sh u:object_r:vendor_file:s0
+/bin/customization.sh u:object_r:vendor_file:s0
+/etc/customization.sh u:object_r:vendor_file:s0

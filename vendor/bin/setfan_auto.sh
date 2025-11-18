@@ -2,6 +2,25 @@
 # Auto-discover thermal zones (CPU & GPU) and set persist.gammaos.fan_mode_auto
 # Works across Qualcomm/MediaTek/Exynos/etc.
 
+PROP_VALUE_SCREEN="$(getprop sys.screen.state)"
+PROP_VALUE_BRIGHTNESS="$(getprop debug.tracing.screen_brightness)"
+
+# Turn fan off in a loop, then exit the script
+fan_off_and_exit() {
+    i=0
+    while [ $i -lt 10 ]; do
+        /vendor/bin/setfan_off.sh
+        sleep 2
+        i=$((i + 1))
+    done
+    exit 0
+}
+
+# If screen is off OR brightness is 0.0, turn fan off and stop here
+if [ "$PROP_VALUE_SCREEN" = "off" ] || [ "$PROP_VALUE_BRIGHTNESS" = "0.0" ]; then
+    fan_off_and_exit
+fi
+
 PROP_NAME="${PROP_NAME:-persist.gammaos.fan_mode_auto}"
 SCAN_ROOT="/sys/class/thermal"
 INTERVAL="${INTERVAL:-5}"   # seconds
