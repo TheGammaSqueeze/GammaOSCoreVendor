@@ -1,4 +1,4 @@
-service gammapad /system/bin/sh -c "sleep 10; /vendor/bin/gammapad 'AIR X Controller'  --ffdev='pwm-vibrator' --no-source-rebind --remove-source-node --gasbrakeemulation --ffpwm"
+service gammapad /system/bin/sh -c "sleep 10; /vendor/bin/gammapad 'AIR X Controller'  --ffdev='pwm-vibrator' --no-source-rebind --remove-source-node --gasbrakeemulation"
     class main
     user root
     group root system
