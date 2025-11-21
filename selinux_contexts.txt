@@ -284,6 +284,7 @@
 /etc/tlog/def_tlog_conf.xml u:object_r:vendor_configs_file:s0
 /etc/init u:object_r:vendor_configs_file:s0
 /etc/init/init.joypad_control.rc u:object_r:vendor_configs_file:s0
+/etc/init/init.gammaos_esdefix.rc u:object_r:vendor_configs_file:s0
 /etc/init/init.gammaos_fan.rc u:object_r:vendor_configs_file:s0
 /etc/init/init.gammaos_power.rc u:object_r:vendor_configs_file:s0
 /etc/init/init.qti.fm.rc u:object_r:vendor_configs_file:s0
@@ -3221,3 +3222,4 @@
 /bin/setfan_auto.sh u:object_r:vendor_file:s0
 /bin/customization.sh u:object_r:vendor_file:s0
 /etc/customization.sh u:object_r:vendor_file:s0
+/bin/esde_fix.sh u:object_r:vendor_file:s0
