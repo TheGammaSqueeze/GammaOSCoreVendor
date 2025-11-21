@@ -5,6 +5,9 @@ sleep 3
 N="/sys/devices/platform/soc/soc:fan/hwmon/hwmon0"
 PWM="$N/pwm1"
 EN="$N/pwm1_enable"
+TACH="$N/fan1_input"   # may or may not exist
+
+HALF_PWM=128           # ~half of 255
 
 # Run fan-off logic up to 10 times with 1s delay.
 # On each iteration, re-check screen/brightness and bail out to normal logic
@@ -39,25 +42,59 @@ if [ "$PROP_VALUE_SCREEN" = "off" ] || [ "$PROP_VALUE_BRIGHTNESS" = "0.0" ]; the
     fan_off_phase
 fi
 
+# Basic safety: if nodes are missing, bail out
+if [ ! -e "$PWM" ] || [ ! -e "$EN" ]; then
+    echo "fan sysfs nodes not found: PWM=$PWM EN=$EN"
+    exit 1
+fi
+
 chmod 666 "$PWM" "$EN" 2>/dev/null
+
+# 1 = manual mode on this platform
 echo 1 > "$EN" || { echo "failed to set manual mode"; exit 1; }
 
-# Kick sequence: ON/OFF pulses to overcome stiction, then steady ON
-seqs='
-  on 300
-  off 120
-  on 400
-  off 120
-  on 600
-'
-for s in $seqs; do
-  case "$s" in
-    on)  state=255 ;;
-    off) state=0 ;;
-    *)   sleep_ms="$s"; echo $state > "$PWM"; usleep $((sleep_ms*1000));;
-  esac
-done
+# Helper: read RPM if available, else 0
+read_rpm() {
+    if [ -r "$TACH" ]; then
+        cat "$TACH" 2>/dev/null || echo 0
+    else
+        echo 0
+    fi
+}
 
-# Hold ON
-echo 255 > "$PWM"
-printf "pwm1=%s\n" "$(cat "$PWM")"
+# Aggressive kick routine:
+# - Several strong full-duty pulses with short OFF gaps.
+# - If a tach is available and we detect > 200 RPM, stop kicking early.
+kick_fan() {
+    attempts=0
+    max_attempts=5
+
+    while [ $attempts -lt $max_attempts ]; do
+        # Strong ON pulse
+        echo 255 > "$PWM"
+        usleep 900000   # 0.9s ON
+
+        rpm=$(read_rpm)
+        if [ "$rpm" -gt 200 ]; then
+            # Fan is spinning, no need for further kicks
+            break
+        fi
+
+        # Short OFF to give a "jerk" on next pulse and let driver re-latch
+        echo 0 > "$PWM"
+        usleep 200000   # 0.2s OFF
+
+        attempts=$((attempts + 1))
+    done
+}
+
+# Run the aggressive kick sequence
+kick_fan
+
+# Hold at half speed once started
+echo "$HALF_PWM" > "$PWM"
+
+printf "pwm1=%s\n" "$(cat "$PWM" 2>/dev/null)"
+if [ -r "$TACH" ]; then
+    printf "fan1_input(rpm)=%s\n" "$(cat "$TACH" 2>/dev/null)"
+fi

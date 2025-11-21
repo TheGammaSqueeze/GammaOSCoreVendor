@@ -5,5 +5,5 @@ service esde_fix /vendor/bin/esde_fix.sh
     oneshot
     disabled
 
-on property:sys.boot_completed=1 && property:sys.user.0.ce_available=true
+on property:sys.boot_completed=1 && property:sys.user.0.ce_available=true && property:getprop persist.sys.device_provisioned=1
    start esde_fix
