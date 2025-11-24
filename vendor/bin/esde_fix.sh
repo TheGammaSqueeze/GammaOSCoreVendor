@@ -11,6 +11,8 @@
 #   - Reacts to:
 #       * changes to /data/system/packages.list (install/uninstall)
 #       * creation/deletion of /storage/emulated/0/Android/data/org.es_de.frontend
+#   - Additionally, every 5 seconds, verifies that the bind mount is present and
+#     corrects any drift.
 #
 
 APP_PKG="org.es_de.frontend"
@@ -202,6 +204,19 @@ handler_mode() {
     exit 0
 }
 
+periodic_sync_loop() {
+    log "periodic_sync_loop: starting 5-second verification loop"
+    while true; do
+        APP_UID="$(get_app_uid)"
+        if [ -n "${APP_UID}" ]; then
+            ensure_bind_mount
+        else
+            teardown_bind_if_uninstalled
+        fi
+        sleep 5
+    done
+}
+
 main_mode() {
     SCRIPT_PATH="$(get_script_path)"
     log "main_mode: starting; SCRIPT_PATH='${SCRIPT_PATH}'"
@@ -221,25 +236,19 @@ main_mode() {
         log "main_mode: bind not yet active; will react when app installs or external path appears"
     fi
 
-    # Use toybox inotifyd or inotifyd from PATH
+    # Start inotify watchers in the background if available
     if command -v inotifyd >/dev/null 2>&1; then
-        log "main_mode: exec inotifyd '${SCRIPT_PATH}' '${PACKAGES_LIST}:ce' '${ANDROID_DATA_DIR}:mnyd'"
-        exec inotifyd "${SCRIPT_PATH}" "${PACKAGES_LIST}:ce" "${ANDROID_DATA_DIR}:mnyd"
+        log "main_mode: starting inotifyd watcher: '${SCRIPT_PATH}' '${PACKAGES_LIST}:ce' '${ANDROID_DATA_DIR}:mnyd'"
+        inotifyd "${SCRIPT_PATH}" "${PACKAGES_LIST}:ce" "${ANDROID_DATA_DIR}:mnyd" &
     elif command -v toybox >/dev/null 2>&1; then
-        log "main_mode: exec toybox inotifyd '${SCRIPT_PATH}' '${PACKAGES_LIST}:ce' '${ANDROID_DATA_DIR}:mnyd'"
-        exec toybox inotifyd "${SCRIPT_PATH}" "${PACKAGES_LIST}:ce" "${ANDROID_DATA_DIR}:mnyd"
+        log "main_mode: starting toybox inotifyd watcher: '${SCRIPT_PATH}' '${PACKAGES_LIST}:ce' '${ANDROID_DATA_DIR}:mnyd'"
+        toybox inotifyd "${SCRIPT_PATH}" "${PACKAGES_LIST}:ce" "${ANDROID_DATA_DIR}:mnyd" &
     else
-        log "main_mode: ERROR: inotifyd not available; falling back to polling"
-        while true; do
-            APP_UID="$(get_app_uid)"
-            if [ -n "${APP_UID}" ]; then
-                ensure_bind_mount
-            else
-                teardown_bind_if_uninstalled
-            fi
-            sleep 10
-        done
+        log "main_mode: inotifyd not available; relying solely on periodic verification"
     fi
+
+    # Always run periodic verification every 5 seconds to detect and fix drift
+    periodic_sync_loop
 }
 
 # Entry point:
