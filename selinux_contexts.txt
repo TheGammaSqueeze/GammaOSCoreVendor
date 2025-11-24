@@ -599,11 +599,13 @@
 /lost\+found u:object_r:vendor_file:s0
 /bt_firmware u:object_r:vendor_firmware_file:s0
 /firmware u:object_r:vendor_firmware_file:s0
+/firmware/Jadard_firmware.bin u:object_r:vendor_firmware_file:s0
 /firmware/a662_zap.b01 u:object_r:vendor_firmware_file:s0
 /firmware/ipa_fws.b01 u:object_r:vendor_firmware_file:s0
 /firmware/ipa_fws.b04 u:object_r:vendor_firmware_file:s0
 /firmware/venus_4mb_unsigned.mbn u:object_r:vendor_firmware_file:s0
 /firmware/mcu_v1_5_2025_05_19.bin u:object_r:vendor_firmware_file:s0
+/firmware/mcu_v1_6_2025_06_03.bin u:object_r:vendor_firmware_file:s0
 /firmware/a630_sqe.fw u:object_r:vendor_firmware_file:s0
 /firmware/venus_4mb_ecdsa.mbn u:object_r:vendor_firmware_file:s0
 /firmware/gmu_gen70000.bin u:object_r:vendor_firmware_file:s0
