@@ -304,5 +304,8 @@ persist.wifi.sleep.delay.ms=0
 persist.bt.power.down=true
 vendor.hwc.device.primary=DSI-1
 vendor.hwc.device.extend=DSI-2
+persist.gif.map.gt9xx_0=0
+persist.gif.map.gt9xx_1=2
 # end of file
 Target FotaInfo:
+

@@ -10,6 +10,7 @@
 /app/RkVideoPlayer/oat/arm64/RkVideoPlayer.vdex u:object_r:vendor_app_file:s0
 /etc u:object_r:vendor_configs_file:s0
 /etc/passwd u:object_r:vendor_configs_file:s0
+/etc/HwComposerEnv-rgds.xml u:object_r:vendor_configs_file:s0
 /etc/seccomp_policy u:object_r:vendor_configs_file:s0
 /etc/seccomp_policy/rockit.vendor.base.policy u:object_r:vendor_configs_file:s0
 /etc/seccomp_policy/android.hardware.media.c2@1.1-seccomp_policy u:object_r:vendor_configs_file:s0
@@ -1080,6 +1081,7 @@
 /etc/public.libraries.txt u:object_r:vendor_configs_file:s0
 /etc/a2dp_audio_policy_configuration_7_0.xml u:object_r:vendor_configs_file:s0
 /etc/init u:object_r:vendor_configs_file:s0
+/etc/init/init.gammaos_power.rc u:object_r:vendor_configs_file:s0
 /etc/init/rockchip.hardware.outputmanager@1.0-service.rc u:object_r:vendor_configs_file:s0
 /etc/init/android.hardware.camera.provider-V1-external-service-rk.rc u:object_r:vendor_configs_file:s0
 /etc/init/android.hardware.media.c2@1.1-service.rc u:object_r:vendor_configs_file:s0
@@ -1187,6 +1189,9 @@
 /lib/optee_armtz/481a57df-aec8-47ad-92f5-eb9fc24f64a6.ta u:object_r:vendor_file:s0
 /lib/optee_armtz/258be795-f9ca-40e6-a869-9ce6886c5d5d.ta u:object_r:vendor_file:s0
 /bin u:object_r:vendor_file:s0
+/bin/setclock_max.sh u:object_r:vendor_file:s0
+/bin/setclock_stock.sh u:object_r:vendor_file:s0
+/bin/setclock_powersave.sh u:object_r:vendor_file:s0
 /bin/mountpoint u:object_r:vendor_file:s0
 /bin/split u:object_r:vendor_file:s0
 /bin/hostname u:object_r:vendor_file:s0
