@@ -1,8 +1,0 @@
-on fs
-	chown system system /sys/devices/platform/soc/0.mcu/boot_set
-
-service gd32 /vendor/bin/gd32
-     class main
-     user system
-     group system
-     oneshot

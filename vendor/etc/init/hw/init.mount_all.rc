@@ -1,0 +1,25 @@
+# do mount_all early can imporve boot time when FBE
+# is enabled
+on init
+    start tee-supplicant
+    start vendor.keymint-default
+    start vendor.keymaster-4-0
+
+on early-fs
+    start vold
+
+on fs
+    mount_all /vendor/etc/fstab.${ro.hardware} --early
+
+on late-fs
+    # Start services for bootanim
+    start servicemanager
+    start vendor.gralloc-v1
+    start vendor.rockchip_hwcproxy_aidl
+    start hwcomposer-3
+    start surfaceflinger
+    start bootanim
+
+    exec_start wait_for_optee
+    # Mount RW partitions which need run fsck
+    mount_all /vendor/etc/fstab.${ro.hardware} --late

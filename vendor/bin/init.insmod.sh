@@ -1,0 +1,57 @@
+#! /vendor/bin/sh
+
+#########################################
+### init.insmod.cfg format:           ###
+### --------------------------------- ###
+### [insmod|setprop] [path|prop name] ###
+### ...                               ###
+#########################################
+
+system_modules="/system_dlkm/lib/modules/modules.load"
+if [ -f $system_modules ]; then
+  while IFS= read -r name
+  do
+	if [ -f /system_dlkm/lib/modules/$name ]; then
+          insmod /system_dlkm/lib/modules/$name
+        fi
+  done < $system_modules
+fi
+
+wifi_modules="/vendor/etc/wifi/wifi.load"
+vendor_modules="/vendor_dlkm/lib/modules/modules.load"
+if [ -f $vendor_modules ]; then
+  while IFS= read -r name
+  do
+	if [ -f /vendor_dlkm/lib/modules/$name ]; then
+		if grep -q $name $wifi_modules; then
+			continue
+		else
+			insmod /vendor_dlkm/lib/modules/$name
+		fi
+        fi
+  done < $vendor_modules
+fi
+
+if [[ -e "/vendor/etc/init.insmod_charger.cfg" && "$(getprop ro.boot.mode)" == "charger" ]]; then
+  cfg_file="/vendor/etc/init.insmod_charger.cfg"
+else
+  cfg_file="/vendor/etc/init.insmod.cfg"
+fi
+
+if [ -f $cfg_file ]; then
+  while IFS=" " read -r action name
+  do
+    case $action in
+      "insmod")
+        if [ -f $name ]; then
+          insmod $name
+        fi
+        ;;
+      "setprop") setprop $name 1 ;;
+    esac
+  done < $cfg_file
+fi
+
+# set property even if there is no insmod config
+# as property value "1" is expected in early-boot trigger
+setprop vendor.all.modules.ready 1
