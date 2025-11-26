@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- HwComposerEnv module xml -->
-<HwComposerEnv Version="1.2.0" Enable="0">
+<HwComposerEnv Version="1.2.0" Enable="1">
   <!--
     DsiplayMode:
       Mode: Normal=0 SplitMode=1 Presentation=2
@@ -31,7 +31,7 @@
                   |   3840    |   1920    |          - FbWidth = 5760
                                                      - ConnectorCnt = 4
   -->
-  <DsiplayMode Mode="0" FbWidth="11520" FbHeight="1080">
+  <DsiplayMode Mode="0" FbWidth="640" FbHeight="480">
     <Connector>
       <!--
         Example 1 - SplitMode-6x1 1920x1080:
@@ -82,64 +82,34 @@
           3: 180 degree clockwise rotation.(Horizontal flip + Vertical flip)
           7: 270 degree clockwise rotation.(Horizontal flip + Vertical flip + 90 degree clockwise rotation)
       -->
-      <Type>HDMI-A</Type>
-      <TypeId>1</TypeId>
+      <Type>DSI</Type>
+      <TypeId>2</TypeId>
       <SrcX>0</SrcX>    <!-- Framebuffer x 0ffset -->
       <SrcY>0</SrcY>    <!-- Framebuffer y 0ffset -->
-      <SrcW>3840</SrcW> <!-- Framebuffer Width -->
-      <SrcH>1080</SrcH> <!-- Framebuffer Height-->
+      <SrcW>640</SrcW> <!-- Framebuffer Width -->
+      <SrcH>480</SrcH> <!-- Framebuffer Height-->
       <DstX>0</DstX>    <!-- unuse , reserved -->
       <DstY>0</DstY>    <!-- unuse , reserved -->
       <DstW>0</DstW>    <!-- unuse , reserved -->
       <DstH>0</DstH>    <!-- unuse , reserved -->
       <Transform>0</Transform>  <!-- Screen Transform -->
       <Primary>0</Primary>      <!-- " >0 " Is Primary, value is priority, The smaller the value, the higher the priority. -->
-      <Extend>0</Extend>        <!-- " >0 " Is Extend,  value is priority, The smaller the value, the higher the priority. -->
+      <Extend>1</Extend>        <!-- " >0 " Is Extend,  value is priority, The smaller the value, the higher the priority. -->
     </Connector>
     <Connector>
-      <Type>HDMI-A</Type>
-      <TypeId>2</TypeId>
-      <SrcX>3840</SrcX> <!-- Framebuffer x 0ffset -->
-      <SrcY>0</SrcY>    <!-- Framebuffer y 0ffset -->
-      <SrcW>1920</SrcW> <!-- Framebuffer Width -->
-      <SrcH>1080</SrcH> <!-- Framebuffer Height-->
+      <Type>DSI</Type>
+      <TypeId>1</TypeId>
+      <SrcX>0</SrcX> <!-- Framebuffer x 0ffset -->
+      <SrcY>480</SrcY>    <!-- Framebuffer y 0ffset -->
+      <SrcW>640</SrcW> <!-- Framebuffer Width -->
+      <SrcH>480</SrcH> <!-- Framebuffer Height-->
       <DstX>0</DstX>    <!-- unuse , reserved-->
       <DstY>0</DstY>    <!-- unuse , reserved-->
       <DstW>0</DstW>    <!-- unuse , reserved-->
       <DstH>0</DstH>    <!-- unuse , reserved-->
       <Transform>0</Transform>  <!-- Screen Transform -->
-      <Primary>0</Primary>      <!-- " >0 " Is Primary, value is priority, The smaller the value, the higher the priority. -->
+      <Primary>1</Primary>      <!-- " >0 " Is Primary, value is priority, The smaller the value, the higher the priority. -->
       <Extend>0</Extend>        <!-- " >0 " Is Extend,  value is priority, The smaller the value, the higher the priority. -->
-    </Connector>
-    <Connector>
-      <Type>HDMI-A</Type>
-      <TypeId>3</TypeId>
-      <SrcX>5760</SrcX> <!-- Framebuffer x 0ffset -->
-      <SrcY>0</SrcY>    <!-- Framebuffer y 0ffset -->
-      <SrcW>1920</SrcW> <!-- Framebuffer Width -->
-      <SrcH>1080</SrcH> <!-- Framebuffer Height-->
-      <DstX>0</DstX>    <!-- unuse , reserved-->
-      <DstY>0</DstY>    <!-- unuse , reserved-->
-      <DstW>0</DstW>    <!-- unuse , reserved-->
-      <DstH>0</DstH>    <!-- unuse , reserved-->
-      <Transform>0</Transform>   <!-- Screen Transform -->
-      <Primary>0</Primary>       <!-- " >0 " Is Primary, value is priority, The smaller the value, the higher the priority. -->
-      <Extend>0</Extend>         <!-- " >0 " Is Extend,  value is priority, The smaller the value, the higher the priority. -->
-    </Connector>
-    <Connector>
-      <Type>DP</Type>
-      <TypeId>1</TypeId>
-      <SrcX>7680</SrcX> <!-- Framebuffer x 0ffset -->
-      <SrcY>0</SrcY>    <!-- Framebuffer y 0ffset -->
-      <SrcW>3840</SrcW> <!-- Framebuffer Width -->
-      <SrcH>1080</SrcH> <!-- Framebuffer Height-->
-      <DstX>0</DstX>    <!-- unuse , reserved-->
-      <DstY>0</DstY>    <!-- unuse , reserved-->
-      <DstW>0</DstW>    <!-- unuse , reserved-->
-      <DstH>0</DstH>    <!-- unuse , reserved-->
-      <Transform>0</Transform>   <!-- Screen Transform -->
-      <Primary>0</Primary>       <!-- " >0 " Is Primary, value is priority, The smaller the value, the higher the priority. -->
-      <Extend>0</Extend>         <!-- " >0 " Is Extend,  value is priority, The smaller the value, the higher the priority. -->
     </Connector>
   </DsiplayMode>
 </HwComposerEnv>
