@@ -311,6 +311,9 @@ ro.surface_flinger.default_min_refresh_rate=60.0
 ro.surface_flinger.default_high_refresh_rate=60.0
 ro.surface_flinger.refresh_rate_switching=false
 persist.gammaos.refresh.lock=1
+vendor.hwc.enable_dynamic_display_mode=0
+vendor.hwc.enable_composition_drop_mode=0
+vendor.hwc.static_screen_opt_time=5000
 # end of file
 Target FotaInfo:
 
