@@ -62,6 +62,9 @@ on post-fs-data
     write /sys/class/remoteproc/remoteproc0/firmware amp_dsp0.bin
     write /sys/class/remoteproc/remoteproc0/state start
 
+    mkdir /data/gamma 0771 system system
+    mkdir /data/gamma/pstore 0771 system system
+
 on boot
     write /proc/bootevent "INIT:boot"
     chown system system /sys/kernel/debug/sync/sw_sync
@@ -146,6 +149,7 @@ on property:sys.boot_completed=1
     # Tweak background writeout
     write /proc/sys/vm/dirty_expire_centisecs 200
     write /proc/sys/vm/dirty_background_ratio  5
+    write /proc/sys/vm/dirty_ratio 10
     write /proc/sys/kernel/sysrq 1
     # audio select hdmi out/in
     chmod 0666 /sys/class/snd_sunxi/module
