@@ -268,3 +268,4 @@ persist.sys.fuse.passthrough.enable=false
 persist.gammaos.force_sdcardfs=true
 persist.gammaos.allwinner.hdmi.enable=true
 persist.gammaos.display.tweaks=true
+persist.gammaos.ext.force_mirror=true
