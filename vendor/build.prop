@@ -314,6 +314,7 @@ persist.gammaos.refresh.lock=1
 vendor.hwc.enable_dynamic_display_mode=0
 vendor.hwc.enable_composition_drop_mode=0
 vendor.hwc.static_screen_opt_time=5000
+persist.gammaos.display.unique_names=1
 # end of file
 Target FotaInfo:
 

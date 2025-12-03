@@ -19,11 +19,14 @@ service setclock_powersave /vendor/bin/setclock_powersave.sh
     oneshot
     disabled
 
-on property:persist.gammaos.performance_mode=max
+on property:persist.gammaos.performance_mode=max && property:sys.screen.state=on
     start setclock_max
 
-on property:persist.gammaos.performance_mode=stock
+on property:persist.gammaos.performance_mode=stock && property:sys.screen.state=on
     start setclock_stock
 
-on property:persist.gammaos.performance_mode=powersave
+on property:persist.gammaos.performance_mode=powersave && property:sys.screen.state=on
+    start setclock_powersave
+
+on property:sys.screen.state=off
     start setclock_powersave
