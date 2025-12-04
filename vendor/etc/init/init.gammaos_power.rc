@@ -19,6 +19,34 @@ service setclock_powersave /vendor/bin/setclock_powersave.sh
     oneshot
     disabled
 
+service cpu_screen_off /system/bin/sh -c "echo 0 | tee /sys/devices/system/cpu/cpu[1-7]/online >/dev/null; echo mem > /sys/power/state;"
+    class main
+    user root
+    group root system
+    oneshot
+    disabled
+
+service cpu_screen_on /system/bin/sh -c "echo 1 | tee /sys/devices/system/cpu/cpu[1-7]/online >/dev/null;"
+    class main
+    user root
+    group root system
+    oneshot
+    disabled
+
+service force_sleep /system/bin/sh -c "while true; do sleep 5; start cpu_screen_off; done"
+    class main
+    user root
+    group root system
+    oneshot
+    disabled
+
+service force_wake /system/bin/sh -c "for i in 1 2 3 4 5 6 7 8 9 10; do start cpu_screen_on; sleep 1; done"
+    class main
+    user root
+    group root system
+    oneshot
+    disabled
+
 on property:persist.gammaos.performance_mode=max && property:sys.screen.state=on
     start setclock_max
 
@@ -28,5 +56,11 @@ on property:persist.gammaos.performance_mode=stock && property:sys.screen.state=
 on property:persist.gammaos.performance_mode=powersave && property:sys.screen.state=on
     start setclock_powersave
 
-on property:sys.screen.state=off
+on property:sys.screen.state=off && property:persist.gammaos.ultra_low_power_saving_mode=1
     start setclock_powersave
+    stop force_wake
+    start force_sleep
+
+on property:sys.screen.state=on
+    stop force_sleep
+    start force_wake
