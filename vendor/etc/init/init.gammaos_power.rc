@@ -33,7 +33,7 @@ service cpu_screen_on /system/bin/sh -c "echo 1 | tee /sys/devices/system/cpu/cp
     oneshot
     disabled
 
-service force_sleep /system/bin/sh -c "while true; do sleep 5; start cpu_screen_off; done"
+service force_sleep /system/bin/sh -c "echo heartbeat > /sys/class/leds/battery_charging/trigger; while true; do sleep 5; echo none > /sys/class/leds/battery_charging/trigger;  start cpu_screen_off; done"
     class main
     user root
     group root system
@@ -56,7 +56,7 @@ on property:persist.gammaos.performance_mode=stock && property:sys.screen.state=
 on property:persist.gammaos.performance_mode=powersave && property:sys.screen.state=on
     start setclock_powersave
 
-on property:sys.screen.state=off && property:persist.gammaos.ultra_low_power_saving_mode=1 && property:debug.tracing.battery_stats.charging=0
+on property:sys.screen.state=off && property:persist.gammaos.ultra_low_power_saving_mode=1
     start setclock_powersave
     stop force_wake
     start force_sleep
