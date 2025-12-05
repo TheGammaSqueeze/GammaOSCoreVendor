@@ -49,3 +49,9 @@ launchergroup=$( stat -c "%G" /data/data/com.dsemu.drastic)
 rm -rf /data/data/com.dsemu.drastic/*
 tar -xvf /vendor/etc/drastic.tar.gz -C /
 chown -R $launcheruser:$launchergroup /data/data/com.dsemu.drastic
+
+setprop persist.gammaos.shader.lcd3x.brighten_lcd 4.0
+setprop persist.gammaos.shader.lcd3x.brighten_scanlines 4.0
+setprop persist.gammaos.shader.lcd3x.grid_px_x 1.0
+setprop persist.gammaos.shader.lcd3x.grid_px_y 3.0
+setprop persist.gammaos.shader.type lcd3x
