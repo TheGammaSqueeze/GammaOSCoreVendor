@@ -50,6 +50,7 @@
 /etc/bluetooth_audio_policy_configuration_7_0.xml u:object_r:vendor_configs_file:s0
 /etc/display_settings.xml u:object_r:vendor_configs_file:s0
 /etc/fstab_swap.ext512 u:object_r:vendor_configs_file:s0
+/etc/drastic.tar.gz u:object_r:vendor_configs_file:s0
 /etc/usb_audio_policy_configuration.xml u:object_r:vendor_configs_file:s0
 /etc/task_profiles.json u:object_r:vendor_task_profiles_file:s0
 /etc/2160p.h264 u:object_r:vendor_configs_file:s0
@@ -1193,6 +1194,7 @@
 /bin u:object_r:vendor_file:s0
 /bin/remove_virtual_inputs.sh u:object_r:vendor_file:s0
 /bin/esde_fix.sh u:object_r:vendor_file:s0
+/bin/setup.sh u:object_r:vendor_file:s0
 /bin/setclock_max.sh u:object_r:vendor_file:s0
 /bin/setclock_stock.sh u:object_r:vendor_file:s0
 /bin/setclock_powersave.sh u:object_r:vendor_file:s0
