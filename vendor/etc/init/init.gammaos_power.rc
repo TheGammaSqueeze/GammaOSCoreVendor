@@ -19,7 +19,7 @@ service setclock_powersave /vendor/bin/setclock_powersave.sh
     oneshot
     disabled
 
-service cpu_screen_off /system/bin/sh -c "echo mem > /sys/power/state;"
+service cpu_screen_off /system/bin/sh -c "echo 0 | tee /sys/devices/system/cpu/cpu[1-7]/online >/dev/null; echo mem > /sys/power/state;"
     class main
     user root
     group root system
@@ -33,7 +33,7 @@ service cpu_screen_on /system/bin/sh -c "echo 1 | tee /sys/devices/system/cpu/cp
     oneshot
     disabled
 
-service force_sleep /system/bin/sh -c "echo heartbeat > /sys/class/leds/battery_charging/trigger; sleep 5; echo none > /sys/class/leds/battery_charging/trigger; while true; do start cpu_screen_off; sleep 60; done"
+service force_sleep /system/bin/sh -c "echo heartbeat > /sys/class/leds/battery_charging/trigger; sleep 5; echo none > /sys/class/leds/battery_charging/trigger; while true; do start cpu_screen_off; sleep 10; done"
     class main
     user root
     group root system
