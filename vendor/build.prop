@@ -380,5 +380,9 @@ persist.gammaos.rgb.disable_gray_blend=1
 persist.gammaos.rgb.brightness_override_threshold=0
 persist.gammaos.rgb.min_led_brightness=14
 persist.gammaos.rgb.use_hwc=0
+persist.gammaos.rgb.effect1.supported=1
+persist.gammaos.rgb.effect2.supported=1
+persist.gammaos.rgb.effect3.supported=1
+persist.gammaos.rgb.effect4.supported=1
 # end of file
 Target FotaInfo:
