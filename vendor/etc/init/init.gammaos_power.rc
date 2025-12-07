@@ -33,6 +33,13 @@ service setdisplay_60 /vendor/bin/60hz.sh
     oneshot
     disabled
 
+service refreshlock /vendor/bin/refreshlock.sh
+    class main
+    user root
+    group root system
+    oneshot
+    disabled
+
 on property:persist.gammaos.performance_mode=max
     start setclock_max
 
@@ -47,3 +54,18 @@ on property:persist.gammaos.refresh.rate=60
 
 on property:persist.gammaos.refresh.rate=120
    start setdisplay_120
+
+on early-init
+   setprop persist.gammaos.refresh.lock 0
+
+on early-boot
+   setprop persist.gammaos.refresh.lock 0
+
+on boot
+   setprop persist.gammaos.refresh.lock 0
+
+on property:sys.boot_completed=1 && property:sys.user.0.ce_available=true && property:persist.sys.device_provisioned=1 && property:persist.gammaos.refresh.rate=120
+   start refreshlock
+
+on property:persist.gammaos.bfi.enable=1
+   setprop persist.gammaos.refresh.rate 120

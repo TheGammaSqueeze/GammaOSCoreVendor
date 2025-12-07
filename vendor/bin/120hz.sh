@@ -8,5 +8,3 @@ settings put system peak_refresh_rate 120
 settings put global low_power 0
 settings put global match_content_frame_rate 0
 cmd display set-user-preferred-display-mode 0 1280 960 120
-sleep 1
-setprop persist.gammaos.refresh.lock 1
