@@ -19,6 +19,20 @@ service setclock_powersave /vendor/bin/setclock_powersave.sh
     oneshot
     disabled
 
+service setdisplay_120 /vendor/bin/120hz.sh
+    class main
+    user root
+    group root system
+    oneshot
+    disabled
+
+service setdisplay_60 /vendor/bin/60hz.sh
+    class main
+    user root
+    group root system
+    oneshot
+    disabled
+
 on property:persist.gammaos.performance_mode=max
     start setclock_max
 
@@ -27,3 +41,9 @@ on property:persist.gammaos.performance_mode=stock
 
 on property:persist.gammaos.performance_mode=powersave
     start setclock_powersave
+
+on property:persist.gammaos.refresh.rate=60
+   start setdisplay_60
+
+on property:persist.gammaos.refresh.rate=120
+   start setdisplay_120
