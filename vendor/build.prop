@@ -391,5 +391,6 @@ persist.gammaos.qs.override_default_tiles_0=internet,bt,performance,fan,gammasha
 persist.gammaos.qs.override_default_tiles_1=deepsleepmode,externaldocking,immersivemode,abxy,dpadAnalogToggle,analogsensitivity
 persist.gammaos.qs.override_default_tiles_2=analogdeadzone,analogcalibration,analogaxis,rightanalogaxis,dcdimmingemulation
 persist.gammaos.qs.override_default_tiles_3=retroarchmenubuttonoverride,mappingeditor
+persist.gammaos.rgb.effect=follow
 # end of file
 Target FotaInfo:
