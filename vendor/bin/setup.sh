@@ -145,3 +145,5 @@ setprop persist.gammaos.bfi.subframe.debug 0
 setprop persist.gammaos.bfi.subframe.duty 0.45
 setprop persist.gammaos.bfi.subframe.enable 0
 setprop persist.gammaos.bfi.subframe.phase_step 0.5
+
+setprop persist.gammaos.ext.primary 1
