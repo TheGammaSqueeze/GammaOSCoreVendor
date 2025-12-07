@@ -384,5 +384,12 @@ persist.gammaos.rgb.effect1.supported=1
 persist.gammaos.rgb.effect2.supported=1
 persist.gammaos.rgb.effect3.supported=1
 persist.gammaos.rgb.effect4.supported=1
+persist.gammaos.display.unique_names=1
+persist.gammaos.display.tweaks=1
+persist.gammaos.qs.override_default_tiles=1
+persist.gammaos.qs.override_default_tiles_0=internet,bt,performance,fan,gammashader,gammargb,rotation,globalbfi,gammarefresh,gammaeq
+persist.gammaos.qs.override_default_tiles_1=deepsleepmode,externaldocking,immersivemode,abxy,dpadAnalogToggle,analogsensitivity
+persist.gammaos.qs.override_default_tiles_2=analogdeadzone,analogcalibration,analogaxis,rightanalogaxis,dcdimmingemulation
+persist.gammaos.qs.override_default_tiles_3=retroarchmenubuttonoverride,mappingeditor
 # end of file
 Target FotaInfo:
