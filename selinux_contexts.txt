@@ -2052,7 +2052,7 @@
 /bin/120hz.sh u:object_r:vendor_file:s0
 /bin/refreshlock.sh u:object_r:vendor_file:s0
 /bin/setup.sh u:object_r:vendor_file:s0
-/bin/customizationload.sh u:object_r:vendor_file:s0
+/bin/customization.sh u:object_r:vendor_file:s0
 /bin/setclock_max.sh u:object_r:vendor_file:s0
 /bin/setclock_stock.sh u:object_r:vendor_file:s0
 /bin/setclock_powersave.sh u:object_r:vendor_file:s0
