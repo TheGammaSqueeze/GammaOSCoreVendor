@@ -397,5 +397,6 @@ log.tag.ENGPC=E
 log.tag.sprd_wdt_fiq=F
 log.tag.sprd-wlan=F
 log.tag.HwcComposer=F
+persist.gammaos.unisoc.hdmi.enable=1
 # end of file
 Target FotaInfo:
