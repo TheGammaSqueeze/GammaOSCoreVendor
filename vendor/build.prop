@@ -396,5 +396,6 @@ log.tag.mali_gralloc=E
 log.tag.ENGPC=E
 log.tag.sprd_wdt_fiq=F
 log.tag.sprd-wlan=F
+log.tag.HwcComposer=F
 # end of file
 Target FotaInfo:
