@@ -1,6 +1,6 @@
 #!/system/bin/sh
 
-# GammaEQ — Sparkle (Speakers) with boosted warmth (PEQ2 b0 = 2.6)
+# GammaEQ — Sparkle (Speakers) with boosted warmth (PEQ2 b0 = 2.9922945)
 #
 # This script:
 #   - Enables GammaEQ on speakers only
@@ -17,18 +17,18 @@ setprop persist.sys.gammaeq.preamp_db  -1.0    # Small safety cut to avoid clipp
 setprop persist.sys.gammaeq.postgain_db 0      # No post gain
 
 # ------------------------------------------------------------
-# Crystalizer section (configured but disabled by default)
+# Crystalizer section (enabled by default)
 # ------------------------------------------------------------
 
 # Enable/disable Crystalizer block
-setprop persist.sys.spk.cryst 0                # 0 = OFF, 1 = ON
+setprop persist.sys.spk.cryst 1                # 0 = OFF, 1 = ON
 
 # Crystalizer shaping parameters
-setprop persist.sys.spk.cryst.amount 0.40      # Amount of HF "enhancement"
+setprop persist.sys.spk.cryst.amount 3.630137  # Amount of HF "enhancement"
 setprop persist.sys.spk.cryst.mix 0.25         # Wet/dry mix
 setprop persist.sys.spk.cryst.hz 11500         # Corner frequency for HF emphasis
 setprop persist.sys.spk.cryst.pregain_db -8    # Pre-gain into the block (dB)
-setprop persist.sys.spk.cryst.postgain_db 0    # Post-gain out of the block (dB)
+setprop persist.sys.spk.cryst.postgain_db 9.363636 # Post-gain out of the block (dB)
 setprop persist.sys.spk.cryst.pre 0.40         # Internal pre-emphasis factor
 setprop persist.sys.spk.cryst.fc 11500         # Internal cutoff / center freq
 setprop persist.sys.spk.cryst.limit 0.30       # Internal limiter threshold
@@ -42,7 +42,7 @@ setprop persist.sys.spk.cryst.seq $(( $(getprop persist.sys.spk.cryst.seq 0) + 1
 
 setprop persist.sys.spk.lbp 1                  # Enable Low-Band Protector
 setprop persist.sys.spk.lbp.fc 160             # Crossover frequency (Hz)
-setprop persist.sys.spk.lbp.thr 0.24           # Threshold (linear, ~-12 dB)
+setprop persist.sys.spk.lbp.thr 0.6934932      # Threshold (linear)
 setprop persist.sys.spk.lbp.atk 4              # Attack time (ms)
 setprop persist.sys.spk.lbp.rel 110            # Release time (ms)
 
@@ -78,12 +78,12 @@ setprop persist.sys.spk.peq.limit 0            # Limiting disabled here
 setprop persist.sys.spk.peq.seq $(( $(getprop persist.sys.spk.peq.seq 0) + 1 ))
 
 # ------------------------------------------------------------
-# PEQ2 — warmth / body (boosted b0 = 2.6)
+# PEQ2 — warmth / body (boosted b0 = 2.9922945)
 # ------------------------------------------------------------
 
 setprop persist.sys.spk.peq2 1                 # Enable PEQ2 block
-setprop persist.sys.spk.peq2.b0 2.6            # Bi-quad b0 coefficient (extra warmth)
-setprop persist.sys.spk.peq2.b1 -0.95          # Bi-quad b1 coefficient
+setprop persist.sys.spk.peq2.b0 2.9922945      # Bi-quad b0 coefficient (extra warmth)
+setprop persist.sys.spk.peq2.b1 -0.31506848    # Bi-quad b1 coefficient
 setprop persist.sys.spk.peq2.b2 0.60           # Bi-quad b2 coefficient
 setprop persist.sys.spk.peq2.a1 0              # Bi-quad a1 coefficient
 setprop persist.sys.spk.peq2.a2 0              # Bi-quad a2 coefficient
@@ -91,13 +91,13 @@ setprop persist.sys.spk.peq2.a2 0              # Bi-quad a2 coefficient
 setprop persist.sys.spk.peq2.seq $(( $(getprop persist.sys.spk.peq2.seq 0) + 1 ))
 
 # ------------------------------------------------------------
-# Stereo Widener — subtle width enhancement
+# Stereo Widener — stronger width enhancement
 # ------------------------------------------------------------
 
 setprop persist.sys.spk.wide 1                 # Enable stereo wide block
-setprop persist.sys.spk.wide.mix 0.25          # Wet/dry mix (0 = off, 1 = fully wide)
+setprop persist.sys.spk.wide.mix 0.91780823    # Wet/dry mix
 setprop persist.sys.spk.wide.hpf 5500          # High-pass for widening (Hz)
-setprop persist.sys.spk.wide.amount 0.75       # Overall widening amount
+setprop persist.sys.spk.wide.amount 1.6232877  # Overall widening amount
 
 setprop persist.sys.spk.wide.seq $(( $(getprop persist.sys.spk.wide.seq 0) + 1 ))
 
@@ -106,7 +106,6 @@ setprop persist.sys.spk.wide.seq $(( $(getprop persist.sys.spk.wide.seq 0) + 1 )
 # ------------------------------------------------------------
 
 setprop sys.gammaeq.route.spk 1                # 1 = use speaker route for GammaEQ
-
 
 # BFI
 setprop persist.gammaos.bfi.black_floor 0.01
@@ -147,3 +146,29 @@ setprop persist.gammaos.bfi.subframe.enable 0
 setprop persist.gammaos.bfi.subframe.phase_step 0.5
 
 setprop persist.gammaos.ext.primary 1
+
+mkdir -p /data/GammaPad
+
+su -c 'cat > /data/GammaPad/MAPPINGS << "EOF"
+KEY_F10 KEY_ALL_APPLICATIONS
+KEY_BACK KEY_BACK
+BTN_GAMEPAD BTN_GAMEPAD
+BTN_EAST BTN_EAST
+BTN_C BTN_C
+BTN_NORTH BTN_NORTH
+BTN_WEST BTN_WEST
+BTN_Z BTN_Z
+BTN_TL BTN_TL
+BTN_TR BTN_TR
+BTN_TL2 BTN_TL2
+BTN_TR2 BTN_TR2
+BTN_SELECT BTN_SELECT
+BTN_START BTN_START
+BTN_MODE BTN_MODE
+BTN_THUMBL BTN_THUMBL
+BTN_THUMBR BTN_THUMBR
+BTN_DPAD_UP BTN_DPAD_UP
+BTN_DPAD_DOWN BTN_DPAD_DOWN
+BTN_DPAD_LEFT BTN_DPAD_LEFT
+BTN_DPAD_RIGHT BTN_DPAD_RIGHT
+EOF'
