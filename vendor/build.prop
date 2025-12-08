@@ -395,5 +395,6 @@ persist.gammaos.rgb.effect=follow
 log.tag.mali_gralloc=E
 log.tag.ENGPC=E
 log.tag.sprd_wdt_fiq=F
+log.tag.sprd-wlan=F
 # end of file
 Target FotaInfo:
