@@ -175,3 +175,5 @@ EOF'
 
 sed -i 's/vrr_runloop_enable = "false"/vrr_runloop_enable = "true"/'  /sdcard/Android/data/com.retroarch.aarch64/files/retroarch.cfg
 setprop persist.gammaos.ext.force_mirror 1
+setprop persist.gammargb.control off
+setprop persist.gammaos.rgb.enable 0
