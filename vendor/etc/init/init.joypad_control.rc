@@ -1,4 +1,4 @@
-service joypad_control_screen_off /system/bin/sh -c "echo 0 > /sys/devices/platform/singleadc-joypad/enable"
+service joypad_control_screen_off /system/bin/sh -c "sleep 1; echo 0 > /sys/devices/platform/singleadc-joypad/enable"
     class main
     user root
     group root system
@@ -12,14 +12,14 @@ service joypad_control_screen_on /system/bin/sh -c "echo 1 > /sys/devices/platfo
     oneshot
     disabled
 
-service led_control_screen_on /vendor/bin/gammargb 960 720
+service led_control_screen_on /vendor/bin/gammargb
     class main
     user root
     group root system
     oneshot
     disabled
 
-service gammapad /vendor/bin/gammapad retrogame_joypad --ffdev=sc27xx:vibrator --ffpwm
+service gammapad /vendor/bin/gammapad retrogame_joypad --ffdev=sc27xx:vibrator
     class main
     user root
     group root system
@@ -183,8 +183,10 @@ service gammapad_calibration_on /system/bin/sh -c "echo 1 > /data/GammaPad/CALIB
 on property:sys.screen.state=off
     start joypad_control_screen_off
     stop led_control_screen_on
+    start led_control_off
 
 on property:sys.screen.state=on
+    stop joypad_control_screen_off
     start joypad_control_screen_on
 
 on property:sys.boot_completed=1

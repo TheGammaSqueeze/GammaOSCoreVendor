@@ -19,6 +19,7 @@
 /etc u:object_r:vendor_configs_file:s0
 /etc/passwd u:object_r:vendor_configs_file:s0
 /etc/uniber.conf u:object_r:vendor_configs_file:s0
+/etc/Sparkle-406H.txt u:object_r:vendor_configs_file:s0
 /etc/config.xml u:object_r:vendor_configs_file:s0
 /etc/scenario.conf u:object_r:vendor_configs_file:s0
 /etc/dp_audio_policy_configuration.xml u:object_r:vendor_configs_file:s0
@@ -2048,6 +2049,12 @@
 /framework u:object_r:vendor_framework_file:s0
 /framework/androidx.camera.extensions.impl.jar u:object_r:vendor_framework_file:s0
 /bin u:object_r:vendor_file:s0
+/bin/60hz.sh u:object_r:vendor_file:s0
+/bin/120hz.sh u:object_r:vendor_file:s0
+/bin/refreshlock.sh u:object_r:vendor_file:s0
+/bin/setup.sh u:object_r:vendor_file:s0
+/bin/customization.sh u:object_r:vendor_file:s0
+/bin/customizationload.sh u:object_r:vendor_file:s0
 /bin/setclock_max.sh u:object_r:vendor_file:s0
 /bin/setclock_stock.sh u:object_r:vendor_file:s0
 /bin/setclock_powersave.sh u:object_r:vendor_file:s0
