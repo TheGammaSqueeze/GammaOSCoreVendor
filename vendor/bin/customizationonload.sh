@@ -1,15 +1,15 @@
 #!/system/bin/sh
 
-# Check migration flag
 MIGRATION_FLAG="$(getprop persist.gammaos.v1.2.migration)"
 
-if [ "$MIGRATION_FLAG" = "0" ]; then
+# Treat anything that is not "1" (including empty) as "0" / not migrated
+if [ "$MIGRATION_FLAG" != "1" ]; then
     # Ensure /data/GammaPad exists
     if [ ! -d /data/GammaPad ]; then
         mkdir -p /data/GammaPad
     fi
 
-    # Create ffpwm file with value 0
+    # Create/update ffpwm file with value 0
     echo 0 > /data/GammaPad/ffpwm
 
     # Reset QS tiles
