@@ -15,6 +15,10 @@ if [ "$MIGRATION_FLAG" != "1" ]; then
     # Reset QS tiles
     settings put secure sysui_qs_tiles default
 
+    # Copy GammaEQ Preset
+    mkdir -p /sdcard/GammaEQ
+    cp /vendor/etc/Sparkle-406V.txt /sdcard/GammaEQ/Sparkle-406V.txt
+
     # Mark migration as done
     setprop persist.gammaos.v1.2.migration 1
 fi
