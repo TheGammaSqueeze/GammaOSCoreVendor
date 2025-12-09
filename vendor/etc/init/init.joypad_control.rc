@@ -1,18 +1,179 @@
-service joypad_control_screen_off /system/bin/sh -c "echo 0 > /sys/devices/platform/singleadc-joypad/enable"
+service joypad_control_screen_off /system/bin/sh -c "sleep 1; echo 0 > /sys/devices/platform/singleadc-joypad/enable"
     class main
     user root
     group root system
     oneshot
     disabled
 
-service joypad_control_screen_on /system/bin/sh -c "echo 1 > /sys/devices/platform/singleadc-joypad/enable"
+service joypad_control_screen_on /system/bin/sh -c "echo 1 > /sys/devices/platform/singleadc-joypad/enable; echo 1500 > /sys/devices/platform/singleadc-joypad/jokstick_cal_scale; echo 2 > /sys/devices/platform/singleadc-joypad/remapkey_xbox_switch_bt_tr"
     class main
     user root
     group root system
     oneshot
     disabled
 
-service led_control_screen_on /vendor/bin/gammargb 960 720
+service led_control_screen_on /vendor/bin/gammargb
+    class main
+    user root
+    group root system
+    oneshot
+    disabled
+
+service gammapad /vendor/bin/gammapad retrogame_joypad --ffdev=sc27xx:vibrator
+    class main
+    user root
+    group root system
+    oneshot
+    disabled
+
+service led_control_off /system/bin/sh -c "echo 0 > /sys/devices/platform/singleadc-joypad/led_switch; echo 1 > /sys/devices/platform/singleadc-joypad/led_set"
+    class main
+    user root
+    group root system
+    oneshot
+    disabled
+
+service gammapad_abxy_on /system/bin/sh -c "echo 1 > /data/GammaPad/ABXY_LAYOUT"
+    class main
+    user root
+    group root system
+    oneshot
+    disabled
+
+service gammapad_abxy_off /system/bin/sh -c "echo 0 > /data/GammaPad/ABXY_LAYOUT"
+    class main
+    user root
+    group root system
+    oneshot
+    disabled
+
+service gammapad_dpadanalogswap_on /system/bin/sh -c "echo 1 > /data/GammaPad/DPAD_ANALOG_SWAP"
+    class main
+    user root
+    group root system
+    oneshot
+    disabled
+
+service gammapad_dpadanalogswap_off /system/bin/sh -c "echo 0 > /data/GammaPad/DPAD_ANALOG_SWAP"
+    class main
+    user root
+    group root system
+    oneshot
+    disabled
+
+service gammapad_leftstickinvert_on /system/bin/sh -c "echo 1 > /data/GammaPad/LEFTSTICKINVERT"
+    class main
+    user root
+    group root system
+    oneshot
+    disabled
+
+service gammapad_leftstickinvert_off /system/bin/sh -c "echo 0 > /data/GammaPad/LEFTSTICKINVERT"
+    class main
+    user root
+    group root system
+    oneshot
+    disabled
+
+service gammapad_rightstickinvert_on /system/bin/sh -c "echo 1 > /data/GammaPad/RIGHTSTICKINVERT"
+    class main
+    user root
+    group root system
+    oneshot
+    disabled
+
+service gammapad_rightstickinvert_off /system/bin/sh -c "echo 0 > /data/GammaPad/RIGHTSTICKINVERT"
+    class main
+    user root
+    group root system
+    oneshot
+    disabled
+
+service gammapad_analogsensitivity_off /system/bin/sh -c "echo 0 > /data/GammaPad/ANALOGSENSITIVITY"
+    class main
+    user root
+    group root system
+    oneshot
+    disabled
+
+service gammapad_analogsensitivity_50 /system/bin/sh -c "echo -3 > /data/GammaPad/ANALOGSENSITIVITY"
+    class main
+    user root
+    group root system
+    oneshot
+    disabled
+
+service gammapad_analogsensitivity_75 /system/bin/sh -c "echo -2 > /data/GammaPad/ANALOGSENSITIVITY"
+    class main
+    user root
+    group root system
+    oneshot
+    disabled
+
+service gammapad_analogsensitivity_90 /system/bin/sh -c "echo -1 > /data/GammaPad/ANALOGSENSITIVITY"
+    class main
+    user root
+    group root system
+    oneshot
+    disabled
+
+service gammapad_analogsensitivity_110 /system/bin/sh -c "echo 1 > /data/GammaPad/ANALOGSENSITIVITY"
+    class main
+    user root
+    group root system
+    oneshot
+    disabled
+
+service gammapad_analogsensitivity_125 /system/bin/sh -c "echo 2 > /data/GammaPad/ANALOGSENSITIVITY"
+    class main
+    user root
+    group root system
+    oneshot
+    disabled
+
+service gammapad_analogsensitivity_150 /system/bin/sh -c "echo 3 > /data/GammaPad/ANALOGSENSITIVITY"
+    class main
+    user root
+    group root system
+    oneshot
+    disabled
+
+service gammapad_analogdeadzone_off /system/bin/sh -c "echo 0 > /data/GammaPad/DEADZONE"
+    class main
+    user root
+    group root system
+    oneshot
+    disabled
+
+service gammapad_analogdeadzone_5 /system/bin/sh -c "echo 5 > /data/GammaPad/DEADZONE"
+    class main
+    user root
+    group root system
+    oneshot
+    disabled
+
+service gammapad_analogdeadzone_10 /system/bin/sh -c "echo 10 > /data/GammaPad/DEADZONE"
+    class main
+    user root
+    group root system
+    oneshot
+    disabled
+
+service gammapad_analogdeadzone_15 /system/bin/sh -c "echo 15 > /data/GammaPad/DEADZONE"
+    class main
+    user root
+    group root system
+    oneshot
+    disabled
+
+service gammapad_analogdeadzone_20 /system/bin/sh -c "echo 20 > /data/GammaPad/DEADZONE"
+    class main
+    user root
+    group root system
+    oneshot
+    disabled
+
+service gammapad_calibration_on /system/bin/sh -c "echo 1 > /data/GammaPad/CALIBRATION_MODE; sleep 1; setprop persist.gammaos.calibrationmode 0"
     class main
     user root
     group root system
@@ -22,7 +183,82 @@ service led_control_screen_on /vendor/bin/gammargb 960 720
 on property:sys.screen.state=off
     start joypad_control_screen_off
     stop led_control_screen_on
+    start led_control_off
 
 on property:sys.screen.state=on
+    stop joypad_control_screen_off
     start joypad_control_screen_on
+
+on property:sys.boot_completed=1
+    start gammapad
+    setprop sys.screen.state on
+
+on property:persist.gammargb.control=off
+    stop led_control_screen_on
+    start led_control_off
+
+on property:persist.gammargb.control=on && property:sys.screen.state=on
     start led_control_screen_on
+
+on property:persist.gammaos.abxyswap=on
+    start gammapad_abxy_on
+
+on property:persist.gammaos.abxyswap=off
+    start gammapad_abxy_off
+
+on property:persist.gammaos.dpadanalogswap=on
+    start gammapad_dpadanalogswap_on
+
+on property:persist.gammaos.dpadanalogswap=off
+    start gammapad_dpadanalogswap_off
+
+on property:persist.gammaos.leftstickinvert=on
+    start gammapad_leftstickinvert_on
+
+on property:persist.gammaos.leftstickinvert=off
+    start gammapad_leftstickinvert_off
+
+on property:persist.gammaos.rightstickinvert=on
+    start gammapad_rightstickinvert_on
+
+on property:persist.gammaos.rightstickinvert=off
+    start gammapad_rightstickinvert_off
+
+on property:persist.gammaos.analogsensitivity=0
+    start gammapad_analogsensitivity_off
+
+on property:persist.gammaos.analogsensitivity=-3
+    start gammapad_analogsensitivity_50
+
+on property:persist.gammaos.analogsensitivity=-2
+    start gammapad_analogsensitivity_75
+
+on property:persist.gammaos.analogsensitivity=-1
+    start gammapad_analogsensitivity_90
+
+on property:persist.gammaos.analogsensitivity=1
+    start gammapad_analogsensitivity_110
+
+on property:persist.gammaos.analogsensitivity=2
+    start gammapad_analogsensitivity_125
+
+on property:persist.gammaos.analogsensitivity=3
+    start gammapad_analogsensitivity_150
+
+on property:persist.gammaos.analogdeadzone=0
+    start gammapad_analogdeadzone_0
+
+on property:persist.gammaos.analogdeadzone=1
+    start gammapad_analogdeadzone_5
+
+on property:persist.gammaos.analogdeadzone=2
+    start gammapad_analogdeadzone_10
+
+on property:persist.gammaos.analogdeadzone=3
+    start gammapad_analogdeadzone_15
+
+on property:persist.gammaos.analogdeadzone=4
+    start gammapad_analogdeadzone_20
+
+on property:persist.gammaos.calibrationmode=1
+    start gammapad_calibration_on
