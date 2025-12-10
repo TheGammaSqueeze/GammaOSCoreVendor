@@ -1,11 +1,11 @@
-service joypad_control_screen_off /system/bin/sh -c "echo 0 > /sys/devices/platform/singleadc-joypad/enable"
+service joypad_control_screen_off /system/bin/sh -c "sleep 0.5; echo 0 > /sys/devices/platform/singleadc-joypad/enable"
     class main
     user root
     group root system
     oneshot
     disabled
 
-service joypad_control_screen_on /system/bin/sh -c "echo 1 > /sys/devices/platform/singleadc-joypad/enable; echo 2 > /sys/devices/platform/singleadc-joypad/remapkey_xbox_switch_bt_tr"
+service joypad_control_screen_on /system/bin/sh -c "echo 1 > /sys/devices/platform/singleadc-joypad/enable; sleep 1; echo 1 > /sys/devices/platform/singleadc-joypad/enable; echo 2 > /sys/devices/platform/singleadc-joypad/remapkey_xbox_switch_bt_tr; sleep 1; echo 1 > /sys/devices/platform/singleadc-joypad/enable;"
     class main
     user root
     group root system
@@ -19,7 +19,7 @@ service led_control_screen_on /vendor/bin/gammargb
     oneshot
     disabled
 
-service gammapad /vendor/bin/gammapad retrogame_joypad --ffdev=sc27xx:vibrator
+service gammapad /vendor/bin/gammapad retrogame_joypad --ffdev=sc27xx:vibrator --no-source-rebind --remove-source-node
     class main
     user root
     group root system
