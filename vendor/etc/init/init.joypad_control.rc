@@ -19,7 +19,7 @@ service led_control_screen_on /vendor/bin/gammargb
     oneshot
     disabled
 
-service gammapad /vendor/bin/gammapad retrogame_joypad --ffdev=sc27xx:vibrator --ffpwm
+service gammapad /vendor/bin/gammapad retrogame_joypad --ffdev=sc27xx:vibrator
     class main
     user root
     group root system
