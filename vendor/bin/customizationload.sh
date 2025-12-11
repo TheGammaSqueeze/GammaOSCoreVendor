@@ -19,6 +19,10 @@ if [ "$MIGRATION_FLAG" != "1" ]; then
     mkdir -p /sdcard/GammaEQ
     cp /vendor/etc/Sparkle-Cube.txt /sdcard/GammaEQ/Sparkle-Cube.txt
 
+    # Reset density 
+    wm reset
+    wm density 192
+
     # Mark migration as done
     setprop persist.gammaos.v1.2.migration 1
 fi
