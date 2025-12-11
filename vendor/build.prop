@@ -457,3 +457,4 @@ persist.sys.spk.wide.hpf=5500
 persist.sys.spk.wide.amount=1.6232877
 sys.gammaeq.route.spk=1
 persist.gammaos.ext.primary=1
+ro.sensors.sysui_accelerometer_orientation=270
