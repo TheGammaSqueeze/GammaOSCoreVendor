@@ -12898,6 +12898,7 @@
 (allow system_server_34_0 thermal_intf_exec (file (read getattr map execute open execute_no_trans)))
 (allow system_server_34_0 thermal_socket (sock_file (write)))
 (allow system_server_34_0 thermal_core (unix_stream_socket (connectto)))
+(allow system_server_34_0 sysfs_34_0 (file (read write getattr setattr open)))
 (allow surfaceflinger_34_0 mobicore_user_device (chr_file (ioctl read write getattr lock append open watch watch_reads)))
 (allow system_app_34_0 tkcore_admin_device (chr_file (ioctl read write getattr lock append map open watch watch_reads)))
 (allow system_server_34_0 teei_fp_device (chr_file (ioctl read write getattr lock append map open watch watch_reads)))

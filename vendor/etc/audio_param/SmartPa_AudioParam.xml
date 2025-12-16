@@ -11,6 +11,7 @@
 		<Param path="smartpa_richtek_rt5512" param_id="5"/>
 		<Param path="smartpa_nxp_tfa9874" param_id="6"/>
 		<Param path="smartpa_cirrus_cs35l41" param_id="7"/>
+		<Param path="smartpa_awinic_aw883xx" param_id="20"/>
 	</ParamTree>
 	<ParamUnitPool>
 		<ParamUnit param_id="0">
@@ -100,6 +101,17 @@
 			<Param name="codec_ctl_name" value=""/>
 			<Param name="is_apll_needed" value="1"/>
 			<Param name="i2s_set_stage" value="4"/>
+		</ParamUnit>
+		<ParamUnit param_id="20">
+			<Param name="have_dsp" value="1"/>
+			<Param name="is_alsa_codec" value="1"/>
+			<Param name="chip_delay_us" value="22000"/>
+			<Param name="supported_rate_list" value="0x1F40,0x2B11,0x2EE0,0x3E80,0x5622,0x5DC0,0x7D00,0xAC44,0xBB80"/>
+			<Param name="spk_lib_path" value=""/>
+			<Param name="spk_lib64_path" value=""/>
+			<Param name="codec_ctl_name" value=""/>
+			<Param name="is_apll_needed" value="1"/>
+			<Param name="i2s_set_stage" value="5"/>
 		</ParamUnit>
 	</ParamUnitPool>
 </AudioParam>
