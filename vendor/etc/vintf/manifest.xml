@@ -6,9 +6,6 @@
         device/mediatek/vendor/common/project_manifest/manifest_bgservice_aidl.xml
         device/mediatek/vendor/common/project_manifest/manifest_videotelephony.xml
         device/mediatek/vendor/common/project_manifest/manifest_secure_element_dsds.xml
-        device/mediatek/vendor/common/project_manifest/manifest_log.xml
-        device/mediatek/vendor/common/project_manifest/manifest_mdmonitor.xml
-        device/mediatek/vendor/common/project_manifest/manifest_aee.xml
         device/mediatek/vendor/common/project_manifest/manifest_boot.xml
         device/mediatek/vendor/common/project_manifest/manifest_pq.xml
         device/mediatek/vendor/common/project_manifest/manifest_mmagent.xml
@@ -118,16 +115,6 @@
         <name>android.hardware.soundtrigger3</name>
         <fqname>ISoundTriggerHw/default</fqname>
     </hal>
-    <hal format="hidl">
-        <name>vendor.mediatek.hardware.aee</name>
-        <transport>hwbinder</transport>
-        <fqname>@1.1::IAee/AEE</fqname>
-        <fqname>@1.1::IAee/default</fqname>
-    </hal>
-    <hal format="aidl">
-        <name>vendor.mediatek.hardware.aee</name>
-        <fqname>IAee/AEE</fqname>
-    </hal>
     <hal format="aidl">
         <name>vendor.mediatek.hardware.apmonitor</name>
         <fqname>IApmService/default</fqname>
@@ -160,18 +147,6 @@
     <hal format="aidl">
         <name>vendor.mediatek.hardware.dmc</name>
         <fqname>IDmcService/default</fqname>
-    </hal>
-    <hal format="aidl">
-        <name>vendor.mediatek.hardware.log</name>
-        <fqname>ILog/ATMWiFiHidlServer</fqname>
-        <fqname>ILog/ConnsysFWHidlServer</fqname>
-        <fqname>ILog/LoggerHidlServer</fqname>
-        <fqname>ILog/MobileLogHidlServer</fqname>
-        <fqname>ILog/ModemLogHidlServer</fqname>
-    </hal>
-    <hal format="aidl">
-        <name>vendor.mediatek.hardware.mdmonitor</name>
-        <fqname>IMDMonitorService/default</fqname>
     </hal>
     <hal format="aidl">
         <name>vendor.mediatek.hardware.mmagent</name>
