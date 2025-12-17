@@ -1,3 +1,3 @@
 #!/system/bin/sh
 
-echo 80 > /sys/devices/platform/pwm_fan/pwm_fan_set
+echo 160 > /sys/devices/platform/pwm_fan/pwm_fan_set

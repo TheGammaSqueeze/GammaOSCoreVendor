@@ -41,14 +41,14 @@ echo 0 > /sys/devices/system/cpu/cpufreq/policy7/scaling_setspeed
 echo -1 > /sys/devices/system/cpu/cpufreq/policy7/scaling_setspeed
 
 # Kernel Scheduling and Timer Tweaks
-echo 1 > /proc/sys/kernel/timer_migration
-echo 0 > /proc/sys/kernel/sched_energy_aware
+#echo 1 > /proc/sys/kernel/timer_migration
+#echo 0 > /proc/sys/kernel/sched_energy_aware
 
 # cpuset Configuration
-echo 4-7 > /dev/cpuset/top-app/cpus
-echo 1 > /dev/cpuset/top-app/cpu_exclusive
-echo 0 > /dev/cpuset/top-app/sched_load_balance
-echo 0 > /dev/cpuset/top-app/sched_relax_domain_level
-echo 0 > /dev/cpuset/sched_load_balance
+#echo 4-7 > /dev/cpuset/top-app/cpus
+#echo 1 > /dev/cpuset/top-app/cpu_exclusive
+#echo 0 > /dev/cpuset/top-app/sched_load_balance
+#echo 0 > /dev/cpuset/top-app/sched_relax_domain_level
+#echo 0 > /dev/cpuset/sched_load_balance
 
-echo "All performance tweaks and swap setup applied."
+#echo "All performance tweaks and swap setup applied."
