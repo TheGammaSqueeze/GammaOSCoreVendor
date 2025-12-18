@@ -823,7 +823,7 @@ persist.gammaos.qs.override_default_tiles_2=analogdeadzone,analogcalibration,ana
 persist.gammaos.qs.override_default_tiles_3=retroarchmenubuttonoverride,mappingeditor
 persist.gammaos.rgb.effect=follow
 
-ro.sensors.gyroscope_orientation=ORIENTATION_90
+#ro.sensors.gyroscope_orientation=ORIENTATION_90
 ro.surface_flinger.supports_background_blur=1
 ro.input_flinger.primary_touch_orientation=ORIENTATION_90
 ro.sensors.accelerometer_orientation=ORIENTATION_90
