@@ -20,7 +20,7 @@ echo 458333313 > /sys/devices/platform/soc/112b0000.ufshci/devfreq/112b0000.ufsh
 # CPU Frequency Scaling
 
 # LITTLE cluster (policy0)
-echo powersave > /sys/devices/system/cpu/cpufreq/policy0/scaling_governor
+echo schedutil > /sys/devices/system/cpu/cpufreq/policy0/scaling_governor
 echo 480000 > /sys/devices/system/cpu/cpufreq/policy0/scaling_min_freq
 echo 2200000 > /sys/devices/system/cpu/cpufreq/policy0/scaling_max_freq
 echo 0 > /sys/devices/system/cpu/cpufreq/policy0/scaling_setspeed

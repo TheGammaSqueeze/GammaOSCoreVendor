@@ -26,30 +26,54 @@ service setfan_auto /vendor/bin/setfan_auto.sh
     oneshot
     disabled
 
+# Screen ON: max
 on property:sys.screen.state=on && property:persist.gammaos.fan_mode=max
-    stop setfan_auto
-    start setfan_max
+   stop setfan_auto
+   stop setfan_cool
+   stop setfan_off
+   start setfan_max
 
+# Screen ON: cool
 on property:sys.screen.state=on && property:persist.gammaos.fan_mode=cool
-    stop setfan_auto
-    start setfan_cool
+   stop setfan_auto
+   stop setfan_max
+   stop setfan_off
+   start setfan_cool
 
+# Screen ON: off
 on property:sys.screen.state=on && property:persist.gammaos.fan_mode=off
-    stop setfan_auto
-    start setfan_off
+   stop setfan_auto
+   stop setfan_max
+   stop setfan_cool
+   start setfan_off
 
+# Screen ON: auto
 on property:sys.screen.state=on && property:persist.gammaos.fan_mode=auto
-    start setfan_auto
+   stop setfan_max
+   stop setfan_cool
+   stop setfan_off
+   start setfan_auto
 
+# Auto sub-mode transitions
 on property:persist.gammaos.fan_mode=auto && property:persist.gammaos.fan_mode_auto=off
-    start setfan_off
+   stop setfan_max
+   stop setfan_cool
+   start setfan_off
 
 on property:persist.gammaos.fan_mode=auto && property:persist.gammaos.fan_mode_auto=cool
-    start setfan_cool
+   stop setfan_max
+   stop setfan_off
+   start setfan_cool
 
 on property:persist.gammaos.fan_mode=auto && property:persist.gammaos.fan_mode_auto=max
-    start setfan_max
+   stop setfan_cool
+   stop setfan_off
+   start setfan_max
 
+# Screen OFF: force fan off immediately (do not ramp, do not race)
 on property:sys.screen.state=off
    stop setfan_auto
-   start setfan_off
+   stop setfan_max
+   stop setfan_cool
+   stop setfan_off
+   write /sys/devices/platform/pwm_fan/pwm_fan_set 0

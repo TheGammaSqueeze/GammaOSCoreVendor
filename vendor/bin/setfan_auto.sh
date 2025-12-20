@@ -2,9 +2,9 @@
 
 PROP_NAME="persist.gammaos.fan_mode_auto"
 
-# Thresholds (°C): cool if > COOL_ON, max if > MAX_ON
+# Thresholds (?C): cool if > COOL_ON, max if > MAX_ON
 COOL_ON=60
-MAX_ON=90
+MAX_ON=75
 
 # Target polling interval (seconds)
 SLEEP_SECS=1
@@ -27,7 +27,7 @@ trim_ws() {
   echo "$1" | tr -d '\r' | sed 's/^[[:space:]]*//; s/[[:space:]]*$//'
 }
 
-# Reads raw zone temp, returns integer °C if valid, else nothing.
+# Reads raw zone temp, returns integer ?C if valid, else nothing.
 read_zone_temp_c() {
   zone="$1"
   raw="$(cat "$zone/temp" 2>/dev/null | tr -d '\r' | tr -d '\n')"
@@ -41,7 +41,7 @@ read_zone_temp_c() {
   # Filter invalid/sentinel values (MediaTek often uses negatives)
   [ "$raw" -le 0 ] && return 1
 
-  # milli °C -> °C
+  # milli ?C -> ?C
   if [ "$raw" -ge 1000 ]; then
     temp_c=$(( (raw + 500) / 1000 ))
   else
