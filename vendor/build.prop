@@ -822,8 +822,8 @@ persist.gammaos.display.unique_names=1
 #persist.gammaos.display.tweaks=1
 persist.gammaos.qs.override_default_tiles=1
 persist.gammaos.qs.override_default_tiles_0=internet,bt,performance,fan,gammashader,gammargb,globalbfi,gammaeq,gammarefresh,rotation
-persist.gammaos.qs.override_default_tiles_1=deepsleepmode,externaldocking,immersivemode,abxy,dpadAnalogToggle,analogsensitivity
-persist.gammaos.qs.override_default_tiles_2=analogdeadzone,analogcalibration,analogaxis,rightanalogaxis,dcdimmingemulation
+persist.gammaos.qs.override_default_tiles_1=deepsleepmode,externaldocking,externalmirror,externalresuze,immersivemode,abxy,dpadAnalogToggle
+persist.gammaos.qs.override_default_tiles_2=analogsensitivity,analogdeadzone,analogcalibration,analogaxis,rightanalogaxis
 persist.gammaos.qs.override_default_tiles_3=retroarchmenubuttonoverride,mappingeditor
 persist.gammaos.rgb.effect=follow
-
+persist.gammaos.ext.half_4k=1

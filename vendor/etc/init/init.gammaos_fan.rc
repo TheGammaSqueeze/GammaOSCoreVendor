@@ -26,6 +26,13 @@ service setfan_auto /vendor/bin/setfan_auto.sh
     oneshot
     disabled
 
+service thermal_safety_guard /vendor/bin/thermal_safety_guard.sh
+    class main
+    user root
+    group root system
+    oneshot
+    disabled
+
 # Screen ON: max
 on property:sys.screen.state=on && property:persist.gammaos.fan_mode=max
    stop setfan_auto
@@ -72,8 +79,12 @@ on property:persist.gammaos.fan_mode=auto && property:persist.gammaos.fan_mode_a
 
 # Screen OFF: force fan off immediately (do not ramp, do not race)
 on property:sys.screen.state=off
+   stop thermal_safety_guard
    stop setfan_auto
    stop setfan_max
    stop setfan_cool
    stop setfan_off
    write /sys/devices/platform/pwm_fan/pwm_fan_set 0
+
+on property:sys.screen.state=on
+   start thermal_safety_guard
