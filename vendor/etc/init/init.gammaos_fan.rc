@@ -55,17 +55,17 @@ on property:sys.screen.state=on && property:persist.gammaos.fan_mode=auto
    start setfan_auto
 
 # Auto sub-mode transitions
-on property:persist.gammaos.fan_mode=auto && property:persist.gammaos.fan_mode_auto=off
+on property:persist.gammaos.fan_mode=auto && property:persist.gammaos.fan_mode_auto=off && property:sys.screen.state=on
    stop setfan_max
    stop setfan_cool
    start setfan_off
 
-on property:persist.gammaos.fan_mode=auto && property:persist.gammaos.fan_mode_auto=cool
+on property:persist.gammaos.fan_mode=auto && property:persist.gammaos.fan_mode_auto=cool && property:sys.screen.state=on
    stop setfan_max
    stop setfan_off
    start setfan_cool
 
-on property:persist.gammaos.fan_mode=auto && property:persist.gammaos.fan_mode_auto=max
+on property:persist.gammaos.fan_mode=auto && property:persist.gammaos.fan_mode_auto=max && property:sys.screen.state=on
    stop setfan_cool
    stop setfan_off
    start setfan_max

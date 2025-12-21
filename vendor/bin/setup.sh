@@ -118,7 +118,7 @@ setprop persist.gammaos.bfi.flip.auto_dip 0
 setprop persist.gammaos.bfi.flip.contrast 1.0
 setprop persist.gammaos.bfi.flip.contrast.enable 1
 setprop persist.gammaos.bfi.flip.contrast_pivot 0.5
-setprop persist.gammaos.bfi.flip.gamma 0.4
+setprop persist.gammaos.bfi.flip.gamma 0.75
 setprop persist.gammaos.bfi.flip.guard_frames 0
 setprop persist.gammaos.bfi.flip.in.end_dim 0.30
 setprop persist.gammaos.bfi.flip.in.start_dim 0.30
