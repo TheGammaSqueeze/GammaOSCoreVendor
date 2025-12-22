@@ -827,3 +827,4 @@ persist.gammaos.qs.override_default_tiles_2=analogsensitivity,analogdeadzone,ana
 persist.gammaos.qs.override_default_tiles_3=retroarchmenubuttonoverride,mappingeditor
 persist.gammaos.rgb.effect=follow
 persist.gammaos.ext.half_4k=1
+persist.gammaos.startselectled.enable=1
