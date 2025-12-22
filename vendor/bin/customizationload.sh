@@ -118,6 +118,8 @@ log "devfreq: gov=${gov:-?} min=${minf:-?} max=${maxf:-?} cur=$(readf "$GPU/cur_
 ppm_ceiling="$(readf "$GPUDIR/gpufreq_status" | sed -n 's/.*\[PPM Ceiling\].*/&/p')"
 log "gpufreq: ${ppm_ceiling:-PPM Ceiling: ?}"
 
+echo "TTJ 115000 115000 115000" > /sys/kernel/thermal/ttj;
+
 CPU_THRESHOLD=102
 CPU_CRITICAL=103
 CPU_EMERGENCY=104
