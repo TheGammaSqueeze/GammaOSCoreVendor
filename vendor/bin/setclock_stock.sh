@@ -1,13 +1,11 @@
 #!/system/bin/sh
 
-echo "TTJ 115000 115000 115000" > /sys/kernel/thermal/ttj;
-
 # GPU (Mali) DevFreq Tuning
-echo simple_ondemand > /sys/devices/platform/soc/13000000.mali/devfreq/13000000.mali/governor
-echo 265000000 > /sys/devices/platform/soc/13000000.mali/devfreq/13000000.mali/min_freq
+echo performance > /sys/devices/platform/soc/13000000.mali/devfreq/13000000.mali/governor
+echo 1400000000 > /sys/devices/platform/soc/13000000.mali/devfreq/13000000.mali/min_freq
 echo 1400000000 > /sys/devices/platform/soc/13000000.mali/devfreq/13000000.mali/max_freq
-echo -1 > /proc/gpufreqv2/fix_target_opp_index
-echo 42 > /sys/devices/platform/soc/1c00f000.dvfsrc/1c00f000.dvfsrc:dvfsrc-helper/dvfsrc_force_vcore_dvfs_opp
+echo 0 > /proc/gpufreqv2/fix_target_opp_index
+echo 0 > /sys/devices/platform/soc/1c00f000.dvfsrc/1c00f000.dvfsrc:dvfsrc-helper/dvfsrc_force_vcore_dvfs_opp
 
 # DVFSRC (System DVFS) DevFreq Tuning
 echo simple_ondemand > /sys/devices/platform/soc/1c00f000.dvfsrc/mtk-dvfsrc-devfreq/devfreq/mtk-dvfsrc-devfreq/governor
