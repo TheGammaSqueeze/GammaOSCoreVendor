@@ -15,7 +15,7 @@
 /app/InProcessTetheringResOverlay/InProcessTetheringResOverlay.apk u:object_r:vendor_app_file:s0
 /etc u:object_r:vendor_configs_file:s0
 /etc/virtual-spn-conf-by-efspn.xml u:object_r:vendor_configs_file:s0
-/etc/Sparkle-477V.txt u:object_r:vendor_configs_file:s0
+/etc/Sparkle-477M.txt u:object_r:vendor_configs_file:s0
 /etc/passwd u:object_r:vendor_configs_file:s0
 /etc/seccomp_policy u:object_r:vendor_configs_file:s0
 /etc/seccomp_policy/android.hardware.media.c2@1.2-mediatek-seccomp-policy u:object_r:vendor_configs_file:s0

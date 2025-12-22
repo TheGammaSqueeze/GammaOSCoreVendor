@@ -180,4 +180,4 @@ sed -i 's/vrr_runloop_enable = "false"/vrr_runloop_enable = "true"/'  /sdcard/An
 setprop persist.gammaos.ext.force_mirror 1
 
 mkdir -p /sdcard/GammaEQ
-cp /vendor/etc/Sparkle-477V.txt /sdcard/GammaEQ/Sparkle-477V.txt
+cp /vendor/etc/Sparkle-477M.txt /sdcard/GammaEQ/Sparkle-477M.txt

@@ -827,4 +827,3 @@ persist.gammaos.qs.override_default_tiles_2=immersivemode,abxy,dpadAnalogToggle,
 persist.gammaos.qs.override_default_tiles_3=analogcalibration,analogaxis,rightanalogaxis,retroarchmenubuttonoverride,mappingeditor
 persist.gammaos.rgb.effect=follow
 persist.gammaos.ext.half_4k=1
-persist.gammaos.startselectled.enable=1
