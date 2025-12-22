@@ -1,0 +1,90 @@
+service setfan_max /vendor/bin/setfan_max.sh
+    class main
+    user root
+    group root system
+    oneshot
+    disabled
+
+service setfan_cool /vendor/bin/setfan_cool.sh
+    class main
+    user root
+    group root system
+    oneshot
+    disabled
+
+service setfan_off /vendor/bin/setfan_off.sh
+    class main
+    user root
+    group root system
+    oneshot
+    disabled
+
+service setfan_auto /vendor/bin/setfan_auto.sh
+    class main
+    user root
+    group root system
+    oneshot
+    disabled
+
+service thermal_safety_guard /vendor/bin/thermal_safety_guard.sh
+    class main
+    user root
+    group root system
+    oneshot
+    disabled
+
+# Screen ON: max
+on property:sys.screen.state=on && property:persist.gammaos.fan_mode=max
+   stop setfan_auto
+   stop setfan_cool
+   stop setfan_off
+   start setfan_max
+
+# Screen ON: cool
+on property:sys.screen.state=on && property:persist.gammaos.fan_mode=cool
+   stop setfan_auto
+   stop setfan_max
+   stop setfan_off
+   start setfan_cool
+
+# Screen ON: off
+on property:sys.screen.state=on && property:persist.gammaos.fan_mode=off
+   stop setfan_auto
+   stop setfan_max
+   stop setfan_cool
+   start setfan_off
+
+# Screen ON: auto
+on property:sys.screen.state=on && property:persist.gammaos.fan_mode=auto
+   stop setfan_max
+   stop setfan_cool
+   stop setfan_off
+   start setfan_auto
+
+# Auto sub-mode transitions
+on property:persist.gammaos.fan_mode=auto && property:persist.gammaos.fan_mode_auto=off && property:sys.screen.state=on
+   stop setfan_max
+   stop setfan_cool
+   start setfan_off
+
+on property:persist.gammaos.fan_mode=auto && property:persist.gammaos.fan_mode_auto=cool && property:sys.screen.state=on
+   stop setfan_max
+   stop setfan_off
+   start setfan_cool
+
+on property:persist.gammaos.fan_mode=auto && property:persist.gammaos.fan_mode_auto=max && property:sys.screen.state=on
+   stop setfan_cool
+   stop setfan_off
+   start setfan_max
+
+# Screen OFF: force fan off immediately (do not ramp, do not race)
+on property:sys.screen.state=off
+   stop thermal_safety_guard
+   stop setfan_auto
+   stop setfan_max
+   stop setfan_cool
+   stop setfan_off
+   write /sys/devices/platform/pwm_fan/pwm_fan_set 0
+
+on property:sys.screen.state=on
+   start thermal_safety_guard
