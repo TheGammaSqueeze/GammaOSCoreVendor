@@ -27,16 +27,16 @@ echo 0 > /sys/devices/system/cpu/cpufreq/policy0/scaling_setspeed
 echo -1 > /sys/devices/system/cpu/cpufreq/policy0/scaling_setspeed
 
 # MID cluster (policy4)
-echo powersave > /sys/devices/system/cpu/cpufreq/policy4/scaling_governor
+echo schedutil > /sys/devices/system/cpu/cpufreq/policy4/scaling_governor
 echo 400000 > /sys/devices/system/cpu/cpufreq/policy4/scaling_min_freq
-echo 3200000 > /sys/devices/system/cpu/cpufreq/policy4/scaling_max_freq
+echo 700000 > /sys/devices/system/cpu/cpufreq/policy4/scaling_max_freq
 echo 0 > /sys/devices/system/cpu/cpufreq/policy4/scaling_setspeed
 echo -1 > /sys/devices/system/cpu/cpufreq/policy4/scaling_setspeed
 
 # BIG cluster (policy7)
-echo powersave > /sys/devices/system/cpu/cpufreq/policy7/scaling_governor
+echo schedutil > /sys/devices/system/cpu/cpufreq/policy7/scaling_governor
 echo 400000 > /sys/devices/system/cpu/cpufreq/policy7/scaling_min_freq
-echo 3350000 > /sys/devices/system/cpu/cpufreq/policy7/scaling_max_freq
+echo 700000 > /sys/devices/system/cpu/cpufreq/policy7/scaling_max_freq
 echo 0 > /sys/devices/system/cpu/cpufreq/policy7/scaling_setspeed
 echo -1 > /sys/devices/system/cpu/cpufreq/policy7/scaling_setspeed
 
