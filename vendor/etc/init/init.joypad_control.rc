@@ -203,10 +203,10 @@ on property:sys.screen.state=on
     stop joypad_control_screen_off
     start joypad_control_screen_on
 
-on property:sys.screen.state=on && property:persist.gammaos.startselectled.enable=1
+on property:sys.screen.state=on && property:persist.gammaos.startselectled=1
     start start_select_led_control_on
 
-on property:sys.screen.state=on && property:persist.gammaos.startselectled.enable=0
+on property:sys.screen.state=on && property:persist.gammaos.startselectled=0
     start start_select_led_control_off
 
 on property:sys.boot_completed=1
