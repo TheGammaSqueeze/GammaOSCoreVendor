@@ -879,8 +879,8 @@
         <Compare>more</Compare>
         <MaxValue>2</MaxValue>
         <MinValue>0</MinValue>
-        <DefaultValue>2</DefaultValue>
-        <InitWrite>1</InitWrite>
+        <DefaultValue>0</DefaultValue>
+        <InitWrite>0</InitWrite>
     </CMD>
     <CMD name="PERF_RES_FPS_FPSGO_CONTROL" id="0x02004300">
         <Entry path="/sys/kernel/fpsgo/composer/fpsgo_control"></Entry>

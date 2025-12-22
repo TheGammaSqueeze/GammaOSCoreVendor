@@ -817,11 +817,12 @@ persist.gammaos.rgb.effect4.supported=1
 persist.gammaos.display.unique_names=1
 #persist.gammaos.display.tweaks=1
 persist.gammaos.qs.override_default_tiles=1
-persist.gammaos.qs.override_default_tiles_0=internet,bt,performance,fan,gammashader,gammargb,gammaeq,rotation
-persist.gammaos.qs.override_default_tiles_1=deepsleepmode,externaldocking,immersivemode,abxy,dpadAnalogToggle,analogsensitivity
-persist.gammaos.qs.override_default_tiles_2=analogdeadzone,analogcalibration,analogaxis,rightanalogaxis,dcdimmingemulation
-persist.gammaos.qs.override_default_tiles_3=retroarchmenubuttonoverride,mappingeditor
+persist.gammaos.qs.override_default_tiles_0=internet,bt,performance,fan,gammashader,gammargb,gammaeq,dcdimming
+persist.gammaos.qs.override_default_tiles_1=rotation,deepsleepmode,externaldocking,externalmirror,externalresize
+persist.gammaos.qs.override_default_tiles_2=immersivemode,abxy,dpadAnalogToggle,analogsensitivity,analogdeadzone
+persist.gammaos.qs.override_default_tiles_3=analogcalibration,analogaxis,rightanalogaxis,retroarchmenubuttonoverride,mappingeditor
 persist.gammaos.rgb.effect=follow
+persist.gammaos.ext.half_4k=1
 
 #ro.sensors.gyroscope_orientation=ORIENTATION_90
 ro.surface_flinger.supports_background_blur=1

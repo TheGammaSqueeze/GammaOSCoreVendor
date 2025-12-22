@@ -805,6 +805,34 @@ vendor.debug.meta_daemon u:object_r:vendor_mtk_meta_daemon_type_prop:s0
 persist.vendor.wfc.cnop_vowifi u:object_r:vendor_mtk_cnop_vowifi_prop:s0
 #line 1 "out_hal/soong/.intermediates/system/sepolicy/contexts/vendor_property_contexts/android_common/gen/newline"
 
+#line 1 "device/mediatek/sepolicy/debug/vendor/property_contexts"
+# ==============================================
+# MTK Policy Rule
+# ==============================================
+
+persist.vendor.aeev.          u:object_r:vendor_mtk_persist_aeev_prop:s0
+persist.vendor.mtk.aeev.      u:object_r:vendor_mtk_persist_mtk_aeev_prop:s0
+ro.vendor.aee.enforcing       u:object_r:vendor_mtk_ro_aee_prop:s0
+ro.vendor.aee.build.info      u:object_r:vendor_mtk_ro_aee_prop:s0
+ro.vendor.aee.convert64       u:object_r:vendor_mtk_ro_aee_prop:s0
+ro.vendor.aeev.dynamic.switch u:object_r:vendor_mtk_aeev_dynamic_switch_prop:s0
+ro.vendor.have_aee_feature    u:object_r:vendor_mtk_ro_aee_prop:s0
+vendor.debug.mtk.aeev         u:object_r:vendor_mtk_debug_mtk_aeev_prop:s0
+
+persist.vendor.skip.data.stall.alarm u:object_r:vendor_mtk_default_prop:s0
+
+# android log much detect
+vendor.logmuch.delay u:object_r:vendor_mtk_logmuch_prop:s0
+vendor.logmuch.value u:object_r:vendor_mtk_logmuch_prop:s0
+
+#MBrain property
+vendor.mbrain.enabled u:object_r:vendor_mtk_mbrain_prop:s0
+
+#MTK dbg property
+vendor.mtkdbgv.enabled u:object_r:vendor_mtk_mbrain_prop:s0
+vendor.mtkdbgo.enabled u:object_r:vendor_mtk_mbrain_prop:s0
+#line 1 "out_hal/soong/.intermediates/system/sepolicy/contexts/vendor_property_contexts/android_common/gen/newline"
+
 #line 1 "device/mediatek/sepolicy/third_party/vendor/property_contexts"
 # MICROTRUST Policy Rule
 vendor.soter.teei. u:object_r:vendor_mtk_soter_teei_prop:s0

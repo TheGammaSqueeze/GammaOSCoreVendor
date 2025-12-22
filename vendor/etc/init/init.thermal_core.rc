@@ -8,5 +8,5 @@ service thermal_core /vendor/bin/thermal_core
 on charger
 	setprop ro.vendor.mtk_thermal_kpoc 1
 
-on property:ro.vendor.mtk_thermal_2_0=1
-    start thermal_core
+#on property:ro.vendor.mtk_thermal_2_0=1
+#    start thermal_core

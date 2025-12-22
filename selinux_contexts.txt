@@ -15,6 +15,7 @@
 /app/InProcessTetheringResOverlay/InProcessTetheringResOverlay.apk u:object_r:vendor_app_file:s0
 /etc u:object_r:vendor_configs_file:s0
 /etc/virtual-spn-conf-by-efspn.xml u:object_r:vendor_configs_file:s0
+/etc/Sparkle-577.txt u:object_r:vendor_configs_file:s0
 /etc/passwd u:object_r:vendor_configs_file:s0
 /etc/seccomp_policy u:object_r:vendor_configs_file:s0
 /etc/seccomp_policy/android.hardware.media.c2@1.2-mediatek-seccomp-policy u:object_r:vendor_configs_file:s0
@@ -230,6 +231,7 @@
 /etc/init/init.joypad_control.rc u:object_r:vendor_configs_file:s0
 /etc/init/init.gammaos_power.rc u:object_r:vendor_configs_file:s0
 /etc/init/init.gammaos_fan.rc u:object_r:vendor_configs_file:s0
+/etc/init/init.gammaos_esdefix.rc u:object_r:vendor_configs_file:s0
 /etc/virtual-spn-conf-by-efpnn.xml u:object_r:vendor_configs_file:s0
 /etc/ecc_list_OP17.xml u:object_r:vendor_configs_file:s0
 /etc/media_codecs_performance.xml u:object_r:vendor_configs_file:s0
@@ -2249,9 +2251,11 @@
 /framework u:object_r:vendor_framework_file:s0
 /framework/androidx.camera.extensions.impl.dummy.jar u:object_r:vendor_framework_file:s0
 /bin u:object_r:vendor_file:s0
+/bin/esde_fix.sh u:object_r:vendor_file:s0
 /bin/120hz.sh u:object_r:vendor_file:s0
 /bin/60hz.sh  u:object_r:vendor_file:s0
 /bin/refreshlock.sh  u:object_r:vendor_file:s0
+/bin/thermal_safety_guard.sh u:object_r:vendor_file:s0
 /bin/setclock_max.sh u:object_r:vendor_file:s0
 /bin/setclock_stock.sh u:object_r:vendor_file:s0
 /bin/setclock_powersave.sh u:object_r:vendor_file:s0
