@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
-
 <AudioParam version="1.1">
 	<ParamTree>
 		<Param path="Ring_Alarm,RCV" param_id="2"/>
@@ -61,9 +60,9 @@
 		</ParamUnit>
 		<ParamUnit param_id="5">
 			<Param name="headset_pga" value="-1"/>
-			<Param name="speaker_pga" value="5"/>
+			<Param name="speaker_pga" value="3"/>
 			<Param name="receiver_pga" value="-1"/>
-			<Param name="amp" value="0x0,0x0,0x0,0x0,0x0,0x0,0x0,0x0,0x0,0x0"/>
+			<Param name="amp" value="0,0,0,0,0,0,0,0,0,0"/>
 		</ParamUnit>
 	</ParamUnitPool>
 </AudioParam>

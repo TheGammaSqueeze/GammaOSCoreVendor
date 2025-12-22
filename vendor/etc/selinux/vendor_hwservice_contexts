@@ -39,7 +39,6 @@ vendor.mediatek.hardware.apuware.xrp::INeuronXrp       u:object_r:hal_neuralnetw
 vendor.mediatek.hardware.apuware.utils::IApuwareUtils u:object_r:hal_neuralnetworks_hwservice:s0
 vendor.mediatek.hardware.apuware.hmp::IApuwareHmp u:object_r:hal_neuralnetworks_hwservice:s0
 vendor.mediatek.hardware.neuropilot.agent::IAgent u:object_r:hal_neuralnetworks_hwservice:s0
-vendor.mediatek.hardware.aee::IAee u:object_r:mtk_hal_aee_hwservice:s0
 vendor.microtrust.hardware.thh::IThhDevice u:object_r:teei_hal_thh_hwservice:s0
 vendor.microtrust.hardware.tui::ITuiDevice u:object_r:teei_hal_tui_hwservice:s0
 vendor.microtrust.hardware.ifaa::IIFAADevice u:object_r:teei_hal_ifaa_hwservice:s0

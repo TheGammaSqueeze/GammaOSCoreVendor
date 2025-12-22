@@ -26,7 +26,6 @@
 /(vendor|system/vendor)/bin/dbg_ctrl u:object_r:dbg_ctrl_exec:s0
 /(vendor|system/vendor)/bin/mdl_coll    u:object_r:mdl_coll_exec:s0
 /(vendor|system/vendor)/bin/mdl_ctrl    u:object_r:mdl_ctrl_exec:s0
-/(vendor|system/vendor)/bin/aee_aedv         u:object_r:aee_aedv_exec:s0
 /(vendor|system/vendor)/bin/init_thh    u:object_r:init_thh_service_exec:s0
 /(vendor|system/vendor)/bin/mtk_agpsd                                              u:object_r:mtk_agpsd_exec:s0
 /(vendor|system/vendor)/bin/muxreport                                              u:object_r:muxreport_exec:s0
@@ -46,7 +45,6 @@
 /(vendor|system/vendor)/bin/wo_starter                                                  u:object_r:wo_starter_exec:s0
 /(vendor|system/vendor)/bin/mtk_thinmd      u:object_r:mtk_thinmd_exec:s0
 /(vendor|system/vendor)/bin/pwrctl_cmd      u:object_r:pwrctl_cmd_exec:s0
-/(vendor|system/vendor)/bin/aee_aedv64       u:object_r:aee_aedv_exec:s0
 /(vendor|system/vendor)/bin/gsm0710muxd                                            u:object_r:gsm0710muxd_exec:s0
 /(vendor|system/vendor)/bin/agnss_proxy                                            u:object_r:agnss_proxy_exec:s0
 /(vendor|system/vendor)/bin/ccci_mdinit      u:object_r:ccci_mdinit_exec:s0
@@ -66,7 +64,6 @@
 /(vendor|system/vendor)/bin/uart_launcher    u:object_r:uart_launcher_exec:s0
 /(vendor|system/vendor)/bin/getgameserver                                         u:object_r:getgameserver_exec:s0
 /(vendor|system/vendor)/bin/mtk_remotefsd      u:object_r:mtk_remotefsd_exec:s0
-/(vendor|system/vendor)/bin/aee_aedv64_v2    u:object_r:aee_aedv_exec:s0
 /(vendor|system/vendor)/bin/thermal_core64                                         u:object_r:thermal_core_exec:s0
 /(vendor|system/vendor)/bin/wlan_assistant   u:object_r:wlan_assistant_exec:s0
 /(vendor|system/vendor)/bin/volte_rcs_ua64                                        u:object_r:volte_rcs_ua_exec:s0
@@ -368,7 +365,6 @@
 /dev/tgt(/.*)?           u:object_r:tgt_device:s0
 /dev/vow(/.*)?    u:object_r:vow_device:s0
 /dev/spm(/.*)?         u:object_r:spm_device:s0
-/dev/aed[0-9]+      u:object_r:aed_device:s0
 /dev/ccci.*          u:object_r:ccci_device:s0
 /dev/mali.*           u:object_r:gpu_device:s0
 /dev/ptyp.*         u:object_r:ptyp_device:s0
@@ -604,7 +600,6 @@
 /dev/conn_scp(/.*)?       u:object_r:conn_scp_device:s0
 /dev/pmic_ftm(/.*)?    u:object_r:pmic_ftm_device:s0
 /dev/humidity(/.*)?   u:object_r:humidity_device:s0
-/data/aee_exp(/.*)?                 u:object_r:aee_exp_data_file:s0
 /data/vendor/.tp(/.*)?              u:object_r:thermal_manager_data_file:s0
 /data/vendor/.img(/.*)? u:object_r:gpunn_data_file:s0
 /factory_init\..* u:object_r:rootfs:s0
@@ -625,7 +620,6 @@
 /dev/m_ps_misc(/.*)?     u:object_r:m_ps_misc_device:s0
 /dev/thinmd_ee(/.*)? u:object_r:thinmd_ee_device:s0
 /vendor/etc/md(/.*)? u:object_r:vendor_etc_md_file:s0
-/data/log_temp(/.*)?                u:object_r:logtemp_data_file:s0
 /vendor/app/t6(/.*)? u:object_r:tkcore_systa_file:s0
 /dev/v4l-subdev.*    u:object_r:mtk_v4l2_media_device:s0
 /data/duraspeed(/.*)? u:object_r:duraspeed_data_file:s0
@@ -690,8 +684,6 @@
 /dev/m_gyro_misc(/.*)?   u:object_r:m_gyro_misc_device:s0
 /dev/m_pedo_misc(/.*)?   u:object_r:m_pedo_misc_device:s0
 /dev/m_situ_misc(/.*)?   u:object_r:m_situ_misc_device:s0
-/data/connsyslog(/.*)?              u:object_r:consyslog_data_file:s0
-/data/misc/mblog(/.*)?              u:object_r:logmisc_data_file:s0
 /data/vendor/thh(/.*)? u:object_r:teei_data_file:s0
 /data/vendor/tee(/.*)? u:object_r:tee_data_file:s0
 /data/vendor/core(/.*)?             u:object_r:aee_core_vendor_file:s0
@@ -738,7 +730,6 @@
 /dev/m_fusion_misc(/.*)? u:object_r:m_fusion_misc_device:s0
 /mnt/vendor/nvdata(/.*)? u:object_r:nvdata_file:s0
 /mnt/vendor/mdota2(/.*)? u:object_r:md_rfs_mdota2_file:s0
-/data/vendor/mdlog(/.*)?          u:object_r:mdlog_data_vendor_file:s0
 /data/vendor/vcodec(/.*)?           u:object_r:vcodec_file:s0
 /data/vendor/sensor(/.*)? u:object_r:sensor_data_file:s0
 /data/vendor/trusty(/.*)? u:object_r:tee_data_file:s0
@@ -753,10 +744,6 @@
 /dev/offloadservice(/.*)? u:object_r:offloadservice_device:s0
 /vendor/etc/gralloc(/.*)? u:object_r:same_process_hal_file:s0
 /mnt/vendor/persist(/.*)?   u:object_r:persist_data_file:s0
-/data/log_wifi_temp(/.*)?           u:object_r:logtemp_data_file:s0
-/data/vendor/irqmon(/.*)?           u:object_r:irqmon_vendor_file:s0
-/data/vendor/netlog(/.*)?           u:object_r:net_log_data_file:s0
-/dev/socket/netdiag(/.*)? u:object_r:netdiag_socket:s0
 /data/vendor/t6/app(/.*)?  u:object_r:tkcore_spta_file:s0
 /data/system/users/[0-9]+/smartbook_wallpaper  u:object_r:wallpaper_file:s0
 /data/data_tmpfs_log(/.*)?          u:object_r:data_tmpfs_log_file:s0
@@ -780,7 +767,6 @@
 /dev/socket/volte_vt(/.*)?  u:object_r:volte_vt_socket:s0
 /dev/mtk_usb_offload(/.*)? u:object_r:mtk_usb_offload_device:s0
 /dev/socket/rcs_rild(/.*)?        u:object_r:rcs_rild_socket:s0
-/data/vendor/aee_exp(/.*)?          u:object_r:aee_exp_vendor_file:s0
 /data/vendor/wifi/wpa(/.*)?                                                   u:object_r:wpa_data_file:s0
 /data/vendor/audiohal(/.*)?         u:object_r:mtk_audiohal_data_file:s0
 /data/vendor/ccci_cfg(/.*)?         u:object_r:ccci_cfg_file:s0
@@ -843,7 +829,6 @@
 /dev/block/by-name/dtbo(_[ab])?                     u:object_r:dtbo_block_device:s0
 /dev/block/by-name/logo(_[ab])?                     u:object_r:logo_block_device:s0
 /dev/block/by-name/sspm(_[ab])?                     u:object_r:sspm_block_device:s0
-/vendor/firmware/connfem.cfg      u:object_r:connsys_vendor_file:s0
 /data/vendor/misc/msdata(/.*)? u:object_r:omadm_misc_file:s0
 /data/vendor/camera_dump(/.*)? u:object_r:vendor_camera_dump_file:s0
 /data/vendor/imgsys_dump(/.*)? u:object_r:vendor_imgsys_dump_file:s0
@@ -898,7 +883,6 @@
 /dev/block/platform/mtk-\b(msdc|ufs)\b\.0/[0-9]+\.\b(msdc0|ufs0)\b/by-name/nvdata                           u:object_r:nvdata_device:s0
 /dev/block/platform/mtk-\b(msdc|ufs)\b\.0/[0-9]+\.\b(msdc0|ufs0)\b/by-name/seccfg                           u:object_r:seccfg_block_device:s0
 /dev/block/platform/mtk-\b(msdc|ufs)\b\.0/[0-9]+\.\b(msdc0|ufs0)\b/by-name/system                           u:object_r:system_block_device:s0
-/dev/block/platform/mtk-\b(msdc|ufs)\b\.0/[0-9]+\.\b(msdc0|ufs0)\b/by-name/pstore      u:object_r:pstore_block_device:s0
 /dev/block/platform/mtk-\b(msdc|ufs)\b\.0/[0-9]+\.\b(msdc0|ufs0)\b/by-name/proinfo                          u:object_r:nvram_device:s0
 /dev/block/platform/mtk-\b(msdc|ufs)\b\.0/[0-9]+\.\b(msdc0|ufs0)\b/by-name/persist                          u:object_r:persist_block_device:s0
 /dev/block/platform/mtk-\b(msdc|ufs)\b\.0/[0-9]+\.\b(msdc0|ufs0)\b/by-name/userdata                         u:object_r:userdata_block_device:s0
@@ -930,7 +914,6 @@
 /dev/block/platform/mtk-\b(msdc|ufs)\b\.0/[0-9]+\.\b(msdc0|ufs0)\b/by-name/md1arm7(_[ab])?                  u:object_r:md_block_device:s0
 /dev/block/platform/mtk-\b(msdc|ufs)\b\.0/[0-9]+\.\b(msdc0|ufs0)\b/by-name/mcf_ota(_[ab])?                  u:object_r:mcf_ota_block_device:s0
 /dev/block/platform/mtk-\b(msdc|ufs)\b\.0/[0-9]+\.\b(msdc0|ufs0)\b/by-name/vbmeta(_system|_vendor)?(_[ab])? u:object_r:vbmeta_block_device:s0
-/vendor/firmware/conninfra.cfg    u:object_r:connsys_vendor_file:s0
 /dev/socket/sap_uim_socket(/.*)?  u:object_r:gsmrild_socket:s0
 /dev/socket/rild-debug-md2(/.*)? u:object_r:rild_debug_md2_socket:s0
 /dev/socket/rild-mtk-modem(/.*)?     u:object_r:rild_mtk_modem_socket:s0
@@ -972,7 +955,6 @@
 /dev/block/by-name/connsys_wifi(_[ab])?             u:object_r:connsys_wifi_block_device:s0
 /dev/block/by-name/connsys_gnss(_[ab])?             u:object_r:connsys_gnss_block_device:s0
 /vendor/firmware/valhall-1691526.wa u:object_r:same_process_hal_file:s0
-/sys/devices/platform/soc/1c00f000.dvfsrc/1c00f000.dvfsrc:dvfsrc-helper/dvfsrc_force_vcore_dvfs_opp             u:object_r:system_cpu_file:s0
 /vendor/bin/hw/android\.hardware\.drm@[0-9]+\.[0-9]+-service\.widevine      u:object_r:hal_drm_widevine_exec:s0
 /vendor/bin/hw/android\.hardware\.drm@[0-9]+\.[0-9]+-service\.clearkey      u:object_r:hal_drm_clearkey_exec:s0
 /vendor/bin/hw/android\.hardware\.drm@[0-9]+\.[0-9]+-service-lazy\.widevine u:object_r:hal_drm_widevine_exec:s0
@@ -1053,7 +1035,6 @@
 /dev/mmcblk0rpmb u:object_r:rpmb_device:s0
 /dev/0\:0\:0\:49476 u:object_r:rpmb_device:s0
 /vendor/bin/vpud u:object_r:vpud_native_exec:s0
-/dev/sa_log_wifi    u:object_r:sa_log_wifi_device:s0
 /dev/teei_config u:object_r:teei_config_device:s0
 /dev/teei_client u:object_r:teei_client_device:s0
 /dev/teei_loader u:object_r:tee_device:s0
@@ -1062,8 +1043,6 @@
 /dev/aol_geofence   u:object_r:aol_geofence_device:s0
 /dev/fw_log_btmcu   u:object_r:fw_log_btmcu_device:s0
 /dev/ccci_raw_mdm  u:object_r:ccci_mdmonitor_device:s0
-/dev/ccci_ccb_dhl      u:object_r:ccci_mdl_device:s0
-/dev/ccci_raw_dhl      u:object_r:ccci_mdl_device:s0
 /dev/ut_keymaster u:object_r:ut_keymaster_device:s0
 /dev/ccci_c2k_agps   u:object_r:agps_device:s0
 /dev/fw_log_gpsmcu      u:object_r:fw_log_gpsmcu_device:s0
@@ -1075,8 +1054,6 @@
 /dev/socket/statusd               u:object_r:statusd_socket:s0
 /dev/ccci_raw_audio      u:object_r:ccci_aud_device:s0
 /vendor/bin/em_hidl                                         u:object_r:em_hidl_exec:s0
-/dev/ccci_md_log_tx    u:object_r:ccci_mdl_device:s0
-/dev/ccci_md_log_rx    u:object_r:ccci_mdl_device:s0
 /dev/dma_heap/mtk_mm                             u:object_r:dmabuf_system_heap_device:s0
 /dev/socket/rild-via           u:object_r:rild_via_socket:s0
 /dev/nebula-ipc-dev0   u:object_r:tee_device:s0
@@ -1086,20 +1063,17 @@
 /dev/ccci_wifi_proxy  u:object_r:ccci_wifi_proxy_device:s0
 /vendor/bin/chipinfo u:object_r:chipinfo_exec:s0
 /vendor/bin/dmc_core u:object_r:dmc_core_exec:s0
-/data/aee_exp/traces                u:object_r:trace_data_file:s0
 /dev/dma_heap/mtk_slc                            u:object_r:dmabuf_mtk_slc_heap_device:s0
 /dev/scp_chre_manager u:object_r:scp_device:s0
 /dev/MT_pmic_adc_cali       u:object_r:MT_pmic_adc_cali_device:s0
 /dev/socket/rild-atci       u:object_r:gsmrild_socket:s0
 /dev/input_mt_wrapper u:object_r:gdix_mt_wrapper_device:s0
 /dev/ccci_mdl_monitor  u:object_r:ccci_mdmonitor_device:s0
-/dev/ccci_md_log_ctrl  u:object_r:ccci_mdl_device:s0
 /dev/block/by-name/otp u:object_r:otp_part_block_device:s0
 /dev/block/by-name/frp                              u:object_r:frp_block_device:s0
 /dev/block/mmcblk0rpmb u:object_r:rpmb_device:s0
 /vendor/bin/md_monitor u:object_r:md_monitor_exec:s0
 /vendor/bin/dcxosetcap u:object_r:DcxoSetCap_exec:s0
-/vendor/bin/emdloggerv            u:object_r:emdloggerv_exec:s0
 /dev/socket/rildc-debug        u:object_r:rild_via_socket:s0
 /dev/block/mmcblk0boot0                                                                                     u:object_r:preloader_block_device:s0
 /dev/block/mmcblk0boot1                                                                                     u:object_r:preloader_block_device:s0
@@ -1114,14 +1088,12 @@
 /dev/block/by-name/secro                            u:object_r:secro_block_device:s0
 /dev/block/by-name/super                            u:object_r:super_block_device:s0
 /dev/ccci_ccb_md_monitor  u:object_r:ccci_mdmonitor_device:s0
-/vendor/bin/thermal_intf                                                                                        u:object_r:thermal_intf_exec:s0
 /dev/socket/rild-ctclient        u:object_r:rild_ctclient_socket:s0
 /dev/socket/rild-atci-c2k      u:object_r:rild_via_socket:s0
 /dev/block/by-name/nvdata                           u:object_r:nvdata_device:s0
 /dev/block/by-name/seccfg                           u:object_r:seccfg_block_device:s0
 /dev/block/by-name/md_udc u:object_r:metadata_block_device:s0
 /vendor/bin/storageproxyd u:object_r:tee_exec:s0
-/dev/block/by-name/pstore     u:object_r:pstore_block_device:s0
 /dev/block/by-name/persist                          u:object_r:persist_block_device:s0
 /dev/block/by-name/proinfo                          u:object_r:nvram_device:s0
 /vendor/bin/init\.insmod\.sh u:object_r:init_insmod_sh_exec:s0
@@ -1142,10 +1114,6 @@
 /dev/dma_heap/mtk_prot_region                    u:object_r:dmabuf_system_secure_heap_device:s0
 /vendor/bin/mtk_storageproxyd u:object_r:tee_exec:s0
 /dev/dma_heap/mtk_2d_fr_region                   u:object_r:dmabuf_system_secure_heap_device:s0
-/data/aee_exp/perfetto_configs      u:object_r:trace_data_file:s0
-/vendor/bin/init\.pstore_blk\.sh u:object_r:init_pstore_blk_sh_exec:s0
-/vendor/bin/loghidlvendorservice    u:object_r:loghidlvendorservice_exec:s0
-/vendor/bin/irqmon\.graphtracer\.sh    u:object_r:irqmon_graphtracer_exec:s0
 /dev/block/by-name/preloader_raw_a                     u:object_r:postinstall_block_device:s0
 /dev/block/by-name/preloader_raw_b                     u:object_r:postinstall_block_device:s0
 /dev/dma_heap/mtk_svp_page-uncached              u:object_r:dmabuf_system_secure_heap_device:s0
@@ -1164,10 +1132,4 @@
 /vendor/bin/hw/arm\.mali\.platform-service\.mediatek u:object_r:mtk_hal_mali_platform_default_exec:s0
 /dev/block/platform/bootdevice/by-name/preloader_raw_a u:object_r:postinstall_block_device:s0
 /dev/block/platform/bootdevice/by-name/preloader_raw_b u:object_r:postinstall_block_device:s0
-/vendor/bin/hw/vendor\.mediatek\.hardware\.aee@V1-service u:object_r:aee_hal_exec:s0
-/vendor/bin/hw/vendor\.mediatek\.hardware\.aee@1\.0-service u:object_r:aee_hal_exec:s0
-/vendor/bin/hw/vendor\.mediatek\.hardware\.aee@1\.1-service u:object_r:aee_hal_exec:s0
-/sys/devices/system/cpu/cpufreq/policy0/scaling_governor                                                        u:object_r:system_cpu_file:s0
-/sys/devices/system/cpu/cpufreq/policy4/scaling_governor                                                        u:object_r:system_cpu_file:s0
-/sys/devices/system/cpu/cpufreq/policy7/scaling_governor                                                        u:object_r:system_cpu_file:s0
 /vendor/bin/hw/android\.hardware\.contexthub-service\.tinysys    u:object_r:hal_contexthub_default_exec:s0

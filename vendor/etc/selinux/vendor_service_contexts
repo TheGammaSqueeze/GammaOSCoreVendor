@@ -121,11 +121,4 @@ vendor.mediatek.hardware.gpuserv.IGpuService/default u:object_r:mtk_hal_gpuserv_
 vendor.mediatek.hardware.dmc.IDmcService/default u:object_r:mtk_hal_dmc_service:s0
 vendor.mediatek.hardware.apmonitor.IApmService/default u:object_r:mtk_hal_apm_service:s0
 vendor.mediatek.hardware.dplanner2.IDPlanner/default               u:object_r:mtk_hal_dplanner_service:s0
-vendor.mediatek.hardware.aee.IAee/AEE u:object_r:mtk_hal_aee_service:s0
-vendor.mediatek.hardware.log.ILog/default                 u:object_r:mtk_hal_log_service:s0
-vendor.mediatek.hardware.log.ILog/ModemLogHidlServer      u:object_r:mtk_hal_log_service:s0
-vendor.mediatek.hardware.log.ILog/MobileLogHidlServer     u:object_r:mtk_hal_log_service:s0
-vendor.mediatek.hardware.log.ILog/ATMWiFiHidlServer       u:object_r:mtk_hal_log_service:s0
-vendor.mediatek.hardware.log.ILog/ConnsysFWHidlServer     u:object_r:mtk_hal_log_service:s0
-vendor.mediatek.hardware.log.ILog/LoggerHidlServer        u:object_r:mtk_hal_log_service:s0
 vendor.tsa.hdcp.IHDCPInterface/default      u:object_r:tsa_hal_hdcp_service:s0

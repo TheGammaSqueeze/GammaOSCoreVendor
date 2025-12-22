@@ -26,21 +26,7 @@ service gammapad /vendor/bin/gammapad retrogame_joypad --ffdev=sc27xx:vibrator
     oneshot
     disabled
 
-service led_control_off /system/bin/sh -c "echo 0 > /sys/devices/platform/singleadc-joypad/led_switch; echo 1 > /sys/devices/platform/singleadc-joypad/led_set; echo 0 > /sys/devices/platform/singleadc-joypad/led_select; echo 0 > /sys/devices/platform/singleadc-joypad/led_start;"
-    class main
-    user root
-    group root system
-    oneshot
-    disabled
-
-service start_select_led_control_on /system/bin/sh -c "echo 1 > /sys/devices/platform/singleadc-joypad/led_select; echo 1 > /sys/devices/platform/singleadc-joypad/led_start;"
-    class main
-    user root
-    group root system
-    oneshot
-    disabled
-
-service start_select_led_control_off /system/bin/sh -c "echo 0 > /sys/devices/platform/singleadc-joypad/led_select; echo 0 > /sys/devices/platform/singleadc-joypad/led_start;"
+service led_control_off /system/bin/sh -c "echo 0 > /sys/devices/platform/singleadc-joypad/led_switch; echo 1 > /sys/devices/platform/singleadc-joypad/led_set"
     class main
     user root
     group root system
@@ -202,12 +188,6 @@ on property:sys.screen.state=off
 on property:sys.screen.state=on
     stop joypad_control_screen_off
     start joypad_control_screen_on
-
-on property:sys.screen.state=on && property:persist.gammaos.startselectled=1
-    start start_select_led_control_on
-
-on property:sys.screen.state=on && property:persist.gammaos.startselectled=0
-    start start_select_led_control_off
 
 on property:sys.boot_completed=1
     start gammapad

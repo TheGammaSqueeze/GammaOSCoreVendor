@@ -26,18 +26,18 @@
  <Param name="MTK_FM_SUPPORT" value="" />
  <Param name="MTK_HEADSET_ACTIVE_NOISE_CANCELLATION" value="" />
  <Param name="MTK_SUPPORT_TC1_TUNNING" value="" />
- <Param name="MTK_AUDIO_SPEAKER_PATH" value="smartpa_awinic_aw883xx" />
+ <Param name="MTK_AUDIO_SPEAKER_PATH" value="int_hp_buf" />
  <Param name="MTK_AUDIO_NUMBER_OF_MIC" value="1" />
  <Param name="MTK_PLATFORM" value="MT6897" />
  <Param name="MTK_AURISYS_FRAMEWORK_SUPPORT" value="" />
- <Param name="MTK_BESLOUDNESS_RUN_WITH_HAL" value="no" />
+ <Param name="MTK_BESLOUDNESS_RUN_WITH_HAL" value="yes" />
  <Param name="MTK_AUDIO" value="yes" />
  <Param name="USE_CUSTOM_AUDIO_POLICY" value="" />
  <Param name="USE_XML_AUDIO_POLICY_CONF" value="1" />
  <Param name="MTK_AUDIO_TUNING_TOOL_VERSION" value="V2.2" />
  <Param name="MTK_AUDIO_TUNNELING_SUPPORT" value="" />
  <Param name="MTK_SMARTPA_DUMMY_LIB" value="" />
- <Param name="MTK_HIFIAUDIO_SUPPORT" value="no" />
+ <Param name="MTK_HIFIAUDIO_SUPPORT" value="yes" />
  <Param name="MTK_BESLOUDNESS_SUPPORT" value="no" />
  <Param name="MTK_USB_PHONECALL" value="" />
  <Param name="MTK_AUDIO_NUMBER_OF_SPEAKER" value="2" />
@@ -86,8 +86,8 @@
  <Param name="DPCM_DEEP_BUFFER" value="Playback_3" />
  <Param name="VOW_BARGE_IN_CAPTURE" value="Capture_9" />
  <Param name="MTK_AUDIO_GAME_VOICE_SUPPORT" value="yes" />
- <Param name="RCV_PATH_NO_ANA" value="yes" />
- <Param name="SPK_PATH_NO_ANA" value="yes" />
+ <Param name="RCV_PATH_INT" value="yes" />
+ <Param name="SPK_PATH_HP" value="yes" />
  <Param name="PLAYBACK_USE_24BITS_ONLY" value="yes" />
  <Param name="AUDIO_ULTRASOUND_24BIT_SUPPORT" value="yes" />
  <Param name="AUDIO_ULTRASOUND_96K_SUPPORT" value="no" />
