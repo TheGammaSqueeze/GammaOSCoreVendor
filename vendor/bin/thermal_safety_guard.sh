@@ -18,15 +18,15 @@
 #   MIN_HOLD_SECS=2 CLEAR_UNDER_SECS=5
 
 CPU_LIMIT_C="${CPU_LIMIT_C:-110}"
-GPU_LIMIT_C="${GPU_LIMIT_C:-105}"
+GPU_LIMIT_C="${GPU_LIMIT_C:-109}"
 
 NORMAL_SLEEP_SECS="${NORMAL_SLEEP_SECS:-1}"
 FAST_SLEEP_SECS="${FAST_SLEEP_SECS:-0.5}"
 
-GPU_STALE_SECS="${GPU_STALE_SECS:-20}"
+GPU_STALE_SECS="${GPU_STALE_SECS:-10}"
 
-MIN_HOLD_SECS="${MIN_HOLD_SECS:-4}"
-CLEAR_UNDER_SECS="${CLEAR_UNDER_SECS:-5}"
+MIN_HOLD_SECS="${MIN_HOLD_SECS:-1}"
+CLEAR_UNDER_SECS="${CLEAR_UNDER_SECS:-3}"
 
 # Internals use deciseconds to avoid requiring sub-second timestamps.
 # Assumes FAST_SLEEP_SECS=0.1 and NORMAL_SLEEP_SECS=1.
@@ -179,6 +179,7 @@ apply_cpu_clamp() {
   write_sysfs /sys/devices/system/cpu/cpufreq/policy7/scaling_max_freq 3350000
   write_sysfs /sys/devices/system/cpu/cpufreq/policy7/scaling_setspeed 0
   write_sysfs /sys/devices/system/cpu/cpufreq/policy7/scaling_setspeed -1
+  start thermal_core
 }
 
 apply_gpu_clamp() {
@@ -187,6 +188,7 @@ apply_gpu_clamp() {
   write_sysfs /sys/devices/platform/soc/13000000.mali/devfreq/13000000.mali/max_freq 1400000000
   write_sysfs /proc/gpufreqv2/fix_target_opp_index -1
   write_sysfs /sys/devices/platform/soc/1c00f000.dvfsrc/1c00f000.dvfsrc:dvfsrc-helper/dvfsrc_force_vcore_dvfs_opp -1
+  start thermal_core
 }
 
 restore_perf_mode() {

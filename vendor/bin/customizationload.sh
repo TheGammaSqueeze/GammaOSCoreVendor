@@ -1,7 +1,122 @@
 #!/system/bin/sh
 
-sleep 10
-swapoff /dev/block/zram0 2>/dev/null
+set -u
+
+GPU="/sys/devices/platform/soc/13000000.mali/devfreq/13000000.mali"
+GPUC="/sys/class/thermal/cooling_device0"
+GPUDIR="/proc/gpufreqv2"
+THERM="/sys/kernel/thermal"
+
+log() { echo "[$(date +%H:%M:%S)] $*"; }
+
+# ----- helpers -----
+readf() { [ -f "$1" ] && cat "$1" 2>/dev/null; }
+writef() { echo "$2" > "$1" 2>/dev/null; }
+exists() { [ -e "$1" ]; }
+
+snap() {
+  echo "----- SNAP $(date +%H:%M:%S) -----"
+
+  echo "== devfreq"
+  echo "  gov=$(readf "$GPU/governor")"
+  echo "  min=$(readf "$GPU/min_freq")"
+  echo "  max=$(readf "$GPU/max_freq")"
+  echo "  cur=$(readf "$GPU/cur_freq")"
+  [ -f "$GPU/target_freq" ] && echo "  tgt=$(readf "$GPU/target_freq")"
+
+  echo "== cooler"
+  echo "  type=$(readf "$GPUC/type") cur=$(readf "$GPUC/cur_state") max=$(readf "$GPUC/max_state")"
+
+  echo "== gpufreq status"
+  echo "  fix_opp=$(readf "$GPUDIR/fix_target_opp_index")"
+  echo "  ppm=$(readf "$GPUDIR/gpufreq_status" | sed -n 's/.*\[PPM Ceiling\].*/&/p; s/.*\[PPM Floor\].*/&/p')"
+  echo "  cur=$(readf "$GPUDIR/gpufreq_status" | sed -n 's/.*\[GPU   OPP\].*/&/p; s/.*\[GPU   REALOPP\].*/&/p')"
+
+  echo "== gpufreq limit_table (first 15 lines)"
+  readf "$GPUDIR/limit_table" | head -n 15
+
+  echo "== thermal core knobs"
+  for f in ttj min_ttj max_ttj catm_p target_tpcb is_cpu_limit is_gpu_limit is_apu_limit headroom_info; do
+    [ -f "$THERM/$f" ] && echo "  $f=$(readf "$THERM/$f")"
+  done
+
+  echo
+}
+
+# ----- baseline targets -----
+# GPU scaling bounds (you can adjust these)
+GPU_MIN="${GPU_MIN:-265000000}"
+GPU_MAX="${GPU_MAX:-1400000000}"
+GPU_GOV="${GPU_GOV:-simple_ondemand}"
+
+# Thermal baseline (matches what your device normally had before thermal_core re-wrote TTJ)
+# Keep these as-is if you want "stock max" baseline.
+TTJ_BASE="${TTJ_BASE:-102649, 105000, 95000}"
+MIN_TTJ_BASE="${MIN_TTJ_BASE:-55000}"
+MAX_TTJ_BASE="${MAX_TTJ_BASE:-102649, 105000, 95000}"
+
+log "== Before"
+snap
+
+log "== Step 1: unfix GPU OPP (best-effort)"
+if exists "$GPUDIR/fix_target_opp_index"; then
+  # Many builds accept -1 to disable. If it doesn't, it will print an error in the file output.
+  echo -1 > "$GPUDIR/fix_target_opp_index" 2>/dev/null || true
+fi
+
+log "== Step 2: clear gpufreq limiters (best-effort)"
+# On many MTK kernels there are per-limiter knobs. Your tree shows these exist:
+#   /proc/gpufreqv2/limit_table  (read)
+# Some builds also have writable knobs in limit_table/ or via gpufreq_status, but not always.
+# We try common ones without failing if missing.
+for k in \
+  "$GPUDIR/limit_table_ceiling" \
+  "$GPUDIR/limit_table_floor" \
+  "$GPUDIR/limit_ceiling" \
+  "$GPUDIR/limit_floor" \
+  "$GPUDIR/limit_opp_index" \
+  "$GPUDIR/limit_freq" \
+; do
+  if [ -w "$k" ]; then
+    # Convention: -1 disables, 0 often means "max"
+    echo -1 > "$k" 2>/dev/null || true
+  fi
+done
+
+log "== Step 3: restore devfreq governor + bounds"
+if [ -w "$GPU/governor" ]; then
+  echo "$GPU_GOV" > "$GPU/governor" 2>/dev/null || true
+fi
+if [ -w "$GPU/min_freq" ]; then
+  echo "$GPU_MIN" > "$GPU/min_freq" 2>/dev/null || true
+fi
+if [ -w "$GPU/max_freq" ]; then
+  echo "$GPU_MAX" > "$GPU/max_freq" 2>/dev/null || true
+fi
+
+log "== Step 4: restore thermal baseline knobs (best-effort)"
+# These are kernel-facing and should be writable on your build (you were reading them already).
+[ -w "$THERM/min_ttj" ] && echo "$MIN_TTJ_BASE" > "$THERM/min_ttj" 2>/dev/null || true
+[ -w "$THERM/max_ttj" ] && echo "$MAX_TTJ_BASE" > "$THERM/max_ttj" 2>/dev/null || true
+[ -w "$THERM/ttj" ]     && echo "$TTJ_BASE"     > "$THERM/ttj"     2>/dev/null || true
+
+# Give the stack a moment to react
+sleep 1
+
+log "== After"
+snap
+
+log "== Verify summary"
+fix="$(readf "$GPUDIR/fix_target_opp_index")"
+log "fix_target_opp_index: ${fix:-missing}"
+
+gov="$(readf "$GPU/governor")"
+minf="$(readf "$GPU/min_freq")"
+maxf="$(readf "$GPU/max_freq")"
+log "devfreq: gov=${gov:-?} min=${minf:-?} max=${maxf:-?} cur=$(readf "$GPU/cur_freq") tgt=$(readf "$GPU/target_freq")"
+
+ppm_ceiling="$(readf "$GPUDIR/gpufreq_status" | sed -n 's/.*\[PPM Ceiling\].*/&/p')"
+log "gpufreq: ${ppm_ceiling:-PPM Ceiling: ?}"
 
 CPU_THRESHOLD=102
 CPU_CRITICAL=103
@@ -24,8 +139,8 @@ TARGET_C="${TARGET_C:-110}"
 SAFETY_MARGIN_C="${SAFETY_MARGIN_C:-5}"
 SAFE_MAX_C="117"  # if empty, auto-detect from kernel trips
 
-STOP_THERMAL_CORE="0"         # default 0 to keep vendor throttling alive
-RESTART_THERMAL_CORE="1"   # rarely needed
+STOP_THERMAL_CORE="1"         # default 0 to keep vendor throttling alive
+RESTART_THERMAL_CORE="0"   # rarely needed
 
 SOCK="/dev/socket/thermal_hal_socket"
 
