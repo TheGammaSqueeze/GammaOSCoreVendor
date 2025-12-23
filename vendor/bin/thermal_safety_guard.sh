@@ -8,80 +8,43 @@
 #
 #   1) Primary control: adjust TTJ (thermal junction thresholds) as a sliding scale.
 #      - When over threshold, decrease TTJ quickly in TTJ_STEP increments.
-#      - If GPU is over threshold, decrease TTJ and GPU max frequency at the same time.
+#      - TTJ is the only clamp used in this stage.
 #
 #   2) Fallback control: if TTJ reaches TTJ_MIN and temperatures are still over threshold,
 #      clamp clocks by stepping down GPU and CPU max frequencies.
 #
-# Recovery policy
-# ---------------
-# Recovery happens in this order:
-#   1) Recover clocks first. TTJ is held at its current value until clocks are back at max.
-#      - GPU clock step-up cadence: one step every GPU_RECOVER_STEP_SECS (default 10s),
-#        including the first step-up after becoming under-threshold.
-#      - CPU clock step-up cadence: one step every CPU_RECOVER_STEP_SECS (default 5s).
+# Performance and fan policy
+# --------------------------
+# When any threshold is crossed (CPU over or GPU over), this script applies two overrides once:
+#   - Start setclock_stock (conservative clocks)
+#   - Set persist.gammaos.fan_mode to "max"
 #
-#   2) After clocks are at max, recover TTJ:
-#      - Increase TTJ by TTJ_STEP every TTJ_RECOVER_STEP_SECS (default 3s) until TTJ_MAX.
+# It holds these overrides until recovery:
+#   - Temperatures stay under threshold continuously for FAN_RECOVER_UNDER_SECS seconds
+#   - TTJ is fully recovered (TTJ at effective maximum)
+#   - No frequency clamps are active
 #
-#   3) Only after BOTH clocks and TTJ are fully recovered and remain under threshold
-#      continuously for FULL_RECOVERY_HOLD_SECS (default 120s), apply the setclock profile
-#      (setclock_max/stock/powersave) once.
-#
-# Temperature acquisition
-# -----------------------
-# CPU temperature:
-#   - Prefer thermal zone type "soc_max" if present.
-#   - Otherwise, use the maximum across all "cpu-*" zones.
-# GPU temperature:
-#   - Use the maximum across "gpu1" and "gpu2".
-#   - If GPU temps temporarily fail to read, reuse the last valid GPU temp for
-#     up to GPU_STALE_SECS seconds.
+# Then it restores:
+#   - The original performance profile (based on the saved persist.gammaos.performance_mode value)
+#   - The original persist.gammaos.fan_mode value
 #
 # TTJ write format
 # ----------------
-# The TTJ node expects a prefix and three values:
+# TTJ is written EXACTLY in this format:
 #   echo "TTJ 115000 115000 115000" > /sys/kernel/thermal/ttj
 #
-# GPU ramp-down preparation (written once per cooldown window)
-# ------------------------------------------------------------
-# When GPU overheating begins, these are written once, then not written again until
-# GPU_RAMP_PREP_COOLDOWN_SECS has elapsed. This prevents spamming when the GPU
-# oscillates around the threshold.
-#   echo -1 > /proc/gpufreqv2/fix_target_opp_index
-#   echo 42 > .../dvfsrc_force_vcore_dvfs_opp
-#
-# Tunables (optional environment variables)
-# -----------------------------------------
-# Thresholds (°C):
-#   CPU_LIMIT_C=110
-#   GPU_LIMIT_C=105
-#
-# TTJ sliding scale:
-#   TTJ_MAX=115000
-#   TTJ_MIN=50000
-#   TTJ_STEP=5000
-#
-# Timing:
-#   ADJUST_SLEEP_SECS=0.1           (fast TTJ ramp-down loop)
-#   LOOP_SLEEP_SECS=1               (main loop sleep for recovery/steady state)
-#   GPU_RECOVER_STEP_SECS=10        (GPU max frequency step-up cadence)
-#   CPU_RECOVER_STEP_SECS=5         (CPU max frequency step-up cadence)
-#   TTJ_RECOVER_STEP_SECS=3         (TTJ step-up cadence)
-#   FULL_RECOVERY_HOLD_SECS=120     (must be fully recovered and under threshold this long before setclocks)
-#   GPU_RAMP_PREP_COOLDOWN_SECS=30  (minimum time between ramp-prep writes)
-#
-# GPU stale fallback:
-#   GPU_STALE_SECS=10
+# Important: Some kernels reject TTJ values above a device-specific maximum. This script
+# probes the maximum that your kernel accepts at startup by trying TTJ_MAX and stepping
+# down by TTJ_STEP until a write succeeds. That accepted value becomes the effective max.
 #
 
-CPU_LIMIT_C="${CPU_LIMIT_C:-110}"
-GPU_LIMIT_C="${GPU_LIMIT_C:-105}"
+CPU_LIMIT_C="${CPU_LIMIT_C:-115}"
+GPU_LIMIT_C="${GPU_LIMIT_C:-110}"
 
 THERM_BASE="/sys/class/thermal"
 TTJ_NODE="${TTJ_NODE:-/sys/kernel/thermal/ttj}"
 
-TTJ_MAX="${TTJ_MAX:-115000}"
+TTJ_MAX="${TTJ_MAX:-125000}"
 TTJ_MIN="${TTJ_MIN:-50000}"
 TTJ_STEP="${TTJ_STEP:-5000}"
 
@@ -89,13 +52,17 @@ ADJUST_SLEEP_SECS="${ADJUST_SLEEP_SECS:-0.1}"
 LOOP_SLEEP_SECS="${LOOP_SLEEP_SECS:-1}"
 
 GPU_RECOVER_STEP_SECS="${GPU_RECOVER_STEP_SECS:-10}"
-CPU_RECOVER_STEP_SECS="${CPU_RECOVER_STEP_SECS:-5}"
-TTJ_RECOVER_STEP_SECS="${TTJ_RECOVER_STEP_SECS:-3}"
+CPU_RECOVER_STEP_SECS="${CPU_RECOVER_STEP_SECS:-10}"
+TTJ_RECOVER_STEP_SECS="${TTJ_RECOVER_STEP_SECS:-5}"
 
-FULL_RECOVERY_HOLD_SECS="${FULL_RECOVERY_HOLD_SECS:-120}"
+FAN_RECOVER_UNDER_SECS="${FAN_RECOVER_UNDER_SECS:-30}"
 
 GPU_RAMP_PREP_COOLDOWN_SECS="${GPU_RAMP_PREP_COOLDOWN_SECS:-30}"
 GPU_STALE_SECS="${GPU_STALE_SECS:-10}"
+
+# Properties controlled by this script
+PERF_PROP="persist.gammaos.performance_mode"
+FAN_PROP="persist.gammaos.fan_mode"
 
 # GPU sysfs
 GPU_DEVFREQ_BASE="/sys/devices/platform/soc/13000000.mali/devfreq/13000000.mali"
@@ -123,6 +90,13 @@ read_first_line() {
   IFS= read -r line < "$1" 2>/dev/null || return 1
   printf '%s\n' "$line"
   return 0
+}
+
+is_uint() {
+  case "$1" in
+    ''|*[!0-9]*) return 1 ;;
+    *) return 0 ;;
+  esac
 }
 
 raw_to_c() {
@@ -236,7 +210,7 @@ read_gpu_temp_c() {
 }
 
 # -----------------------------
-# TTJ helpers
+# TTJ helpers (EXACT echo format)
 # -----------------------------
 read_ttj_one() {
   [ -r "$TTJ_NODE" ] || return 1
@@ -250,15 +224,20 @@ read_ttj_one() {
 
 write_ttj_all() {
   v="$1"
+  is_uint "$v" || return 1
   [ -w "$TTJ_NODE" ] || return 1
-  printf 'TTJ %s %s %s\n' "$v" "$v" "$v" > "$TTJ_NODE" 2>/dev/null || return 1
+
+  # Write EXACTLY as: echo "TTJ 115000 115000 115000" > /sys/kernel/thermal/ttj
+  echo "TTJ $v $v $v" > "$TTJ_NODE" 2>/dev/null || return 1
   return 0
 }
 
 write_ttj_all_verified() {
   v="$1"
+  is_uint "$v" || return 1
+
   tries=0
-  while [ "$tries" -lt 5 ]; do
+  while [ "$tries" -lt 3 ]; do
     write_ttj_all "$v" || return 1
     r="$(read_ttj_one 2>/dev/null)" || r=""
     [ "$r" = "$v" ] && return 0
@@ -268,12 +247,41 @@ write_ttj_all_verified() {
   return 1
 }
 
+# Probe the highest TTJ value the kernel accepts.
+probe_ttj_max() {
+  want="$1"
+  min="$2"
+  step="$3"
+
+  cur="$want"
+  while [ "$cur" -ge "$min" ]; do
+    if write_ttj_all_verified "$cur" >/dev/null 2>&1; then
+      echo "$cur"
+      return 0
+    fi
+    cur=$((cur - step))
+  done
+
+  # If nothing worked, fall back to current node value (best effort).
+  r="$(read_ttj_one 2>/dev/null)" || r=""
+  is_uint "$r" && { echo "$r"; return 0; }
+
+  # Hard fallback: do not exceed requested min.
+  echo "$min"
+  return 0
+}
+
 # -----------------------------
-# Performance mode restore
+# Properties and service helpers
 # -----------------------------
-restore_perf_mode() {
-  mode="$(getprop persist.gammaos.performance_mode 2>/dev/null)"
-  case "$mode" in
+get_prop() { getprop "$1" 2>/dev/null; }
+
+set_fan_mode() { setprop "$FAN_PROP" "$1" 2>/dev/null; }
+
+start_setclock_stock_once() { start setclock_stock; return 0; }
+
+start_setclock_for_mode() {
+  case "$1" in
     max)       start setclock_max ;;
     stock)     start setclock_stock ;;
     powersave) start setclock_powersave ;;
@@ -329,7 +337,6 @@ gpu_init_once() {
 }
 
 gpu_prepare_rampdown_session() {
-  # Apply only if enough time has passed since the last application.
   now="$1"
   last="$2"
 
@@ -484,28 +491,38 @@ if [ -n "$p0_freqs" ]; then p0_idx_cur=0; p0_idx_max=$(( $(count_list "$p0_freqs
 if [ -n "$p4_freqs" ]; then p4_idx_cur=0; p4_idx_max=$(( $(count_list "$p4_freqs") - 1 )); fi
 if [ -n "$p7_freqs" ]; then p7_idx_cur=0; p7_idx_max=$(( $(count_list "$p7_freqs") - 1 )); fi
 
-ttj_cur="$TTJ_MAX"
+# Determine effective TTJ max that the kernel accepts.
+TTJ_MAX_EFF="$(probe_ttj_max "$TTJ_MAX" "$TTJ_MIN" "$TTJ_STEP")"
+if ! is_uint "$TTJ_MAX_EFF"; then
+  TTJ_MAX_EFF="$TTJ_MIN"
+fi
+
+# Start TTJ at effective max.
+ttj_cur="$TTJ_MAX_EFF"
 write_ttj_all_verified "$ttj_cur" >/dev/null 2>&1
 r="$(read_ttj_one 2>/dev/null)" && ttj_cur="$r"
-ttj_cur="$(clamp_int "$ttj_cur" "$TTJ_MIN" "$TTJ_MAX")"
+ttj_cur="$(clamp_int "$ttj_cur" "$TTJ_MIN" "$TTJ_MAX_EFF")"
 
-# TTJ lowered tracking
 ttj_lowered=0
 
-# Scheduling timers: these enforce holds and prevent immediate step-up on first under-threshold tick.
+# Step-up schedules
 next_gpu_up_ts=0
 next_cpu_up_ts=0
 next_ttj_up_ts=0
-
-# Full recovery hold timer (2 minutes) before applying setclocks.
-full_recovery_start_ts=0
-setclocks_applied_after_full=0
 
 # Fallback ramp-down pacing
 last_fallback_down_ts=0
 
 # GPU ramp-prep write rate limiting
 gpu_ramp_prep_last_ts=0
+
+# Threshold session state
+over_session_active=0
+saved_perf_mode=""
+saved_fan_mode=""
+
+# Recovery gate for restoring original perf/fan
+recovered_under_start_ts=0
 
 # -----------------------------
 # Main loop
@@ -531,23 +548,26 @@ while true; do
   [ "$p4_idx_cur" -gt 0 ] && clocks_clamped=1
   [ "$p7_idx_cur" -gt 0 ] && clocks_clamped=1
 
-  fully_recovered=0
-  [ "$clocks_clamped" -eq 0 ] && [ "$ttj_cur" -ge "$TTJ_MAX" ] && fully_recovered=1
-
   if [ "$cpu_over" -eq 1 ] || [ "$gpu_over" -eq 1 ]; then
-    # Over threshold resets recovery scheduling and the 2-minute full recovery timer.
+    # Enter an over-threshold session once.
+    if [ "$over_session_active" -eq 0 ]; then
+      over_session_active=1
+      saved_perf_mode="$(get_prop "$PERF_PROP")"
+      saved_fan_mode="$(get_prop "$FAN_PROP")"
+      start_setclock_stock_once
+      set_fan_mode "max"
+      action="threshold_cross_stock_fanmax"
+    fi
+
+    # Over threshold resets recovery scheduling and restore gate.
+    recovered_under_start_ts=0
     next_gpu_up_ts=0
     next_cpu_up_ts=0
     next_ttj_up_ts=0
 
-    full_recovery_start_ts=0
-    setclocks_applied_after_full=0
+    [ "$ttj_cur" -lt "$TTJ_MAX_EFF" ] && ttj_lowered=1
 
-    if [ "$ttj_cur" -lt "$TTJ_MAX" ]; then
-      ttj_lowered=1
-    fi
-
-    # GPU ramp-prep: apply at most once per cooldown window while GPU is overheating.
+    # GPU ramp-prep is only for fallback readiness and is rate-limited.
     if [ "$gpu_over" -eq 1 ] && [ "$gpu_freqs_loaded" -eq 1 ] && gpu_nodes_present; then
       if [ "$gpu_initialized" -eq 0 ]; then
         gpu_init_once
@@ -555,27 +575,25 @@ while true; do
       gpu_ramp_prep_last_ts="$(gpu_prepare_rampdown_session "$now" "$gpu_ramp_prep_last_ts")"
     fi
 
+    # Stage 1: TTJ-only clamp first.
     if [ "$ttj_cur" -gt "$TTJ_MIN" ]; then
       ttj_next=$((ttj_cur - TTJ_STEP))
       [ "$ttj_next" -lt "$TTJ_MIN" ] && ttj_next="$TTJ_MIN"
 
-      if [ "$ttj_next" -ne "$ttj_cur" ] && write_ttj_all_verified "$ttj_next"; then
-        ttj_cur="$ttj_next"
-        ttj_lowered=1
-        action="ttj_down"
-      else
-        action="ttj_down_fail"
-      fi
-
-      if [ "$gpu_over" -eq 1 ] && [ "$gpu_freqs_loaded" -eq 1 ] && [ "$gpu_initialized" -eq 1 ]; then
-        if gpu_step_down_one; then
-          action="ttj_down+gpu_down"
+      # Avoid rewriting the same value.
+      if [ "$ttj_next" -ne "$ttj_cur" ]; then
+        if write_ttj_all_verified "$ttj_next"; then
+          ttj_cur="$ttj_next"
+          ttj_lowered=1
+          [ "$action" = "threshold_cross_stock_fanmax" ] || action="ttj_down"
+        else
+          [ "$action" = "threshold_cross_stock_fanmax" ] || action="ttj_down_fail"
         fi
       fi
 
       sleep_secs="$ADJUST_SLEEP_SECS"
     else
-      # TTJ at min: fallback ramp-down, 1 step per second.
+      # Stage 2: TTJ exhausted, clamp clocks (1 step per second).
       if [ "$last_fallback_down_ts" -eq 0 ] || [ $((now - last_fallback_down_ts)) -ge 1 ]; then
         last_fallback_down_ts="$now"
         did_down=0
@@ -632,21 +650,19 @@ while true; do
 
       [ "$did_up" -eq 1 ] && action="clocks_up_step" || action="clocks_hold_wait"
 
-      # Once clocks are fully restored, arm TTJ recovery scheduling.
       if gpu_is_fully_restored && cpu_is_fully_restored; then
         next_gpu_up_ts=0
         next_cpu_up_ts=0
         [ "$ttj_lowered" -eq 1 ] && [ "$next_ttj_up_ts" -eq 0 ] && next_ttj_up_ts=$((now + TTJ_RECOVER_STEP_SECS))
       fi
     else
-      # Clocks are not clamped.
-      if [ "$ttj_lowered" -eq 1 ] && [ "$ttj_cur" -lt "$TTJ_MAX" ]; then
-        # TTJ recovery (3-second cadence). No setclocks during TTJ recovery.
+      # Clocks are not clamped. Recover TTJ.
+      if [ "$ttj_lowered" -eq 1 ] && [ "$ttj_cur" -lt "$TTJ_MAX_EFF" ]; then
         [ "$next_ttj_up_ts" -eq 0 ] && next_ttj_up_ts=$((now + TTJ_RECOVER_STEP_SECS))
 
         if [ "$now" -ge "$next_ttj_up_ts" ]; then
           ttj_next=$((ttj_cur + TTJ_STEP))
-          [ "$ttj_next" -gt "$TTJ_MAX" ] && ttj_next="$TTJ_MAX"
+          [ "$ttj_next" -gt "$TTJ_MAX_EFF" ] && ttj_next="$TTJ_MAX_EFF"
 
           if [ "$ttj_next" -ne "$ttj_cur" ] && write_ttj_all_verified "$ttj_next"; then
             ttj_cur="$ttj_next"
@@ -660,33 +676,44 @@ while true; do
           action="ttj_up_wait"
         fi
       else
-        # TTJ is fully recovered.
-        [ "$ttj_cur" -ge "$TTJ_MAX" ] && ttj_lowered=0
+        [ "$ttj_cur" -ge "$TTJ_MAX_EFF" ] && ttj_lowered=0
         next_ttj_up_ts=0
         action="stable"
       fi
     fi
 
-    # Full recovery hold gate: only after fully recovered for FULL_RECOVERY_HOLD_SECS do we apply setclocks once.
+    # Restore gate:
+    # Must be under thresholds, TTJ fully recovered, and no clamps for FAN_RECOVER_UNDER_SECS seconds.
     clocks_clamped=0
     [ "$gpu_idx_cur" -gt 0 ] && clocks_clamped=1
     [ "$p0_idx_cur" -gt 0 ] && clocks_clamped=1
     [ "$p4_idx_cur" -gt 0 ] && clocks_clamped=1
     [ "$p7_idx_cur" -gt 0 ] && clocks_clamped=1
 
-    if [ "$clocks_clamped" -eq 0 ] && [ "$ttj_cur" -ge "$TTJ_MAX" ]; then
-      if [ "$full_recovery_start_ts" -eq 0 ]; then
-        full_recovery_start_ts="$now"
+    fully_recovered_now=0
+    if [ "$ttj_cur" -ge "$TTJ_MAX_EFF" ] && [ "$clocks_clamped" -eq 0 ]; then
+      fully_recovered_now=1
+    fi
+
+    if [ "$over_session_active" -eq 1 ] && [ "$fully_recovered_now" -eq 1 ]; then
+      if [ "$recovered_under_start_ts" -eq 0 ]; then
+        recovered_under_start_ts="$now"
       fi
-      hold_age=$((now - full_recovery_start_ts))
-      if [ "$hold_age" -ge "$FULL_RECOVERY_HOLD_SECS" ] && [ "$setclocks_applied_after_full" -eq 0 ]; then
-        restore_perf_mode
-        setclocks_applied_after_full=1
-        action="setclocks_after_full_recovery"
+
+      under_age=$((now - recovered_under_start_ts))
+      if [ "$under_age" -ge "$FAN_RECOVER_UNDER_SECS" ]; then
+        start_setclock_for_mode "$saved_perf_mode"
+        [ -n "$saved_fan_mode" ] && set_fan_mode "$saved_fan_mode"
+
+        over_session_active=0
+        recovered_under_start_ts=0
+        saved_perf_mode=""
+        saved_fan_mode=""
+
+        action="restored_perf_and_fan"
       fi
     else
-      full_recovery_start_ts=0
-      setclocks_applied_after_full=0
+      recovered_under_start_ts=0
     fi
   fi
 
@@ -704,7 +731,7 @@ while true; do
   [ -n "$p4_freqs" ] && p4_max_now="$(freq_at_idx "$p4_freqs" "$p4_idx_cur" 2>/dev/null)"
   [ -n "$p7_freqs" ] && p7_max_now="$(freq_at_idx "$p7_freqs" "$p7_idx_cur" 2>/dev/null)"
 
-  echo "CPU=${cpu_out}C GPU=${gpu_out}C over(cpu/gpu)=${cpu_over}/${gpu_over} TTJ=${ttj_cur} ttj_lowered=${ttj_lowered} gpu_max=${gpu_max_now:-NA} cpu_max(p0/p4/p7)=${p0_max_now:-NA}/${p4_max_now:-NA}/${p7_max_now:-NA} next_gpu_up=${next_gpu_up_ts} next_ttj_up=${next_ttj_up_ts} full_recovery_start=${full_recovery_start_ts} action=${action} sleep=${sleep_secs}"
+  echo "CPU=${cpu_out}C GPU=${gpu_out}C over(cpu/gpu)=${cpu_over}/${gpu_over} TTJ=${ttj_cur} TTJ_MAX_EFF=${TTJ_MAX_EFF} gpu_max=${gpu_max_now:-NA} cpu_max(p0/p4/p7)=${p0_max_now:-NA}/${p4_max_now:-NA}/${p7_max_now:-NA} session=${over_session_active} recov_start=${recovered_under_start_ts} action=${action} sleep=${sleep_secs}"
 
   sleep "$sleep_secs"
 done
