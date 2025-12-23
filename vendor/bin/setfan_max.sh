@@ -3,7 +3,7 @@
 
 FAN_SYSFS="/sys/devices/platform/pwm_fan/pwm_fan_set"
 TARGET=255
-STEP_DELAY=0.1
+STEP_DELAY=0.01
 
 # Optional: set VERIFY_EVERY to a positive integer to re-read sysfs every N steps.
 VERIFY_EVERY="${VERIFY_EVERY:-0}"
