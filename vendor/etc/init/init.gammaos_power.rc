@@ -40,7 +40,7 @@ service force_sleep /system/bin/sh -c "echo heartbeat > /sys/class/leds/battery_
     oneshot
     disabled
 
-service force_wake /system/bin/sh -c "for i in 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40; do start cpu_screen_on; sleep 0.5; done"
+service force_wake /system/bin/sh -c "for i in 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40; do start cpu_screen_on; sleep 0.1; done"
     class main
     user root
     group root system
@@ -56,11 +56,20 @@ on property:persist.gammaos.performance_mode=stock && property:sys.screen.state=
 on property:persist.gammaos.performance_mode=powersave && property:sys.screen.state=on
     start setclock_powersave
 
-on property:sys.screen.state=off && property:persist.gammaos.ultra_low_power_saving_mode=1
+on property:sys.screen.state=off && property:persist.gammaos.ultra_low_power_saving_mode=1 && property:debug.tracing.battery_stats.charging=0
+    start setclock_powersave
+    stop force_wake
+    start force_sleep
+
+on property:sys.screen.state=off && property:persist.gammaos.ultra_low_power_saving_mode=1 && property:debug.tracing.battery_stats.charging=
     start setclock_powersave
     stop force_wake
     start force_sleep
 
 on property:sys.screen.state=on
+    stop force_sleep
+    start force_wake
+
+on property:debug.tracing.battery_stats.charging=1
     stop force_sleep
     start force_wake
