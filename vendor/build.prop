@@ -133,8 +133,8 @@ ro.vendor.arm.egl.configs.q410.recordable=true
 ro.vendor.arm.gralloc.no_afbc_usage_flags=0x20000000
 ro.vendor.arm.gralloc.no_afbc_usage_mask=0x60000000
 # Force Back Buffer Vendor usage bit
-ro.vendor.arm.gralloc.force_back_buffer_usage_flags=0x0
-ro.vendor.arm.gralloc.force_back_buffer_usage_mask=0x0
+ro.vendor.arm.gralloc.force_back_buffer_usage_flags=0x40000000000000
+ro.vendor.arm.gralloc.force_back_buffer_usage_mask=0x40000000000000
 # Shared Access Vendor usage bit
 ro.vendor.arm.gralloc.shared_access_usage_flags=0x10000000
 ro.vendor.arm.gralloc.shared_access_usage_mask=0x50000000
@@ -169,7 +169,7 @@ ro.board.first_api_level=34
 ro.vendor.build.security_patch=2025-06-05
 ro.product.board=rk30sdk
 ro.board.platform=rk356x
-ro.hwui.use_vulkan=false
+ro.hwui.use_vulkan=true
 ####################################
 # from variable PRODUCT_VENDOR_PROPERTIES
 ####################################
@@ -233,14 +233,14 @@ ro.flash_img.enable=false
 ####################################
 ro.product.ota.host=192.168.1.1:8888
 ro.vendor.sdkversion=rk356x_ANDROID14.0_MID_V1.0
-vendor.gralloc.disable_afbc=1
+vendor.gralloc.disable_afbc=0
 ro.ril.ecclist=112,911
 ro.opengles.version=196610
 wifi.interface=wlan0
 ro.audio.monitorOrientation=true
 debug.nfc.fw_download=false
 debug.nfc.se=false
-vendor.hwc.compose_policy=2
+vendor.hwc.compose_policy=1
 sys.wallpaper.rgb565=0
 sf.power.control=2073600
 sys.rkadb.root=0
@@ -254,7 +254,7 @@ ro.factory.tool=0
 ro.kernel.android.checkjni=0
 ro.build.shutdown_timeout=6
 persist.enable_task_snapshots=false
-ro.vendor.frameratelock=false
+ro.vendor.frameratelock=true
 ro.rksdk.version=ANDROID14_RKR7
 dalvik.vm.boot-dex2oat-threads=4
 dalvik.vm.dex2oat-threads=4
@@ -293,7 +293,7 @@ ro.vendor.hdmi_settings=true
 ro.vendor.udisk.visible=true
 ro.safemode.disabled=true
 ro.rk.screenshot_enable=true
-ro.rk.hdmi_enable=true
+ro.rk.hdmi_enable=false
 sys.status.hidebar_enable=false
 persist.sys.zram_enabled=1
 persist.sys.sf.color_saturation=1.0
@@ -303,17 +303,14 @@ ro.wifi.sleep.power.down=true
 persist.wifi.sleep.delay.ms=0
 persist.bt.power.down=true
 vendor.hwc.device.primary=DSI-1
-#vendor.hwc.device.extend=DSI-2
+vendor.hwc.device.extend=DSI-2
 persist.gif.map.gt9xx_0=0
 persist.gif.map.gt9xx_1=2
 ro.vendor.rk_sdk=1
 ro.surface_flinger.default_min_refresh_rate=60.0
 ro.surface_flinger.default_high_refresh_rate=60.0
 ro.surface_flinger.refresh_rate_switching=false
-persist.gammaos.refresh.lock=1
-vendor.hwc.enable_dynamic_display_mode=0
-vendor.hwc.enable_composition_drop_mode=0
-vendor.hwc.static_screen_opt_time=5000
+#persist.gammaos.refresh.lock=1
 persist.gammaos.display.unique_names=1
 persist.gammaos.qs.override_default_tiles=1
 persist.gammaos.qs.override_default_tiles_0=internet,bt,performance,dualstack,gammashader
@@ -325,3 +322,4 @@ persist.gammaos.qs.override_default_tiles_4=mappingeditor,retroarchmenubuttonove
 Target FotaInfo:
 
 ro.supports_picture_in_picture=0
+ro.surface_flinger.supports_background_blur=0
