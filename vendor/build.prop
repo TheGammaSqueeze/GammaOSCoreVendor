@@ -303,7 +303,7 @@ ro.wifi.sleep.power.down=true
 persist.wifi.sleep.delay.ms=0
 persist.bt.power.down=true
 vendor.hwc.device.primary=DSI-1
-vendor.hwc.device.extend=DSI-2
+#vendor.hwc.device.extend=DSI-2
 persist.gif.map.gt9xx_0=0
 persist.gif.map.gt9xx_1=2
 ro.vendor.rk_sdk=1
@@ -323,3 +323,4 @@ Target FotaInfo:
 
 ro.supports_picture_in_picture=0
 ro.surface_flinger.supports_background_blur=0
+ersist.gammaos.display.tweaks=1
