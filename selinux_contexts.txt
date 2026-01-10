@@ -1195,6 +1195,7 @@
 /bin/remove_virtual_inputs.sh u:object_r:vendor_file:s0
 /bin/esde_fix.sh u:object_r:vendor_file:s0
 /bin/setup.sh u:object_r:vendor_file:s0
+/bin/sleep.sh u:object_r:vendor_file:s0
 /bin/customizationload.sh u:object_r:vendor_file:s0
 /bin/setclock_max.sh u:object_r:vendor_file:s0
 /bin/setclock_stock.sh u:object_r:vendor_file:s0
