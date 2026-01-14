@@ -1,9 +1,11 @@
-service gammapad /system/bin/sh -c "sleep 5; /vendor/bin/gammapad 'retrogame_joypad' --no-source-rebind --remove-source-node --gasbrakeemulation --remap-abs ABS_RX ABS_Z --remap-abs ABS_RY ABS_RZ"
+service gammapad /system/bin/sh -c "sleep 5; exec nice -n -20 chrt -f 99 /vendor/bin/gammapad 'retrogame_joypad' --no-source-rebind --remove-source-node --gasbrakeemulation --remap-abs ABS_RX ABS_Z --remap-abs ABS_RY ABS_RZ"
     class main
     user root
     group root system
     oneshot
     disabled
+    priority -20
+    writepid /dev/cpuset/top-app/tasks
 
 service gammapad_abxy_on /system/bin/sh -c "echo 1 > /data/GammaPad/ABXY_LAYOUT"
     class main
