@@ -323,4 +323,4 @@ Target FotaInfo:
 
 ro.supports_picture_in_picture=0
 ro.surface_flinger.supports_background_blur=0
-ersist.gammaos.display.tweaks=1
+persist.gammaos.bg_process_limit=0
