@@ -26,14 +26,16 @@ service cpu_screen_off /vendor/bin/sleep.sh
     oneshot
     disabled
 
-service cpu_screen_on /system/bin/sh -c "echo 1 | tee /sys/devices/system/cpu/cpu[1-7]/online >/dev/null; echo none > /sys/class/leds/battery_charging/trigger;"
+service cpu_screen_on /system/bin/sh -c "echo none > /sys/class/leds/battery_charging/trigger;"
     class main
     user root
     group root system
     oneshot
     disabled
+    priority -20
+    writepid /dev/cpuset/top-app/tasks
 
-service force_sleep /system/bin/sh -c "echo 0 | tee /sys/devices/system/cpu/cpu[2-3]/online >/dev/null; echo heartbeat > /sys/class/leds/battery_charging/trigger; sleep 5; echo none > /sys/class/leds/battery_charging/trigger; start cpu_screen_off;"
+service force_sleep /system/bin/sh -c "echo heartbeat > /sys/class/leds/battery_charging/trigger; sleep 5; echo none > /sys/class/leds/battery_charging/trigger; start cpu_screen_off;"
     class main
     user root
     group root system
@@ -46,6 +48,8 @@ service force_wake /system/bin/sh -c "for i in 1 2 3 4 5; do start cpu_screen_on
     group root system
     oneshot
     disabled
+    priority -20
+    writepid /dev/cpuset/top-app/tasks
 
 on property:persist.gammaos.performance_mode=max && property:sys.screen.state=on
     start setclock_max
@@ -65,6 +69,11 @@ on property:sys.screen.state=off && property:persist.gammaos.ultra_low_power_sav
     start setclock_powersave
     stop force_wake
     start force_sleep
+
+#on property:sys.screen.state=off
+#    start setclock_powersave
+#    stop force_wake
+#    start force_sleep
 
 on property:sys.screen.state=on
     stop force_sleep

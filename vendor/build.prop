@@ -325,3 +325,4 @@ ro.supports_picture_in_picture=0
 ro.surface_flinger.supports_background_blur=0
 persist.gammaos.bg_process_limit=0
 persist.gammaos.dualstack.killpackages.enabled=1
+persist.gammaos.ultra_low_power_saving_freeze_exclude_packages=com.dsemu.drastic
