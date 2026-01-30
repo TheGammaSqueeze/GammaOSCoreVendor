@@ -7,8 +7,8 @@ ro.product.vendor.device=rk3568_u
 ro.product.vendor.manufacturer=Anbernic
 ro.product.vendor.model=RG DS
 ro.product.vendor.name=rk3568_u
-ro.vendor.product.cpu.abilist=arm64-v8a
-ro.vendor.product.cpu.abilist32=
+ro.vendor.product.cpu.abilist=arm64-v8a,armeabi-v7a,armeabi
+ro.vendor.product.cpu.abilist32=armeabi-v7a,armeabi
 ro.vendor.product.cpu.abilist64=arm64-v8a
 ro.vendor.build.date=Tue Nov 18 14:17:06 CST 2025
 ro.vendor.build.date.utc=1763446626
@@ -155,11 +155,13 @@ ro.vendor.arm.gralloc.afrc_chroma_usage_mask=0x180000000000000
 ro.vndk.version=34
 ro.bionic.arch=arm64
 ro.bionic.cpu_variant=cortex-a55
-ro.bionic.2nd_arch=
-ro.bionic.2nd_cpu_variant=
+ro.bionic.2nd_arch=arm
+ro.bionic.2nd_cpu_variant=cortex-a55
 persist.sys.dalvik.vm.lib.2=libart.so
 dalvik.vm.isa.arm64.variant=cortex-a55
 dalvik.vm.isa.arm64.features=default
+dalvik.vm.isa.arm.variant=cortex-a55
+dalvik.vm.isa.arm.features=default
 ro.minui.default_rotation=ROTATION_NONE
 ro.minui.pixel_format=RGBX_8888
 ro.boot.dynamic_partitions=true
@@ -178,6 +180,27 @@ external_storage.casefold.enabled=1
 external_storage.sdcardfs.enabled=0
 graphics.gpu.profiler.support=true
 ro.zygote=zygote64
+
+# -----------------------------------------------------------------------------
+# Zygote (32-bit secondary) requires a non-empty 32-bit ABI list.
+# On Android 14+, init commonly derives ro.product.cpu.abilist* from
+# ro.product.product.cpu.abilist*; ensure these are populated for zygote_secondary.
+#
+# NOTE:
+# - ro.product.cpu.abilist* may be overwritten by init early in boot.
+# - ro.product.product.cpu.abilist* are the ones init usually reads to derive ro.product.*.
+# If this still does not stick, move these same lines to /system/build.prop or /product/build.prop
+# (wherever your build defines ro.product.product.*).
+# -----------------------------------------------------------------------------
+#ro.product.product.cpu.abilist=arm64-v8a,armeabi-v7a,armeabi
+#ro.product.product.cpu.abilist64=arm64-v8a
+#ro.product.product.cpu.abilist32=armeabi-v7a,armeabi
+
+# Best-effort explicit ro.product.* (may be overridden by init)
+#ro.product.cpu.abilist=arm64-v8a,armeabi-v7a,armeabi
+#ro.product.cpu.abilist64=arm64-v8a
+#ro.product.cpu.abilist32=armeabi-v7a,armeabi
+
 dalvik.vm.dex2oat64.enabled=true
 ro.apex.updatable=true
 ro.config.ringtone=Ring_Synth_04.ogg
