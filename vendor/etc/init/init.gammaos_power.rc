@@ -60,12 +60,17 @@ on property:persist.gammaos.performance_mode=stock && property:sys.screen.state=
 on property:persist.gammaos.performance_mode=powersave && property:sys.screen.state=on
     start setclock_powersave
 
-on property:sys.screen.state=off && property:persist.gammaos.ultra_low_power_saving_mode=1 && property:debug.tracing.battery_stats.charging=0
-    start setclock_powersave
-    stop force_wake
-    start force_sleep
+#on property:sys.screen.state=off && property:persist.gammaos.ultra_low_power_saving_mode=1 && property:debug.tracing.battery_stats.charging=0
+#    start setclock_powersave
+#    stop force_wake
+#    start force_sleep
 
-on property:sys.screen.state=off && property:persist.gammaos.ultra_low_power_saving_mode=1 && property:debug.tracing.battery_stats.charging=
+#on property:sys.screen.state=off && property:persist.gammaos.ultra_low_power_saving_mode=1 && property:debug.tracing.battery_stats.charging=
+#    start setclock_powersave
+#    stop force_wake
+#    start force_sleep
+
+on property:sys.screen.state=off && property:persist.gammaos.ultra_low_power_saving_mode=1 && property:sys.gammaos.usb.connected=0
     start setclock_powersave
     stop force_wake
     start force_sleep
@@ -84,5 +89,9 @@ on property:sys.screen.state=on
 #    start cpu_screen_off
 
 on property:debug.tracing.battery_stats.charging=1
+    stop force_sleep
+    start force_wake
+
+on property:sys.gammaos.usb.connected=1
     stop force_sleep
     start force_wake
