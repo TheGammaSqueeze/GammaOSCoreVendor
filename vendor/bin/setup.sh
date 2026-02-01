@@ -54,7 +54,16 @@ rm -rf /data/data/com.dsemu.drastic/*
 tar -xvf /vendor/etc/drastic.tar.gz -C /
 chown -R $launcheruser:$launchergroup /data/data/com.dsemu.drastic
 
+pm grant com.dsemu.drastic android.permission.RECORD_AUDIO
+cmd appops set com.dsemu.drastic RECORD_AUDIO allow
+
 tar -xvf /vendor/etc/GammaEQ.tar.gz -C /
+
+launcheruser=$( stat -c "%U" /data/data/com.flycast.emulator)
+launchergroup=$( stat -c "%G" /data/data/com.flycast.emulator)
+tar -xJvf /vendor/etc/flycast.tar.xz -P -C /
+chown -R $launcheruser:$launchergroup /data/data/com.flycast.emulator
+chown -R $launcheruser:ext_data_rw /sdcard/Android/data/com.flycast.emulator
 
 setprop persist.gammaos.shader.lcd3x.brighten_lcd 4.0
 setprop persist.gammaos.shader.lcd3x.brighten_scanlines 4.0

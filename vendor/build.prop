@@ -336,11 +336,11 @@ ro.surface_flinger.refresh_rate_switching=false
 #persist.gammaos.refresh.lock=1
 persist.gammaos.display.unique_names=1
 persist.gammaos.qs.override_default_tiles=1
-persist.gammaos.qs.override_default_tiles_0=internet,bt,performance,dualstack,gammasplitbrightness,gammasecondarydisplay,gammashader
-persist.gammaos.qs.override_default_tiles_1=rotation,gammaeq,immersivemode,secondarydisplayapps,launchguard,gammadualfocus,abxy
-persist.gammaos.qs.override_default_tiles_2=analogsensitivity,dpadAnalogToggle,analogdeadzone,analogcalibration,analogaxis
-persist.gammaos.qs.override_default_tiles_3=rightanalogaxis,mappingeditor,deepsleepmode
-#persist.gammaos.qs.override_default_tiles_4=mappingeditor,retroarchmenubuttonoverride
+persist.gammaos.qs.override_default_tiles_0=internet,bt,performance,dualstack,gammasplitbrightness
+persist.gammaos.qs.override_default_tiles_1=gammasecondarydisplay,gammashader,rotation,gammaeq,immersivemode
+persist.gammaos.qs.override_default_tiles_2=secondarydisplayapps,launchguard,gammadualfocus,abxy
+persist.gammaos.qs.override_default_tiles_3=analogsensitivity,dpadAnalogToggle,analogdeadzone,analogcalibration
+persist.gammaos.qs.override_default_tiles_4=analogaxis,rightanalogaxis,mappingeditor,deepsleepmode
 # end of file
 Target FotaInfo:
 
@@ -371,12 +371,6 @@ persist.gammaos.launch.guard.enabled=1
 persist.gammaos.launch.guard.targets=com.retroarch.aarch64,org.ppsspp.ppsspp,org.mupen64plusae.v3.fzurita,com.flycast.emulator
 persist.gammaos.multidisplay.dual_focus=1
 persist.gammaos.multidisplay.secondary_display=1
-persist.gammaos.qs.override_default_tiles=1
-persist.gammaos.qs.override_default_tiles_0=internet,bt,performance,dualstack,gammashader
-persist.gammaos.qs.override_default_tiles_1=gammadualfocus,deepsleepmode,immersivemode,rotation
-persist.gammaos.qs.override_default_tiles_2=abxy,analogsensitivity,dpadAnalogToggle,analogdeadzone
-persist.gammaos.qs.override_default_tiles_3=analogcalibration,analogaxis,rightanalogaxis
-persist.gammaos.qs.override_default_tiles_4=mappingeditor,retroarchmenubuttonoverride
 persist.gammaos.retroarchoverride.backbutton=1
 persist.gammaos.secondary_display.enabled=1
 persist.gammaos.secondary_display.packages=com.retroarch.aarch64,org.mupen64plusae.v3.fzurita,org.ppsspp.ppsspp

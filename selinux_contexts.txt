@@ -53,6 +53,7 @@
 /etc/fstab_swap.ext512 u:object_r:vendor_configs_file:s0
 /etc/drastic.tar.gz u:object_r:vendor_configs_file:s0
 /etc/GammaEQ.tar.gz u:object_r:vendor_configs_file:s0
+/etc/flycast.tar.xz u:object_r:vendor_configs_file:s0
 /etc/usb_audio_policy_configuration.xml u:object_r:vendor_configs_file:s0
 /etc/task_profiles.json u:object_r:vendor_task_profiles_file:s0
 /etc/2160p.h264 u:object_r:vendor_configs_file:s0
