@@ -25,6 +25,10 @@ BTN_DPAD_LEFT BTN_DPAD_LEFT
 BTN_DPAD_RIGHT BTN_DPAD_RIGHT
 EOF'
 
+settings put global window_animation_scale 0
+settings put global transition_animation_scale 0
+settings put global animator_duration_scale 0
+
 setprop persist.gammaos.multidisplay.dual_focus 1
 setprop persist.gammaos.dualstack.pkgs com.dsemu.drastic
 setprop persist.gammaos.dualstack.enabled 1
@@ -50,11 +54,68 @@ rm -rf /data/data/com.dsemu.drastic/*
 tar -xvf /vendor/etc/drastic.tar.gz -C /
 chown -R $launcheruser:$launchergroup /data/data/com.dsemu.drastic
 
+tar -xvf /vendor/etc/GammaEQ.tar.gz -C /
+
 setprop persist.gammaos.shader.lcd3x.brighten_lcd 4.0
 setprop persist.gammaos.shader.lcd3x.brighten_scanlines 4.0
 setprop persist.gammaos.shader.lcd3x.grid_px_x 1.0
 setprop persist.gammaos.shader.lcd3x.grid_px_y 3.0
-setprop persist.gammaos.shader.type lcd3x
+#setprop persist.gammaos.shader.type lcd3x
+
+setprop persist.sys.gammaeq.spk_only 1
+setprop persist.sys.gammaeq.force 0
+setprop persist.sys.gammaeq.preamp_db -1.0
+setprop persist.sys.gammaeq.postgain_db 0
+
+setprop persist.sys.spk.cryst 1
+setprop persist.sys.spk.cryst.amount 4.0
+setprop persist.sys.spk.cryst.mix 0.25
+setprop persist.sys.spk.cryst.hz 11500
+setprop persist.sys.spk.cryst.pregain_db -8
+setprop persist.sys.spk.cryst.postgain_db 3.0161133
+setprop persist.sys.spk.cryst.pre 0.40
+setprop persist.sys.spk.cryst.fc 11500
+setprop persist.sys.spk.cryst.limit 0.30
+
+setprop persist.sys.spk.lbp 1
+setprop persist.sys.spk.lbp.fc 160
+setprop persist.sys.spk.lbp.thr 0.6934932
+setprop persist.sys.spk.lbp.atk 4
+setprop persist.sys.spk.lbp.rel 110
+
+setprop persist.sys.spk.mp 1
+setprop persist.sys.spk.mp.hpf 220
+setprop persist.sys.spk.mp.lpf 5800
+setprop persist.sys.spk.mp.thr 0.92
+setprop persist.sys.spk.mp.atk 2
+setprop persist.sys.spk.mp.rel 120
+
+setprop persist.sys.spk.peq 1
+setprop persist.sys.spk.peq.b0 1.30
+setprop persist.sys.spk.peq.b1 -1.40
+setprop persist.sys.spk.peq.b2 0.40197754
+setprop persist.sys.spk.peq.a1 0
+setprop persist.sys.spk.peq.a2 0
+setprop persist.sys.spk.peq.pregain 1.0
+setprop persist.sys.spk.peq.keepheadroom 1
+setprop persist.sys.spk.peq.limit 0
+
+setprop persist.sys.spk.peq2 1
+setprop persist.sys.spk.peq2.b0 0.6289673
+setprop persist.sys.spk.peq2.b1 -2.9190538
+setprop persist.sys.spk.peq2.b2 0.18703546
+setprop persist.sys.spk.peq2.a1 0
+setprop persist.sys.spk.peq2.a2 0
+
+setprop persist.sys.spk.wide 1
+setprop persist.sys.spk.wide.mix 0.79901123
+setprop persist.sys.spk.wide.hpf 5500
+setprop persist.sys.spk.wide.amount 2.0
+setprop persist.sys.spk.wide.pre 4.0561523
+setprop persist.sys.spk.wide.limit 1.0
+setprop persist.sys.spk.wide.fc 16000.0
+
+setprop persist.sys.gammaeq.enable 1
 
 # lineage_tv_* runtime enforcement:
 # Keep SystemUI (non-TV) stable by forcing keyguard and doze/AOD state off.
