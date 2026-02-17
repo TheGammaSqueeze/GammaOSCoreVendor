@@ -129,8 +129,7 @@ on boot
     # backlight
     chown system system /sys/class/backlight/rk28_bl/brightness
     chown system system /sys/class/backlight/backlight/brightness
-    chown system system /sys/class/backlight/backlight1/brightness
-
+    
     # for hdmi
     chown root system /sys/class/display/HDMI/enable
     chown root system /sys/class/display/HDMI/mode

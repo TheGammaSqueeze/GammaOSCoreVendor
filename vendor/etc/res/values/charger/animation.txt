@@ -14,7 +14,7 @@ frame: 750 0 89
 frame: 750 0 100
 
 # percent_display: x y (distance below the battery) r g b a font_file
-percent_display: c 50 255 255 255 0 charger/font
+percent_display: c 50 255 255 255 255 charger/font
 
 # clock_display: x y (distance below the top of the screen) r g b a font_file
-clock_display: c 100 255 255 255 0 charger/font
+clock_display: c 100 255 255 255 255 charger/font

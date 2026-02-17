@@ -39,7 +39,7 @@ import /vendor/etc/ueventd.car.rc
 /dev/h265e                0666   system     system
 /dev/avsd                 0666   system     system
 /dev/rkvtunnel            0666   system     system
-
+/dev/ttyGS0               0666   media      media
 # for Sensor HAL
 /dev/akm8973              0660   system     system
 /dev/accelerometer        0660   system     system

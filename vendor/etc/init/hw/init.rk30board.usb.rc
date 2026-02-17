@@ -41,7 +41,7 @@ on early-boot
 
     # audio_source function
     mkdir /config/usb_gadget/g1/functions/audio_source.gs3
-
+    mkdir /config/usb_gadget/g1/functions/acm.gs7
     # rndis function
     mkdir /config/usb_gadget/g1/functions/rndis.gs4
     # Modify class/subclass/protocol for rndis.gs4
@@ -171,6 +171,7 @@ on early-boot
     chown system system /config/usb_gadget/g1/functions/ffs.ptp
     chown system system /config/usb_gadget/g1/functions/midi.gs5
     chown system system /config/usb_gadget/g1/functions/uvc.gs6
+    chown system system /config/usb_gadget/g1/functions/acm.gs7
     chown system system /config/usb_gadget/g1/functions/ncm.gs9
     chown system system /config/usb_gadget/g1/functions/ncm.gs9/dev_addr
     chown system system /config/usb_gadget/g1/functions/ncm.gs9/host_addr

@@ -1,13 +1,3 @@
-external/wifi_driver/infineon/cyw88459.ko
-external/wifi_driver/rtl8852bs/8852bs.ko
-external/wifi_driver/ea6621q/drivers/skwifi/skw.ko
-external/wifi_driver/ea6621q/drivers/seekwaveplatform/sdio/skw_sdio.ko
-external/wifi_driver/ea6621q/drivers/seekwaveplatform/skwutil/skw_bootcoms.ko
-external/wifi_driver/aic8800/aic8800_btlpm/aic8800_btlpm.ko
-external/wifi_driver/aic8800/aic8800_bsp/aic8800_bsp.ko
-external/wifi_driver/aic8800/aic8800_fdrv/aic8800_fdrv.ko
-external/wifi_driver/rtl8821cs/8821cs.ko
-external/wifi_driver/rtl8822cs/8822cs.ko
-external/wifi_driver/swt6621s/seekwaveplatform_lite/skw_sdio_lite.ko
-external/wifi_driver/swt6621s/swt6621s_wifi/swt6621s_wifi.ko
-external/wifi_driver/bcmdhd/bcmdhd.ko
+external/wifi_driver/aic8800d80_pcie/aic8800_fdrv/aic8800D80_fdrv.ko
+external/wifi_driver/aic8800d80x2_pcie/aic8800_fdrv/aic8800D80x2_fdrv.ko
+external/wifi_driver/rtl8852be/8852be.ko

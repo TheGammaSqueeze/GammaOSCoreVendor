@@ -3,8 +3,7 @@
 <config identifier="0" />
 <display
   name="local:1"
-  shouldShowSystemDecors="true"
+  shouldShowSystemDecors="false"
   shouldShowIme="true"
-
-  forcedDensity="160"	/>
+  forcedDensity="240"	/>
 </display-settings>

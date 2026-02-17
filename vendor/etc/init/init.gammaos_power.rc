@@ -75,10 +75,8 @@ on property:sys.screen.state=off && property:persist.gammaos.ultra_low_power_sav
     stop force_wake
     start force_sleep
 
-#on property:sys.screen.state=off
-#    start setclock_powersave
-#    stop force_wake
-#    start force_sleep
+on property:sys.screen.state=off
+    start setclock_powersave
 
 on property:sys.screen.state=on
     stop force_sleep

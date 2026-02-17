@@ -1,11 +1,37 @@
-service gammapad /system/bin/sh -c "sleep 5; exec nice -n -20 chrt -f 99 /vendor/bin/gammapad 'retrogame_joypad' --no-source-rebind --remove-source-node --gasbrakeemulation --remap-abs ABS_RX ABS_Z --remap-abs ABS_RY ABS_RZ"
+service joypad_control_screen_off /system/bin/sh -c "sleep 1; echo 0 > /sys/devices/platform/singleadc-joypad/enable"
     class main
     user root
     group root system
     oneshot
     disabled
-    priority -20
-    writepid /dev/cpuset/top-app/tasks
+
+service joypad_control_screen_on /system/bin/sh -c "echo 1 > /sys/devices/platform/singleadc-joypad/enable; echo 1500 > /sys/devices/platform/singleadc-joypad/jokstick_cal_scale; echo 2 > /sys/devices/platform/singleadc-joypad/remapkey_xbox_switch_bt_tr"
+    class main
+    user root
+    group root system
+    oneshot
+    disabled
+
+service led_control_screen_on /vendor/bin/gammargb
+    class main
+    user root
+    group root system
+    oneshot
+    disabled
+
+service gammapad /vendor/bin/gammapad retrogame_joypad --ffdev=sc27xx:vibrator
+    class main
+    user root
+    group root system
+    oneshot
+    disabled
+
+service led_control_off /system/bin/sh -c "echo 0 > /sys/devices/platform/singleadc-joypad/led_switch; echo 1 > /sys/devices/platform/singleadc-joypad/led_set"
+    class main
+    user root
+    group root system
+    oneshot
+    disabled
 
 service gammapad_abxy_on /system/bin/sh -c "echo 1 > /data/GammaPad/ABXY_LAYOUT"
     class main
@@ -49,14 +75,14 @@ service gammapad_leftstickinvert_off /system/bin/sh -c "echo 0 > /data/GammaPad/
     oneshot
     disabled
 
-service gammapad_rightstickinvert_on /system/bin/sh -c "echo 1 > /data/GammaPad/RIGHTSTICKINVERT_Z_RZ"
+service gammapad_rightstickinvert_on /system/bin/sh -c "echo 1 > /data/GammaPad/RIGHTSTICKINVERT"
     class main
     user root
     group root system
     oneshot
     disabled
 
-service gammapad_rightstickinvert_off /system/bin/sh -c "echo 0 > /data/GammaPad/RIGHTSTICKINVERT_Z_RZ"
+service gammapad_rightstickinvert_off /system/bin/sh -c "echo 0 > /data/GammaPad/RIGHTSTICKINVERT"
     class main
     user root
     group root system
@@ -154,42 +180,24 @@ service gammapad_calibration_on /system/bin/sh -c "echo 1 > /data/GammaPad/CALIB
     oneshot
     disabled
 
-service led_control_screen_on /system/bin/sh -c "echo 1 > /sys/class/leds/backlight_1_power/brightness; echo 1 > /sys/devices/platform/singleadc-joypad/enable"
-    class main
-    user root
-    group root system
-    oneshot
-    disabled
-
-service led_control_off /system/bin/sh -c "echo 0 > /sys/class/leds/backlight_1_power/brightness; echo 0 > /sys/devices/platform/singleadc-joypad/enable"
-    class main
-    user root
-    group root system
-    oneshot
-    disabled
-
-service remove_virtual_inputs /system/bin/sh -c "sleep 30; /vendor/bin/remove_virtual_inputs.sh"
-    class main
-    user root
-    group root system
-    oneshot
-    disabled
-
-on early-boot
-    start led_control_screen_on
-    start remove_virtual_inputs
-
-on property:sys.boot_completed=1
-    start gammapad
-    setprop sys.screen.state on
-    start remove_virtual_inputs
-
 on property:sys.screen.state=off
+    start joypad_control_screen_off
     stop led_control_screen_on
     start led_control_off
 
 on property:sys.screen.state=on
-    stop led_control_off
+    stop joypad_control_screen_off
+    start joypad_control_screen_on
+
+on property:sys.boot_completed=1
+    start gammapad
+    setprop sys.screen.state on
+
+on property:persist.gammargb.control=off
+    stop led_control_screen_on
+    start led_control_off
+
+on property:persist.gammargb.control=on && property:sys.screen.state=on
     start led_control_screen_on
 
 on property:persist.gammaos.abxyswap=on

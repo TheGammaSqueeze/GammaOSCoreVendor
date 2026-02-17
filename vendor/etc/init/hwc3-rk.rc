@@ -5,5 +5,3 @@ service hwcomposer-3 /vendor/bin/hw/android.hardware.graphics.composer3-service.
     capabilities SYS_NICE
     onrestart restart surfaceflinger
     task_profiles ServiceCapacityLow
-    priority -17
-    writepid /dev/cpuset/top-app/tasks

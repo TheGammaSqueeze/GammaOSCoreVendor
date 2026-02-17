@@ -1,0 +1,39 @@
+on property:sys.rkai.performance.enable=1
+
+   chown system system /sys/devices/system/cpu/cpufreq/policy0/scaling_governor
+   chown system system /sys/devices/system/cpu/cpufreq/policy4/scaling_governor
+   chown system system /sys/class/devfreq/27800000.gpu/governor
+   chown system system /sys/class/devfreq/27700000.npu/governor
+   chown system system /sys/class/devfreq/dmc/governor
+
+   chmod 0664 /sys/devices/system/cpu/cpufreq/policy0/scaling_governor
+   chmod 0664 /sys/devices/system/cpu/cpufreq/policy4/scaling_governor
+   chmod 0664 /sys/class/devfreq/27800000.gpu/governor
+   chmod 0664 /sys/class/devfreq/27700000.npu/governor
+   chmod 0664 /sys/class/devfreq/dmc/governor
+
+   write /sys/devices/system/cpu/cpufreq/policy0/scaling_governor performance
+   write /sys/devices/system/cpu/cpufreq/policy4/scaling_governor performance
+   write /sys/class/devfreq/27800000.gpu/governor performance
+   write /sys/class/devfreq/27700000.npu/governor performance
+   write /sys/class/devfreq/dmc/governor performance
+
+on property:sys.rkai.performance.enable=0
+
+   chown system system /sys/devices/system/cpu/cpufreq/policy0/scaling_governor
+   chown system system /sys/devices/system/cpu/cpufreq/policy4/scaling_governor
+   chown system system /sys/class/devfreq/27800000.gpu/governor
+   chown system system /sys/class/devfreq/27700000.npu/governor
+   chown system system /sys/class/devfreq/dmc/governor
+
+   chmod 0664 /sys/devices/system/cpu/cpufreq/policy0/scaling_governor
+   chmod 0664 /sys/devices/system/cpu/cpufreq/policy4/scaling_governor
+   chmod 0664 /sys/class/devfreq/27800000.gpu/governor
+   chmod 0664 /sys/class/devfreq/27700000.npu/governor
+   chmod 0664 /sys/class/devfreq/dmc/governor
+
+   write /sys/devices/system/cpu/cpufreq/policy0/scaling_governor schedutil
+   write /sys/devices/system/cpu/cpufreq/policy4/scaling_governor schedutil
+   write /sys/class/devfreq/27800000.gpu/governor simple_ondemand
+   write /sys/class/devfreq/27700000.npu/governor rknpu_ondemand
+   write /sys/class/devfreq/dmc/governor dmc_ondemand

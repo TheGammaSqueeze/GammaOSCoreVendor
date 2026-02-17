@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<!-- Copyright (C) 2014 The Android Open Source Project
-
+<!-- Copyright 2024 Rockchip Electronics S.LSI Co. LTD
      Licensed under the Apache License, Version 2.0 (the "License");
      you may not use this file except in compliance with the License.
      You may obtain a copy of the License at
@@ -15,126 +14,110 @@
 -->
 
 <Included>
+    <Settings>
+        <Setting name="supports-secure-with-non-secure-codec" value="false" />
+    </Settings>
     <Decoders>
         <MediaCodec name="c2.rk.avc.decoder" type="video/avc">
             <Alias name="OMX.rk.video_decoder.avc" />
-            <Limit name="size" min="64x64" max="4096x2160" />
+            <Limit name="size" min="64x64" max="7680x4320" />
             <Limit name="alignment" value="2x2" />
             <Limit name="block-size" value="16x16" />
-            <Limit name="block-count" range="1-32768" /> <!-- max 4096x2160 -->
-            <Limit name="blocks-per-second" range="1-1966080" />
+            <Limit name="block-count" range="1-129600" /> <!-- max 7680x4320 -->
+            <Limit name="blocks-per-second" range="1-4000000" />
             <Limit name="frame-rate" range="1-300" />
             <Limit name="bitrate" range="1-20000000" />
             <Feature name="adaptive-playback" />
+            <Feature name="can-swap-width-height" />
             <Limit name="concurrent-instances" max="32" />
             <Limit name="performance-point-3840x2160" value="60" />
         </MediaCodec>
         <MediaCodec name="c2.rk.hevc.decoder" type="video/hevc">
             <Alias name="OMX.rk.video_decoder.hevc" />
-            <Limit name="size" min="64x64" max="4096x2160" />
+            <Limit name="size" min="64x64" max="7680x4320" />
             <Limit name="alignment" value="2x2" />
             <Limit name="block-size" value="16x16" />
-            <Limit name="block-count" range="1-32768" /> <!-- max 4096x2160 -->
-            <Limit name="blocks-per-second" range="1-1966080" />
+            <Limit name="block-count" range="1-129600" /> <!-- max 7680x4320 -->
+            <Limit name="blocks-per-second" range="1-4000000" />
             <Limit name="frame-rate" range="1-600" />
             <Limit name="bitrate" range="1-20000000" />
             <Feature name="adaptive-playback" />
+            <Feature name="can-swap-width-height" />
             <Limit name="concurrent-instances" max="32" />
-            <Limit name="performance-point-3840x2160" value="60" />
+            <Limit name="performance-point-3840x2160" value="120" />
         </MediaCodec>
         <MediaCodec name="c2.rk.vp9.decoder" type="video/x-vnd.on2.vp9">
             <Alias name="OMX.rk.video_decoder.vp9" />
-            <Limit name="size" min="176x144" max="4096x2160" />
+            <Limit name="size" min="176x144" max="7680x4320" />
             <Limit name="alignment" value="2x2" />
             <Limit name="block-size" value="16x16" />
-            <Limit name="block-count" range="1-32768" /> <!-- max 4096x2160 -->
-            <Limit name="blocks-per-second" range="1-1966080" />
+            <Limit name="block-count" range="1-129600" /> <!-- max 7680x4320 -->
+            <Limit name="blocks-per-second" range="1-4000000" />
             <Limit name="frame-rate" range="1-60" />
             <Limit name="bitrate" range="1-20000000" />
             <Feature name="adaptive-playback" />
+            <Limit name="concurrent-instances" max="32" />
+            <Limit name="performance-point-3840x2160" value="120" />
+        </MediaCodec>
+        <MediaCodec name="c2.rk.avs2.decoder" type="video/avs2">
+            <Alias name="OMX.rk.video_decoder.avs2" />
+            <Limit name="size" min="176x144" max="7680x4320" />
+            <Limit name="alignment" value="2x2" />
+            <Limit name="block-size" value="16x16" />
+            <Limit name="block-count" range="1-129600" /> <!-- max 7680x4320 -->
+            <Limit name="blocks-per-second" range="1-4000000" />
+            <Limit name="frame-rate" range="1-60" />
+            <Limit name="bitrate" range="1-80000000" />
+            <Feature name="adaptive-playback" />
+            <Limit name="concurrent-instances" max="32" />
+            <Limit name="performance-point-3840x2160" value="120" />
+        </MediaCodec>
+        <MediaCodec name="c2.rk.av1.decoder" type="video/av01">
+            <Alias name="OMX.rk.video_decoder.av1" />
+            <Limit name="size" min="64x64" max="7680x4320" />
+            <Limit name="alignment" value="2x2" />
+            <Limit name="block-size" value="16x16" />
+            <Limit name="block-count" range="1-129600" /> <!-- max 7680x4320 -->
+            <Limit name="blocks-per-second" range="1-4000000" />
+            <Limit name="frame-rate" range="1-240" />
+            <Limit name="bitrate" range="1-20000000" />
+            <Feature name="adaptive-playback" />
+            <Feature name="can-swap-width-height" />
             <Limit name="concurrent-instances" max="32" />
             <Limit name="performance-point-3840x2160" value="60" />
-        </MediaCodec>
-        <MediaCodec name="c2.rk.vp8.decoder" type="video/x-vnd.on2.vp8">
-            <Alias name="OMX.rk.video_decoder.vp8" />
-            <Limit name="size" min="2x2" max="1920x1088" />
-            <Limit name="alignment" value="2x2" />
-            <Limit name="block-size" value="16x16" />
-            <Limit name="block-count" range="1-8160" /> <!-- max 1920x1088 -->
-            <Limit name="blocks-per-second" range="1-489600" />
-            <Limit name="frame-rate" range="1-60" />
-            <Limit name="bitrate" range="1-20000000" />
-            <Feature name="adaptive-playback" />
-            <Limit name="concurrent-instances" max="32" />
-            <Limit name="performance-point-1920x1088" value="60" />
-        </MediaCodec>
-        <MediaCodec name="c2.rk.mpeg2.decoder" type="video/mpeg2">
-            <Alias name="OMX.rk.video_decoder.m2v" />
-            <Limit name="size" min="2x2" max="1920x1088" />
-            <Limit name="alignment" value="2x2" />
-            <Limit name="block-size" value="16x16" />
-            <Limit name="block-count" range="1-8160" /> <!-- max 1920x1088 -->
-            <Limit name="blocks-per-second" range="1-489600" />
-            <Limit name="frame-rate" range="1-60" />
-            <Feature name="adaptive-playback" />
-            <Limit name="concurrent-instances" max="32" />
-            <Limit name="performance-point-1920x1088" value="60" />
-        </MediaCodec>
-        <MediaCodec name="c2.rk.m4v.decoder" type="video/mp4v-es">
-            <Alias name="OMX.rk.video_decoder.m4v" />
-            <Limit name="size" min="64x64" max="1920x1088" />
-            <Limit name="alignment" value="2x2" />
-            <Limit name="block-size" value="16x16" />
-            <Limit name="block-count" range="1-8160" /> <!-- max 1920x1088 -->
-            <Limit name="blocks-per-second" range="1-489600" />
-            <Limit name="frame-rate" range="1-60" />
-            <Limit name="bitrate" range="1-20000000" />
-            <Feature name="adaptive-playback" />
-            <Limit name="concurrent-instances" max="32" />
-            <Limit name="performance-point-1920x1088" value="60" />
-        </MediaCodec>
-        <MediaCodec name="c2.rk.h263.decoder" type="video/3gpp">
-            <Alias name="OMX.rk.video_decoder.h263" />
-            <Limit name="size" min="2x2" max="1920x1088" />
-            <Limit name="alignment" value="2x2" />
-            <Limit name="block-size" value="16x16" />
-            <Limit name="block-count" range="1-8160" /> <!-- max 1920x1088 -->
-            <Limit name="blocks-per-second" range="1-489600" />
-            <Limit name="frame-rate" range="1-60" />
-            <Limit name="bitrate" range="1-20000000" />
-            <Feature name="adaptive-playback" />
-            <Limit name="concurrent-instances" max="32" />
-            <Limit name="performance-point-1920x1088" value="60" />
         </MediaCodec>
     </Decoders>
 
     <Encoders>
         <MediaCodec name="c2.rk.avc.encoder" type="video/avc">
             <Alias name="OMX.rk.video_encoder.avc" />
-            <Limit name="size" min="176x144" max="1920x1088" />
+            <Limit name="size" min="176x144" max="4096x2160" />
             <Limit name="alignment" value="2x2" />
             <Limit name="block-size" value="16x16" />
-            <Limit name="block-count" range="1-8160" /> <!-- max 1920x1080 -->
-            <Limit name="blocks-per-second" range="1-489600" />
-            <Limit name="bitrate" range="1-10000000" />
+            <Limit name="block-count" range="1-32768" /> <!-- max 4096x2160 -->
+            <Limit name="blocks-per-second" range="1-1966080" />
+            <Limit name="bitrate" range="1-20000000" />
             <Feature name="can-swap-width-height" />
             <Feature name="qp-bounds" />
             <Feature name="vq-minimum-quality" />
+            <Feature name="intra-refresh" />
             <Limit name="concurrent-instances" max="32" />
-            <Limit name="performance-point-1920x1088" value="60" />
+            <Limit name="performance-point-3840x2160" value="30" />
         </MediaCodec>
         <MediaCodec name="c2.rk.hevc.encoder" type="video/hevc">
             <Alias name="OMX.rk.video_encoder.hevc" />
-            <Limit name="size" min="176x144" max="1920x1088" />
-            <Limit name="alignment" value="4x4" />
+            <Limit name="size" min="176x144" max="4096x2160" />
+            <Limit name="alignment" value="2x2" />
             <Limit name="block-size" value="16x16" />
-            <Limit name="block-count" range="1-8160" /> <!-- max 1920x1080 -->
-            <Limit name="blocks-per-second" range="1-489600" />
-            <Limit name="bitrate" range="1-10000000" />
-            <Limit name="concurrent-instances" max="32" />
+            <Limit name="block-count" range="1-32768" /> <!-- max 4096x2160 -->
+            <Limit name="blocks-per-second" range="1-1966080" />
+            <Limit name="bitrate" range="1-20000000" />
+            <Feature name="can-swap-width-height" />
             <Feature name="qp-bounds" />
             <Feature name="vq-minimum-quality" />
-            <Limit name="performance-point-1920x1088" value="60" />
+            <Feature name="intra-refresh" />
+            <Limit name="concurrent-instances" max="32" />
+            <Limit name="performance-point-3840x2160" value="25" />
         </MediaCodec>
     </Encoders>
 </Included>
