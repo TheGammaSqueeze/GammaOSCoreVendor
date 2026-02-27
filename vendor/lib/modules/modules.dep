@@ -1,7 +1,9 @@
-/vendor/lib/modules/mali_kbase.ko:
-/vendor/lib/modules/8188eu.ko:
-/vendor/lib/modules/8821cs.ko:
-/vendor/lib/modules/8188fu.ko:
-/vendor/lib/modules/8822bs.ko:
-/vendor/lib/modules/8723cs.ko:
-/vendor/lib/modules/bcmdhd.ko:
+/vendor/lib/modules/bt_drv.ko: /vendor/lib/modules/wmt_drv.ko
+/vendor/lib/modules/fpsgo.ko:
+/vendor/lib/modules/met.ko:
+/vendor/lib/modules/wlan_drv_gen4m.ko: /vendor/lib/modules/wmt_chrdev_wifi.ko /vendor/lib/modules/wmt_drv.ko
+/vendor/lib/modules/gps_drv.ko: /vendor/lib/modules/wmt_drv.ko
+/vendor/lib/modules/wmt_drv.ko:
+/vendor/lib/modules/udc_lib.ko:
+/vendor/lib/modules/kheaders.ko:
+/vendor/lib/modules/wmt_chrdev_wifi.ko: /vendor/lib/modules/wmt_drv.ko
