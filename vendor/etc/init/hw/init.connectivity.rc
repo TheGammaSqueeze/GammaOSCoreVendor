@@ -44,6 +44,7 @@ on boot
 #
 # GPS
 service mnld /vendor/bin/mnld
+    disabled
     class main
     user gps
     capabilities WAKE_ALARM

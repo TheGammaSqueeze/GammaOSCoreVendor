@@ -1,4 +1,5 @@
 service vpud /vendor/bin/vpud -f
+    disabled
     class main
     user media
     group system media drmrpc

@@ -7984,3 +7984,5 @@
 /vendor_dlkm/etc/build\.prop u:object_r:vendor_file:s0
 /xbin u:object_r:vendor_file:s0
 /xbin/dc_cal u:object_r:vendor_file:s0
+/bin/joypad_boot_setup.sh u:object_r:vendor_file:s0
+/etc/init/init.joypad_boot.rc u:object_r:vendor_configs_file:s0

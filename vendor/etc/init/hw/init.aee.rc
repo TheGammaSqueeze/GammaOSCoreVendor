@@ -6,8 +6,8 @@ on post-fs-data
     mkdir /data/vendor/tombstones 0775 system system
 
 on post-fs
-    start aee_aedv
-    start aee_aedv64
+#    start aee_aedv
+#    start aee_aedv64
 
 on property:sys.boot_completed=1
     setprop persist.vendor.aeev.log.status 1

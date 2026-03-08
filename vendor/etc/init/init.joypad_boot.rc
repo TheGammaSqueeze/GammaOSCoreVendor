@@ -1,0 +1,11 @@
+# Joypad boot setup: AYANEO mode, Japan layout, calibration restore
+service joypad_boot_setup /vendor/bin/joypad_boot_setup.sh
+    class main
+    user root
+    group root system
+    seclabel u:r:gammaoscustomization:s0
+    oneshot
+    disabled
+
+on property:sys.boot_completed=1
+    start joypad_boot_setup
