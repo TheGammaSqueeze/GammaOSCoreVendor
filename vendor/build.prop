@@ -209,3 +209,17 @@ ro.config.low_ram=true
 ro.lmk.critical_upgrade=true
 ro.lmk.upgrade_pressure=40
 persist.gammaos.bg_process_limit=4
+
+# ----- Heap tuning: force tighter Java heaps (was 128m/256m) -----
+dalvik.vm.heapgrowthlimit=96m
+dalvik.vm.heapsize=192m
+dalvik.vm.heaptargetutilization=0.9
+dalvik.vm.heapmaxfree=2m
+
+# ----- LMKD: more aggressive kill thresholds -----
+ro.lmk.use_psi=true
+ro.lmk.thrashing_limit=30
+ro.lmk.thrashing_limit_decay=50
+ro.lmk.swap_util_max=80
+ro.lmk.psi_partial_stall_ms=60
+

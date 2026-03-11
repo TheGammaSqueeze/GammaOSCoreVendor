@@ -7986,3 +7986,12 @@
 /xbin/dc_cal u:object_r:vendor_file:s0
 /bin/joypad_boot_setup.sh u:object_r:vendor_file:s0
 /etc/init/init.joypad_boot.rc u:object_r:vendor_configs_file:s0
+/bin/setfan_max.sh u:object_r:vendor_file:s0
+/bin/setfan_cool.sh u:object_r:vendor_file:s0
+/bin/setfan_off.sh u:object_r:vendor_file:s0
+/bin/setfan_auto.sh u:object_r:vendor_file:s0
+/bin/setclock_max.sh u:object_r:vendor_file:s0
+/bin/setclock_stock.sh u:object_r:vendor_file:s0
+/bin/setclock_powersave.sh u:object_r:vendor_file:s0
+/etc/init/init.gammaos_fan.rc u:object_r:vendor_configs_file:s0
+/etc/init/init.gammaos_power.rc u:object_r:vendor_configs_file:s0
