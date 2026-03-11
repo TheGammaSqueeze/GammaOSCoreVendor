@@ -208,7 +208,7 @@ persist.gammaos.rgb.effect5.supported=1
 ro.config.low_ram=true
 ro.lmk.critical_upgrade=true
 ro.lmk.upgrade_pressure=40
-persist.gammaos.bg_process_limit=4
+persist.gammaos.bg_process_limit=0
 
 # ----- Heap tuning: force tighter Java heaps (was 128m/256m) -----
 dalvik.vm.heapgrowthlimit=96m
