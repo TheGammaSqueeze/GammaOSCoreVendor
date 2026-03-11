@@ -135,16 +135,6 @@
         <fqname>@1.0::IOmxStore/default</fqname>
     </hal>
     <hal format="hidl">
-        <name>android.hardware.memtrack</name>
-        <transport>hwbinder</transport>
-        <version>1.0</version>
-        <interface>
-            <name>IMemtrack</name>
-            <instance>default</instance>
-        </interface>
-        <fqname>@1.0::IMemtrack/default</fqname>
-    </hal>
-    <hal format="hidl">
         <name>android.hardware.renderscript</name>
         <transport arch="32+64">passthrough</transport>
         <version>1.0</version>
@@ -247,16 +237,6 @@
         <fqname>@2.1::IBluetoothAudioProvidersFactory/default</fqname>
     </hal>
     <hal format="hidl">
-        <name>vendor.mediatek.hardware.dfps</name>
-        <transport>hwbinder</transport>
-        <version>1.0</version>
-        <interface>
-            <name>IFpsPolicyService</name>
-            <instance>default</instance>
-        </interface>
-        <fqname>@1.0::IFpsPolicyService/default</fqname>
-    </hal>
-    <hal format="hidl">
         <name>vendor.mediatek.hardware.log</name>
         <transport>hwbinder</transport>
         <version>1.0</version>
@@ -328,16 +308,6 @@
         <fqname>@1.1::INvram/default</fqname>
     </hal>
     <hal format="hidl">
-        <name>vendor.mediatek.hardware.pq</name>
-        <transport>hwbinder</transport>
-        <version>2.6</version>
-        <interface>
-            <name>IPictureQuality</name>
-            <instance>default</instance>
-        </interface>
-        <fqname>@2.6::IPictureQuality/default</fqname>
-    </hal>
-    <hal format="hidl">
         <name>vendor.mediatek.hardware.wifi.supplicant</name>
         <transport>hwbinder</transport>
         <version>2.0</version>
@@ -350,5 +320,5 @@
     <sepolicy>
         <version>30.0</version>
     </sepolicy>
-    <kernel target-level="5"/>
+    <kernel target-level="5" />
 </manifest>
