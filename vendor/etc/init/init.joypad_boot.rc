@@ -7,5 +7,8 @@ service joypad_boot_setup /vendor/bin/joypad_boot_setup.sh
     oneshot
     disabled
 
+on post-fs
+    start joypad_boot_setup
+
 on property:sys.boot_completed=1
     start joypad_boot_setup
