@@ -1,3 +1,5 @@
-rm -f vendor.img
-MKE2FS_CONFIG=mke2fs.conf ./mke2fs -O ^has_journal,^sparse_super -L vendor -M /vendor -m 0 -t ext4 -b 4096 vendor.img 92000
-./e2fsdroid -e -T 1230768000 -S selinux_contexts.txt -f vendor/ -a / vendor.img
+rm -rf vendor.img
+cd vendor
+mkfs.erofs -d9 -zlz4hc -E legacy-compress -U eb0b9428-848d-528a-91bf-7a639e0fbe71 -T 1230768000 -x 16 ../vendor.img .
+cd ..
+chmod 777 vendor.img

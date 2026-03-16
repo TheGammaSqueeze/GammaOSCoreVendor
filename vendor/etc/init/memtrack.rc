@@ -1,4 +1,4 @@
-service vendor.memtrack-rockchip /vendor/bin/hw/android.hardware.memtrack-service.rockchip
+service vendor.sprd.hardware.memtrack-service  /vendor/bin/hw/vendor.sprd.hardware.memtrack-service
     class hal
-    user graphics
+    user nobody
     group system

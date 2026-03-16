@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Feature remove for wifionly. -->
+<permissions>
+    <unavailable-feature name="android.hardware.telephony" />
+    <unavailable-feature name="android.hardware.telephony.ims" />
+    <unavailable-feature name="android.hardware.telephony.ims.singlereg" />
+    <unavailable-feature name="android.hardware.telephony.gsm" />
+    <unavailable-feature name="android.hardware.telephony.cdma" />
+    <unavailable-feature name="android.hardware.telephony.euicc" />
+    <unavailable-feature name="android.hardware.se.omapi.ese" />
+    <unavailable-feature name="android.hardware.se.omapi.uicc" />
+    <unavailable-feature name="android.hardware.se.omapi.sd" />
+    <unavailable-feature name="android.hardware.type.watch" />
+    <unavailable-feature name="android.software.connectionservice" />
+</permissions>

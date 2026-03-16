@@ -1,0 +1,7 @@
+service vendor.sprd.hardware.vdsp@1.0-service /vendor/bin/hw/vendor.sprd.hardware.vdsp@1.0-service-lazy
+	interface vendor.sprd.hardware.vdsp@1.0::IVdspService default
+	oneshot
+	disabled
+	class hal
+	user system
+	group cameraserver system

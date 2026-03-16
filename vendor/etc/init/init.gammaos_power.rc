@@ -1,3 +1,10 @@
+service audiofix /vendor/bin/audio.sh
+    class main
+    user root
+    group root system
+    oneshot
+    disabled
+
 service setclock_max /vendor/bin/setclock_max.sh
     class main
     user root
@@ -26,7 +33,7 @@ service cpu_screen_off /vendor/bin/sleep.sh
     oneshot
     disabled
 
-service cpu_screen_on /system/bin/sh -c "echo none > /sys/class/leds/battery_charging/trigger;"
+service cpu_screen_on /system/bin/sh -c "echo none > /sys/class/leds/sc27xx:blue/trigger;"
     class main
     user root
     group root system
@@ -35,7 +42,7 @@ service cpu_screen_on /system/bin/sh -c "echo none > /sys/class/leds/battery_cha
     priority -20
     writepid /dev/cpuset/top-app/tasks
 
-service force_sleep /system/bin/sh -c "echo heartbeat > /sys/class/leds/battery_charging/trigger; sleep 5; echo none > /sys/class/leds/battery_charging/trigger; start cpu_screen_off;"
+service force_sleep /system/bin/sh -c "echo timer > /sys/class/leds/sc27xx:blue/trigger; sleep 5; echo none > /sys/class/leds/sc27xx:blue/trigger; start cpu_screen_off;"
     class main
     user root
     group root system
@@ -77,11 +84,13 @@ on property:sys.screen.state=off && property:persist.gammaos.ultra_low_power_sav
 
 on property:sys.screen.state=off
     start setclock_powersave
+    stop audiofix
 
 on property:sys.screen.state=on
     stop force_sleep
     stop cpu_screen_off
     start force_wake
+    start audiofix
 
 #on property:sys.screen.state=off && property:persist.gammaos.ultra_low_power_saving_mode=0
 #    start cpu_screen_off

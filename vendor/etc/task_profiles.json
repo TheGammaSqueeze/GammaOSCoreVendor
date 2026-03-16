@@ -1,17 +1,4 @@
 {
-  "Attributes": [
-    {
-      "Name": "STuneBoost",
-      "Controller": "schedtune",
-      "File": "schedtune.boost"
-    },
-    {
-      "Name": "STunePreferIdle",
-      "Controller": "schedtune",
-      "File": "schedtune.prefer_idle"
-    }
-  ],
-
   "Profiles": [
     {
       "Name": "HighEnergySaving",
@@ -20,7 +7,7 @@
           "Name": "JoinCgroup",
           "Params":
           {
-            "Controller": "schedtune",
+            "Controller": "cpu",
             "Path": "background"
           }
         }
@@ -33,7 +20,7 @@
           "Name": "JoinCgroup",
           "Params":
           {
-            "Controller": "schedtune",
+            "Controller": "cpu",
             "Path": ""
           }
         }
@@ -46,7 +33,7 @@
           "Name": "JoinCgroup",
           "Params":
           {
-            "Controller": "schedtune",
+            "Controller": "cpu",
             "Path": "foreground"
           }
         }
@@ -59,7 +46,7 @@
           "Name": "JoinCgroup",
           "Params":
           {
-            "Controller": "schedtune",
+            "Controller": "cpu",
             "Path": "top-app"
           }
         }
@@ -72,61 +59,8 @@
           "Name": "JoinCgroup",
           "Params":
           {
-            "Controller": "schedtune",
+            "Controller": "cpu",
             "Path": "rt"
-          }
-        }
-      ]
-    },
-    {
-      "Name": "CameraServicePerformance",
-      "Actions": [
-        {
-          "Name": "JoinCgroup",
-          "Params":
-          {
-            "Controller": "schedtune",
-            "Path": "camera-daemon"
-          }
-        }
-      ]
-    },
-    {
-      "Name": "NNApiHALPerformance",
-      "Actions": [
-        {
-          "Name": "JoinCgroup",
-          "Params":
-          {
-            "Controller": "schedtune",
-            "Path": "nnapi-hal"
-          }
-        }
-      ]
-    },
-
-    {
-      "Name": "CpuPolicySpread",
-      "Actions": [
-        {
-          "Name": "SetAttribute",
-          "Params":
-          {
-            "Name": "STunePreferIdle",
-            "Value": "1"
-          }
-        }
-      ]
-    },
-    {
-      "Name": "CpuPolicyPack",
-      "Actions": [
-        {
-          "Name": "SetAttribute",
-          "Params":
-          {
-            "Name": "STunePreferIdle",
-            "Value": "0"
           }
         }
       ]

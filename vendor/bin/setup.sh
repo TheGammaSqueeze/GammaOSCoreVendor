@@ -107,8 +107,6 @@ setprop persist.sys.spk.wide.seq $(( $(getprop persist.sys.spk.wide.seq 0) + 1 )
 
 setprop sys.gammaeq.route.spk 1                # 1 = use speaker route for GammaEQ
 
-setprop persist.gammaos.ext.primary 1
-
 mkdir -p /data/GammaPad
 
 su -c 'cat > /data/GammaPad/MAPPINGS << "EOF"
@@ -134,6 +132,3 @@ BTN_DPAD_DOWN BTN_DPAD_DOWN
 BTN_DPAD_LEFT BTN_DPAD_LEFT
 BTN_DPAD_RIGHT BTN_DPAD_RIGHT
 EOF'
-
-sed -i 's/vrr_runloop_enable = "false"/vrr_runloop_enable = "true"/'  /sdcard/Android/data/com.retroarch.aarch64/files/retroarch.cfg
-setprop persist.gammaos.ext.force_mirror 1

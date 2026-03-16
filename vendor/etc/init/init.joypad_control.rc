@@ -26,6 +26,20 @@ service led_control_off /system/bin/sh -c "echo 0 > /sys/devices/platform/single
     oneshot
     disabled
 
+service gammapad /vendor/bin/gammapad retrogame_joypad --ffdev=sc27xx:vibrator --no-source-rebind --remove-source-node --gasbrakeemulation
+    class main
+    user root
+    group root system
+    oneshot
+    disabled
+
+service disable_touch_joypad /vendor/bin/disable_touch_joypad.sh
+    class main
+    user root
+    group root system
+    oneshot
+    disabled
+
 service gammapad_abxy_on /system/bin/sh -c "echo 1 > /data/GammaPad/ABXY_LAYOUT"
     class main
     user root
@@ -183,6 +197,8 @@ on property:sys.screen.state=on
     start joypad_control_screen_on
 
 on property:sys.boot_completed=1
+    start gammapad
+    start disable_touch_joypad
     setprop sys.screen.state on
 
 on property:persist.gammargb.control=off

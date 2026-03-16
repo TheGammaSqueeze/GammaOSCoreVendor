@@ -1,0 +1,59 @@
+on early-boot
+    chown system system /sys/class/misc/wcn/devices/sw_ver
+    chown system system /sys/class/misc/wcn/devices/hw_ver
+    chown system system /sys/class/misc/wcn/devices/loglevel
+    chown system system /sys/class/misc/wcn/devices/armlog_status
+    chown system system /sys/class/misc/wcn/devices/reset_dump
+    chown system system /sys/class/misc/wcn/devices/atcmd
+
+on property:sys.boot_completed=1
+    chown system system /sys/class/misc/gnss_common_ctl/gnss_power_enable
+    chown system system /sys/class/misc/gnss_common_ctl/gnss_dump
+    chown system system /sys/class/misc/gnss_common_ctl/gnss_subsys
+    chown system system /dev/gnss_pmnotify_ctl
+    chmod  220 /sys/class/misc/gnss_common_ctl/gnss_power_enable
+    chmod 660 /sys/class/misc/gnss_common_ctl/gnss_dump
+    chmod 660 /sys/class/misc/gnss_common_ctl/gnss_subsys
+    chmod 660  /dev/gnss_pmnotify_ctl
+
+    chmod 660 /sys/class/rfkill/rfkill0/state
+    chown bluetooth net_bt_admin /sys/class/rfkill/rfkill0/state
+    chmod 660 /sys/class/rfkill/rfkill0/type
+    chown bluetooth net_bt_admin /sys/class/rfkill/rfkill0/type
+    chmod 660 /sys/class/rfkill/rfkill1/state
+    chown bluetooth net_bt_admin /sys/class/rfkill/rfkill1/state
+    chmod 660 /sys/class/rfkill/rfkill1/type
+    chown bluetooth net_bt_admin /sys/class/rfkill/rfkill1/type
+
+    mkdir /data/vendor/bluetooth 0770 bluetooth bluetooth
+
+    chmod 660 /sys/devices/platform/sprd-mtty/dumpmem
+    chown bluetooth net_bt_admin /sys/devices/platform/sprd-mtty/dumpmem
+    restorecon -R /sys/devices/platform/sprd-mtty/dumpmem
+
+on cali-fs
+    chmod 660 /sys/class/rfkill/rfkill0/state
+    chown bluetooth net_bt_admin /sys/class/rfkill/rfkill0/state
+    chmod 660 /sys/class/rfkill/rfkill0/type
+    chown bluetooth net_bt_admin /sys/class/rfkill/rfkill0/type
+    chmod 660 /sys/class/rfkill/rfkill1/state
+    chown bluetooth net_bt_admin /sys/class/rfkill/rfkill1/state
+    chmod 660 /sys/class/rfkill/rfkill1/type
+    chown bluetooth net_bt_admin /sys/class/rfkill/rfkill1/type
+
+
+    mkdir /data/vendor/bluetooth 0770 bluetooth bluetooth
+
+    chmod 660 /sys/devices/platform/wcn_bt/dumpmem
+    chown bluetooth net_bt_admin /sys/devices/platform/wcn_bt/dumpmem
+    restorecon -R /sys/devices/platform/sprd-mtty/dumpmem
+
+on factorytest
+    insmod /vendor/lib/modules/wcn_bsp.ko
+    insmod /vendor/lib/modules/sprd_wlan.ko
+    insmod /vendor/lib/modules/sc2355_sdio_wlan.ko
+    insmod /vendor/lib/modules/gnss_common_ctl_all.ko
+    insmod /vendor/lib/modules/sprdbt_tty.ko
+    insmod /vendor/lib/modules/sprd_fm.ko
+    insmod /vendor/lib/modules/gnss_dbg.ko
+    insmod /vendor/lib/modules/gnss_pmnotify_ctl.ko

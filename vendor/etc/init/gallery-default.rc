@@ -1,0 +1,4 @@
+service vendor.gallery-default /vendor/bin/hw/vendor.unisoc.hardware.gallery-service
+    class hal
+    user root
+    group system
