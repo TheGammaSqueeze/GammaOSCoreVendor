@@ -19,13 +19,6 @@ service led_control_screen_on /vendor/bin/gammargb
     oneshot
     disabled
 
-service gammapad /vendor/bin/gammapad retrogame_joypad --ffdev=sc27xx:vibrator
-    class main
-    user root
-    group root system
-    oneshot
-    disabled
-
 service led_control_off /system/bin/sh -c "echo 0 > /sys/devices/platform/singleadc-joypad/led_switch; echo 1 > /sys/devices/platform/singleadc-joypad/led_set"
     class main
     user root
@@ -190,7 +183,6 @@ on property:sys.screen.state=on
     start joypad_control_screen_on
 
 on property:sys.boot_completed=1
-    start gammapad
     setprop sys.screen.state on
 
 on property:persist.gammargb.control=off
