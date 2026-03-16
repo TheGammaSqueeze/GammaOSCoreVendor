@@ -348,6 +348,7 @@ ro.surface_flinger.supports_background_blur=1
 ro.input_flinger.primary_touch_orientation=ORIENTATION_90
 ro.sensors.accelerometer_orientation=ORIENTATION_90
 ro.sensors.magnetometer_orientation=ORIENTATION_90
+ro.sensors.sysui_accelerometer_orientation=270
 
 persist.sys.gammaeq.enable=1
 persist.sys.gammaeq.spk_only=1
