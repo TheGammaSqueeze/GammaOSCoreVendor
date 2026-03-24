@@ -18,7 +18,9 @@ on late-fs
     start vendor.rockchip_hwcproxy_aidl
     start hwcomposer-3
     start surfaceflinger
-    start bootanim
+    # bootanim removed — SurfaceFlinger's StartPropertySetThread starts
+    # gammaos-nano which either runs the nano menu or hands off to bootanim.
+    # Starting bootanim here causes it to render on top of the nano menu.
 
     exec_start wait_for_optee
     # Mount RW partitions which need run fsck
