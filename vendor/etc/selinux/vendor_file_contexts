@@ -362,3 +362,11 @@
 /vendor/bin/hw/android\.hardware\.power-service\.rockchip_ext           u:object_r:hal_power_default_exec:s0
 /vendor/bin/hw/rockchip\.hardware\.rockit\.hw@1\.0-service-lazy      u:object_r:vendor-rockit-hal-1-0_exec:s0
 /vendor/bin/hw/android\.hardware\.graphics\.composer3-service\.rockchip         u:object_r:hal_graphics_composer_default_exec:s0
+/vendor/bin/gammargb                                u:object_r:gammargb_exec:s0
+/vendor/bin/setclock_max\.sh                        u:object_r:vendor_file:s0
+/vendor/bin/setclock_stock\.sh                      u:object_r:vendor_file:s0
+/vendor/bin/setclock_powersave\.sh                  u:object_r:vendor_file:s0
+/vendor/bin/esde_fix\.sh                            u:object_r:vendor_file:s0
+/vendor/bin/sleep\.sh                               u:object_r:vendor_file:s0
+/vendor/bin/flash_img\.sh                           u:object_r:vendor_file:s0
+/vendor/bin/setup\.sh                               u:object_r:vendor_file:s0
