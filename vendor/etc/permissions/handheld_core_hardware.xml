@@ -27,7 +27,6 @@
     <feature name="android.software.cts" />
 
     <feature name="android.hardware.audio.output" />
-    <feature name="android.hardware.camera" />
     <feature name="android.hardware.location" />
     <feature name="android.hardware.location.network" />
     <feature name="android.hardware.sensor.compass" />
@@ -37,9 +36,12 @@
     <feature name="android.hardware.microphone" />
     <feature name="android.hardware.screen.portrait" />
     <feature name="android.hardware.screen.landscape" />
+    <!-- Indicate support for the Android security model per the CDD. -->
+    <feature name="android.hardware.security.model.compatible" />
 
     <!-- basic system services -->
     <feature name="android.software.app_widgets" />
+    <feature name="android.software.connectionservice" />
     <feature name="android.software.voice_recognizers" notLowRam="true" />
     <feature name="android.software.backup" />
     <feature name="android.software.home_screen" />

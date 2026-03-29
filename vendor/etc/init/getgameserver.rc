@@ -1,5 +1,4 @@
 service getgameserver /vendor/bin/getgameserver
-    disabled
     class main
     user system
     group system

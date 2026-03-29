@@ -1,5 +1,4 @@
 service camerahalserver /vendor/bin/hw/camerahalserver
-    disabled
     class main
     user cameraserver
     group audio camera input drmrpc sdcard_rw system media graphics

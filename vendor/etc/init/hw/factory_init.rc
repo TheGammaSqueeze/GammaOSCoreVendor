@@ -5,16 +5,18 @@
 #
 import /system_ext/etc/init/hw/vendor_init_as_system.rc
 import ${ro.vendor.rc}factory_init.connectivity.rc
+import ${ro.vendor.rc}factory_init.thp.rc
 import /init.environ.rc
 import /vendor/etc/init/trustonic.rc
 import ${ro.vendor.rc}init.nvdata.rc
 import /vendor/etc/init/microtrust.rc
 import /vendor/etc/init/hw/init.aee.rc
 import /system_ext/etc/init/hw/init.aee.rc
-import /system/etc/init/update_verifier.rc
-import /vendor/etc/init/android.hardware.boot@1.1-service.rc
-import /vendor/etc/init/android.hardware.boot@1.1-service-lazy.rc
 import /vendor/etc/init/vendor.mediatek.hardware.mtkpower@1.0-service.rc
+import /vendor/etc/init/android.hardware.boot@1.2-service.rc
+import /vendor/etc/init/android.hardware.boot@1.2-service-lazy.rc
+import /vendor/etc/init/vendor.mediatek.hardware.thp@1.0-service.rc
+import /vendor/etc/init/android.hardware.health@2.1-service.rc
 
 #NFC
 import /vendor/etc/init/hw/init.stnfc.rc
@@ -22,14 +24,14 @@ import /vendor/etc/init/hw/init.stnfc.rc
 #copy from system/etc for APEX
 import /system/etc/init/apexd.rc
 import /system/etc/init/art_apex_boot_integrity.rc
+
+import /system/etc/init/vold.rc
+
 import /vendor/etc/init/hw/factory_init.project.rc
 import /system/etc/init/servicemanager.rc
 import /system/etc/init/hwservicemanager.rc
 import /system/etc/init/android.hidl.allocator@1.0-service.rc
-import /system/etc/init/vold.rc
 
-import /vendor/etc/init/android.hardware.boot@1.0-service.rc
-import /vendor/etc/init/android.hardware.health@2.1-service.rc
 import ${ro.vendor.rc}multi_init.rc
 
 on early-init
@@ -45,12 +47,14 @@ on early-init
     # Set the security context of /postinstall if present.
     restorecon /postinstall
 
+
     # Set up linker config subdirectories based on mount namespaces
     mkdir /linkerconfig/bootstrap 0755
     mkdir /linkerconfig/default 0755
 
     # Generate ld.config.txt for early executed processes
-    exec -- /system/bin/linkerconfig --target /linkerconfig/bootstrap
+    exec -- /system/bin/bootstrap/linkerconfig --target /linkerconfig/bootstrap
+
     chmod 644 /linkerconfig/bootstrap/ld.config.txt
     copy /linkerconfig/bootstrap/ld.config.txt /linkerconfig/default/ld.config.txt
     chmod 644 /linkerconfig/default/ld.config.txt
@@ -59,15 +63,23 @@ on early-init
     mount none /linkerconfig/bootstrap /linkerconfig bind rec
 
     start ueventd
+
+
     # Run apexd-bootstrap so that APEXes that provide critical libraries
     # become available. Note that this is executed as exec_start to ensure that
     # the libraries are available to the processes started after this statement.
     exec_start apexd-bootstrap
 
+    # Generate linker config based on apex mounted in bootstrap namespace
+    update_linker_config
+
 #INTERNAL_START
     mount debugfs debugfs /sys/kernel/debug
     chmod 0755 /sys/kernel/debug
 #INTERNAL_END
+
+    # initialize vendor.all.modules.ready to 1 here to prevent NOT GKI project blocked
+    setprop vendor.all.modules.ready 1
 
 on init
 
@@ -86,21 +98,21 @@ sysclktz 0
     # Backward compatibility.
     symlink /sys/kernel/debug /d
 
-# Temp Backward compatibility
-    symlink /dev/block/platform/bootdevice/by-name/boot /dev/bootimg
-    symlink /dev/block/platform/bootdevice/by-name/recovery /dev/recovery
-    symlink /dev/block/platform/bootdevice/by-name/secro  /dev/sec_ro
-    symlink /dev/block/platform/bootdevice/by-name/kb /dev/kb
-    symlink /dev/block/platform/bootdevice/by-name/dkb /dev/dkb
-    symlink /dev/block/platform/bootdevice/by-name/seccfg /dev/seccfg
-    symlink /dev/block/platform/bootdevice/by-name/proinfo /dev/pro_info
-    symlink /dev/block/platform/bootdevice/by-name/nvram /dev/nvram
-    symlink /dev/block/platform/bootdevice/by-name/para /dev/misc
-    symlink /dev/block/platform/bootdevice/by-name/logo /dev/logo
-
 
 # Link /vendor to /system/vendor for devices without a vendor partition.
     symlink /system/vendor /vendor
+# Temp Backward compatibility
+    symlink /dev/block/by-name/boot /dev/bootimg
+    symlink /dev/block/by-name/recovery /dev/recovery
+    symlink /dev/block/by-name/secro  /dev/sec_ro
+    symlink /dev/block/by-name/kb /dev/kb
+    symlink /dev/block/by-name/dkb /dev/dkb
+    symlink /dev/block/by-name/seccfg /dev/seccfg
+    symlink /dev/block/by-name/proinfo /dev/pro_info
+    symlink /dev/block/by-name/nvram /dev/nvram
+    symlink /dev/block/by-name/para /dev/misc
+    symlink /dev/block/by-name/logo /dev/logo
+
 
     # Mount cgroup mount point for cpu accounting
     mount cgroup none /acct cpuacct
@@ -245,6 +257,7 @@ sysclktz 0
     start servicemanager
     start hwservicemanager
     start hidl_memory
+
     # Healthd can trigger a full boot from charger mode by signaling this
     # property when the power button is held.
     on property:sys.boot_from_charger_mode=1
@@ -333,8 +346,7 @@ on fs
 
 #INTERNAL_START
     write /proc/bootprof "INIT:Mount_START"
-    wait_for_prop hwservicemanager.ready "true"
-    start vendor.boot-hal-1-1
+    start vendor.boot-hal-1-2
     mount_all --early
     write /proc/bootprof "INIT:Mount_END"
 #INTERNAL_END
@@ -344,10 +356,9 @@ on post-fs
     start logd
     start light-default
     start system_suspend
-    start vendor.boot-hal-1-1
     start merged_hal_service
     start capi-2-0
-    start power-hal-1-0
+    start health-hal-2-1
     # Once everything is setup, no need to modify /.
     # The bind+ro combination avoids modifying any other mount flags.
     # mount rootfs rootfs / remount bind ro
@@ -415,21 +426,28 @@ on post-fs
 #INTERNAL_END
 
 on late-fs
+
+    # HALs required before storage encryption can get unlocked (FBE/FDE)
+    class_start early_hal
     wait_for_prop hwservicemanager.ready "true"
     start vendor.keymaster-3-0
     start vendor.keymaster-3-0-trustonic
     start vendor.keymaster-4-0
     start vendor.keymaster-4-0-trustonic
     start vendor.keymaster-4-0-beanpod
+    start vendor.keymaster-4-1-beanpod
+    start vendor.keymint-default
     start keymaster_attestation-1-1
     exec_start wait_for_keymaster
     mount_all --late
 
 on post-fs-data
     write /proc/bootprof "INIT:post-fs-data"
+    wait_for_prop vendor.all.modules.ready 1
+    write /proc/bootprof "modprobe: Load_Module_DONE"
 
-    #Thermal
-    mkdir /data/.tp/ 0775 system system
+	#Thermal
+	mkdir /data/.tp/ 0775 system system
 
     # symlink to bugreport storage location
     rm /data/bugreports
@@ -495,22 +513,7 @@ on post-fs-data
     #set mlock limit to infinate (for m4u operation)
     setrlimit 8 -1 -1
 
-    # Sensor
-    chmod 0660 /dev/hwmsensor
-    chmod 0660 /dev/gyroscope
-    chmod 0660 /dev/msensor
-    chmod 0660 /dev/gsensor
-    chmod 0660 /dev/als_ps
-    chmod 0660 /dev/humidity
-    chmod 0660 /dev/barometer
 
-    chown system system /dev/hwmsensor
-    chown system system /dev/msensor
-    chown system system /dev/gsensor
-    chown radio system /dev/als_ps
-    chown system system /dev/gyroscope
-    chown system system /dev/barometer
-    chown system system /dev/humidity
     #VideoCodec
     chmod 0666 /dev/Vcodec
 
@@ -556,7 +559,8 @@ on zygote-start && property:ro.crypto.state=encrypted && property:ro.crypto.type
 
 on boot
     setprop sys.usb.configfs 1
-	setprop sys.usb.ffs.aio_compat 1
+    setprop sys.usb.controller "11201000.usb0"
+    setprop sys.usb.ffs.aio_compat 1
     setprop vendor.usb.clear boot
 
     # TTY
@@ -581,7 +585,7 @@ on boot
     chmod 0664 /sys/class/leds/lcd-backlight/brightness
     chown system system /sys/class/leds/lcd-backlight/brightness
 
-    # power manager
+    # Power Manager
     write /sys/power/pm_freeze_timeout 2000
 
 # basic network init
@@ -650,7 +654,7 @@ on defaultcrypto
 #   To speed up the booting in meta/factory mode, we don't encrypt the device.
 #   And then handle it as 'unencrypted' state.
 on encrypt
-    mount ext4 /dev/block/platform/bootdevice/by-name/userdata /data noatime nosuid nodev noauto_da_alloc discard wait
+    mount ext4 /dev/block/by-name/userdata /data noatime nosuid nodev noauto_da_alloc discard wait
     setprop vendor.crypto.fake_encrypt 1
     setprop vold.post_fs_data_done 0
     trigger post-fs-data
@@ -706,9 +710,9 @@ service thermal_manager /vendor/bin/thermal_manager
 	group system
     oneshot
 
-service vendor.ccci_fsd /vendor/bin/ccci_fsd 0
-    user radio
-    group radio system
+service permission_check /vendor/bin/permission_check
+    user root
+    group system radio
     oneshot
 
 service ccci_mdinit /vendor/bin/ccci_mdinit 0
@@ -721,16 +725,6 @@ service ccci_rpcd /vendor/bin/ccci_rpcd 0
     group radio system
     oneshot
 
-service nvram_daemon /vendor/bin/nvram_daemon
-    class main
-    user root
-    group system
-    oneshot
-
-service wlan_assistant /vendor/bin/wlan_assistant
-    class main
-    user wifi
-    group system gps inet
 
 service fuelgauged /vendor/bin/fuelgauged
     class main
@@ -792,8 +786,9 @@ service emdlogger6 /system/bin/emdlogger6
     oneshot
 
 ## Custom service area (END)
-
 on property:vendor.usb.clear=1 && property:sys.usb.configfs=1
+    stop adbd
+    setprop sys.usb.ffs.ready 0
     write /config/usb_gadget/g1/UDC "none"
     write /config/usb_gadget/g1/bDeviceClass 0
     write /config/usb_gadget/g1/bDeviceSubClass 0
@@ -804,12 +799,14 @@ on property:vendor.usb.clear=1 && property:sys.usb.configfs=1
     rm /config/usb_gadget/g1/configs/b.1/f4
     write /sys/devices/platform/mt_usb/saving 0
     setprop vendor.usb.clear 2
-
-#mass_storage,adb,acm
-on property:ro.boot.usbconfig=0 && property:sys.usb.configfs=1
     start adbd
 
-on property:sys.usb.ffs.ready=1 && property:ro.boot.usbconfig=0 && property:sys.usb.configfs=1
+#mass_storage,adb,acm
+on property:ro.boot.usbconfig=0 && property:sys.usb.configfs=1 && property:vendor.usb.clear=boot
+    start adbd
+
+on property:sys.usb.ffs.ready=1 && property:ro.boot.usbconfig=0 && \
+property:sys.usb.configfs=1 && property:vendor.usb.clear=boot
     write /config/usb_gadget/g1/UDC "none"
     write /config/usb_gadget/g1/strings/0x409/serialnumber ${ro.serialno}
     write /config/usb_gadget/g1/configs/b.1/strings/0x409/configuration "adb_acm"
@@ -817,20 +814,26 @@ on property:sys.usb.ffs.ready=1 && property:ro.boot.usbconfig=0 && property:sys.
     symlink /config/usb_gadget/g1/functions/mass_storage.usb0 /config/usb_gadget/g1/configs/b.1/f1
     symlink /config/usb_gadget/g1/functions/ffs.adb /config/usb_gadget/g1/configs/b.1/f2
     symlink /config/usb_gadget/g1/functions/acm.gs0 /config/usb_gadget/g1/configs/b.1/f3
-    write /config/usb_gadget/g1/UDC "musb-hdrc"
+    write /config/usb_gadget/g1/UDC ${sys.usb.controller}
+    setprop vendor.usb.acm_idx "1"
 
-#acm (does not set serialnumber)
-on property:ro.boot.usbconfig=1 && property:sys.usb.configfs=1
+on property:ro.boot.usbconfig=1 && property:sys.usb.configfs=1 && property:vendor.usb.clear=boot
+    start adbd
+
+on property:sys.usb.ffs.ready=1 && property:ro.boot.usbconfig=1 && \
+property:sys.usb.configfs=1 && property:vendor.usb.clear=boot
     write /config/usb_gadget/g1/UDC "none"
-    write /config/usb_gadget/g1/configs/b.1/strings/0x409/configuration "acm"
-    write /config/usb_gadget/g1/idProduct 0x2007
-    write /config/usb_gadget/g1/bDeviceClass 02
-    symlink /config/usb_gadget/g1/functions/acm.gs0 /config/usb_gadget/g1/configs/b.1/f1
-    write /config/usb_gadget/g1/UDC "musb-hdrc"
+    write /config/usb_gadget/g1/strings/0x409/serialnumber ${ro.serialno}
+    write /config/usb_gadget/g1/configs/b.1/strings/0x409/configuration "adb_acm"
+    write /config/usb_gadget/g1/idProduct 0x2006
+    symlink /config/usb_gadget/g1/functions/mass_storage.usb0 /config/usb_gadget/g1/configs/b.1/f1
+    symlink /config/usb_gadget/g1/functions/ffs.adb /config/usb_gadget/g1/configs/b.1/f2
+    symlink /config/usb_gadget/g1/functions/acm.gs0 /config/usb_gadget/g1/configs/b.1/f3
+    write /config/usb_gadget/g1/UDC ${sys.usb.controller}
+    setprop vendor.usb.acm_idx "1"
 
 #singloe modem comport for factory mode
 on property:sys.usb.config=gs3,dual_acm && property:sys.usb.configfs=1
-    start adbd
     setprop vendor.usb.clear 1
 
 on property:sys.usb.ffs.ready=1 && property:sys.usb.config=gs3,dual_acm && \
@@ -845,9 +848,9 @@ property:vendor.usb.clear=2 && property:sys.usb.configfs=1
     write /config/usb_gadget/g1/UDC ${sys.usb.controller}
     setprop sys.usb.state ${sys.usb.config}
     setprop vendor.usb.clear 0
+    setprop vendor.usb.acm_idx "1,4"
 
 on property:sys.usb.config=gs1gs3,dual_acm && property:sys.usb.configfs=1
-    start adbd
     setprop vendor.usb.clear 1
 
 on property:sys.usb.ffs.ready=1 && property:sys.usb.config=gs1gs3,dual_acm && \
@@ -862,9 +865,9 @@ property:vendor.usb.clear=2 && property:sys.usb.configfs=1
     write /config/usb_gadget/g1/UDC ${sys.usb.controller}
     setprop sys.usb.state ${sys.usb.config}
     setprop vendor.usb.clear 0
+    setprop vendor.usb.acm_idx "1,2,4"
 
 on property:sys.usb.config=gs1gs3 && property:sys.usb.configfs=1
-    start adbd
     setprop vendor.usb.clear 1
 
 on property:sys.usb.ffs.ready=1 && property:sys.usb.config=gs1gs3 && \
@@ -878,5 +881,10 @@ property:vendor.usb.clear=2 && property:sys.usb.configfs=1
     symlink /config/usb_gadget/g1/functions/acm.gs3 /config/usb_gadget/g1/configs/b.1/f4
     write /config/usb_gadget/g1/UDC ${sys.usb.controller}
     setprop vendor.usb.clear 0
+    setprop vendor.usb.acm_idx "1,4"
+
+# MTK fast charging support
+on property:persist.vendor.mediatek.fast_charging.support=*
+    write /sys/devices/platform/charger/fast_chg_indicator ${persist.vendor.mediatek.fast_charging.support}
 
 #INTERNAL_END

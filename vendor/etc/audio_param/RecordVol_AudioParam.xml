@@ -56,6 +56,21 @@
     <Param path="AAudio,USB" param_id="1"/>
     <Param path="AAudio,HS5POLE" param_id="0"/>
     <Param path="AAudio,HS5POLE_ANC" param_id="0"/>
+    <Param path="KTV,Handset" param_id="0"/>
+    <Param path="KTV,Headset" param_id="0"/>
+    <Param path="KTV,USB" param_id="1"/>
+    <Param path="KTV,HS5POLE" param_id="3"/>
+    <Param path="KTV,HS5POLE_ANC" param_id="3"/>
+    <Param path="HDR_RECORD,Sound recording,Handset" param_id="5"/>
+    <Param path="HDR_RECORD,Sound recording,Headset" param_id="6"/>
+    <Param path="HDR_RECORD,Camera recording,Handset" param_id="5"/>
+    <Param path="HDR_RECORD,Camera recording,Headset" param_id="6"/>
+    <Param path="HDR_RECORD,VR,Handset" param_id="5"/>
+    <Param path="HDR_RECORD,VR,Headset" param_id="6"/>
+    <Param path="HDR_RECORD,FastRecord,Handset" param_id="5"/>
+    <Param path="HDR_RECORD,FastRecord,Headset" param_id="6"/>
+    <Param path="HDR_RECORD,KTV,Handset" param_id="5"/>
+    <Param path="HDR_RECORD,KTV,Headset" param_id="6"/>
   </ParamTree>
   <ParamUnitPool>
     <ParamUnit param_id="0">
@@ -71,7 +86,13 @@
       <Param name="ul_gain" value="24"/>
     </ParamUnit>
     <ParamUnit param_id="4">
-      <Param name="ul_gain" value="2"/>
+      <Param name="ul_gain" value="6"/>
+    </ParamUnit>
+    <ParamUnit param_id="5">
+      <Param name="ul_gain" value="34,0,34,0"/>
+    </ParamUnit>
+    <ParamUnit param_id="6">
+      <Param name="ul_gain" value="34,0"/>
     </ParamUnit>
   </ParamUnitPool>
 </AudioParam>
