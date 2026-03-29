@@ -1434,7 +1434,7 @@
 /bin/chown u:object_r:vendor_file:s0
 /bin/fmt u:object_r:vendor_file:s0
 /bin/pgrep u:object_r:vendor_file:s0
-/bin/init.insmod.sh u:object_r:init-insmod-sh_exec:s0
+/bin/init.insmod.sh u:object_r:init_insmod_sh_exec:s0
 /bin/tr u:object_r:vendor_file:s0
 /bin/stop u:object_r:vendor_file:s0
 /bin/du u:object_r:vendor_file:s0
@@ -2085,7 +2085,7 @@
 /bin/hw/android\.hardware\.wifi-service u:object_r:hal_wifi_default_exec:s0
 /bin/hw/rockchip\.hardware\.outputmanager@1\.0-service u:object_r:rk_output_hal_exec:s0
 /bin/hw/rockchip\.hardware\.rockit\.hw@1\.0-service u:object_r:vendor-rockit-hal-1-0_exec:s0
-/bin/init\.insmod\.sh u:object_r:init-insmod-sh_exec:s0
+/bin/init\.insmod\.sh u:object_r:init_insmod_sh_exec:s0
 /bin/install-recovery\.sh u:object_r:vendor_install_recovery_exec:s0
 /bin/read_pcie_info\.sh u:object_r:read_pcie_info_exec:s0
 /build\.prop u:object_r:vendor_file:s0
@@ -3510,7 +3510,7 @@
 /bin/atcid u:object_r:atcid_exec:s0
 /bin/audiocmdservice_atci u:object_r:audiocmdservice_atci_exec:s0
 /bin/autobt u:object_r:vendor_file:s0
-/bin/ccci_fsd u:object_r:ccci_fsd_exec:s0
+/bin/ccci_fsd u:object_r:vendor_file:s0
 /bin/ccci_mdinit u:object_r:ccci_mdinit_exec:s0
 /bin/ccci_rpcd u:object_r:ccci_rpcd_exec:s0
 /bin/dconfig u:object_r:mtk_dconfig_exec:s0
@@ -3557,7 +3557,7 @@
 /bin/hw/vendor\.mediatek\.hardware\.mms@1\.5-service u:object_r:mtk_hal_mms_exec:s0
 /bin/hw/vendor\.mediatek\.hardware\.mtkcodecservice@1\.1-service u:object_r:hal_mtkcodecservice_default_exec:s0
 /bin/hw/vendor\.mediatek\.hardware\.mtkpower@1\.0-service u:object_r:mtk_hal_power_exec:s0
-/bin/hw/vendor\.mediatek\.hardware\.nvram@1\.1-service u:object_r:nvram_agent_binder_exec:s0
+/bin/hw/vendor\.mediatek\.hardware\.nvram@1\.1-service u:object_r:mtk_hal_nvramagent_exec:s0
 /bin/hw/vendor\.mediatek\.hardware\.pq@2\.2-service u:object_r:mtk_hal_pq_exec:s0
 /bin/jpegtool u:object_r:vendor_file:s0
 /bin/lbs_hidl_service u:object_r:lbs_hidl_service_exec:s0
