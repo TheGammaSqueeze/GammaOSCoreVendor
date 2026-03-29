@@ -303,10 +303,6 @@ on post-fs-data
     # radvd
     chmod 444 /etc/radvd/radvd.conf
 
-    # Mali 3D GPU driver
-    #insmod /vendor/lib/modules/mali.ko
-    #chmod 666 /dev/mali0
-    #chown system graphics /dev/mali
 
 
 

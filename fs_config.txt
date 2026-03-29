@@ -3848,3 +3848,4 @@ res/sound/ringtone.wav 0 0 0644
 res/sound/testpattern1.wav 0 0 0644
 ro.prop 0 0 0644
 rw.prop 0 0 0644
+etc/init/surfaceflinger.rc 0 0 0644

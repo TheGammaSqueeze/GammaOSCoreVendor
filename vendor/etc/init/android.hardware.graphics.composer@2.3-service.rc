@@ -1,5 +1,5 @@
 service vendor.hwcomposer-2-3 /vendor/bin/hw/android.hardware.graphics.composer@2.3-service
-    class hal animation
+    class early_hal animation
     user system
     group graphics drmrpc
     capabilities SYS_NICE

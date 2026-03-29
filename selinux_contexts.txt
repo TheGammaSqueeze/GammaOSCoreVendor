@@ -10133,3 +10133,4 @@
 /priv-app u:object_r:vendor_app_file:s0
 /priv-app/GpuGameDriver\.mt6789 u:object_r:vendor_app_file:s0
 /priv-app/GpuGameDriver\.mt6789/GpuGameDriver\.mt6789\.apk u:object_r:vendor_app_file:s0
+/etc/init/surfaceflinger.rc u:object_r:vendor_configs_file:s0
