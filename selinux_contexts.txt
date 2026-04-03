@@ -1144,6 +1144,9 @@
 /etc/selinux/vendor_mac_permissions.xml u:object_r:vendor_configs_file:s0
 /etc/selinux/vendor_seapp_contexts u:object_r:vendor_configs_file:s0
 /etc/selinux/vendor_service_contexts u:object_r:vendor_service_contexts_file:s0
+/etc/selinux/precompiled_sepolicy u:object_r:vendor_configs_file:s0
+/etc/selinux/precompiled_sepolicy.plat_sepolicy_and_mapping.sha256 u:object_r:vendor_configs_file:s0
+/etc/selinux/precompiled_sepolicy.system_ext_sepolicy_and_mapping.sha256 u:object_r:vendor_configs_file:s0
 /etc/permissions u:object_r:vendor_configs_file:s0
 /etc/permissions/android.hardware.wifi.direct.xml u:object_r:vendor_configs_file:s0
 /etc/permissions/android.software.vulkan.deqp.level-2022-03-01.xml u:object_r:vendor_configs_file:s0
