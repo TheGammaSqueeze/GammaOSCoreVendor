@@ -187,6 +187,7 @@ service vendor.cnss_diag /system/vendor/bin/cnss_diag -q -f -t HELIUM
    user system
    group system wifi inet sdcard_rw media_rw diag
    oneshot
+   disabled
 
 on early-boot && property:persist.vendor.pcie.boot_option=*
     write /sys/bus/platform/devices/1c00000.qcom,pcie/debug/boot_option ${persist.vendor.pcie.boot_option}

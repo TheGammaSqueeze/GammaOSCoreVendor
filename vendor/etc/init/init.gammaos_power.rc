@@ -28,5 +28,5 @@ on property:persist.gammaos.performance_mode=stock
 on property:persist.gammaos.performance_mode=powersave
     start setclock_powersave
 
-on shutdown
-    exec -- /vendor/bin/instant_shutdown_service.sh
+#on shutdown
+#    exec -- /vendor/bin/instant_shutdown_service.sh

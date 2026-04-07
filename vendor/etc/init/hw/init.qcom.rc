@@ -957,7 +957,7 @@ service chre /vendor/bin/chre
     user system
     group system
     socket chre seqpacket 0660 root system
-    shutdown critical
+    disabled
 
 on property:vendor.chre.enabled=0
    stop chre
