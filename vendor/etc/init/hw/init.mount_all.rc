@@ -4,6 +4,10 @@ on init
     start tee-supplicant
     start vendor.keymint-default
     start vendor.keymaster-4-0
+    # GammaOS: disable bootreceiver tracing instance — creating it at late-fs
+    # takes ~617ms because init copies the entire tracing event schema into
+    # /sys/kernel/tracing/instances/bootreceiver/. We don't use it.
+    setprop bootreceiver.enable 0
 
 on early-fs
     start vold
@@ -24,3 +28,10 @@ on late-fs
     exec_start wait_for_optee
     # Mount RW partitions which need run fsck
     mount_all /vendor/etc/fstab.${ro.hardware} --late
+
+# GammaOS: start deferred vendor HALs after Android boot completes.
+# These are non-critical for the Nano boot / Quick Resume critical path
+# (bluetooth, camera, widevine DRM, CAS, wifi) and would otherwise take
+# ~500ms of class_start hal time delaying zygote.
+on property:sys.boot_completed=1
+    class_start late_hal

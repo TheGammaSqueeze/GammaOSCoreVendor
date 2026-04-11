@@ -1,6 +1,6 @@
 service vendor.cas-default /vendor/bin/hw/android.hardware.cas-service.example
     interface aidl android.hardware.cas.IMediaCasService/default
-    class hal
+    class late_hal
     user media
     group mediadrm drmrpc
     ioprio rt 4

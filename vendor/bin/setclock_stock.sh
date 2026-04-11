@@ -18,4 +18,4 @@ echo 920000000 > /sys/devices/platform/dmc/devfreq/dmc/max_freq
 
 echo schedutil > /sys/devices/system/cpu/cpufreq/policy0/scaling_governor
 echo 408000 > /sys/devices/system/cpu/cpufreq/policy0/scaling_min_freq
-echo 2088638 > /sys/devices/system/cpu/cpufreq/policy0/scaling_max_freq
+echo 2160000 > /sys/devices/system/cpu/cpufreq/policy0/scaling_max_freq

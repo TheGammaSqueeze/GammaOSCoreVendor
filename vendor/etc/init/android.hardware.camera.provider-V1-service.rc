@@ -1,5 +1,5 @@
 service vendor.camera-provider-rk /vendor/bin/hw/android.hardware.camera.provider-V1-service    
-    class hal
+    class late_hal
     user cameraserver
     group audio camera input drmrpc
     capabilities SYS_NICE

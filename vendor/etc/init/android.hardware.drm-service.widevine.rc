@@ -3,7 +3,7 @@ on property:init.svc.mediadrm=running
 
 service vendor.drm-widevine-hal /vendor/bin/hw/android.hardware.drm-service.widevine
     interface aidl android.hardware.drm.IDrmFactory/widevine
-    class hal
+    class late_hal
     user media
     group media mediadrm drmrpc system
     ioprio rt 4
