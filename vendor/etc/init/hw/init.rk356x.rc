@@ -43,6 +43,36 @@ on init
     write /proc/sys/vm/swappiness 100
     write /sys/block/zram0/comp_algorithm lz4
 
+    # GammaOS Nano render-smoothness tuning:
+    # Stretch dirty-page writeback from 5s to 60s so periodic kernel
+    # writeback does not burst memory bandwidth mid-frame.
+    write /proc/sys/vm/dirty_writeback_centisecs 6000
+    # Disable RT throttling (default 950ms/1s reserve). Our SCHED_FIFO
+    # render thread voluntarily sleeps every frame on vblank, so it
+    # cannot starve non-RT tasks; removing the per-tick throttling
+    # bookkeeping cuts microhitches during drastic QR preview.
+    write /proc/sys/kernel/sched_rt_runtime_us -1
+
+    # Mali GPU: lock power policy to always_on + disable Linux runtime
+    # PM autosuspend. The default coarse_demand policy cycles the GPU
+    # off-and-on at ~77 Hz (every frame!) and auto-suspend adds extra
+    # churn on top. Each GPU_OFF/GPU_ON transition does L2 cache flush
+    # and register restore work, which on the drastic QR rendering
+    # path contends with our dma-buf PRIME scanout reads and manifests
+    # as intermittent tearing. always_on keeps the GPU powered between
+    # frames so kbase does not need the per-frame power dance.
+    write /sys/devices/platform/fde60000.gpu/power_policy always_on
+    write /sys/devices/platform/fde60000.gpu/power/control on
+
+    # GammaOS Nano IRQ pinning: move VOP (display flip) IRQ off CPU0 so it
+    # is not delayed by other busy IRQs (i2c, saradc, GPU, USB, mmc) that
+    # all pin to CPU0 by default on RK3568. Occasional bursts where several
+    # of those fire together delayed VOP processing by 4-5ms, which showed
+    # up as catastrophic drastic QR frames every ~6s. Pinning VOP to CPU1
+    # reduces jitter ~80% (from ~12 catastrophic frames per 3 min to ~4 on Sonic Rush smoke). CPU1 has the lightest base load on this SoC. IRQ 38 is VOP on this kernel; if it
+    # changes the write will no-op safely.
+    write /proc/irq/38/smp_affinity 2
+
     chown system system /sys/system_monitor/system_status
     chmod 0666 /sys/system_monitor/system_status
 
