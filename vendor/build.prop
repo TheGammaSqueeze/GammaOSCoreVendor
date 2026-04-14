@@ -408,3 +408,16 @@ persist.gammaos.gamepad.enable=1
 persist.gammaos.gamepad.hide_source=1
 persist.gammaos.gamepad.remap_btn=316:204
 persist.gammaos.nano.primary_display=1
+
+# GammaOS Nano drastic QR smoothness persist props (RG DS dual-DSI):
+#   triple_buffer enables the 4-slot AHB ring with per-slot EGL fences
+#     which hides short Mali kbase housekeeping stalls off the present
+#     critical path.
+#   vsync keeps the render loop paced by DRM page-flip events on
+#     multi-CRTC setups; drmDrainPageFlipEvents waits for flips on
+#     both displays to land, giving correct cross-CRTC sync with
+#     per-CRTC pending tracking preventing EBUSY storms.
+# Both default to 1 in NanoMenu.cpp, set explicitly here so the
+# behaviour is locked even if a future refactor changes the default.
+persist.gammaos.nano.triple_buffer=1
+persist.gammaos.nano.vsync=1
