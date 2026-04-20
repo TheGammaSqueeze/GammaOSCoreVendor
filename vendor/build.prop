@@ -401,3 +401,6 @@ persist.gammaos.gamepad.devices=retrogame_joypad
 persist.gammaos.gamepad.enable=1
 persist.gammaos.gamepad.hide_source=1
 persist.gammaos.gamepad.remap_btn=68:204
+persist.gammaos.ext.half_4k=1
+persist.gammaos.nano.drm_flip_v=1
+persist.gammaos.nano.drastic_qr_layout=1

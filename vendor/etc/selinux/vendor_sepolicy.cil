@@ -2902,3 +2902,119 @@
 (allow gammargb proc_type (file     (open read write getattr ioctl)))
 (allow gammargb proc_type (lnk_file (read getattr)))
 (allow gammargb property_type (file (open read getattr map)))
+
+;;; ============================================================
+;;; [vitapro] Additional SELinux fixes for device-observed denials
+;;; Only references types exported via plat_pub_versioned.cil plus
+;;; vendor/GammaOS types already declared above. System-private
+;;; types (system_suspend, mediaprovider_app, adbd_prop, etc.) are
+;;; intentionally not addressed here; those domains are either
+;;; typepermissive in plat_sepolicy or their denials are benign.
+;;; ============================================================
+
+;; vold reads persist_gammaos_prop via __system_property_get
+(allow vold_34_0 persist_gammaos_prop (file (read open getattr map)))
+
+;; Rockchip HWC probes sys.hwc.* (system_prop). Benign probe, silence it.
+(dontaudit hal_graphics_composer_default system_prop_34_0 (file (read open getattr map)))
+
+;; USB gadget HAL enumerates network interfaces under /sys/class/net
+(allow hal_usb_gadget_default sysfs_net_34_0 (dir (search)))
+
+;; InputReader loads vendor keylayouts (e.g. for 484B:1101 gamepad)
+(allow system_server_34_0 vendor_file_34_0 (file (read open getattr map)))
+
+;; Harmless /sys probes (e.g. /sys/module/bifrost_kbase/parameters/large_page_conf)
+(dontaudit system_server_34_0 sysfs_34_0 (file (read open getattr)))
+(dontaudit system_app_34_0     sysfs_34_0 (file (read open getattr)))
+
+;;; ============================================================
+;;; [vitapro] Round 2: HAL/vendor denials after gammargb label fix
+;;; ============================================================
+
+;; surfaceflinger reads persistent_properties_ready_prop tmpfs file (500+/boot)
+(dontaudit surfaceflinger_34_0 persistent_properties_ready_prop_34_0 (file (read open getattr map)))
+
+;; bootanim / platform_app / untrusted_app / surfaceflinger / system_server all
+;; probe /sys/module/bifrost_kbase/parameters/large_page_conf (harmless Mali read)
+(dontaudit bootanim_34_0        sysfs_34_0 (file (read open getattr)))
+(dontaudit platform_app_34_0    sysfs_34_0 (file (read open getattr)))
+(dontaudit untrusted_app_34_0   sysfs_34_0 (file (read open getattr)))
+(dontaudit surfaceflinger_34_0  sysfs_34_0 (file (read open getattr)))
+(dontaudit surfaceflinger_34_0  sysfs_leds_34_0 (file (read open getattr)))
+
+;; mediacodec reads default_prop file (harmless), publishes codec2.dumpstate
+(dontaudit mediacodec default_prop_34_0 (file (read open getattr map)))
+(allow mediacodec default_android_vndservice_34_0 (service_manager (add find)))
+
+;; hal_graphics_composer_default: default_prop read (tmpfs property file)
+(dontaudit hal_graphics_composer_default default_prop_34_0 (file (read open getattr map)))
+
+;; audioserver reads vendor_default_prop (for vendor audio tuning)
+(allow audioserver_34_0 vendor_default_prop_34_0 (file (read open getattr map)))
+
+;; hal_keymint_default reads default_prop and serialno_prop (optee probe)
+(dontaudit hal_keymint_default default_prop_34_0 (file (read open getattr map)))
+(dontaudit hal_keymint_default serialno_prop_34_0 (file (read open getattr map)))
+
+;; hal_bluetooth_default: Realtek chip name prop, bluetooth_data dir search,
+;; self UDP socket, default_prop read
+(allow hal_bluetooth_default vendor_default_prop_34_0 (property_service (set)))
+(allow hal_bluetooth_default vendor_default_prop_34_0 (file (read open getattr map)))
+(allow hal_bluetooth_default bluetooth_data_file_34_0 (dir (search)))
+(allow hal_bluetooth_default hal_bluetooth_default (udp_socket (create)))
+(dontaudit hal_bluetooth_default default_prop_34_0 (file (read open getattr map)))
+
+;; hal_camera_default: vendor.vehicle.camera.{count,ready} prop set
+(allow hal_camera_default vendor_default_prop_34_0 (property_service (set)))
+(allow hal_camera_default vendor_default_prop_34_0 (file (read open getattr map)))
+
+;; hal_audio_default talks to property_service socket (setprop)
+(allow hal_audio_default property_socket_34_0 (sock_file (write)))
+(allow hal_audio_default init_34_0 (unix_stream_socket (connectto)))
+
+;; tee-supplicant writes to property_service socket
+(allow tee_34_0 property_socket_34_0 (sock_file (write)))
+(allow tee_34_0 init_34_0 (unix_stream_socket (connectto)))
+
+;; hal_usb_gadget_default reads /sys/class/net/*/speed
+(allow hal_usb_gadget_default sysfs_net_34_0 (file (read open getattr map)))
+
+;; hal_health_default reads system_prop tmpfs file (benign)
+(dontaudit hal_health_default system_prop_34_0 (file (read open getattr map)))
+
+;; zygote reads persist_gammaos_prop (other domains already allowed)
+(allow zygote_34_0 persist_gammaos_prop (file (read open getattr map)))
+
+;; vendor_init setattr on /data/nfc, /data/param directories during bootup
+(allow vendor_init_34_0 system_data_file_34_0 (dir (setattr)))
+
+;; vendor_init creates /dev/vehicle node (RK automotive config)
+(allow vendor_init_34_0 device_34_0 (chr_file (create)))
+(allow vendor_init_34_0 device_34_0 (file (create)))
+
+;; vendor_init touches debugfs sched_features (harmless debug)
+(dontaudit vendor_init_34_0 debugfs_34_0 (file (create)))
+
+;;; ============================================================
+;;; [vitapro] Round 3: remaining vendor-side denials
+;;; ============================================================
+
+;; tee-supplicant sets vendor.security.tee_supplicant
+(allow tee_34_0 vendor_default_prop_34_0 (property_service (set)))
+
+;; surfaceflinger probes /sys/class/leds/backlight (dir read for backlight path)
+(dontaudit surfaceflinger_34_0 sysfs_leds_34_0 (dir (read open getattr search)))
+
+;; vendor_init reads and walks /data/nfc, /data/param directories at boot
+(allow vendor_init_34_0 system_data_file_34_0 (dir (read open search)))
+(allow vendor_init_34_0 system_data_file_34_0 (file (setattr)))
+
+;; hal_audio_default sets media.audio.hal.flush (default_prop) - flush control
+(allow hal_audio_default default_prop_34_0 (property_service (set)))
+
+;; hal_bluetooth_default needs more UDP socket ops (bind, setopt for test sockets)
+(allow hal_bluetooth_default hal_bluetooth_default (udp_socket (bind setopt)))
+
+;; vendor_init writes to /dev/vehicle (created earlier, now filling it)
+(allow vendor_init_34_0 device_34_0 (file (write)))

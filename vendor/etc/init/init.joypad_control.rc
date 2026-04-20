@@ -19,7 +19,7 @@ service led_control_screen_on /vendor/bin/gammargb
     oneshot
     disabled
 
-service led_control_off /system/bin/sh -c "echo 0 > /sys/devices/platform/singleadc-joypad/led_switch; echo 1 > /sys/devices/platform/singleadc-joypad/led_set"
+service led_control_off /system/bin/sh -c "sleep 1; echo 0 > /sys/devices/platform/singleadc-joypad/led_switch; echo 1 > /sys/devices/platform/singleadc-joypad/led_set"
     class main
     user root
     group root system

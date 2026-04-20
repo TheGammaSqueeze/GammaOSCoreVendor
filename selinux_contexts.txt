@@ -1394,7 +1394,6 @@
 /bin/split u:object_r:vendor_file:s0
 /bin/hostname u:object_r:vendor_file:s0
 /bin/getprop u:object_r:vendor_file:s0
-/bin/gammapad u:object_r:vendor_file:s0
 /bin/sha256sum u:object_r:vendor_file:s0
 /bin/rmdir u:object_r:vendor_file:s0
 /bin/groups u:object_r:vendor_file:s0
@@ -3475,7 +3474,7 @@
 /overlay/framework-res__auto_generated_rro_vendor\.apk u:object_r:vendor_overlay_file:s0
 /recovery-from-boot\.p u:object_r:vendor_file:s0
 /bin/esde_fix\.sh u:object_r:vendor_file:s0
-/bin/gammargb u:object_r:vendor_file:s0
+/bin/gammargb u:object_r:gammargb_exec:s0
 /bin/sleep\.sh u:object_r:vendor_file:s0
 /etc/init/init\.gammaos_esdefix\.rc u:object_r:vendor_configs_file:s0
 /etc/init/init\.gammaos_power\.rc u:object_r:vendor_configs_file:s0
