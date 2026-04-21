@@ -19,6 +19,18 @@ service setclock_powersave /vendor/bin/setclock_powersave.sh
     oneshot
     disabled
 
+# Long-running watchdog: reconciles GPU power_policy every 5s and
+# re-fires setclock_max via init when a stuck-at-1000 MHz PLL state is
+# suspected (power_policy drift under max mode implies a possible
+# power-gate resume that re-sticks the PLL; see rk3576_gpu_stuck_state).
+# Debounces across the Quick Settings tile's powersave->stock->max
+# sweep so transient modes don't trigger a bounce.
+service power_watchdog /vendor/bin/power_watchdog.sh
+    class main
+    user root
+    group root system
+    disabled
+
 # Delayed re-fire wrappers. Framework services (PowerAIDL, cpuset init,
 # scheduling policy HAL) continue writing cpufreq/devfreq governors for
 # ~15-25 seconds after sys.boot_completed=1, clobbering whatever
@@ -72,17 +84,23 @@ service force_wake /system/bin/sh -c "for i in 1 2 3 4 5; do start cpu_screen_on
 
 on property:persist.gammaos.performance_mode=max && property:sys.screen.state=on
     stop setclock_stock
+    stop setclock_stock_delayed
     stop setclock_powersave
+    stop setclock_max_delayed
     start setclock_max
 
 on property:persist.gammaos.performance_mode=stock && property:sys.screen.state=on
     stop setclock_max
+    stop setclock_max_delayed
     stop setclock_powersave
+    stop setclock_stock_delayed
     start setclock_stock
 
 on property:persist.gammaos.performance_mode=powersave && property:sys.screen.state=on
     stop setclock_max
+    stop setclock_max_delayed
     stop setclock_stock
+    stop setclock_stock_delayed
     start setclock_powersave
 
 # Re-fire the active setclock script ~30 seconds after boot_completed.
@@ -93,6 +111,9 @@ on property:sys.boot_completed=1 && property:persist.gammaos.performance_mode=ma
 
 on property:sys.boot_completed=1 && property:persist.gammaos.performance_mode=stock
     start setclock_stock_delayed
+
+on property:sys.boot_completed=1
+    start power_watchdog
 
 #on property:sys.screen.state=off && property:persist.gammaos.ultra_low_power_saving_mode=1 && property:debug.tracing.battery_stats.charging=0
 #    start setclock_powersave
@@ -106,14 +127,18 @@ on property:sys.boot_completed=1 && property:persist.gammaos.performance_mode=st
 
 on property:sys.screen.state=off && property:persist.gammaos.ultra_low_power_saving_mode=1 && property:sys.gammaos.usb.connected=0
     stop setclock_max
+    stop setclock_max_delayed
     stop setclock_stock
+    stop setclock_stock_delayed
     start setclock_powersave
     stop force_wake
     start force_sleep
 
 on property:sys.screen.state=off
     stop setclock_max
+    stop setclock_max_delayed
     stop setclock_stock
+    stop setclock_stock_delayed
     start setclock_powersave
 
 on property:sys.screen.state=on
