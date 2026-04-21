@@ -189,6 +189,17 @@ ro.config.ringtone=Ring_Synth_04.ogg
 tombstoned.max_tombstone_count=50
 ro.logd.size.stats=64K
 log.tag.stats_log=I
+# Silence per-vsync "getRequests: invalid layer 0 found on display 0" spam
+# from the Rockchip HWC3 HAL: it returns a bogus layer ID 0 in its change
+# list every composition; SurfaceFlinger rejects it and logs E/HWC2 at
+# ~60 Hz. No actionable signal, suppress at the SILENT threshold.
+log.tag.HWC2=S
+# Silence the gralloc allocator's per-alloc D/I chatter. gammargb's
+# follow-mode LED sampler (persist.gammaos.rgb.effect=follow) allocates a
+# 64x64 'screenshot' buffer at persist.gammaos.rgb.fps Hz, and the
+# allocator prints four lines per allocation. Real allocation failures
+# still surface via higher-level graphics errors.
+log.tag.android.hardware.graphics.allocator-V1-service=S
 ro.carrier=unknown
 ro.config.notification_sound=OnTheHunt.ogg
 ro.config.alarm_alert=Alarm_Classic.ogg

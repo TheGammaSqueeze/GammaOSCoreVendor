@@ -1,3 +1,14 @@
+# Silence high-frequency logcat spam from two chronic sources. Also set
+# in vendor/build.prop, but duplicated here so the thresholds land before
+# any vendor service starts logging (build.prop is read later in boot).
+# HWC2: Rockchip HWC3 HAL returns a bogus layer ID 0 in getDisplayRequests
+# every composition; SurfaceFlinger logs E/HWC2 at ~60 Hz with no signal.
+# allocator-V1-service: gralloc prints four D/I lines per alloc; gammargb
+# follow-mode samples at persist.gammaos.rgb.fps Hz with a 64x64 buffer.
+on early-init
+    setprop log.tag.HWC2 S
+    setprop log.tag.android.hardware.graphics.allocator-V1-service S
+
 service setclock_max /vendor/bin/setclock_max.sh
     class main
     user root
