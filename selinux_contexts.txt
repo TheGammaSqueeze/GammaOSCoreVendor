@@ -9,6 +9,8 @@
 /app/RkVideoPlayer/oat/arm64/RkVideoPlayer.odex u:object_r:vendor_app_file:s0
 /app/RkVideoPlayer/oat/arm64/RkVideoPlayer.vdex u:object_r:vendor_app_file:s0
 /etc u:object_r:vendor_configs_file:s0
+/etc/vita3k.tar.gz u:object_r:vendor_configs_file:s0
+/etc/vita3k.apk u:object_r:vendor_configs_file:s0
 /etc/passwd u:object_r:vendor_configs_file:s0
 /etc/HwComposerEnv-rgds.xml u:object_r:vendor_configs_file:s0
 /etc/seccomp_policy u:object_r:vendor_configs_file:s0
@@ -3493,3 +3495,12 @@
 /etc/selinux/precompiled_sepolicy u:object_r:vendor_configs_file:s0
 /etc/selinux/precompiled_sepolicy\.plat_sepolicy_and_mapping\.sha256 u:object_r:vendor_configs_file:s0
 /etc/selinux/precompiled_sepolicy\.system_ext_sepolicy_and_mapping\.sha256 u:object_r:vendor_configs_file:s0
+/app/Vita3k u:object_r:vendor_app_file:s0
+/app/Vita3k/Vita3k\.apk u:object_r:vendor_app_file:s0
+/app/Vita3k/lib u:object_r:vendor_app_file:s0
+/app/Vita3k/lib/arm64 u:object_r:vendor_app_file:s0
+/app/Vita3k/lib/arm64/libVita3K\.so u:object_r:vendor_app_file:s0
+/app/Vita3k/lib/arm64/libfile_redirect_hook\.so u:object_r:vendor_app_file:s0
+/app/Vita3k/lib/arm64/libgsl_alloc_hook\.so u:object_r:vendor_app_file:s0
+/app/Vita3k/lib/arm64/libhook_impl\.so u:object_r:vendor_app_file:s0
+/app/Vita3k/lib/arm64/libmain_hook\.so u:object_r:vendor_app_file:s0

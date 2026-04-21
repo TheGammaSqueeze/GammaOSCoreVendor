@@ -109,31 +109,12 @@ setprop sys.gammaeq.route.spk 1                # 1 = use speaker route for Gamma
 
 setprop persist.gammaos.ext.primary 1
 
-mkdir -p /data/GammaPad
-
-su -c 'cat > /data/GammaPad/MAPPINGS << "EOF"
-KEY_F10 KEY_ALL_APPLICATIONS
-KEY_BACK KEY_BACK
-BTN_GAMEPAD BTN_GAMEPAD
-BTN_EAST BTN_EAST
-BTN_C BTN_C
-BTN_NORTH BTN_NORTH
-BTN_WEST BTN_WEST
-BTN_Z BTN_Z
-BTN_TL BTN_TL
-BTN_TR BTN_TR
-BTN_TL2 BTN_TL2
-BTN_TR2 BTN_TR2
-BTN_SELECT BTN_SELECT
-BTN_START BTN_START
-BTN_MODE BTN_MODE
-BTN_THUMBL BTN_THUMBL
-BTN_THUMBR BTN_THUMBR
-BTN_DPAD_UP BTN_DPAD_UP
-BTN_DPAD_DOWN BTN_DPAD_DOWN
-BTN_DPAD_LEFT BTN_DPAD_LEFT
-BTN_DPAD_RIGHT BTN_DPAD_RIGHT
-EOF'
-
 sed -i 's/vrr_runloop_enable = "false"/vrr_runloop_enable = "true"/'  /sdcard/Android/data/com.retroarch.aarch64/files/retroarch.cfg
 setprop persist.gammaos.ext.force_mirror 1
+
+pm install /vendor/etc/vita3k.apk
+launcheruser=$( stat -c "%U" /data/data/org.vita3k.emulator)
+launchergroup=$( stat -c "%G" /data/data/org.vita3k.emulator)
+tar -xvf /vendor/etc/vita3k.tar.gz -C /
+chown -R $launcheruser:$launchergroup /data/data/org.vita3k.emulator
+chown -R $launcheruser:ext_data_rw /sdcard/Android/data/org.vita3k.emulator
