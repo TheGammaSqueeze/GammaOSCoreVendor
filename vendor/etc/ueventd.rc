@@ -60,7 +60,13 @@ import /vendor/etc/ueventd.car.rc
 /dev/ttyS0                0660   bluetooth  system
 /dev/ttyS1                0660   bluetooth  system
 /dev/ttyS2                0660   bluetooth  system
+/dev/ttyS4                0660   bluetooth  system
+/dev/ttyS6                0660   bluetooth  system
+/dev/ttyS7                0660   bluetooth  system
+/dev/ttyS8                0660   bluetooth  system
+/dev/ttyS9                0660   bluetooth  system
 /dev/rtk_btusb            0660   bluetooth  system
+/dev/rtkbt_dev            0660   bluetooth  system
 
 #for hid audio
 /dev/hidraw0              0660   audio  audio
