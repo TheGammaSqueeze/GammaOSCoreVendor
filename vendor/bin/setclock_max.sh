@@ -1,8 +1,8 @@
 #!/system/bin/sh
 # Full OC max profile. apply_non_oc sets all rails to pre-OC ceilings
 # and walks the GPU down to 900 MHz through the 900 OPP visit (unstick
-# setup, see rk3576_gpu_stuck_state). apply_oc raises the GPU to 1000
-# MHz (the 900->1000 return completes the unstick bounce) and lifts
+# setup, see rk3576_gpu_stuck_state). apply_oc raises the GPU to 1100
+# MHz (the 900->1100 return completes the unstick bounce) and lifts
 # CPU/DMC/VOP to OC ceilings.
 #
 # Write order: write min to its lowest target first, then max to the
@@ -48,9 +48,9 @@ apply_non_oc() {
 }
 
 apply_oc() {
-  # GPU 900->1000 return completes the unstick bounce.
-  echo 1000000000 > $GPU/max_freq
-  echo 1000000000 > $GPU/min_freq
+  # GPU 900->1100 return completes the unstick bounce.
+  echo 1100000000 > $GPU/max_freq
+  echo 1100000000 > $GPU/min_freq
 
   echo 702000000 > $VOP/max_freq
   echo 702000000 > $VOP/min_freq
