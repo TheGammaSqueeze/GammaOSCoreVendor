@@ -19,7 +19,7 @@ fi
 if [ -f $cfg_file ]; then
 	while IFS="|" read -r action arg
 	do
-		args=`echo $arg | sed 's/|/ /g'`
+		args=$(echo $arg | sed 's/|/ /g')
 		case $action in
 			"insmod") insmod $args ;;
 			"setprop") setprop $arg 1 ;;
