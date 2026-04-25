@@ -1,4 +1,4 @@
-service joypad_control_screen_off /system/bin/sh -c "sleep 1; echo 0 > /sys/devices/platform/singleadc-joypad/enable"
+service joypad_control_screen_off /system/bin/sh -c "sleep 10; echo 0 > /sys/devices/platform/singleadc-joypad/enable"
     class main
     user root
     group root system
@@ -19,7 +19,7 @@ service led_control_screen_on /vendor/bin/gammargb
     oneshot
     disabled
 
-service led_control_off /system/bin/sh -c "sleep 0.2; echo 0 > /sys/devices/platform/singleadc-joypad/led_switch; echo 1 > /sys/devices/platform/singleadc-joypad/led_set"
+service led_control_off /system/bin/sh -c "sleep 0.5; echo 0 > /sys/devices/platform/singleadc-joypad/led_switch; echo 1 > /sys/devices/platform/singleadc-joypad/led_set"
     class main
     user root
     group root system
