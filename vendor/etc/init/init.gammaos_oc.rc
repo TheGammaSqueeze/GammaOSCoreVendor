@@ -1,0 +1,12 @@
+# /vendor/etc/init/init.gammaos_oc.rc
+# CPU overclock EEM voltage offsets
+
+on post-fs
+    # A76 big cluster: EEM offset +10 for OC stability
+    write /proc/eem/EEM_DET_B/eem_offset 10
+    # A55 little cluster: EEM offset 0 (stock voltage is optimal)
+    write /proc/eem/EEM_DET_L/eem_offset 0
+
+on property:sys.boot_completed=1
+    write /proc/eem/EEM_DET_B/eem_offset 10
+    write /proc/eem/EEM_DET_L/eem_offset 0

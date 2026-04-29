@@ -1,17 +1,24 @@
 #!/system/bin/sh
 
-# CPU governor: powersave for both clusters
-echo powersave > /sys/devices/system/cpu/cpufreq/policy0/scaling_governor
-echo powersave > /sys/devices/system/cpu/cpufreq/policy6/scaling_governor
+# Power save mode: capped clocks for battery life
 
-# CPU lock to minimum frequencies
-echo 500000 > /sys/devices/system/cpu/cpu0/cpufreq/scaling_min_freq
-echo 500000 > /sys/devices/system/cpu/cpu0/cpufreq/scaling_max_freq
-echo 774000 > /sys/devices/system/cpu/cpu6/cpufreq/scaling_min_freq
-echo 774000 > /sys/devices/system/cpu/cpu6/cpufreq/scaling_max_freq
+# EEM voltage offsets
+echo 10 > /proc/eem/EEM_DET_B/eem_offset
+echo 0 > /proc/eem/EEM_DET_L/eem_offset
 
-# PPM: fix both clusters to index 15 (min freq)
-echo "15 15" > /proc/ppm/policy/ut_fix_freq_idx
+# Re-enable all PPM policies
+for i in 0 1 2 3 4 5 6 7 8 9; do
+    echo "$i 1" > /proc/ppm/policy_status 2>/dev/null
+done
+echo "-1 -1" > /proc/ppm/policy/ut_fix_freq_idx
 
-# GPU: fix to min OPP (270 MHz)
-echo 270000 > /proc/gpufreq/gpufreq_opp_freq
+# CPU governors: schedutil
+echo schedutil > /sys/devices/system/cpu/cpufreq/policy0/scaling_governor
+echo schedutil > /sys/devices/system/cpu/cpufreq/policy6/scaling_governor
+
+# Cap frequencies via PPM hard user limits
+echo "0 1500000" > /proc/ppm/policy/hard_userlimit_max_cpu_freq
+echo "1 1530000" > /proc/ppm/policy/hard_userlimit_max_cpu_freq
+
+# GPU: cap to low OPP
+echo 620000 > /proc/gpufreq/gpufreq_opp_freq

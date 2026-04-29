@@ -51,7 +51,7 @@ aaudio.mmap_policy=2
 aaudio.mmap_exclusive_policy=2
 ro.boot.vendor.overlay.theme=com.android.internal.systemui.navbar.gestural
 vendor.sf.hwc_repaint_fmt=0
-ro.hardware.egl=meow
+ro.hardware.egl=mali
 vendor.camera.mdp.dre.enable=1
 vendor.camera.mdp.cz.enable=1
 ro.opengles.version=196610
@@ -223,3 +223,7 @@ ro.lmk.thrashing_limit_decay=50
 ro.lmk.swap_util_max=80
 ro.lmk.psi_partial_stall_ms=60
 
+ro.gammaos.device=pocketairmini
+service.sf.prime_shader_cache=0
+persist.gammaos.nano.drastic_qr_layout=1
+persist.gammaos.nano.wifi=1
