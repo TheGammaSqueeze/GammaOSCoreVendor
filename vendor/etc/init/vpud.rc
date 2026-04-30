@@ -2,3 +2,6 @@ service vpud /vendor/bin/vpud -f
     class main
     user media
     group system media drmrpc
+
+on init
+    start vpud
