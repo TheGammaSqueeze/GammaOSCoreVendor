@@ -49,6 +49,8 @@ if [ ! -f "$INI" ]; then
   wcal "set-cal-S,0,0,0,0,0,0"
   wcal "cal-joy-L,1000,4500,2500,1000,4500,2500"
   wcal "cal-joy-R,1000,4500,2500,1000,4500,2500"
+  wcal "set-joy-LD,0,0,0,0,0,0"
+  wcal "set-joy-RD,0,0,0,0,0,0"
   wcal "set-cal-E,0,0,0,0,0,0"
   exit 0
 fi
@@ -72,6 +74,8 @@ log "  R: X $RXM,$RXX,$RXC | Y $RYM,$RYX,$RYC"
 wcal "set-cal-S,0,0,0,0,0,0"
 wcal "cal-joy-L,$LXM,$LXX,$LXC,$LYM,$LYX,$LYC"
 wcal "cal-joy-R,$RXM,$RXX,$RXC,$RYM,$RYX,$RYC"
+wcal "set-joy-LD,0,0,0,0,0,0"
+wcal "set-joy-RD,0,0,0,0,0,0"
 wcal "set-cal-E,0,0,0,0,0,0"
 
 log "Done."
