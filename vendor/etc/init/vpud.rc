@@ -1,4 +1,4 @@
 service vpud /vendor/bin/vpud -f
-    class main
+    class core
     user media
     group system media drmrpc
