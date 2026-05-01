@@ -3,19 +3,37 @@
 PROP_NAME="persist.gammaos.fan_mode_auto"
 last_mode=""
 
-while true; do
-  avg_temp=$(
-    cat /sys/class/thermal/thermal_zone*/temp 2>/dev/null \
-    | awk '{ sum += $1; n++ }
-           END { if (n>0) printf("%d", int((sum/n + 99)/1000)); }'
-  )
+read_zone_by_type() {
+  type="$1"
+  for z in /sys/class/thermal/thermal_zone*; do
+    if [ "$(cat "$z/type" 2>/dev/null)" = "$type" ]; then
+      cat "$z/temp" 2>/dev/null
+      return
+    fi
+  done
+}
 
-  if [ -z "$avg_temp" ]; then
-    echo "[$(date)] ERROR: unable to read thermal zones" >&2
+while true; do
+  cpu_mC=$(read_zone_by_type mtktscpu)
+  ap_mC=$(read_zone_by_type mtktsAP)
+
+  hot_mC=""
+  for v in "$cpu_mC" "$ap_mC"; do
+    if [ -n "$v" ] && [ "$v" -gt -40000 ]; then
+      if [ -z "$hot_mC" ] || [ "$v" -gt "$hot_mC" ]; then
+        hot_mC="$v"
+      fi
+    fi
+  done
+
+  if [ -z "$hot_mC" ]; then
+    echo "[$(date)] ERROR: unable to read mtktscpu/mtktsAP" >&2
   else
-    if [ "$avg_temp" -lt 45 ]; then
+    hot_C=$(( (hot_mC + 999) / 1000 ))
+
+    if [ "$hot_C" -lt 65 ]; then
       desired="off"
-    elif [ "$avg_temp" -le 60 ]; then
+    elif [ "$hot_C" -lt 85 ]; then
       desired="cool"
     else
       desired="max"
@@ -23,7 +41,7 @@ while true; do
 
     if [ "$last_mode" != "$desired" ]; then
       setprop "$PROP_NAME" "$desired"
-      echo "[$(date)] Temp=${avg_temp}C -> set $PROP_NAME=$desired"
+      echo "[$(date)] Temp=${hot_C}C -> set $PROP_NAME=$desired"
       last_mode="$desired"
     fi
   fi
