@@ -35,6 +35,15 @@ valid_joy() {
   return 0
 }
 
+# Validate trigger tuple: min < max, span >= 500
+valid_tri() {
+  mn="$1"; mx="$2"
+  is_int "$mn" && is_int "$mx" || return 1
+  [ "$mn" -lt "$mx" ] || return 1
+  [ $((mx - mn)) -ge 500 ] || return 1
+  return 0
+}
+
 # --- AYANEO mode ---
 log "Setting AYANEO joystick mode"
 wcal "set-joy-MD,1,0,0,0,0,0"
@@ -51,6 +60,8 @@ if [ ! -f "$INI" ]; then
   wcal "cal-joy-R,1000,4500,2500,1000,4500,2500"
   wcal "set-joy-LD,0,0,0,0,0,0"
   wcal "set-joy-RD,0,0,0,0,0,0"
+  wcal "set-tri-LD,25,25,0,0,0,0"
+  wcal "set-tri-RD,25,25,0,0,0,0"
   wcal "set-cal-E,0,0,0,0,0,0"
   exit 0
 fi
@@ -76,6 +87,29 @@ wcal "cal-joy-L,$LXM,$LXX,$LXC,$LYM,$LYX,$LYC"
 wcal "cal-joy-R,$RXM,$RXX,$RXC,$RYM,$RYX,$RYC"
 wcal "set-joy-LD,0,0,0,0,0,0"
 wcal "set-joy-RD,0,0,0,0,0,0"
+
+# --- Trigger calibration ---
+TLM="$(getp tri_left_min)";  TLX="$(getp tri_left_max)"
+TRM="$(getp tri_right_min)"; TRX="$(getp tri_right_max)"
+
+if valid_tri "$TLM" "$TLX"; then
+  log "Applying left trigger calibration: min=$TLM max=$TLX"
+  wcal "cal-tri-L,$TLX,$TLM,0,0,0,0"
+else
+  log "Left trigger calibration invalid or missing, skipping"
+fi
+
+if valid_tri "$TRM" "$TRX"; then
+  log "Applying right trigger calibration: min=$TRM max=$TRX"
+  wcal "cal-tri-R,$TRX,$TRM,0,0,0,0"
+else
+  log "Right trigger calibration invalid or missing, skipping"
+fi
+
+# --- Trigger deadzones (25% bottom, 25% top) ---
+wcal "set-tri-LD,25,25,0,0,0,0"
+wcal "set-tri-RD,25,25,0,0,0,0"
+
 wcal "set-cal-E,0,0,0,0,0,0"
 
 log "Done."
