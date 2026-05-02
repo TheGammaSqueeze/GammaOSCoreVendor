@@ -3226,3 +3226,6 @@
 /etc/customization.sh u:object_r:vendor_file:s0
 /bin/fan_fake_pwm u:object_r:vendor_file:s0
 /bin/esde_fix.sh u:object_r:vendor_file:s0
+/etc/selinux/precompiled_sepolicy u:object_r:vendor_configs_file:s0
+/etc/selinux/precompiled_sepolicy.plat_sepolicy_and_mapping.sha256 u:object_r:vendor_configs_file:s0
+/etc/selinux/precompiled_sepolicy.system_ext_sepolicy_and_mapping.sha256 u:object_r:vendor_configs_file:s0
