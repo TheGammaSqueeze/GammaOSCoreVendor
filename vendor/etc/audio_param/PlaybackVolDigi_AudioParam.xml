@@ -145,8 +145,6 @@
     <Param path="Assistant,BT_A2DP_SPK" param_id="0"/>
     <Param path="Assistant,HEARING_AID" param_id="1"/>
     <Param path="Default,Music,SPK" param_id="2"/>
-    <Param path="Default,Notification,SPK" param_id="3"/>
-    <Param path="Default,Alarm,SPK" param_id="4"/>
   </ParamTree>
   <ParamUnitPool>
     <ParamUnit param_id="0">
@@ -156,13 +154,7 @@
       <Param name="digital_gain" value="-48,-42,-39,-36,-33,-30,-27,-24,-21,-18,-15,-12,-9,-6,-3,0"/>
     </ParamUnit>
     <ParamUnit param_id="2">
-      <Param name="digital_gain" value="-64,-63,-50,-45,-38,-35,-31,-29,-27,-25,-23,-21,-19,-17,-15,-14"/>
-    </ParamUnit>
-    <ParamUnit param_id="3">
-      <Param name="digital_gain" value="-64,-42,-39,-36,-33,-30,-27,-24,-21,-18,-15,-12,-9,-6,-3,0"/>
-    </ParamUnit>
-    <ParamUnit param_id="4">
-      <Param name="digital_gain" value="-64,-42,-39,-36,-33,-30,-27,-24,-21,-18,-15,-12,-9,-6,-3,0"/>
+      <Param name="digital_gain" value="-64,-63,-45,-37,-32,-29,-26,-23,-21,-19,-17,-15,-13,-12,-10,-9"/>
     </ParamUnit>
   </ParamUnitPool>
 </AudioParam>
