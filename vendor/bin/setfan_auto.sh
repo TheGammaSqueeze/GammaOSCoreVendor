@@ -1,166 +1,344 @@
 #!/system/bin/sh
-# Auto-discover thermal zones (CPU & GPU) and set persist.gammaos.fan_mode_auto
-# Works across Qualcomm/MediaTek/Exynos/etc.
 
-PROP_VALUE_SCREEN="$(getprop sys.screen.state)"
-PROP_VALUE_BRIGHTNESS="$(getprop debug.tracing.screen_brightness)"
+PROP_NAME="persist.gammaos.fan_mode_auto"
 
-# Turn fan off in a loop, then exit the script
-fan_off_and_exit() {
-    i=0
-    while [ $i -lt 10 ]; do
-        /vendor/bin/setfan_off.sh
-        sleep 2
-        i=$((i + 1))
-    done
-    exit 0
-}
+# Thresholds (C): cool if > COOL_ON, max if > MAX_ON
+COOL_ON=70
+MAX_ON=85
 
-# If screen is off OR brightness is 0.0, turn fan off and stop here
-if [ "$PROP_VALUE_SCREEN" = "off" ] || [ "$PROP_VALUE_BRIGHTNESS" = "0.0" ]; then
-    fan_off_and_exit
-fi
+# Fan profiles for each mode (passed to fan_fake_pwm)
+COOL_STRENGTH=80
+COOL_DUTY=20
 
-PROP_NAME="${PROP_NAME:-persist.gammaos.fan_mode_auto}"
-SCAN_ROOT="/sys/class/thermal"
-INTERVAL="${INTERVAL:-5}"   # seconds
+MAX_STRENGTH=100
+MAX_DUTY=20
+
+# Poll interval (seconds)
+SLEEP_SECS=1
+
+# Debounce time (seconds) before applying a mode change, to filter noisy transitions
+DEBOUNCE_SECS=3
+
+# Monitor-only: print every tick, do not apply changes
+MONITOR_ONLY="${MONITOR_ONLY:-0}"
+
+# If GPU temp invalid, reuse last good value for this many seconds
+GPU_STALE_SECS="${GPU_STALE_SECS:-30}"
+
+THERM_BASE="/sys/class/thermal"
+
 last_mode=""
+last_gpu=""
+last_gpu_ts=0
 
-# --- helpers ---------------------------------------------------------------
+# PID of the currently running fan_fake_pwm controller started by this script (if any)
+fan_pid=""
 
-# Read temperature and normalize to °C (integer). Returns "" on failure.
-read_temp_c() {
-  local node="$1" v
-  [ -r "$node" ] || { echo ""; return; }
-  v="$(cat "$node" 2>/dev/null)" || { echo ""; return; }
-  # handle both "42000" (m°C) and "42" (°C) and also negatives if any
+now_epoch() { date +%s; }
+
+on_exit() {
+  echo
+  echo "Exiting."
+  # Best-effort stop of any running controller instance started by this script
+  if [ -n "$fan_pid" ]; then
+    kill "$fan_pid" >/dev/null 2>&1
+    wait "$fan_pid" >/dev/null 2>&1
+  fi
+  exit 0
+}
+trap on_exit INT TERM
+
+# Fast int read helper
+read_int() {
+  # $1=file
+  v=""
+  IFS= read -r v < "$1" 2>/dev/null || return 1
   case "$v" in
-    ''|*[!0-9-]*) echo ""; return;;
+    -[0-9]*|[0-9]*) echo "$v"; return 0 ;;
+    *) return 1 ;;
   esac
-  if [ "$v" -gt 1000 ] 2>/dev/null || [ "$v" -lt -1000 ] 2>/dev/null; then
-    # milli-degC -> round toward zero
-    echo $(( v / 1000 ))
+}
+
+# Convert raw thermal temp to integer C (rounded) if sane.
+# returns nonzero if invalid.
+raw_to_c() {
+  raw="$1"
+  case "$raw" in
+    ''|*[!0-9-]*) return 1 ;;
+  esac
+
+  # Filter invalid/sentinel values
+  [ "$raw" -gt 0 ] || return 1
+
+  if [ "$raw" -ge 1000 ]; then
+    c=$(( (raw + 500) / 1000 ))
   else
-    echo "$v"
+    c="$raw"
   fi
+
+  [ "$c" -ge 1 ] || return 1
+  [ "$c" -le 125 ] || return 1
+  echo "$c"
+  return 0
 }
 
-# Find zones whose type matches any of the provided (case-insensitive) patterns.
-# Prints "zone_path|type" lines.
-find_zones() {
-  # patterns as regex alternation
-  local patt="$1"
-  for z in "$SCAN_ROOT"/thermal_zone*; do
-    [ -d "$z" ] || continue
-    local t
-    t="$(tr '[:upper:]' '[:lower:]' < "$z/type" 2>/dev/null || true)"
-    [ -n "$t" ] || continue
-    echo "$t" | grep -Eiq "$patt" || continue
-    printf "%s|%s\n" "$z" "$t"
-  done
+# -------- Cache paths once --------
+CPU_TEMP_FILES=""     # list of .../temp for CPU-related zones (direct CPU only)
+GPU_TEMP_FILES=""     # list of .../temp for GPU-related zones
+
+# Qualcomm CPU identification for this device:
+# Keep this intentionally strict to avoid modem/wifi/camera/video/skin/etc.
+is_cpu_type() {
+  t="$1"
+  case "$t" in
+    cpuss-*|cpu-*|apss*)
+      return 0
+      ;;
+  esac
+  return 1
 }
 
-# Pick the "best" GPU zone (first match among common names).
-pick_gpu_zone() {
-  # Common labels by vendor:
-  # qcom: "gpu-thermal", "gpu", "tsens_tz_sensorX" sometimes generic
-  # mtk:  "mtktsgpu", "gpu"
-  # exynos: "gpu-therm"
-  # rockchip: "gpu_thermal"
-  local gpu_re='(^|\b)(gpu-?thermal|gpu_?therm|gpu|mtktsgpu|g3d)(\b|$)'
-  find_zones "$gpu_re" | head -n1 | cut -d'|' -f1
+# Qualcomm GPU identification (Adreno)
+is_gpu_type() {
+  t="$1"
+  case "$t" in
+    gpu|*gpu*|*gpuss*|*adreno*|*gfx*|*kgsl*)
+      return 0
+      ;;
+  esac
+  return 1
 }
 
-# Collect CPU zones (can be multiple, we’ll use max).
-pick_cpu_zones() {
-  # Lots of variations: cpu-thermal, cpu, big, little, a55/a78, tcpu*,
-  # qcom tsens: "cpu-therm", "apc1-cpu0-usr", etc. MTK: "mtktscpu"
-  local cpu_re='(^|\b)(cpu-?thermal|cpu(_[0-9]+)?|little|big|a[0-9]+|apc[0-9]+|mtktscpu|ap-therm|soc|cluster)(\b|$)'
-  find_zones "$cpu_re" | cut -d'|' -f1 | sort -u
-}
+for z in "$THERM_BASE"/thermal_zone*; do
+  [ -d "$z" ] || continue
+  [ -f "$z/type" ] || continue
+  t=""
+  IFS= read -r t < "$z/type" 2>/dev/null || continue
 
-# Read max °C over a list of zones
-max_temp_over() {
-  local max=  t  path
-  for path in "$@"; do
-    t="$(read_temp_c "$path/temp")"
-    [ -z "$t" ] && continue
-    if [ -z "$max" ] || [ "$t" -gt "$max" ]; then max="$t"; fi
-  done
-  echo "${max:-}"
-}
+  if is_gpu_type "$t"; then
+    GPU_TEMP_FILES="$GPU_TEMP_FILES $z/temp"
+    continue
+  fi
 
-# --- discovery -------------------------------------------------------------
+  if is_cpu_type "$t"; then
+    CPU_TEMP_FILES="$CPU_TEMP_FILES $z/temp"
+    continue
+  fi
+done
 
-# Allow manual override via env (full paths to thermal_zoneX)
-CPU_ZONES_OVERRIDE="${CPU_ZONES_OVERRIDE:-}"
-GPU_ZONE_OVERRIDE="${GPU_ZONE_OVERRIDE:-}"
-
-if [ -n "$CPU_ZONES_OVERRIDE" ]; then
-  IFS=' ' read -r -a CPU_ZONES <<EOF
-$CPU_ZONES_OVERRIDE
-EOF
+# Startup visibility so you can confirm correctness quickly
+if [ -n "$CPU_TEMP_FILES" ]; then
+  echo "CPU zones: $CPU_TEMP_FILES"
 else
-  mapfile -t CPU_ZONES <<EOF
-$(pick_cpu_zones)
-EOF
+  echo "CPU zones: none detected"
 fi
 
-if [ -n "$GPU_ZONE_OVERRIDE" ]; then
-  GPU_ZONE="$GPU_ZONE_OVERRIDE"
+if [ -n "$GPU_TEMP_FILES" ]; then
+  echo "GPU zones: $GPU_TEMP_FILES"
 else
-  GPU_ZONE="$(pick_gpu_zone)"
+  echo "GPU zones: none detected"
 fi
 
-# Fallbacks: if we found nothing, just take all zones and hope for the best
-if [ "${#CPU_ZONES[@]}" -eq 0 ]; then
-  mapfile -t CPU_ZONES <<EOF
-$(ls -d "$SCAN_ROOT"/thermal_zone* 2>/dev/null)
-EOF
-fi
-[ -n "$GPU_ZONE" ] || GPU_ZONE="$(ls -d "$SCAN_ROOT"/thermal_zone* 2>/dev/null | head -n1)"
+max_temp_in_filelist() {
+  # $1="file file file"
+  max=""
+  for f in $1; do
+    raw=""
+    IFS= read -r raw < "$f" 2>/dev/null || continue
+    t="$(raw_to_c "$raw")" || continue
+    if [ -z "$max" ] || [ "$t" -gt "$max" ]; then
+      max="$t"
+    fi
+  done
+  [ -n "$max" ] || return 1
+  echo "$max"
+}
 
-echo "[fan] CPU_ZONES=${CPU_ZONES[*]}" >&2
-echo "[fan] GPU_ZONE=$GPU_ZONE" >&2
+read_cpu_temp_c() {
+  [ -n "$CPU_TEMP_FILES" ] || return 1
+  max_temp_in_filelist "$CPU_TEMP_FILES"
+}
 
-# --- control loop ---------------------------------------------------------
+# Outputs: "<temp_or_NA> <fresh|stale|na>"
+read_gpu_temp_c() {
+  gmax=""
 
-while :; do
-  # Max across all CPU zones (so either cluster heating triggers)
-  cpu_max="$(max_temp_over "${CPU_ZONES[@]}")"
-  gpu_c="$(read_temp_c "$GPU_ZONE/temp")"
-
-  if [ -z "$cpu_max" ] || [ -z "$gpu_c" ]; then
-    echo "[$(date +%T)] ERROR: unable to read temps cpu='$cpu_max' gpu='$gpu_c'" >&2
-    sleep "$INTERVAL"; continue
+  if [ -n "$GPU_TEMP_FILES" ]; then
+    gmax="$(max_temp_in_filelist "$GPU_TEMP_FILES" 2>/dev/null)" || gmax=""
   fi
 
-  # CPU bands: <55 → off, 55–65 → cool, >65 → max
-  if   [ "$cpu_max" -gt 65 ]; then cpu_mode="max"
-  elif [ "$cpu_max" -gt 55 ]; then cpu_mode="cool"
-  else                            cpu_mode="off"
+  if [ -n "$gmax" ]; then
+    last_gpu="$gmax"
+    last_gpu_ts="$(now_epoch)"
+    echo "$gmax fresh"
+    return 0
   fi
 
-  # GPU bands: <45 → off, 45–55 → cool, >55 → max
-  if   [ "$gpu_c" -gt 55 ]; then gpu_mode="max"
-  elif [ "$gpu_c" -gt 45 ]; then gpu_mode="cool"
-  else                           gpu_mode="off"
+  if [ -n "$last_gpu" ]; then
+    ts="$(now_epoch)"
+    age=$((ts - last_gpu_ts))
+    if [ "$age" -le "$GPU_STALE_SECS" ]; then
+      echo "$last_gpu stale"
+      return 0
+    fi
   fi
 
-  # Combine priority: max > cool > off
-  if [ "$cpu_mode" = "max" ] || [ "$gpu_mode" = "max" ]; then
-    desired="max"
-  elif [ "$cpu_mode" = "cool" ] || [ "$gpu_mode" = "cool" ]; then
-    desired="cool"
+  echo "NA na"
+  return 1
+}
+
+# Determine desired mode from temperature readings
+# Output: "off" | "cool" | "max"
+compute_desired_from_temps() {
+  cpu_temp="$1"
+  gpu_temp="$2"
+
+  over_cool=0
+  over_max=0
+
+  [ -n "$cpu_temp" ] && [ "$cpu_temp" -gt "$COOL_ON" ] && over_cool=1
+  [ "$gpu_temp" != "NA" ] && [ "$gpu_temp" -gt "$COOL_ON" ] && over_cool=1
+
+  [ -n "$cpu_temp" ] && [ "$cpu_temp" -gt "$MAX_ON" ] && over_max=1
+  [ "$gpu_temp" != "NA" ] && [ "$gpu_temp" -gt "$MAX_ON" ] && over_max=1
+
+  if [ "$over_max" -eq 1 ]; then
+    echo "max"
+  elif [ "$over_cool" -eq 1 ]; then
+    echo "cool"
   else
-    desired="off"
+    echo "off"
+  fi
+}
+
+# Map a mode to the strength used by that mode (for ramp start values)
+mode_strength() {
+  case "$1" in
+    max)  echo "$MAX_STRENGTH" ;;
+    cool) echo "$COOL_STRENGTH" ;;
+    *)    echo "0" ;;
+  esac
+}
+
+# Start the fan controller for a given mode.
+# When switching between cool and max, a start_strength is supplied to produce a gradual ramp.
+start_mode() {
+  mode="$1"
+
+  # Stop any existing controller instance started by this script
+  if [ -n "$fan_pid" ]; then
+    kill "$fan_pid" >/dev/null 2>&1
+    wait "$fan_pid" >/dev/null 2>&1
+    fan_pid=""
   fi
 
-  if [ "$last_mode" != "$desired" ]; then
-    setprop "$PROP_NAME" "$desired"
-    echo "[$(date +%T)] CPUmax=${cpu_max}°C GPU=${gpu_c}°C → $PROP_NAME=$desired"
-    last_mode="$desired"
+  if [ "$mode" = "off" ]; then
+    /vendor/bin/setfan_off.sh >/dev/null 2>&1
+    return 0
   fi
 
-  sleep "$INTERVAL"
+  if [ "$mode" = "cool" ]; then
+    target_strength="$COOL_STRENGTH"
+    duty="$COOL_DUTY"
+  else
+    target_strength="$MAX_STRENGTH"
+    duty="$MAX_DUTY"
+  fi
+
+  # Only provide a start_strength when transitioning between cool and max.
+  start_strength=""
+  if [ "$last_mode" = "cool" ] && [ "$mode" = "max" ]; then
+    start_strength="$(mode_strength cool)"
+  elif [ "$last_mode" = "max" ] && [ "$mode" = "cool" ]; then
+    start_strength="$(mode_strength max)"
+  fi
+
+  # Prefer real-time scheduling if available, otherwise use best-effort nice.
+  if command -v chrt >/dev/null 2>&1; then
+    if [ -n "$start_strength" ]; then
+      chrt -f 80 /vendor/bin/fan_fake_pwm "$target_strength" "$duty" "$start_strength" >/dev/null 2>&1 &
+    else
+      chrt -f 80 /vendor/bin/fan_fake_pwm "$target_strength" "$duty" >/dev/null 2>&1 &
+    fi
+  else
+    if [ -n "$start_strength" ]; then
+      nice -n -20 /vendor/bin/fan_fake_pwm "$target_strength" "$duty" "$start_strength" >/dev/null 2>&1 &
+    else
+      nice -n -20 /vendor/bin/fan_fake_pwm "$target_strength" "$duty" >/dev/null 2>&1 &
+    fi
+  fi
+
+  fan_pid=$!
+  return 0
+}
+
+handle_screen_off() {
+  if [ "$MONITOR_ONLY" = "1" ]; then
+    echo "sys.screen.state=off -> would switch to off (monitor only)"
+    last_mode="off"
+    return 0
+  fi
+
+  start_mode "off"
+  setprop "$PROP_NAME" "off"
+  last_mode="off"
+  echo "sys.screen.state=off -> switched to off and set $PROP_NAME=off"
+  return 0
+}
+
+# -------- Main loop --------
+while true; do
+  screen_state="$(getprop sys.screen.state 2>/dev/null)"
+  if [ "$screen_state" = "off" ]; then
+    handle_screen_off
+    sleep "$SLEEP_SECS"
+    continue
+  fi
+
+  cpu_temp="$(read_cpu_temp_c 2>/dev/null)" || cpu_temp=""
+  set -- $(read_gpu_temp_c 2>/dev/null)
+  gpu_temp="$1"
+  gpu_state="$2"
+
+  desired_from_temp="$(compute_desired_from_temps "$cpu_temp" "$gpu_temp")"
+  desired="$desired_from_temp"
+
+  # Outputs
+  cpu_out="${cpu_temp:-NA}"
+  if [ "$gpu_temp" = "NA" ]; then
+    gpu_out="NA"
+  else
+    [ "$gpu_state" = "stale" ] && gpu_out="${gpu_temp}(stale)" || gpu_out="$gpu_temp"
+  fi
+
+  if [ "$MONITOR_ONLY" = "1" ]; then
+    echo "CPU=${cpu_out}C GPU=${gpu_out}C desired=$desired (temp=$desired_from_temp)"
+  else
+    # Debounce any mode change to filter noisy boundary conditions.
+    if [ "$last_mode" != "$desired" ]; then
+      candidate="$desired"
+
+      echo "CPU=${cpu_out}C GPU=${gpu_out}C -> candidate=$candidate, debouncing ${DEBOUNCE_SECS}s"
+      sleep "$DEBOUNCE_SECS"
+
+      # Re-read temps after debounce window and recompute desired
+      cpu_temp2="$(read_cpu_temp_c 2>/dev/null)" || cpu_temp2=""
+      set -- $(read_gpu_temp_c 2>/dev/null)
+      gpu_temp2="$1"
+
+      confirm="$(compute_desired_from_temps "$cpu_temp2" "$gpu_temp2")"
+
+      if [ "$confirm" = "$candidate" ] && [ "$last_mode" != "$candidate" ]; then
+        # Apply change only if it remains stable
+        start_mode "$candidate"
+        setprop "$PROP_NAME" "$candidate"
+        echo "CPU=${cpu_out}C GPU=${gpu_out}C -> switched to $candidate and set $PROP_NAME=$candidate"
+        last_mode="$candidate"
+      else
+        echo "CPU=${cpu_out}C GPU=${gpu_out}C -> change rejected (candidate=$candidate confirm=$confirm)"
+      fi
+    fi
+  fi
+
+  sleep "$SLEEP_SECS"
 done

@@ -3226,6 +3226,7 @@
 /bin/setfan_auto.sh u:object_r:vendor_file:s0
 /bin/customization.sh u:object_r:vendor_file:s0
 /etc/customization.sh u:object_r:vendor_file:s0
+/bin/fan_fake_pwm u:object_r:vendor_file:s0
 /bin/esde_fix.sh u:object_r:vendor_file:s0
 /lib/android.hardware.drm@1.1.so u:object_r:vendor_file:s0
 /lib64/libwvhidl.so u:object_r:vendor_file:s0
