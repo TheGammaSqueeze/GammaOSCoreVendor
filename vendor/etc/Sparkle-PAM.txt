@@ -1,5 +1,5 @@
 # GammaEQ preset
-# name=Sparkle (Pocket Air Mini)
+# name=Clarity
 persist.sys.gammaeq.spk_only=1
 persist.sys.gammaeq.force=0
 persist.sys.gammaeq.preamp_db=-9.026016
@@ -25,9 +25,9 @@ persist.sys.spk.mp.thr=0.92
 persist.sys.spk.mp.atk=2
 persist.sys.spk.mp.rel=120
 persist.sys.spk.peq=1
-persist.sys.spk.peq.b0=0.91842395
-persist.sys.spk.peq.b1=-2.140686
-persist.sys.spk.peq.b2=0.6903466
+persist.sys.spk.peq.b0=0.88085747
+persist.sys.spk.peq.b1=-2.400467
+persist.sys.spk.peq.b2=0.11104584
 persist.sys.spk.peq.a1=0
 persist.sys.spk.peq.a2=0
 persist.sys.spk.peq.pregain=1.0

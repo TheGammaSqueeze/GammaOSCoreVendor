@@ -66,9 +66,9 @@ setprop persist.sys.spk.mp.seq $(( $(getprop persist.sys.spk.mp.seq 0) + 1 ))
 # ------------------------------------------------------------
 
 setprop persist.sys.spk.peq 1                  # Enable PEQ1 block
-setprop persist.sys.spk.peq.b0 0.91842395
-setprop persist.sys.spk.peq.b1 -2.140686
-setprop persist.sys.spk.peq.b2 0.6903466
+setprop persist.sys.spk.peq.b0 0.88085747
+setprop persist.sys.spk.peq.b1 -2.400467
+setprop persist.sys.spk.peq.b2 0.11104584
 setprop persist.sys.spk.peq.a1 0               # Bi-quad a1 coefficient
 setprop persist.sys.spk.peq.a2 0               # Bi-quad a2 coefficient
 setprop persist.sys.spk.peq.pregain 1.0        # Linear pregain
@@ -109,6 +109,9 @@ setprop persist.sys.spk.wide.seq $(( $(getprop persist.sys.spk.wide.seq 0) + 1 )
 # ------------------------------------------------------------
 
 setprop sys.gammaeq.route.spk 1                # 1 = use speaker route for GammaEQ
+
+mkdir -p /sdcard/GammaEQ
+cp /vendor/etc/Sparkle-PAM.txt /sdcard/GammaEQ/
 
 settings put global window_animation_scale 0
 settings put global transition_animation_scale 0
