@@ -862,10 +862,11 @@ data/duraspeed(/.*)? u:object_r:duraspeed_data_file:s0
 /vendor/bin/hw/vendor\.mediatek\.hardware\.aee@1\.0-service u:object_r:aee_hal_exec:s0
 /vendor/bin/gammargb                                u:object_r:gammargb_exec:s0
 /vendor/bin/gammapad                                u:object_r:gammapad_exec:s0
-/vendor/bin/setfan_max\.sh                          u:object_r:vendor_file:s0
-/vendor/bin/setfan_cool\.sh                         u:object_r:vendor_file:s0
-/vendor/bin/setfan_off\.sh                          u:object_r:vendor_file:s0
-/vendor/bin/setfan_auto\.sh                         u:object_r:vendor_file:s0
+/vendor/bin/setfan_max\.sh                          u:object_r:gammargb_exec:s0
+/vendor/bin/setfan_cool\.sh                         u:object_r:gammargb_exec:s0
+/vendor/bin/setfan_off\.sh                          u:object_r:gammargb_exec:s0
+/vendor/bin/setfan_auto\.sh                         u:object_r:gammargb_exec:s0
+/vendor/bin/setfan_auto_daemon                      u:object_r:gammargb_exec:s0
 /vendor/bin/setclock_max\.sh                        u:object_r:vendor_file:s0
 /vendor/bin/setclock_stock\.sh                      u:object_r:vendor_file:s0
 /vendor/bin/setclock_powersave\.sh                  u:object_r:vendor_file:s0
