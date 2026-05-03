@@ -7998,3 +7998,4 @@
 /etc/init/init.gammaos_power.rc u:object_r:vendor_configs_file:s0
 /lib/modules/cpu_oc.ko u:object_r:vendor_file:s0
 /etc/init/init.gammaos_oc.rc u:object_r:vendor_configs_file:s0
+/etc/Sparkle-PAM.txt u:object_r:vendor_configs_file:s0

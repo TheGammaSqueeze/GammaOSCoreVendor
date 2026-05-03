@@ -13,7 +13,7 @@ setprop persist.sys.gammaeq.spk_only 1         # Apply only to speaker route
 setprop persist.sys.gammaeq.force 0            # Do not force EQ on other routes
 
 # ===== Global headroom / makeup =====
-setprop persist.sys.gammaeq.preamp_db  -1.0    # Small safety cut to avoid clipping
+setprop persist.sys.gammaeq.preamp_db -9.026016
 setprop persist.sys.gammaeq.postgain_db 0      # No post gain
 
 # ------------------------------------------------------------
@@ -24,7 +24,7 @@ setprop persist.sys.gammaeq.postgain_db 0      # No post gain
 setprop persist.sys.spk.cryst 1                # 0 = OFF, 1 = ON
 
 # Crystalizer shaping parameters
-setprop persist.sys.spk.cryst.amount 3.630137  # Amount of HF "enhancement"
+setprop persist.sys.spk.cryst.amount 4.0
 setprop persist.sys.spk.cryst.mix 0.25         # Wet/dry mix
 setprop persist.sys.spk.cryst.hz 11500         # Corner frequency for HF emphasis
 setprop persist.sys.spk.cryst.pregain_db -8    # Pre-gain into the block (dB)
@@ -66,9 +66,9 @@ setprop persist.sys.spk.mp.seq $(( $(getprop persist.sys.spk.mp.seq 0) + 1 ))
 # ------------------------------------------------------------
 
 setprop persist.sys.spk.peq 1                  # Enable PEQ1 block
-setprop persist.sys.spk.peq.b0 1.30            # Bi-quad b0 coefficient
-setprop persist.sys.spk.peq.b1 -1.40           # Bi-quad b1 coefficient
-setprop persist.sys.spk.peq.b2 0.60            # Bi-quad b2 coefficient
+setprop persist.sys.spk.peq.b0 0.91842395
+setprop persist.sys.spk.peq.b1 -2.140686
+setprop persist.sys.spk.peq.b2 0.6903466
 setprop persist.sys.spk.peq.a1 0               # Bi-quad a1 coefficient
 setprop persist.sys.spk.peq.a2 0               # Bi-quad a2 coefficient
 setprop persist.sys.spk.peq.pregain 1.0        # Linear pregain
@@ -82,9 +82,9 @@ setprop persist.sys.spk.peq.seq $(( $(getprop persist.sys.spk.peq.seq 0) + 1 ))
 # ------------------------------------------------------------
 
 setprop persist.sys.spk.peq2 1                 # Enable PEQ2 block
-setprop persist.sys.spk.peq2.b0 2.9922945      # Bi-quad b0 coefficient (extra warmth)
-setprop persist.sys.spk.peq2.b1 -0.31506848    # Bi-quad b1 coefficient
-setprop persist.sys.spk.peq2.b2 0.60           # Bi-quad b2 coefficient
+setprop persist.sys.spk.peq2.b0 0.10655721
+setprop persist.sys.spk.peq2.b1 -1.2871907
+setprop persist.sys.spk.peq2.b2 0.40237597
 setprop persist.sys.spk.peq2.a1 0              # Bi-quad a1 coefficient
 setprop persist.sys.spk.peq2.a2 0              # Bi-quad a2 coefficient
 
@@ -97,7 +97,10 @@ setprop persist.sys.spk.peq2.seq $(( $(getprop persist.sys.spk.peq2.seq 0) + 1 )
 setprop persist.sys.spk.wide 1                 # Enable stereo wide block
 setprop persist.sys.spk.wide.mix 0.91780823    # Wet/dry mix
 setprop persist.sys.spk.wide.hpf 5500          # High-pass for widening (Hz)
-setprop persist.sys.spk.wide.amount 1.6232877  # Overall widening amount
+setprop persist.sys.spk.wide.amount 2.0
+setprop persist.sys.spk.wide.pre 11.856165
+setprop persist.sys.spk.wide.limit 0.30907536
+setprop persist.sys.spk.wide.fc 16000.0
 
 setprop persist.sys.spk.wide.seq $(( $(getprop persist.sys.spk.wide.seq 0) + 1 ))
 
