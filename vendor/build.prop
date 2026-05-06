@@ -425,3 +425,12 @@ persist.sys.spk.wide.pre=11.856165
 persist.sys.spk.wide.limit=0.30907536
 persist.sys.spk.wide.fc=16000.0
 sys.gammaeq.route.spk=1
+
+persist.gammaos.qs.override_default_tiles=1
+persist.gammaos.qs.override_default_tiles_0=internet,bt,performance,fan,gammashader,gammargb,gammaeq,rotation,screenmap
+persist.gammaos.qs.override_default_tiles_1=deepsleepmode,immersivemode,abxy,dpadAnalogToggle,analogsensitivity
+persist.gammaos.qs.override_default_tiles_2=analogdeadzone,analogcalibration,analogaxis,rightanalogaxis
+persist.gammaos.qs.override_default_tiles_3=retroarchmenubuttonoverride,mappingeditor
+persist.gammaos.qs.blacklist_0=dcdimmingemulation,launchguard,dualstack,gammasecondarydisplay
+persist.gammaos.qs.blacklist_1=gammadualfocus,gammasplitbrightness,globalbfi,gammarefresh
+persist.gammaos.qs.blacklist_2=477v,usbcontrollerswitch
