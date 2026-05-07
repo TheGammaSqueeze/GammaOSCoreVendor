@@ -434,3 +434,5 @@ persist.gammaos.qs.override_default_tiles_3=retroarchmenubuttonoverride,mappinge
 persist.gammaos.qs.blacklist_0=dcdimmingemulation,launchguard,dualstack,gammasecondarydisplay
 persist.gammaos.qs.blacklist_1=gammadualfocus,gammasplitbrightness,globalbfi,gammarefresh
 persist.gammaos.qs.blacklist_2=477v,usbcontrollerswitch
+
+persist.gammaos.nano.drm_flip_v=1
