@@ -1,0 +1,12 @@
+service vendor.bt_chip_warmup /vendor/bin/bt_chip_warmup.sh
+    class core
+    user bluetooth
+    group bluetooth net_bt_admin
+    oneshot
+    seclabel u:r:vendor_init:s0
+    disabled
+
+# Trigger after init.wireless.bluetooth.rc has loaded the xradio module and
+# set vendor.init.lpm.load=1 (which also chmods /proc/bluetooth/sleep/*).
+on property:vendor.init.lpm.load=1
+    start vendor.bt_chip_warmup

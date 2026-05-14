@@ -1,0 +1,18 @@
+on boot
+    # prevent display runtime PM suspend (panel re-init on resume flips 180 degrees)
+    write /sys/devices/platform/soc/6000000.disp/power/control on
+
+    # prevent kernel panic on xradio WiFi SDIO oops (NULL deref in restart_work)
+    write /proc/sys/kernel/panic_on_oops 0
+
+    # display color enhance
+    chown system system /sys/class/disp/disp/attr/color_temperature
+    chown system system /sys/class/disp/disp/attr/cvbs_enhacne_mode
+    chown system system /sys/class/disp/disp/attr/enhance_mode
+    chown system system /sys/class/disp/disp/attr/enhance_saturation
+    chown system system /sys/class/disp/disp/attr/enhance_bright
+    chown system system /sys/class/disp/disp/attr/enhance_detail
+    chown system system /sys/class/disp/disp/attr/enhance_contrast
+    chown system system /sys/class/disp/disp/attr/enhance_denoise
+    chown system system /sys/class/disp/disp/attr/enhance_edge
+

@@ -1,0 +1,13 @@
+service trimui_inputd /vendor/bin/trimui_inputd
+    class core
+    user root
+    group root input
+    seclabel u:r:su:s0
+    disabled
+
+# GammaOS Nano: start trimui_inputd at late-fs so the TRIMUI Player1 uinput
+# device is registered before NanoMenu paints. Default class main does not
+# fire until on nonencrypted (post-FBE-unlock, ~T+28s), which leaves the
+# controller dead for the first ~15s of the menu being visible.
+on late-fs
+    start trimui_inputd

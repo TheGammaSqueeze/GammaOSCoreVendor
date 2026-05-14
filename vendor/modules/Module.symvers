@@ -1,0 +1,45 @@
+kernel/drivers/video/backlight/lcd.ko:
+kernel/drivers/video/backlight/backlight.ko:
+kernel/drivers/video/backlight/generic_bl.ko: kernel/drivers/video/backlight/backlight.ko
+kernel/drivers/soc/sunxi/vf-test.ko:
+kernel/drivers/net/wireless/aic8800/aic8800_bsp/aic8800_bsp.ko:
+kernel/drivers/net/wireless/aic8800/aic8800_btlpm/aic8800_btlpm.ko:
+kernel/drivers/net/wireless/aic8800/aic8800_fdrv/aic8800_fdrv.ko: kernel/drivers/net/wireless/aic8800/aic8800_bsp/aic8800_bsp.ko
+kernel/drivers/net/wireless/uwe5622/unisocwcn/uwe5622_bsp_sdio.ko:
+kernel/drivers/net/wireless/uwe5622/unisocwifi/sprdwl_ng.ko: kernel/drivers/net/wireless/uwe5622/unisocwcn/uwe5622_bsp_sdio.ko
+kernel/drivers/net/wireless/uwe5622/tty-sdio/sprdbt_tty.ko: kernel/drivers/net/wireless/uwe5622/unisocwcn/uwe5622_bsp_sdio.ko
+kernel/drivers/net/wireless/xr829/xr829.ko:
+kernel/drivers/input/touchscreen/gslx680new/gslX680new.ko:
+kernel/drivers/input/misc/sunxi-vibrator.ko:
+kernel/drivers/media/v4l2-core/videobuf2-core.ko:
+kernel/drivers/media/v4l2-core/videobuf2-v4l2.ko: kernel/drivers/media/v4l2-core/videobuf2-core.ko
+kernel/drivers/media/v4l2-core/videobuf2-memops.ko:
+kernel/drivers/media/v4l2-core/videobuf2-vmalloc.ko: kernel/drivers/media/v4l2-core/videobuf2-memops.ko
+kernel/drivers/media/v4l2-core/videobuf2-dma-contig.ko: kernel/drivers/media/v4l2-core/videobuf2-memops.ko
+kernel/drivers/media/platform/sunxi-vin/modules/sensor/ov5640.ko: kernel/drivers/media/platform/sunxi-vin/vin_io.ko
+kernel/drivers/media/platform/sunxi-vin/modules/sensor/gc0310_mipi.ko: kernel/drivers/media/platform/sunxi-vin/vin_io.ko
+kernel/drivers/media/platform/sunxi-vin/modules/sensor/gc2355_mipi.ko: kernel/drivers/media/platform/sunxi-vin/vin_io.ko
+kernel/drivers/media/platform/sunxi-vin/modules/sensor/gc030a_mipi.ko: kernel/drivers/media/platform/sunxi-vin/vin_io.ko
+kernel/drivers/media/platform/sunxi-vin/modules/sensor/gc2385_mipi.ko: kernel/drivers/media/platform/sunxi-vin/vin_io.ko
+kernel/drivers/media/platform/sunxi-vin/modules/sensor/gc5024_mipi.ko: kernel/drivers/media/platform/sunxi-vin/vin_io.ko
+kernel/drivers/media/platform/sunxi-vin/modules/sensor/gc5025_mipi.ko: kernel/drivers/media/platform/sunxi-vin/vin_io.ko
+kernel/drivers/media/platform/sunxi-vin/modules/sensor/gc5035_mipi.ko: kernel/drivers/media/platform/sunxi-vin/vin_io.ko
+kernel/drivers/media/platform/sunxi-vin/modules/sensor/imx317_mipi.ko: kernel/drivers/media/platform/sunxi-vin/vin_io.ko
+kernel/drivers/media/platform/sunxi-vin/modules/sensor/imx278_mipi.ko: kernel/drivers/media/platform/sunxi-vin/vin_io.ko
+kernel/drivers/media/platform/sunxi-vin/modules/sensor/imx278_2lane_mipi.ko: kernel/drivers/media/platform/sunxi-vin/vin_io.ko
+kernel/drivers/media/platform/sunxi-vin/modules/sensor/imx386_2lane_mipi.ko: kernel/drivers/media/platform/sunxi-vin/vin_io.ko
+kernel/drivers/media/platform/sunxi-vin/modules/sensor/ov5648_mipi.ko: kernel/drivers/media/platform/sunxi-vin/vin_io.ko
+kernel/drivers/media/platform/sunxi-vin/modules/sensor/gc2590_mipi.ko: kernel/drivers/media/platform/sunxi-vin/vin_io.ko
+kernel/drivers/media/platform/sunxi-vin/modules/actuator/actuator.ko:
+kernel/drivers/media/platform/sunxi-vin/modules/actuator/ad5820_act.ko: kernel/drivers/media/platform/sunxi-vin/modules/actuator/actuator.ko kernel/drivers/media/platform/sunxi-vin/vin_io.ko
+kernel/drivers/media/platform/sunxi-vin/modules/actuator/dw9714_act.ko: kernel/drivers/media/platform/sunxi-vin/modules/actuator/actuator.ko kernel/drivers/media/platform/sunxi-vin/vin_io.ko
+kernel/drivers/media/platform/sunxi-vin/modules/actuator/ov8825_act.ko: kernel/drivers/media/platform/sunxi-vin/modules/actuator/actuator.ko kernel/drivers/media/platform/sunxi-vin/vin_io.ko
+kernel/drivers/media/platform/sunxi-vin/modules/actuator/an41908a_act.ko:
+kernel/drivers/media/platform/sunxi-vin/vin_io.ko:
+kernel/drivers/media/platform/sunxi-vin/vin_v4l2.ko: kernel/drivers/media/v4l2-core/videobuf2-dma-contig.ko kernel/drivers/media/v4l2-core/videobuf2-memops.ko kernel/drivers/media/v4l2-core/videobuf2-v4l2.ko kernel/drivers/media/v4l2-core/videobuf2-core.ko kernel/drivers/media/platform/sunxi-vin/vin_io.ko
+kernel/drivers/media/usb/uvc/uvcvideo.ko: kernel/drivers/media/v4l2-core/videobuf2-vmalloc.ko kernel/drivers/media/v4l2-core/videobuf2-memops.ko kernel/drivers/media/v4l2-core/videobuf2-v4l2.ko kernel/drivers/media/v4l2-core/videobuf2-core.ko
+kernel/drivers/media/usb/gspca/gspca_main.ko:
+kernel/drivers/bluetooth/xradio_btlpm.ko:
+kernel/net/ipv4/tcp_bic.ko:
+kernel/net/ipv4/tcp_westwood.ko:
+kernel/net/ipv4/tcp_htcp.ko:

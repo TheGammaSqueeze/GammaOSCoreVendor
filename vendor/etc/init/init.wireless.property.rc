@@ -1,0 +1,6 @@
+# Auto-generated
+# date: Mon Jul  7 15:39:18 CST 2025
+on init
+    setprop wifi.interface wlan0
+    setprop persist.vendor.wlan_vendor realtek
+    setprop wifi.direct.interface p2p0

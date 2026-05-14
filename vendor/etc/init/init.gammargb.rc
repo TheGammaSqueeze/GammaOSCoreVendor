@@ -1,0 +1,31 @@
+service gammargb /vendor/bin/gammargb
+    class main
+    user root
+    group root system
+    seclabel u:r:su:s0
+    oneshot
+    disabled
+
+service led_off /system/bin/sh -c "\
+    kill -9 \$(pidof gammargb) 2>/dev/null; \
+    sleep 0.2; \
+    for led in /sys/class/leds/sunxi_led*; do \
+        echo 0 > \$led/brightness 2>/dev/null; \
+    done; \
+    echo 0 > /sys/class/led_anim/max_scale 2>/dev/null"
+    class main
+    user root
+    group root system
+    seclabel u:r:su:s0
+    oneshot
+    disabled
+
+on property:persist.gammaos.rgb.enable=1
+    start gammargb
+
+on property:persist.gammaos.rgb.enable=0
+    stop gammargb
+    start led_off
+
+on property:sys.boot_completed=1
+    start gammargb
