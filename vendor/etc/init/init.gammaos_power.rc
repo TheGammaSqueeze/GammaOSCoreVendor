@@ -1,0 +1,34 @@
+# /vendor/etc/init/init.gammaos_power.rc
+
+service setclock_max /vendor/bin/setclock_max.sh
+    class main
+    user root
+    group root system
+    seclabel u:r:gammaoscustomization:s0
+    oneshot
+    disabled
+
+service setclock_stock /vendor/bin/setclock_stock.sh
+    class main
+    user root
+    group root system
+    seclabel u:r:gammaoscustomization:s0
+    oneshot
+    disabled
+
+service setclock_powersave /vendor/bin/setclock_powersave.sh
+    class main
+    user root
+    group root system
+    seclabel u:r:gammaoscustomization:s0
+    oneshot
+    disabled
+
+on property:persist.gammaos.performance_mode=max
+    start setclock_max
+
+on property:persist.gammaos.performance_mode=stock
+    start setclock_stock
+
+on property:persist.gammaos.performance_mode=powersave
+    start setclock_powersave

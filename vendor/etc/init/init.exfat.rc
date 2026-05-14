@@ -1,0 +1,3 @@
+on fs
+    insmod /vendor/modules/nls_utf8.ko
+    insmod /vendor/modules/exfat.ko

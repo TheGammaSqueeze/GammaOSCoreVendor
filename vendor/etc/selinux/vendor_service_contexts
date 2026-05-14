@@ -1,6 +1,0 @@
-#line 1 "device/rockchip/common/sepolicy/vendor/service_contexts"
-android.hardware.drm.IDrmFactory/widevine    u:object_r:hal_drm_service:s0
-#line 1 "system/sepolicy/reqd_mask/service_contexts"
-# empty service_contexts file - this file is used to generate an empty
-# non-platform service_context for devices without any service_contexts
-# customizations.
