@@ -992,3 +992,5 @@
 /xbin/am u:object_r:vendor_file:s0
 /xbin/vdc u:object_r:vendor_file:s0
 /xbin/vdc_vendor u:object_r:vendor_file:s0
+/modules/erofs\.ko u:object_r:vendor_file:s0
+/etc/init/init\.erofs\.rc u:object_r:vendor_configs_file:s0
