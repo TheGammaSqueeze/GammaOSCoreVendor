@@ -1,0 +1,59 @@
+on early-init
+    # /vendor/build.prop properties don't get applied at boot on EROFS-vendor.
+    # File is identical to ext4 build (md5 match) but init reads it before
+    # the EROFS mount is fully ready and silently ends up with empty values.
+    # ro.board.platform is the critical one - without it hw_get_module()
+    # falls back to gralloc.default.so stub, breaking PowerVR EGL init.
+    setprop ro.board.platform ceres
+    setprop ro.product.board exdroid
+    setprop ro.product.vendor.brand Allwinner
+    setprop ro.product.vendor.device ceres-aw3
+    setprop ro.product.vendor.manufacturer Allwinner
+    setprop ro.product.vendor.model "QUAD-CORE A133 aw4"
+    setprop ro.product.vendor.name ceres_aw4
+    setprop ro.product.vendor.platform tablet
+    setprop ro.product.vendor.first_api_level 29
+    setprop persist.vendor.p_bootcomplete true
+
+on post-fs
+    # /vendor/ueventd.rc rules don't apply at boot on EROFS-vendor for the
+    # same timing reason. Re-apply the load-bearing device-node permissions
+    # here so the graphics + gralloc + PowerVR stack can talk to its driver
+    # nodes. /dev/ion + /dev/pvr_sync are the two that gate EGLContext.
+    chmod 0777 /dev/ion
+    chown system graphics /dev/ion
+    chmod 0666 /dev/pvrsrvkm
+    chown root root /dev/pvrsrvkm
+    chmod 0770 /dev/disp
+    chown system system /dev/disp
+    chmod 0660 /dev/g2d
+    chown system graphics /dev/g2d
+    chmod 0660 /dev/transform
+    chown system system /dev/transform
+    chmod 0666 /dev/sunxi_mem
+    chown media media /dev/sunxi_mem
+    chmod 0640 /dev/sunxi_soc_info
+    chown root root /dev/sunxi_soc_info
+    chmod 0666 /dev/cedar_dev
+    chown media camera /dev/cedar_dev
+    chmod 0666 /dev/ace_dev
+    chown system system /dev/ace_dev
+    chmod 0660 /dev/fd_dev
+    chown media media /dev/fd_dev
+    chmod 0666 /dev/dri/card0
+    chown system graphics /dev/dri/card0
+    chmod 0666 /dev/dri/renderD128
+    chown system graphics /dev/dri/renderD128
+
+on post-fs-data
+    # /dev/pvr_sync is re-created by pvrsrvkm at fs time, so the post-fs
+    # chmod doesn't stick. Re-apply at post-fs-data and on boot.
+    chmod 0666 /dev/pvr_sync
+    chown system graphics /dev/pvr_sync
+
+on boot
+    # Last line of defense - apply once more before SF starts to render.
+    chmod 0666 /dev/pvr_sync
+    chown system graphics /dev/pvr_sync
+    chmod 0777 /dev/ion
+    chown system graphics /dev/ion
