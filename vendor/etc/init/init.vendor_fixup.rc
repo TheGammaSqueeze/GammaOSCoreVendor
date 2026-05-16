@@ -1,9 +1,13 @@
 on early-init
-    # /vendor/build.prop properties don't get applied at boot on EROFS-vendor.
-    # File is identical to ext4 build (md5 match) but init reads it before
-    # the EROFS mount is fully ready and silently ends up with empty values.
-    # ro.board.platform is the critical one - without it hw_get_module()
-    # falls back to gralloc.default.so stub, breaking PowerVR EGL init.
+    # Workaround: /vendor/build.prop properties don't get applied at boot on
+    # EROFS-vendor. The first-stage init.real successfully mounts /system and
+    # /vendor as EROFS, but second-stage init then sees neither (open() returns
+    # ENOENT) for ~the same window when it loads its property files. ext4
+    # mount survives the first-to-second-stage handoff; EROFS does not. The
+    # root cause is likely in the switch_root + exec path (or the SELinux
+    # "Setting up existing superblocks" pass running between mount and
+    # second-stage exec). For now we paper over the symptoms by setting the
+    # load-bearing values ourselves from vendor's own init.rc.
     setprop ro.board.platform ceres
     setprop ro.product.board exdroid
     setprop ro.product.vendor.brand Allwinner
@@ -15,11 +19,22 @@ on early-init
     setprop ro.product.vendor.first_api_level 29
     setprop persist.vendor.p_bootcomplete true
 
+on fs
+    # First trigger after first_stage_mount; apply pvr_sync ASAP. pvrsrvkm
+    # re-creates /dev/pvr_sync ~2s into boot, so the very first chmod won't
+    # always stick - it's retried below. Mode 0666 system:graphics matches
+    # the rule in /vendor/ueventd.rc.
+    chmod 0666 /dev/pvr_sync
+    chown system graphics /dev/pvr_sync
+    chmod 0777 /dev/ion
+    chown system graphics /dev/ion
+
 on post-fs
-    # /vendor/ueventd.rc rules don't apply at boot on EROFS-vendor for the
-    # same timing reason. Re-apply the load-bearing device-node permissions
-    # here so the graphics + gralloc + PowerVR stack can talk to its driver
-    # nodes. /dev/ion + /dev/pvr_sync are the two that gate EGLContext.
+    # Apply /vendor/ueventd.rc rules that didn't get loaded. Without these
+    # gralloc HAL can't open /dev/ion, PowerVR can't open /dev/pvr_sync,
+    # and SurfaceFlinger fails at EGLContext creation.
+    chmod 0666 /dev/pvr_sync
+    chown system graphics /dev/pvr_sync
     chmod 0777 /dev/ion
     chown system graphics /dev/ion
     chmod 0666 /dev/pvrsrvkm
@@ -46,13 +61,14 @@ on post-fs
     chown system graphics /dev/dri/renderD128
 
 on post-fs-data
-    # /dev/pvr_sync is re-created by pvrsrvkm at fs time, so the post-fs
-    # chmod doesn't stick. Re-apply at post-fs-data and on boot.
+    # Re-apply after post-fs and again at boot in case pvrsrvkm recreated
+    # the node after our earlier chmod.
     chmod 0666 /dev/pvr_sync
     chown system graphics /dev/pvr_sync
+    chmod 0777 /dev/ion
+    chown system graphics /dev/ion
 
 on boot
-    # Last line of defense - apply once more before SF starts to render.
     chmod 0666 /dev/pvr_sync
     chown system graphics /dev/pvr_sync
     chmod 0777 /dev/ion
