@@ -1,6 +1,4 @@
 on boot
-    # prevent display runtime PM suspend (panel re-init on resume flips 180 degrees)
-    write /sys/devices/platform/soc/6000000.disp/power/control on
 
     # prevent kernel panic on xradio WiFi SDIO oops (NULL deref in restart_work)
     write /proc/sys/kernel/panic_on_oops 0
