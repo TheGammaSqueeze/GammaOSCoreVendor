@@ -995,3 +995,4 @@
 /modules/erofs\.ko u:object_r:vendor_file:s0
 /etc/init/init\.erofs\.rc u:object_r:vendor_configs_file:s0
 /etc/init/init\.vendor_fixup\.rc u:object_r:vendor_configs_file:s0
+/etc/init/init\.nano_hal_optimize\.rc u:object_r:vendor_configs_file:s0
