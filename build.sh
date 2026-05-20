@@ -27,7 +27,8 @@ fi
 chown -R root:root vendor/
 bash apply_contexts.sh vendor/ selinux_contexts.txt
 
-# Step 2. Build ext4 image (used as the fallback in fstab).
+# Step 2. Build ext4 image (the canonical image with correct perms,
+# ownership, and SELinux xattrs applied by e2fsdroid).
 rm -f vendor.img
 
 MKE2FS_CONFIG=mke2fs.conf ./mke2fs \
@@ -51,30 +52,37 @@ MKE2FS_CONFIG=mke2fs.conf ./mke2fs \
     -a / \
     vendor.img
 
-# Step 3. Build erofs image. xattrs and ownership are already applied
-# to the source tree by step 1, so mkfs.erofs picks them up directly.
-# Same approach as the 405v / 405m / 505 vendor builds.
-#
-# Flags:
-#  -zlz4hc            best compression for SD-card-bound boot reads
-#  -E legacy-compress fixed-output-size clusters (compatible with the
-#                     in-tree EROFS module's decompressor)
-#  -T 1230768000      fixed UNIX epoch for deterministic mtimes
-#  -x 16              inline xattrs up to 16 bytes (matches 405v)
-#  -U <uuid>          match the ext4 image so flashing either side
-#                     does not confuse fstab consumers that read UUID
-rm -f vendor.img.erofs
-(
-    cd vendor
-    mkfs.erofs \
-        -zlz4hc \
-        -E legacy-compress \
-        -T 1230768000 \
-        -x 16 \
-        -U e73f3ebb-dcc1-43cc-9386-bb5757f49f45 \
-        ../vendor.img.erofs \
-        .
-)
+# Step 3. Convert ext4 to EROFS by mounting the ext4 image and building
+# EROFS from the mount. This guarantees the EROFS image is byte-for-byte
+# identical in permissions, uid/gid, and SELinux xattrs to the ext4 image
+# (e2fsdroid is the single source of truth for all filesystem metadata).
+UUID="e73f3ebb-dcc1-43cc-9386-bb5757f49f45"
+MNT="$(mktemp -d -t erofs_vendor.XXXX)"
+LOOP="$(losetup -f --show -r vendor.img)"
+trap '
+    set +e
+    umount "$MNT" 2>/dev/null
+    losetup -d "$LOOP" 2>/dev/null
+    rmdir "$MNT" 2>/dev/null
+' EXIT
+
+mount -t ext4 -o ro "$LOOP" "$MNT"
+
+EROFS_OUT="$(pwd)/vendor.img.erofs"
+rm -f "$EROFS_OUT"
+( cd "$MNT" && mkfs.erofs \
+    -zlz4hc \
+    -C 65536 \
+    -T 1230768000 \
+    -x 16 \
+    -U "$UUID" \
+    "$EROFS_OUT" \
+    . )
+
+umount "$MNT"
+losetup -d "$LOOP"
+rmdir "$MNT"
+trap - EXIT
 
 echo
 echo "=== built vendor.img + vendor.img.erofs ==="
