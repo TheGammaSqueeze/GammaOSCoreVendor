@@ -1,8 +1,20 @@
-service trimui_inputd /vendor/bin/trimui_inputd
+service trimui_inputd /vendor/bin/chrt -f 2 /vendor/bin/trimui_inputd
     class core
     user root
     group root input
     seclabel u:r:su:s0
+    # GammaOS Nano: the input daemon must stay responsive even when a game drives the
+    # system deep into zram swap. Without this it ran SCHED_OTHER/nice 0 and ~1/3 of its
+    # (tiny ~312kB) footprint got swapped out, so each input event took a major fault that
+    # serialized behind kswapd under PSI stall = laggy/dead controller. Protections:
+    #  - launched via /vendor/bin/chrt SCHED_FIFO prio 2 so an input event preempts the
+    #    game/kswapd (event-driven daemon that sleeps on read(/dev/input), so RT costs ~0 CPU);
+    #  - memcg.swappiness 0 keeps its pages resident (never swapped) = no major faults;
+    #  - priority -20 + ioprio rt 0 = top CPU/IO weight; oom_score_adjust -1000 = never killed.
+    oom_score_adjust -1000
+    priority -20
+    ioprio rt 0
+    memcg.swappiness 0
     disabled
 
 # GammaOS Nano: start trimui_inputd at late-fs so the TRIMUI Player1 uinput
