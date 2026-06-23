@@ -35,7 +35,10 @@ ro.bootimage.build.fingerprint=Allwinner/ceres_aw4/ceres-aw3:10/QP1A.191105.004/
 #
 # ADDITIONAL VENDOR BUILD PROPERTIES
 #
-ro.zygote=zygote64
+# GammaOS: re-enable 32-bit app support on this device (was zygote64 = 64-only).
+# zygote64_32 starts the 32-bit secondary zygote so armeabi-v7a apps/emulators run.
+# Requires the system build to NOT set ro.zygote.disable_secondary=1.
+ro.zygote=zygote64_32
 persist.vendor.p_bootcomplete=true
 persist.vendor.p_debug=false
 persist.vendor.p_benchmark=true
@@ -82,10 +85,20 @@ ro.lmk.kill_heaviest_task=false
 ro.lmk.use_new_strategy=false
 ro.lmk.psi_complete_stall_ms=1000
 ro.lmk.psi_partial_stall_ms=200
-ro.lmk.thrashing_limit=80
+# GammaOS Nano: tolerate more zram refault thrashing before killing (was 80) so a
+# transient launch spike leans on swap instead of reaping the foreground app.
+ro.lmk.thrashing_limit=100
 ro.lmk.thrashing_limit_decay=50
 ro.lmk.swap_util_max=95
-ro.lmk.swap_free_low_percentage=10
+# GammaOS Nano: the live lmkd path on this device is mp_event_common (use_new_strategy
+# resolves false + v1 memcg), so the PSI knobs above (psi_*_stall_ms, thrashing_*,
+# swap_util_max, kill_heaviest_task) are INERT. swap_free_low_percentage IS live (lmkd
+# downgrade gate) - 5% lets zram fill far more before swap counts as low. ro.lmk.critical
+# (level_oomadj[CRITICAL]) is the ONLY knob gating the adj-0 foreground kill; kept at 0
+# because raising it risks a kernel-OOM reboot. The real fix for the foreground kills is
+# proactive kernel reclaim (watermark_scale_factor/min_free/extra_free) in init.gammaos-io.rc.
+ro.lmk.swap_free_low_percentage=5
+ro.lmk.critical=0
 ro.lmk.kill_timeout_ms=100
 ro.crypto.volume.contents_mode=aes-256-xts
 ro.crypto.volume.filenames_mode=aes-256-cts
