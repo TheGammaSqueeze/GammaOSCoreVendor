@@ -94,11 +94,17 @@ ro.lmk.swap_util_max=95
 # resolves false + v1 memcg), so the PSI knobs above (psi_*_stall_ms, thrashing_*,
 # swap_util_max, kill_heaviest_task) are INERT. swap_free_low_percentage IS live (lmkd
 # downgrade gate) - 5% lets zram fill far more before swap counts as low. ro.lmk.critical
-# (level_oomadj[CRITICAL]) is the ONLY knob gating the adj-0 foreground kill; kept at 0
-# because raising it risks a kernel-OOM reboot. The real fix for the foreground kills is
-# proactive kernel reclaim (watermark_scale_factor/min_free/extra_free) in init.gammaos-io.rc.
+# (level_oomadj[CRITICAL]) is the ONLY knob gating the adj-0 foreground kill in
+# mp_event_common: at 0 lmkd reaped a large foreground game (com.noahncopeland, ~238MB)
+# on a CRITICAL vmpressure spike while ~168MB RAM AND ~1.5GB swap were still FREE - a
+# premature pressure kill, not OOM. Set to 200 so lmkd protects the foreground/visible
+# app (the game stays adj 0 even with the overlay up) and only sheds background/cached;
+# the kernel then uses the free RAM and swaps cold pages to the large zram+swapfile pool
+# instead of killing. Safe because that abundant swap gives the kernel somewhere to put
+# pages (no kernel-OOM). Proactive reclaim (watermark_scale_factor/min_free/extra_free)
+# in init.gammaos-io.rc still helps small games swap early.
 ro.lmk.swap_free_low_percentage=5
-ro.lmk.critical=0
+ro.lmk.critical=200
 ro.lmk.kill_timeout_ms=100
 ro.crypto.volume.contents_mode=aes-256-xts
 ro.crypto.volume.filenames_mode=aes-256-cts
