@@ -8,5 +8,12 @@ service vendor.bt_chip_warmup /vendor/bin/bt_chip_warmup.sh
 
 # Trigger after init.wireless.bluetooth.rc has loaded the xradio module and
 # set vendor.init.lpm.load=1 (which also chmods /proc/bluetooth/sleep/*).
-on property:vendor.init.lpm.load=1
-    start vendor.bt_chip_warmup
+#
+# DISABLED: the warmup raw-powers the chip (rfkill + btwake/btwrite), which makes
+# the bcm_bluesleep driver ACQUIRE the bluesleep wakelock. That is only released by
+# a proper BT-stack HCI teardown (a framework enable->disable), so when Bluetooth is
+# never enabled it stays held all session, blocks suspend, and drains the battery
+# (~35% over ~7h of "sleep"). The BT-init timeout it worked around is now 8s
+# (bluetooth.enable_timeout_ms=8000 / gd.start_timeout=10000), so cold init fits.
+# on property:vendor.init.lpm.load=1
+#     start vendor.bt_chip_warmup

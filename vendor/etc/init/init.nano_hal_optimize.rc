@@ -28,6 +28,8 @@ service vendor.light-hal-2-0 /vendor/bin/hw/android.hardware.light@2.0-service
 on property:sys.gammaos.minimal_boot=1 && property:sys.boot_completed=1
     start vendor.wifi_hal_legacy
 
-# BT chip warmup: defer until boot_completed in nano mode
-on property:sys.gammaos.minimal_boot=1 && property:sys.boot_completed=1
-    start vendor.bt_chip_warmup
+# BT chip warmup: DISABLED - it pins the bluesleep wakelock (see
+# init.bluetooth.boot.rc) and drained the battery in sleep when BT was never
+# enabled. The 8s BT-init timeout makes cold init fine without it.
+# on property:sys.gammaos.minimal_boot=1 && property:sys.boot_completed=1
+#     start vendor.bt_chip_warmup
