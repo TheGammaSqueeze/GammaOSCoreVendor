@@ -176,6 +176,7 @@
 /bin/sed u:object_r:vendor_toolbox_exec:s0
 /bin/sendevent u:object_r:vendor_toolbox_exec:s0
 /bin/seq u:object_r:vendor_toolbox_exec:s0
+/bin/sleep.sh u:object_r:vendor_file:s0
 /bin/setclock_max\.sh u:object_r:vendor_file:s0
 /bin/setclock_powersave\.sh u:object_r:vendor_file:s0
 /bin/setclock_stock\.sh u:object_r:vendor_file:s0
