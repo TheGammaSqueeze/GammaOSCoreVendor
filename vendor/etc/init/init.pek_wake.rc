@@ -1,0 +1,13 @@
+# Arm the AXP2202 PMIC power key (PEK) IRQs as system wake sources.
+#
+# The stock kernel's axp2101-pek driver never calls enable_irq_wake() on the
+# PEK dbr/dbf interrupts, so a power-button press cannot wake the SoC from full
+# suspend-to-RAM (it only latches in the PMIC and surfaces on the next unrelated
+# wake). axp_pek_wake.ko self-locates those irqs and arms them. We cannot
+# rebuild the prebuilt kernel, so this is an out-of-tree helper module.
+#
+# Loaded at boot_completed (NOT early): arming the wake state only sticks
+# reliably once the PM/suspend framework and the axp drivers have fully settled
+# - a very-early (pre_init / on fs) load is intermittently lost.
+on property:sys.boot_completed=1
+    insmod /vendor/modules/axp_pek_wake.ko
