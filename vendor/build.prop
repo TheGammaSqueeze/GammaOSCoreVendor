@@ -421,3 +421,9 @@ persist.gammaos.nano.primary_display=1
 # behaviour is locked even if a future refactor changes the default.
 persist.gammaos.nano.triple_buffer=1
 persist.gammaos.nano.vsync=1
+persist.sys.usb.config=adb
+persist.gammaos.nano.drastic_nano=1
+persist.gammaos.nano.ps3xmb=1
+persist.gammaos.nano.overlay=1
+persist.bootanim.skip_nano=0
+persist.gammaos.ultra_low_power_saving_mode=1
