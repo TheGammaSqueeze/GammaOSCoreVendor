@@ -308,6 +308,12 @@ persist.gammaos.nano.overlay=1
 persist.gammaos.ultra_low_power_saving_mode=1
 
 # GammaOS Nano: hardware swivel rotation + PSP slide clock + gyro parallax defaults
+persist.gammaos.rotate.enabled=1
+persist.gammaos.rotate.degrees=90
+persist.gammaos.rotate.dev_name=gpio-keys
+persist.gammaos.rotate.key_code=88
+persist.gammaos.rotate.down_action=rotate
+persist.gammaos.rotate.up_action=natural
 persist.gammaos.nano.pspclock=1
 persist.gammaos.nano.pspclock.liveapp=1
 persist.gammaos.nano.pspclock.tilt.cal=0.12,1,-1,-1
@@ -375,22 +381,3 @@ persist.sys.spk.wide.amount=1.6232877
 sys.gammaeq.route.spk=1
 persist.gammaos.ext.primary=1
 persist.gammaos.bg_process_limit=0
-
-# --- GammaOS Nano slide/hall wake (Anbernic RG Rotate, Unisoc T618) ---
-# The hall is wired as an EV_SW SW_TABLET_MODE switch on the EIC async bank so it
-# can wake the SoC out of deep S3. Pairs with: the async settle-poll
-# gpio-eic-sprd.ko baked into vendor_boot, the eic_async SW_TABLET_MODE dtbo, and
-# the wakelock-debounce PhoneWindowManager build. Replaces the old KEY_F12 /
-# eic_debounce config. wake_debounce_ms=1000 requires the wakelock-debounce
-# framework (holds the CPU awake across the debounce so the wake survives the
-# deep-sleep re-suspend); set 0 for immediate wake if running without it.
-persist.gammaos.rotate.enabled=1
-persist.gammaos.rotate.key_type=5
-persist.gammaos.rotate.key_code=1
-persist.gammaos.rotate.key_active=1
-persist.gammaos.rotate.dev_name=gpio-keys
-persist.gammaos.rotate.down_action=rotate,screenoff
-persist.gammaos.rotate.up_action=natural,wake
-persist.gammaos.rotate.degrees=90
-persist.gammaos.rotate.sleep_delay=5
-persist.gammaos.rotate.wake_debounce_ms=1000
