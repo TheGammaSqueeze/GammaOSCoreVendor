@@ -1,4 +1,0 @@
-service vendor.refnotify /vendor/bin/refnotify
-    class main
-    user root
-    group system radio shell
