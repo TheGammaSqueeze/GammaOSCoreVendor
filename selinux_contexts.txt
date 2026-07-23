@@ -5176,3 +5176,8 @@
 /odm_dlkm/etc/NOTICE\.xml\.gz u:object_r:vendor_file:s0
 /odm_dlkm/etc/build\.prop u:object_r:vendor_file:s0
 /ueventd\.rc u:object_r:vendor_file:s0
+/build\.prop\.bak\.1784315434 u:object_r:vendor_file:s0
+/etc/init/engpc\.rc u:object_r:vendor_configs_file:s0
+/etc/init/refnotify\.rc u:object_r:vendor_configs_file:s0
+/etc/init/vendor\.sprd\.hardware\.cplog_svc@1\.0-service\.rc u:object_r:vendor_configs_file:s0
+/etc/init/vendor\.sprd\.hardware\.log@1\.0-service\.rc u:object_r:vendor_configs_file:s0

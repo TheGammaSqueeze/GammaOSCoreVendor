@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <root>
   <enhance major_version="1"/>
-  <enhance version="2007211401"/>
+  <enhance version="2602281049"/>
   <hsv_cm_epf_slp_ltm>
     <reg_table mode="auto">
       <hsv>
@@ -381,26 +381,26 @@
         <param coef23="0"/>
       </cm>
       <epf>
-          <param epsilon0="100"/>
-          <param epsilon1="300"/>
-          <param gain0="0"/>
-          <param gain1="-8"/>
-          <param gain2="20"/>
-          <param gain3="52"/>
-          <param gain4="48"/>
-          <param gain5="20"/>
-          <param gain6="80"/>
-          <param gain7="130"/>
-          <param max_diff="10"/>
-          <param min_diff="16"/>
+        <param epsilon0="20"/>
+        <param epsilon1="255"/>
+        <param gain0="0"/>
+        <param gain1="0"/>
+        <param gain2="32"/>
+        <param gain3="160"/>
+        <param gain4="0"/>
+        <param gain5="0"/>
+        <param gain6="32"/>
+        <param gain7="160"/>
+        <param max_diff="0"/>
+        <param min_diff="0"/>
       </epf>
       <slp>
-        <param brightness="16"/>
+        <param brightness="32"/>
       </slp>
       <ltm>
-        <param slp_step_clip="255"/>
-        <param slp_high_clip="40"/>
-        <param slp_low_clip="40"/>
+        <param slp_step_clip="64"/>
+        <param slp_high_clip="0"/>
+        <param slp_low_clip="0"/>
       </ltm>
     </reg_table>
     <reg_table mode="enhance">
@@ -784,7 +784,7 @@
           <param epsilon0="100"/>
           <param epsilon1="300"/>
           <param gain0="0"/>
-          <param gain1="-8"/>
+        <param gain1="248"/>
           <param gain2="20"/>
           <param gain3="52"/>
           <param gain4="48"/>
@@ -1176,7 +1176,7 @@
           <param epsilon0="100"/>
           <param epsilon1="300"/>
           <param gain0="0"/>
-          <param gain1="-8"/>
+        <param gain1="248"/>
           <param gain2="20"/>
           <param gain3="52"/>
           <param gain4="48"/>

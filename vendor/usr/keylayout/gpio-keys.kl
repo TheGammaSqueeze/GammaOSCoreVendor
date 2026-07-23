@@ -1,5 +1,7 @@
-key 114     VOLUME_DOWN     WAKE
-key 115     VOLUME_UP       WAKE
+key 114     VOLUME_DOWN
+key 115     VOLUME_UP
 key 116     POWER           WAKE
+key 88      F12
+key 67      F9           WAKE
 key 212     CAMERA          WAKE
 key 0x210   FOCUS           WAKE

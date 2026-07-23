@@ -1,2 +1,0 @@
-vita3k.apk filter=lfs diff=lfs merge=lfs -text
-vita3k.tar.gz filter=lfs diff=lfs merge=lfs -text

@@ -48,4 +48,3 @@ service insmod-sh /vendor/bin/init.insmod.sh /vendor/lib/modules/init.insmod.cfg
     group root system
     disabled
     oneshot
-
