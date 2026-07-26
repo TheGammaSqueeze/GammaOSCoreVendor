@@ -2059,3 +2059,4 @@
 /lib/android.hardware.graphics.common-V3-ndk.so u:object_r:vendor_file:s0
 /lib/android.hardware.graphics.common-V4-ndk.so u:object_r:vendor_file:s0
 /lib/android.hardware.graphics.composer3-V2-ndk.so u:object_r:vendor_file:s0
+/etc/selinux/precompiled_sepolicy.product_sepolicy_and_mapping.sha256 u:object_r:vendor_configs_file:s0
