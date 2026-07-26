@@ -46,10 +46,11 @@ on zygote-start
     chmod 0664 /sys/class/rfkill/rfkill1/state
 
 # for wifi
-
-    mkdir /data/vendor/wifi 0771 wifi wifi
-    mkdir /data/vendor/wifi/wpa 0770 wifi wifi
-    mkdir /data/vendor/wifi/wpa/sockets 0770 wifi wifi
+#   The wifi data directories are created in the on post-fs-data action
+#   below.  GammaOS Nano boots do not fire the zygote-start trigger (zygote
+#   is started from the surfaceflinger property trigger), so creating them
+#   here would leave /data/vendor/wifi/wpa missing on a fresh install and
+#   wpa_supplicant would fail to write its config, breaking wifi scanning.
     export TMP /data/local/tmp
 
     chown wifi wifi /sys/module/bcmdhd/parameters/firmware_path
@@ -59,6 +60,16 @@ on zygote-start
     chown nfc nfc /dev/bcm2079x
     mkdir /data/nfc 0700 nfc nfc encryption=Require
     mkdir /data/nfc/param 0700 nfc nfc encryption=Require
+
+on post-fs-data
+    # Create the wifi data directories on every boot (including GammaOS Nano
+    # mode, which does not fire the zygote-start trigger).  Without these,
+    # wpa_supplicant cannot copy its config to /data/vendor/wifi/wpa and the
+    # STA interface fails to start, disabling wifi scanning after a fresh
+    # install.
+    mkdir /data/vendor/wifi 0771 wifi wifi
+    mkdir /data/vendor/wifi/wpa 0770 wifi wifi
+    mkdir /data/vendor/wifi/wpa/sockets 0770 wifi wifi
 
 on property:wlan.driver.status=ok
     chown wifi wifi /sys/module/bcmdhd/parameters/firmware_path
