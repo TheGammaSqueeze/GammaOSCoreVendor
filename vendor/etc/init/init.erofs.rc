@@ -1,0 +1,2 @@
+on fs
+    insmod /vendor/modules/erofs.ko

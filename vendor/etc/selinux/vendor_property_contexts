@@ -1,0 +1,13 @@
+#line 1 "device/softwinner/common/sepolicy/vendor/property_contexts"
+vendor.ril.                           u:object_r:vendor_ril_prop:s0
+vendor.wlan.                          u:object_r:exported_wifi_prop:s0
+vendor.driver.lpm.load                u:object_r:bluetooth_prop:s0
+
+## property for audio
+vendor.audio.output.active        u:object_r:audio_hal_prop:s0
+vendor.mediasw.sft.rawdata        u:object_r:audio_hal_prop:s0
+vendor.audio.input.active         u:object_r:audio_hal_prop:s0
+#line 1 "system/sepolicy/reqd_mask/property_contexts"
+# empty property_contexts file - this file is used to generate an empty
+# non-platform property context for devices without any property_contexts
+# customizations.
