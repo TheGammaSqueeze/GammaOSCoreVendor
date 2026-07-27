@@ -8,8 +8,8 @@ vendor                                                 /vendor      erofs     ro
 vendor                                                 /vendor      ext4     ro,barrier=1                 ro,wait,first_stage_mount,logical
 odm                                                    /odm         ext4     ro,barrier=1                 ro,wait,logical,first_stage_mount
 #/dev/block/by-name/UDISK                               /data        f2fs     noatime,nosuid,nodev,discard,reserve_root=32768,resgid=1065 latemount,wait,check,quota,formattable,reservedsize=128M,checkpoint=fs
-/dev/block/by-name/UDISK                               /data        f2fs     noatime,nosuid,nodev,discard wait,check,formattable,quota,reservedsize=33554432
-/dev/block/by-name/cache                               /cache       ext4     noatime,nosuid,nodev,barrier=1,data=ordered,nomblk_io_submit,noauto_da_alloc,errors=panic wait,check,formattable
+/dev/block/by-name/UDISK                               /data        ext4     noatime,nosuid,nodev,discard,data=writeback,commit=30,noauto_da_alloc,errors=panic,lazytime wait,check,formattable,quota
+/dev/block/by-name/cache                               /cache       ext4     noatime,nosuid,nodev,discard,barrier=1,data=ordered,nomblk_io_submit,noauto_da_alloc,errors=panic,lazytime wait,check,formattable
 /dev/block/by-name/metadata                            /metadata    ext4     nodev,noatime,nosuid,errors=panic wait,first_stage_mount,formattable
 /dev/block/by-name/media_data                          /oem         vfat     nodev,noatime,nosuid,context=u:object_r:oemfs:s0 wait,first_stage_mount,formattable,check
 /dev/block/by-name/boot                                /boot        emmc     defaults                     defaults
