@@ -1,0 +1,35 @@
+# GammaOS Nano: disable/defer vendor HALs not needed for retro gaming.
+# These services compete with zygote for CPU at T+10-12s.
+# Only active when sys.gammaos.minimal_boot=1 (nano mode).
+
+# Camera: no camera hardware on Brick
+on property:sys.gammaos.minimal_boot=1
+    stop vendor.camera-provider-2-4
+    stop vendor.camera-provider-2-4-ext
+
+# Radio config: no cellular on Brick
+on property:sys.gammaos.minimal_boot=1
+    stop vendor.radio-config-hal-1-1
+
+on property:sys.gammaos.minimal_boot=1
+
+on property:sys.gammaos.minimal_boot=1
+
+# Light HAL: promote to early_hal for faster brightness control
+service vendor.light-hal-2-0 /vendor/bin/hw/android.hardware.light@2.0-service
+    interface android.hardware.light@2.0::ILight default
+    class early_hal
+    user system
+    group system
+    override
+    shutdown critical
+
+# WiFi: defer until boot_completed in nano mode
+on property:sys.gammaos.minimal_boot=1 && property:sys.boot_completed=1
+    start vendor.wifi_hal_legacy
+
+# BT chip warmup: DISABLED - it pins the bluesleep wakelock (see
+# init.bluetooth.boot.rc) and drained the battery in sleep when BT was never
+# enabled. The 8s BT-init timeout makes cold init fine without it.
+# on property:sys.gammaos.minimal_boot=1 && property:sys.boot_completed=1
+#     start vendor.bt_chip_warmup
