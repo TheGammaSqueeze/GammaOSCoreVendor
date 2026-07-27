@@ -991,3 +991,4 @@
 /bin/sleep.sh u:object_r:vendor_file:s0
 /modules/axp_pek_wake.ko u:object_r:vendor_file:s0
 /etc/init/init.pek_wake.rc u:object_r:vendor_configs_file:s0
+/etc/selinux/precompiled_sepolicy.system_ext_sepolicy_and_mapping.sha256 u:object_r:vendor_configs_file:s0
