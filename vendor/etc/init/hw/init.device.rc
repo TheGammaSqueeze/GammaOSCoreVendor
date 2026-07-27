@@ -30,6 +30,14 @@ on boot
     setprop persist.vendor.overlay.user_rotation ${ro.primary_display.user_rotation}
     setprop sys.screen.state on
 
+# Gamepad ASAP: load the joystick/button driver early (post-fs, before the launcher/UI)
+# so input is live as soon as possible. Moved up from "on late-fs".
+on post-fs
+### gamepad control
+	chown system system /dev/ttyS3
+	chmod 664 /dev/ttyS3
+	insmod /vendor/modules/simplepad.ko
+
 on late-fs
 ### csi module
     insmod /vendor/modules/videobuf2-core.ko
@@ -45,10 +53,6 @@ on late-fs
 ### uvc module
     insmod /vendor/modules/videobuf2-vmalloc.ko
     insmod /vendor/modules/uvcvideo.ko
-### gamepad control
-	chown system system /dev/ttyS3
-	chmod 664 /dev/ttyS3
-	insmod /vendor/modules/simplepad.ko
 
 
 on property:sys.boot_completed=1
