@@ -89,3 +89,23 @@ persist.log.tag.FrameTracker=S
 persist.log.tag.audio_platform=S
 persist.log.tag.audio_hw_primary=S
 persist.log.tag.TransactionTracing=S
+
+# ---------------------------------------------------------------------------
+# GammaOS feature properties (parity with Brick vendor build.prop)
+# ---------------------------------------------------------------------------
+persist.gammaos.qs.override_default_tiles=1
+persist.gammaos.qs.override_default_tiles_0=internet,bt,performance,gammashader,gammaeq,rotation,screenmap
+persist.gammaos.qs.override_default_tiles_1=deepsleepmode,immersivemode,abxy,dpadAnalogToggle,analogsensitivity
+persist.gammaos.qs.override_default_tiles_2=analogdeadzone,analogcalibration,analogaxis,rightanalogaxis
+persist.gammaos.qs.override_default_tiles_3=retroarchmenubuttonoverride,mappingeditor
+persist.gammaos.qs.blacklist_0=dcdimmingemulation,launchguard,dualstack,gammasecondarydisplay
+persist.gammaos.qs.blacklist_1=gammadualfocus,gammasplitbrightness,globalbfi,gammarefresh
+persist.gammaos.qs.blacklist_2=477v,usbcontrollerswitch,fan
+service.sf.prime_shader_cache=0
+persist.gammaos.nano.drastic_qr_layout=1
+persist.gammaos.nano.wifi=1
+bluetooth.gd.start_timeout=10000
+persist.gammaos.nano.ps3xmb=1
+persist.gammaos.nano.overlay=1
+persist.bootanim.skip_nano=0
+persist.gammaos.ultra_low_power_saving_mode=1

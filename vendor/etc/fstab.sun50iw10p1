@@ -2,9 +2,10 @@
 # The filesystem that contains the filesystem checker binary (typically /system) cannot
 # specify MF_CHECK, and must come before any filesystems that do specify MF_CHECK
 #<src>                                                 <mnt_point>  <type>   <mnt_flags and options>      <fs_mgr_flags>
+system                                                 /system      erofs    ro                           wait,first_stage_mount,logical
 system                                                 /system      ext4     ro,barrier=1                 wait,first_stage_mount,logical
+vendor                                                 /vendor      erofs    ro                           wait,first_stage_mount,logical
 vendor                                                 /vendor      ext4     ro,barrier=1                 wait,first_stage_mount,logical
-product                                                /product     ext4     ro,barrier=1                 wait,first_stage_mount,logical
 /dev/block/by-name/UDISK                               /data        ext4     noatime,nosuid,nodev,discard,grpquota,barrier=1,data=ordered,nomblk_io_submit,noauto_da_alloc,errors=panic wait,check,formattable,quota
 /dev/block/by-name/cache                               /cache       ext4     noatime,nosuid,nodev,barrier=1,data=ordered,nomblk_io_submit,noauto_da_alloc,errors=panic wait,check,formattable
 /dev/block/by-name/metadata                            /metadata    ext4     nodev,noatime,nosuid,errors=panic wait,first_stage_mount,formattable

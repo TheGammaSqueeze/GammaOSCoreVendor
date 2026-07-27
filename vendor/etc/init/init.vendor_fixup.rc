@@ -1,0 +1,75 @@
+on early-init
+    # Workaround: /vendor/build.prop properties don't get applied at boot on
+    # EROFS-vendor. The first-stage init.real successfully mounts /system and
+    # /vendor as EROFS, but second-stage init then sees neither (open() returns
+    # ENOENT) for ~the same window when it loads its property files. ext4
+    # mount survives the first-to-second-stage handoff; EROFS does not. The
+    # root cause is likely in the switch_root + exec path (or the SELinux
+    # "Setting up existing superblocks" pass running between mount and
+    # second-stage exec). For now we paper over the symptoms by setting the
+    # load-bearing values ourselves from vendor's own init.rc.
+    setprop ro.board.platform ceres
+    setprop ro.product.board exdroid
+    setprop ro.product.vendor.brand Allwinner
+    setprop ro.product.vendor.device ceres-aw3
+    setprop ro.product.vendor.manufacturer Allwinner
+    setprop ro.product.vendor.model "QUAD-CORE A133 aw4"
+    setprop ro.product.vendor.name ceres_aw4
+    setprop ro.product.vendor.platform tablet
+    setprop ro.product.vendor.first_api_level 29
+    setprop persist.vendor.p_bootcomplete true
+
+on fs
+    # First trigger after first_stage_mount; apply pvr_sync ASAP. pvrsrvkm
+    # re-creates /dev/pvr_sync ~2s into boot, so the very first chmod won't
+    # always stick - it's retried below. Mode 0666 system:graphics matches
+    # the rule in /vendor/ueventd.rc.
+    chmod 0666 /dev/pvr_sync
+    chown system graphics /dev/pvr_sync
+    chmod 0777 /dev/ion
+    chown system graphics /dev/ion
+
+on post-fs
+    # Apply /vendor/ueventd.rc rules that didn't get loaded. Without these
+    # gralloc HAL can't open /dev/ion, PowerVR can't open /dev/pvr_sync,
+    # and SurfaceFlinger fails at EGLContext creation.
+    chmod 0666 /dev/pvr_sync
+    chown system graphics /dev/pvr_sync
+    chmod 0777 /dev/ion
+    chown system graphics /dev/ion
+    chmod 0666 /dev/pvrsrvkm
+    chown root root /dev/pvrsrvkm
+    chmod 0770 /dev/disp
+    chown system system /dev/disp
+    chmod 0660 /dev/g2d
+    chown system graphics /dev/g2d
+    chmod 0660 /dev/transform
+    chown system system /dev/transform
+    chmod 0666 /dev/sunxi_mem
+    chown media media /dev/sunxi_mem
+    chmod 0640 /dev/sunxi_soc_info
+    chown root root /dev/sunxi_soc_info
+    chmod 0666 /dev/cedar_dev
+    chown media camera /dev/cedar_dev
+    chmod 0666 /dev/ace_dev
+    chown system system /dev/ace_dev
+    chmod 0660 /dev/fd_dev
+    chown media media /dev/fd_dev
+    chmod 0666 /dev/dri/card0
+    chown system graphics /dev/dri/card0
+    chmod 0666 /dev/dri/renderD128
+    chown system graphics /dev/dri/renderD128
+
+on post-fs-data
+    # Re-apply after post-fs and again at boot in case pvrsrvkm recreated
+    # the node after our earlier chmod.
+    chmod 0666 /dev/pvr_sync
+    chown system graphics /dev/pvr_sync
+    chmod 0777 /dev/ion
+    chown system graphics /dev/ion
+
+on boot
+    chmod 0666 /dev/pvr_sync
+    chown system graphics /dev/pvr_sync
+    chmod 0777 /dev/ion
+    chown system graphics /dev/ion

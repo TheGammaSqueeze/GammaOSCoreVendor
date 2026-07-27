@@ -19,10 +19,19 @@ service setclock_powersave /vendor/bin/setclock_powersave.sh
     oneshot
     disabled
 
-service cpu_screen_off /system/bin/sh -c "echo 0 | tee /sys/devices/system/cpu/cpu[1-7]/online >/dev/null; echo mem > /sys/power/state"
+service cpu_screen_off /vendor/bin/sleep.sh
     class main
     user root
-    group root system
+    group root system wifi inet net_bt_admin net_bt bluetooth
+    oneshot
+    disabled
+
+# Re-enable only the radios cpu_screen_off (sleep.sh) turned off, restoring the
+# user's prior state. Started on screen-on / USB / charging. No-op otherwise.
+service ulps_restore_radios /vendor/bin/sleep.sh restore
+    class main
+    user root
+    group root system wifi inet net_bt_admin net_bt bluetooth
     oneshot
     disabled
 
@@ -38,6 +47,20 @@ on property:sys.screen.state=off
 
 on property:persist.gammaos.ultra_low_power_saving_mode=1 && property:sys.screen.state=off
     start cpu_screen_off
+
+# End the ultra-low-power suspend loop and restore radios when the screen comes
+# back on, USB is connected, or the device starts charging.
+on property:sys.screen.state=on
+    stop cpu_screen_off
+    start ulps_restore_radios
+
+on property:sys.gammaos.usb.connected=1
+    stop cpu_screen_off
+    start ulps_restore_radios
+
+on property:debug.tracing.battery_stats.charging=1
+    stop cpu_screen_off
+    start ulps_restore_radios
 
 on property:persist.gammaos.performance_mode=max && property:sys.screen.state=on
     start setclock_max
