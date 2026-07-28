@@ -6,24 +6,24 @@
                 <adcl_capture_volume offset="0" bits="32" t="u32" id="0x4" visible="true" val="0x07" />
                 <adcr_capture_volume offset="0" bits="32" t="u32" id="0x8" visible="true" val="0x07" />
                 <spkl_playback_volume>
-                    <volume0 offset="0" bits="32" t="u32" id="0xc" visible="false" val="0x06" />
-                    <volume1 offset="0" bits="32" t="u32" id="0x10" visible="true" val="0x06" />
-                    <volume2 offset="0" bits="32" t="u32" id="0x14" visible="true" val="0x06" />
-                    <volume3 offset="0" bits="32" t="u32" id="0x18" visible="true" val="0x06" />
-                    <volume4 offset="0" bits="32" t="u32" id="0x1c" visible="true" val="0x06" />
-                    <volume5 offset="0" bits="32" t="u32" id="0x20" visible="true" val="0x06" />
-                    <volume6 offset="0" bits="32" t="u32" id="0x24" visible="true" val="0x06" />
-                    <volume7 offset="0" bits="32" t="u32" id="0x28" visible="true" val="0x06" />
+                    <volume0 offset="0" bits="32" t="u32" id="0xc" visible="false" val="0x08" />
+                    <volume1 offset="0" bits="32" t="u32" id="0x10" visible="true" val="0x08" />
+                    <volume2 offset="0" bits="32" t="u32" id="0x14" visible="true" val="0x08" />
+                    <volume3 offset="0" bits="32" t="u32" id="0x18" visible="true" val="0x08" />
+                    <volume4 offset="0" bits="32" t="u32" id="0x1c" visible="true" val="0x08" />
+                    <volume5 offset="0" bits="32" t="u32" id="0x20" visible="true" val="0x08" />
+                    <volume6 offset="0" bits="32" t="u32" id="0x24" visible="true" val="0x08" />
+                    <volume7 offset="0" bits="32" t="u32" id="0x28" visible="true" val="0x08" />
                 </spkl_playback_volume>
                 <spkr_playback_volume>
-                    <volume0 offset="0" bits="32" t="u32" id="0x2c" visible="false" val="0x06" />
-                    <volume1 offset="0" bits="32" t="u32" id="0x30" visible="true" val="0x06" />
-                    <volume2 offset="0" bits="32" t="u32" id="0x34" visible="true" val="0x06" />
-                    <volume3 offset="0" bits="32" t="u32" id="0x38" visible="true" val="0x06" />
-                    <volume4 offset="0" bits="32" t="u32" id="0x3c" visible="true" val="0x06" />
-                    <volume5 offset="0" bits="32" t="u32" id="0x40" visible="true" val="0x06" />
-                    <volume6 offset="0" bits="32" t="u32" id="0x44" visible="true" val="0x06" />
-                    <volume7 offset="0" bits="32" t="u32" id="0x48" visible="true" val="0x06" />
+                    <volume0 offset="0" bits="32" t="u32" id="0x2c" visible="false" val="0x08" />
+                    <volume1 offset="0" bits="32" t="u32" id="0x30" visible="true" val="0x08" />
+                    <volume2 offset="0" bits="32" t="u32" id="0x34" visible="true" val="0x08" />
+                    <volume3 offset="0" bits="32" t="u32" id="0x38" visible="true" val="0x08" />
+                    <volume4 offset="0" bits="32" t="u32" id="0x3c" visible="true" val="0x08" />
+                    <volume5 offset="0" bits="32" t="u32" id="0x40" visible="true" val="0x08" />
+                    <volume6 offset="0" bits="32" t="u32" id="0x44" visible="true" val="0x08" />
+                    <volume7 offset="0" bits="32" t="u32" id="0x48" visible="true" val="0x08" />
                 </spkr_playback_volume>
                 <hpl_playback_volume>
                     <volume0 offset="0" bits="32" t="u32" id="0x4c" visible="false" val="0x06" />
@@ -137,24 +137,24 @@
                 <adcl_capture_volume offset="0" bits="32" t="u32" id="0x154" visible="true" val="0x05" />
                 <adcr_capture_volume offset="0" bits="32" t="u32" id="0x158" visible="true" val="0x05" />
                 <spkl_playback_volume>
-                    <volume0 offset="0" bits="32" t="u32" id="0x15c" visible="false" val="0x06" />
-                    <volume1 offset="0" bits="32" t="u32" id="0x160" visible="true" val="0x06" />
-                    <volume2 offset="0" bits="32" t="u32" id="0x164" visible="true" val="0x06" />
-                    <volume3 offset="0" bits="32" t="u32" id="0x168" visible="true" val="0x06" />
-                    <volume4 offset="0" bits="32" t="u32" id="0x16c" visible="true" val="0x06" />
-                    <volume5 offset="0" bits="32" t="u32" id="0x170" visible="true" val="0x06" />
-                    <volume6 offset="0" bits="32" t="u32" id="0x174" visible="true" val="0x06" />
-                    <volume7 offset="0" bits="32" t="u32" id="0x178" visible="true" val="0x06" />
+                    <volume0 offset="0" bits="32" t="u32" id="0x15c" visible="false" val="0x08" />
+                    <volume1 offset="0" bits="32" t="u32" id="0x160" visible="true" val="0x08" />
+                    <volume2 offset="0" bits="32" t="u32" id="0x164" visible="true" val="0x08" />
+                    <volume3 offset="0" bits="32" t="u32" id="0x168" visible="true" val="0x08" />
+                    <volume4 offset="0" bits="32" t="u32" id="0x16c" visible="true" val="0x08" />
+                    <volume5 offset="0" bits="32" t="u32" id="0x170" visible="true" val="0x08" />
+                    <volume6 offset="0" bits="32" t="u32" id="0x174" visible="true" val="0x08" />
+                    <volume7 offset="0" bits="32" t="u32" id="0x178" visible="true" val="0x08" />
                 </spkl_playback_volume>
                 <spkr_playback_volume>
-                    <volume0 offset="0" bits="32" t="u32" id="0x17c" visible="false" val="0x06" />
-                    <volume1 offset="0" bits="32" t="u32" id="0x180" visible="true" val="0x06" />
-                    <volume2 offset="0" bits="32" t="u32" id="0x184" visible="true" val="0x06" />
-                    <volume3 offset="0" bits="32" t="u32" id="0x188" visible="true" val="0x06" />
-                    <volume4 offset="0" bits="32" t="u32" id="0x18c" visible="true" val="0x06" />
-                    <volume5 offset="0" bits="32" t="u32" id="0x190" visible="true" val="0x06" />
-                    <volume6 offset="0" bits="32" t="u32" id="0x194" visible="true" val="0x06" />
-                    <volume7 offset="0" bits="32" t="u32" id="0x198" visible="true" val="0x06" />
+                    <volume0 offset="0" bits="32" t="u32" id="0x17c" visible="false" val="0x08" />
+                    <volume1 offset="0" bits="32" t="u32" id="0x180" visible="true" val="0x08" />
+                    <volume2 offset="0" bits="32" t="u32" id="0x184" visible="true" val="0x08" />
+                    <volume3 offset="0" bits="32" t="u32" id="0x188" visible="true" val="0x08" />
+                    <volume4 offset="0" bits="32" t="u32" id="0x18c" visible="true" val="0x08" />
+                    <volume5 offset="0" bits="32" t="u32" id="0x190" visible="true" val="0x08" />
+                    <volume6 offset="0" bits="32" t="u32" id="0x194" visible="true" val="0x08" />
+                    <volume7 offset="0" bits="32" t="u32" id="0x198" visible="true" val="0x08" />
                 </spkr_playback_volume>
                 <hpl_playback_volume>
                     <volume0 offset="0" bits="32" t="u32" id="0x19c" visible="false" val="0x06" />
@@ -268,24 +268,24 @@
                 <adcl_capture_volume offset="0" bits="32" t="u32" id="0x2a4" visible="true" val="0x07" />
                 <adcr_capture_volume offset="0" bits="32" t="u32" id="0x2a8" visible="true" val="0x07" />
                 <spkl_playback_volume>
-                    <volume0 offset="0" bits="32" t="u32" id="0x2ac" visible="false" val="0x06" />
-                    <volume1 offset="0" bits="32" t="u32" id="0x2b0" visible="true" val="0x06" />
-                    <volume2 offset="0" bits="32" t="u32" id="0x2b4" visible="true" val="0x06" />
-                    <volume3 offset="0" bits="32" t="u32" id="0x2b8" visible="true" val="0x06" />
-                    <volume4 offset="0" bits="32" t="u32" id="0x2bc" visible="true" val="0x06" />
-                    <volume5 offset="0" bits="32" t="u32" id="0x2c0" visible="true" val="0x06" />
-                    <volume6 offset="0" bits="32" t="u32" id="0x2c4" visible="true" val="0x06" />
-                    <volume7 offset="0" bits="32" t="u32" id="0x2c8" visible="true" val="0x06" />
+                    <volume0 offset="0" bits="32" t="u32" id="0x2ac" visible="false" val="0x08" />
+                    <volume1 offset="0" bits="32" t="u32" id="0x2b0" visible="true" val="0x08" />
+                    <volume2 offset="0" bits="32" t="u32" id="0x2b4" visible="true" val="0x08" />
+                    <volume3 offset="0" bits="32" t="u32" id="0x2b8" visible="true" val="0x08" />
+                    <volume4 offset="0" bits="32" t="u32" id="0x2bc" visible="true" val="0x08" />
+                    <volume5 offset="0" bits="32" t="u32" id="0x2c0" visible="true" val="0x08" />
+                    <volume6 offset="0" bits="32" t="u32" id="0x2c4" visible="true" val="0x08" />
+                    <volume7 offset="0" bits="32" t="u32" id="0x2c8" visible="true" val="0x08" />
                 </spkl_playback_volume>
                 <spkr_playback_volume>
-                    <volume0 offset="0" bits="32" t="u32" id="0x2cc" visible="false" val="0x06" />
-                    <volume1 offset="0" bits="32" t="u32" id="0x2d0" visible="true" val="0x06" />
-                    <volume2 offset="0" bits="32" t="u32" id="0x2d4" visible="true" val="0x06" />
-                    <volume3 offset="0" bits="32" t="u32" id="0x2d8" visible="true" val="0x06" />
-                    <volume4 offset="0" bits="32" t="u32" id="0x2dc" visible="true" val="0x06" />
-                    <volume5 offset="0" bits="32" t="u32" id="0x2e0" visible="true" val="0x06" />
-                    <volume6 offset="0" bits="32" t="u32" id="0x2e4" visible="true" val="0x06" />
-                    <volume7 offset="0" bits="32" t="u32" id="0x2e8" visible="true" val="0x06" />
+                    <volume0 offset="0" bits="32" t="u32" id="0x2cc" visible="false" val="0x08" />
+                    <volume1 offset="0" bits="32" t="u32" id="0x2d0" visible="true" val="0x08" />
+                    <volume2 offset="0" bits="32" t="u32" id="0x2d4" visible="true" val="0x08" />
+                    <volume3 offset="0" bits="32" t="u32" id="0x2d8" visible="true" val="0x08" />
+                    <volume4 offset="0" bits="32" t="u32" id="0x2dc" visible="true" val="0x08" />
+                    <volume5 offset="0" bits="32" t="u32" id="0x2e0" visible="true" val="0x08" />
+                    <volume6 offset="0" bits="32" t="u32" id="0x2e4" visible="true" val="0x08" />
+                    <volume7 offset="0" bits="32" t="u32" id="0x2e8" visible="true" val="0x08" />
                 </spkr_playback_volume>
                 <hpl_playback_volume>
                     <volume0 offset="0" bits="32" t="u32" id="0x2ec" visible="false" val="0x06" />
@@ -399,24 +399,24 @@
                 <adcl_capture_volume offset="0" bits="32" t="u32" id="0x3f4" visible="true" val="0x05" />
                 <adcr_capture_volume offset="0" bits="32" t="u32" id="0x3f8" visible="true" val="0x05" />
                 <spkl_playback_volume>
-                    <volume0 offset="0" bits="32" t="u32" id="0x3fc" visible="false" val="0x06" />
-                    <volume1 offset="0" bits="32" t="u32" id="0x400" visible="true" val="0x06" />
-                    <volume2 offset="0" bits="32" t="u32" id="0x404" visible="true" val="0x06" />
-                    <volume3 offset="0" bits="32" t="u32" id="0x408" visible="true" val="0x06" />
-                    <volume4 offset="0" bits="32" t="u32" id="0x40c" visible="true" val="0x06" />
-                    <volume5 offset="0" bits="32" t="u32" id="0x410" visible="true" val="0x06" />
-                    <volume6 offset="0" bits="32" t="u32" id="0x414" visible="true" val="0x06" />
-                    <volume7 offset="0" bits="32" t="u32" id="0x418" visible="true" val="0x06" />
+                    <volume0 offset="0" bits="32" t="u32" id="0x3fc" visible="false" val="0x08" />
+                    <volume1 offset="0" bits="32" t="u32" id="0x400" visible="true" val="0x08" />
+                    <volume2 offset="0" bits="32" t="u32" id="0x404" visible="true" val="0x08" />
+                    <volume3 offset="0" bits="32" t="u32" id="0x408" visible="true" val="0x08" />
+                    <volume4 offset="0" bits="32" t="u32" id="0x40c" visible="true" val="0x08" />
+                    <volume5 offset="0" bits="32" t="u32" id="0x410" visible="true" val="0x08" />
+                    <volume6 offset="0" bits="32" t="u32" id="0x414" visible="true" val="0x08" />
+                    <volume7 offset="0" bits="32" t="u32" id="0x418" visible="true" val="0x08" />
                 </spkl_playback_volume>
                 <spkr_playback_volume>
-                    <volume0 offset="0" bits="32" t="u32" id="0x41c" visible="false" val="0x06" />
-                    <volume1 offset="0" bits="32" t="u32" id="0x420" visible="true" val="0x06" />
-                    <volume2 offset="0" bits="32" t="u32" id="0x424" visible="true" val="0x06" />
-                    <volume3 offset="0" bits="32" t="u32" id="0x428" visible="true" val="0x06" />
-                    <volume4 offset="0" bits="32" t="u32" id="0x42c" visible="true" val="0x06" />
-                    <volume5 offset="0" bits="32" t="u32" id="0x430" visible="true" val="0x06" />
-                    <volume6 offset="0" bits="32" t="u32" id="0x434" visible="true" val="0x06" />
-                    <volume7 offset="0" bits="32" t="u32" id="0x438" visible="true" val="0x06" />
+                    <volume0 offset="0" bits="32" t="u32" id="0x41c" visible="false" val="0x08" />
+                    <volume1 offset="0" bits="32" t="u32" id="0x420" visible="true" val="0x08" />
+                    <volume2 offset="0" bits="32" t="u32" id="0x424" visible="true" val="0x08" />
+                    <volume3 offset="0" bits="32" t="u32" id="0x428" visible="true" val="0x08" />
+                    <volume4 offset="0" bits="32" t="u32" id="0x42c" visible="true" val="0x08" />
+                    <volume5 offset="0" bits="32" t="u32" id="0x430" visible="true" val="0x08" />
+                    <volume6 offset="0" bits="32" t="u32" id="0x434" visible="true" val="0x08" />
+                    <volume7 offset="0" bits="32" t="u32" id="0x438" visible="true" val="0x08" />
                 </spkr_playback_volume>
                 <hpl_playback_volume>
                     <volume0 offset="0" bits="32" t="u32" id="0x43c" visible="false" val="0x06" />
@@ -530,24 +530,24 @@
                 <adcl_capture_volume offset="0" bits="32" t="u32" id="0x544" visible="true" val="0x07" />
                 <adcr_capture_volume offset="0" bits="32" t="u32" id="0x548" visible="true" val="0x07" />
                 <spkl_playback_volume>
-                    <volume0 offset="0" bits="32" t="u32" id="0x54c" visible="false" val="0x06" />
-                    <volume1 offset="0" bits="32" t="u32" id="0x550" visible="true" val="0x06" />
-                    <volume2 offset="0" bits="32" t="u32" id="0x554" visible="true" val="0x06" />
-                    <volume3 offset="0" bits="32" t="u32" id="0x558" visible="true" val="0x06" />
-                    <volume4 offset="0" bits="32" t="u32" id="0x55c" visible="true" val="0x06" />
-                    <volume5 offset="0" bits="32" t="u32" id="0x560" visible="true" val="0x06" />
-                    <volume6 offset="0" bits="32" t="u32" id="0x564" visible="true" val="0x06" />
-                    <volume7 offset="0" bits="32" t="u32" id="0x568" visible="true" val="0x06" />
+                    <volume0 offset="0" bits="32" t="u32" id="0x54c" visible="false" val="0x08" />
+                    <volume1 offset="0" bits="32" t="u32" id="0x550" visible="true" val="0x08" />
+                    <volume2 offset="0" bits="32" t="u32" id="0x554" visible="true" val="0x08" />
+                    <volume3 offset="0" bits="32" t="u32" id="0x558" visible="true" val="0x08" />
+                    <volume4 offset="0" bits="32" t="u32" id="0x55c" visible="true" val="0x08" />
+                    <volume5 offset="0" bits="32" t="u32" id="0x560" visible="true" val="0x08" />
+                    <volume6 offset="0" bits="32" t="u32" id="0x564" visible="true" val="0x08" />
+                    <volume7 offset="0" bits="32" t="u32" id="0x568" visible="true" val="0x08" />
                 </spkl_playback_volume>
                 <spkr_playback_volume>
-                    <volume0 offset="0" bits="32" t="u32" id="0x56c" visible="false" val="0x06" />
-                    <volume1 offset="0" bits="32" t="u32" id="0x570" visible="true" val="0x06" />
-                    <volume2 offset="0" bits="32" t="u32" id="0x574" visible="true" val="0x06" />
-                    <volume3 offset="0" bits="32" t="u32" id="0x578" visible="true" val="0x06" />
-                    <volume4 offset="0" bits="32" t="u32" id="0x57c" visible="true" val="0x06" />
-                    <volume5 offset="0" bits="32" t="u32" id="0x580" visible="true" val="0x06" />
-                    <volume6 offset="0" bits="32" t="u32" id="0x584" visible="true" val="0x06" />
-                    <volume7 offset="0" bits="32" t="u32" id="0x588" visible="true" val="0x06" />
+                    <volume0 offset="0" bits="32" t="u32" id="0x56c" visible="false" val="0x08" />
+                    <volume1 offset="0" bits="32" t="u32" id="0x570" visible="true" val="0x08" />
+                    <volume2 offset="0" bits="32" t="u32" id="0x574" visible="true" val="0x08" />
+                    <volume3 offset="0" bits="32" t="u32" id="0x578" visible="true" val="0x08" />
+                    <volume4 offset="0" bits="32" t="u32" id="0x57c" visible="true" val="0x08" />
+                    <volume5 offset="0" bits="32" t="u32" id="0x580" visible="true" val="0x08" />
+                    <volume6 offset="0" bits="32" t="u32" id="0x584" visible="true" val="0x08" />
+                    <volume7 offset="0" bits="32" t="u32" id="0x588" visible="true" val="0x08" />
                 </spkr_playback_volume>
                 <hpl_playback_volume>
                     <volume0 offset="0" bits="32" t="u32" id="0x58c" visible="false" val="0x06" />
@@ -661,24 +661,24 @@
                 <adcl_capture_volume offset="0" bits="32" t="u32" id="0x694" visible="true" val="0x06" />
                 <adcr_capture_volume offset="0" bits="32" t="u32" id="0x698" visible="true" val="0x06" />
                 <spkl_playback_volume>
-                    <volume0 offset="0" bits="32" t="u32" id="0x69c" visible="false" val="0x06" />
-                    <volume1 offset="0" bits="32" t="u32" id="0x6a0" visible="true" val="0x06" />
-                    <volume2 offset="0" bits="32" t="u32" id="0x6a4" visible="true" val="0x06" />
-                    <volume3 offset="0" bits="32" t="u32" id="0x6a8" visible="true" val="0x06" />
-                    <volume4 offset="0" bits="32" t="u32" id="0x6ac" visible="true" val="0x06" />
-                    <volume5 offset="0" bits="32" t="u32" id="0x6b0" visible="true" val="0x06" />
-                    <volume6 offset="0" bits="32" t="u32" id="0x6b4" visible="true" val="0x06" />
-                    <volume7 offset="0" bits="32" t="u32" id="0x6b8" visible="true" val="0x06" />
+                    <volume0 offset="0" bits="32" t="u32" id="0x69c" visible="false" val="0x08" />
+                    <volume1 offset="0" bits="32" t="u32" id="0x6a0" visible="true" val="0x08" />
+                    <volume2 offset="0" bits="32" t="u32" id="0x6a4" visible="true" val="0x08" />
+                    <volume3 offset="0" bits="32" t="u32" id="0x6a8" visible="true" val="0x08" />
+                    <volume4 offset="0" bits="32" t="u32" id="0x6ac" visible="true" val="0x08" />
+                    <volume5 offset="0" bits="32" t="u32" id="0x6b0" visible="true" val="0x08" />
+                    <volume6 offset="0" bits="32" t="u32" id="0x6b4" visible="true" val="0x08" />
+                    <volume7 offset="0" bits="32" t="u32" id="0x6b8" visible="true" val="0x08" />
                 </spkl_playback_volume>
                 <spkr_playback_volume>
-                    <volume0 offset="0" bits="32" t="u32" id="0x6bc" visible="false" val="0x06" />
-                    <volume1 offset="0" bits="32" t="u32" id="0x6c0" visible="true" val="0x06" />
-                    <volume2 offset="0" bits="32" t="u32" id="0x6c4" visible="true" val="0x06" />
-                    <volume3 offset="0" bits="32" t="u32" id="0x6c8" visible="true" val="0x06" />
-                    <volume4 offset="0" bits="32" t="u32" id="0x6cc" visible="true" val="0x06" />
-                    <volume5 offset="0" bits="32" t="u32" id="0x6d0" visible="true" val="0x06" />
-                    <volume6 offset="0" bits="32" t="u32" id="0x6d4" visible="true" val="0x06" />
-                    <volume7 offset="0" bits="32" t="u32" id="0x6d8" visible="true" val="0x06" />
+                    <volume0 offset="0" bits="32" t="u32" id="0x6bc" visible="false" val="0x08" />
+                    <volume1 offset="0" bits="32" t="u32" id="0x6c0" visible="true" val="0x08" />
+                    <volume2 offset="0" bits="32" t="u32" id="0x6c4" visible="true" val="0x08" />
+                    <volume3 offset="0" bits="32" t="u32" id="0x6c8" visible="true" val="0x08" />
+                    <volume4 offset="0" bits="32" t="u32" id="0x6cc" visible="true" val="0x08" />
+                    <volume5 offset="0" bits="32" t="u32" id="0x6d0" visible="true" val="0x08" />
+                    <volume6 offset="0" bits="32" t="u32" id="0x6d4" visible="true" val="0x08" />
+                    <volume7 offset="0" bits="32" t="u32" id="0x6d8" visible="true" val="0x08" />
                 </spkr_playback_volume>
                 <hpl_playback_volume>
                     <volume0 offset="0" bits="32" t="u32" id="0x6dc" visible="false" val="0x06" />
@@ -792,24 +792,24 @@
                 <adcl_capture_volume offset="0" bits="32" t="u32" id="0x7e4" visible="true" val="0x07" />
                 <adcr_capture_volume offset="0" bits="32" t="u32" id="0x7e8" visible="true" val="0x07" />
                 <spkl_playback_volume>
-                    <volume0 offset="0" bits="32" t="u32" id="0x7ec" visible="false" val="0x06" />
-                    <volume1 offset="0" bits="32" t="u32" id="0x7f0" visible="true" val="0x06" />
-                    <volume2 offset="0" bits="32" t="u32" id="0x7f4" visible="true" val="0x06" />
-                    <volume3 offset="0" bits="32" t="u32" id="0x7f8" visible="true" val="0x06" />
-                    <volume4 offset="0" bits="32" t="u32" id="0x7fc" visible="true" val="0x06" />
-                    <volume5 offset="0" bits="32" t="u32" id="0x800" visible="true" val="0x06" />
-                    <volume6 offset="0" bits="32" t="u32" id="0x804" visible="true" val="0x06" />
-                    <volume7 offset="0" bits="32" t="u32" id="0x808" visible="true" val="0x06" />
+                    <volume0 offset="0" bits="32" t="u32" id="0x7ec" visible="false" val="0x08" />
+                    <volume1 offset="0" bits="32" t="u32" id="0x7f0" visible="true" val="0x08" />
+                    <volume2 offset="0" bits="32" t="u32" id="0x7f4" visible="true" val="0x08" />
+                    <volume3 offset="0" bits="32" t="u32" id="0x7f8" visible="true" val="0x08" />
+                    <volume4 offset="0" bits="32" t="u32" id="0x7fc" visible="true" val="0x08" />
+                    <volume5 offset="0" bits="32" t="u32" id="0x800" visible="true" val="0x08" />
+                    <volume6 offset="0" bits="32" t="u32" id="0x804" visible="true" val="0x08" />
+                    <volume7 offset="0" bits="32" t="u32" id="0x808" visible="true" val="0x08" />
                 </spkl_playback_volume>
                 <spkr_playback_volume>
-                    <volume0 offset="0" bits="32" t="u32" id="0x80c" visible="false" val="0x06" />
-                    <volume1 offset="0" bits="32" t="u32" id="0x810" visible="true" val="0x06" />
-                    <volume2 offset="0" bits="32" t="u32" id="0x814" visible="true" val="0x06" />
-                    <volume3 offset="0" bits="32" t="u32" id="0x818" visible="true" val="0x06" />
-                    <volume4 offset="0" bits="32" t="u32" id="0x81c" visible="true" val="0x06" />
-                    <volume5 offset="0" bits="32" t="u32" id="0x820" visible="true" val="0x06" />
-                    <volume6 offset="0" bits="32" t="u32" id="0x824" visible="true" val="0x06" />
-                    <volume7 offset="0" bits="32" t="u32" id="0x828" visible="true" val="0x06" />
+                    <volume0 offset="0" bits="32" t="u32" id="0x80c" visible="false" val="0x08" />
+                    <volume1 offset="0" bits="32" t="u32" id="0x810" visible="true" val="0x08" />
+                    <volume2 offset="0" bits="32" t="u32" id="0x814" visible="true" val="0x08" />
+                    <volume3 offset="0" bits="32" t="u32" id="0x818" visible="true" val="0x08" />
+                    <volume4 offset="0" bits="32" t="u32" id="0x81c" visible="true" val="0x08" />
+                    <volume5 offset="0" bits="32" t="u32" id="0x820" visible="true" val="0x08" />
+                    <volume6 offset="0" bits="32" t="u32" id="0x824" visible="true" val="0x08" />
+                    <volume7 offset="0" bits="32" t="u32" id="0x828" visible="true" val="0x08" />
                 </spkr_playback_volume>
                 <hpl_playback_volume>
                     <volume0 offset="0" bits="32" t="u32" id="0x82c" visible="false" val="0x06" />
@@ -942,7 +942,7 @@
                     <volume4 offset="0" bits="32" t="u32" id="0x96c" visible="true" val="0x01" />
                     <volume5 offset="0" bits="32" t="u32" id="0x970" visible="true" val="0x01" />
                     <volume6 offset="0" bits="32" t="u32" id="0x974" visible="true" val="0x01" />
-                    <volume7 offset="0" bits="32" t="u32" id="0x978" visible="true" val="0x06" />
+                    <volume7 offset="0" bits="32" t="u32" id="0x978" visible="true" val="0x08" />
                 </spkr_playback_volume>
                 <hpl_playback_volume>
                     <volume0 offset="0" bits="32" t="u32" id="0x97c" visible="false" val="0x06" />
@@ -1063,7 +1063,7 @@
                     <volume4 offset="0" bits="32" t="u32" id="0xa9c" visible="true" val="0x01" />
                     <volume5 offset="0" bits="32" t="u32" id="0xaa0" visible="true" val="0x01" />
                     <volume6 offset="0" bits="32" t="u32" id="0xaa4" visible="true" val="0x01" />
-                    <volume7 offset="0" bits="32" t="u32" id="0xaa8" visible="true" val="0x06" />
+                    <volume7 offset="0" bits="32" t="u32" id="0xaa8" visible="true" val="0x08" />
                 </spkl_playback_volume>
                 <spkr_playback_volume>
                     <volume0 offset="0" bits="32" t="u32" id="0xaac" visible="false" val="0x01" />
@@ -1073,7 +1073,7 @@
                     <volume4 offset="0" bits="32" t="u32" id="0xabc" visible="true" val="0x01" />
                     <volume5 offset="0" bits="32" t="u32" id="0xac0" visible="true" val="0x01" />
                     <volume6 offset="0" bits="32" t="u32" id="0xac4" visible="true" val="0x01" />
-                    <volume7 offset="0" bits="32" t="u32" id="0xac8" visible="true" val="0x06" />
+                    <volume7 offset="0" bits="32" t="u32" id="0xac8" visible="true" val="0x08" />
                 </spkr_playback_volume>
                 <hpl_playback_volume>
                     <volume0 offset="0" bits="32" t="u32" id="0xacc" visible="false" val="0x06" />
@@ -1844,24 +1844,24 @@
                 <adcl_capture_volume offset="0" bits="32" t="u32" id="0x1264" visible="true" val="0x07" />
                 <adcr_capture_volume offset="0" bits="32" t="u32" id="0x1268" visible="true" val="0x07" />
                 <spkl_playback_volume>
-                    <volume0 offset="0" bits="32" t="u32" id="0x126c" visible="false" val="0x06" />
-                    <volume1 offset="0" bits="32" t="u32" id="0x1270" visible="false" val="0x06" />
-                    <volume2 offset="0" bits="32" t="u32" id="0x1274" visible="false" val="0x06" />
-                    <volume3 offset="0" bits="32" t="u32" id="0x1278" visible="false" val="0x06" />
-                    <volume4 offset="0" bits="32" t="u32" id="0x127c" visible="false" val="0x06" />
-                    <volume5 offset="0" bits="32" t="u32" id="0x1280" visible="false" val="0x06" />
-                    <volume6 offset="0" bits="32" t="u32" id="0x1284" visible="false" val="0x06" />
-                    <volume7 offset="0" bits="32" t="u32" id="0x1288" visible="false" val="0x06" />
+                    <volume0 offset="0" bits="32" t="u32" id="0x126c" visible="false" val="0x08" />
+                    <volume1 offset="0" bits="32" t="u32" id="0x1270" visible="false" val="0x08" />
+                    <volume2 offset="0" bits="32" t="u32" id="0x1274" visible="false" val="0x08" />
+                    <volume3 offset="0" bits="32" t="u32" id="0x1278" visible="false" val="0x08" />
+                    <volume4 offset="0" bits="32" t="u32" id="0x127c" visible="false" val="0x08" />
+                    <volume5 offset="0" bits="32" t="u32" id="0x1280" visible="false" val="0x08" />
+                    <volume6 offset="0" bits="32" t="u32" id="0x1284" visible="false" val="0x08" />
+                    <volume7 offset="0" bits="32" t="u32" id="0x1288" visible="false" val="0x08" />
                 </spkl_playback_volume>
                 <spkr_playback_volume>
-                    <volume0 offset="0" bits="32" t="u32" id="0x128c" visible="false" val="0x06" />
-                    <volume1 offset="0" bits="32" t="u32" id="0x1290" visible="false" val="0x06" />
-                    <volume2 offset="0" bits="32" t="u32" id="0x1294" visible="false" val="0x06" />
-                    <volume3 offset="0" bits="32" t="u32" id="0x1298" visible="false" val="0x06" />
-                    <volume4 offset="0" bits="32" t="u32" id="0x129c" visible="false" val="0x06" />
-                    <volume5 offset="0" bits="32" t="u32" id="0x12a0" visible="false" val="0x06" />
-                    <volume6 offset="0" bits="32" t="u32" id="0x12a4" visible="false" val="0x06" />
-                    <volume7 offset="0" bits="32" t="u32" id="0x12a8" visible="false" val="0x06" />
+                    <volume0 offset="0" bits="32" t="u32" id="0x128c" visible="false" val="0x08" />
+                    <volume1 offset="0" bits="32" t="u32" id="0x1290" visible="false" val="0x08" />
+                    <volume2 offset="0" bits="32" t="u32" id="0x1294" visible="false" val="0x08" />
+                    <volume3 offset="0" bits="32" t="u32" id="0x1298" visible="false" val="0x08" />
+                    <volume4 offset="0" bits="32" t="u32" id="0x129c" visible="false" val="0x08" />
+                    <volume5 offset="0" bits="32" t="u32" id="0x12a0" visible="false" val="0x08" />
+                    <volume6 offset="0" bits="32" t="u32" id="0x12a4" visible="false" val="0x08" />
+                    <volume7 offset="0" bits="32" t="u32" id="0x12a8" visible="false" val="0x08" />
                 </spkr_playback_volume>
                 <hpl_playback_volume>
                     <volume0 offset="0" bits="32" t="u32" id="0x12ac" visible="false" val="0x05" />
@@ -1975,24 +1975,24 @@
                 <adcl_capture_volume offset="0" bits="32" t="u32" id="0x13b4" visible="true" val="0x06" />
                 <adcr_capture_volume offset="0" bits="32" t="u32" id="0x13b8" visible="true" val="0x06" />
                 <spkl_playback_volume>
-                    <volume0 offset="0" bits="32" t="u32" id="0x13bc" visible="false" val="0x06" />
-                    <volume1 offset="0" bits="32" t="u32" id="0x13c0" visible="false" val="0x06" />
-                    <volume2 offset="0" bits="32" t="u32" id="0x13c4" visible="false" val="0x06" />
-                    <volume3 offset="0" bits="32" t="u32" id="0x13c8" visible="false" val="0x06" />
-                    <volume4 offset="0" bits="32" t="u32" id="0x13cc" visible="false" val="0x06" />
-                    <volume5 offset="0" bits="32" t="u32" id="0x13d0" visible="false" val="0x06" />
-                    <volume6 offset="0" bits="32" t="u32" id="0x13d4" visible="false" val="0x06" />
-                    <volume7 offset="0" bits="32" t="u32" id="0x13d8" visible="false" val="0x06" />
+                    <volume0 offset="0" bits="32" t="u32" id="0x13bc" visible="false" val="0x08" />
+                    <volume1 offset="0" bits="32" t="u32" id="0x13c0" visible="false" val="0x08" />
+                    <volume2 offset="0" bits="32" t="u32" id="0x13c4" visible="false" val="0x08" />
+                    <volume3 offset="0" bits="32" t="u32" id="0x13c8" visible="false" val="0x08" />
+                    <volume4 offset="0" bits="32" t="u32" id="0x13cc" visible="false" val="0x08" />
+                    <volume5 offset="0" bits="32" t="u32" id="0x13d0" visible="false" val="0x08" />
+                    <volume6 offset="0" bits="32" t="u32" id="0x13d4" visible="false" val="0x08" />
+                    <volume7 offset="0" bits="32" t="u32" id="0x13d8" visible="false" val="0x08" />
                 </spkl_playback_volume>
                 <spkr_playback_volume>
-                    <volume0 offset="0" bits="32" t="u32" id="0x13dc" visible="false" val="0x06" />
-                    <volume1 offset="0" bits="32" t="u32" id="0x13e0" visible="false" val="0x06" />
-                    <volume2 offset="0" bits="32" t="u32" id="0x13e4" visible="false" val="0x06" />
-                    <volume3 offset="0" bits="32" t="u32" id="0x13e8" visible="false" val="0x06" />
-                    <volume4 offset="0" bits="32" t="u32" id="0x13ec" visible="false" val="0x06" />
-                    <volume5 offset="0" bits="32" t="u32" id="0x13f0" visible="false" val="0x06" />
-                    <volume6 offset="0" bits="32" t="u32" id="0x13f4" visible="false" val="0x06" />
-                    <volume7 offset="0" bits="32" t="u32" id="0x13f8" visible="false" val="0x06" />
+                    <volume0 offset="0" bits="32" t="u32" id="0x13dc" visible="false" val="0x08" />
+                    <volume1 offset="0" bits="32" t="u32" id="0x13e0" visible="false" val="0x08" />
+                    <volume2 offset="0" bits="32" t="u32" id="0x13e4" visible="false" val="0x08" />
+                    <volume3 offset="0" bits="32" t="u32" id="0x13e8" visible="false" val="0x08" />
+                    <volume4 offset="0" bits="32" t="u32" id="0x13ec" visible="false" val="0x08" />
+                    <volume5 offset="0" bits="32" t="u32" id="0x13f0" visible="false" val="0x08" />
+                    <volume6 offset="0" bits="32" t="u32" id="0x13f4" visible="false" val="0x08" />
+                    <volume7 offset="0" bits="32" t="u32" id="0x13f8" visible="false" val="0x08" />
                 </spkr_playback_volume>
                 <hpl_playback_volume>
                     <volume0 offset="0" bits="32" t="u32" id="0x13fc" visible="false" val="0x0b" />
@@ -2106,24 +2106,24 @@
                 <adcl_capture_volume offset="0" bits="32" t="u32" id="0x1504" visible="true" val="0x07" />
                 <adcr_capture_volume offset="0" bits="32" t="u32" id="0x1508" visible="true" val="0x07" />
                 <spkl_playback_volume>
-                    <volume0 offset="0" bits="32" t="u32" id="0x150c" visible="false" val="0x06" />
-                    <volume1 offset="0" bits="32" t="u32" id="0x1510" visible="false" val="0x06" />
-                    <volume2 offset="0" bits="32" t="u32" id="0x1514" visible="false" val="0x06" />
-                    <volume3 offset="0" bits="32" t="u32" id="0x1518" visible="false" val="0x06" />
-                    <volume4 offset="0" bits="32" t="u32" id="0x151c" visible="false" val="0x06" />
-                    <volume5 offset="0" bits="32" t="u32" id="0x1520" visible="false" val="0x06" />
-                    <volume6 offset="0" bits="32" t="u32" id="0x1524" visible="false" val="0x06" />
-                    <volume7 offset="0" bits="32" t="u32" id="0x1528" visible="false" val="0x06" />
+                    <volume0 offset="0" bits="32" t="u32" id="0x150c" visible="false" val="0x08" />
+                    <volume1 offset="0" bits="32" t="u32" id="0x1510" visible="false" val="0x08" />
+                    <volume2 offset="0" bits="32" t="u32" id="0x1514" visible="false" val="0x08" />
+                    <volume3 offset="0" bits="32" t="u32" id="0x1518" visible="false" val="0x08" />
+                    <volume4 offset="0" bits="32" t="u32" id="0x151c" visible="false" val="0x08" />
+                    <volume5 offset="0" bits="32" t="u32" id="0x1520" visible="false" val="0x08" />
+                    <volume6 offset="0" bits="32" t="u32" id="0x1524" visible="false" val="0x08" />
+                    <volume7 offset="0" bits="32" t="u32" id="0x1528" visible="false" val="0x08" />
                 </spkl_playback_volume>
                 <spkr_playback_volume>
-                    <volume0 offset="0" bits="32" t="u32" id="0x152c" visible="false" val="0x06" />
-                    <volume1 offset="0" bits="32" t="u32" id="0x1530" visible="false" val="0x06" />
-                    <volume2 offset="0" bits="32" t="u32" id="0x1534" visible="false" val="0x06" />
-                    <volume3 offset="0" bits="32" t="u32" id="0x1538" visible="false" val="0x06" />
-                    <volume4 offset="0" bits="32" t="u32" id="0x153c" visible="false" val="0x06" />
-                    <volume5 offset="0" bits="32" t="u32" id="0x1540" visible="false" val="0x06" />
-                    <volume6 offset="0" bits="32" t="u32" id="0x1544" visible="false" val="0x06" />
-                    <volume7 offset="0" bits="32" t="u32" id="0x1548" visible="false" val="0x06" />
+                    <volume0 offset="0" bits="32" t="u32" id="0x152c" visible="false" val="0x08" />
+                    <volume1 offset="0" bits="32" t="u32" id="0x1530" visible="false" val="0x08" />
+                    <volume2 offset="0" bits="32" t="u32" id="0x1534" visible="false" val="0x08" />
+                    <volume3 offset="0" bits="32" t="u32" id="0x1538" visible="false" val="0x08" />
+                    <volume4 offset="0" bits="32" t="u32" id="0x153c" visible="false" val="0x08" />
+                    <volume5 offset="0" bits="32" t="u32" id="0x1540" visible="false" val="0x08" />
+                    <volume6 offset="0" bits="32" t="u32" id="0x1544" visible="false" val="0x08" />
+                    <volume7 offset="0" bits="32" t="u32" id="0x1548" visible="false" val="0x08" />
                 </spkr_playback_volume>
                 <hpl_playback_volume>
                     <volume0 offset="0" bits="32" t="u32" id="0x154c" visible="false" val="0x06" />
@@ -2237,24 +2237,24 @@
                 <adcl_capture_volume offset="0" bits="32" t="u32" id="0x1654" visible="true" val="0x06" />
                 <adcr_capture_volume offset="0" bits="32" t="u32" id="0x1658" visible="true" val="0x06" />
                 <spkl_playback_volume>
-                    <volume0 offset="0" bits="32" t="u32" id="0x165c" visible="false" val="0x06" />
-                    <volume1 offset="0" bits="32" t="u32" id="0x1660" visible="false" val="0x06" />
-                    <volume2 offset="0" bits="32" t="u32" id="0x1664" visible="false" val="0x06" />
-                    <volume3 offset="0" bits="32" t="u32" id="0x1668" visible="false" val="0x06" />
-                    <volume4 offset="0" bits="32" t="u32" id="0x166c" visible="false" val="0x06" />
-                    <volume5 offset="0" bits="32" t="u32" id="0x1670" visible="false" val="0x06" />
-                    <volume6 offset="0" bits="32" t="u32" id="0x1674" visible="false" val="0x06" />
-                    <volume7 offset="0" bits="32" t="u32" id="0x1678" visible="false" val="0x06" />
+                    <volume0 offset="0" bits="32" t="u32" id="0x165c" visible="false" val="0x08" />
+                    <volume1 offset="0" bits="32" t="u32" id="0x1660" visible="false" val="0x08" />
+                    <volume2 offset="0" bits="32" t="u32" id="0x1664" visible="false" val="0x08" />
+                    <volume3 offset="0" bits="32" t="u32" id="0x1668" visible="false" val="0x08" />
+                    <volume4 offset="0" bits="32" t="u32" id="0x166c" visible="false" val="0x08" />
+                    <volume5 offset="0" bits="32" t="u32" id="0x1670" visible="false" val="0x08" />
+                    <volume6 offset="0" bits="32" t="u32" id="0x1674" visible="false" val="0x08" />
+                    <volume7 offset="0" bits="32" t="u32" id="0x1678" visible="false" val="0x08" />
                 </spkl_playback_volume>
                 <spkr_playback_volume>
-                    <volume0 offset="0" bits="32" t="u32" id="0x167c" visible="false" val="0x06" />
-                    <volume1 offset="0" bits="32" t="u32" id="0x1680" visible="false" val="0x06" />
-                    <volume2 offset="0" bits="32" t="u32" id="0x1684" visible="false" val="0x06" />
-                    <volume3 offset="0" bits="32" t="u32" id="0x1688" visible="false" val="0x06" />
-                    <volume4 offset="0" bits="32" t="u32" id="0x168c" visible="false" val="0x06" />
-                    <volume5 offset="0" bits="32" t="u32" id="0x1690" visible="false" val="0x06" />
-                    <volume6 offset="0" bits="32" t="u32" id="0x1694" visible="false" val="0x06" />
-                    <volume7 offset="0" bits="32" t="u32" id="0x1698" visible="false" val="0x06" />
+                    <volume0 offset="0" bits="32" t="u32" id="0x167c" visible="false" val="0x08" />
+                    <volume1 offset="0" bits="32" t="u32" id="0x1680" visible="false" val="0x08" />
+                    <volume2 offset="0" bits="32" t="u32" id="0x1684" visible="false" val="0x08" />
+                    <volume3 offset="0" bits="32" t="u32" id="0x1688" visible="false" val="0x08" />
+                    <volume4 offset="0" bits="32" t="u32" id="0x168c" visible="false" val="0x08" />
+                    <volume5 offset="0" bits="32" t="u32" id="0x1690" visible="false" val="0x08" />
+                    <volume6 offset="0" bits="32" t="u32" id="0x1694" visible="false" val="0x08" />
+                    <volume7 offset="0" bits="32" t="u32" id="0x1698" visible="false" val="0x08" />
                 </spkr_playback_volume>
                 <hpl_playback_volume>
                     <volume0 offset="0" bits="32" t="u32" id="0x169c" visible="false" val="0x09" />
@@ -2368,24 +2368,24 @@
                 <adcl_capture_volume offset="0" bits="32" t="u32" id="0x17a4" visible="true" val="0x07" />
                 <adcr_capture_volume offset="0" bits="32" t="u32" id="0x17a8" visible="true" val="0x07" />
                 <spkl_playback_volume>
-                    <volume0 offset="0" bits="32" t="u32" id="0x17ac" visible="false" val="0x06" />
-                    <volume1 offset="0" bits="32" t="u32" id="0x17b0" visible="false" val="0x06" />
-                    <volume2 offset="0" bits="32" t="u32" id="0x17b4" visible="false" val="0x06" />
-                    <volume3 offset="0" bits="32" t="u32" id="0x17b8" visible="false" val="0x06" />
-                    <volume4 offset="0" bits="32" t="u32" id="0x17bc" visible="false" val="0x06" />
-                    <volume5 offset="0" bits="32" t="u32" id="0x17c0" visible="false" val="0x06" />
-                    <volume6 offset="0" bits="32" t="u32" id="0x17c4" visible="false" val="0x06" />
-                    <volume7 offset="0" bits="32" t="u32" id="0x17c8" visible="false" val="0x06" />
+                    <volume0 offset="0" bits="32" t="u32" id="0x17ac" visible="false" val="0x08" />
+                    <volume1 offset="0" bits="32" t="u32" id="0x17b0" visible="false" val="0x08" />
+                    <volume2 offset="0" bits="32" t="u32" id="0x17b4" visible="false" val="0x08" />
+                    <volume3 offset="0" bits="32" t="u32" id="0x17b8" visible="false" val="0x08" />
+                    <volume4 offset="0" bits="32" t="u32" id="0x17bc" visible="false" val="0x08" />
+                    <volume5 offset="0" bits="32" t="u32" id="0x17c0" visible="false" val="0x08" />
+                    <volume6 offset="0" bits="32" t="u32" id="0x17c4" visible="false" val="0x08" />
+                    <volume7 offset="0" bits="32" t="u32" id="0x17c8" visible="false" val="0x08" />
                 </spkl_playback_volume>
                 <spkr_playback_volume>
-                    <volume0 offset="0" bits="32" t="u32" id="0x17cc" visible="false" val="0x06" />
-                    <volume1 offset="0" bits="32" t="u32" id="0x17d0" visible="false" val="0x06" />
-                    <volume2 offset="0" bits="32" t="u32" id="0x17d4" visible="false" val="0x06" />
-                    <volume3 offset="0" bits="32" t="u32" id="0x17d8" visible="false" val="0x06" />
-                    <volume4 offset="0" bits="32" t="u32" id="0x17dc" visible="false" val="0x06" />
-                    <volume5 offset="0" bits="32" t="u32" id="0x17e0" visible="false" val="0x06" />
-                    <volume6 offset="0" bits="32" t="u32" id="0x17e4" visible="false" val="0x06" />
-                    <volume7 offset="0" bits="32" t="u32" id="0x17e8" visible="false" val="0x06" />
+                    <volume0 offset="0" bits="32" t="u32" id="0x17cc" visible="false" val="0x08" />
+                    <volume1 offset="0" bits="32" t="u32" id="0x17d0" visible="false" val="0x08" />
+                    <volume2 offset="0" bits="32" t="u32" id="0x17d4" visible="false" val="0x08" />
+                    <volume3 offset="0" bits="32" t="u32" id="0x17d8" visible="false" val="0x08" />
+                    <volume4 offset="0" bits="32" t="u32" id="0x17dc" visible="false" val="0x08" />
+                    <volume5 offset="0" bits="32" t="u32" id="0x17e0" visible="false" val="0x08" />
+                    <volume6 offset="0" bits="32" t="u32" id="0x17e4" visible="false" val="0x08" />
+                    <volume7 offset="0" bits="32" t="u32" id="0x17e8" visible="false" val="0x08" />
                 </spkr_playback_volume>
                 <hpl_playback_volume>
                     <volume0 offset="0" bits="32" t="u32" id="0x17ec" visible="false" val="0x05" />
@@ -2499,24 +2499,24 @@
                 <adcl_capture_volume offset="0" bits="32" t="u32" id="0x18f4" visible="true" val="0x07" />
                 <adcr_capture_volume offset="0" bits="32" t="u32" id="0x18f8" visible="true" val="0x07" />
                 <spkl_playback_volume>
-                    <volume0 offset="0" bits="32" t="u32" id="0x18fc" visible="false" val="0x06" />
-                    <volume1 offset="0" bits="32" t="u32" id="0x1900" visible="false" val="0x06" />
-                    <volume2 offset="0" bits="32" t="u32" id="0x1904" visible="false" val="0x06" />
-                    <volume3 offset="0" bits="32" t="u32" id="0x1908" visible="false" val="0x06" />
-                    <volume4 offset="0" bits="32" t="u32" id="0x190c" visible="false" val="0x06" />
-                    <volume5 offset="0" bits="32" t="u32" id="0x1910" visible="false" val="0x06" />
-                    <volume6 offset="0" bits="32" t="u32" id="0x1914" visible="false" val="0x06" />
-                    <volume7 offset="0" bits="32" t="u32" id="0x1918" visible="false" val="0x06" />
+                    <volume0 offset="0" bits="32" t="u32" id="0x18fc" visible="false" val="0x08" />
+                    <volume1 offset="0" bits="32" t="u32" id="0x1900" visible="false" val="0x08" />
+                    <volume2 offset="0" bits="32" t="u32" id="0x1904" visible="false" val="0x08" />
+                    <volume3 offset="0" bits="32" t="u32" id="0x1908" visible="false" val="0x08" />
+                    <volume4 offset="0" bits="32" t="u32" id="0x190c" visible="false" val="0x08" />
+                    <volume5 offset="0" bits="32" t="u32" id="0x1910" visible="false" val="0x08" />
+                    <volume6 offset="0" bits="32" t="u32" id="0x1914" visible="false" val="0x08" />
+                    <volume7 offset="0" bits="32" t="u32" id="0x1918" visible="false" val="0x08" />
                 </spkl_playback_volume>
                 <spkr_playback_volume>
-                    <volume0 offset="0" bits="32" t="u32" id="0x191c" visible="false" val="0x06" />
-                    <volume1 offset="0" bits="32" t="u32" id="0x1920" visible="false" val="0x06" />
-                    <volume2 offset="0" bits="32" t="u32" id="0x1924" visible="false" val="0x06" />
-                    <volume3 offset="0" bits="32" t="u32" id="0x1928" visible="false" val="0x06" />
-                    <volume4 offset="0" bits="32" t="u32" id="0x192c" visible="false" val="0x06" />
-                    <volume5 offset="0" bits="32" t="u32" id="0x1930" visible="false" val="0x06" />
-                    <volume6 offset="0" bits="32" t="u32" id="0x1934" visible="false" val="0x06" />
-                    <volume7 offset="0" bits="32" t="u32" id="0x1938" visible="false" val="0x06" />
+                    <volume0 offset="0" bits="32" t="u32" id="0x191c" visible="false" val="0x08" />
+                    <volume1 offset="0" bits="32" t="u32" id="0x1920" visible="false" val="0x08" />
+                    <volume2 offset="0" bits="32" t="u32" id="0x1924" visible="false" val="0x08" />
+                    <volume3 offset="0" bits="32" t="u32" id="0x1928" visible="false" val="0x08" />
+                    <volume4 offset="0" bits="32" t="u32" id="0x192c" visible="false" val="0x08" />
+                    <volume5 offset="0" bits="32" t="u32" id="0x1930" visible="false" val="0x08" />
+                    <volume6 offset="0" bits="32" t="u32" id="0x1934" visible="false" val="0x08" />
+                    <volume7 offset="0" bits="32" t="u32" id="0x1938" visible="false" val="0x08" />
                 </spkr_playback_volume>
                 <hpl_playback_volume>
                     <volume0 offset="0" bits="32" t="u32" id="0x193c" visible="false" val="0x05" />
@@ -2630,24 +2630,24 @@
                 <adcl_capture_volume offset="0" bits="32" t="u32" id="0x1a44" visible="true" val="0x05" />
                 <adcr_capture_volume offset="0" bits="32" t="u32" id="0x1a48" visible="true" val="0x05" />
                 <spkl_playback_volume>
-                    <volume0 offset="0" bits="32" t="u32" id="0x1a4c" visible="false" val="0x06" />
-                    <volume1 offset="0" bits="32" t="u32" id="0x1a50" visible="false" val="0x06" />
-                    <volume2 offset="0" bits="32" t="u32" id="0x1a54" visible="false" val="0x06" />
-                    <volume3 offset="0" bits="32" t="u32" id="0x1a58" visible="false" val="0x06" />
-                    <volume4 offset="0" bits="32" t="u32" id="0x1a5c" visible="false" val="0x06" />
-                    <volume5 offset="0" bits="32" t="u32" id="0x1a60" visible="false" val="0x06" />
-                    <volume6 offset="0" bits="32" t="u32" id="0x1a64" visible="false" val="0x06" />
-                    <volume7 offset="0" bits="32" t="u32" id="0x1a68" visible="false" val="0x06" />
+                    <volume0 offset="0" bits="32" t="u32" id="0x1a4c" visible="false" val="0x08" />
+                    <volume1 offset="0" bits="32" t="u32" id="0x1a50" visible="false" val="0x08" />
+                    <volume2 offset="0" bits="32" t="u32" id="0x1a54" visible="false" val="0x08" />
+                    <volume3 offset="0" bits="32" t="u32" id="0x1a58" visible="false" val="0x08" />
+                    <volume4 offset="0" bits="32" t="u32" id="0x1a5c" visible="false" val="0x08" />
+                    <volume5 offset="0" bits="32" t="u32" id="0x1a60" visible="false" val="0x08" />
+                    <volume6 offset="0" bits="32" t="u32" id="0x1a64" visible="false" val="0x08" />
+                    <volume7 offset="0" bits="32" t="u32" id="0x1a68" visible="false" val="0x08" />
                 </spkl_playback_volume>
                 <spkr_playback_volume>
-                    <volume0 offset="0" bits="32" t="u32" id="0x1a6c" visible="false" val="0x06" />
-                    <volume1 offset="0" bits="32" t="u32" id="0x1a70" visible="false" val="0x06" />
-                    <volume2 offset="0" bits="32" t="u32" id="0x1a74" visible="false" val="0x06" />
-                    <volume3 offset="0" bits="32" t="u32" id="0x1a78" visible="false" val="0x06" />
-                    <volume4 offset="0" bits="32" t="u32" id="0x1a7c" visible="false" val="0x06" />
-                    <volume5 offset="0" bits="32" t="u32" id="0x1a80" visible="false" val="0x06" />
-                    <volume6 offset="0" bits="32" t="u32" id="0x1a84" visible="false" val="0x06" />
-                    <volume7 offset="0" bits="32" t="u32" id="0x1a88" visible="false" val="0x06" />
+                    <volume0 offset="0" bits="32" t="u32" id="0x1a6c" visible="false" val="0x08" />
+                    <volume1 offset="0" bits="32" t="u32" id="0x1a70" visible="false" val="0x08" />
+                    <volume2 offset="0" bits="32" t="u32" id="0x1a74" visible="false" val="0x08" />
+                    <volume3 offset="0" bits="32" t="u32" id="0x1a78" visible="false" val="0x08" />
+                    <volume4 offset="0" bits="32" t="u32" id="0x1a7c" visible="false" val="0x08" />
+                    <volume5 offset="0" bits="32" t="u32" id="0x1a80" visible="false" val="0x08" />
+                    <volume6 offset="0" bits="32" t="u32" id="0x1a84" visible="false" val="0x08" />
+                    <volume7 offset="0" bits="32" t="u32" id="0x1a88" visible="false" val="0x08" />
                 </spkr_playback_volume>
                 <hpl_playback_volume>
                     <volume0 offset="0" bits="32" t="u32" id="0x1a8c" visible="false" val="0x05" />
@@ -2763,24 +2763,24 @@
                 <adcl_capture_volume offset="0" bits="32" t="u32" id="0x1b94" visible="true" val="0x07" />
                 <adcr_capture_volume offset="0" bits="32" t="u32" id="0x1b98" visible="true" val="0x07" />
                 <spkl_playback_volume>
-                    <volume0 offset="0" bits="32" t="u32" id="0x1b9c" visible="false" val="0x06" />
-                    <volume1 offset="0" bits="32" t="u32" id="0x1ba0" visible="false" val="0x06" />
-                    <volume2 offset="0" bits="32" t="u32" id="0x1ba4" visible="false" val="0x06" />
-                    <volume3 offset="0" bits="32" t="u32" id="0x1ba8" visible="false" val="0x06" />
-                    <volume4 offset="0" bits="32" t="u32" id="0x1bac" visible="false" val="0x06" />
-                    <volume5 offset="0" bits="32" t="u32" id="0x1bb0" visible="false" val="0x06" />
-                    <volume6 offset="0" bits="32" t="u32" id="0x1bb4" visible="false" val="0x06" />
-                    <volume7 offset="0" bits="32" t="u32" id="0x1bb8" visible="false" val="0x06" />
+                    <volume0 offset="0" bits="32" t="u32" id="0x1b9c" visible="false" val="0x08" />
+                    <volume1 offset="0" bits="32" t="u32" id="0x1ba0" visible="false" val="0x08" />
+                    <volume2 offset="0" bits="32" t="u32" id="0x1ba4" visible="false" val="0x08" />
+                    <volume3 offset="0" bits="32" t="u32" id="0x1ba8" visible="false" val="0x08" />
+                    <volume4 offset="0" bits="32" t="u32" id="0x1bac" visible="false" val="0x08" />
+                    <volume5 offset="0" bits="32" t="u32" id="0x1bb0" visible="false" val="0x08" />
+                    <volume6 offset="0" bits="32" t="u32" id="0x1bb4" visible="false" val="0x08" />
+                    <volume7 offset="0" bits="32" t="u32" id="0x1bb8" visible="false" val="0x08" />
                 </spkl_playback_volume>
                 <spkr_playback_volume>
-                    <volume0 offset="0" bits="32" t="u32" id="0x1bbc" visible="false" val="0x06" />
-                    <volume1 offset="0" bits="32" t="u32" id="0x1bc0" visible="false" val="0x06" />
-                    <volume2 offset="0" bits="32" t="u32" id="0x1bc4" visible="false" val="0x06" />
-                    <volume3 offset="0" bits="32" t="u32" id="0x1bc8" visible="false" val="0x06" />
-                    <volume4 offset="0" bits="32" t="u32" id="0x1bcc" visible="false" val="0x06" />
-                    <volume5 offset="0" bits="32" t="u32" id="0x1bd0" visible="false" val="0x06" />
-                    <volume6 offset="0" bits="32" t="u32" id="0x1bd4" visible="false" val="0x06" />
-                    <volume7 offset="0" bits="32" t="u32" id="0x1bd8" visible="false" val="0x06" />
+                    <volume0 offset="0" bits="32" t="u32" id="0x1bbc" visible="false" val="0x08" />
+                    <volume1 offset="0" bits="32" t="u32" id="0x1bc0" visible="false" val="0x08" />
+                    <volume2 offset="0" bits="32" t="u32" id="0x1bc4" visible="false" val="0x08" />
+                    <volume3 offset="0" bits="32" t="u32" id="0x1bc8" visible="false" val="0x08" />
+                    <volume4 offset="0" bits="32" t="u32" id="0x1bcc" visible="false" val="0x08" />
+                    <volume5 offset="0" bits="32" t="u32" id="0x1bd0" visible="false" val="0x08" />
+                    <volume6 offset="0" bits="32" t="u32" id="0x1bd4" visible="false" val="0x08" />
+                    <volume7 offset="0" bits="32" t="u32" id="0x1bd8" visible="false" val="0x08" />
                 </spkr_playback_volume>
                 <hpl_playback_volume>
                     <volume0 offset="0" bits="32" t="u32" id="0x1bdc" visible="false" val="0x05" />
@@ -2894,24 +2894,24 @@
                 <adcl_capture_volume offset="0" bits="32" t="u32" id="0x1ce4" visible="true" val="0x05" />
                 <adcr_capture_volume offset="0" bits="32" t="u32" id="0x1ce8" visible="true" val="0x05" />
                 <spkl_playback_volume>
-                    <volume0 offset="0" bits="32" t="u32" id="0x1cec" visible="false" val="0x06" />
-                    <volume1 offset="0" bits="32" t="u32" id="0x1cf0" visible="false" val="0x06" />
-                    <volume2 offset="0" bits="32" t="u32" id="0x1cf4" visible="false" val="0x06" />
-                    <volume3 offset="0" bits="32" t="u32" id="0x1cf8" visible="false" val="0x06" />
-                    <volume4 offset="0" bits="32" t="u32" id="0x1cfc" visible="false" val="0x06" />
-                    <volume5 offset="0" bits="32" t="u32" id="0x1d00" visible="false" val="0x06" />
-                    <volume6 offset="0" bits="32" t="u32" id="0x1d04" visible="false" val="0x06" />
-                    <volume7 offset="0" bits="32" t="u32" id="0x1d08" visible="false" val="0x06" />
+                    <volume0 offset="0" bits="32" t="u32" id="0x1cec" visible="false" val="0x08" />
+                    <volume1 offset="0" bits="32" t="u32" id="0x1cf0" visible="false" val="0x08" />
+                    <volume2 offset="0" bits="32" t="u32" id="0x1cf4" visible="false" val="0x08" />
+                    <volume3 offset="0" bits="32" t="u32" id="0x1cf8" visible="false" val="0x08" />
+                    <volume4 offset="0" bits="32" t="u32" id="0x1cfc" visible="false" val="0x08" />
+                    <volume5 offset="0" bits="32" t="u32" id="0x1d00" visible="false" val="0x08" />
+                    <volume6 offset="0" bits="32" t="u32" id="0x1d04" visible="false" val="0x08" />
+                    <volume7 offset="0" bits="32" t="u32" id="0x1d08" visible="false" val="0x08" />
                 </spkl_playback_volume>
                 <spkr_playback_volume>
-                    <volume0 offset="0" bits="32" t="u32" id="0x1d0c" visible="false" val="0x06" />
-                    <volume1 offset="0" bits="32" t="u32" id="0x1d10" visible="false" val="0x06" />
-                    <volume2 offset="0" bits="32" t="u32" id="0x1d14" visible="false" val="0x06" />
-                    <volume3 offset="0" bits="32" t="u32" id="0x1d18" visible="false" val="0x06" />
-                    <volume4 offset="0" bits="32" t="u32" id="0x1d1c" visible="false" val="0x06" />
-                    <volume5 offset="0" bits="32" t="u32" id="0x1d20" visible="false" val="0x06" />
-                    <volume6 offset="0" bits="32" t="u32" id="0x1d24" visible="false" val="0x06" />
-                    <volume7 offset="0" bits="32" t="u32" id="0x1d28" visible="false" val="0x06" />
+                    <volume0 offset="0" bits="32" t="u32" id="0x1d0c" visible="false" val="0x08" />
+                    <volume1 offset="0" bits="32" t="u32" id="0x1d10" visible="false" val="0x08" />
+                    <volume2 offset="0" bits="32" t="u32" id="0x1d14" visible="false" val="0x08" />
+                    <volume3 offset="0" bits="32" t="u32" id="0x1d18" visible="false" val="0x08" />
+                    <volume4 offset="0" bits="32" t="u32" id="0x1d1c" visible="false" val="0x08" />
+                    <volume5 offset="0" bits="32" t="u32" id="0x1d20" visible="false" val="0x08" />
+                    <volume6 offset="0" bits="32" t="u32" id="0x1d24" visible="false" val="0x08" />
+                    <volume7 offset="0" bits="32" t="u32" id="0x1d28" visible="false" val="0x08" />
                 </spkr_playback_volume>
                 <hpl_playback_volume>
                     <volume0 offset="0" bits="32" t="u32" id="0x1d2c" visible="false" val="0x0b" />
@@ -3025,24 +3025,24 @@
                 <adcl_capture_volume offset="0" bits="32" t="u32" id="0x1e34" visible="true" val="0x07" />
                 <adcr_capture_volume offset="0" bits="32" t="u32" id="0x1e38" visible="true" val="0x07" />
                 <spkl_playback_volume>
-                    <volume0 offset="0" bits="32" t="u32" id="0x1e3c" visible="false" val="0x06" />
-                    <volume1 offset="0" bits="32" t="u32" id="0x1e40" visible="false" val="0x06" />
-                    <volume2 offset="0" bits="32" t="u32" id="0x1e44" visible="false" val="0x06" />
-                    <volume3 offset="0" bits="32" t="u32" id="0x1e48" visible="false" val="0x06" />
-                    <volume4 offset="0" bits="32" t="u32" id="0x1e4c" visible="false" val="0x06" />
-                    <volume5 offset="0" bits="32" t="u32" id="0x1e50" visible="false" val="0x06" />
-                    <volume6 offset="0" bits="32" t="u32" id="0x1e54" visible="false" val="0x06" />
-                    <volume7 offset="0" bits="32" t="u32" id="0x1e58" visible="false" val="0x06" />
+                    <volume0 offset="0" bits="32" t="u32" id="0x1e3c" visible="false" val="0x08" />
+                    <volume1 offset="0" bits="32" t="u32" id="0x1e40" visible="false" val="0x08" />
+                    <volume2 offset="0" bits="32" t="u32" id="0x1e44" visible="false" val="0x08" />
+                    <volume3 offset="0" bits="32" t="u32" id="0x1e48" visible="false" val="0x08" />
+                    <volume4 offset="0" bits="32" t="u32" id="0x1e4c" visible="false" val="0x08" />
+                    <volume5 offset="0" bits="32" t="u32" id="0x1e50" visible="false" val="0x08" />
+                    <volume6 offset="0" bits="32" t="u32" id="0x1e54" visible="false" val="0x08" />
+                    <volume7 offset="0" bits="32" t="u32" id="0x1e58" visible="false" val="0x08" />
                 </spkl_playback_volume>
                 <spkr_playback_volume>
-                    <volume0 offset="0" bits="32" t="u32" id="0x1e5c" visible="false" val="0x06" />
-                    <volume1 offset="0" bits="32" t="u32" id="0x1e60" visible="false" val="0x06" />
-                    <volume2 offset="0" bits="32" t="u32" id="0x1e64" visible="false" val="0x06" />
-                    <volume3 offset="0" bits="32" t="u32" id="0x1e68" visible="false" val="0x06" />
-                    <volume4 offset="0" bits="32" t="u32" id="0x1e6c" visible="false" val="0x06" />
-                    <volume5 offset="0" bits="32" t="u32" id="0x1e70" visible="false" val="0x06" />
-                    <volume6 offset="0" bits="32" t="u32" id="0x1e74" visible="false" val="0x06" />
-                    <volume7 offset="0" bits="32" t="u32" id="0x1e78" visible="false" val="0x06" />
+                    <volume0 offset="0" bits="32" t="u32" id="0x1e5c" visible="false" val="0x08" />
+                    <volume1 offset="0" bits="32" t="u32" id="0x1e60" visible="false" val="0x08" />
+                    <volume2 offset="0" bits="32" t="u32" id="0x1e64" visible="false" val="0x08" />
+                    <volume3 offset="0" bits="32" t="u32" id="0x1e68" visible="false" val="0x08" />
+                    <volume4 offset="0" bits="32" t="u32" id="0x1e6c" visible="false" val="0x08" />
+                    <volume5 offset="0" bits="32" t="u32" id="0x1e70" visible="false" val="0x08" />
+                    <volume6 offset="0" bits="32" t="u32" id="0x1e74" visible="false" val="0x08" />
+                    <volume7 offset="0" bits="32" t="u32" id="0x1e78" visible="false" val="0x08" />
                 </spkr_playback_volume>
                 <hpl_playback_volume>
                     <volume0 offset="0" bits="32" t="u32" id="0x1e7c" visible="false" val="0x05" />
@@ -3156,24 +3156,24 @@
                 <adcl_capture_volume offset="0" bits="32" t="u32" id="0x1f84" visible="true" val="0x05" />
                 <adcr_capture_volume offset="0" bits="32" t="u32" id="0x1f88" visible="true" val="0x05" />
                 <spkl_playback_volume>
-                    <volume0 offset="0" bits="32" t="u32" id="0x1f8c" visible="false" val="0x06" />
-                    <volume1 offset="0" bits="32" t="u32" id="0x1f90" visible="false" val="0x06" />
-                    <volume2 offset="0" bits="32" t="u32" id="0x1f94" visible="false" val="0x06" />
-                    <volume3 offset="0" bits="32" t="u32" id="0x1f98" visible="false" val="0x06" />
-                    <volume4 offset="0" bits="32" t="u32" id="0x1f9c" visible="false" val="0x06" />
-                    <volume5 offset="0" bits="32" t="u32" id="0x1fa0" visible="false" val="0x06" />
-                    <volume6 offset="0" bits="32" t="u32" id="0x1fa4" visible="false" val="0x06" />
-                    <volume7 offset="0" bits="32" t="u32" id="0x1fa8" visible="false" val="0x06" />
+                    <volume0 offset="0" bits="32" t="u32" id="0x1f8c" visible="false" val="0x08" />
+                    <volume1 offset="0" bits="32" t="u32" id="0x1f90" visible="false" val="0x08" />
+                    <volume2 offset="0" bits="32" t="u32" id="0x1f94" visible="false" val="0x08" />
+                    <volume3 offset="0" bits="32" t="u32" id="0x1f98" visible="false" val="0x08" />
+                    <volume4 offset="0" bits="32" t="u32" id="0x1f9c" visible="false" val="0x08" />
+                    <volume5 offset="0" bits="32" t="u32" id="0x1fa0" visible="false" val="0x08" />
+                    <volume6 offset="0" bits="32" t="u32" id="0x1fa4" visible="false" val="0x08" />
+                    <volume7 offset="0" bits="32" t="u32" id="0x1fa8" visible="false" val="0x08" />
                 </spkl_playback_volume>
                 <spkr_playback_volume>
-                    <volume0 offset="0" bits="32" t="u32" id="0x1fac" visible="false" val="0x06" />
-                    <volume1 offset="0" bits="32" t="u32" id="0x1fb0" visible="false" val="0x06" />
-                    <volume2 offset="0" bits="32" t="u32" id="0x1fb4" visible="false" val="0x06" />
-                    <volume3 offset="0" bits="32" t="u32" id="0x1fb8" visible="false" val="0x06" />
-                    <volume4 offset="0" bits="32" t="u32" id="0x1fbc" visible="false" val="0x06" />
-                    <volume5 offset="0" bits="32" t="u32" id="0x1fc0" visible="false" val="0x06" />
-                    <volume6 offset="0" bits="32" t="u32" id="0x1fc4" visible="false" val="0x06" />
-                    <volume7 offset="0" bits="32" t="u32" id="0x1fc8" visible="false" val="0x06" />
+                    <volume0 offset="0" bits="32" t="u32" id="0x1fac" visible="false" val="0x08" />
+                    <volume1 offset="0" bits="32" t="u32" id="0x1fb0" visible="false" val="0x08" />
+                    <volume2 offset="0" bits="32" t="u32" id="0x1fb4" visible="false" val="0x08" />
+                    <volume3 offset="0" bits="32" t="u32" id="0x1fb8" visible="false" val="0x08" />
+                    <volume4 offset="0" bits="32" t="u32" id="0x1fbc" visible="false" val="0x08" />
+                    <volume5 offset="0" bits="32" t="u32" id="0x1fc0" visible="false" val="0x08" />
+                    <volume6 offset="0" bits="32" t="u32" id="0x1fc4" visible="false" val="0x08" />
+                    <volume7 offset="0" bits="32" t="u32" id="0x1fc8" visible="false" val="0x08" />
                 </spkr_playback_volume>
                 <hpl_playback_volume>
                     <volume0 offset="0" bits="32" t="u32" id="0x1fcc" visible="false" val="0x0b" />
@@ -3287,24 +3287,24 @@
                 <adcl_capture_volume offset="0" bits="32" t="u32" id="0x20d4" visible="true" val="0x07" />
                 <adcr_capture_volume offset="0" bits="32" t="u32" id="0x20d8" visible="true" val="0x07" />
                 <spkl_playback_volume>
-                    <volume0 offset="0" bits="32" t="u32" id="0x20dc" visible="false" val="0x06" />
-                    <volume1 offset="0" bits="32" t="u32" id="0x20e0" visible="false" val="0x06" />
-                    <volume2 offset="0" bits="32" t="u32" id="0x20e4" visible="false" val="0x06" />
-                    <volume3 offset="0" bits="32" t="u32" id="0x20e8" visible="false" val="0x06" />
-                    <volume4 offset="0" bits="32" t="u32" id="0x20ec" visible="false" val="0x06" />
-                    <volume5 offset="0" bits="32" t="u32" id="0x20f0" visible="false" val="0x06" />
-                    <volume6 offset="0" bits="32" t="u32" id="0x20f4" visible="false" val="0x06" />
-                    <volume7 offset="0" bits="32" t="u32" id="0x20f8" visible="false" val="0x06" />
+                    <volume0 offset="0" bits="32" t="u32" id="0x20dc" visible="false" val="0x08" />
+                    <volume1 offset="0" bits="32" t="u32" id="0x20e0" visible="false" val="0x08" />
+                    <volume2 offset="0" bits="32" t="u32" id="0x20e4" visible="false" val="0x08" />
+                    <volume3 offset="0" bits="32" t="u32" id="0x20e8" visible="false" val="0x08" />
+                    <volume4 offset="0" bits="32" t="u32" id="0x20ec" visible="false" val="0x08" />
+                    <volume5 offset="0" bits="32" t="u32" id="0x20f0" visible="false" val="0x08" />
+                    <volume6 offset="0" bits="32" t="u32" id="0x20f4" visible="false" val="0x08" />
+                    <volume7 offset="0" bits="32" t="u32" id="0x20f8" visible="false" val="0x08" />
                 </spkl_playback_volume>
                 <spkr_playback_volume>
-                    <volume0 offset="0" bits="32" t="u32" id="0x20fc" visible="false" val="0x06" />
-                    <volume1 offset="0" bits="32" t="u32" id="0x2100" visible="false" val="0x06" />
-                    <volume2 offset="0" bits="32" t="u32" id="0x2104" visible="false" val="0x06" />
-                    <volume3 offset="0" bits="32" t="u32" id="0x2108" visible="false" val="0x06" />
-                    <volume4 offset="0" bits="32" t="u32" id="0x210c" visible="false" val="0x06" />
-                    <volume5 offset="0" bits="32" t="u32" id="0x2110" visible="false" val="0x06" />
-                    <volume6 offset="0" bits="32" t="u32" id="0x2114" visible="false" val="0x06" />
-                    <volume7 offset="0" bits="32" t="u32" id="0x2118" visible="false" val="0x06" />
+                    <volume0 offset="0" bits="32" t="u32" id="0x20fc" visible="false" val="0x08" />
+                    <volume1 offset="0" bits="32" t="u32" id="0x2100" visible="false" val="0x08" />
+                    <volume2 offset="0" bits="32" t="u32" id="0x2104" visible="false" val="0x08" />
+                    <volume3 offset="0" bits="32" t="u32" id="0x2108" visible="false" val="0x08" />
+                    <volume4 offset="0" bits="32" t="u32" id="0x210c" visible="false" val="0x08" />
+                    <volume5 offset="0" bits="32" t="u32" id="0x2110" visible="false" val="0x08" />
+                    <volume6 offset="0" bits="32" t="u32" id="0x2114" visible="false" val="0x08" />
+                    <volume7 offset="0" bits="32" t="u32" id="0x2118" visible="false" val="0x08" />
                 </spkr_playback_volume>
                 <hpl_playback_volume>
                     <volume0 offset="0" bits="32" t="u32" id="0x211c" visible="false" val="0x05" />
@@ -3418,24 +3418,24 @@
                 <adcl_capture_volume offset="0" bits="32" t="u32" id="0x2224" visible="true" val="0x07" />
                 <adcr_capture_volume offset="0" bits="32" t="u32" id="0x2228" visible="true" val="0x07" />
                 <spkl_playback_volume>
-                    <volume0 offset="0" bits="32" t="u32" id="0x222c" visible="false" val="0x06" />
-                    <volume1 offset="0" bits="32" t="u32" id="0x2230" visible="false" val="0x06" />
-                    <volume2 offset="0" bits="32" t="u32" id="0x2234" visible="false" val="0x06" />
-                    <volume3 offset="0" bits="32" t="u32" id="0x2238" visible="false" val="0x06" />
-                    <volume4 offset="0" bits="32" t="u32" id="0x223c" visible="false" val="0x06" />
-                    <volume5 offset="0" bits="32" t="u32" id="0x2240" visible="false" val="0x06" />
-                    <volume6 offset="0" bits="32" t="u32" id="0x2244" visible="false" val="0x06" />
-                    <volume7 offset="0" bits="32" t="u32" id="0x2248" visible="false" val="0x06" />
+                    <volume0 offset="0" bits="32" t="u32" id="0x222c" visible="false" val="0x08" />
+                    <volume1 offset="0" bits="32" t="u32" id="0x2230" visible="false" val="0x08" />
+                    <volume2 offset="0" bits="32" t="u32" id="0x2234" visible="false" val="0x08" />
+                    <volume3 offset="0" bits="32" t="u32" id="0x2238" visible="false" val="0x08" />
+                    <volume4 offset="0" bits="32" t="u32" id="0x223c" visible="false" val="0x08" />
+                    <volume5 offset="0" bits="32" t="u32" id="0x2240" visible="false" val="0x08" />
+                    <volume6 offset="0" bits="32" t="u32" id="0x2244" visible="false" val="0x08" />
+                    <volume7 offset="0" bits="32" t="u32" id="0x2248" visible="false" val="0x08" />
                 </spkl_playback_volume>
                 <spkr_playback_volume>
-                    <volume0 offset="0" bits="32" t="u32" id="0x224c" visible="false" val="0x06" />
-                    <volume1 offset="0" bits="32" t="u32" id="0x2250" visible="false" val="0x06" />
-                    <volume2 offset="0" bits="32" t="u32" id="0x2254" visible="false" val="0x06" />
-                    <volume3 offset="0" bits="32" t="u32" id="0x2258" visible="false" val="0x06" />
-                    <volume4 offset="0" bits="32" t="u32" id="0x225c" visible="false" val="0x06" />
-                    <volume5 offset="0" bits="32" t="u32" id="0x2260" visible="false" val="0x06" />
-                    <volume6 offset="0" bits="32" t="u32" id="0x2264" visible="false" val="0x06" />
-                    <volume7 offset="0" bits="32" t="u32" id="0x2268" visible="false" val="0x06" />
+                    <volume0 offset="0" bits="32" t="u32" id="0x224c" visible="false" val="0x08" />
+                    <volume1 offset="0" bits="32" t="u32" id="0x2250" visible="false" val="0x08" />
+                    <volume2 offset="0" bits="32" t="u32" id="0x2254" visible="false" val="0x08" />
+                    <volume3 offset="0" bits="32" t="u32" id="0x2258" visible="false" val="0x08" />
+                    <volume4 offset="0" bits="32" t="u32" id="0x225c" visible="false" val="0x08" />
+                    <volume5 offset="0" bits="32" t="u32" id="0x2260" visible="false" val="0x08" />
+                    <volume6 offset="0" bits="32" t="u32" id="0x2264" visible="false" val="0x08" />
+                    <volume7 offset="0" bits="32" t="u32" id="0x2268" visible="false" val="0x08" />
                 </spkr_playback_volume>
                 <hpl_playback_volume>
                     <volume0 offset="0" bits="32" t="u32" id="0x226c" visible="false" val="0x06" />
@@ -3549,24 +3549,24 @@
                 <adcl_capture_volume offset="0" bits="32" t="u32" id="0x2374" visible="true" val="0x07" />
                 <adcr_capture_volume offset="0" bits="32" t="u32" id="0x2378" visible="true" val="0x07" />
                 <spkl_playback_volume>
-                    <volume0 offset="0" bits="32" t="u32" id="0x237c" visible="false" val="0x06" />
-                    <volume1 offset="0" bits="32" t="u32" id="0x2380" visible="false" val="0x06" />
-                    <volume2 offset="0" bits="32" t="u32" id="0x2384" visible="false" val="0x06" />
-                    <volume3 offset="0" bits="32" t="u32" id="0x2388" visible="false" val="0x06" />
-                    <volume4 offset="0" bits="32" t="u32" id="0x238c" visible="false" val="0x06" />
-                    <volume5 offset="0" bits="32" t="u32" id="0x2390" visible="false" val="0x06" />
-                    <volume6 offset="0" bits="32" t="u32" id="0x2394" visible="false" val="0x06" />
-                    <volume7 offset="0" bits="32" t="u32" id="0x2398" visible="false" val="0x06" />
+                    <volume0 offset="0" bits="32" t="u32" id="0x237c" visible="false" val="0x08" />
+                    <volume1 offset="0" bits="32" t="u32" id="0x2380" visible="false" val="0x08" />
+                    <volume2 offset="0" bits="32" t="u32" id="0x2384" visible="false" val="0x08" />
+                    <volume3 offset="0" bits="32" t="u32" id="0x2388" visible="false" val="0x08" />
+                    <volume4 offset="0" bits="32" t="u32" id="0x238c" visible="false" val="0x08" />
+                    <volume5 offset="0" bits="32" t="u32" id="0x2390" visible="false" val="0x08" />
+                    <volume6 offset="0" bits="32" t="u32" id="0x2394" visible="false" val="0x08" />
+                    <volume7 offset="0" bits="32" t="u32" id="0x2398" visible="false" val="0x08" />
                 </spkl_playback_volume>
                 <spkr_playback_volume>
-                    <volume0 offset="0" bits="32" t="u32" id="0x239c" visible="false" val="0x06" />
-                    <volume1 offset="0" bits="32" t="u32" id="0x23a0" visible="false" val="0x06" />
-                    <volume2 offset="0" bits="32" t="u32" id="0x23a4" visible="false" val="0x06" />
-                    <volume3 offset="0" bits="32" t="u32" id="0x23a8" visible="false" val="0x06" />
-                    <volume4 offset="0" bits="32" t="u32" id="0x23ac" visible="false" val="0x06" />
-                    <volume5 offset="0" bits="32" t="u32" id="0x23b0" visible="false" val="0x06" />
-                    <volume6 offset="0" bits="32" t="u32" id="0x23b4" visible="false" val="0x06" />
-                    <volume7 offset="0" bits="32" t="u32" id="0x23b8" visible="false" val="0x06" />
+                    <volume0 offset="0" bits="32" t="u32" id="0x239c" visible="false" val="0x08" />
+                    <volume1 offset="0" bits="32" t="u32" id="0x23a0" visible="false" val="0x08" />
+                    <volume2 offset="0" bits="32" t="u32" id="0x23a4" visible="false" val="0x08" />
+                    <volume3 offset="0" bits="32" t="u32" id="0x23a8" visible="false" val="0x08" />
+                    <volume4 offset="0" bits="32" t="u32" id="0x23ac" visible="false" val="0x08" />
+                    <volume5 offset="0" bits="32" t="u32" id="0x23b0" visible="false" val="0x08" />
+                    <volume6 offset="0" bits="32" t="u32" id="0x23b4" visible="false" val="0x08" />
+                    <volume7 offset="0" bits="32" t="u32" id="0x23b8" visible="false" val="0x08" />
                 </spkr_playback_volume>
                 <hpl_playback_volume>
                     <volume0 offset="0" bits="32" t="u32" id="0x23bc" visible="false" val="0x05" />
@@ -3682,24 +3682,24 @@
                 <adcl_capture_volume offset="0" bits="32" t="u32" id="0x24c4" visible="true" val="0x06" />
                 <adcr_capture_volume offset="0" bits="32" t="u32" id="0x24c8" visible="true" val="0x06" />
                 <spkl_playback_volume>
-                    <volume0 offset="0" bits="32" t="u32" id="0x24cc" visible="false" val="0x06" />
-                    <volume1 offset="0" bits="32" t="u32" id="0x24d0" visible="true" val="0x06" />
-                    <volume2 offset="0" bits="32" t="u32" id="0x24d4" visible="true" val="0x06" />
-                    <volume3 offset="0" bits="32" t="u32" id="0x24d8" visible="true" val="0x06" />
-                    <volume4 offset="0" bits="32" t="u32" id="0x24dc" visible="true" val="0x06" />
-                    <volume5 offset="0" bits="32" t="u32" id="0x24e0" visible="true" val="0x06" />
-                    <volume6 offset="0" bits="32" t="u32" id="0x24e4" visible="true" val="0x06" />
-                    <volume7 offset="0" bits="32" t="u32" id="0x24e8" visible="true" val="0x06" />
+                    <volume0 offset="0" bits="32" t="u32" id="0x24cc" visible="false" val="0x08" />
+                    <volume1 offset="0" bits="32" t="u32" id="0x24d0" visible="true" val="0x08" />
+                    <volume2 offset="0" bits="32" t="u32" id="0x24d4" visible="true" val="0x08" />
+                    <volume3 offset="0" bits="32" t="u32" id="0x24d8" visible="true" val="0x08" />
+                    <volume4 offset="0" bits="32" t="u32" id="0x24dc" visible="true" val="0x08" />
+                    <volume5 offset="0" bits="32" t="u32" id="0x24e0" visible="true" val="0x08" />
+                    <volume6 offset="0" bits="32" t="u32" id="0x24e4" visible="true" val="0x08" />
+                    <volume7 offset="0" bits="32" t="u32" id="0x24e8" visible="true" val="0x08" />
                 </spkl_playback_volume>
                 <spkr_playback_volume>
-                    <volume0 offset="0" bits="32" t="u32" id="0x24ec" visible="false" val="0x06" />
-                    <volume1 offset="0" bits="32" t="u32" id="0x24f0" visible="true" val="0x06" />
-                    <volume2 offset="0" bits="32" t="u32" id="0x24f4" visible="true" val="0x06" />
-                    <volume3 offset="0" bits="32" t="u32" id="0x24f8" visible="true" val="0x06" />
-                    <volume4 offset="0" bits="32" t="u32" id="0x24fc" visible="true" val="0x06" />
-                    <volume5 offset="0" bits="32" t="u32" id="0x2500" visible="true" val="0x06" />
-                    <volume6 offset="0" bits="32" t="u32" id="0x2504" visible="true" val="0x06" />
-                    <volume7 offset="0" bits="32" t="u32" id="0x2508" visible="true" val="0x06" />
+                    <volume0 offset="0" bits="32" t="u32" id="0x24ec" visible="false" val="0x08" />
+                    <volume1 offset="0" bits="32" t="u32" id="0x24f0" visible="true" val="0x08" />
+                    <volume2 offset="0" bits="32" t="u32" id="0x24f4" visible="true" val="0x08" />
+                    <volume3 offset="0" bits="32" t="u32" id="0x24f8" visible="true" val="0x08" />
+                    <volume4 offset="0" bits="32" t="u32" id="0x24fc" visible="true" val="0x08" />
+                    <volume5 offset="0" bits="32" t="u32" id="0x2500" visible="true" val="0x08" />
+                    <volume6 offset="0" bits="32" t="u32" id="0x2504" visible="true" val="0x08" />
+                    <volume7 offset="0" bits="32" t="u32" id="0x2508" visible="true" val="0x08" />
                 </spkr_playback_volume>
                 <hpl_playback_volume>
                     <volume0 offset="0" bits="32" t="u32" id="0x250c" visible="false" val="0x0b" />
@@ -3813,24 +3813,24 @@
                 <adcl_capture_volume offset="0" bits="32" t="u32" id="0x2614" visible="true" val="0x06" />
                 <adcr_capture_volume offset="0" bits="32" t="u32" id="0x2618" visible="true" val="0x06" />
                 <spkl_playback_volume>
-                    <volume0 offset="0" bits="32" t="u32" id="0x261c" visible="false" val="0x06" />
-                    <volume1 offset="0" bits="32" t="u32" id="0x2620" visible="true" val="0x06" />
-                    <volume2 offset="0" bits="32" t="u32" id="0x2624" visible="true" val="0x06" />
-                    <volume3 offset="0" bits="32" t="u32" id="0x2628" visible="true" val="0x06" />
-                    <volume4 offset="0" bits="32" t="u32" id="0x262c" visible="true" val="0x06" />
-                    <volume5 offset="0" bits="32" t="u32" id="0x2630" visible="true" val="0x06" />
-                    <volume6 offset="0" bits="32" t="u32" id="0x2634" visible="true" val="0x06" />
-                    <volume7 offset="0" bits="32" t="u32" id="0x2638" visible="true" val="0x06" />
+                    <volume0 offset="0" bits="32" t="u32" id="0x261c" visible="false" val="0x08" />
+                    <volume1 offset="0" bits="32" t="u32" id="0x2620" visible="true" val="0x08" />
+                    <volume2 offset="0" bits="32" t="u32" id="0x2624" visible="true" val="0x08" />
+                    <volume3 offset="0" bits="32" t="u32" id="0x2628" visible="true" val="0x08" />
+                    <volume4 offset="0" bits="32" t="u32" id="0x262c" visible="true" val="0x08" />
+                    <volume5 offset="0" bits="32" t="u32" id="0x2630" visible="true" val="0x08" />
+                    <volume6 offset="0" bits="32" t="u32" id="0x2634" visible="true" val="0x08" />
+                    <volume7 offset="0" bits="32" t="u32" id="0x2638" visible="true" val="0x08" />
                 </spkl_playback_volume>
                 <spkr_playback_volume>
-                    <volume0 offset="0" bits="32" t="u32" id="0x263c" visible="false" val="0x06" />
-                    <volume1 offset="0" bits="32" t="u32" id="0x2640" visible="true" val="0x06" />
-                    <volume2 offset="0" bits="32" t="u32" id="0x2644" visible="true" val="0x06" />
-                    <volume3 offset="0" bits="32" t="u32" id="0x2648" visible="true" val="0x06" />
-                    <volume4 offset="0" bits="32" t="u32" id="0x264c" visible="true" val="0x06" />
-                    <volume5 offset="0" bits="32" t="u32" id="0x2650" visible="true" val="0x06" />
-                    <volume6 offset="0" bits="32" t="u32" id="0x2654" visible="true" val="0x06" />
-                    <volume7 offset="0" bits="32" t="u32" id="0x2658" visible="true" val="0x06" />
+                    <volume0 offset="0" bits="32" t="u32" id="0x263c" visible="false" val="0x08" />
+                    <volume1 offset="0" bits="32" t="u32" id="0x2640" visible="true" val="0x08" />
+                    <volume2 offset="0" bits="32" t="u32" id="0x2644" visible="true" val="0x08" />
+                    <volume3 offset="0" bits="32" t="u32" id="0x2648" visible="true" val="0x08" />
+                    <volume4 offset="0" bits="32" t="u32" id="0x264c" visible="true" val="0x08" />
+                    <volume5 offset="0" bits="32" t="u32" id="0x2650" visible="true" val="0x08" />
+                    <volume6 offset="0" bits="32" t="u32" id="0x2654" visible="true" val="0x08" />
+                    <volume7 offset="0" bits="32" t="u32" id="0x2658" visible="true" val="0x08" />
                 </spkr_playback_volume>
                 <hpl_playback_volume>
                     <volume0 offset="0" bits="32" t="u32" id="0x265c" visible="false" val="0x0b" />
@@ -3944,24 +3944,24 @@
                 <adcl_capture_volume offset="0" bits="32" t="u32" id="0x2764" visible="true" val="0x06" />
                 <adcr_capture_volume offset="0" bits="32" t="u32" id="0x2768" visible="true" val="0x06" />
                 <spkl_playback_volume>
-                    <volume0 offset="0" bits="32" t="u32" id="0x276c" visible="false" val="0x06" />
-                    <volume1 offset="0" bits="32" t="u32" id="0x2770" visible="true" val="0x06" />
-                    <volume2 offset="0" bits="32" t="u32" id="0x2774" visible="true" val="0x06" />
-                    <volume3 offset="0" bits="32" t="u32" id="0x2778" visible="true" val="0x06" />
-                    <volume4 offset="0" bits="32" t="u32" id="0x277c" visible="true" val="0x06" />
-                    <volume5 offset="0" bits="32" t="u32" id="0x2780" visible="true" val="0x06" />
-                    <volume6 offset="0" bits="32" t="u32" id="0x2784" visible="true" val="0x06" />
-                    <volume7 offset="0" bits="32" t="u32" id="0x2788" visible="true" val="0x06" />
+                    <volume0 offset="0" bits="32" t="u32" id="0x276c" visible="false" val="0x08" />
+                    <volume1 offset="0" bits="32" t="u32" id="0x2770" visible="true" val="0x08" />
+                    <volume2 offset="0" bits="32" t="u32" id="0x2774" visible="true" val="0x08" />
+                    <volume3 offset="0" bits="32" t="u32" id="0x2778" visible="true" val="0x08" />
+                    <volume4 offset="0" bits="32" t="u32" id="0x277c" visible="true" val="0x08" />
+                    <volume5 offset="0" bits="32" t="u32" id="0x2780" visible="true" val="0x08" />
+                    <volume6 offset="0" bits="32" t="u32" id="0x2784" visible="true" val="0x08" />
+                    <volume7 offset="0" bits="32" t="u32" id="0x2788" visible="true" val="0x08" />
                 </spkl_playback_volume>
                 <spkr_playback_volume>
-                    <volume0 offset="0" bits="32" t="u32" id="0x278c" visible="false" val="0x06" />
-                    <volume1 offset="0" bits="32" t="u32" id="0x2790" visible="true" val="0x06" />
-                    <volume2 offset="0" bits="32" t="u32" id="0x2794" visible="true" val="0x06" />
-                    <volume3 offset="0" bits="32" t="u32" id="0x2798" visible="true" val="0x06" />
-                    <volume4 offset="0" bits="32" t="u32" id="0x279c" visible="true" val="0x06" />
-                    <volume5 offset="0" bits="32" t="u32" id="0x27a0" visible="true" val="0x06" />
-                    <volume6 offset="0" bits="32" t="u32" id="0x27a4" visible="true" val="0x06" />
-                    <volume7 offset="0" bits="32" t="u32" id="0x27a8" visible="true" val="0x06" />
+                    <volume0 offset="0" bits="32" t="u32" id="0x278c" visible="false" val="0x08" />
+                    <volume1 offset="0" bits="32" t="u32" id="0x2790" visible="true" val="0x08" />
+                    <volume2 offset="0" bits="32" t="u32" id="0x2794" visible="true" val="0x08" />
+                    <volume3 offset="0" bits="32" t="u32" id="0x2798" visible="true" val="0x08" />
+                    <volume4 offset="0" bits="32" t="u32" id="0x279c" visible="true" val="0x08" />
+                    <volume5 offset="0" bits="32" t="u32" id="0x27a0" visible="true" val="0x08" />
+                    <volume6 offset="0" bits="32" t="u32" id="0x27a4" visible="true" val="0x08" />
+                    <volume7 offset="0" bits="32" t="u32" id="0x27a8" visible="true" val="0x08" />
                 </spkr_playback_volume>
                 <hpl_playback_volume>
                     <volume0 offset="0" bits="32" t="u32" id="0x27ac" visible="false" val="0x0b" />
@@ -4075,24 +4075,24 @@
                 <adcl_capture_volume offset="0" bits="32" t="u32" id="0x28b4" visible="true" val="0x06" />
                 <adcr_capture_volume offset="0" bits="32" t="u32" id="0x28b8" visible="true" val="0x06" />
                 <spkl_playback_volume>
-                    <volume0 offset="0" bits="32" t="u32" id="0x28bc" visible="false" val="0x06" />
-                    <volume1 offset="0" bits="32" t="u32" id="0x28c0" visible="true" val="0x06" />
-                    <volume2 offset="0" bits="32" t="u32" id="0x28c4" visible="true" val="0x06" />
-                    <volume3 offset="0" bits="32" t="u32" id="0x28c8" visible="true" val="0x06" />
-                    <volume4 offset="0" bits="32" t="u32" id="0x28cc" visible="true" val="0x06" />
-                    <volume5 offset="0" bits="32" t="u32" id="0x28d0" visible="true" val="0x06" />
-                    <volume6 offset="0" bits="32" t="u32" id="0x28d4" visible="true" val="0x06" />
-                    <volume7 offset="0" bits="32" t="u32" id="0x28d8" visible="true" val="0x06" />
+                    <volume0 offset="0" bits="32" t="u32" id="0x28bc" visible="false" val="0x08" />
+                    <volume1 offset="0" bits="32" t="u32" id="0x28c0" visible="true" val="0x08" />
+                    <volume2 offset="0" bits="32" t="u32" id="0x28c4" visible="true" val="0x08" />
+                    <volume3 offset="0" bits="32" t="u32" id="0x28c8" visible="true" val="0x08" />
+                    <volume4 offset="0" bits="32" t="u32" id="0x28cc" visible="true" val="0x08" />
+                    <volume5 offset="0" bits="32" t="u32" id="0x28d0" visible="true" val="0x08" />
+                    <volume6 offset="0" bits="32" t="u32" id="0x28d4" visible="true" val="0x08" />
+                    <volume7 offset="0" bits="32" t="u32" id="0x28d8" visible="true" val="0x08" />
                 </spkl_playback_volume>
                 <spkr_playback_volume>
-                    <volume0 offset="0" bits="32" t="u32" id="0x28dc" visible="false" val="0x06" />
-                    <volume1 offset="0" bits="32" t="u32" id="0x28e0" visible="true" val="0x06" />
-                    <volume2 offset="0" bits="32" t="u32" id="0x28e4" visible="true" val="0x06" />
-                    <volume3 offset="0" bits="32" t="u32" id="0x28e8" visible="true" val="0x06" />
-                    <volume4 offset="0" bits="32" t="u32" id="0x28ec" visible="true" val="0x06" />
-                    <volume5 offset="0" bits="32" t="u32" id="0x28f0" visible="true" val="0x06" />
-                    <volume6 offset="0" bits="32" t="u32" id="0x28f4" visible="true" val="0x06" />
-                    <volume7 offset="0" bits="32" t="u32" id="0x28f8" visible="true" val="0x06" />
+                    <volume0 offset="0" bits="32" t="u32" id="0x28dc" visible="false" val="0x08" />
+                    <volume1 offset="0" bits="32" t="u32" id="0x28e0" visible="true" val="0x08" />
+                    <volume2 offset="0" bits="32" t="u32" id="0x28e4" visible="true" val="0x08" />
+                    <volume3 offset="0" bits="32" t="u32" id="0x28e8" visible="true" val="0x08" />
+                    <volume4 offset="0" bits="32" t="u32" id="0x28ec" visible="true" val="0x08" />
+                    <volume5 offset="0" bits="32" t="u32" id="0x28f0" visible="true" val="0x08" />
+                    <volume6 offset="0" bits="32" t="u32" id="0x28f4" visible="true" val="0x08" />
+                    <volume7 offset="0" bits="32" t="u32" id="0x28f8" visible="true" val="0x08" />
                 </spkr_playback_volume>
                 <hpl_playback_volume>
                     <volume0 offset="0" bits="32" t="u32" id="0x28fc" visible="false" val="0x0b" />
@@ -4206,24 +4206,24 @@
                 <adcl_capture_volume offset="0" bits="32" t="u32" id="0x2a04" visible="true" val="0x06" />
                 <adcr_capture_volume offset="0" bits="32" t="u32" id="0x2a08" visible="true" val="0x06" />
                 <spkl_playback_volume>
-                    <volume0 offset="0" bits="32" t="u32" id="0x2a0c" visible="false" val="0x06" />
-                    <volume1 offset="0" bits="32" t="u32" id="0x2a10" visible="true" val="0x06" />
-                    <volume2 offset="0" bits="32" t="u32" id="0x2a14" visible="true" val="0x06" />
-                    <volume3 offset="0" bits="32" t="u32" id="0x2a18" visible="true" val="0x06" />
-                    <volume4 offset="0" bits="32" t="u32" id="0x2a1c" visible="true" val="0x06" />
-                    <volume5 offset="0" bits="32" t="u32" id="0x2a20" visible="true" val="0x06" />
-                    <volume6 offset="0" bits="32" t="u32" id="0x2a24" visible="true" val="0x06" />
-                    <volume7 offset="0" bits="32" t="u32" id="0x2a28" visible="true" val="0x06" />
+                    <volume0 offset="0" bits="32" t="u32" id="0x2a0c" visible="false" val="0x08" />
+                    <volume1 offset="0" bits="32" t="u32" id="0x2a10" visible="true" val="0x08" />
+                    <volume2 offset="0" bits="32" t="u32" id="0x2a14" visible="true" val="0x08" />
+                    <volume3 offset="0" bits="32" t="u32" id="0x2a18" visible="true" val="0x08" />
+                    <volume4 offset="0" bits="32" t="u32" id="0x2a1c" visible="true" val="0x08" />
+                    <volume5 offset="0" bits="32" t="u32" id="0x2a20" visible="true" val="0x08" />
+                    <volume6 offset="0" bits="32" t="u32" id="0x2a24" visible="true" val="0x08" />
+                    <volume7 offset="0" bits="32" t="u32" id="0x2a28" visible="true" val="0x08" />
                 </spkl_playback_volume>
                 <spkr_playback_volume>
-                    <volume0 offset="0" bits="32" t="u32" id="0x2a2c" visible="false" val="0x06" />
-                    <volume1 offset="0" bits="32" t="u32" id="0x2a30" visible="true" val="0x06" />
-                    <volume2 offset="0" bits="32" t="u32" id="0x2a34" visible="true" val="0x06" />
-                    <volume3 offset="0" bits="32" t="u32" id="0x2a38" visible="true" val="0x06" />
-                    <volume4 offset="0" bits="32" t="u32" id="0x2a3c" visible="true" val="0x06" />
-                    <volume5 offset="0" bits="32" t="u32" id="0x2a40" visible="true" val="0x06" />
-                    <volume6 offset="0" bits="32" t="u32" id="0x2a44" visible="true" val="0x06" />
-                    <volume7 offset="0" bits="32" t="u32" id="0x2a48" visible="true" val="0x06" />
+                    <volume0 offset="0" bits="32" t="u32" id="0x2a2c" visible="false" val="0x08" />
+                    <volume1 offset="0" bits="32" t="u32" id="0x2a30" visible="true" val="0x08" />
+                    <volume2 offset="0" bits="32" t="u32" id="0x2a34" visible="true" val="0x08" />
+                    <volume3 offset="0" bits="32" t="u32" id="0x2a38" visible="true" val="0x08" />
+                    <volume4 offset="0" bits="32" t="u32" id="0x2a3c" visible="true" val="0x08" />
+                    <volume5 offset="0" bits="32" t="u32" id="0x2a40" visible="true" val="0x08" />
+                    <volume6 offset="0" bits="32" t="u32" id="0x2a44" visible="true" val="0x08" />
+                    <volume7 offset="0" bits="32" t="u32" id="0x2a48" visible="true" val="0x08" />
                 </spkr_playback_volume>
                 <hpl_playback_volume>
                     <volume0 offset="0" bits="32" t="u32" id="0x2a4c" visible="false" val="0x0b" />
@@ -4337,24 +4337,24 @@
                 <adcl_capture_volume offset="0" bits="32" t="u32" id="0x2b54" visible="true" val="0x06" />
                 <adcr_capture_volume offset="0" bits="32" t="u32" id="0x2b58" visible="true" val="0x06" />
                 <spkl_playback_volume>
-                    <volume0 offset="0" bits="32" t="u32" id="0x2b5c" visible="false" val="0x06" />
-                    <volume1 offset="0" bits="32" t="u32" id="0x2b60" visible="true" val="0x06" />
-                    <volume2 offset="0" bits="32" t="u32" id="0x2b64" visible="true" val="0x06" />
-                    <volume3 offset="0" bits="32" t="u32" id="0x2b68" visible="true" val="0x06" />
-                    <volume4 offset="0" bits="32" t="u32" id="0x2b6c" visible="true" val="0x06" />
-                    <volume5 offset="0" bits="32" t="u32" id="0x2b70" visible="true" val="0x06" />
-                    <volume6 offset="0" bits="32" t="u32" id="0x2b74" visible="true" val="0x06" />
-                    <volume7 offset="0" bits="32" t="u32" id="0x2b78" visible="true" val="0x06" />
+                    <volume0 offset="0" bits="32" t="u32" id="0x2b5c" visible="false" val="0x08" />
+                    <volume1 offset="0" bits="32" t="u32" id="0x2b60" visible="true" val="0x08" />
+                    <volume2 offset="0" bits="32" t="u32" id="0x2b64" visible="true" val="0x08" />
+                    <volume3 offset="0" bits="32" t="u32" id="0x2b68" visible="true" val="0x08" />
+                    <volume4 offset="0" bits="32" t="u32" id="0x2b6c" visible="true" val="0x08" />
+                    <volume5 offset="0" bits="32" t="u32" id="0x2b70" visible="true" val="0x08" />
+                    <volume6 offset="0" bits="32" t="u32" id="0x2b74" visible="true" val="0x08" />
+                    <volume7 offset="0" bits="32" t="u32" id="0x2b78" visible="true" val="0x08" />
                 </spkl_playback_volume>
                 <spkr_playback_volume>
-                    <volume0 offset="0" bits="32" t="u32" id="0x2b7c" visible="false" val="0x06" />
-                    <volume1 offset="0" bits="32" t="u32" id="0x2b80" visible="true" val="0x06" />
-                    <volume2 offset="0" bits="32" t="u32" id="0x2b84" visible="true" val="0x06" />
-                    <volume3 offset="0" bits="32" t="u32" id="0x2b88" visible="true" val="0x06" />
-                    <volume4 offset="0" bits="32" t="u32" id="0x2b8c" visible="true" val="0x06" />
-                    <volume5 offset="0" bits="32" t="u32" id="0x2b90" visible="true" val="0x06" />
-                    <volume6 offset="0" bits="32" t="u32" id="0x2b94" visible="true" val="0x06" />
-                    <volume7 offset="0" bits="32" t="u32" id="0x2b98" visible="true" val="0x06" />
+                    <volume0 offset="0" bits="32" t="u32" id="0x2b7c" visible="false" val="0x08" />
+                    <volume1 offset="0" bits="32" t="u32" id="0x2b80" visible="true" val="0x08" />
+                    <volume2 offset="0" bits="32" t="u32" id="0x2b84" visible="true" val="0x08" />
+                    <volume3 offset="0" bits="32" t="u32" id="0x2b88" visible="true" val="0x08" />
+                    <volume4 offset="0" bits="32" t="u32" id="0x2b8c" visible="true" val="0x08" />
+                    <volume5 offset="0" bits="32" t="u32" id="0x2b90" visible="true" val="0x08" />
+                    <volume6 offset="0" bits="32" t="u32" id="0x2b94" visible="true" val="0x08" />
+                    <volume7 offset="0" bits="32" t="u32" id="0x2b98" visible="true" val="0x08" />
                 </spkr_playback_volume>
                 <hpl_playback_volume>
                     <volume0 offset="0" bits="32" t="u32" id="0x2b9c" visible="false" val="0x0b" />
@@ -4468,24 +4468,24 @@
                 <adcl_capture_volume offset="0" bits="32" t="u32" id="0x2ca4" visible="true" val="0x06" />
                 <adcr_capture_volume offset="0" bits="32" t="u32" id="0x2ca8" visible="true" val="0x06" />
                 <spkl_playback_volume>
-                    <volume0 offset="0" bits="32" t="u32" id="0x2cac" visible="false" val="0x06" />
-                    <volume1 offset="0" bits="32" t="u32" id="0x2cb0" visible="true" val="0x06" />
-                    <volume2 offset="0" bits="32" t="u32" id="0x2cb4" visible="true" val="0x06" />
-                    <volume3 offset="0" bits="32" t="u32" id="0x2cb8" visible="true" val="0x06" />
-                    <volume4 offset="0" bits="32" t="u32" id="0x2cbc" visible="true" val="0x06" />
-                    <volume5 offset="0" bits="32" t="u32" id="0x2cc0" visible="true" val="0x06" />
-                    <volume6 offset="0" bits="32" t="u32" id="0x2cc4" visible="true" val="0x06" />
-                    <volume7 offset="0" bits="32" t="u32" id="0x2cc8" visible="true" val="0x06" />
+                    <volume0 offset="0" bits="32" t="u32" id="0x2cac" visible="false" val="0x08" />
+                    <volume1 offset="0" bits="32" t="u32" id="0x2cb0" visible="true" val="0x08" />
+                    <volume2 offset="0" bits="32" t="u32" id="0x2cb4" visible="true" val="0x08" />
+                    <volume3 offset="0" bits="32" t="u32" id="0x2cb8" visible="true" val="0x08" />
+                    <volume4 offset="0" bits="32" t="u32" id="0x2cbc" visible="true" val="0x08" />
+                    <volume5 offset="0" bits="32" t="u32" id="0x2cc0" visible="true" val="0x08" />
+                    <volume6 offset="0" bits="32" t="u32" id="0x2cc4" visible="true" val="0x08" />
+                    <volume7 offset="0" bits="32" t="u32" id="0x2cc8" visible="true" val="0x08" />
                 </spkl_playback_volume>
                 <spkr_playback_volume>
-                    <volume0 offset="0" bits="32" t="u32" id="0x2ccc" visible="false" val="0x06" />
-                    <volume1 offset="0" bits="32" t="u32" id="0x2cd0" visible="true" val="0x06" />
-                    <volume2 offset="0" bits="32" t="u32" id="0x2cd4" visible="true" val="0x06" />
-                    <volume3 offset="0" bits="32" t="u32" id="0x2cd8" visible="true" val="0x06" />
-                    <volume4 offset="0" bits="32" t="u32" id="0x2cdc" visible="true" val="0x06" />
-                    <volume5 offset="0" bits="32" t="u32" id="0x2ce0" visible="true" val="0x06" />
-                    <volume6 offset="0" bits="32" t="u32" id="0x2ce4" visible="true" val="0x06" />
-                    <volume7 offset="0" bits="32" t="u32" id="0x2ce8" visible="true" val="0x06" />
+                    <volume0 offset="0" bits="32" t="u32" id="0x2ccc" visible="false" val="0x08" />
+                    <volume1 offset="0" bits="32" t="u32" id="0x2cd0" visible="true" val="0x08" />
+                    <volume2 offset="0" bits="32" t="u32" id="0x2cd4" visible="true" val="0x08" />
+                    <volume3 offset="0" bits="32" t="u32" id="0x2cd8" visible="true" val="0x08" />
+                    <volume4 offset="0" bits="32" t="u32" id="0x2cdc" visible="true" val="0x08" />
+                    <volume5 offset="0" bits="32" t="u32" id="0x2ce0" visible="true" val="0x08" />
+                    <volume6 offset="0" bits="32" t="u32" id="0x2ce4" visible="true" val="0x08" />
+                    <volume7 offset="0" bits="32" t="u32" id="0x2ce8" visible="true" val="0x08" />
                 </spkr_playback_volume>
                 <hpl_playback_volume>
                     <volume0 offset="0" bits="32" t="u32" id="0x2cec" visible="false" val="0x0b" />
@@ -4603,24 +4603,24 @@
                 <adcl_capture_volume offset="0" bits="32" t="u32" id="0x2df4" visible="false" val="0x06" />
                 <adcr_capture_volume offset="0" bits="32" t="u32" id="0x2df8" visible="false" val="0x06" />
                 <spkl_playback_volume>
-                    <volume0 offset="0" bits="32" t="u32" id="0x2dfc" visible="false" val="0x06" />
-                    <volume1 offset="0" bits="32" t="u32" id="0x2e00" visible="false" val="0x06" />
-                    <volume2 offset="0" bits="32" t="u32" id="0x2e04" visible="false" val="0x06" />
-                    <volume3 offset="0" bits="32" t="u32" id="0x2e08" visible="false" val="0x06" />
-                    <volume4 offset="0" bits="32" t="u32" id="0x2e0c" visible="false" val="0x06" />
-                    <volume5 offset="0" bits="32" t="u32" id="0x2e10" visible="false" val="0x06" />
-                    <volume6 offset="0" bits="32" t="u32" id="0x2e14" visible="false" val="0x06" />
-                    <volume7 offset="0" bits="32" t="u32" id="0x2e18" visible="false" val="0x06" />
+                    <volume0 offset="0" bits="32" t="u32" id="0x2dfc" visible="false" val="0x08" />
+                    <volume1 offset="0" bits="32" t="u32" id="0x2e00" visible="false" val="0x08" />
+                    <volume2 offset="0" bits="32" t="u32" id="0x2e04" visible="false" val="0x08" />
+                    <volume3 offset="0" bits="32" t="u32" id="0x2e08" visible="false" val="0x08" />
+                    <volume4 offset="0" bits="32" t="u32" id="0x2e0c" visible="false" val="0x08" />
+                    <volume5 offset="0" bits="32" t="u32" id="0x2e10" visible="false" val="0x08" />
+                    <volume6 offset="0" bits="32" t="u32" id="0x2e14" visible="false" val="0x08" />
+                    <volume7 offset="0" bits="32" t="u32" id="0x2e18" visible="false" val="0x08" />
                 </spkl_playback_volume>
                 <spkr_playback_volume>
-                    <volume0 offset="0" bits="32" t="u32" id="0x2e1c" visible="false" val="0x06" />
-                    <volume1 offset="0" bits="32" t="u32" id="0x2e20" visible="false" val="0x06" />
-                    <volume2 offset="0" bits="32" t="u32" id="0x2e24" visible="false" val="0x06" />
-                    <volume3 offset="0" bits="32" t="u32" id="0x2e28" visible="false" val="0x06" />
-                    <volume4 offset="0" bits="32" t="u32" id="0x2e2c" visible="false" val="0x06" />
-                    <volume5 offset="0" bits="32" t="u32" id="0x2e30" visible="false" val="0x06" />
-                    <volume6 offset="0" bits="32" t="u32" id="0x2e34" visible="false" val="0x06" />
-                    <volume7 offset="0" bits="32" t="u32" id="0x2e38" visible="false" val="0x06" />
+                    <volume0 offset="0" bits="32" t="u32" id="0x2e1c" visible="false" val="0x08" />
+                    <volume1 offset="0" bits="32" t="u32" id="0x2e20" visible="false" val="0x08" />
+                    <volume2 offset="0" bits="32" t="u32" id="0x2e24" visible="false" val="0x08" />
+                    <volume3 offset="0" bits="32" t="u32" id="0x2e28" visible="false" val="0x08" />
+                    <volume4 offset="0" bits="32" t="u32" id="0x2e2c" visible="false" val="0x08" />
+                    <volume5 offset="0" bits="32" t="u32" id="0x2e30" visible="false" val="0x08" />
+                    <volume6 offset="0" bits="32" t="u32" id="0x2e34" visible="false" val="0x08" />
+                    <volume7 offset="0" bits="32" t="u32" id="0x2e38" visible="false" val="0x08" />
                 </spkr_playback_volume>
                 <hpl_playback_volume>
                     <volume0 offset="0" bits="32" t="u32" id="0x2e3c" visible="true" val="0x05" />
@@ -4734,24 +4734,24 @@
                 <adcl_capture_volume offset="0" bits="32" t="u32" id="0x2f44" visible="true" val="0x06" />
                 <adcr_capture_volume offset="0" bits="32" t="u32" id="0x2f48" visible="true" val="0x06" />
                 <spkl_playback_volume>
-                    <volume0 offset="0" bits="32" t="u32" id="0x2f4c" visible="false" val="0x06" />
-                    <volume1 offset="0" bits="32" t="u32" id="0x2f50" visible="false" val="0x06" />
-                    <volume2 offset="0" bits="32" t="u32" id="0x2f54" visible="false" val="0x06" />
-                    <volume3 offset="0" bits="32" t="u32" id="0x2f58" visible="false" val="0x06" />
-                    <volume4 offset="0" bits="32" t="u32" id="0x2f5c" visible="false" val="0x06" />
-                    <volume5 offset="0" bits="32" t="u32" id="0x2f60" visible="false" val="0x06" />
-                    <volume6 offset="0" bits="32" t="u32" id="0x2f64" visible="false" val="0x06" />
-                    <volume7 offset="0" bits="32" t="u32" id="0x2f68" visible="false" val="0x06" />
+                    <volume0 offset="0" bits="32" t="u32" id="0x2f4c" visible="false" val="0x08" />
+                    <volume1 offset="0" bits="32" t="u32" id="0x2f50" visible="false" val="0x08" />
+                    <volume2 offset="0" bits="32" t="u32" id="0x2f54" visible="false" val="0x08" />
+                    <volume3 offset="0" bits="32" t="u32" id="0x2f58" visible="false" val="0x08" />
+                    <volume4 offset="0" bits="32" t="u32" id="0x2f5c" visible="false" val="0x08" />
+                    <volume5 offset="0" bits="32" t="u32" id="0x2f60" visible="false" val="0x08" />
+                    <volume6 offset="0" bits="32" t="u32" id="0x2f64" visible="false" val="0x08" />
+                    <volume7 offset="0" bits="32" t="u32" id="0x2f68" visible="false" val="0x08" />
                 </spkl_playback_volume>
                 <spkr_playback_volume>
-                    <volume0 offset="0" bits="32" t="u32" id="0x2f6c" visible="false" val="0x06" />
-                    <volume1 offset="0" bits="32" t="u32" id="0x2f70" visible="false" val="0x06" />
-                    <volume2 offset="0" bits="32" t="u32" id="0x2f74" visible="false" val="0x06" />
-                    <volume3 offset="0" bits="32" t="u32" id="0x2f78" visible="false" val="0x06" />
-                    <volume4 offset="0" bits="32" t="u32" id="0x2f7c" visible="false" val="0x06" />
-                    <volume5 offset="0" bits="32" t="u32" id="0x2f80" visible="false" val="0x06" />
-                    <volume6 offset="0" bits="32" t="u32" id="0x2f84" visible="false" val="0x06" />
-                    <volume7 offset="0" bits="32" t="u32" id="0x2f88" visible="false" val="0x06" />
+                    <volume0 offset="0" bits="32" t="u32" id="0x2f6c" visible="false" val="0x08" />
+                    <volume1 offset="0" bits="32" t="u32" id="0x2f70" visible="false" val="0x08" />
+                    <volume2 offset="0" bits="32" t="u32" id="0x2f74" visible="false" val="0x08" />
+                    <volume3 offset="0" bits="32" t="u32" id="0x2f78" visible="false" val="0x08" />
+                    <volume4 offset="0" bits="32" t="u32" id="0x2f7c" visible="false" val="0x08" />
+                    <volume5 offset="0" bits="32" t="u32" id="0x2f80" visible="false" val="0x08" />
+                    <volume6 offset="0" bits="32" t="u32" id="0x2f84" visible="false" val="0x08" />
+                    <volume7 offset="0" bits="32" t="u32" id="0x2f88" visible="false" val="0x08" />
                 </spkr_playback_volume>
                 <hpl_playback_volume>
                     <volume0 offset="0" bits="32" t="u32" id="0x2f8c" visible="false" val="0x06" />
@@ -4867,22 +4867,22 @@
                 <spkl_playback_volume>
                     <volume0 offset="0" bits="32" t="u32" id="0x309c" visible="false" val="0x02" />
                     <volume1 offset="0" bits="32" t="u32" id="0x30a0" visible="false" val="0x02" />
-                    <volume2 offset="0" bits="32" t="u32" id="0x30a4" visible="false" val="0x06" />
-                    <volume3 offset="0" bits="32" t="u32" id="0x30a8" visible="false" val="0x06" />
-                    <volume4 offset="0" bits="32" t="u32" id="0x30ac" visible="false" val="0x06" />
-                    <volume5 offset="0" bits="32" t="u32" id="0x30b0" visible="false" val="0x06" />
-                    <volume6 offset="0" bits="32" t="u32" id="0x30b4" visible="false" val="0x06" />
-                    <volume7 offset="0" bits="32" t="u32" id="0x30b8" visible="false" val="0x06" />
+                    <volume2 offset="0" bits="32" t="u32" id="0x30a4" visible="false" val="0x08" />
+                    <volume3 offset="0" bits="32" t="u32" id="0x30a8" visible="false" val="0x08" />
+                    <volume4 offset="0" bits="32" t="u32" id="0x30ac" visible="false" val="0x08" />
+                    <volume5 offset="0" bits="32" t="u32" id="0x30b0" visible="false" val="0x08" />
+                    <volume6 offset="0" bits="32" t="u32" id="0x30b4" visible="false" val="0x08" />
+                    <volume7 offset="0" bits="32" t="u32" id="0x30b8" visible="false" val="0x08" />
                 </spkl_playback_volume>
                 <spkr_playback_volume>
                     <volume0 offset="0" bits="32" t="u32" id="0x30bc" visible="false" val="0x02" />
                     <volume1 offset="0" bits="32" t="u32" id="0x30c0" visible="false" val="0x02" />
-                    <volume2 offset="0" bits="32" t="u32" id="0x30c4" visible="false" val="0x06" />
-                    <volume3 offset="0" bits="32" t="u32" id="0x30c8" visible="false" val="0x06" />
-                    <volume4 offset="0" bits="32" t="u32" id="0x30cc" visible="false" val="0x06" />
-                    <volume5 offset="0" bits="32" t="u32" id="0x30d0" visible="false" val="0x06" />
-                    <volume6 offset="0" bits="32" t="u32" id="0x30d4" visible="false" val="0x06" />
-                    <volume7 offset="0" bits="32" t="u32" id="0x30d8" visible="false" val="0x06" />
+                    <volume2 offset="0" bits="32" t="u32" id="0x30c4" visible="false" val="0x08" />
+                    <volume3 offset="0" bits="32" t="u32" id="0x30c8" visible="false" val="0x08" />
+                    <volume4 offset="0" bits="32" t="u32" id="0x30cc" visible="false" val="0x08" />
+                    <volume5 offset="0" bits="32" t="u32" id="0x30d0" visible="false" val="0x08" />
+                    <volume6 offset="0" bits="32" t="u32" id="0x30d4" visible="false" val="0x08" />
+                    <volume7 offset="0" bits="32" t="u32" id="0x30d8" visible="false" val="0x08" />
                 </spkr_playback_volume>
                 <hpl_playback_volume>
                     <volume0 offset="0" bits="32" t="u32" id="0x30dc" visible="false" val="0x06" />
@@ -4996,24 +4996,24 @@
                 <adcl_capture_volume offset="0" bits="32" t="u32" id="0x31e4" visible="false" val="0x06" />
                 <adcr_capture_volume offset="0" bits="32" t="u32" id="0x31e8" visible="false" val="0x06" />
                 <spkl_playback_volume>
-                    <volume0 offset="0" bits="32" t="u32" id="0x31ec" visible="false" val="0x06" />
-                    <volume1 offset="0" bits="32" t="u32" id="0x31f0" visible="false" val="0x06" />
-                    <volume2 offset="0" bits="32" t="u32" id="0x31f4" visible="false" val="0x06" />
-                    <volume3 offset="0" bits="32" t="u32" id="0x31f8" visible="false" val="0x06" />
-                    <volume4 offset="0" bits="32" t="u32" id="0x31fc" visible="false" val="0x06" />
-                    <volume5 offset="0" bits="32" t="u32" id="0x3200" visible="false" val="0x06" />
-                    <volume6 offset="0" bits="32" t="u32" id="0x3204" visible="false" val="0x06" />
-                    <volume7 offset="0" bits="32" t="u32" id="0x3208" visible="false" val="0x06" />
+                    <volume0 offset="0" bits="32" t="u32" id="0x31ec" visible="false" val="0x08" />
+                    <volume1 offset="0" bits="32" t="u32" id="0x31f0" visible="false" val="0x08" />
+                    <volume2 offset="0" bits="32" t="u32" id="0x31f4" visible="false" val="0x08" />
+                    <volume3 offset="0" bits="32" t="u32" id="0x31f8" visible="false" val="0x08" />
+                    <volume4 offset="0" bits="32" t="u32" id="0x31fc" visible="false" val="0x08" />
+                    <volume5 offset="0" bits="32" t="u32" id="0x3200" visible="false" val="0x08" />
+                    <volume6 offset="0" bits="32" t="u32" id="0x3204" visible="false" val="0x08" />
+                    <volume7 offset="0" bits="32" t="u32" id="0x3208" visible="false" val="0x08" />
                 </spkl_playback_volume>
                 <spkr_playback_volume>
-                    <volume0 offset="0" bits="32" t="u32" id="0x320c" visible="false" val="0x06" />
-                    <volume1 offset="0" bits="32" t="u32" id="0x3210" visible="false" val="0x06" />
-                    <volume2 offset="0" bits="32" t="u32" id="0x3214" visible="false" val="0x06" />
-                    <volume3 offset="0" bits="32" t="u32" id="0x3218" visible="false" val="0x06" />
-                    <volume4 offset="0" bits="32" t="u32" id="0x321c" visible="false" val="0x06" />
-                    <volume5 offset="0" bits="32" t="u32" id="0x3220" visible="false" val="0x06" />
-                    <volume6 offset="0" bits="32" t="u32" id="0x3224" visible="false" val="0x06" />
-                    <volume7 offset="0" bits="32" t="u32" id="0x3228" visible="false" val="0x06" />
+                    <volume0 offset="0" bits="32" t="u32" id="0x320c" visible="false" val="0x08" />
+                    <volume1 offset="0" bits="32" t="u32" id="0x3210" visible="false" val="0x08" />
+                    <volume2 offset="0" bits="32" t="u32" id="0x3214" visible="false" val="0x08" />
+                    <volume3 offset="0" bits="32" t="u32" id="0x3218" visible="false" val="0x08" />
+                    <volume4 offset="0" bits="32" t="u32" id="0x321c" visible="false" val="0x08" />
+                    <volume5 offset="0" bits="32" t="u32" id="0x3220" visible="false" val="0x08" />
+                    <volume6 offset="0" bits="32" t="u32" id="0x3224" visible="false" val="0x08" />
+                    <volume7 offset="0" bits="32" t="u32" id="0x3228" visible="false" val="0x08" />
                 </spkr_playback_volume>
                 <hpl_playback_volume>
                     <volume0 offset="0" bits="32" t="u32" id="0x322c" visible="true" val="0x05" />
@@ -5132,21 +5132,21 @@
                     <volume0 offset="0" bits="32" t="u32" id="0x333c" visible="true" val="0x00" />
                     <volume1 offset="0" bits="32" t="u32" id="0x3340" visible="false" val="0x00" />
                     <volume2 offset="0" bits="32" t="u32" id="0x3344" visible="false" val="0x00" />
-                    <volume3 offset="0" bits="32" t="u32" id="0x3348" visible="false" val="0x06" />
-                    <volume4 offset="0" bits="32" t="u32" id="0x334c" visible="false" val="0x06" />
-                    <volume5 offset="0" bits="32" t="u32" id="0x3350" visible="false" val="0x06" />
-                    <volume6 offset="0" bits="32" t="u32" id="0x3354" visible="false" val="0x06" />
-                    <volume7 offset="0" bits="32" t="u32" id="0x3358" visible="false" val="0x06" />
+                    <volume3 offset="0" bits="32" t="u32" id="0x3348" visible="false" val="0x08" />
+                    <volume4 offset="0" bits="32" t="u32" id="0x334c" visible="false" val="0x08" />
+                    <volume5 offset="0" bits="32" t="u32" id="0x3350" visible="false" val="0x08" />
+                    <volume6 offset="0" bits="32" t="u32" id="0x3354" visible="false" val="0x08" />
+                    <volume7 offset="0" bits="32" t="u32" id="0x3358" visible="false" val="0x08" />
                 </spkl_playback_volume>
                 <spkr_playback_volume>
                     <volume0 offset="0" bits="32" t="u32" id="0x335c" visible="true" val="0x00" />
                     <volume1 offset="0" bits="32" t="u32" id="0x3360" visible="false" val="0x03" />
-                    <volume2 offset="0" bits="32" t="u32" id="0x3364" visible="false" val="0x06" />
-                    <volume3 offset="0" bits="32" t="u32" id="0x3368" visible="false" val="0x06" />
-                    <volume4 offset="0" bits="32" t="u32" id="0x336c" visible="false" val="0x06" />
-                    <volume5 offset="0" bits="32" t="u32" id="0x3370" visible="false" val="0x06" />
-                    <volume6 offset="0" bits="32" t="u32" id="0x3374" visible="false" val="0x06" />
-                    <volume7 offset="0" bits="32" t="u32" id="0x3378" visible="false" val="0x06" />
+                    <volume2 offset="0" bits="32" t="u32" id="0x3364" visible="false" val="0x08" />
+                    <volume3 offset="0" bits="32" t="u32" id="0x3368" visible="false" val="0x08" />
+                    <volume4 offset="0" bits="32" t="u32" id="0x336c" visible="false" val="0x08" />
+                    <volume5 offset="0" bits="32" t="u32" id="0x3370" visible="false" val="0x08" />
+                    <volume6 offset="0" bits="32" t="u32" id="0x3374" visible="false" val="0x08" />
+                    <volume7 offset="0" bits="32" t="u32" id="0x3378" visible="false" val="0x08" />
                 </spkr_playback_volume>
                 <hpl_playback_volume>
                     <volume0 offset="0" bits="32" t="u32" id="0x337c" visible="true" val="0x06" />
@@ -5260,24 +5260,24 @@
                 <adcl_capture_volume offset="0" bits="32" t="u32" id="0x3484" visible="true" val="0x07" />
                 <adcr_capture_volume offset="0" bits="32" t="u32" id="0x3488" visible="true" val="0x07" />
                 <spkl_playback_volume>
-                    <volume0 offset="0" bits="32" t="u32" id="0x348c" visible="false" val="0x06" />
-                    <volume1 offset="0" bits="32" t="u32" id="0x3490" visible="false" val="0x06" />
-                    <volume2 offset="0" bits="32" t="u32" id="0x3494" visible="false" val="0x06" />
-                    <volume3 offset="0" bits="32" t="u32" id="0x3498" visible="false" val="0x06" />
-                    <volume4 offset="0" bits="32" t="u32" id="0x349c" visible="false" val="0x06" />
-                    <volume5 offset="0" bits="32" t="u32" id="0x34a0" visible="false" val="0x06" />
-                    <volume6 offset="0" bits="32" t="u32" id="0x34a4" visible="false" val="0x06" />
-                    <volume7 offset="0" bits="32" t="u32" id="0x34a8" visible="false" val="0x06" />
+                    <volume0 offset="0" bits="32" t="u32" id="0x348c" visible="false" val="0x08" />
+                    <volume1 offset="0" bits="32" t="u32" id="0x3490" visible="false" val="0x08" />
+                    <volume2 offset="0" bits="32" t="u32" id="0x3494" visible="false" val="0x08" />
+                    <volume3 offset="0" bits="32" t="u32" id="0x3498" visible="false" val="0x08" />
+                    <volume4 offset="0" bits="32" t="u32" id="0x349c" visible="false" val="0x08" />
+                    <volume5 offset="0" bits="32" t="u32" id="0x34a0" visible="false" val="0x08" />
+                    <volume6 offset="0" bits="32" t="u32" id="0x34a4" visible="false" val="0x08" />
+                    <volume7 offset="0" bits="32" t="u32" id="0x34a8" visible="false" val="0x08" />
                 </spkl_playback_volume>
                 <spkr_playback_volume>
-                    <volume0 offset="0" bits="32" t="u32" id="0x34ac" visible="false" val="0x06" />
-                    <volume1 offset="0" bits="32" t="u32" id="0x34b0" visible="false" val="0x06" />
-                    <volume2 offset="0" bits="32" t="u32" id="0x34b4" visible="false" val="0x06" />
-                    <volume3 offset="0" bits="32" t="u32" id="0x34b8" visible="false" val="0x06" />
-                    <volume4 offset="0" bits="32" t="u32" id="0x34bc" visible="false" val="0x06" />
-                    <volume5 offset="0" bits="32" t="u32" id="0x34c0" visible="false" val="0x06" />
-                    <volume6 offset="0" bits="32" t="u32" id="0x34c4" visible="false" val="0x06" />
-                    <volume7 offset="0" bits="32" t="u32" id="0x34c8" visible="false" val="0x06" />
+                    <volume0 offset="0" bits="32" t="u32" id="0x34ac" visible="false" val="0x08" />
+                    <volume1 offset="0" bits="32" t="u32" id="0x34b0" visible="false" val="0x08" />
+                    <volume2 offset="0" bits="32" t="u32" id="0x34b4" visible="false" val="0x08" />
+                    <volume3 offset="0" bits="32" t="u32" id="0x34b8" visible="false" val="0x08" />
+                    <volume4 offset="0" bits="32" t="u32" id="0x34bc" visible="false" val="0x08" />
+                    <volume5 offset="0" bits="32" t="u32" id="0x34c0" visible="false" val="0x08" />
+                    <volume6 offset="0" bits="32" t="u32" id="0x34c4" visible="false" val="0x08" />
+                    <volume7 offset="0" bits="32" t="u32" id="0x34c8" visible="false" val="0x08" />
                 </spkr_playback_volume>
                 <hpl_playback_volume>
                     <volume0 offset="0" bits="32" t="u32" id="0x34cc" visible="false" val="0x06" />
@@ -5393,22 +5393,22 @@
                 <spkl_playback_volume>
                     <volume0 offset="0" bits="32" t="u32" id="0x35dc" visible="false" val="0x02" />
                     <volume1 offset="0" bits="32" t="u32" id="0x35e0" visible="false" val="0x02" />
-                    <volume2 offset="0" bits="32" t="u32" id="0x35e4" visible="false" val="0x06" />
-                    <volume3 offset="0" bits="32" t="u32" id="0x35e8" visible="false" val="0x06" />
-                    <volume4 offset="0" bits="32" t="u32" id="0x35ec" visible="false" val="0x06" />
-                    <volume5 offset="0" bits="32" t="u32" id="0x35f0" visible="false" val="0x06" />
-                    <volume6 offset="0" bits="32" t="u32" id="0x35f4" visible="false" val="0x06" />
-                    <volume7 offset="0" bits="32" t="u32" id="0x35f8" visible="false" val="0x06" />
+                    <volume2 offset="0" bits="32" t="u32" id="0x35e4" visible="false" val="0x08" />
+                    <volume3 offset="0" bits="32" t="u32" id="0x35e8" visible="false" val="0x08" />
+                    <volume4 offset="0" bits="32" t="u32" id="0x35ec" visible="false" val="0x08" />
+                    <volume5 offset="0" bits="32" t="u32" id="0x35f0" visible="false" val="0x08" />
+                    <volume6 offset="0" bits="32" t="u32" id="0x35f4" visible="false" val="0x08" />
+                    <volume7 offset="0" bits="32" t="u32" id="0x35f8" visible="false" val="0x08" />
                 </spkl_playback_volume>
                 <spkr_playback_volume>
                     <volume0 offset="0" bits="32" t="u32" id="0x35fc" visible="false" val="0x02" />
                     <volume1 offset="0" bits="32" t="u32" id="0x3600" visible="false" val="0x02" />
-                    <volume2 offset="0" bits="32" t="u32" id="0x3604" visible="false" val="0x06" />
-                    <volume3 offset="0" bits="32" t="u32" id="0x3608" visible="false" val="0x06" />
-                    <volume4 offset="0" bits="32" t="u32" id="0x360c" visible="false" val="0x06" />
-                    <volume5 offset="0" bits="32" t="u32" id="0x3610" visible="false" val="0x06" />
-                    <volume6 offset="0" bits="32" t="u32" id="0x3614" visible="false" val="0x06" />
-                    <volume7 offset="0" bits="32" t="u32" id="0x3618" visible="false" val="0x06" />
+                    <volume2 offset="0" bits="32" t="u32" id="0x3604" visible="false" val="0x08" />
+                    <volume3 offset="0" bits="32" t="u32" id="0x3608" visible="false" val="0x08" />
+                    <volume4 offset="0" bits="32" t="u32" id="0x360c" visible="false" val="0x08" />
+                    <volume5 offset="0" bits="32" t="u32" id="0x3610" visible="false" val="0x08" />
+                    <volume6 offset="0" bits="32" t="u32" id="0x3614" visible="false" val="0x08" />
+                    <volume7 offset="0" bits="32" t="u32" id="0x3618" visible="false" val="0x08" />
                 </spkr_playback_volume>
                 <hpl_playback_volume>
                     <volume0 offset="0" bits="32" t="u32" id="0x361c" visible="false" val="0x06" />
@@ -5524,22 +5524,22 @@
                 <spkl_playback_volume>
                     <volume0 offset="0" bits="32" t="u32" id="0x372c" visible="true" val="0x03" />
                     <volume1 offset="0" bits="32" t="u32" id="0x3730" visible="false" val="0x03" />
-                    <volume2 offset="0" bits="32" t="u32" id="0x3734" visible="false" val="0x06" />
-                    <volume3 offset="0" bits="32" t="u32" id="0x3738" visible="false" val="0x06" />
-                    <volume4 offset="0" bits="32" t="u32" id="0x373c" visible="false" val="0x06" />
-                    <volume5 offset="0" bits="32" t="u32" id="0x3740" visible="false" val="0x06" />
-                    <volume6 offset="0" bits="32" t="u32" id="0x3744" visible="false" val="0x06" />
-                    <volume7 offset="0" bits="32" t="u32" id="0x3748" visible="false" val="0x06" />
+                    <volume2 offset="0" bits="32" t="u32" id="0x3734" visible="false" val="0x08" />
+                    <volume3 offset="0" bits="32" t="u32" id="0x3738" visible="false" val="0x08" />
+                    <volume4 offset="0" bits="32" t="u32" id="0x373c" visible="false" val="0x08" />
+                    <volume5 offset="0" bits="32" t="u32" id="0x3740" visible="false" val="0x08" />
+                    <volume6 offset="0" bits="32" t="u32" id="0x3744" visible="false" val="0x08" />
+                    <volume7 offset="0" bits="32" t="u32" id="0x3748" visible="false" val="0x08" />
                 </spkl_playback_volume>
                 <spkr_playback_volume>
                     <volume0 offset="0" bits="32" t="u32" id="0x374c" visible="true" val="0x03" />
                     <volume1 offset="0" bits="32" t="u32" id="0x3750" visible="false" val="0x03" />
-                    <volume2 offset="0" bits="32" t="u32" id="0x3754" visible="false" val="0x06" />
-                    <volume3 offset="0" bits="32" t="u32" id="0x3758" visible="false" val="0x06" />
-                    <volume4 offset="0" bits="32" t="u32" id="0x375c" visible="false" val="0x06" />
-                    <volume5 offset="0" bits="32" t="u32" id="0x3760" visible="false" val="0x06" />
-                    <volume6 offset="0" bits="32" t="u32" id="0x3764" visible="false" val="0x06" />
-                    <volume7 offset="0" bits="32" t="u32" id="0x3768" visible="false" val="0x06" />
+                    <volume2 offset="0" bits="32" t="u32" id="0x3754" visible="false" val="0x08" />
+                    <volume3 offset="0" bits="32" t="u32" id="0x3758" visible="false" val="0x08" />
+                    <volume4 offset="0" bits="32" t="u32" id="0x375c" visible="false" val="0x08" />
+                    <volume5 offset="0" bits="32" t="u32" id="0x3760" visible="false" val="0x08" />
+                    <volume6 offset="0" bits="32" t="u32" id="0x3764" visible="false" val="0x08" />
+                    <volume7 offset="0" bits="32" t="u32" id="0x3768" visible="false" val="0x08" />
                 </spkr_playback_volume>
                 <hpl_playback_volume>
                     <volume0 offset="0" bits="32" t="u32" id="0x376c" visible="true" val="0x06" />
@@ -5657,22 +5657,22 @@
                 <spkl_playback_volume>
                     <volume0 offset="0" bits="32" t="u32" id="0x387c" visible="true" val="0x04" />
                     <volume1 offset="0" bits="32" t="u32" id="0x3880" visible="false" val="0x04" />
-                    <volume2 offset="0" bits="32" t="u32" id="0x3884" visible="false" val="0x06" />
-                    <volume3 offset="0" bits="32" t="u32" id="0x3888" visible="false" val="0x06" />
-                    <volume4 offset="0" bits="32" t="u32" id="0x388c" visible="false" val="0x06" />
-                    <volume5 offset="0" bits="32" t="u32" id="0x3890" visible="false" val="0x06" />
-                    <volume6 offset="0" bits="32" t="u32" id="0x3894" visible="false" val="0x06" />
-                    <volume7 offset="0" bits="32" t="u32" id="0x3898" visible="false" val="0x06" />
+                    <volume2 offset="0" bits="32" t="u32" id="0x3884" visible="false" val="0x08" />
+                    <volume3 offset="0" bits="32" t="u32" id="0x3888" visible="false" val="0x08" />
+                    <volume4 offset="0" bits="32" t="u32" id="0x388c" visible="false" val="0x08" />
+                    <volume5 offset="0" bits="32" t="u32" id="0x3890" visible="false" val="0x08" />
+                    <volume6 offset="0" bits="32" t="u32" id="0x3894" visible="false" val="0x08" />
+                    <volume7 offset="0" bits="32" t="u32" id="0x3898" visible="false" val="0x08" />
                 </spkl_playback_volume>
                 <spkr_playback_volume>
                     <volume0 offset="0" bits="32" t="u32" id="0x389c" visible="true" val="0x04" />
                     <volume1 offset="0" bits="32" t="u32" id="0x38a0" visible="false" val="0x04" />
-                    <volume2 offset="0" bits="32" t="u32" id="0x38a4" visible="false" val="0x06" />
-                    <volume3 offset="0" bits="32" t="u32" id="0x38a8" visible="false" val="0x06" />
-                    <volume4 offset="0" bits="32" t="u32" id="0x38ac" visible="false" val="0x06" />
-                    <volume5 offset="0" bits="32" t="u32" id="0x38b0" visible="false" val="0x06" />
-                    <volume6 offset="0" bits="32" t="u32" id="0x38b4" visible="false" val="0x06" />
-                    <volume7 offset="0" bits="32" t="u32" id="0x38b8" visible="false" val="0x06" />
+                    <volume2 offset="0" bits="32" t="u32" id="0x38a4" visible="false" val="0x08" />
+                    <volume3 offset="0" bits="32" t="u32" id="0x38a8" visible="false" val="0x08" />
+                    <volume4 offset="0" bits="32" t="u32" id="0x38ac" visible="false" val="0x08" />
+                    <volume5 offset="0" bits="32" t="u32" id="0x38b0" visible="false" val="0x08" />
+                    <volume6 offset="0" bits="32" t="u32" id="0x38b4" visible="false" val="0x08" />
+                    <volume7 offset="0" bits="32" t="u32" id="0x38b8" visible="false" val="0x08" />
                 </spkr_playback_volume>
                 <hpl_playback_volume>
                     <volume0 offset="0" bits="32" t="u32" id="0x38bc" visible="true" val="0x05" />
@@ -5788,24 +5788,24 @@
                 <adcl_capture_volume offset="0" bits="32" t="u32" id="0x39c4" visible="false" val="0x06" />
                 <adcr_capture_volume offset="0" bits="32" t="u32" id="0x39c8" visible="false" val="0x06" />
                 <spkl_playback_volume>
-                    <volume0 offset="0" bits="32" t="u32" id="0x39cc" visible="true" val="0x06" />
-                    <volume1 offset="0" bits="32" t="u32" id="0x39d0" visible="false" val="0x06" />
-                    <volume2 offset="0" bits="32" t="u32" id="0x39d4" visible="false" val="0x06" />
-                    <volume3 offset="0" bits="32" t="u32" id="0x39d8" visible="false" val="0x06" />
-                    <volume4 offset="0" bits="32" t="u32" id="0x39dc" visible="false" val="0x06" />
-                    <volume5 offset="0" bits="32" t="u32" id="0x39e0" visible="false" val="0x06" />
-                    <volume6 offset="0" bits="32" t="u32" id="0x39e4" visible="false" val="0x06" />
-                    <volume7 offset="0" bits="32" t="u32" id="0x39e8" visible="false" val="0x06" />
+                    <volume0 offset="0" bits="32" t="u32" id="0x39cc" visible="true" val="0x08" />
+                    <volume1 offset="0" bits="32" t="u32" id="0x39d0" visible="false" val="0x08" />
+                    <volume2 offset="0" bits="32" t="u32" id="0x39d4" visible="false" val="0x08" />
+                    <volume3 offset="0" bits="32" t="u32" id="0x39d8" visible="false" val="0x08" />
+                    <volume4 offset="0" bits="32" t="u32" id="0x39dc" visible="false" val="0x08" />
+                    <volume5 offset="0" bits="32" t="u32" id="0x39e0" visible="false" val="0x08" />
+                    <volume6 offset="0" bits="32" t="u32" id="0x39e4" visible="false" val="0x08" />
+                    <volume7 offset="0" bits="32" t="u32" id="0x39e8" visible="false" val="0x08" />
                 </spkl_playback_volume>
                 <spkr_playback_volume>
-                    <volume0 offset="0" bits="32" t="u32" id="0x39ec" visible="true" val="0x06" />
-                    <volume1 offset="0" bits="32" t="u32" id="0x39f0" visible="false" val="0x06" />
-                    <volume2 offset="0" bits="32" t="u32" id="0x39f4" visible="false" val="0x06" />
-                    <volume3 offset="0" bits="32" t="u32" id="0x39f8" visible="false" val="0x06" />
-                    <volume4 offset="0" bits="32" t="u32" id="0x39fc" visible="false" val="0x06" />
-                    <volume5 offset="0" bits="32" t="u32" id="0x3a00" visible="false" val="0x06" />
-                    <volume6 offset="0" bits="32" t="u32" id="0x3a04" visible="false" val="0x06" />
-                    <volume7 offset="0" bits="32" t="u32" id="0x3a08" visible="false" val="0x06" />
+                    <volume0 offset="0" bits="32" t="u32" id="0x39ec" visible="true" val="0x08" />
+                    <volume1 offset="0" bits="32" t="u32" id="0x39f0" visible="false" val="0x08" />
+                    <volume2 offset="0" bits="32" t="u32" id="0x39f4" visible="false" val="0x08" />
+                    <volume3 offset="0" bits="32" t="u32" id="0x39f8" visible="false" val="0x08" />
+                    <volume4 offset="0" bits="32" t="u32" id="0x39fc" visible="false" val="0x08" />
+                    <volume5 offset="0" bits="32" t="u32" id="0x3a00" visible="false" val="0x08" />
+                    <volume6 offset="0" bits="32" t="u32" id="0x3a04" visible="false" val="0x08" />
+                    <volume7 offset="0" bits="32" t="u32" id="0x3a08" visible="false" val="0x08" />
                 </spkr_playback_volume>
                 <hpl_playback_volume>
                     <volume0 offset="0" bits="32" t="u32" id="0x3a0c" visible="true" val="0x06" />
@@ -5923,24 +5923,24 @@
                 <adcl_capture_volume offset="0" bits="32" t="u32" id="0x3b14" visible="true" val="0x07" />
                 <adcr_capture_volume offset="0" bits="32" t="u32" id="0x3b18" visible="true" val="0x07" />
                 <spkl_playback_volume>
-                    <volume0 offset="0" bits="32" t="u32" id="0x3b1c" visible="true" val="0x06" />
-                    <volume1 offset="0" bits="32" t="u32" id="0x3b20" visible="false" val="0x06" />
-                    <volume2 offset="0" bits="32" t="u32" id="0x3b24" visible="false" val="0x06" />
-                    <volume3 offset="0" bits="32" t="u32" id="0x3b28" visible="false" val="0x06" />
-                    <volume4 offset="0" bits="32" t="u32" id="0x3b2c" visible="false" val="0x06" />
-                    <volume5 offset="0" bits="32" t="u32" id="0x3b30" visible="false" val="0x06" />
-                    <volume6 offset="0" bits="32" t="u32" id="0x3b34" visible="false" val="0x06" />
-                    <volume7 offset="0" bits="32" t="u32" id="0x3b38" visible="false" val="0x06" />
+                    <volume0 offset="0" bits="32" t="u32" id="0x3b1c" visible="true" val="0x08" />
+                    <volume1 offset="0" bits="32" t="u32" id="0x3b20" visible="false" val="0x08" />
+                    <volume2 offset="0" bits="32" t="u32" id="0x3b24" visible="false" val="0x08" />
+                    <volume3 offset="0" bits="32" t="u32" id="0x3b28" visible="false" val="0x08" />
+                    <volume4 offset="0" bits="32" t="u32" id="0x3b2c" visible="false" val="0x08" />
+                    <volume5 offset="0" bits="32" t="u32" id="0x3b30" visible="false" val="0x08" />
+                    <volume6 offset="0" bits="32" t="u32" id="0x3b34" visible="false" val="0x08" />
+                    <volume7 offset="0" bits="32" t="u32" id="0x3b38" visible="false" val="0x08" />
                 </spkl_playback_volume>
                 <spkr_playback_volume>
-                    <volume0 offset="0" bits="32" t="u32" id="0x3b3c" visible="true" val="0x06" />
-                    <volume1 offset="0" bits="32" t="u32" id="0x3b40" visible="false" val="0x06" />
-                    <volume2 offset="0" bits="32" t="u32" id="0x3b44" visible="false" val="0x06" />
-                    <volume3 offset="0" bits="32" t="u32" id="0x3b48" visible="false" val="0x06" />
-                    <volume4 offset="0" bits="32" t="u32" id="0x3b4c" visible="false" val="0x06" />
-                    <volume5 offset="0" bits="32" t="u32" id="0x3b50" visible="false" val="0x06" />
-                    <volume6 offset="0" bits="32" t="u32" id="0x3b54" visible="false" val="0x06" />
-                    <volume7 offset="0" bits="32" t="u32" id="0x3b58" visible="false" val="0x06" />
+                    <volume0 offset="0" bits="32" t="u32" id="0x3b3c" visible="true" val="0x08" />
+                    <volume1 offset="0" bits="32" t="u32" id="0x3b40" visible="false" val="0x08" />
+                    <volume2 offset="0" bits="32" t="u32" id="0x3b44" visible="false" val="0x08" />
+                    <volume3 offset="0" bits="32" t="u32" id="0x3b48" visible="false" val="0x08" />
+                    <volume4 offset="0" bits="32" t="u32" id="0x3b4c" visible="false" val="0x08" />
+                    <volume5 offset="0" bits="32" t="u32" id="0x3b50" visible="false" val="0x08" />
+                    <volume6 offset="0" bits="32" t="u32" id="0x3b54" visible="false" val="0x08" />
+                    <volume7 offset="0" bits="32" t="u32" id="0x3b58" visible="false" val="0x08" />
                 </spkr_playback_volume>
                 <hpl_playback_volume>
                     <volume0 offset="0" bits="32" t="u32" id="0x3b5c" visible="true" val="0x06" />
@@ -6063,7 +6063,7 @@
                     <volume4 offset="0" bits="32" t="u32" id="0x3c7c" visible="false" val="0x03" />
                     <volume5 offset="0" bits="32" t="u32" id="0x3c80" visible="false" val="0x03" />
                     <volume6 offset="0" bits="32" t="u32" id="0x3c84" visible="false" val="0x03" />
-                    <volume7 offset="0" bits="32" t="u32" id="0x3c88" visible="false" val="0x06" />
+                    <volume7 offset="0" bits="32" t="u32" id="0x3c88" visible="false" val="0x08" />
                 </spkl_playback_volume>
                 <spkr_playback_volume>
                     <volume0 offset="0" bits="32" t="u32" id="0x3c8c" visible="true" val="0x03" />
@@ -6073,7 +6073,7 @@
                     <volume4 offset="0" bits="32" t="u32" id="0x3c9c" visible="false" val="0x03" />
                     <volume5 offset="0" bits="32" t="u32" id="0x3ca0" visible="false" val="0x03" />
                     <volume6 offset="0" bits="32" t="u32" id="0x3ca4" visible="false" val="0x03" />
-                    <volume7 offset="0" bits="32" t="u32" id="0x3ca8" visible="false" val="0x06" />
+                    <volume7 offset="0" bits="32" t="u32" id="0x3ca8" visible="false" val="0x08" />
                 </spkr_playback_volume>
                 <hpl_playback_volume>
                     <volume0 offset="0" bits="32" t="u32" id="0x3cac" visible="true" val="0x06" />
@@ -6189,24 +6189,24 @@
                 <adcl_capture_volume offset="0" bits="32" t="u32" id="0x3db4" visible="true" val="0x06" />
                 <adcr_capture_volume offset="0" bits="32" t="u32" id="0x3db8" visible="true" val="0x06" />
                 <spkl_playback_volume>
-                    <volume0 offset="0" bits="32" t="u32" id="0x3dbc" visible="false" val="0x06" />
-                    <volume1 offset="0" bits="32" t="u32" id="0x3dc0" visible="false" val="0x06" />
-                    <volume2 offset="0" bits="32" t="u32" id="0x3dc4" visible="false" val="0x06" />
-                    <volume3 offset="0" bits="32" t="u32" id="0x3dc8" visible="false" val="0x06" />
-                    <volume4 offset="0" bits="32" t="u32" id="0x3dcc" visible="false" val="0x06" />
-                    <volume5 offset="0" bits="32" t="u32" id="0x3dd0" visible="false" val="0x06" />
-                    <volume6 offset="0" bits="32" t="u32" id="0x3dd4" visible="false" val="0x06" />
-                    <volume7 offset="0" bits="32" t="u32" id="0x3dd8" visible="false" val="0x06" />
+                    <volume0 offset="0" bits="32" t="u32" id="0x3dbc" visible="false" val="0x08" />
+                    <volume1 offset="0" bits="32" t="u32" id="0x3dc0" visible="false" val="0x08" />
+                    <volume2 offset="0" bits="32" t="u32" id="0x3dc4" visible="false" val="0x08" />
+                    <volume3 offset="0" bits="32" t="u32" id="0x3dc8" visible="false" val="0x08" />
+                    <volume4 offset="0" bits="32" t="u32" id="0x3dcc" visible="false" val="0x08" />
+                    <volume5 offset="0" bits="32" t="u32" id="0x3dd0" visible="false" val="0x08" />
+                    <volume6 offset="0" bits="32" t="u32" id="0x3dd4" visible="false" val="0x08" />
+                    <volume7 offset="0" bits="32" t="u32" id="0x3dd8" visible="false" val="0x08" />
                 </spkl_playback_volume>
                 <spkr_playback_volume>
-                    <volume0 offset="0" bits="32" t="u32" id="0x3ddc" visible="false" val="0x06" />
-                    <volume1 offset="0" bits="32" t="u32" id="0x3de0" visible="false" val="0x06" />
-                    <volume2 offset="0" bits="32" t="u32" id="0x3de4" visible="false" val="0x06" />
-                    <volume3 offset="0" bits="32" t="u32" id="0x3de8" visible="false" val="0x06" />
-                    <volume4 offset="0" bits="32" t="u32" id="0x3dec" visible="false" val="0x06" />
-                    <volume5 offset="0" bits="32" t="u32" id="0x3df0" visible="false" val="0x06" />
-                    <volume6 offset="0" bits="32" t="u32" id="0x3df4" visible="false" val="0x06" />
-                    <volume7 offset="0" bits="32" t="u32" id="0x3df8" visible="false" val="0x06" />
+                    <volume0 offset="0" bits="32" t="u32" id="0x3ddc" visible="false" val="0x08" />
+                    <volume1 offset="0" bits="32" t="u32" id="0x3de0" visible="false" val="0x08" />
+                    <volume2 offset="0" bits="32" t="u32" id="0x3de4" visible="false" val="0x08" />
+                    <volume3 offset="0" bits="32" t="u32" id="0x3de8" visible="false" val="0x08" />
+                    <volume4 offset="0" bits="32" t="u32" id="0x3dec" visible="false" val="0x08" />
+                    <volume5 offset="0" bits="32" t="u32" id="0x3df0" visible="false" val="0x08" />
+                    <volume6 offset="0" bits="32" t="u32" id="0x3df4" visible="false" val="0x08" />
+                    <volume7 offset="0" bits="32" t="u32" id="0x3df8" visible="false" val="0x08" />
                 </spkr_playback_volume>
                 <hpl_playback_volume>
                     <volume0 offset="0" bits="32" t="u32" id="0x3dfc" visible="true" val="0x05" />
@@ -6322,24 +6322,24 @@
                 <adcl_capture_volume offset="0" bits="32" t="u32" id="0x3f04" visible="true" val="0x06" />
                 <adcr_capture_volume offset="0" bits="32" t="u32" id="0x3f08" visible="true" val="0x06" />
                 <spkl_playback_volume>
-                    <volume0 offset="0" bits="32" t="u32" id="0x3f0c" visible="false" val="0x06" />
-                    <volume1 offset="0" bits="32" t="u32" id="0x3f10" visible="false" val="0x06" />
-                    <volume2 offset="0" bits="32" t="u32" id="0x3f14" visible="false" val="0x06" />
-                    <volume3 offset="0" bits="32" t="u32" id="0x3f18" visible="false" val="0x06" />
-                    <volume4 offset="0" bits="32" t="u32" id="0x3f1c" visible="false" val="0x06" />
-                    <volume5 offset="0" bits="32" t="u32" id="0x3f20" visible="false" val="0x06" />
-                    <volume6 offset="0" bits="32" t="u32" id="0x3f24" visible="false" val="0x06" />
-                    <volume7 offset="0" bits="32" t="u32" id="0x3f28" visible="false" val="0x06" />
+                    <volume0 offset="0" bits="32" t="u32" id="0x3f0c" visible="false" val="0x08" />
+                    <volume1 offset="0" bits="32" t="u32" id="0x3f10" visible="false" val="0x08" />
+                    <volume2 offset="0" bits="32" t="u32" id="0x3f14" visible="false" val="0x08" />
+                    <volume3 offset="0" bits="32" t="u32" id="0x3f18" visible="false" val="0x08" />
+                    <volume4 offset="0" bits="32" t="u32" id="0x3f1c" visible="false" val="0x08" />
+                    <volume5 offset="0" bits="32" t="u32" id="0x3f20" visible="false" val="0x08" />
+                    <volume6 offset="0" bits="32" t="u32" id="0x3f24" visible="false" val="0x08" />
+                    <volume7 offset="0" bits="32" t="u32" id="0x3f28" visible="false" val="0x08" />
                 </spkl_playback_volume>
                 <spkr_playback_volume>
-                    <volume0 offset="0" bits="32" t="u32" id="0x3f2c" visible="false" val="0x06" />
-                    <volume1 offset="0" bits="32" t="u32" id="0x3f30" visible="false" val="0x06" />
-                    <volume2 offset="0" bits="32" t="u32" id="0x3f34" visible="false" val="0x06" />
-                    <volume3 offset="0" bits="32" t="u32" id="0x3f38" visible="false" val="0x06" />
-                    <volume4 offset="0" bits="32" t="u32" id="0x3f3c" visible="false" val="0x06" />
-                    <volume5 offset="0" bits="32" t="u32" id="0x3f40" visible="false" val="0x06" />
-                    <volume6 offset="0" bits="32" t="u32" id="0x3f44" visible="false" val="0x06" />
-                    <volume7 offset="0" bits="32" t="u32" id="0x3f48" visible="false" val="0x06" />
+                    <volume0 offset="0" bits="32" t="u32" id="0x3f2c" visible="false" val="0x08" />
+                    <volume1 offset="0" bits="32" t="u32" id="0x3f30" visible="false" val="0x08" />
+                    <volume2 offset="0" bits="32" t="u32" id="0x3f34" visible="false" val="0x08" />
+                    <volume3 offset="0" bits="32" t="u32" id="0x3f38" visible="false" val="0x08" />
+                    <volume4 offset="0" bits="32" t="u32" id="0x3f3c" visible="false" val="0x08" />
+                    <volume5 offset="0" bits="32" t="u32" id="0x3f40" visible="false" val="0x08" />
+                    <volume6 offset="0" bits="32" t="u32" id="0x3f44" visible="false" val="0x08" />
+                    <volume7 offset="0" bits="32" t="u32" id="0x3f48" visible="false" val="0x08" />
                 </spkr_playback_volume>
                 <hpl_playback_volume>
                     <volume0 offset="0" bits="32" t="u32" id="0x3f4c" visible="true" val="0x05" />
