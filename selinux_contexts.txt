@@ -1,7 +1,5 @@
 / u:object_r:vendor_file:s0
 /build.prop u:object_r:vendor_file:s0
-/build64.prop u:object_r:vendor_file:s0
-/build64_32.prop u:object_r:vendor_file:s0
 /ueventd.rc u:object_r:vendor_file:s0
 /default.prop u:object_r:vendor_file:s0
 /lib u:object_r:vendor_file:s0
@@ -646,7 +644,6 @@
 /etc/init/init.rockchip_udc_detector.rc u:object_r:vendor_configs_file:s0
 /etc/init/android.hardware.tv.cec@1.0-service.rc u:object_r:vendor_configs_file:s0
 /etc/init/android.hardware.audio.service.rc u:object_r:vendor_configs_file:s0
-/etc/init/init.memclear.rc u:object_r:vendor_configs_file:s0
 /etc/init/init.tee-supplicant.rc u:object_r:vendor_configs_file:s0
 /etc/init/rockchip.hardware.rockit.hw@1.0-service.rc u:object_r:vendor_configs_file:s0
 /etc/init/init.rockchip.drmservice.rc u:object_r:vendor_configs_file:s0

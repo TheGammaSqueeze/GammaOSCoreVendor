@@ -1,7 +1,10 @@
+# /vendor/etc/init/init.gammaos_power.rc
+
 service setclock_max /vendor/bin/setclock_max.sh
     class main
     user root
     group root system
+    seclabel u:r:gammaoscustomization:s0
     oneshot
     disabled
 
@@ -9,6 +12,7 @@ service setclock_stock /vendor/bin/setclock_stock.sh
     class main
     user root
     group root system
+    seclabel u:r:gammaoscustomization:s0
     oneshot
     disabled
 
@@ -16,6 +20,7 @@ service setclock_powersave /vendor/bin/setclock_powersave.sh
     class main
     user root
     group root system
+    seclabel u:r:gammaoscustomization:s0
     oneshot
     disabled
 
@@ -23,38 +28,25 @@ service cpu_screen_off /vendor/bin/sleep.sh
     class main
     user root
     group root system wifi inet net_bt_admin net_bt bluetooth
+    seclabel u:r:gammaoscustomization:s0
     oneshot
     disabled
 
-# Re-enable only the radios cpu_screen_off (sleep.sh) turned off, restoring the
-# user's prior state. Started on screen-on / USB / charging. No-op otherwise.
+# Re-enable the radios that cpu_screen_off turned off, restoring only the ones the
+# user actually had on. Started whenever the ultra-low-power suspend ends (screen
+# on, USB plugged, or charging). No-op if nothing was turned off.
 service ulps_restore_radios /vendor/bin/sleep.sh restore
     class main
     user root
     group root system wifi inet net_bt_admin net_bt bluetooth
+    seclabel u:r:gammaoscustomization:s0
     oneshot
     disabled
 
-service cpu_screen_on /system/bin/sh -c "echo 1 | tee /sys/devices/system/cpu/cpu[1-7]/online >/dev/null"
-    class main
-    user root
-    group root system
-    oneshot
-    disabled
-
-on property:sys.screen.state=off
-    start setclock_powersave
-
-on property:persist.gammaos.ultra_low_power_saving_mode=1 && property:sys.screen.state=off
+on property:sys.screen.state=off && property:persist.gammaos.ultra_low_power_saving_mode=true && property:sys.gammaos.usb.connected=0
     start cpu_screen_off
 
-# End the ultra-low-power suspend loop and restore radios when the screen comes
-# back on, USB is connected, or the device starts charging.
 on property:sys.screen.state=on
-    stop cpu_screen_off
-    start ulps_restore_radios
-
-on property:sys.gammaos.usb.connected=1
     stop cpu_screen_off
     start ulps_restore_radios
 
@@ -62,14 +54,16 @@ on property:debug.tracing.battery_stats.charging=1
     stop cpu_screen_off
     start ulps_restore_radios
 
-on property:persist.gammaos.performance_mode=max && property:sys.screen.state=on
+on property:sys.gammaos.usb.connected=1
+    stop cpu_screen_off
+    start ulps_restore_radios
+
+on property:persist.gammaos.performance_mode=max
     start setclock_max
-    start cpu_screen_on
 
-on property:persist.gammaos.performance_mode=stock && property:sys.screen.state=on
+on property:persist.gammaos.performance_mode=stock
     start setclock_stock
-    start cpu_screen_on
 
-on property:persist.gammaos.performance_mode=powersave && property:sys.screen.state=on
+on property:persist.gammaos.performance_mode=powersave
     start setclock_powersave
-    start cpu_screen_on
+
