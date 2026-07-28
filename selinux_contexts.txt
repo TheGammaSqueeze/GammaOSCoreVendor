@@ -342,7 +342,6 @@
 /etc/init/android.hardware.audio@2.0-service.rc u:object_r:vendor_configs_file:s0
 /etc/init/hostapd.android.rc u:object_r:vendor_configs_file:s0
 /etc/init/android.hardware.wifi@1.0-service-lazy.rc u:object_r:vendor_configs_file:s0
-/etc/init/vohci.rc u:object_r:vendor_configs_file:s0
 /etc/init/init.wireless.bluetooth.rc u:object_r:vendor_configs_file:s0
 /etc/init/android.hardware.keymaster@4.0-service-aw.rc u:object_r:vendor_configs_file:s0
 /etc/group u:object_r:vendor_configs_file:s0
@@ -716,7 +715,6 @@
 /bin/lspci u:object_r:vendor_toolbox_exec:s0
 /bin/gzip u:object_r:vendor_toolbox_exec:s0
 /bin/date u:object_r:vendor_toolbox_exec:s0
-/bin/vohci u:object_r:hal_audio_default_exec:s0
 /bin/tac u:object_r:vendor_toolbox_exec:s0
 /bin/truncate u:object_r:vendor_toolbox_exec:s0
 /bin/unix2dos u:object_r:vendor_toolbox_exec:s0

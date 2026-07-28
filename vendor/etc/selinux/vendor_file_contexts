@@ -121,7 +121,6 @@
 /dev/block/zram0		u:object_r:swap_block_device:s0
 /dev/block/nand0		u:object_r:root_block_device:s0
 /dev/deinterlace		u:object_r:deinterlace_device:s0
-/vendor/bin/vohci		u:object_r:hal_audio_default_exec:s0
 /system/bin/kmsgd		--	u:object_r:kmsgd_exec:s0
 /dev/block/mmcblk0		u:object_r:root_block_device:s0
 /dev/googlevp9_dev		u:object_r:cedar_device:s0
