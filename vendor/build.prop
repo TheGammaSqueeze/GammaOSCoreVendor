@@ -296,11 +296,11 @@ persist.sys.usb.config=none
 # end of file
 Target FotaInfo:
 persist.gammaos.qs.override_default_tiles=1
-persist.gammaos.qs.override_default_tiles_0=internet,bt,performance,gammashader,gammargb,gammaeq,rotation,screenmap
+persist.gammaos.qs.override_default_tiles_0=internet,bt,performance,gammashader,gammaeq,rotation,screenmap
 persist.gammaos.qs.override_default_tiles_1=deepsleepmode,immersivemode,abxy,dpadAnalogToggle,analogsensitivity
 persist.gammaos.qs.override_default_tiles_2=analogdeadzone,analogcalibration,analogaxis,rightanalogaxis
 persist.gammaos.qs.override_default_tiles_3=retroarchmenubuttonoverride,mappingeditor
-persist.gammaos.qs.blacklist_0=dcdimmingemulation,launchguard,dualstack,gammasecondarydisplay
+persist.gammaos.qs.blacklist_0=dcdimmingemulation,launchguard,dualstack,gammasecondarydisplay,gammargb
 persist.gammaos.qs.blacklist_1=gammadualfocus,gammasplitbrightness,globalbfi,gammarefresh
 persist.gammaos.qs.blacklist_2=477v,usbcontrollerswitch,fan
 persist.gammaos.nano.ps3xmb=1
@@ -327,7 +327,7 @@ ro.gammaos.device=anbernicrgrotate
 persist.gammaos.nano.drastic_qr_layout=1
 persist.gammaos.nano.wifi=1
 
-persist.sys.gammaeq.enable=1
+persist.sys.gammaeq.enable=0
 persist.sys.gammaeq.spk_only=1
 persist.sys.gammaeq.force=0
 persist.sys.gammaeq.force=0
@@ -392,5 +392,15 @@ persist.gammaos.rotate.dev_name=gpio-keys
 persist.gammaos.rotate.down_action=rotate,screenoff
 persist.gammaos.rotate.up_action=natural,wake
 persist.gammaos.rotate.degrees=90
-persist.gammaos.rotate.sleep_delay=5
+persist.gammaos.rotate.sleep_delay=15
 persist.gammaos.rotate.wake_debounce_ms=1000
+
+# GammaOS: KEY_F10 short-press toggles the left DPAD / left-analog-stick swap (gammapad
+# custom button-action). dpadswap flips persist.gammaos.gamepad.analog_to_dpad and
+# dpad_to_analog together and bumps config_version, identical to the SystemUI DPAD/Analog
+# Swap tile. Shipped as act0 (act_count=1); any user rules added from the gammapad UI append
+# after it and raise act_count. hold=0 => fires once on each short press (autorepeat suppressed).
+persist.gammaos.gamepad.act_count=1
+persist.gammaos.gamepad.act0_code=68
+persist.gammaos.gamepad.act0_hold=0
+persist.gammaos.gamepad.act0_s=dpadswap=
