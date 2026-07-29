@@ -3356,7 +3356,7 @@
                     <reserved00 offset="21" bits="11" visible="false" val="0x0" />
                     <audio_postdrc_en offset="20" bits="1" visible="true" val="0x00" />
                     <audio_thrbdrc_en offset="19" bits="1" visible="true" val="0x00" />
-                    <audio_bldrc_en offset="18" bits="1" visible="false" val="0x0" />
+                    <audio_bldrc_en offset="18" bits="1" visible="false" val="0x1" />
                     <audio_mbdrc_en offset="17" bits="1" visible="true" val="0x00" />
                     <reserved01 offset="6" bits="11" visible="false" val="0x0" />
                     <audio_postdrc_mode offset="5" bits="1" visible="false" val="0x0" />
@@ -4203,7 +4203,7 @@
                     <reserved00 offset="21" bits="11" visible="false" val="0x0" />
                     <audio_postdrc_en offset="20" bits="1" visible="true" val="0x00" />
                     <audio_thrbdrc_en offset="19" bits="1" visible="true" val="0x01" />
-                    <audio_bldrc_en offset="18" bits="1" visible="false" val="0x0" />
+                    <audio_bldrc_en offset="18" bits="1" visible="false" val="0x1" />
                     <audio_mbdrc_en offset="17" bits="1" visible="true" val="0x00" />
                     <reserved01 offset="6" bits="11" visible="false" val="0x0" />
                     <audio_postdrc_mode offset="5" bits="1" visible="false" val="0x0" />
@@ -5050,7 +5050,7 @@
                     <reserved00 offset="21" bits="11" visible="false" val="0x0" />
                     <audio_postdrc_en offset="20" bits="1" visible="true" val="0x00" />
                     <audio_thrbdrc_en offset="19" bits="1" visible="true" val="0x01" />
-                    <audio_bldrc_en offset="18" bits="1" visible="false" val="0x0" />
+                    <audio_bldrc_en offset="18" bits="1" visible="false" val="0x1" />
                     <audio_mbdrc_en offset="17" bits="1" visible="true" val="0x01" />
                     <reserved01 offset="6" bits="11" visible="false" val="0x0" />
                     <audio_postdrc_mode offset="5" bits="1" visible="false" val="0x0" />
@@ -5897,7 +5897,7 @@
                     <reserved00 offset="21" bits="11" visible="false" val="0x0" />
                     <audio_postdrc_en offset="20" bits="1" visible="true" val="0x00" />
                     <audio_thrbdrc_en offset="19" bits="1" visible="true" val="0x01" />
-                    <audio_bldrc_en offset="18" bits="1" visible="false" val="0x0" />
+                    <audio_bldrc_en offset="18" bits="1" visible="false" val="0x1" />
                     <audio_mbdrc_en offset="17" bits="1" visible="true" val="0x00" />
                     <reserved01 offset="6" bits="11" visible="false" val="0x0" />
                     <audio_postdrc_mode offset="5" bits="1" visible="false" val="0x0" />
@@ -6744,7 +6744,7 @@
                     <reserved00 offset="21" bits="11" visible="false" val="0x0" />
                     <audio_postdrc_en offset="20" bits="1" visible="true" val="0x00" />
                     <audio_thrbdrc_en offset="19" bits="1" visible="true" val="0x00" />
-                    <audio_bldrc_en offset="18" bits="1" visible="false" val="0x0" />
+                    <audio_bldrc_en offset="18" bits="1" visible="false" val="0x1" />
                     <audio_mbdrc_en offset="17" bits="1" visible="true" val="0x00" />
                     <reserved01 offset="6" bits="11" visible="false" val="0x0" />
                     <audio_postdrc_mode offset="5" bits="1" visible="false" val="0x0" />
