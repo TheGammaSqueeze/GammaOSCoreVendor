@@ -429,3 +429,4 @@ persist.bootanim.skip_nano=0
 persist.gammaos.ultra_low_power_saving_mode=1
 persist.gammaos.nano.ndstheme=1
 persist.gammaos.nano.ps3xmb.controlcenter=1
+ro.gammaos.device=anbernicrgds
