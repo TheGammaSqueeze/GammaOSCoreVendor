@@ -410,3 +410,4 @@ persist.gammaos.nano.ps3xmb=1
 persist.gammaos.nano.overlay=1
 persist.bootanim.skip_nano=0
 persist.gammaos.ultra_low_power_saving_mode=1
+persist.gammaos.gamepad.ff_vibrate_device=sc27xx:vibrator
