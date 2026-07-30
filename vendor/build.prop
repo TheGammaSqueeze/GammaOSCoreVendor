@@ -113,3 +113,4 @@ persist.gammaos.nano.overlay=1
 persist.bootanim.skip_nano=0
 persist.gammaos.ultra_low_power_saving_mode=1
 service.sf.prime_shader_cache=0
+ro.gammaos.device=magicxxu20v32
