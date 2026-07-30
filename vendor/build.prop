@@ -116,3 +116,4 @@ ro.lmk.critical=200
 ro.lmk.kill_timeout_ms=100
 ro.odsign.skip_verification=1
 service.sf.prime_shader_cache=0
+ro.gammaos.device=magicxminizero28
