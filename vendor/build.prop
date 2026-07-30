@@ -117,3 +117,6 @@ ro.lmk.kill_timeout_ms=100
 ro.odsign.skip_verification=1
 service.sf.prime_shader_cache=0
 ro.gammaos.device=magicxminizero28
+persist.gammaos.gamepad.config_version=2
+persist.gammaos.gamepad.devices=Xbox Wireless Controller
+persist.gammaos.gamepad.enable=1
