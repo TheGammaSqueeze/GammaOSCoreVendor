@@ -164,3 +164,7 @@ persist.gammaos.rotate.key_code=1
 persist.gammaos.rotate.key_type=5
 persist.gammaos.nano.clock12=1
 persist.gammaos.nano.pspclock=1
+persist.gammaos.drastic_nano.layout_preset=2
+persist.gammaos.drastic_nano.orientation=auto
+persist.gammaos.drastic_nano.pip_alpha=60
+persist.gammaos.nano.drastic_nano=1
