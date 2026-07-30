@@ -135,3 +135,7 @@ persist.gammaos.gamepad.devices=magicx-input
 persist.gammaos.gamepad.enable=1
 persist.gammaos.nano.natural_orientation=portrait
 persist.gammaos.nano.orientation=portrait
+
+persist.gammaos.drastic_nano.screen_gap=16
+persist.gammaos.nano.drastic_nano=1
+persist.gammaos.nano.drastic_qr_layout=0
