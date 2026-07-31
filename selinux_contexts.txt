@@ -1000,3 +1000,4 @@
 /etc/init/init\.vendor_fixup\.rc u:object_r:vendor_configs_file:s0
 /etc/init/init\.nano_hal_optimize\.rc u:object_r:vendor_configs_file:s0
 /etc/selinux/precompiled_sepolicy.system_ext_sepolicy_and_mapping\.sha256 u:object_r:vendor_configs_file:s0
+/bin/usb_mtp_fixup\.sh u:object_r:vendor_file:s0
