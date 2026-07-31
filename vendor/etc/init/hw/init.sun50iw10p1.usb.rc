@@ -143,3 +143,16 @@ on property:persist.sys.usb0device=1
 on property:persist.sys.usb0device=0
     copy  /sys/devices/platform/soc/usbc0/usb_host   /dev/null
     write /config/usb_gadget/g1/idVendor 0x18d1
+
+# Fix MTP gadget assembly on kernels where the config=none teardown leaves a stale
+# ffs.adb link in b.1/f1 (so mtp.gs0 never links). Re-assert the layout on mtp,adb.
+service usb_mtp_fixup /vendor/bin/usb_mtp_fixup.sh
+    class main
+    user root
+    group root
+    disabled
+    oneshot
+    seclabel u:r:gammaoscustomization:s0
+
+on property:sys.usb.ffs.ready=1 && property:sys.usb.config=mtp,adb && property:sys.usb.configfs=1
+    start usb_mtp_fixup
