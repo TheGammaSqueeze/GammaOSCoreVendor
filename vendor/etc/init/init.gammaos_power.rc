@@ -70,7 +70,7 @@ on property:persist.gammaos.performance_mode=powersave && property:sys.screen.st
 #    stop force_wake
 #    start force_sleep
 
-on property:sys.screen.state=off && property:persist.gammaos.ultra_low_power_saving_mode=1 && property:sys.gammaos.usb.connected=0
+on property:sys.screen.state=off && property:persist.gammaos.ultra_low_power_saving_mode=1 && property:sys.gammaos.usb.connected=0 && property:sys.boot_completed=1
     start setclock_powersave
     stop force_wake
     start force_sleep
