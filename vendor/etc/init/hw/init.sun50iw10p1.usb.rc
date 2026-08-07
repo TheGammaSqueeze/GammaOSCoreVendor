@@ -144,8 +144,21 @@ on property:persist.sys.usb0device=0
     copy  /sys/devices/platform/soc/usbc0/usb_host   /dev/null
     write /config/usb_gadget/g1/idVendor 0x18d1
 
+# Clear stale gadget function links during the config=none teardown so the next
+# mtp config binds correctly on the first try (works around a configfs rm race).
+service usb_gadget_teardown /vendor/bin/usb_gadget_teardown.sh
+    class main
+    user root
+    group root
+    disabled
+    oneshot
+    seclabel u:r:gammaoscustomization:s0
+
+on property:sys.usb.config=none && property:sys.usb.configfs=1
+    start usb_gadget_teardown
+
 # Fix MTP gadget assembly on kernels where the config=none teardown leaves a stale
-# ffs.adb link in b.1/f1 (so mtp.gs0 never links). Re-assert the layout on mtp,adb.
+# ffs.adb link in b.1/f1 (so mtp.gs0 never links). Re-assert on mtp / mtp,adb.
 service usb_mtp_fixup /vendor/bin/usb_mtp_fixup.sh
     class main
     user root
@@ -154,5 +167,8 @@ service usb_mtp_fixup /vendor/bin/usb_mtp_fixup.sh
     oneshot
     seclabel u:r:gammaoscustomization:s0
 
-on property:sys.usb.ffs.ready=1 && property:sys.usb.config=mtp,adb && property:sys.usb.configfs=1
+on property:sys.usb.config=mtp,adb && property:sys.usb.configfs=1
+    start usb_mtp_fixup
+
+on property:sys.usb.config=mtp && property:sys.usb.configfs=1
     start usb_mtp_fixup
