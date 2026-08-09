@@ -81,6 +81,7 @@ persist.gammaos.qs.blacklist_2=477v,usbcontrollerswitch,fan
 persist.gammaos.nano.drastic_qr_layout=1
 persist.gammaos.nano.wifi=1
 bluetooth.gd.start_timeout=10000
+bluetooth.enable_timeout_ms=8000
 persist.gammaos.nano.ps3xmb=1
 # Native-portrait 480x800 panel. SF base is already portrait (line 57,
 # ro.surface_flinger.primary_display_orientation=ORIENTATION_0), but the GammaOS app-
