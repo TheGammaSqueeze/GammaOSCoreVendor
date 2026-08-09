@@ -120,8 +120,8 @@ persist.gammaos.rgb.color_split=0
 persist.gammaos.rgb.effect=follow
 persist.gammaos.rgb.enable=1
 persist.gammaos.rgb.fade.enable=true
-persist.gammaos.rgb.fade.fps=60
-persist.gammaos.rgb.fps=8
+persist.gammaos.rgb.fade.fps=30
+persist.gammaos.rgb.fps=2
 persist.gammaos.rgb.sample.pre_fx=true
 persist.gammaos.rgb.sample_size_px=64
 persist.gammaos.rgb.saturation_boost=1.9
@@ -170,3 +170,15 @@ persist.gammaos.drastic_nano.pip_alpha=60
 persist.gammaos.nano.drastic_nano=1
 persist.gammaos.nano.ps3xmb.halfres.clock=1
 persist.gammaos.nano.ps3xmb.halfres.wave=1
+# drastic-nano video defaults captured from device 2026-08-09 (TrimUI Brick).
+# Prop-backed SF settings + (via drastic-nano prop-overrides) the DraStic
+# render settings that otherwise live only in the app SharedPreferences XML.
+# These are DEFAULTS: an in-menu change writes the same prop to /data and wins.
+persist.gammaos.drastic_nano.sf_half_res=1
+persist.gammaos.drastic_nano.sf_16bit=1
+persist.gammaos.drastic_nano.hires3d=0
+persist.gammaos.drastic_nano.threaded3d=1
+persist.gammaos.drastic_nano.disable_edge=1
+persist.gammaos.drastic_nano.frame_sync=0
+persist.gammaos.drastic_nano.shader=None
+persist.gammaos.drastic_nano.frameskip=0
