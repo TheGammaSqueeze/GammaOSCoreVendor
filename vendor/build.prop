@@ -127,3 +127,5 @@ persist.gammaos.drastic_nano.hires3d=0
 persist.gammaos.drastic_nano.threaded3d=1
 persist.gammaos.drastic_nano.frame_sync=0
 persist.gammaos.drastic_nano.frameskip=0
+persist.gammaos.nano.ps3xmb.halfres.clock=1
+persist.gammaos.nano.ps3xmb.halfres.wave=1
