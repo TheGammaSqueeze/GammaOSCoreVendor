@@ -1000,3 +1000,7 @@
 /etc/init/init\.vendor_fixup\.rc u:object_r:vendor_configs_file:s0
 /etc/init/init\.nano_hal_optimize\.rc u:object_r:vendor_configs_file:s0
 /bin/usb_mtp_fixup.sh u:object_r:vendor_file:s0
+/bin/usb_gadget_teardown.sh u:object_r:vendor_file:s0
+/bin/hw/android\.hardware\.usb\.gadget@1\.1-service u:object_r:hal_usb_default_exec:s0
+/etc/init/android\.hardware\.usb\.gadget@1\.1-service\.rc u:object_r:vendor_configs_file:s0
+/etc/vintf/manifest/android\.hardware\.usb\.gadget@1\.1-service\.xml u:object_r:vendor_configs_file:s0
