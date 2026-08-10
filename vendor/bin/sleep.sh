@@ -9,6 +9,7 @@
 
 STATE="/sys/power/state"
 MEM_SLEEP="/sys/power/mem_sleep"
+LPM="/proc/bluetooth/sleep/lpm"
 INTERVAL_SEC=60
 WIFI_FLAG="sys.gammaos.ulps.wifi_was"
 BT_FLAG="sys.gammaos.ulps.bt_was"
@@ -31,6 +32,15 @@ setprop $WIFI_FLAG "$WIFI_WAS"
 setprop $BT_FLAG "$BT_WAS"
 [ "$WIFI_WAS" = "1" ] && svc wifi disable
 [ "$BT_WAS" = "1" ] && cmd bluetooth_manager disable
+# Release the BT-LPM "bluesleep" wakelock. On combo BT/Wi-Fi chips (the XR829 on
+# the zero40) the still-running BT HAL holds bluesleep even when Bluetooth is off
+# at the framework level, and periodically re-arms lpm=1 via hostwake events. That
+# wakelock aborts the freezer every cycle ("Freezing of tasks aborted") so the SoC
+# never suspends. The framework never tears it down because BT was never enabled,
+# so drop it directly here. Harmless where BT is already released, has no chip, or
+# the node is read-only (the write just fails). Re-applied each loop pass below in
+# case the HAL re-arms it between suspend attempts.
+[ -w "$LPM" ] && echo 0 > "$LPM" 2>/dev/null
 # Let the radio teardowns settle before forcing suspend.
 sleep 2
 
@@ -47,6 +57,10 @@ fi
 # while a wakelock is held), and only request suspend if that handshake succeeds.
 WC="/sys/power/wakeup_count"
 while :; do
+    # Re-drop the BT-LPM wakelock in case the live HAL re-armed it since the last
+    # pass; otherwise the wakeup_count handshake below fails (EBUSY, wakelock held)
+    # and the device never suspends.
+    [ -w "$LPM" ] && echo 0 > "$LPM" 2>/dev/null
     count=$(cat "$WC" 2>/dev/null)
     if [ -n "$count" ] && echo "$count" > "$WC" 2>/dev/null; then
         echo mem > "$STATE" 2>/dev/null
