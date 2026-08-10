@@ -43,7 +43,7 @@ service ulps_restore_radios /vendor/bin/sleep.sh restore
     oneshot
     disabled
 
-on property:sys.screen.state=off && property:persist.gammaos.ultra_low_power_saving_mode=true && property:sys.gammaos.usb.connected=0
+on property:sys.screen.state=off && property:persist.gammaos.ultra_low_power_saving_mode=1 && property:sys.gammaos.usb.connected=0
     start cpu_screen_off
 
 on property:sys.screen.state=on
