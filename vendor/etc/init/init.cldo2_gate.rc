@@ -1,0 +1,15 @@
+# Force-disable the AXP2202 CLDO2 panel VCC rail across suspend-to-RAM.
+#
+# CLDO2 (the panel VCC, "axp2202-cldo2") is registered always-on and stays
+# powered in S3, costing roughly 4%/h. This out-of-tree module hangs
+# .suspend_late/.resume_early dpm callbacks off a virtual platform device: it
+# force-disables cldo2 after the disp driver has suspended the panel, and
+# re-enables it before the disp driver re-inits the panel on resume (so the
+# panel never comes back dark). Mirrors the axp_pek_wake out-of-tree pattern.
+#
+# Loaded at boot_completed (NOT early): the AXP regulator core must be fully
+# registered before regulator_get(NULL,"cldo2") resolves. Gated behind
+# persist.gammaos.cldo2_gate (default 1) so it can be disabled without a
+# reflash: setprop persist.gammaos.cldo2_gate 0 && reboot.
+on property:sys.boot_completed=1 && property:persist.gammaos.cldo2_gate=1
+    insmod /vendor/modules/cldo2_suspend_gate.ko
