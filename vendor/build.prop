@@ -129,3 +129,4 @@ persist.gammaos.drastic_nano.frame_sync=0
 persist.gammaos.drastic_nano.frameskip=0
 persist.gammaos.nano.ps3xmb.halfres.clock=1
 persist.gammaos.nano.ps3xmb.halfres.wave=1
+persist.gammaos.cldo2_gate=1
