@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<configurations>
+    <!-- Selfie camera 8M -->
+    <camera cameraId="1" name="imx415" moduleId="m00">
+        <configuration id="0" lux="7.000000" cct="4319.000000" time="0.030000" gain="13.300000" />
+        <configuration id="1" lux="14.484632" cct="4319.000000" time="0.030000" gain="6.650000" />
+        <configuration id="2" lux="42.107010" cct="4107.000000" time="0.030000" gain="2.620000" />
+        <configuration id="3" lux="81.075668" cct="4015.000000" time="0.030000" gain="1.530000" />
+        <configuration id="4" lux="149.84964" cct="3993.000000" time="0.030000" gain="1.010000" />
+        <configuration id="5" lux="314.938171" cct="6173.000000" time="0.010000" gain="1.420000" />
+        <configuration id="6" lux="424.328552" cct="5965.183000" time="0.010000" gain="1.030000" />
+    </camera>
+
+    <!-- Selfie camera 2M -->
+    <camera cameraId="2" name="ov50c40" moduleId="m00">
+        <configuration id="1" lux="7.000000" cct="4599.312988" time="0.030000" gain="15.120000" />
+        <configuration id="1" lux="13.589906" cct="4599.312988" time="0.030000" gain="7.560000" />
+        <configuration id="2" lux="36.686913" cct="4113.250000" time="0.030000" gain="3.430000" />
+        <configuration id="3" lux="69.622932" cct="4019.899658" time="0.030000" gain="2.060000" />
+        <configuration id="4" lux="127.959808" cct="4018.517578" time="0.030000" gain="1.180000" />
+        <configuration id="5" lux="178.203903" cct="7206.987793" time="0.030000" gain="1.060000" />
+        <configuration id="6" lux="400.443359" cct="6178.286133" time="0.010000" gain="1.060000" />
+        <configuration id="7" lux="611.881470" cct="5990.099609" time="0.00659" gain="1.000000" />
+        <configuration id="8" lux="877.092102" cct="5922.937012" time="0.00538" gain="1.000000" />
+    </camera>
+
+    <!-- Main camera -->
+    <camera cameraId="0" name="ov13855" moduleId="m00">
+        <configuration id="0" lux="7.000000" cct="4470.046875" time="0.030000" gain="57.240000" />
+        <configuration id="1" lux="12.410346" cct="4470.046875" time="0.030000" gain="28.620000" />
+        <configuration id="2" lux="35.318623" cct="4177.879883" time="0.030000" gain="12.810000" />
+        <configuration id="3" lux="69.345253" cct="4043.779785" time="0.030000" gain="6.030000" />
+        <configuration id="4" lux="129.238602" cct="3940.476562" time="0.030000" gain="3.840000" />
+        <configuration id="5" lux="189.639145" cct="6954.758789" time="0.030000" gain="2.650000" />
+        <configuration id="6" lux="427.836426" cct="5981.07373" time="0.020000" gain="1.500000" />
+        <configuration id="7" lux="628.409790" cct="5898.458984" time="0.010000" gain="2.000000" />
+        <configuration id="8" lux="867.493347" cct="5865.604492" time="0.010000" gain="1.400000" />
+    </camera>
+</configurations>

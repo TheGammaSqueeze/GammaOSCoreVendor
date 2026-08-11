@@ -1,0 +1,84 @@
+# zygote need to be started after otapreopt which will be done on post-fs-data
+on zygote-start
+
+# for bluetooth
+    # bluetooth LPM
+    chmod 0220 /proc/bluetooth/sleep/lpm
+    chmod 0220 /proc/bluetooth/sleep/btwrite
+    chown bluetooth system /proc/bluetooth/sleep/lpm
+    chown bluetooth system /proc/bluetooth/sleep/btwrite
+
+    chmod 0660 /dev/rtk_btusb
+    chown bluetooth system /dev/rtk_btusb
+    chmod 0660 /dev/rtkbt_dev
+    chown bluetooth system /dev/rtkbt_dev
+
+    # bluetooth MAC address programming
+    chown bluetooth net_bt ro.bt.bdaddr_path
+    setprop ro.bt.bdaddr_path "/data/misc/bluetooth/bdaddr"
+
+    chmod 0660 /dev/ttyS0
+    chmod 0660 /dev/ttyS1
+    chmod 0660 /dev/ttyS4
+    chmod 0660 /dev/ttyS7
+    chmod 0660 /dev/ttyS8
+    chmod 0660 /dev/ttyS9
+    chmod 0660 /dev/vflash
+    chmod 0664 /dev/vendor_storage
+    chown bluetooth system /dev/vflash
+    chown bluetooth system /dev/vendor_storage
+    chown bluetooth system /dev/ttyS0
+    chown bluetooth system /dev/ttyS1
+    chown bluetooth system /dev/ttyS4
+    chown bluetooth system /dev/ttyS7
+    chown bluetooth system /dev/ttyS8
+    chown bluetooth system /dev/ttyS9
+    chown bluetooth system /sys/class/rfkill/rfkill0/type
+    chown bluetooth system /sys/class/rfkill/rfkill0/state
+    chown bluetooth system /sys/class/rfkill/rfkill0/name
+    chmod 0664 /sys/class/rfkill/rfkill0/state
+    chown bluetooth system /sys/class/rfkill/rfkill1/type
+    chown bluetooth system /sys/class/rfkill/rfkill1/state
+    chown bluetooth system /sys/class/rfkill/rfkill1/name
+    chmod 0664 /sys/class/rfkill/rfkill1/state
+    # for aic bt usb
+    chmod 0666 /dev/aicbt_dev
+    chown bluetooth system /dev/aicbt_dev
+
+# for wifi
+
+    mkdir /data/vendor/wifi 0771 wifi wifi
+    mkdir /data/vendor/wifi/wpa 0770 wifi wifi
+    mkdir /data/vendor/wifi/wpa/sockets 0770 wifi wifi
+    export TMP /data/local/tmp
+
+    chown wifi wifi /sys/module/bcmdhd/parameters/firmware_path
+
+#for nfc
+    chmod 0660 /dev/bcm2079x
+    chown nfc nfc /dev/bcm2079x
+    mkdir /data/nfc 0700 nfc nfc encryption=Require
+    mkdir /data/nfc/param 0700 nfc nfc encryption=Require
+
+on property:wlan.driver.status=ok
+    chown wifi wifi /sys/module/bcmdhd/parameters/firmware_path
+    chown wifi wifi /sys/module/bcmdhd/parameters/nvram_path
+
+on property:vendor.wifi.direct.interface=p2p0
+    setprop wifi.direct.interface p2p0
+
+on property:vendor.wifi.direct.interface=p2p-dev-wlan0
+    setprop wifi.direct.interface p2p-dev-wlan0
+
+service wpa_supplicant /vendor/bin/hw/wpa_supplicant \
+    /vendor/etc/wifi/wpa_config.txt
+#   we will start as root and wpa_supplicant will switch to user wifi
+#   after setting up the capabilities required for WEXT
+#   user wifi
+#   group wifi inet keystore
+    interface aidl android.hardware.wifi.supplicant.ISupplicant/default
+    class main
+    socket wpa_wlan0 dgram 660 wifi wifi
+    disabled
+    oneshot
+

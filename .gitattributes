@@ -1,0 +1,4 @@
+vendor/lib64/egl/libGLES_mali.so filter=lfs diff=lfs merge=lfs -text
+vendor/lib/egl/libGLES_mali.so filter=lfs diff=lfs merge=lfs -text
+vendor/lib/libmpp.so filter=lfs diff=lfs merge=lfs -text
+vendor/lib64/libmpp.so filter=lfs diff=lfs merge=lfs -text

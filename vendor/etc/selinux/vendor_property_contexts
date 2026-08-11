@@ -1,0 +1,186 @@
+#line 1 "out/soong/.intermediates/system/sepolicy/contexts/vendor_property_contexts/android_common/gen/namespace_checked/device/rockchip/common/gpu/bifrost/sepolicies/public/sepolicy/property_contexts"
+#----------------------------------------------------------------------------
+# The proprietary software and information contained in this file is
+# confidential and may only be used by an authorized person under a valid
+# licensing agreement from Arm Limited or its affiliates.
+#
+# Copyright (C) 2023. Arm Limited or its affiliates. All rights reserved.
+#
+# This entire notice must be reproduced on all copies of this file and
+# copies of this file may only be made by an authorized person under a valid
+# licensing agreement from Arm Limited or its affiliates.
+#---------------------------------------------------------------------------
+
+# EGL config properties
+#
+# The Mali™ DDK reads these properties to determine which EGLConfig configuration to enable and how to initialize some
+# of their attributes.
+#
+# r8_g8_b8_a8_32bit_fixed
+ro.vendor.arm.egl.configs.r8_g8_b8_a8_32bit_fixed.hal_format u:object_r:vendor_arm_egl_configs_prop:s0 exact int
+ro.vendor.arm.egl.configs.r8_g8_b8_a8_32bit_fixed.recordable u:object_r:vendor_arm_egl_configs_prop:s0 exact bool
+ro.vendor.arm.egl.configs.r8_g8_b8_a8_32bit_fixed.framebuffer_target u:object_r:vendor_arm_egl_configs_prop:s0 exact bool
+# r8_g8_b8_a0_32bit_fixed
+ro.vendor.arm.egl.configs.r8_g8_b8_a0_32bit_fixed.hal_format u:object_r:vendor_arm_egl_configs_prop:s0 exact int
+ro.vendor.arm.egl.configs.r8_g8_b8_a0_32bit_fixed.recordable u:object_r:vendor_arm_egl_configs_prop:s0 exact bool
+ro.vendor.arm.egl.configs.r8_g8_b8_a0_32bit_fixed.framebuffer_target u:object_r:vendor_arm_egl_configs_prop:s0 exact bool
+# r8_g8_b8_a0_24bit_fixed
+ro.vendor.arm.egl.configs.r8_g8_b8_a0_24bit_fixed.hal_format u:object_r:vendor_arm_egl_configs_prop:s0 exact int
+ro.vendor.arm.egl.configs.r8_g8_b8_a0_24bit_fixed.recordable u:object_r:vendor_arm_egl_configs_prop:s0 exact bool
+ro.vendor.arm.egl.configs.r8_g8_b8_a0_24bit_fixed.framebuffer_target u:object_r:vendor_arm_egl_configs_prop:s0 exact bool
+# r5_g6_b5_a0_16bit_fixed
+ro.vendor.arm.egl.configs.r5_g6_b5_a0_16bit_fixed.hal_format u:object_r:vendor_arm_egl_configs_prop:s0 exact int
+ro.vendor.arm.egl.configs.r5_g6_b5_a0_16bit_fixed.recordable u:object_r:vendor_arm_egl_configs_prop:s0 exact bool
+ro.vendor.arm.egl.configs.r5_g6_b5_a0_16bit_fixed.framebuffer_target u:object_r:vendor_arm_egl_configs_prop:s0 exact bool
+# r10_g10_b10_a2_32bit_fixed
+ro.vendor.arm.egl.configs.r10_g10_b10_a2_32bit_fixed.hal_format u:object_r:vendor_arm_egl_configs_prop:s0 exact int
+ro.vendor.arm.egl.configs.r10_g10_b10_a2_32bit_fixed.recordable u:object_r:vendor_arm_egl_configs_prop:s0 exact bool
+ro.vendor.arm.egl.configs.r10_g10_b10_a2_32bit_fixed.framebuffer_target u:object_r:vendor_arm_egl_configs_prop:s0 exact bool
+# r16_g16_b16_a16_64bit_float
+ro.vendor.arm.egl.configs.r16_g16_b16_a16_64bit_float.hal_format u:object_r:vendor_arm_egl_configs_prop:s0 exact int
+ro.vendor.arm.egl.configs.r16_g16_b16_a16_64bit_float.recordable u:object_r:vendor_arm_egl_configs_prop:s0 exact bool
+ro.vendor.arm.egl.configs.r16_g16_b16_a16_64bit_float.framebuffer_target u:object_r:vendor_arm_egl_configs_prop:s0 exact bool
+# r8_g8_b8_a0_24bit_yuv_special (implicitly recordable)
+ro.vendor.arm.egl.configs.r8_g8_b8_a0_24bit_yuv_special.hal_format u:object_r:vendor_arm_egl_configs_prop:s0 exact int
+ro.vendor.arm.egl.configs.r8_g8_b8_a0_24bit_yuv_special.framebuffer_target u:object_r:vendor_arm_egl_configs_prop:s0 exact bool
+
+#
+# Usage properties for the Arm reference Gralloc
+#
+# The Mali™ DDK reads these properties to obtain information about the values of the vendor
+# usage bits. These vendor usage bits have the type BufferUsage defined in the AOSP file
+# hardware/interfaces/graphics/common/1.0/types.hal. The values can be passed to
+# the allocate function from the Android IAllocator interface.
+#
+# No AFBC vendor usage bit
+ro.vendor.arm.gralloc.no_afbc_usage_flags u:object_r:vendor_arm_gralloc_prop:s0 exact uint
+ro.vendor.arm.gralloc.no_afbc_usage_mask u:object_r:vendor_arm_gralloc_prop:s0 exact uint
+# Force Back Buffer vendor usage bit
+ro.vendor.arm.gralloc.force_back_buffer_usage_flags u:object_r:vendor_arm_gralloc_prop:s0 exact uint
+ro.vendor.arm.gralloc.force_back_buffer_usage_mask u:object_r:vendor_arm_gralloc_prop:s0 exact uint
+# Shared Access vendor usage bit
+ro.vendor.arm.gralloc.shared_access_usage_flags u:object_r:vendor_arm_gralloc_prop:s0 exact uint
+ro.vendor.arm.gralloc.shared_access_usage_mask u:object_r:vendor_arm_gralloc_prop:s0 exact uint
+# RGBA AFRC vendor usage bits
+ro.vendor.arm.gralloc.afrc_rgba_usage_flags u:object_r:vendor_arm_gralloc_prop:s0 exact string
+ro.vendor.arm.gralloc.afrc_rgba_usage_mask u:object_r:vendor_arm_gralloc_prop:s0 exact uint
+# YUV AFRC vendor usage bits
+ro.vendor.arm.gralloc.afrc_luma_usage_flags u:object_r:vendor_arm_gralloc_prop:s0 exact string
+ro.vendor.arm.gralloc.afrc_luma_usage_mask u:object_r:vendor_arm_gralloc_prop:s0 exact uint
+ro.vendor.arm.gralloc.afrc_chroma_usage_flags u:object_r:vendor_arm_gralloc_prop:s0 exact string
+ro.vendor.arm.gralloc.afrc_chroma_usage_mask u:object_r:vendor_arm_gralloc_prop:s0 exact uint
+
+#
+# Mali GPU driver configuration and debug options
+#
+# These properties are used for GPU driver configuration and debugging.
+#
+vendor.mali. u:object_r:vendor_arm_runtime_option_prop:s0 prefix
+#line 1 "out/soong/.intermediates/system/sepolicy/contexts/vendor_property_contexts/android_common/gen/newline"
+
+#line 1 "out/soong/.intermediates/system/sepolicy/contexts/vendor_property_contexts/android_common/gen/namespace_checked/device/rockchip/common/sepolicy/vendor/property_contexts"
+# camera
+persist.vendor.camera.                  u:object_r:vendor_camera_prop:s0
+vendor.cam.                             u:object_r:vendor_camera_prop:s0
+# VTS
+vendor.vts_test                         u:object_r:vendor_vts_status_prop:s0
+# hwc
+vendor.hwc.                             u:object_r:vendor_hwc_prop:s0
+vendor.ghwc.                            u:object_r:vendor_hwc_prop:s0
+vendor.svep.                            u:object_r:vendor_hwc_prop:s0
+vendor.memc.                            u:object_r:vendor_hwc_prop:s0
+
+# omx
+vendor.use_mpp_mode                     u:object_r:vendor_omx_prop:s0
+vendor.dump.omx.log                     u:object_r:vendor_omx_prop:s0
+vendor.omx.                             u:object_r:vendor_omx_prop:s0
+vendor.mpp_buffer_debug                 u:object_r:vendor_omx_prop:s0
+vendor.mpp_mem_flag                     u:object_r:vendor_omx_prop:s0
+
+# wifi
+vendor.wifi.                            u:object_r:vendor_wifi_prop:s0
+vendor.wlan.                            u:object_r:vendor_wifi_prop:s0
+
+vendor.3d_resolution.                   u:object_r:vendor_system_public_prop:s0
+vendor.dump                             u:object_r:vendor_system_public_prop:s0
+vendor.shutdown_anim.orien              u:object_r:vendor_system_public_prop:s0
+vendor.rga.                             u:object_r:vendor_system_public_prop:s0
+
+persist.vendor.overscan.                u:object_r:vendor_system_public_prop:s0
+persist.vendor.color.                   u:object_r:vendor_system_public_prop:s0
+vendor.display.timeline                 u:object_r:vendor_system_public_prop:s0
+persist.vendor.framebuffer.             u:object_r:vendor_system_public_prop:s0
+persist.vendor.resolution.              u:object_r:vendor_system_public_prop:s0
+persist.vendor.hdcp1x.                  u:object_r:vendor_system_public_prop:s0
+persist.vendor.resolution_white.        u:object_r:vendor_system_public_prop:s0
+persist.vendor.brightness.              u:object_r:vendor_system_public_prop:s0
+persist.vendor.contrast.                u:object_r:vendor_system_public_prop:s0
+persist.vendor.saturation.              u:object_r:vendor_system_public_prop:s0
+persist.vendor.hue.                     u:object_r:vendor_system_public_prop:s0
+persist.vendor.video.cvrs               u:object_r:vendor_system_public_prop:s0
+persist.vendor.saveconfig               u:object_r:vendor_system_public_prop:s0
+vendor.hdmi_status.                     u:object_r:vendor_system_public_prop:s0
+vendor.xxx.                             u:object_r:vendor_system_public_prop:s0
+vendor.rga_api.                         u:object_r:vendor_system_public_prop:s0
+vendor.hwc.svep_state                   u:object_r:vendor_system_public_prop:s0
+vendor.hwc.accelerate_matched           u:object_r:vendor_system_public_prop:s0
+
+ro.vendor.ethernet_settings             u:object_r:vendor_system_public_prop:s0
+ro.vendor.frameratelock                 u:object_r:vendor_system_public_prop:s0
+ro.vendor.hdmi_settings                 u:object_r:vendor_system_public_prop:s0
+ro.vendor.hdmirotationlock              u:object_r:vendor_system_public_prop:s0
+ro.vendor.mpp_buf_type                  u:object_r:vendor_system_public_prop:s0
+ro.vendor.picture_settings              u:object_r:vendor_system_public_prop:s0
+ro.vendor.sr_settings                   u:object_r:vendor_system_public_prop:s0
+ro.vendor.rk_sdk                        u:object_r:vendor_system_public_prop:s0
+ro.vendor.sdkversion                    u:object_r:vendor_system_public_prop:s0
+
+ro.vendor.udisk.visible                 u:object_r:vendor_base_prop:s0
+
+# cec
+vendor.sys.hdmicec.                     u:object_r:vendor_cec_prop:s0
+
+# sensor
+vendor.sensor.debug.                    u:object_r:vendor_base_prop:s0
+
+# mali
+vendor.gmali.                           u:object_r:vendor_system_public_prop:s0
+
+# gralloc
+vendor.gralloc.                         u:object_r:vendor_system_public_prop:s0
+
+# audio
+vendor.audio                            u:object_r:vendor_system_public_prop:s0
+vendor.boot_completed                   u:object_r:vendor_boot_complete_prop:s0
+
+# for vendor/build.prop
+vendor.all.modules.ready                u:object_r:vendor_system_public_prop:s0
+
+# power aidl configs
+ro.vendor.power.                        u:object_r:vendor_power_prop:s0
+
+persist.vendor.usb.config  u:object_r:vendor_usb_config_prop:s0
+vendor.usb.config          u:object_r:vendor_usb_config_prop:s0
+vendor.usb.                u:object_r:vendor_usb_prop:s0
+persist.vendor.usb.        u:object_r:vendor_usb_prop:s0
+
+persist.vendor.tvinput.   u:object_r:vendor_tv_input_prop:s0
+vendor.tvinput.           u:object_r:vendor_tv_input_prop:s0
+
+# zram configs
+vendor.ext_ram              u:object_r:vendor_base_prop:s0
+
+# for aipq
+vendor.xpp.                 u:object_r:vendor_xpp_prop:s0
+vendor.vpp.                 u:object_r:vendor_vpp_prop:s0
+persist.vendor.swpq.        u:object_r:vendor_swpq_prop:s0
+persist.vendor.sculptor.    u:object_r:vendor_sculptor_prop:s0
+vendor.sculptor.            u:object_r:vendor_sculptor_prop:s0
+#line 1 "out/soong/.intermediates/system/sepolicy/contexts/vendor_property_contexts/android_common/gen/newline"
+
+#line 1 "out/soong/.intermediates/system/sepolicy/contexts/vendor_property_contexts/android_common/gen/namespace_checked/system/sepolicy/reqd_mask/property_contexts"
+# empty property_contexts file - this file is used to generate an empty
+# non-platform property context for devices without any property_contexts
+# customizations.
+#line 1 "out/soong/.intermediates/system/sepolicy/contexts/vendor_property_contexts/android_common/gen/newline"
+
