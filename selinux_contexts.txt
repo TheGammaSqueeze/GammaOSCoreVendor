@@ -49,6 +49,7 @@
 /bin/echo u:object_r:vendor_file:s0
 /bin/egrep u:object_r:vendor_file:s0
 /bin/env u:object_r:vendor_file:s0
+/bin/esde_fix\.sh u:object_r:vendor_file:s0
 /bin/expand u:object_r:vendor_file:s0
 /bin/expr u:object_r:vendor_file:s0
 /bin/fallocate u:object_r:vendor_file:s0
