@@ -313,7 +313,6 @@ ro.rk.screenshot_enable=true
 ro.rk.hdmi_enable=true
 sys.status.hidebar_enable=false
 persist.sys.zram_enabled=1
-ro.usb.default_mtp=true
 persist.sys.sf.color_saturation=1.0
 ro.sf.lcd_density=320
 ro.wifi.sleep.power.down=true
@@ -438,3 +437,6 @@ persist.gammaos.nano.ps3xmb=1
 persist.gammaos.nano.overlay=1
 persist.bootanim.skip_nano=0
 persist.gammaos.ultra_low_power_saving_mode=1
+# gkd350h ultra: force ADB enumeration (recovery-style init-driven gadget)
+persist.sys.usb.config=adb
+ro.adb.secure=0

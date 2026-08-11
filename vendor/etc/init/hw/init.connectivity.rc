@@ -1,5 +1,8 @@
-# zygote need to be started after otapreopt which will be done on post-fs-data
-on zygote-start
+# GammaOS: this device boots into nano mode on first boot, where the framework's
+# zygote-start trigger never fires - so the wifi runtime dir (/data/vendor/wifi/wpa)
+# and the BT device/rfkill permissions below were never set up, breaking wifi + BT.
+# Run on post-fs-data, which always fires (nano AND full Android), before any HAL needs them.
+on post-fs-data
 
 # for bluetooth
     # bluetooth LPM

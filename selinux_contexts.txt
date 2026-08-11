@@ -589,6 +589,7 @@
 /etc/init/hw/init\.rk3576\.rc u:object_r:vendor_configs_file:s0
 /etc/init/hw/init\.rockchip\.rc u:object_r:vendor_configs_file:s0
 /etc/init/hwc3-rk\.rc u:object_r:vendor_configs_file:s0
+/etc/init/init\.gammaos_adb\.rc u:object_r:vendor_configs_file:s0
 /etc/init/init\.gammaos_esdefix\.rc u:object_r:vendor_configs_file:s0
 /etc/init/init\.gammaos_power\.rc u:object_r:vendor_configs_file:s0
 /etc/init/init\.hdcp2-host\.rc u:object_r:vendor_configs_file:s0

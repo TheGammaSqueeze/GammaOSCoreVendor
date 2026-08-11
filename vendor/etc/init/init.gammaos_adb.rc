@@ -1,0 +1,11 @@
+# gkd350h ultra: bring ADB up the recovery way in the main boot so a bootlooping
+# build still enumerates ADB over USB, independent of the USB Gadget HAL/framework.
+# init.rk30board.usb.rc is patched to configfs=1; this drives sys.usb.config=adb.
+on early-fs
+    setprop sys.usb.controller 23000000.usb
+    setprop sys.usb.configfs 1
+    setprop sys.usb.config adb
+
+# If the (short-lived) framework or a USB reset drops it to none, force back to adb.
+on property:sys.usb.config=none && property:sys.usb.configfs=1
+    setprop sys.usb.config adb

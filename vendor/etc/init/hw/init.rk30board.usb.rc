@@ -199,7 +199,7 @@ on boot
     # Set USB timeout
     write sys/module/usbcore/parameters/initial_descriptor_timeout 500
     # Use USB Gadget HAL
-    setprop sys.usb.configfs 2
+    setprop sys.usb.configfs 1  # gkd: recovery-style init-driven ADB (was 2=HAL)
 
 on property:init.svc.adbd=stopped
     setprop sys.usb.ffs.ready 0
