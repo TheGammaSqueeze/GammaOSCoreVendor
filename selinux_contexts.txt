@@ -155,6 +155,7 @@
 /bin/pidof u:object_r:vendor_file:s0
 /bin/pkill u:object_r:vendor_file:s0
 /bin/pmap u:object_r:vendor_file:s0
+/bin/power_watchdog\.sh u:object_r:vendor_file:s0
 /bin/printenv u:object_r:vendor_file:s0
 /bin/printf u:object_r:vendor_file:s0
 /bin/ps u:object_r:vendor_file:s0
@@ -174,6 +175,9 @@
 /bin/sed u:object_r:vendor_file:s0
 /bin/sendevent u:object_r:vendor_file:s0
 /bin/seq u:object_r:vendor_file:s0
+/bin/setclock_max\.sh u:object_r:vendor_file:s0
+/bin/setclock_powersave\.sh u:object_r:vendor_file:s0
+/bin/setclock_stock\.sh u:object_r:vendor_file:s0
 /bin/setenforce u:object_r:vendor_file:s0
 /bin/setprop u:object_r:vendor_file:s0
 /bin/setsid u:object_r:vendor_file:s0
@@ -184,6 +188,7 @@
 /bin/sha384sum u:object_r:vendor_file:s0
 /bin/sha512sum u:object_r:vendor_file:s0
 /bin/sleep u:object_r:vendor_file:s0
+/bin/sleep\.sh u:object_r:vendor_file:s0
 /bin/sort u:object_r:vendor_file:s0
 /bin/split u:object_r:vendor_file:s0
 /bin/start u:object_r:vendor_file:s0
@@ -583,6 +588,8 @@
 /etc/init/hw/init\.rk3576\.rc u:object_r:vendor_configs_file:s0
 /etc/init/hw/init\.rockchip\.rc u:object_r:vendor_configs_file:s0
 /etc/init/hwc3-rk\.rc u:object_r:vendor_configs_file:s0
+/etc/init/init\.gammaos_esdefix\.rc u:object_r:vendor_configs_file:s0
+/etc/init/init\.gammaos_power\.rc u:object_r:vendor_configs_file:s0
 /etc/init/init\.hdcp2-host\.rc u:object_r:vendor_configs_file:s0
 /etc/init/init\.rk3576-4d\.rc u:object_r:vendor_configs_file:s0
 /etc/init/init\.tee-supplicant\.rc u:object_r:vendor_configs_file:s0
