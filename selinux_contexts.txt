@@ -179,6 +179,7 @@
 /bin/setclock_max\.sh u:object_r:vendor_file:s0
 /bin/setclock_powersave\.sh u:object_r:vendor_file:s0
 /bin/setclock_stock\.sh u:object_r:vendor_file:s0
+/bin/setup\.sh u:object_r:vendor_file:s0
 /bin/setenforce u:object_r:vendor_file:s0
 /bin/setprop u:object_r:vendor_file:s0
 /bin/setsid u:object_r:vendor_file:s0
