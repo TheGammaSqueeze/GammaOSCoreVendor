@@ -1,0 +1,16 @@
+# nano goes silent right after the nano setup wizard: finishSetupWizard() runs
+# blocking settings/ime/locksettings calls that starve nano's output AudioTrack,
+# AudioFlinger tears it down and nano never re-creates it. The /system/bin/setup.sh
+# vendor hook cannot fix this by spawning a background child - it runs as a oneshot
+# init service whose cgroup (and any setsid child) is killed the moment it exits,
+# before finishSetupWizard runs. So run the watchdog as its own init service (own
+# cgroup, survives), armed by /vendor/bin/setup.sh during setup.
+service gammaos_audiofix /vendor/bin/setup.sh watchdog
+    class late_start
+    user root
+    group root system audio
+    disabled
+    oneshot
+
+on property:sys.gammaos.audiofix_arm=1
+    start gammaos_audiofix

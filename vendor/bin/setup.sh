@@ -1,16 +1,20 @@
 #!/system/bin/sh
 # GammaOS vendor setup hook - GKD 350H Ultra.
 #
-# Invoked once by /system/bin/setup.sh (the gammaos first-run setup script) near
-# its end, while the nano setup wizard is running.
+# Invoked by /system/bin/setup.sh (the gammaos first-run setup script) near its
+# end, while the nano setup wizard is running.
 #
 # Why this exists: right after setup, nano's finishSetupWizard() runs several
 # blocking calls (settings put / ime reset / locksettings clear) on its render
 # thread. That stall starves nano's output AudioTrack, AudioFlinger tears it down,
 # and nano never re-creates it - so all nano audio (nav SFX + menu music) stays
-# silent until nano is restarted. The wedge happens AFTER this script returns, so
-# we spawn a detached background watchdog that waits for setup to finish, then
-# re-inits nano audio, retrying until it recovers.
+# silent until nano is restarted.
+#
+# The wedge happens AFTER this script returns. We cannot just fork a background
+# child here: /system/bin/setup.sh runs as a oneshot init service, and when it
+# exits init kills its whole cgroup (a setsid child does not escape cgroup v2), so
+# the child dies before finishSetupWizard runs. Instead we arm a standalone init
+# service (its own cgroup, survives) that runs the watchdog below.
 
 TAG=gammaos-vendor-setup
 
@@ -50,18 +54,14 @@ watchdog() {
     log -t "$TAG" "unwedge watchdog finished"
 }
 
-# When re-invoked as the detached worker, just run the watchdog and exit.
+# Run as the standalone init service (own cgroup) that survives setup.sh exiting.
 if [ "$1" = "watchdog" ]; then
     watchdog
     exit 0
 fi
 
-# Spawn the watchdog fully detached so it outlives this script and the oneshot
-# setup.sh init service that called us.
-log -t "$TAG" "spawning nano-audio unwedge watchdog"
-if command -v setsid >/dev/null 2>&1; then
-    setsid "$0" watchdog </dev/null >/dev/null 2>&1 &
-else
-    ( "$0" watchdog </dev/null >/dev/null 2>&1 & )
-fi
+# Called from /system/bin/setup.sh during setup: arm the watchdog service. init
+# starts gammaos_audiofix on this property edge (see init.gammaos_audiofix.rc).
+log -t "$TAG" "arming nano-audio unwedge watchdog service"
+setprop sys.gammaos.audiofix_arm 1
 exit 0

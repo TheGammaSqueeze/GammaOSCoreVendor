@@ -328,9 +328,9 @@ persist.gammaos.rgb.enable=0
 ersist.gammaos.display.unique_names=1
 #persist.gammaos.display.tweaks=1
 persist.gammaos.qs.override_default_tiles=1
-persist.gammaos.qs.override_default_tiles_0=internet,bt,performance,gammashader,gammaeq,rotation,screenmap
-persist.gammaos.qs.override_default_tiles_1=deepsleepmode,externaldocking,immersivemode,abxy,dpadAnalogToggle,analogsensitivity
-persist.gammaos.qs.override_default_tiles_2=analogdeadzone,analogcalibration,analogaxis,rightanalogaxis
+persist.gammaos.qs.override_default_tiles_0=internet,bt,performance,gammashader,gammaeq,rotation
+persist.gammaos.qs.override_default_tiles_1=deepsleepmode,immersivemode,abxy,dpadAnalogToggle,analogsensitivity
+persist.gammaos.qs.override_default_tiles_2=analogdeadzone,analogcalibration,analogaxis
 persist.gammaos.qs.override_default_tiles_3=retroarchmenubuttonoverride,mappingeditor
 persist.gammaos.qs.blacklist_0=dcdimmingemulation,launchguard,dualstack,gammasecondarydisplay
 persist.gammaos.qs.blacklist_1=gammadualfocus,gammasplitbrightness,globalbfi,gammarefresh
@@ -437,6 +437,7 @@ persist.gammaos.nano.ps3xmb=1
 persist.gammaos.nano.overlay=1
 persist.bootanim.skip_nano=0
 persist.gammaos.ultra_low_power_saving_mode=1
-# gkd350h ultra: force ADB enumeration (recovery-style init-driven gadget)
+# gkd350h ultra: default USB function to ADB via the Gadget HAL (same as vitapro,
+# which enumerates ADB fine on this SoC). No init-driven gadget - that fought the HAL.
 persist.sys.usb.config=adb
 ro.adb.secure=0
