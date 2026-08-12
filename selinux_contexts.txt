@@ -1326,6 +1326,7 @@
 /lib/hw/hdmi_cec.rk30board.so u:object_r:vendor_file:s0
 /lib/hw/hdmi_connection.rk30board.so u:object_r:vendor_file:s0
 /lib/hw/audio.primary.default.so u:object_r:vendor_file:s0
+/lib/hw/audio.primary.ums512.usb-offload-fix.md u:object_r:vendor_file:s0
 /lib/hw/vibrator.default.so u:object_r:vendor_file:s0
 /lib/hw/audio.usbv2.default.so u:object_r:vendor_file:s0
 /lib/libbluetooth_audio_session.so u:object_r:vendor_file:s0
@@ -1995,6 +1996,7 @@
 /lib/hw/android.hardware.vibrator@1.0-impl.so u:object_r:vendor_file:s0
 /lib/hw/audio.r_submix.default.so u:object_r:vendor_file:s0
 /lib/hw/audio.primary.default.so u:object_r:vendor_file:s0
+/lib/hw/audio.primary.ums512.usb-offload-fix.md u:object_r:vendor_file:s0
 /lib/hw/hw_output.default.so u:object_r:vendor_file:s0
 /lib/hw/audio.bluetooth.default.so u:object_r:vendor_file:s0
 /lib/hw/rockchip.hardware.outputmanager@1.0-impl.so u:object_r:vendor_file:s0
