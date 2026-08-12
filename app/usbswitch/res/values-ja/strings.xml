@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">USBモード</string>
+    <string name="header_title">USBモード</string>
+    <string name="header_subtitle">USB-Cポートの動作を選択します。</string>
+    <string name="mode_normal_title">通常</string>
+    <string name="mode_normal_desc">充電、ファイル転送（MTP）、ADBに対応。日常の利用におすすめです。</string>
+    <string name="mode_otg_title">OTGホスト</string>
+    <string name="mode_otg_desc">USBキーボード、マウス、ゲームパッド、ドライブを使用できます。</string>
+    <string name="badge_active">有効</string>
+    <string name="status_current_mode">現在のモード: %1$s</string>
+    <string name="hint_navigate">D-padで移動し、%1$sで選択します。</string>
+    <string name="toast_already_normal">すでに通常モードです。</string>
+    <string name="toast_normal_enabled">通常モードを有効にしました（デバイス接続および充電）。</string>
+    <string name="toast_already_otg">すでにOTGホストモードです。</string>
+    <string name="toast_otg_enabled">OTGホストモードを有効にしました。USB機器を接続してください。すでに接続されている場合は、挿し直すか再起動すると認識されます。</string>
+    <string name="restart_title">デバイスを再起動</string>
+    <string name="restart_desc">OTGに切り替えた後、すでに接続済みのUSB機器が認識されない場合は再起動してください。</string>
+    <string name="dialog_restart_title">今すぐ再起動しますか？</string>
+    <string name="dialog_restart_message">デバイスを再起動します。起動中に認識されるよう、USBアクセサリーは接続したままにしてください。</string>
+    <string name="action_restart">再起動</string>
+    <string name="action_cancel">キャンセル</string>
+    <string name="toast_restarting">再起動しています...</string>
+</resources>

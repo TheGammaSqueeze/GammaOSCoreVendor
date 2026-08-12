@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Modo USB</string>
+    <string name="header_title">Modo USB</string>
+    <string name="header_subtitle">Elige cómo se comporta el puerto USB-C.</string>
+    <string name="mode_normal_title">Normal</string>
+    <string name="mode_normal_desc">Carga, transferencia de archivos (MTP) y ADB. Recomendado para el uso diario.</string>
+    <string name="mode_otg_title">Host OTG</string>
+    <string name="mode_otg_desc">Usa teclados, ratones, mandos y unidades USB.</string>
+    <string name="badge_active">ACTIVO</string>
+    <string name="status_current_mode">Modo actual: %1$s</string>
+    <string name="hint_navigate">Usa el D-pad para moverte y %1$s para seleccionar.</string>
+    <string name="toast_already_normal">Ya estás en modo Normal.</string>
+    <string name="toast_normal_enabled">Modo Normal activado (dispositivo y carga).</string>
+    <string name="toast_already_otg">Ya estás en modo Host OTG.</string>
+    <string name="toast_otg_enabled">Modo host OTG activado. Conecta tu dispositivo USB. Si ya hay uno conectado, vuelve a conectarlo o reinicia para detectarlo.</string>
+    <string name="restart_title">Reiniciar dispositivo</string>
+    <string name="restart_desc">Reinicia si un dispositivo USB que ya estaba conectado no se detecta tras cambiar a OTG.</string>
+    <string name="dialog_restart_title">¿Reiniciar ahora?</string>
+    <string name="dialog_restart_message">El dispositivo se reiniciará. Mantén tu accesorio USB conectado para que se detecte durante el arranque.</string>
+    <string name="action_restart">Reiniciar</string>
+    <string name="action_cancel">Cancelar</string>
+    <string name="toast_restarting">Reiniciando...</string>
+</resources>

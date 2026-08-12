@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">وضع USB</string>
+    <string name="header_title">وضع USB</string>
+    <string name="header_subtitle">اختر طريقة عمل منفذ USB-C.</string>
+    <string name="mode_normal_title">عادي</string>
+    <string name="mode_normal_desc">الشحن ونقل الملفات (MTP) وADB. يُنصح به للاستخدام اليومي.</string>
+    <string name="mode_otg_title">مضيف OTG</string>
+    <string name="mode_otg_desc">استخدم لوحات مفاتيح وفأرات وأذرع تحكم وأقراص تخزين USB.</string>
+    <string name="badge_active">نشط</string>
+    <string name="status_current_mode">الوضع الحالي: %1$s</string>
+    <string name="hint_navigate">استخدم D-pad للتنقل و%1$s للاختيار.</string>
+    <string name="toast_already_normal">أنت بالفعل في الوضع العادي.</string>
+    <string name="toast_normal_enabled">تم تفعيل الوضع العادي (الجهاز والشحن).</string>
+    <string name="toast_already_otg">أنت بالفعل في وضع مضيف OTG.</string>
+    <string name="toast_otg_enabled">تم تشغيل وضع مضيف OTG. وصّل جهاز USB الخاص بك. إذا كان هناك جهاز متصل بالفعل، فأعد توصيله أو أعد التشغيل لاكتشافه.</string>
+    <string name="restart_title">إعادة تشغيل الجهاز</string>
+    <string name="restart_desc">أعد التشغيل إذا لم يتم اكتشاف جهاز USB كان متصلاً مسبقاً بعد التبديل إلى OTG.</string>
+    <string name="dialog_restart_title">إعادة التشغيل الآن؟</string>
+    <string name="dialog_restart_message">ستتم إعادة تشغيل الجهاز. أبقِ ملحق USB متصلاً ليتم اكتشافه أثناء بدء التشغيل.</string>
+    <string name="action_restart">إعادة التشغيل</string>
+    <string name="action_cancel">إلغاء</string>
+    <string name="toast_restarting">جارٍ إعادة التشغيل...</string>
+</resources>

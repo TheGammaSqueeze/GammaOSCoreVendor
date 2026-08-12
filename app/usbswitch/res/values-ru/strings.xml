@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Режим USB</string>
+    <string name="header_title">Режим USB</string>
+    <string name="header_subtitle">Выберите, как работает порт USB-C.</string>
+    <string name="mode_normal_title">Обычный</string>
+    <string name="mode_normal_desc">Зарядка, передача файлов (MTP) и ADB. Рекомендуется для повседневного использования.</string>
+    <string name="mode_otg_title">Хост OTG</string>
+    <string name="mode_otg_desc">Подключайте USB-клавиатуры, мыши, геймпады и накопители.</string>
+    <string name="badge_active">АКТИВЕН</string>
+    <string name="status_current_mode">Текущий режим: %1$s</string>
+    <string name="hint_navigate">Используйте D-pad для перемещения и %1$s для выбора.</string>
+    <string name="toast_already_normal">Обычный режим уже включён.</string>
+    <string name="toast_normal_enabled">Обычный режим включён (устройство и зарядка).</string>
+    <string name="toast_already_otg">Режим хоста OTG уже включён.</string>
+    <string name="toast_otg_enabled">Режим хоста OTG включён. Подключите USB-устройство. Если оно уже подключено, переподключите его или перезагрузите устройство для обнаружения.</string>
+    <string name="restart_title">Перезагрузить устройство</string>
+    <string name="restart_desc">Перезагрузите, если уже подключённое USB-устройство не обнаружено после переключения в OTG.</string>
+    <string name="dialog_restart_title">Перезагрузить сейчас?</string>
+    <string name="dialog_restart_message">Устройство будет перезагружено. Оставьте USB-аксессуар подключённым, чтобы он определился при запуске.</string>
+    <string name="action_restart">Перезагрузить</string>
+    <string name="action_cancel">Отмена</string>
+    <string name="toast_restarting">Перезагрузка...</string>
+</resources>

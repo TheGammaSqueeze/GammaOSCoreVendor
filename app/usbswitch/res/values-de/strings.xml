@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">USB-Modus</string>
+    <string name="header_title">USB-Modus</string>
+    <string name="header_subtitle">Legen Sie fest, wie sich der USB-C-Anschluss verhält.</string>
+    <string name="mode_normal_title">Normal</string>
+    <string name="mode_normal_desc">Laden, Dateiübertragung (MTP) und ADB. Für den täglichen Gebrauch empfohlen.</string>
+    <string name="mode_otg_title">OTG-Host</string>
+    <string name="mode_otg_desc">Nutzen Sie USB-Tastaturen, -Mäuse, -Gamepads und -Laufwerke.</string>
+    <string name="badge_active">AKTIV</string>
+    <string name="status_current_mode">Aktueller Modus: %1$s</string>
+    <string name="hint_navigate">Mit dem D-pad navigieren und mit %1$s auswählen.</string>
+    <string name="toast_already_normal">Bereits im Normal-Modus.</string>
+    <string name="toast_normal_enabled">Normal-Modus aktiviert (Gerät und Laden).</string>
+    <string name="toast_already_otg">Bereits im OTG-Host-Modus.</string>
+    <string name="toast_otg_enabled">OTG-Host-Modus an. Schließen Sie Ihr USB-Gerät an. Falls bereits eines verbunden ist, stecken Sie es erneut ein oder starten Sie neu, damit es erkannt wird.</string>
+    <string name="restart_title">Gerät neu starten</string>
+    <string name="restart_desc">Starten Sie neu, wenn ein bereits angeschlossenes USB-Gerät nach dem Wechsel in den OTG-Modus nicht erkannt wird.</string>
+    <string name="dialog_restart_title">Jetzt neu starten?</string>
+    <string name="dialog_restart_message">Das Gerät wird neu gestartet. Lassen Sie Ihr USB-Zubehör angeschlossen, damit es beim Start erkannt wird.</string>
+    <string name="action_restart">Neu starten</string>
+    <string name="action_cancel">Abbrechen</string>
+    <string name="toast_restarting">Wird neu gestartet ...</string>
+</resources>

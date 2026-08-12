@@ -1,0 +1,29 @@
+# GammaOS USB OTG/Normal switch. persist.gammaos.usb.mode = normal (default) | otg.
+# The UsbSwitch app sets the property; this root oneshot applies the Type-C port role via port_type.
+# Normal = device (charging/adb/MTP); OTG = host (USB accessories). No TCPC unbind/bind (unsafe).
+service gammaos-usbmode /vendor/bin/gammaos_usbmode.sh
+    user root
+    group root system
+    disabled
+    oneshot
+    seclabel u:r:su:s0
+
+on property:persist.gammaos.usb.mode=otg
+    start gammaos-usbmode
+
+on property:persist.gammaos.usb.mode=normal
+    start gammaos-usbmode
+
+# First boot after install: default to normal (device) when unset.
+on property:sys.boot_completed=1 && property:persist.gammaos.usb.mode=
+    setprop persist.gammaos.usb.mode normal
+
+# Re-apply the persisted mode once the Type-C controller is up.
+on property:sys.boot_completed=1
+    start gammaos-usbmode
+
+# The UsbSwitch app requests a restart to enter OTG host cleanly. sys.gammaos.usb.reboot is volatile
+# (not persisted) so this can never fire at boot - it only reboots on an explicit user action.
+on property:sys.gammaos.usb.reboot=1
+    setprop sys.gammaos.usb.reboot 0
+    setprop sys.powerctl reboot

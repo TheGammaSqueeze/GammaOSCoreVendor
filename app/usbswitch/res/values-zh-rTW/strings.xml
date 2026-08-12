@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">USB 模式</string>
+    <string name="header_title">USB 模式</string>
+    <string name="header_subtitle">選擇 USB-C 連接埠的運作方式。</string>
+    <string name="mode_normal_title">一般</string>
+    <string name="mode_normal_desc">充電、檔案傳輸 (MTP) 與 ADB。建議日常使用。</string>
+    <string name="mode_otg_title">OTG 主機</string>
+    <string name="mode_otg_desc">連接 USB 鍵盤、滑鼠、遊戲手把與隨身碟。</string>
+    <string name="badge_active">使用中</string>
+    <string name="status_current_mode">目前模式：%1$s</string>
+    <string name="hint_navigate">使用 D-pad 移動，按 %1$s 選擇。</string>
+    <string name="toast_already_normal">已是一般模式。</string>
+    <string name="toast_normal_enabled">已啟用一般模式（裝置與充電）。</string>
+    <string name="toast_already_otg">已是 OTG 主機模式。</string>
+    <string name="toast_otg_enabled">已開啟 OTG 主機模式。請插入 USB 裝置。若已連接，請重新插拔或重新啟動以偵測。</string>
+    <string name="restart_title">重新啟動裝置</string>
+    <string name="restart_desc">切換至 OTG 後若原本已連接的 USB 裝置未被偵測，請重新啟動。</string>
+    <string name="dialog_restart_title">現在重新啟動？</string>
+    <string name="dialog_restart_message">裝置將重新啟動。請保持 USB 配件連接，以便在啟動過程中被偵測。</string>
+    <string name="action_restart">重新啟動</string>
+    <string name="action_cancel">取消</string>
+    <string name="toast_restarting">重新啟動中…</string>
+</resources>

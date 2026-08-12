@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">USB Mode</string>
+    <string name="header_title">USB Mode</string>
+    <string name="header_subtitle">Kies hoe de USB-C-poort zich gedraagt.</string>
+    <string name="mode_normal_title">Normaal</string>
+    <string name="mode_normal_desc">Opladen, bestandsoverdracht (MTP) en ADB. Aanbevolen voor dagelijks gebruik.</string>
+    <string name="mode_otg_title">OTG-host</string>
+    <string name="mode_otg_desc">Gebruik USB-toetsenborden, -muizen, -gamepads en -stations.</string>
+    <string name="badge_active">ACTIEF</string>
+    <string name="status_current_mode">Huidige modus: %1$s</string>
+    <string name="hint_navigate">Gebruik de D-pad om te navigeren en %1$s om te selecteren.</string>
+    <string name="toast_already_normal">Al in de normale modus.</string>
+    <string name="toast_normal_enabled">Normale modus ingeschakeld (apparaat en opladen).</string>
+    <string name="toast_already_otg">Al in de OTG-hostmodus.</string>
+    <string name="toast_otg_enabled">OTG-hostmodus aan. Sluit je USB-apparaat aan. Als er al een is aangesloten, sluit het opnieuw aan of start opnieuw op om het te detecteren.</string>
+    <string name="restart_title">Apparaat opnieuw opstarten</string>
+    <string name="restart_desc">Start opnieuw op als een USB-apparaat dat al was aangesloten niet wordt gedetecteerd na het overschakelen naar OTG.</string>
+    <string name="dialog_restart_title">Nu opnieuw opstarten?</string>
+    <string name="dialog_restart_message">Het apparaat wordt opnieuw opgestart. Houd je USB-accessoire aangesloten zodat het tijdens het opstarten wordt gedetecteerd.</string>
+    <string name="action_restart">Opnieuw opstarten</string>
+    <string name="action_cancel">Annuleren</string>
+    <string name="toast_restarting">Opnieuw opstarten...</string>
+</resources>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">USB 모드</string>
+    <string name="header_title">USB 모드</string>
+    <string name="header_subtitle">USB-C 포트의 동작 방식을 선택하세요.</string>
+    <string name="mode_normal_title">일반</string>
+    <string name="mode_normal_desc">충전, 파일 전송(MTP), ADB. 일상적인 사용에 권장됩니다.</string>
+    <string name="mode_otg_title">OTG 호스트</string>
+    <string name="mode_otg_desc">USB 키보드, 마우스, 게임패드, 저장 장치를 사용합니다.</string>
+    <string name="badge_active">사용 중</string>
+    <string name="status_current_mode">현재 모드: %1$s</string>
+    <string name="hint_navigate">D-pad로 이동하고 %1$s(으)로 선택하세요.</string>
+    <string name="toast_already_normal">이미 일반 모드입니다.</string>
+    <string name="toast_normal_enabled">일반 모드가 켜졌습니다(디바이스 모드 및 충전).</string>
+    <string name="toast_already_otg">이미 OTG 호스트 모드입니다.</string>
+    <string name="toast_otg_enabled">OTG 호스트 모드가 켜졌습니다. USB 장치를 연결하세요. 이미 연결되어 있다면 다시 꽂거나 재시작하여 인식시키세요.</string>
+    <string name="restart_title">기기 재시작</string>
+    <string name="restart_desc">OTG로 전환한 후 이미 연결된 USB 장치가 인식되지 않으면 재시작하세요.</string>
+    <string name="dialog_restart_title">지금 재시작할까요?</string>
+    <string name="dialog_restart_message">기기가 재시작됩니다. 부팅 중에 인식되도록 USB 액세서리를 연결한 상태로 두세요.</string>
+    <string name="action_restart">재시작</string>
+    <string name="action_cancel">취소</string>
+    <string name="toast_restarting">재시작 중...</string>
+</resources>

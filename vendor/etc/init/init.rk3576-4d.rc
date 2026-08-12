@@ -1,3 +1,8 @@
-on property:sys.boot_completed=1
-    chmod 0666 /sys/kernel/debug/usb/23000000.usb/mode
-    write /sys/kernel/debug/usb/23000000.usb/mode host
+# GammaOS: the debugfs dwc3 "mode host" force below is INERT on RK3576 - the OTG port
+# (23000000.usb) uses usb-role-switch, so the Type-C TCPM (HUSB311) owns the data role and the
+# debugfs write is ignored. The GammaOS USB switch (init.gammaos_usb.rc + gammaos_usbmode.sh)
+# drives the role via the authoritative /sys/class/typec/port0/port_type instead. Kept here,
+# neutralized, so the old misleading force-host does not mask the real mechanism.
+#on property:sys.boot_completed=1
+#    chmod 0666 /sys/kernel/debug/usb/23000000.usb/mode
+#    write /sys/kernel/debug/usb/23000000.usb/mode host

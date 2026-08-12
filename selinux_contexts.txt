@@ -1560,3 +1560,7 @@
 /odm u:object_r:vendor_file:s0
 /overlay u:object_r:vendor_overlay_file:s0
 /overlay/framework-res__auto_generated_rro_vendor\.apk u:object_r:vendor_overlay_file:s0
+/app/UsbSwitch u:object_r:vendor_app_file:s0
+/app/UsbSwitch/UsbSwitch\.apk u:object_r:vendor_app_file:s0
+/bin/gammaos_usbmode\.sh u:object_r:vendor_file:s0
+/etc/init/init\.gammaos_usb\.rc u:object_r:vendor_configs_file:s0

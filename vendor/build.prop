@@ -446,3 +446,6 @@ persist.gammaos.ultra_low_power_saving_mode=1
 # which enumerates ADB fine on this SoC). No init-driven gadget - that fought the HAL.
 persist.sys.usb.config=adb
 ro.adb.secure=0
+# Surface the GKD USB Mode app (com.gammaos.usbswitch) in the nano Applications grid. nano hides
+# vendor/system + com.gammaos.* apps by default; extra_apps is its generic vendor-app allowlist.
+persist.gammaos.nano.extra_apps=com.gammaos.usbswitch

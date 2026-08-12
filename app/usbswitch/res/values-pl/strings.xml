@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Tryb USB</string>
+    <string name="header_title">Tryb USB</string>
+    <string name="header_subtitle">Wybierz sposób działania portu USB-C.</string>
+    <string name="mode_normal_title">Normalny</string>
+    <string name="mode_normal_desc">Ładowanie, przesyłanie plików (MTP) i ADB. Zalecane do codziennego użytku.</string>
+    <string name="mode_otg_title">Host OTG</string>
+    <string name="mode_otg_desc">Korzystaj z klawiatur, myszy, gamepadów i dysków USB.</string>
+    <string name="badge_active">AKTYWNY</string>
+    <string name="status_current_mode">Bieżący tryb: %1$s</string>
+    <string name="hint_navigate">Poruszaj się za pomocą D-pada, a %1$s, aby wybrać.</string>
+    <string name="toast_already_normal">Już w trybie normalnym.</string>
+    <string name="toast_normal_enabled">Włączono tryb normalny (tryb urządzenia i ładowanie).</string>
+    <string name="toast_already_otg">Już w trybie hosta OTG.</string>
+    <string name="toast_otg_enabled">Tryb hosta OTG włączony. Podłącz urządzenie USB. Jeśli jest już podłączone, odłącz je i podłącz ponownie lub uruchom ponownie, aby je wykryć.</string>
+    <string name="restart_title">Uruchom ponownie urządzenie</string>
+    <string name="restart_desc">Uruchom ponownie, jeśli podłączone wcześniej urządzenie USB nie zostało wykryte po przełączeniu na OTG.</string>
+    <string name="dialog_restart_title">Uruchomić ponownie teraz?</string>
+    <string name="dialog_restart_message">Urządzenie zostanie uruchomione ponownie. Pozostaw akcesorium USB podłączone, aby zostało wykryte podczas uruchamiania.</string>
+    <string name="action_restart">Uruchom ponownie</string>
+    <string name="action_cancel">Anuluj</string>
+    <string name="toast_restarting">Ponowne uruchamianie...</string>
+</resources>

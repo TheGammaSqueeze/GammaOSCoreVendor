@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">USB Mode</string>
+    <string name="header_title">USB Mode</string>
+    <string name="header_subtitle">Choisissez le comportement du port USB-C.</string>
+    <string name="mode_normal_title">Normal</string>
+    <string name="mode_normal_desc">Charge, transfert de fichiers (MTP) et ADB. Recommandé pour un usage quotidien.</string>
+    <string name="mode_otg_title">Hôte OTG</string>
+    <string name="mode_otg_desc">Utilisez des claviers, souris, manettes et clés USB.</string>
+    <string name="badge_active">ACTIF</string>
+    <string name="status_current_mode">Mode actuel : %1$s</string>
+    <string name="hint_navigate">Utilisez la croix directionnelle pour vous déplacer et %1$s pour sélectionner.</string>
+    <string name="toast_already_normal">Déjà en mode Normal.</string>
+    <string name="toast_normal_enabled">Mode Normal activé (périphérique et charge).</string>
+    <string name="toast_already_otg">Déjà en mode Hôte OTG.</string>
+    <string name="toast_otg_enabled">Mode hôte OTG activé. Branchez votre périphérique USB. Si un appareil est déjà connecté, rebranchez-le ou redémarrez pour le détecter.</string>
+    <string name="restart_title">Redémarrer l\'appareil</string>
+    <string name="restart_desc">Redémarrez si un périphérique USB déjà connecté n\'est pas détecté après le passage en OTG.</string>
+    <string name="dialog_restart_title">Redémarrer maintenant ?</string>
+    <string name="dialog_restart_message">L\'appareil va redémarrer. Gardez votre accessoire USB branché pour qu\'il soit détecté au démarrage.</string>
+    <string name="action_restart">Redémarrer</string>
+    <string name="action_cancel">Annuler</string>
+    <string name="toast_restarting">Redémarrage...</string>
+</resources>

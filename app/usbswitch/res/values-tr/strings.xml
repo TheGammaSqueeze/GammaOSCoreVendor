@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">USB Modu</string>
+    <string name="header_title">USB Modu</string>
+    <string name="header_subtitle">USB-C bağlantı noktasının nasıl davranacağını seçin.</string>
+    <string name="mode_normal_title">Normal</string>
+    <string name="mode_normal_desc">Şarj, dosya aktarımı (MTP) ve ADB. Günlük kullanım için önerilir.</string>
+    <string name="mode_otg_title">OTG Ana Aygıt</string>
+    <string name="mode_otg_desc">USB klavye, fare, oyun kumandası ve depolama aygıtlarını kullanın.</string>
+    <string name="badge_active">ETKİN</string>
+    <string name="status_current_mode">Geçerli mod: %1$s</string>
+    <string name="hint_navigate">Hareket etmek için D-pad\'i, seçmek için %1$s tuşunu kullanın.</string>
+    <string name="toast_already_normal">Zaten Normal moddasınız.</string>
+    <string name="toast_normal_enabled">Normal mod etkinleştirildi (aygıt ve şarj).</string>
+    <string name="toast_already_otg">Zaten OTG Ana Aygıt modundasınız.</string>
+    <string name="toast_otg_enabled">OTG ana aygıt modu açık. USB aygıtınızı takın. Zaten bağlıysa çıkarıp yeniden takın veya algılamak için yeniden başlatın.</string>
+    <string name="restart_title">Aygıtı yeniden başlat</string>
+    <string name="restart_desc">OTG\'ye geçtikten sonra önceden bağlı olan bir USB aygıtı algılanmıyorsa yeniden başlatın.</string>
+    <string name="dialog_restart_title">Şimdi yeniden başlatılsın mı?</string>
+    <string name="dialog_restart_message">Aygıt yeniden başlatılacak. Başlatma sırasında algılanması için USB aksesuarınızı bağlı tutun.</string>
+    <string name="action_restart">Yeniden başlat</string>
+    <string name="action_cancel">İptal</string>
+    <string name="toast_restarting">Yeniden başlatılıyor...</string>
+</resources>
