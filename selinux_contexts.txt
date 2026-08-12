@@ -668,6 +668,9 @@
 /etc/selinux/vendor_property_contexts u:object_r:vendor_configs_file:s0
 /etc/selinux/vendor_seapp_contexts u:object_r:vendor_configs_file:s0
 /etc/selinux/vendor_sepolicy\.cil u:object_r:vendor_configs_file:s0
+/etc/selinux/precompiled_sepolicy u:object_r:vendor_configs_file:s0
+/etc/selinux/precompiled_sepolicy\.plat_sepolicy_and_mapping\.sha256 u:object_r:vendor_configs_file:s0
+/etc/selinux/precompiled_sepolicy\.system_ext_sepolicy_and_mapping\.sha256 u:object_r:vendor_configs_file:s0
 /etc/selinux/vendor_service_contexts u:object_r:vendor_service_contexts_file:s0
 /etc/selinux/vndservice_contexts u:object_r:vendor_configs_file:s0
 /etc/session\.xml u:object_r:vendor_configs_file:s0
