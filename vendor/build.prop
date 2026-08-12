@@ -441,3 +441,4 @@ persist.gammaos.ultra_low_power_saving_mode=1
 # which enumerates ADB fine on this SoC). No init-driven gadget - that fought the HAL.
 persist.sys.usb.config=adb
 ro.adb.secure=0
+persist.gammaos.gamepad.btn_axis=312:10,313:9
