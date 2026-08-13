@@ -1,30 +1,15 @@
 #!/system/bin/sh
 # GammaOS USB mode - GKD ATOM (RK3576, HUSB311 Type-C TCPC). Reads persist.gammaos.usb.mode.
-#
-# Applied live (real time), no reboot required to change the port role:
-#   normal = USB device (charging, file transfer/MTP, ADB): port_type=sink with the USB gadget
-#            running. Switching back from otg tears down any host session instantly.
-#   otg    = USB host (keyboards, mice, gamepads, drives): a host-preferring dual-role port
-#            (port_type=dual, preferred_role=source) with the USB gadget stopped so it does not
-#            pin the port as a device. This mirrors the ROCKNIX host state, so a newly plugged or
-#            replugged accessory hosts without a reboot.
-#
-# Hardware note: the Type-C TCPM will not re-negotiate an ALREADY-settled cable, so an accessory
-# that was attached at the moment of switching to otg may need a quick unplug/replug (or a restart)
-# to be hosted. NEVER unbind/bind the HUSB311 TCPC to force it - that can hang the SoC.
-# port_type + preferred_role + the gadget service are the safe knobs.
+#   normal = USB device (charging, file transfer/MTP, ADB): port_type=sink.
+#   otg    = USB host (keyboards, mice, gamepads, drives): port_type=dual. Reboot into otg with the
+#            accessory attached and the boot-time Type-C negotiation hosts it. A live switch cannot
+#            re-host an already-settled cable, so the app reboots to enter OTG host.
+# port_type is the authoritative, SAFE knob. Do NOT stop the USB gadget here: killing
+# vendor.usb_gadget_default early in boot removes the IUsbGadget HAL and crashes the system_server
+# USB manager -> bootloop (and also kills USB adb). NEVER unbind/bind the HUSB311 TCPC (hangs SoC).
 PORT=/sys/class/typec/port0
-GADGET=vendor.usb_gadget_default
 case "$(getprop persist.gammaos.usb.mode)" in
-  otg)
-    setprop ctl.stop "$GADGET"
-    echo source > "$PORT/preferred_role" 2>/dev/null
-    echo dual   > "$PORT/port_type"      2>/dev/null
-    ;;
-  *)
-    echo sink > "$PORT/preferred_role" 2>/dev/null
-    echo sink > "$PORT/port_type"      2>/dev/null
-    setprop ctl.start "$GADGET"
-    ;;
+  otg) echo dual > "$PORT/port_type" 2>/dev/null ;;
+  *)   echo sink > "$PORT/port_type" 2>/dev/null ;;
 esac
 log -t gammaos_usbmode "USB mode applied: $(getprop persist.gammaos.usb.mode)"

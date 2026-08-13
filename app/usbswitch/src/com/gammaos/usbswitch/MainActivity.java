@@ -195,10 +195,22 @@ public class MainActivity extends Activity {
             Toast.makeText(this, getString(R.string.toast_already_otg), Toast.LENGTH_SHORT).show();
             return;
         }
-        // Applied live by the root init service; no reboot needed to change the role.
-        setProp(MODE_PROP, "otg");
-        Toast.makeText(this, getString(R.string.toast_otg_enabled), Toast.LENGTH_LONG).show();
-        refresh();
+        // OTG host requires a restart: the Type-C controller only negotiates host on a fresh boot
+        // with the accessory attached; a live switch cannot re-host an already-connected cable.
+        AlertDialog dlg = new AlertDialog.Builder(this, android.R.style.Theme_DeviceDefault_Dialog_Alert)
+                .setTitle(getString(R.string.dialog_restart_title))
+                .setMessage(getString(R.string.dialog_restart_message))
+                .setPositiveButton(getString(R.string.action_restart), new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface d, int w) {
+                        setProp(MODE_PROP, "otg");
+                        Toast.makeText(MainActivity.this, getString(R.string.toast_restarting), Toast.LENGTH_LONG).show();
+                        // A root init rule reboots on this volatile trigger (never fires at boot).
+                        setProp(REBOOT_PROP, "1");
+                    }
+                })
+                .setNegativeButton(getString(R.string.action_cancel), null)
+                .create();
+        dlg.show();
     }
 
     private void restartDevice() {
