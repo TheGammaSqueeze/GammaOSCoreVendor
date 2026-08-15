@@ -435,4 +435,5 @@ persist.gammaos.qs.blacklist_0=dcdimmingemulation,launchguard,dualstack,gammasec
 persist.gammaos.qs.blacklist_1=gammadualfocus,gammasplitbrightness,globalbfi,gammarefresh
 persist.gammaos.qs.blacklist_2=477v,usbcontrollerswitch
 
-persist.gammaos.nano.drm_flip_v=1
+# GammaOS nano: force SurfaceFlinger home (DRM-direct is unstable on this panel)
+persist.gammaos.nano.force_sf=1

@@ -140,3 +140,26 @@ mkdir -p vendor/dsp
 rm -f vendor.img
 MKE2FS_CONFIG=mke2fs.conf ./mke2fs -O ^has_journal,^sparse_super -L vendor -M /vendor -m 0 -t ext4 -b 4096 vendor.img 200000
 ./e2fsdroid -e -T 1230768000 -S selinux_contexts.txt -f vendor/ -a / vendor.img
+
+# --- Convert ext4 -> EROFS (lz4hc big-pcluster, feature 0x3), Brick model ---
+# Mount the e2fsdroid-built ext4 image read-only and build EROFS from the mount,
+# so every uid/gid, capability and SELinux xattr carries over byte-for-byte
+# (e2fsdroid is the single source of truth for filesystem metadata). Needs root
+# for losetup+mount (run with sudo, or the losetup/mount/mkfs.erofs use sudo).
+# Verified on Manmgi Air X (SM6115, kernel 5.15 supports big_pcluster; NO lzma
+# so lz4hc is required). Flash vendor.img.erofs to /vendor via fastbootd.
+UUID="$(blkid -o value -s UUID vendor.img)"
+EROFS_OUT="$(pwd)/vendor.img.erofs"
+MNT="$(mktemp -d -t erofs_vendor.XXXX)"
+LOOP="$(sudo losetup -f --show -r vendor.img)"
+_erofs_cleanup() { sudo umount "$MNT" 2>/dev/null; sudo losetup -d "$LOOP" 2>/dev/null; rmdir "$MNT" 2>/dev/null; }
+trap _erofs_cleanup EXIT
+sudo mount -t ext4 -o ro "$LOOP" "$MNT"
+rm -f "$EROFS_OUT"
+( cd "$MNT" && sudo mkfs.erofs -zlz4hc -C 65536 -T 1230768000 -x 16 -U "$UUID" "$EROFS_OUT" . )
+_erofs_cleanup; trap - EXIT
+sudo chown "$(id -u):$(id -g)" "$EROFS_OUT" 2>/dev/null || true
+
+echo "=== built vendor.img + vendor.img.erofs ==="
+ls -lh vendor.img vendor.img.erofs
+sha256sum vendor.img vendor.img.erofs
