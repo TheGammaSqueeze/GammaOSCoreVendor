@@ -347,7 +347,7 @@ log.tag.CamX=SUPPRESS
 log.tag.healthd=SUPPRESS
 log.tag.PowerUI=SUPPRESS
 
-ro.gammaos.device=mangmiairxmq66
+ro.gammaos.device=mangmiairxmq65
 persist.gammaos.nano.drastic_qr_layout=1
 persist.gammaos.nano.wifi=1
 
