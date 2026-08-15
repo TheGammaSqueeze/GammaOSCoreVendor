@@ -1,21 +1,34 @@
 #!/system/bin/sh
 
-echo performance > /sys/devices/platform/fde60000.gpu/devfreq/fde60000.gpu/governor
-echo 900000000 > /sys/devices/platform/fde60000.gpu/devfreq/fde60000.gpu/min_freq
-echo 900000000 > /sys/devices/platform/fde60000.gpu/devfreq/fde60000.gpu/max_freq
+# Set every scalable domain to its highest available OPP.
+# Frequencies are read from the kernel instead of hardcoded so the same
+# script works across SoC bins / DVFS tables.
 
-echo performance > /sys/devices/platform/fdf80200.rkvdec/devfreq/fdf80200.rkvdec/governor
-echo 400000000 > /sys/devices/platform/fdf80200.rkvdec/devfreq/fdf80200.rkvdec/min_freq
-echo 400000000 > /sys/devices/platform/fdf80200.rkvdec/devfreq/fdf80200.rkvdec/max_freq
+max_of() {
+    # max_of "<space separated list>"
+    echo "$1" | awk '{m=$1; for (i=1;i<=NF;i++) if ($i>m) m=$i; print m}'
+}
 
-echo performance > /sys/devices/platform/fe040000.vop/devfreq/fe040000.vop/governor
-echo 500000000 > /sys/devices/platform/fe040000.vop/devfreq/fe040000.vop/min_freq
-echo 500000000 > /sys/devices/platform/fe040000.vop/devfreq/fe040000.vop/max_freq
+set_devfreq_top() {
+    base=$1
+    [ -d "$base" ] || return
+    top=$(max_of "$(cat $base/available_frequencies)")
+    [ -n "$top" ] || return
+    echo performance > $base/governor
+    # raise max before min so we never try to push min above the current max
+    echo $top > $base/max_freq
+    echo $top > $base/min_freq
+}
 
-echo performance > /sys/devices/platform/dmc/devfreq/dmc/governor
-echo 920000000 > /sys/devices/platform/dmc/devfreq/dmc/min_freq
-echo 920000000 > /sys/devices/platform/dmc/devfreq/dmc/max_freq
+set_devfreq_top /sys/devices/platform/fde60000.gpu/devfreq/fde60000.gpu
+set_devfreq_top /sys/devices/platform/fdf80200.rkvdec/devfreq/fdf80200.rkvdec
+set_devfreq_top /sys/devices/platform/fe040000.vop/devfreq/fe040000.vop
+set_devfreq_top /sys/devices/platform/dmc/devfreq/dmc
 
-echo performance > /sys/devices/system/cpu/cpufreq/policy0/scaling_governor
-echo 2160000 > /sys/devices/system/cpu/cpufreq/policy0/scaling_min_freq
-echo 2160000 > /sys/devices/system/cpu/cpufreq/policy0/scaling_max_freq
+for policy in /sys/devices/system/cpu/cpufreq/policy*; do
+    [ -d "$policy" ] || continue
+    top=$(cat $policy/cpuinfo_max_freq)
+    echo performance > $policy/scaling_governor
+    echo $top > $policy/scaling_max_freq
+    echo $top > $policy/scaling_min_freq
+done

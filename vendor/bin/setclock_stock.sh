@@ -1,21 +1,39 @@
 #!/system/bin/sh
 
-echo simple_ondemand > /sys/devices/platform/fde60000.gpu/devfreq/fde60000.gpu/governor
-echo 200000000 > /sys/devices/platform/fde60000.gpu/devfreq/fde60000.gpu/min_freq
-echo 900000000 > /sys/devices/platform/fde60000.gpu/devfreq/fde60000.gpu/max_freq
+# Restore stock DVFS: each domain back on its ondemand-style governor with the
+# min/max clamps opened up to the full available OPP range. Frequencies are read
+# from the kernel instead of hardcoded so the same script works across SoC bins.
 
-echo vdec2_ondemand > /sys/devices/platform/fdf80200.rkvdec/devfreq/fdf80200.rkvdec/governor
-echo 297000000 > /sys/devices/platform/fdf80200.rkvdec/devfreq/fdf80200.rkvdec/min_freq
-echo 400000000 > /sys/devices/platform/fdf80200.rkvdec/devfreq/fdf80200.rkvdec/max_freq
+min_of() {
+    echo "$1" | awk '{m=$1; for (i=1;i<=NF;i++) if ($i<m) m=$i; print m}'
+}
+max_of() {
+    echo "$1" | awk '{m=$1; for (i=1;i<=NF;i++) if ($i>m) m=$i; print m}'
+}
 
-echo vop2_ondemand > /sys/devices/platform/fe040000.vop/devfreq/fe040000.vop/governor
-echo 396000000 > /sys/devices/platform/fe040000.vop/devfreq/fe040000.vop/min_freq
-echo 500000000 > /sys/devices/platform/fe040000.vop/devfreq/fe040000.vop/max_freq
+set_devfreq_stock() {
+    base=$1
+    gov=$2
+    [ -d "$base" ] || return
+    freqs=$(cat $base/available_frequencies)
+    lo=$(min_of "$freqs")
+    hi=$(max_of "$freqs")
+    [ -n "$hi" ] || return
+    echo $gov > $base/governor
+    echo $hi > $base/max_freq
+    echo $lo > $base/min_freq
+}
 
-echo dmc_ondemand > /sys/devices/platform/dmc/devfreq/dmc/governor
-echo 324000000 > /sys/devices/platform/dmc/devfreq/dmc/min_freq
-echo 920000000 > /sys/devices/platform/dmc/devfreq/dmc/max_freq
+set_devfreq_stock /sys/devices/platform/fde60000.gpu/devfreq/fde60000.gpu       simple_ondemand
+set_devfreq_stock /sys/devices/platform/fdf80200.rkvdec/devfreq/fdf80200.rkvdec vdec2_ondemand
+set_devfreq_stock /sys/devices/platform/fe040000.vop/devfreq/fe040000.vop       vop2_ondemand
+set_devfreq_stock /sys/devices/platform/dmc/devfreq/dmc                         dmc_ondemand
 
-echo schedutil > /sys/devices/system/cpu/cpufreq/policy0/scaling_governor
-echo 408000 > /sys/devices/system/cpu/cpufreq/policy0/scaling_min_freq
-echo 2160000 > /sys/devices/system/cpu/cpufreq/policy0/scaling_max_freq
+for policy in /sys/devices/system/cpu/cpufreq/policy*; do
+    [ -d "$policy" ] || continue
+    lo=$(cat $policy/cpuinfo_min_freq)
+    hi=$(cat $policy/cpuinfo_max_freq)
+    echo schedutil > $policy/scaling_governor
+    echo $hi > $policy/scaling_max_freq
+    echo $lo > $policy/scaling_min_freq
+done
