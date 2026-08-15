@@ -1,0 +1,7 @@
+# In Nano mode class_start late_start is skipped. The cnss-daemon service
+# (class late_start) handles Qualcomm WLAN firmware download to the chip
+# via icnss2/QMI. Without it, the firmware never loads, hdd_soc_probe
+# never fires, and wlan0 never appears. Start it explicitly when Nano WiFi
+# is enabled.
+on property:persist.gammaos.nano.wifi=1 && property:sys.gammaos.minimal_boot=1
+    start cnss-daemon
