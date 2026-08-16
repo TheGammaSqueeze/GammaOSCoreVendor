@@ -437,3 +437,22 @@ persist.gammaos.qs.blacklist_2=477v,usbcontrollerswitch
 
 # GammaOS nano: force SurfaceFlinger home (DRM-direct is unstable on this panel)
 persist.gammaos.nano.force_sf=1
+
+# drastic-nano defaults for Air X (SF backend; DRM-direct is unstable on this panel).
+# Values captured from the live device 2026-08-16.
+persist.gammaos.nano.drastic_nano=1
+persist.gammaos.drastic_nano.backend=sf
+persist.gammaos.drastic_nano.layout_preset=7
+persist.gammaos.drastic_nano.pip_alpha=80
+persist.gammaos.drastic_nano.sf_half_res=1
+persist.gammaos.drastic_nano.sf_16bit=1
+persist.gammaos.drastic_nano.frame_sync=0
+persist.gammaos.drastic_nano.frameskip=0
+
+# Nano/drastic-nano touch digitizer calibration (Air X: portrait 1080x1920 digitizer vs
+# landscape 1920x1080 logical, ORIENTATION_270). force-SF nano/drastic read raw evdev and
+# bypass InputFlinger's primary_touch_orientation, so the panel-mount rotation/flip is
+# applied here (swap + flipx). Read by gammaos-nano touchMapRaw and drastic-nano runLoopSf.
+persist.gammaos.nano.osk_touch_swap=1
+persist.gammaos.nano.osk_touch_flipx=1
+persist.gammaos.nano.osk_touch_flipy=0
