@@ -1,0 +1,56 @@
+# RG 55G1 (SM4450) joypad control. The joypad is the singleadc_joypad
+# driver; its sysfs node is /sys/devices/platform/soc/soc:singleadc_joypad.
+# Analog sticks and analog triggers (ABS_Z / ABS_RZ, ADC-backed) are
+# configured here: jokstick_cal_scale sets the stick calibration scale and
+# remapkey_xbox_switch_bt_tr=2 selects the Xbox-style layout with analog
+# triggers. The joypad is disabled while the screen is off and re-enabled
+# (and reconfigured) when it turns back on.
+
+service joypad_control_screen_off /system/bin/sh -c "sleep 1; echo 0 > /sys/devices/platform/soc/soc:singleadc_joypad/enable"
+    class main
+    user root
+    group root system
+    oneshot
+    disabled
+
+service joypad_control_screen_on /system/bin/sh -c "sleep 0.5; echo 1 > /sys/devices/platform/soc/soc:singleadc_joypad/enable; echo 1500 > /sys/devices/platform/soc/soc:singleadc_joypad/jokstick_cal_scale; echo 2 > /sys/devices/platform/soc/soc:singleadc_joypad/remapkey_xbox_switch_bt_tr"
+    class main
+    user root
+    group root system
+    oneshot
+    disabled
+
+service led_control_screen_on /vendor/bin/gammargb
+    class main
+    user root
+    group root system
+    oneshot
+    disabled
+
+service led_control_off /system/bin/sh -c "sleep 0.2; echo 0 > /sys/devices/platform/soc/soc:singleadc_joypad/led_switch; echo 1 > /sys/devices/platform/soc/soc:singleadc_joypad/led_set"
+    class main
+    user root
+    group root system
+    oneshot
+    disabled
+
+on property:sys.screen.state=off
+    start joypad_control_screen_off
+    stop led_control_screen_on
+    start led_control_off
+
+on property:sys.screen.state=on
+    stop joypad_control_screen_off
+    stop led_control_off
+    start joypad_control_screen_on
+
+on property:sys.boot_completed=1
+    setprop sys.screen.state on
+    start joypad_control_screen_on
+
+on property:persist.gammargb.control=off
+    stop led_control_screen_on
+    start led_control_off
+
+on property:persist.gammargb.control=on && property:sys.screen.state=on
+    start led_control_screen_on

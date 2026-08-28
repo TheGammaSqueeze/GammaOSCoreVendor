@@ -1,0 +1,89 @@
+# Silence high-frequency logcat spam. Also set in vendor/build.prop, but
+# duplicated here so the thresholds land before any vendor service starts
+# logging (build.prop is read later in boot). allocator-V1-service:
+# gralloc prints several lines per allocation and gammargb follow-mode
+# samples at persist.gammaos.rgb.fps Hz with a small buffer.
+on early-init
+    setprop log.tag.HWC2 S
+    setprop log.tag.android.hardware.graphics.allocator-V1-service S
+
+# Performance profiles (RG 55G1 / SM4450, Adreno 613). Each script sets
+# GPU (kgsl) + both CPU clusters; see vendor/bin/setclock_*.sh.
+service setclock_max /vendor/bin/setclock_max.sh
+    class main
+    user root
+    group root system
+    oneshot
+    disabled
+
+service setclock_stock /vendor/bin/setclock_stock.sh
+    class main
+    user root
+    group root system
+    oneshot
+    disabled
+
+service setclock_powersave /vendor/bin/setclock_powersave.sh
+    class main
+    user root
+    group root system
+    oneshot
+    disabled
+
+# Delayed re-fire wrappers. Framework services (PowerHAL, cpuset init,
+# scheduling policy HAL) keep writing cpufreq/devfreq governors for
+# ~15-25 seconds after sys.boot_completed=1, clobbering whatever
+# setclock_max/stock set during early boot. These wrappers sleep long
+# enough to outlast that activity, then start the real service.
+service setclock_max_delayed /system/bin/sh -c "sleep 30; start setclock_max"
+    class main
+    user root
+    group root system
+    oneshot
+    disabled
+
+service setclock_stock_delayed /system/bin/sh -c "sleep 30; start setclock_stock"
+    class main
+    user root
+    group root system
+    oneshot
+    disabled
+
+on property:persist.gammaos.performance_mode=max && property:sys.screen.state=on
+    stop setclock_stock
+    stop setclock_stock_delayed
+    stop setclock_powersave
+    stop setclock_max_delayed
+    start setclock_max
+
+on property:persist.gammaos.performance_mode=stock && property:sys.screen.state=on
+    stop setclock_max
+    stop setclock_max_delayed
+    stop setclock_powersave
+    stop setclock_stock_delayed
+    start setclock_stock
+
+on property:persist.gammaos.performance_mode=powersave && property:sys.screen.state=on
+    stop setclock_max
+    stop setclock_max_delayed
+    stop setclock_stock
+    stop setclock_stock_delayed
+    start setclock_powersave
+
+# Re-fire the active setclock script ~30 seconds after boot_completed.
+# By then PowerHAL has finished registering and the framework has stopped
+# overwriting cpufreq/devfreq governors, so our settings stick.
+on property:sys.boot_completed=1 && property:persist.gammaos.performance_mode=max
+    start setclock_max_delayed
+
+on property:sys.boot_completed=1 && property:persist.gammaos.performance_mode=stock
+    start setclock_stock_delayed
+
+# Screen off: drop to the power-saving profile. Screen on: the
+# performance_mode triggers above restore the selected profile.
+on property:sys.screen.state=off
+    stop setclock_max
+    stop setclock_max_delayed
+    stop setclock_stock
+    stop setclock_stock_delayed
+    start setclock_powersave

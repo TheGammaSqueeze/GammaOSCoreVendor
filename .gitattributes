@@ -1,0 +1,10 @@
+vendor/**/*.so filter=lfs diff=lfs merge=lfs -text
+vendor/**/*.apk filter=lfs diff=lfs merge=lfs -text
+vendor/**/*.bin filter=lfs diff=lfs merge=lfs -text
+vendor/**/*.fw filter=lfs diff=lfs merge=lfs -text
+vendor/**/*.elf filter=lfs diff=lfs merge=lfs -text
+vendor/**/*.melf filter=lfs diff=lfs merge=lfs -text
+vendor/**/*.mbn filter=lfs diff=lfs merge=lfs -text
+vendor/**/*.mp4 filter=lfs diff=lfs merge=lfs -text
+vendor/**/*.tar.gz filter=lfs diff=lfs merge=lfs -text
+vendor/**/*.jar filter=lfs diff=lfs merge=lfs -text
