@@ -171,7 +171,7 @@ ro.board.first_api_level=34
 ro.vendor.build.security_patch=2025-06-05
 ro.product.board=rk30sdk
 ro.board.platform=rk356x
-ro.hwui.use_vulkan=true
+ro.hwui.use_vulkan=
 ####################################
 # from variable PRODUCT_VENDOR_PROPERTIES
 ####################################
@@ -236,9 +236,9 @@ bluetooth.profile.sap.server.enabled=true
 drm.service.enabled=true
 rt_retriever_enable=1
 rt_player_mem_policy=3
-dalvik.vm.heapstartsize=16m
-dalvik.vm.heapgrowthlimit=192m
-dalvik.vm.heapsize=512m
+dalvik.vm.heapstartsize=8m
+dalvik.vm.heapgrowthlimit=128m
+dalvik.vm.heapsize=256m
 dalvik.vm.heaptargetutilization=0.75
 dalvik.vm.heapminfree=512k
 dalvik.vm.heapmaxfree=8m
@@ -279,8 +279,8 @@ ro.build.shutdown_timeout=6
 persist.enable_task_snapshots=false
 ro.vendor.frameratelock=true
 ro.rksdk.version=ANDROID14_RKR7
-dalvik.vm.boot-dex2oat-threads=4
-dalvik.vm.dex2oat-threads=4
+dalvik.vm.boot-dex2oat-threads=2
+dalvik.vm.dex2oat-threads=2
 ro.surface_flinger.has_HDR_display=false
 ro.hardware.egl=mali
 ro.vendor.storage_type=0
@@ -288,7 +288,7 @@ ro.tee.storage=rkss
 ro.frp.pst=/dev/block/by-name/frp
 debug.stagefright.c2inputsurface=-1
 debug.stagefright.ccodec=4
-vendor.ext_ram=none
+vendor.ext_ram=1024
 ro.rk.bt_enable=true
 persist.bluetooth.btsnooplogmode=disable
 persist.bluetooth.btsnooppath=/data/misc/bluetooth/logs/btsnoop_hci.log
@@ -430,3 +430,26 @@ persist.gammaos.ultra_low_power_saving_mode=1
 persist.gammaos.nano.ndstheme=1
 persist.gammaos.nano.ps3xmb.controlcenter=1
 ro.gammaos.device=anbernicrgdsplus
+
+# ===== GammaOS low-RAM tuning (RG DS Plus, 1GB) =====
+ro.config.low_ram=true
+dalvik.vm.image-dex2oat-threads=2
+dalvik.vm.dex2oat-flags=--no-watch-dog
+dalvik.vm.jit.codecachesize=0
+pm.dexopt.boot=extract
+# lmkd: protect the foreground/visible app and lean on the zram swap pool
+# instead of killing (see init.gammaos-io.rc for the zram+reclaim setup).
+# Ported from the TrimUI Brick 1GB tuning; validate on this A14 lmkd path.
+ro.lmk.downgrade_pressure=99
+ro.lmk.upgrade_pressure=10
+ro.lmk.use_minfree_levels=false
+ro.lmk.kill_heaviest_task=false
+ro.lmk.use_new_strategy=false
+ro.lmk.psi_complete_stall_ms=1000
+ro.lmk.psi_partial_stall_ms=200
+ro.lmk.thrashing_limit=100
+ro.lmk.thrashing_limit_decay=50
+ro.lmk.swap_util_max=95
+ro.lmk.swap_free_low_percentage=5
+ro.lmk.critical=200
+ro.lmk.kill_timeout_ms=100

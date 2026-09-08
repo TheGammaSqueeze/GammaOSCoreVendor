@@ -1,0 +1,9 @@
+# GammaOS zram swap fstab for the RG DS Plus (1GB, microSD boot).
+# Activated by init.rk30board.rc at boot-complete:
+#   swapon_all /vendor/etc/fstab_swap.ext${vendor.ext_ram}
+# with vendor.ext_ram=1024 and persist.sys.zram_enabled=1 (both in build.prop).
+# comp_algorithm lz4 is set in init.rk356x.rc and the 256MB physical cap
+# (zram0 mem_limit) in init.gammaos-io.rc, both before this swapon.
+# disksize 1GB (logical); physical zram usage is capped at 256MB by mem_limit.
+#<src>             <mnt_point>   <type>   <mnt_flags>   <fs_mgr_flags>
+/dev/block/zram0   none          swap     defaults      zramsize=1073741824
