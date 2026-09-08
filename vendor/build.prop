@@ -5,7 +5,7 @@
 ro.product.vendor.brand=Anbernic
 ro.product.vendor.device=rk3568_u
 ro.product.vendor.manufacturer=Anbernic
-ro.product.vendor.model=RG DS
+ro.product.vendor.model=RG DS Plus
 ro.product.vendor.name=rk3568_u
 ro.vendor.product.cpu.abilist=arm64-v8a,armeabi-v7a,armeabi
 ro.vendor.product.cpu.abilist32=armeabi-v7a,armeabi
@@ -409,7 +409,7 @@ persist.gammaos.gamepad.hide_source=1
 persist.gammaos.gamepad.remap_btn=316:204
 persist.gammaos.nano.primary_display=1
 
-# GammaOS Nano drastic QR smoothness persist props (RG DS dual-DSI):
+# GammaOS Nano drastic QR smoothness persist props (RG DS Plus dual-DSI):
 #   triple_buffer enables the 4-slot AHB ring with per-slot EGL fences
 #     which hides short Mali kbase housekeeping stalls off the present
 #     critical path.
@@ -429,4 +429,4 @@ persist.bootanim.skip_nano=0
 persist.gammaos.ultra_low_power_saving_mode=1
 persist.gammaos.nano.ndstheme=1
 persist.gammaos.nano.ps3xmb.controlcenter=1
-ro.gammaos.device=anbernicrgds
+ro.gammaos.device=anbernicrgdsplus
