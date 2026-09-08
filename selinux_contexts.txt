@@ -553,6 +553,7 @@
 /etc/fstab_swap.extnone u:object_r:vendor_configs_file:s0
 /etc/firmware u:object_r:vendor_configs_file:s0
 /etc/firmware/aw883xx_acf.bin u:object_r:vendor_configs_file:s0
+/etc/firmware/aw88166_acf.bin u:object_r:vendor_configs_file:s0
 /etc/firmware/fmacfw_rf_patch_8800dc.bin u:object_r:vendor_configs_file:s0
 /etc/firmware/nvram_AP6335.txt u:object_r:vendor_configs_file:s0
 /etc/firmware/BCM4356A2.hcd u:object_r:vendor_configs_file:s0
