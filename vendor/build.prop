@@ -437,7 +437,7 @@ persist.gammaos.nano.drastic_nano=1
 # from the in-game menu; they persist as user prefs.
 persist.gammaos.drastic_nano.autoload=1
 persist.gammaos.drastic_nano.backend=drm
-persist.gammaos.drastic_nano.fps_counter=1
+persist.gammaos.drastic_nano.fps_counter=0
 persist.gammaos.drastic_nano.frame_sync=0
 persist.gammaos.drastic_nano.frameskip=0
 persist.gammaos.drastic_nano.hires3d=1
