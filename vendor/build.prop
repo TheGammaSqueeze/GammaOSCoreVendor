@@ -435,13 +435,13 @@ persist.gammaos.nano.drastic_nano=1
 # both are set), so frame_sync ships off. Users can change every one of these
 # from the in-game menu; they persist as user prefs.
 persist.gammaos.drastic_nano.autoload=1
-persist.gammaos.drastic_nano.drm_half_res=1
-persist.gammaos.drastic_nano.fps_counter=1
+persist.gammaos.drastic_nano.drm_half_res=0
+persist.gammaos.drastic_nano.fps_counter=0
 persist.gammaos.drastic_nano.frame_sync=0
 persist.gammaos.drastic_nano.frameskip=0
 persist.gammaos.drastic_nano.hires3d=1
 persist.gammaos.drastic_nano.low_latency=1
-persist.gammaos.drastic_nano.shader=2xPrescaleFast_LCD
+persist.gammaos.drastic_nano.shader=4xLCD_Dot
 persist.gammaos.nano.drastic_render_scale=2
 persist.gammaos.nano.ps3xmb=1
 persist.gammaos.nano.overlay=1
