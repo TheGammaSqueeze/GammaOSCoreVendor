@@ -371,6 +371,13 @@ persist.gammaos.launch.guard.enabled=1
 persist.gammaos.launch.guard.targets=com.retroarch.aarch64,org.ppsspp.ppsspp,org.mupen64plusae.v3.fzurita,com.flycast.emulator
 persist.gammaos.multidisplay.dual_focus=1
 persist.gammaos.multidisplay.secondary_display=1
+# The top panel (second DSI, SurfaceFlinger display id 1 = its port) is mounted
+# turned 180 degrees and its controller scans like the bottom one (both latch in
+# step). SurfaceFlinger applies persist.gsf.rot.<displayId> as that display's
+# physical orientation, composed under every projection; nano home and
+# drastic-nano apply the same prop on the DRM-direct path, and u-boot turns the
+# logo via logo,rotate in the device tree.
+persist.gsf.rot.1=180
 persist.gammaos.retroarchoverride.backbutton=1
 persist.gammaos.secondary_display.enabled=1
 persist.gammaos.secondary_display.packages=com.retroarch.aarch64,org.mupen64plusae.v3.fzurita,org.ppsspp.ppsspp
