@@ -48,14 +48,9 @@ setprop persist.gammaos.launch.guard.targets "com.retroarch.aarch64,org.ppsspp.p
 
 #settings put secure sysui_qs_tiles internet,bt,performance,dualstack,gammashader,gammadualfocus,deepsleepmode,immersivemode,rotation,abxy,analogsensitivity,dpadAnalogToggle,analogdeadzone,analogcalibration,analogaxis,rightanalogaxis,mappingeditor,retroarchmenubuttonoverride
 
-launcheruser=$( stat -c "%U" /data/data/com.dsemu.drastic)
-launchergroup=$( stat -c "%G" /data/data/com.dsemu.drastic)
-rm -rf /data/data/com.dsemu.drastic/*
-tar -xvf /vendor/etc/drastic.tar.gz -C /
-chown -R $launcheruser:$launchergroup /data/data/com.dsemu.drastic
-
-pm grant com.dsemu.drastic android.permission.RECORD_AUDIO
-cmd appops set com.dsemu.drastic RECORD_AUDIO allow
+# DraStic data (config, shaders, BIOS) is provisioned by the system setup.sh from the system
+# payload; the vendor no longer ships its own drastic.tar.gz (it was an older data set that
+# wiped the system one, dropping the 4x LCD shaders).
 
 tar -xvf /vendor/etc/GammaEQ.tar.gz -C /
 
