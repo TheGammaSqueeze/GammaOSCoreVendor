@@ -251,7 +251,14 @@ on property:persist.sys.ext_ram=*
 # use a trigger we fire from the above stanza. If
 # persist.sys.zram_enabled becomes true after boot,
 # we don't want to run swapon_all at that time.
-on sys-boot-completed-set && property:persist.sys.zram_enabled=1
+on sys-boot-completed-set && property:persist.sys.zram_enabled=1 && property:ro.vendor.gammaos.swap_stage=boot_completed
+    swapon_all /vendor/etc/fstab_swap.ext${vendor.ext_ram}
+
+# GammaOS: activate zram and the swap partition at late-fs instead, so the boot itself (the
+# most memory-hungry phase on a 1GB device) runs with swap. zram0 comp_algorithm and
+# mem_limit are both written at `on init`, before this. Selected per device by
+# ro.vendor.gammaos.swap_stage in vendor build.prop (early | boot_completed).
+on late-fs && property:persist.sys.zram_enabled=1 && property:ro.vendor.gammaos.swap_stage=early
     swapon_all /vendor/etc/fstab_swap.ext${vendor.ext_ram}
 
 # for Internet adb
