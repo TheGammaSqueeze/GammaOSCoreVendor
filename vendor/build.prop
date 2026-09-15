@@ -452,6 +452,15 @@ persist.bootanim.skip_nano=0
 persist.gammaos.ultra_low_power_saving_mode=1
 persist.gammaos.nano.ndstheme=1
 persist.gammaos.nano.ps3xmb.controlcenter=1
+# RG DS Plus (1 GB): the home does not lock its whole address space in RAM
+# (the blanket mlockall pinned ~137 MB of never-touched library pages and left
+# the rest of the system in zram); XMB wave off, half-resolution wave and
+# clock, bottom PSP clock at 30 fps.
+persist.gammaos.nano.mlockall=0
+persist.gammaos.nano.ps3xmb.wave=0
+persist.gammaos.nano.ps3xmb.halfres.wave=1
+persist.gammaos.nano.ps3xmb.halfres.clock=1
+persist.gammaos.nano.ps3xmb.bottomclock.fps=30
 ro.gammaos.device=anbernicrgdsplus
 
 # ===== GammaOS low-RAM tuning (RG DS Plus, 1GB) =====
