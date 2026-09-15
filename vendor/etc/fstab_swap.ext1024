@@ -1,9 +1,16 @@
-# GammaOS zram swap fstab for the RG DS Plus (1GB, microSD boot).
+# GammaOS zram + block swap fstab for the RG DS Plus (microSD boot).
 # Activated by init.rk30board.rc at boot-complete:
 #   swapon_all /vendor/etc/fstab_swap.ext${vendor.ext_ram}
 # with vendor.ext_ram=1024 and persist.sys.zram_enabled=1 (both in build.prop).
-# comp_algorithm lz4 is set in init.rk356x.rc and the 256MB physical cap
-# (zram0 mem_limit) in init.gammaos-io.rc, both before this swapon.
-# disksize 1GB (logical); physical zram usage is capped at 256MB by mem_limit.
-#<src>             <mnt_point>   <type>   <mnt_flags>   <fs_mgr_flags>
-/dev/block/zram0   none          swap     defaults      zramsize=1073741824
+#
+# Swap tiers, in priority order (higher swapprio = filled first):
+#   1. zram0  (swapprio=2) - lz4-compressed RAM swap, first priority. comp_algorithm
+#      lz4 is set in init.rk356x.rc and the 256MB physical cap (zram0 mem_limit) in
+#      init.gammaos-io.rc, both before this swapon. disksize 1GB logical.
+#   2. swap   (swapprio=1) - the dedicated 2GB block swap partition (GPT label 'swap',
+#      /dev/block/by-name/swap). fs_mgr runs mkswap on it at every swapon_all, so it
+#      needs no pre-formatting in the image; it is the flash-backed overflow used only
+#      once zram is full. `wait` lets the by-name symlink settle if it is not up yet.
+#<src>                    <mnt_point>   <type>   <mnt_flags>   <fs_mgr_flags>
+/dev/block/zram0          none          swap     defaults      zramsize=1073741824,swapprio=2
+/dev/block/by-name/swap   none          swap     defaults      swapprio=1,wait
