@@ -37,3 +37,14 @@ on property:sys.boot_completed=1
     write /proc/sys/vm/dirty_expire_centisecs 3000
     write /proc/sys/vm/dirty_ratio 10
     write /proc/sys/vm/dirty_background_ratio 3
+
+# f2fs userdata checkpoint interval. AOSP init.rc sets 200s (paired with a 30s dirty expiry);
+# on the SD-backed Plus that leaves up to ~3 minutes of metadata relying on roll-forward
+# recovery after a power cut. Restore the f2fs default of 60s. init.rc writes 200 in its
+# `on boot` block; vendor rc files are parsed after init.rc, so this `on boot` action runs
+# after it. boot_completed repeats the write as a backstop.
+on boot
+    write /dev/sys/fs/by-name/userdata/cp_interval 60
+
+on property:sys.boot_completed=1
+    write /dev/sys/fs/by-name/userdata/cp_interval 60
