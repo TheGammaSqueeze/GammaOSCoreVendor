@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- RG DS Plus: display port 0 is the bottom panel (touch, the Nano Control Centre),
+     display port 1 the top panel (the running app). GammaPad's virtual mouse and
+     virtual touchscreen (its mouse mode taps) must land on the app panel, not on the
+     Control Centre that toggles them. The "input" value is the uinput phys string
+     GammaPad sets on those devices. -->
+<ports>
+    <port display="1" input="gammapad-mouse" />
+    <port display="1" input="gammapad-touch" />
+</ports>
