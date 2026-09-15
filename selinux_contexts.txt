@@ -11,6 +11,7 @@
 /etc u:object_r:vendor_configs_file:s0
 /etc/passwd u:object_r:vendor_configs_file:s0
 /etc/HwComposerEnv-rgds.xml u:object_r:vendor_configs_file:s0
+/etc/input-port-associations.xml u:object_r:vendor_configs_file:s0
 /etc/seccomp_policy u:object_r:vendor_configs_file:s0
 /etc/seccomp_policy/rockit.vendor.base.policy u:object_r:vendor_configs_file:s0
 /etc/seccomp_policy/android.hardware.media.c2@1.1-seccomp_policy u:object_r:vendor_configs_file:s0
