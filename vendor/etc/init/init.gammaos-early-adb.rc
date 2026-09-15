@@ -1,0 +1,24 @@
+# GammaOS: bring USB adb up without system_server.
+#
+# This vendor uses the USB gadget HAL (sys.usb.configfs=2), so nothing starts adbd or binds
+# the gadget until system_server's UsbDeviceManager asks the HAL to. When system_server
+# hangs during boot (e.g. storage/memory stalls on the 1GB RG DS Plus) there is no adb at
+# all, which makes the failure undiagnosable. On debuggable builds start adbd at boot and,
+# once its FunctionFS endpoints are ready, bind only the adb function to the controller.
+# When system_server comes up the gadget HAL reconfigures the gadget exactly as before
+# (adb drops for a moment and returns with the normal function set).
+
+on boot && property:ro.debuggable=1
+    setprop vendor.gammaos.early_adb armed
+    start adbd
+
+on property:sys.usb.ffs.ready=1 && property:vendor.gammaos.early_adb=armed
+    setprop vendor.gammaos.early_adb done
+    write /config/usb_gadget/g1/UDC "none"
+    write /config/usb_gadget/g1/idProduct 0x0006
+    write /config/usb_gadget/g1/configs/b.1/strings/0x409/configuration "adb"
+    # Name the link "function0": the gadget HAL only unlinks entries containing "function"
+    # before applying its own set; any other name survives, its own ffs.adb link then fails
+    # and USB stays dead once system_server takes over.
+    symlink /config/usb_gadget/g1/functions/ffs.adb /config/usb_gadget/g1/configs/b.1/function0
+    write /config/usb_gadget/g1/UDC ${sys.usb.controller}
