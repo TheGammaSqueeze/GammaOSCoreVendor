@@ -13,8 +13,11 @@ on init
 
 on early-fs
     write /proc/sys/vm/page-cluster 0
-    # Prefer swapping cold anon to the lz4 zram over killing the foreground app.
-    write /proc/sys/vm/swappiness 100
+    # Prefer swapping cold anon to the lz4 zram over evicting file-backed code. At 100
+    # the kernel thrashed system_server's and the launching app's code pages back and
+    # forth from the SD card during every app launch; 180 (the >100 range biases reclaim
+    # toward anon) cut the time to emulation for an N64 launch on the RG DS by about 2 s.
+    write /proc/sys/vm/swappiness 180
     # Proactive reclaim: widen the watermark band so kswapd drains cold anon to
     # zram asynchronously before a launch burst forces synchronous direct reclaim
     # (which spikes PSI and makes lmkd reap the foreground game).
@@ -28,7 +31,7 @@ on early-fs
     write /proc/sys/vm/dirty_background_ratio 3
 
 on property:sys.boot_completed=1
-    write /proc/sys/vm/swappiness 100
+    write /proc/sys/vm/swappiness 180
     write /proc/sys/vm/watermark_scale_factor 100
     write /proc/sys/vm/min_free_kbytes 24576
     write /proc/sys/vm/extra_free_kbytes 16384
