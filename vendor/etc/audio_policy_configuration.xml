@@ -29,6 +29,17 @@
                     <profile name="" format="AUDIO_FORMAT_PCM_16_BIT"
                              samplingRates="44100 48000" channelMasks="AUDIO_CHANNEL_OUT_STEREO"/>
                 </mixPort>
+                <!-- AAudio MMAP / EXCLUSIVE output. The HAL already implements mmap
+                     (open_pcm_mmap) and carries a 5 ms x 2 low latency pcm config, but
+                     nothing requested it because no mmap port was declared, so every
+                     client went through the normal mixer. 48 kHz stereo only, which is
+                     what that config is fixed at; anything else would resample and
+                     defeat the point. -->
+                <mixPort name="mmap_no_irq_out" role="source"
+                         flags="AUDIO_OUTPUT_FLAG_DIRECT AUDIO_OUTPUT_FLAG_MMAP_NOIRQ">
+                    <profile name="" format="AUDIO_FORMAT_PCM_16_BIT"
+                             samplingRates="48000" channelMasks="AUDIO_CHANNEL_OUT_STEREO"/>
+                </mixPort>
                 <mixPort name="spdif_passthrough" role="source" flags="AUDIO_OUTPUT_FLAG_DIRECT">
                     <profile name="ac3" format="AUDIO_FORMAT_AC3"
                              samplingRates="32000 44100 48000"
@@ -95,11 +106,11 @@
             </devicePorts>
             <routes>
                 <route type="mix" sink="Speaker"
-                       sources="primary output"/>
+                       sources="primary output,mmap_no_irq_out"/>
                 <route type="mix" sink="Wired Headset"
-                       sources="primary output"/>
+                       sources="primary output,mmap_no_irq_out"/>
                 <route type="mix" sink="Wired Headphones"
-                       sources="primary output"/>
+                       sources="primary output,mmap_no_irq_out"/>
                 <route type="mix" sink="BT SCO"
                        sources="primary output"/>
                 <route type="mix" sink="BT SCO Headset"

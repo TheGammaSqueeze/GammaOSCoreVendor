@@ -410,7 +410,21 @@ persist.gammaos.shader.lcd3x.grid_px_x=1.0
 persist.gammaos.shader.lcd3x.grid_px_y=3.0
 persist.gammaos.shader.type=lcd-shader
 persist.gammaos.ultra_low_power_saving_mode=1
-#vendor.audio.period_size=256
+# AAudio MMAP / EXCLUSIVE. The HAL implements mmap and the dmaengine PCM
+# advertises MMAP | MMAP_VALID | NO_PERIOD_WAKEUP, so a client that drives its
+# own timing can skip the mixer entirely. 2 is AUTO: try mmap, fall back to the
+# legacy path if it cannot be opened, so nothing hard-fails.
+aaudio.mmap_policy=2
+aaudio.mmap_exclusive_policy=2
+# Floor the burst at 2 ms so AAudio cannot ask for less than the DMA services.
+aaudio.hw_burst_min_usec=2000
+
+# Leave the primary output at its stock 960 x 4 = 80 ms. 480 (40 ms) was tried
+# and buzzes: the normal mixer underruns at that depth on this board, which is
+# the same symptom a 480 built HAL showed earlier. The mixer buffer is not the
+# lever to pull here; the mmap path above bypasses it instead.
+#vendor.audio.period_size=480
+#vendor.audio.in_period_size=768
 
 persist.gammaos.gamepad.config_version=1
 persist.gammaos.gamepad.devices=retrogame_joypad
