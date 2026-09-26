@@ -5,28 +5,15 @@
 # the Rockchip base rc values don't win a last-writer race.
 # (Block-device I/O tuning for the boot SD lives in init.tune_io.rc.)
 
-on init
-    # Cap zram physical RAM before swapon_all runs (init.rk30board.rc). 384MB: the
-    # zram_writeback service keeps the real footprint well under this by moving
-    # incompressible and idle pages to the card, so the cap is only a backstop.
-    # It must stay above what a burst can fill between two writeback cycles: at
-    # the old 256MB cap a game with 350MB of poorly compressible data hit the cap,
-    # every further swap-out FAILED (the kernel does not fall to another swap
-    # device for that), and the system thrashed at 150 percent system CPU with the
-    # card swap empty. comp_algorithm lz4 is already set in init.rk356x.rc.
-    write /sys/block/zram0/mem_limit 402653184
-
-on fs
-    # zram writeback: the 2GB 'swap' partition is zram0's backing device (must be set
-    # before disksize, which swapon_all sets at late-fs). Pages zram cannot compress
-    # (stored 1:1 in RAM otherwise) and pages that stay idle are written to the card
-    # by the zram_writeback service; the writeback budget is enabled here and set per
-    # cycle by the service so card wear stays bounded.
-    write /sys/block/zram0/backing_dev /dev/block/by-name/swap
-    write /sys/block/zram0/writeback_limit_enable 1
+# zram sizing lives in fstab_swap.ext1024 (disksize is the RAM budget, no mem_limit:
+# a mem_limit makes swap-outs fail instead of falling over to the card swap).
+# comp_algorithm lz4 is set in init.rk356x.rc; max_comp_streams defaults to the CPU
+# count (4), which is right for lz4 on this A55 cluster.
 
 on early-fs
-    write /proc/sys/vm/page-cluster 0
+    # 2 = 16KB swap read clusters: enough read-ahead for the card-backed tier 2 swap
+    # (random 4KB reads are what makes SD swap slow) at little cost on zram.
+    write /proc/sys/vm/page-cluster 2
     # Prefer swapping cold anon to the lz4 zram over killing the foreground app.
     write /proc/sys/vm/swappiness 100
     # Proactive reclaim: widen the watermark band so kswapd drains cold anon to
@@ -41,23 +28,8 @@ on early-fs
     write /proc/sys/vm/dirty_ratio 10
     write /proc/sys/vm/dirty_background_ratio 3
 
-# The writeback service starts with the swap itself (late-fs, see init.rk30board.rc)
-# so the boot and the first-boot setup already run with the card-backed zram; the
-# boot_completed start is a no-op if it is already running.
-on late-fs && property:persist.sys.zram_enabled=1 && property:ro.vendor.gammaos.swap_stage=early
-    start zram_writeback
-
 on property:sys.boot_completed=1
     write /proc/sys/vm/swappiness 100
-    start zram_writeback
-
-# Periodic zram writeback to the card (see /vendor/bin/zram_writeback.sh).
-service zram_writeback /vendor/bin/zram_writeback.sh
-    class late_start
-    user root
-    group root system
-    disabled
-    oneshot
     write /proc/sys/vm/watermark_scale_factor 100
     write /proc/sys/vm/min_free_kbytes 24576
     write /proc/sys/vm/extra_free_kbytes 16384

@@ -491,8 +491,8 @@ pm.dexopt.boot=extract
 # on a free-memory dip alone, which on a 1GB device with zram in RAM happens
 # during any large launch (RSDK died at start). The stall-based strategy only
 # ever killed a foreground-adjacent app when zram swap-outs were failing at the
-# old 256MB cap; with zram writeback to the card (init.gammaos-io.rc) those
-# stalls are gone.
+# old 256MB mem_limit; zram is now sized by disksize alone so the card swap takes
+# the overflow and those stalls are gone.
 ro.lmk.downgrade_pressure=99
 ro.lmk.upgrade_pressure=10
 ro.lmk.use_minfree_levels=false

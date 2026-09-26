@@ -153,9 +153,63 @@ for i, ins in enumerate(tramp):
     w32(CAVE2 + 4 * i, ins)
 w32(OPENPCM_CLOSE, bl(OPENPCM_CLOSE, CAVE2))
 
+# --- 6. an MMAP stream must close its pcm when it is stopped or closed -----
+# out_create_mmap_buffer() opens out->pcm[0] directly and never clears
+# out->standby, so do_out_standby() (gated on !out->standby) never closes it
+# and adev_close_output_stream() freed the stream_out with the pcm still open:
+# /dev/snd/pcmC1D0p stayed open in the HAL process (state SETUP) and every
+# later open_pcm() of the mixer output got EBUSY until the HAL restarted.
+# out_stop() and the out_create_mmap_buffer() failure path also closed the pcm
+# without clearing the pointer. Three trampolines: pcm_close + NULL store for
+# the two existing closes, and do_out_standby + close-if-still-open for the
+# adev_close_output_stream path. x20 (out_stop) and x19 (the other two) hold
+# the stream_out and are callee saved.
+DO_OUT_STANDBY   = 0x26c20
+OUTSTOP_CLOSE    = 0x266dc   # bl pcm_close in out_stop
+CMB_FAIL_CLOSE   = 0x26a58   # bl pcm_close in out_create_mmap_buffer's pcm-not-ready path
+CLOSE_STANDBY    = 0x23750   # bl do_out_standby in adev_close_output_stream
+CAVE3            = 0x4e220   # after the open_pcm trampoline, before the card string
+T_STOP, T_CMB, T_CLOSE = CAVE3, CAVE3 + 0x20, CAVE3 + 0x40
+expect(OUTSTOP_CLOSE - 4, 0xf940ba80, "out_stop ldr x0, [x20, #0x170]")
+expect(OUTSTOP_CLOSE, bl(OUTSTOP_CLOSE, PCMCLOSE_PLT), "out_stop bl pcm_close")
+expect(OUTSTOP_CLOSE + 4, 0x390d429f, "out_stop strb wzr, [x20, #0x350]")
+expect(CMB_FAIL_CLOSE - 4, 0xf940ba60, "out_create_mmap_buffer failure ldr x0, [x19, #0x170]")
+expect(CMB_FAIL_CLOSE, bl(CMB_FAIL_CLOSE, PCMCLOSE_PLT), "out_create_mmap_buffer failure bl pcm_close")
+expect(CMB_FAIL_CLOSE + 4, 0x12800160, "out_create_mmap_buffer failure mov w0, #-12")
+expect(CLOSE_STANDBY - 4, 0xaa1303e0, "adev_close_output_stream mov x0, x19")
+expect(CLOSE_STANDBY, bl(CLOSE_STANDBY, DO_OUT_STANDBY), "adev_close_output_stream bl do_out_standby")
+expect(CLOSE_STANDBY + 4, 0xaa1403e0, "adev_close_output_stream mov x0, x20")
+t_stop  = [0xa9bf7bfd,                      # stp x29, x30, [sp, #-16]!
+           bl(T_STOP + 4, PCMCLOSE_PLT),    # bl  pcm_close
+           0xf900ba9f,                      # str xzr, [x20, #0x170]   out->pcm[0] = NULL
+           0xa8c17bfd,                      # ldp x29, x30, [sp], #16
+           0xd65f03c0]                      # ret
+t_cmb   = [0xa9bf7bfd,                      # stp x29, x30, [sp, #-16]!
+           bl(T_CMB + 4, PCMCLOSE_PLT),     # bl  pcm_close
+           0xf900ba7f,                      # str xzr, [x19, #0x170]   out->pcm[0] = NULL
+           0xa8c17bfd,                      # ldp x29, x30, [sp], #16
+           0xd65f03c0]                      # ret
+t_close = [0xa9bf7bfd,                      # stp x29, x30, [sp, #-16]!
+           bl(T_CLOSE + 4, DO_OUT_STANDBY), # bl  do_out_standby       (x0 = out already)
+           0xf940ba60,                      # ldr x0, [x19, #0x170]
+           0xb4000060,                      # cbz x0, +12              nothing left open
+           bl(T_CLOSE + 16, PCMCLOSE_PLT),  # bl  pcm_close
+           0xf900ba7f,                      # str xzr, [x19, #0x170]
+           0xa8c17bfd,                      # ldp x29, x30, [sp], #16
+           0xd65f03c0]                      # ret
+if set(d[CAVE3:T_CLOSE + 4 * len(t_close)]) != {0}:
+    sys.exit("refusing to patch: mmap close trampolines target is not free")
+for base, ins in ((T_STOP, t_stop), (T_CMB, t_cmb), (T_CLOSE, t_close)):
+    for i, w in enumerate(ins):
+        w32(base + 4 * i, w)
+w32(OUTSTOP_CLOSE, bl(OUTSTOP_CLOSE, T_STOP))
+w32(CMB_FAIL_CLOSE, bl(CMB_FAIL_CLOSE, T_CMB))
+w32(CLOSE_STANDBY, bl(CLOSE_STANDBY, T_CLOSE))
+
 open(DST, 'wb').write(d)
 print(f"patched {SRC} -> {DST}")
 print(f"  stub at {CAVE:#x} ({len(stub)} bytes), string at {STR_VA:#x}")
 print(f"  exec LOAD filesz/memsz {p_filesz:#x} -> {NEW_SZ:#x}")
 print(f"  mmap open keeps the existing output ({MMAP_FREE_SITE:#x} -> {MMAP_TAIL:#x})")
 print(f"  open_pcm clears its closed pcm via {CAVE2:#x}")
+print(f"  mmap pcm closed on stop/close via {T_STOP:#x}, {T_CMB:#x}, {T_CLOSE:#x}")

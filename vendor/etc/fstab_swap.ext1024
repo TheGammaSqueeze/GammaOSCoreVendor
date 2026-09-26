@@ -3,16 +3,18 @@
 #   swapon_all /vendor/etc/fstab_swap.ext${vendor.ext_ram}
 # with vendor.ext_ram=1024 and persist.sys.zram_enabled=1 (both in build.prop).
 #
-# One swap device: zram0, lz4-compressed RAM swap, disksize 1GB logical. comp_algorithm
-# lz4 is set in init.rk356x.rc; the physical cap (zram0 mem_limit) and the writeback
-# backing device are set in init.gammaos-io.rc, both before this swapon.
-#
-# The dedicated 2GB 'swap' partition (GPT label 'swap', /dev/block/by-name/swap) is NOT a
-# second swap device any more: it is zram0's writeback backing device. As a lower-priority
-# swap it was never used (the kernel only moves to the next device when zram runs out of
-# slots, not when zram's RAM cap is hit), so once the cap was reached every swap-out failed
-# and the system thrashed in place while 2GB of card swap sat empty. As the backing device
-# it receives zram's incompressible pages (game data that lz4 cannot shrink, stored 1:1 in
-# RAM otherwise) and its idle pages, pushed by the zram_writeback service.
+# Swap tiers, in priority order (higher swapprio = filled first):
+#   1. zram0  (swapprio=2) - lz4-compressed RAM swap. comp_algorithm lz4 is set in
+#      init.rk356x.rc. disksize 384MB with NO mem_limit: the kernel only falls over to
+#      the next swap device when this one runs out of SLOTS, never when a RAM cap is
+#      hit (a capped zram fails the write instead and the system thrashes in place while
+#      the card swap sits empty, seen 2026-09-26 with 350MB of incompressible game data).
+#      So the logical size IS the RAM budget: at most 384MB of RAM if every page is
+#      incompressible, about half that for ordinary app memory, and once the slots are
+#      used the overflow goes to the card below.
+#   2. swap   (swapprio=1) - the dedicated 2GB block swap partition (GPT label 'swap',
+#      /dev/block/by-name/swap). fs_mgr runs mkswap on it at every swapon_all, so it
+#      needs no pre-formatting in the image. `wait` lets the by-name symlink settle.
 #<src>                    <mnt_point>   <type>   <mnt_flags>   <fs_mgr_flags>
-/dev/block/zram0          none          swap     defaults      zramsize=1073741824,swapprio=2
+/dev/block/zram0          none          swap     defaults      zramsize=402653184,swapprio=2
+/dev/block/by-name/swap   none          swap     defaults      swapprio=1,wait
