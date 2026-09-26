@@ -52,7 +52,11 @@ setprop persist.gammaos.launch.guard.targets "com.retroarch.aarch64,org.ppsspp.p
 # payload; the vendor no longer ships its own drastic.tar.gz (it was an older data set that
 # wiped the system one, dropping the 4x LCD shaders).
 
-tar -xvf /vendor/etc/GammaEQ.tar.gz -C /
+# GammaEQ preset for the app. The archive is rooted at GammaEQ/ and extracted into
+# /sdcard: an archive carrying the sdcard/ directory itself made toybox tar try to
+# restore the mtime of the storage root, which FUSE refuses, and the vendor step then
+# reported "tar: had errors" on every fresh install although the preset had landed.
+tar -xvf /vendor/etc/GammaEQ.tar.gz -C /sdcard
 
 launcheruser=$( stat -c "%U" /data/data/com.flycast.emulator)
 launchergroup=$( stat -c "%G" /data/data/com.flycast.emulator)
