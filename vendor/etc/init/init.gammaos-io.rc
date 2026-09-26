@@ -30,6 +30,8 @@ on early-fs
 
 on property:sys.boot_completed=1
     write /proc/sys/vm/swappiness 100
+    # init.rockchip.rc writes page-cluster 0 after our early-fs value; re-apply here.
+    write /proc/sys/vm/page-cluster 2
     write /proc/sys/vm/watermark_scale_factor 100
     write /proc/sys/vm/min_free_kbytes 24576
     write /proc/sys/vm/extra_free_kbytes 16384
