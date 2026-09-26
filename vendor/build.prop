@@ -485,17 +485,19 @@ dalvik.vm.jit.codecachesize=0
 pm.dexopt.boot=extract
 # lmkd: protect the foreground/visible app and lean on the swap pool (zram plus
 # the SD swap partition, see init.gammaos-io.rc) instead of killing.
-# The PSI strategy (use_new_strategy=true) decides kills from swap availability
-# and refault thrashing and spares perceptible apps (oom_score_adj 200 and
-# below) while swap is not low. The old strategy killed on stall time alone:
-# a one second full stall (a DocumentsUI GC storm while the file picker
-# loaded) went critical and killed the app behind the picker with 2.8 GB of
-# swap still free. The stall values only set the pressure level now.
+# Kills are decided by PSI stall time (use_new_strategy=false). The PSI
+# strategy (use_new_strategy=true) was tried on 2026-09-26 and rejected: its
+# "min watermark is breached" branch kills the FOREGROUND app (oom_score_adj 0)
+# on a free-memory dip alone, which on a 1GB device with zram in RAM happens
+# during any large launch (RSDK died at start). The stall-based strategy only
+# ever killed a foreground-adjacent app when zram swap-outs were failing at the
+# old 256MB cap; with zram writeback to the card (init.gammaos-io.rc) those
+# stalls are gone.
 ro.lmk.downgrade_pressure=99
 ro.lmk.upgrade_pressure=10
 ro.lmk.use_minfree_levels=false
 ro.lmk.kill_heaviest_task=false
-ro.lmk.use_new_strategy=true
+ro.lmk.use_new_strategy=false
 ro.lmk.psi_complete_stall_ms=1000
 ro.lmk.psi_partial_stall_ms=200
 ro.lmk.thrashing_limit=100

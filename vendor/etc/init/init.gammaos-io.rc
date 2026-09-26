@@ -41,6 +41,12 @@ on early-fs
     write /proc/sys/vm/dirty_ratio 10
     write /proc/sys/vm/dirty_background_ratio 3
 
+# The writeback service starts with the swap itself (late-fs, see init.rk30board.rc)
+# so the boot and the first-boot setup already run with the card-backed zram; the
+# boot_completed start is a no-op if it is already running.
+on late-fs && property:persist.sys.zram_enabled=1 && property:ro.vendor.gammaos.swap_stage=early
+    start zram_writeback
+
 on property:sys.boot_completed=1
     write /proc/sys/vm/swappiness 100
     start zram_writeback
