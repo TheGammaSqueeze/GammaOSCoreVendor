@@ -452,3 +452,12 @@ persist.gammaos.ultra_low_power_saving_mode=1
 persist.gammaos.nano.ndstheme=1
 persist.gammaos.nano.ps3xmb.controlcenter=1
 ro.gammaos.device=anbernicrgds
+
+# AAudio MMAP low latency output. The HAL gained the three MMAP fixes in
+# tools/audio_hal_mmap, and etc/audio_policy_configuration.xml declares the
+# mmap_no_irq_out mix port the exclusive path needs. Policy 2 is AUTO; only
+# EXCLUSIVE streams take the MMAP path (a shared stream on it deadlocked the
+# HAL and took audioserver with it).
+aaudio.mmap_policy=2
+aaudio.mmap_exclusive_policy=2
+aaudio.hw_burst_min_usec=2000
