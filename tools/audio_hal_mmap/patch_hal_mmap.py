@@ -8,7 +8,14 @@ MMAP defects that stop an AUDIO_OUTPUT_FLAG_MMAP_NOIRQ mix port from coexisting
 with the AudioFlinger primary mixer. Those fixes are the same ones applied to
 the Plus HAL and keep that script's numbering (steps 4 to 6 of
 tools/audio_hal_headphone/patch_hal.py in the Plus vendor tree); steps 1 to 3
-there are the headphone stub and are deliberately absent here.
+there are the headphone stub and are deliberately absent here. Step 7 is this
+board's own, and makes an MMAP stream honour the device it was opened for.
+
+Note the RG DS card exposes a single playback substream, so an MMAP stream and
+the AudioFlinger mixer contend for the same pcm: MMAP EXCLUSIVE only succeeds
+while the mixer output is in standby. When measuring, always check the sharing
+mode the client reports, because AAudio falls back to the legacy path silently
+and a legacy run exercises none of this.
 
 The executable LOAD segment is still grown, because the trampolines live in the
 zero padding after .plt and have to be mapped executable. Nothing moves: the
@@ -153,9 +160,40 @@ w32(OUTSTOP_CLOSE, bl(OUTSTOP_CLOSE, T_STOP))
 w32(CMB_FAIL_CLOSE, bl(CMB_FAIL_CLOSE, T_CMB))
 w32(CLOSE_STANDBY, bl(CLOSE_STANDBY, T_CLOSE))
 
+# --- 7. an MMAP stream must open on the device it was asked for ---------------
+# out_create_mmap_buffer() seeded the stream's device array with a literal
+# AUDIO_DEVICE_OUT_SPEAKER and then derived the route from array[0], so every
+# low latency stream came out of the speaker no matter what the policy layer had
+# selected: with headphones plugged in the game stayed on the speaker. Take the
+# device adev_open_output_stream() already stored in the stream instead.
+#
+# The substitution is deliberately narrow. Only the two wired headphone devices
+# are honoured and every other value still executes the original mov, so the
+# speaker case is byte for byte what the unpatched HAL does. A blanket swap was
+# tried first and lost the speaker entirely.
+CMB_DEV_SITE = 0x26888
+STREAM_DEVICE = 560  # adev_open_output_stream: str w28, [x0, #560]
+CAVE4 = 0x4E2A0
+expect(CMB_DEV_SITE, 0x5280004A, "out_create_mmap_buffer mov w10, #AUDIO_DEVICE_OUT_SPEAKER")
+expect(CMB_DEV_SITE + 4, 0xB9033A69, "out_create_mmap_buffer str w9, [x19, #0x338]")
+expect(CMB_DEV_SITE + 8, 0xB902FA6A, "out_create_mmap_buffer str w10, [x19, #0x2f8]")
+t_dev = [0xB942326A,   # ldr  w10, [x19, #560]   stream->device
+         0x7100115F,   # cmp  w10, #4            AUDIO_DEVICE_OUT_WIRED_HEADSET
+         0x54000080,   # b.eq +16                keep it
+         0x7100215F,   # cmp  w10, #8            AUDIO_DEVICE_OUT_WIRED_HEADPHONE
+         0x54000040,   # b.eq +8                 keep it
+         0x5280004A,   # mov  w10, #2            otherwise the original constant
+         0xD65F03C0]   # ret
+if set(d[CAVE4:CAVE4 + 4 * len(t_dev)]) != {0}:
+    sys.exit("refusing to patch: mmap device trampoline target is not free")
+for i, ins in enumerate(t_dev):
+    w32(CAVE4 + 4 * i, ins)
+w32(CMB_DEV_SITE, bl(CMB_DEV_SITE, CAVE4))
+
 open(DST, 'wb').write(d)
 print(f"patched {SRC} -> {DST}")
 print(f"  exec LOAD filesz/memsz {p_filesz:#x} -> {NEW_SZ:#x}")
 print(f"  mmap open keeps the existing output ({MMAP_FREE_SITE:#x} -> {MMAP_TAIL:#x})")
 print(f"  open_pcm clears its closed pcm via {CAVE2:#x}")
 print(f"  mmap pcm closed on stop/close via {T_STOP:#x}, {T_CMB:#x}, {T_CLOSE:#x}")
+print(f"  mmap stream takes its own device (headphones only) via {CAVE4:#x}")
