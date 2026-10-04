@@ -14,11 +14,12 @@
 set -euo pipefail
 if [ "$(id -u)" -ne 0 ]; then exec sudo -E "$0" "$@"; fi
 cd "$(dirname "$0")"
+SRC="${1:-vendor}"
 
 OUT=selinux_contexts.txt
 touch "$OUT"
 
-python3 - "$OUT" <<'PY'
+SRC="$SRC" python3 - "$OUT" <<'PY'
 import os, sys, subprocess
 out = sys.argv[1]
 SPECIAL = set('.^$*+?()[]{}|\\')
@@ -37,7 +38,7 @@ with open(out, encoding='utf-8', errors='replace') as f:
 
 # Generate "<path> <context>" for every entry, path rooted at the vendor mount.
 raw = subprocess.run(
-    "cd vendor && find . -exec stat -c '%n %C' {} \;",
+    "cd %s && find . -exec stat -c '%%n %%C' {} \;" % os.environ["SRC"],
     shell=True, capture_output=True, text=True, check=True).stdout
 
 added = 0
