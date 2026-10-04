@@ -64,10 +64,12 @@ import /vendor/etc/init/hw/init.qcom.usb.rc
 import /vendor/etc/init/hw/init.qcom.test.rc
 import /vendor/etc/init/hw/init.target.rc
 import /vendor/etc/init/hw/init.qcom.factory.rc
+import /vendor/etc/init/hw/common.rc
 
 on early-init
     mount tracefs tracefs /sys/kernel/tracing
     chmod 0755 /sys/kernel/tracing
+    chmod 0777 /sys/kernel/debug
 
   # create symlink for vendor mount points
     symlink /vendor/firmware_mnt /firmware
@@ -101,6 +103,8 @@ on init
     write /sys/fs/cgroup/memory/bg/memory.move_charge_at_immigrate 1
     chown root system /sys/fs/cgroup/memory/bg/tasks
     chmod 0660 /sys/fs/cgroup/memory/bg/tasks
+    chmod 0666 /sys/class/power_supply/usb/input_current_limit
+    chmod 0666 /sys/devices/soc0/select_image
 
 on post-fs
 
@@ -248,6 +252,23 @@ on boot
 
     # Create hvdcp_opti directory
     mkdir /mnt/vendor/persist/hvdcp_opti 0770 root system
+
+    #gpio
+    chmod 0666 /sys/class/keydetect/gpio/m1_value
+    chmod 0666 /sys/class/keydetect/gpio/m2_value
+    chmod 0666 /sys/class/sn3112l/led/enable
+    chmod 0666 /sys/class/sn3112l/led/brightness
+    chmod 0666 /sys/class/sn3112l/led/miniled_enable
+    chmod 0666 /sys/class/sn3112l/led/blackvalue
+    chmod 0666 /sys/class/sn3112r/led/enable
+    chmod 0666 /sys/class/sn3112r/led/brightness
+    chmod 0666 /sys/class/leds/red/brightness
+    chmod 0666 /sys/class/leds/green/brightness
+    chmod 0666 /sys/class/leds/blue/brightness
+    chmod 0666 /sys/class/gpio5_pwm2/state
+    chmod 0666 /sys/class/gpio5_pwm2/speed
+    chmod 0666 /sys/class/typec_cc/typec_cc
+    chmod 0666 /sys/devices/virtual/switch_legacy/hdmi_audio/state
 
     # limit discard size to 128MB in order to avoid long IO latency
     write /sys/block/sda/queue/discard_max_bytes 134217728
@@ -521,11 +542,11 @@ on property:sys.boot_completed=1
     chown media audio /sys/kernel/aud_dev/state
     write /sys/devices/virtual/cvp/cvp/boot 1
 
-on property:persist.vendor.radio.atfwd.start=false
-    stop vendor.atfwd
+#on property:persist.vendor.radio.atfwd.start=false
+#    stop vendor.atfwd
 
-on property:vendor.radio.atfwd.start=false
-    stop vendor.atfwd
+#on property:vendor.radio.atfwd.start=false
+#    stop vendor.atfwd
 
 # corefile limit
 on property:persist.debug.trace=1
@@ -667,6 +688,52 @@ service wifi_ftmd /system/vendor/bin/wifi_ftmd
     disabled
     oneshot
 
+on property:vendor.wifi.start=false
+    start vendor.wlan_config_down
+    stop vendor.wifi_ftmdaemon
+
+on property:vendor.wifi.start=true
+    start vendor.wlan_config_up
+    chmod 777 /sys/module/wlan/parameters/con_mode
+    write /sys/module/wlan/parameters/con_mode 5
+    start vendor.wifi_ftmdaemon
+
+on property:vendor.bt.start=false
+
+    stop vendor.bt_ftmdaemon
+
+on property:vendor.bt.start=true
+
+    start vendor.bt_ftmdaemon
+
+service vendor.wlan_config_down /vendor/bin/ftm_wlan0_config 2
+    class main
+    user root
+    group root
+    disabled
+    oneshot
+
+service vendor.wlan_config_up /vendor/bin/ftm_wlan0_config 1
+    class main
+    user root
+    group root
+    disabled
+    oneshot
+
+service vendor.wifi_ftmdaemon /vendor/bin/ftmdaemon -n -dd
+    class main
+    user root
+    group root
+    disabled
+    oneshot
+
+service vendor.bt_ftmdaemon /vendor/bin/ftmdaemon -n
+    class main
+    user root
+    group root
+    disabled
+    oneshot
+
 on property:vendor.wifi.ftmd.load=true
     insmod /system/lib/modules/pronto/pronto_wlan.ko con_mode=5
 
@@ -725,12 +792,12 @@ service qcom-post-boot /vendor/bin/init.qcom.post_boot.sh
     disabled
     oneshot
 
-service qti-testscripts /system/bin/sh /product/etc/init.qcom.testscripts.sh
-    class late_start
-    user root
-    disabled
-    oneshot
-    seclabel u:r:qti-testscripts:s0
+#service qti-testscripts /system/bin/sh /product/etc/init.qcom.testscripts.sh
+#    class late_start
+#    user root
+#    disabled
+#    oneshot
+#    seclabel u:r:qti-testscripts:s0
 
 service wifi-sdio-on /vendor/bin/init.qcom.sdio.sh
     class late_start
@@ -746,20 +813,25 @@ service wifi-crda /vendor/bin/init.crda.sh
 
 on property:sys.boot_completed=1
     start qcom-post-boot
-    start qti-testscripts
+#    start qti-testscripts
 
 on property:ro.vendor.ril.mbn_copy_completed=1
     write /data/vendor/radio/copy_complete 1
 
-service qvop-daemon /vendor/bin/qvop-daemon
-    class late_start
-    user system
-    group system drmrpc
+#service qvop-daemon /vendor/bin/qvop-daemon
+#    class late_start
+#    user system
+#    group system drmrpc
 
-service vendor.atfwd /vendor/bin/ATFWD-daemon
-    class late_start
-    user system
-    group system radio
+#service vendor.atfwd /vendor/bin/ATFWD-daemon
+#    class late_start
+#    user system
+#    group system radio
+
+#service atfwd_cus /vendor/bin/ATFWD-daemon-Cus
+#    class late_start
+#    user root
+#    group system radio
 
 service hostapd_fst /vendor/bin/hw/hostapd -dd -g /data/vendor/wifi/hostapd/global
     class main

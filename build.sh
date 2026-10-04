@@ -1,164 +1,75 @@
-mkdir -p vendor/app
-mkdir -p vendor/app/CneApp
-mkdir -p vendor/app/CneApp/lib
-mkdir -p vendor/app/CneApp/lib/arm64
-mkdir -p vendor/app/TimeService
-mkdir -p vendor/app/TimeService/oat
-mkdir -p vendor/app/TimeService/oat/arm64
-mkdir -p vendor/app/CACertService
-mkdir -p vendor/app/CACertService/oat
-mkdir -p vendor/app/CACertService/oat/arm64
-mkdir -p vendor/app/QCC-TR-UI
-mkdir -p vendor/app/QCC-TR-UI/oat
-mkdir -p vendor/app/QCC-TR-UI/oat/arm64
-mkdir -p vendor/etc
-mkdir -p vendor/etc/seccomp_policy
-mkdir -p vendor/etc/lm
-mkdir -p vendor/etc/lm/prekill
-mkdir -p vendor/etc/vintf
-mkdir -p vendor/etc/vintf/manifest
-mkdir -p vendor/etc/qcril_database
-mkdir -p vendor/etc/qcril_database/upgrade
-mkdir -p vendor/etc/qcril_database/upgrade/config
-mkdir -p vendor/etc/qcril_database/upgrade/other
-mkdir -p vendor/etc/media_khaje_iot
-mkdir -p vendor/etc/configstore
-mkdir -p vendor/etc/default-permissions
-mkdir -p vendor/etc/acdbdata
-mkdir -p vendor/etc/acdbdata/bengal_idp
-mkdir -p vendor/etc/acdbdata/bengal_qrd_arrax
-mkdir -p vendor/etc/acdbdata/bengal_scubaidp
-mkdir -p vendor/etc/acdbdata/bengal_idp_arrax
-mkdir -p vendor/etc/acdbdata/bengal_scubaqrd
-mkdir -p vendor/etc/acdbdata/bengal_qrd
-mkdir -p vendor/etc/acdbdata/nn_vad_models
-mkdir -p vendor/etc/acdbdata/nn_ns_models
-mkdir -p vendor/etc/hostapd
-mkdir -p vendor/etc/media_bengal_v1
-mkdir -p vendor/etc/data
-mkdir -p vendor/etc/display
-mkdir -p vendor/etc/res
-mkdir -p vendor/etc/res/images
-mkdir -p vendor/etc/res/images/default
-mkdir -p vendor/etc/res/images/default/charger
-mkdir -p vendor/etc/audio
-mkdir -p vendor/etc/ssg
-mkdir -p vendor/etc/wifi
-mkdir -p vendor/etc/tlog
-mkdir -p vendor/etc/init
-mkdir -p vendor/etc/init/hw
-mkdir -p vendor/etc/cne
-mkdir -p vendor/etc/cne/wqeclient
-mkdir -p vendor/etc/cne/wqeclient/ATT
-mkdir -p vendor/etc/cne/wqeclient/VZW
-mkdir -p vendor/etc/cne/wqeclient/ROW
-mkdir -p vendor/etc/selinux
-mkdir -p vendor/etc/perf
-mkdir -p vendor/etc/permissions
-mkdir -p vendor/etc/permissions/noRil
-mkdir -p vendor/etc/sensors
-mkdir -p vendor/etc/sensors/config
-mkdir -p vendor/etc/media_khaje_v0
-mkdir -p vendor/etc/dpm_vndr
-mkdir -p vendor/lost+found
+#!/bin/bash
+# Build the Duo Lite (trinket / SM6125) vendor image: ext4 via mke2fs+e2fsdroid,
+# then convert to EROFS. e2fsdroid is the single source of truth for filesystem
+# metadata (uid/gid, modes, capabilities, SELinux xattrs), so the vendor/ tree
+# must be read with its original ownership intact. The extracted tree is
+# root-owned with restricted directories (e.g. vendor/bin is 0751), so the whole
+# build runs as root. Re-exec under sudo if we are not already root.
+set -euo pipefail
+
+if [ "$(id -u)" -ne 0 ]; then
+    exec sudo -E "$0" "$@"
+fi
+
+cd "$(dirname "$0")"
+
+# --- Recreate empty directories git cannot track -------------------------------
+# git does not store empty directories. These vendor dirs contain no files or
+# symlinks in their subtree, so a fresh checkout is missing them and e2fsdroid
+# would omit mountpoints the platform expects. Recreate them before building.
+# (Regenerate this list with:
+#    for d in $(find vendor -type d|sort); do \
+#      [ -z "$(find "$d" -mindepth 1 ! -type d -print -quit)" ] && echo "$d"; done )
 mkdir -p vendor/bt_firmware
-mkdir -p vendor/firmware
-mkdir -p vendor/firmware/wlan
-mkdir -p vendor/firmware/wlan/qca_cld
-mkdir -p vendor/odm_dlkm
-mkdir -p vendor/odm_dlkm/etc
-mkdir -p vendor/rfs
-mkdir -p vendor/rfs/mdm
-mkdir -p vendor/rfs/mdm/tn
-mkdir -p vendor/rfs/mdm/tn/readonly
-mkdir -p vendor/rfs/mdm/tn/readonly/vendor
-mkdir -p vendor/rfs/mdm/slpi
-mkdir -p vendor/rfs/mdm/slpi/readonly
-mkdir -p vendor/rfs/mdm/slpi/readonly/vendor
-mkdir -p vendor/rfs/mdm/wpss
-mkdir -p vendor/rfs/mdm/wpss/readonly
-mkdir -p vendor/rfs/mdm/wpss/readonly/vendor
-mkdir -p vendor/rfs/mdm/adsp
-mkdir -p vendor/rfs/mdm/adsp/readonly
-mkdir -p vendor/rfs/mdm/adsp/readonly/vendor
-mkdir -p vendor/rfs/mdm/mpss
-mkdir -p vendor/rfs/mdm/mpss/readonly
-mkdir -p vendor/rfs/mdm/mpss/readonly/vendor
-mkdir -p vendor/rfs/mdm/cdsp
-mkdir -p vendor/rfs/mdm/cdsp/readonly
-mkdir -p vendor/rfs/mdm/cdsp/readonly/vendor
-mkdir -p vendor/rfs/msm
-mkdir -p vendor/rfs/msm/slpi
-mkdir -p vendor/rfs/msm/slpi/readonly
-mkdir -p vendor/rfs/msm/slpi/readonly/vendor
-mkdir -p vendor/rfs/msm/wpss
-mkdir -p vendor/rfs/msm/wpss/readonly
-mkdir -p vendor/rfs/msm/wpss/readonly/vendor
-mkdir -p vendor/rfs/msm/adsp
-mkdir -p vendor/rfs/msm/adsp/readonly
-mkdir -p vendor/rfs/msm/adsp/readonly/vendor
-mkdir -p vendor/rfs/msm/mpss
-mkdir -p vendor/rfs/msm/mpss/readonly
-mkdir -p vendor/rfs/msm/mpss/readonly/vendor
-mkdir -p vendor/rfs/msm/cdsp
-mkdir -p vendor/rfs/msm/cdsp/readonly
-mkdir -p vendor/rfs/msm/cdsp/readonly/vendor
-mkdir -p vendor/rfs/apq
-mkdir -p vendor/rfs/apq/gnss
-mkdir -p vendor/rfs/apq/gnss/readonly
-mkdir -p vendor/rfs/apq/gnss/readonly/vendor
-mkdir -p vendor/lib
-mkdir -p vendor/lib/mediacas
-mkdir -p vendor/lib/rfsa
-mkdir -p vendor/lib/rfsa/adsp
-mkdir -p vendor/lib/vndk
-mkdir -p vendor/lib/egl
-mkdir -p vendor/lib/camera
-mkdir -p vendor/lib/camera/components
-mkdir -p vendor/lib/soundfx
-mkdir -p vendor/lib/hw
-mkdir -p vendor/lib/mediadrm
-mkdir -p vendor/firmware_mnt
-mkdir -p vendor/bin
-mkdir -p vendor/bin/hw
-mkdir -p vendor/bin/qmi-framework-tests
-mkdir -p vendor/lib64
-mkdir -p vendor/lib64/mediacas
-mkdir -p vendor/lib64/rfsa
-mkdir -p vendor/lib64/rfsa/adsp
-mkdir -p vendor/lib64/egl
-mkdir -p vendor/lib64/camera
-mkdir -p vendor/lib64/camera/components
-mkdir -p vendor/lib64/soundfx
-mkdir -p vendor/lib64/hw
-mkdir -p vendor/lib64/mediadrm
-mkdir -p vendor/gpu
-mkdir -p vendor/gpu/kbc
-mkdir -p vendor/overlay
 mkdir -p vendor/dsp
+mkdir -p vendor/firmware_mnt
+mkdir -p vendor/lost+found
+
+# --- Size the ext4 image from the actual tree ---------------------------------
+# The ext4 image is only an intermediate (EROFS is the shipped artifact), so it
+# is sized generously: content + 30% + 64 MiB headroom, with inodes for every
+# entry plus margin. This adapts to any vendor tree instead of a fixed count.
+VENDOR_BYTES=$(du -s --block-size=1 vendor | awk '{print $1}')
+ENTRIES=$(find vendor | wc -l)
+DATA_BLOCKS=$(( (VENDOR_BYTES + 4095) / 4096 ))
+IMG_BLOCKS=$(( DATA_BLOCKS + DATA_BLOCKS * 30 / 100 + 16384 ))
+INODES=$(( ENTRIES + ENTRIES / 4 + 1024 ))
+echo "=== vendor tree: ${VENDOR_BYTES} bytes, ${ENTRIES} entries ==="
+echo "=== ext4 image: ${IMG_BLOCKS} x 4096-byte blocks, ${INODES} inodes ==="
 
 rm -f vendor.img
-MKE2FS_CONFIG=mke2fs.conf ./mke2fs -O ^has_journal,^sparse_super -L vendor -M /vendor -m 0 -t ext4 -b 4096 vendor.img 200000
-./e2fsdroid -e -T 1230768000 -S selinux_contexts.txt -f vendor/ -a / vendor.img
+MKE2FS_CONFIG=mke2fs.conf ./mke2fs -O ^has_journal,^sparse_super -L vendor -M /vendor \
+    -m 0 -t ext4 -b 4096 -N "$INODES" vendor.img "$IMG_BLOCKS"
+# fs_config.txt restores uid/gid/mode/caps that git cannot store (see fs_config.sh);
+# without it every file would default to root:root and all file capabilities
+# (bluetooth, gps, cnd, sensors, wifi) would be lost.
+if [ ! -f fs_config.txt ]; then
+    echo "ERROR: fs_config.txt missing; run ./fs_config.sh against an ownership-intact tree" >&2
+    exit 1
+fi
+./e2fsdroid -e -T 1230768000 -C fs_config.txt -S selinux_contexts.txt -f vendor/ -a / vendor.img
 
-# --- Convert ext4 -> EROFS (lz4hc big-pcluster, feature 0x3), Brick model ---
+# --- Convert ext4 -> EROFS (lz4hc big-pcluster, feature 0x3) -------------------
 # Mount the e2fsdroid-built ext4 image read-only and build EROFS from the mount,
-# so every uid/gid, capability and SELinux xattr carries over byte-for-byte
-# (e2fsdroid is the single source of truth for filesystem metadata). Needs root
-# for losetup+mount (run with sudo, or the losetup/mount/mkfs.erofs use sudo).
-# Verified on Manmgi Air X (SM6115, kernel 5.15 supports big_pcluster; NO lzma
-# so lz4hc is required). Flash vendor.img.erofs to /vendor via fastbootd.
+# so every uid/gid, capability and SELinux xattr carries over byte-for-byte.
+# Needs root for losetup+mount+mkfs.erofs (we are already root here). Verified
+# with lz4hc (kernel 5.15 big_pcluster, no lzma). Flash vendor.img.erofs to
+# /vendor via fastbootd.
 UUID="$(blkid -o value -s UUID vendor.img)"
 EROFS_OUT="$(pwd)/vendor.img.erofs"
 MNT="$(mktemp -d -t erofs_vendor.XXXX)"
-LOOP="$(sudo losetup -f --show -r vendor.img)"
-_erofs_cleanup() { sudo umount "$MNT" 2>/dev/null; sudo losetup -d "$LOOP" 2>/dev/null; rmdir "$MNT" 2>/dev/null; }
+LOOP="$(losetup -f --show -r vendor.img)"
+_erofs_cleanup() { umount "$MNT" 2>/dev/null || true; losetup -d "$LOOP" 2>/dev/null || true; rmdir "$MNT" 2>/dev/null || true; }
 trap _erofs_cleanup EXIT
-sudo mount -t ext4 -o ro "$LOOP" "$MNT"
+mount -t ext4 -o ro "$LOOP" "$MNT"
 rm -f "$EROFS_OUT"
-( cd "$MNT" && sudo mkfs.erofs -zlz4hc -C 65536 -T 1230768000 -x 16 -U "$UUID" "$EROFS_OUT" . )
+( cd "$MNT" && mkfs.erofs -zlz4hc -C 65536 -T 1230768000 -x 16 -U "$UUID" "$EROFS_OUT" . )
 _erofs_cleanup; trap - EXIT
-sudo chown "$(id -u):$(id -g)" "$EROFS_OUT" 2>/dev/null || true
+
+# Hand the build artifacts back to the invoking user, not root.
+REAL_USER="${SUDO_USER:-root}"
+chown "$REAL_USER":"$(id -gn "$REAL_USER" 2>/dev/null || echo "$REAL_USER")" \
+    vendor.img vendor.img.erofs 2>/dev/null || true
 
 echo "=== built vendor.img + vendor.img.erofs ==="
 ls -lh vendor.img vendor.img.erofs

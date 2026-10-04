@@ -13,7 +13,7 @@ setprop ro.vendor.qti.soc_id $soc_id
 # For chipsets in QCV family, convert soc_id to soc_name
 # and store it in ro.vendor.qti.soc_name.
 
-if [ "$soc_id" -eq 608 ]; then
+if [ "$soc_id" -eq 608 ] || [ "$soc_id" -eq 687 ]; then
     setprop ro.vendor.qti.soc_name crow
     setprop ro.vendor.qti.soc_model SM7550
 elif [ "$soc_id" -eq 644 ]; then
@@ -36,6 +36,12 @@ elif [ "$soc_id" -eq 603 ]; then
 elif [ "$soc_id" -eq 604 ]; then
     setprop ro.vendor.qti.soc_name kalama
     setprop ro.vendor.qti.soc_model QCM8550
+elif [ "$soc_id" -eq 668 ]; then
+    setprop ro.vendor.qti.soc_name kalama
+    setprop ro.vendor.qti.soc_model QCS8550N
+elif [ "$soc_id" -eq 688 ]; then
+    setprop ro.vendor.qti.soc_name kalama
+    setprop ro.vendor.qti.soc_model QCM8538
 elif [ "$soc_id" -eq 457 ] || [ "$soc_id" -eq 482 ]; then
     setprop ro.vendor.qti.soc_name taro
     setprop ro.vendor.qti.soc_model SM8450

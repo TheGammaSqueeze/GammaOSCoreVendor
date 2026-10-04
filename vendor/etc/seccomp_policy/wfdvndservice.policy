@@ -1,4 +1,4 @@
-# Copyright (c) 2020 Qualcomm Technologies, Inc.
+# Copyright (c) 2020, 2022 Qualcomm Technologies, Inc.
 # All Rights Reserved.
 # Confidential and Proprietary - Qualcomm Technologies, Inc
 #
@@ -80,3 +80,5 @@ accept4: 1
 sendmsg: 1
 recvfrom: 1
 mremap: 1
+dup: 1
+tgkill: 1

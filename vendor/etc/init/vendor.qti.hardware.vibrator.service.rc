@@ -1,11 +1,22 @@
 on late-init
     chown system system /sys/class/qcom-haptics/primitive_duration
     chmod 0600 /sys/class/qcom-haptics/primitive_duration
-    chown system system /sys/class/leds/gpio_vibrator/state
-    chown system system /sys/class/leds/gpio_vibrator/duration
-    chown system system /sys/class/leds/gpio_vibrator/activate
-    chown system system /sys/class/leds/gpio_vibrator/gain
 
+on late-fs
+    chmod 0666 /sys/class/leds/aw_vibrator/duration
+    chmod 0666 /sys/class/leds/aw_vibrator/activate
+    chmod 0666 /sys/class/leds/aw_vibrator/gain
+    chmod 0666 /sys/class/leds/aw_vibrator/index
+    chmod 0666 /sys/class/leds/aw_vibrator/play
+    chmod 0666 /sys/class/leds/aw_vibrator/rtp
+    chmod 0777 /dev/ttyHS1
+
+    chown system system /sys/class/leds/aw_vibrator/duration
+    chown system system /sys/class/leds/aw_vibrator/activate
+    chown system system /sys/class/leds/aw_vibrator/gain
+    chown system system /sys/class/leds/aw_vibrator/index
+    chown system system /sys/class/leds/aw_vibrator/play
+    chown system system /sys/class/leds/aw_vibrator/rtp
 
 service vendor.qti.vibrator /vendor/bin/hw/vendor.qti.hardware.vibrator.service
     class hal
@@ -14,3 +25,4 @@ service vendor.qti.vibrator /vendor/bin/hw/vendor.qti.hardware.vibrator.service
 
 on late-init
     write /sys/class/leds/vibrator/trigger "transient"
+

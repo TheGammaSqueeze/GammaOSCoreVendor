@@ -38,7 +38,6 @@ low_ram=`getprop ro.config.low_ram`
 case "$baseband" in
     "apq" | "sda" | "qcs" )
     setprop ro.vendor.radio.noril yes
-    stop vendor.ril-daemon
     stop vendor.qcrild
     stop vendor.qcrild2
     stop vendor.qcrild3
@@ -57,7 +56,7 @@ case "$baseband" in
     fi
 
     if [ $modemvalue != "0x1" ] && [ $modemvalue != "0x2" ]; then
-        # start vendor.qcrild
+        start vendor.qcrild
 
         case "$baseband" in
             "svlte2a" | "csfb")
@@ -75,7 +74,7 @@ case "$baseband" in
         multisim=`getprop persist.radio.multisim.config`
 
         if [ "$multisim" = "dsds" ] || [ "$multisim" = "dsda" ]; then
-            # start vendor.qcrild2
+            start vendor.qcrild2
         elif [ "$multisim" = "tsts" ]; then
             start vendor.qcrild2
             start vendor.qcrild3
@@ -105,7 +104,6 @@ case "$baseband" in
     fi
 esac
 
-setprop ro.vendor.radio.noril yes
 #
 # Allow persistent faking of bms
 # User needs to set fake bms charge in persist.vendor.bms.fake_batt_capacity

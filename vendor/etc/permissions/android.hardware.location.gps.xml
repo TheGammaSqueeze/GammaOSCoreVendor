@@ -18,5 +18,4 @@
 <permissions>
     <feature name="android.hardware.location" />
     <feature name="android.hardware.location.network" />
-    <feature name="android.hardware.location.gps" />
 </permissions>

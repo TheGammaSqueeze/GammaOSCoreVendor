@@ -43,10 +43,10 @@
     <Config1>
 
          <TargetInfo
-             Target="bengal"
+             Target="trinket"
              NumClusters="2"
              TotalNumCores="8"
-             SocIds="417,420,444,445"
+             SocIds="394,467,468"
              SynCore="1"
              CoreCtlCpu="4"
              MinCoreOnline="0"
@@ -56,37 +56,5 @@
          <ClustersInfo Id="1" NumCores="4" Type="big" />
 
     </Config1>
-
-    <Config2>
-
-         <TargetInfo
-             Target="scuba"
-             NumClusters="1"
-             TotalNumCores="4"
-             SocIds="441"
-             SynCore="1"
-             MinCoreOnline="1"
-             CpufreqGov="1" />
-
-         <ClustersInfo Id="0" NumCores="4" Type="big" />
-
-    </Config2>
-
-    <Config3>
-
-         <TargetInfo
-             Target="khaje"
-             NumClusters="2"
-             TotalNumCores="8"
-             SocIds="518,561,585,586"
-             SynCore="1"
-             CoreCtlCpu="4"
-             MinCoreOnline="0"
-             CpufreqGov="1" />
-
-         <ClustersInfo Id="0" NumCores="4" Type="little" />
-         <ClustersInfo Id="1" NumCores="4" Type="big" />
-
-    </Config3>
 
 </TargetConfig>

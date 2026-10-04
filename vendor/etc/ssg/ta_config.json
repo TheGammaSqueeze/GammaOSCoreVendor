@@ -28,6 +28,6 @@ Confidential and Proprietary - Qualcomm Technologies, Inc.
   ],
   "ta_paths": [
     { "path": "/vendor/firmware_mnt/image"},
-    { "path": "/vendor/firmware/image/"}
+    { "path": "/vendor/firmware/image/"},
   ]
 }

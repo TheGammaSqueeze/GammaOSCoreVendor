@@ -1,4 +1,5 @@
-# Copyright (c) 2015-2021, The Linux Foundation. All rights reserved.
+
+# Copyright (c) 2018-2020, The Linux Foundation. All rights reserved.
 #
 # Redistribution and use in source and binary forms, with or without
 # modification, are permitted provided that the following conditions are
@@ -25,19 +26,15 @@
 # OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN
 # IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #
-# Changes from Qualcomm Innovation Center are provided under the following license:
-#
-# Copyright (c) 2022 Qualcomm Innovation Center, Inc. All rights reserved.
-# SPDX-License-Identifier: BSD-3-Clause-Clear
-#
+#Changes from Qualcomm Innovation Center are provided under the following license:
+#Copyright (c) 2023 Qualcomm Innovation Center, Inc. All rights reserved.
+#SPDX-License-Identifier: BSD-3-Clause-Clear
 #
 
 import /vendor/etc/init/hw/init.qti.kernel.rc
 
 on early-init
     write /proc/sys/kernel/sched_boost 1
-    exec u:r:vendor_qti_init_shell:s0 -- /vendor/bin/init.qti.early_init.sh
-    setprop ro.soc.model ${ro.vendor.qti.soc_model}
 
 on init
     write /dev/stune/foreground/schedtune.sched_boost_no_override 1
@@ -47,11 +44,12 @@ on init
     write /dev/stune/system-background/schedtune.colocate 0
     write /dev/stune/foreground/schedtune.colocate 0
     write /dev/stune/top-app/schedtune.colocate 1
-    #Moving to init as this is needed for qseecomd
     wait /dev/block/platform/soc/${ro.boot.bootdevice}
     symlink /dev/block/platform/soc/${ro.boot.bootdevice} /dev/block/bootdevice
-    start vendor.qseecomd
-    start keymaster-4-0
+    chown system system /sys/devices/platform/soc/${ro.boot.bootdevice}/auto_hibern8
+    chmod 0660 /sys/devices/platform/soc/${ro.boot.bootdevice}/auto_hibern8
+    chmod 0666 /sys/devices/soc0/select_image
+    start logd
 
 on early-fs
     start vold
@@ -70,35 +68,65 @@ on post-fs
 
 on late-fs
     wait_for_prop hwservicemanager.ready true
-    exec_start wait_for_keymaster
+    #exec_start wait_for_keymaster
     mount_all --late
 
 on post-fs-data
     mkdir /vendor/data/tombstones 0771 system system
+# Enable WLAN cold boot calibration
+    #write /sys/devices/platform/soc/b0000000.qcom,cnss-qca6390/fs_ready 1
 
 on early-boot
     start vendor.sensors
 
 on boot
     write /dev/cpuset/audio-app/cpus 1-2
-#USB controller configuration
-    setprop vendor.usb.rndis.func.name "gsi"
-    setprop vendor.usb.rmnet.func.name "gsi"
-    setprop vendor.usb.rmnet.inst.name "rmnet"
-    setprop vendor.usb.dpl.inst.name "dpl"
-    setprop vendor.usb.qdss.inst.name "qdss_sw"
-    setprop vendor.usb.controller 4e00000.dwc3
+# Add a cpuset for the camera daemon
+# We want all cores for camera
+    mkdir /dev/cpuset/camera-daemon
+    write /dev/cpuset/camera-daemon/cpus 0-7
+    write /dev/cpuset/camera-daemon/mems 0
+    chown cameraserver cameraserver /dev/cpuset/camera-daemon
+    chown cameraserver cameraserver /dev/cpuset/camera-daemon/tasks
+    chmod 0660 /dev/cpuset/camera-daemon/tasks
+
+    chmod 0666 /sys/class/gpio5_pwm2/state
+    chown system system /sys/class/gpio5_pwm2/state
+    chmod 0666 /sys/class/gpio5_pwm2/duty
+    chown system system /sys/class/gpio5_pwm2/duty
+    chmod 0666 /sys/class/gpio5_pwm2/period
+    chown system system /sys/class/gpio5_pwm2/period
+    chmod 0444 /sys/class/gpio5_pwm2/speed
+    chown system system /sys/class/gpio5_pwm2/speed
+
+on property:vendor.display.lcd_density=640
+   setprop dalvik.vm.heapgrowthlimit 512m
+
+on property:vendor.display.lcd_density=560
+   setprop dalvik.vm.heapgrowthlimit 256m
+
+on property:vendor.display.lcd_density=480
+   setprop dalvik.vm.heapgrowthlimit 256m
+
+on property:vendor.display.lcd_density=240
+   setprop dalvik.vm.heapgrowthlimit 96m
+
+on property:vendor.display.lcd_density=160
+   setprop dalvik.vm.heapgrowthlimit 96m
 
 on boot && property:persist.vendor.usb.controller.default=*
     setprop vendor.usb.controller ${persist.vendor.usb.controller.default}
 
-on property:vendor.usb.controller=*
-    setprop sys.usb.controller ${vendor.usb.controller}
-
+	
 on charger
     start vendor.power_off_alarm
-    setprop vendor.usb.controller 4e00000.dwc3
     setprop sys.usb.configfs 1
+
+#service vendor.lowi /vendor/bin/sscrpcd
+#   class core
+#   user system
+#   group system wakelock
+#   capabilities BLOCK_SUSPEND
 
 #pd-mapper
 service vendor.pd_mapper /vendor/bin/pd-mapper
@@ -152,11 +180,3 @@ service dcvs-sh /vendor/bin/init.qti.dcvs.sh
 
 on property:vendor.dcvs.prop=1
    start dcvs-sh
-
-#patch by zhongke auther:dbf close user dumplog   
-on property:ro.build.type=user
-   write /sys/kernel/dload/emmc_dload 1
-
-
-on shutdown
-    exec u:r:vendor_qti_init_shell:s0 -- /vendor/bin/vendor_discard.sh

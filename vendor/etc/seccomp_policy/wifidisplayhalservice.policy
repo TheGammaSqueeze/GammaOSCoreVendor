@@ -94,3 +94,4 @@ tgkill: 1
 gettid: 1
 sched_yield: 1
 flock: 1
+memfd_create: 1

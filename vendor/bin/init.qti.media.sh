@@ -2,7 +2,7 @@
 #==============================================================================
 #       init.qti.media.sh
 #
-# Copyright (c) 2020-2023, Qualcomm Technologies, Inc.
+# Copyright (c) 2020-2022, Qualcomm Technologies, Inc.
 # All Rights Reserved.
 # Confidential and Proprietary - Qualcomm Technologies, Inc.
 #
@@ -34,8 +34,6 @@
 # IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #===============================================================================
 
-build_codename=`getprop vendor.media.system.build_codename`
-
 if [ -f /sys/devices/soc0/soc_id ]; then
     soc_hwid=`cat /sys/devices/soc0/soc_id` 2> /dev/null
 else
@@ -43,125 +41,19 @@ else
 fi
 
 target=`getprop ro.board.platform`
+
 case "$target" in
-    "neo")
-        setprop vendor.mm.target.enable.qcom_parser 1040463
-        setprop vendor.netflix.bsp_rev ""
-        case "$soc_hwid" in
-            579)
-                setprop vendor.media.target_variant "_neo_v2"
-                ;;
-            *)
-                setprop vendor.media.target_variant "_neo_v1"
-                ;;
-        esac
+    "kona")
+        setprop vendor.mm.target.enable.qcom_parser 32
+        setprop vendor.media.target_variant "_kona"
+        setprop persist.vendor.wfd.source.hdmi.enable "true"
         ;;
-    "parrot")
-        setprop vendor.mm.target.enable.qcom_parser 1040463
-        case "$soc_hwid" in
-            568|602|581|582|653|654)
-                setprop vendor.media.target_variant "_ravelin"
-                if [ $build_codename -le "14" ]; then
-                    setprop vendor.netflix.bsp_rev "Q4450-37037-1"
-                fi
-                ;;
-            *)
-                setprop vendor.media.target_variant "_parrot_v2"
-                sku_ver=`cat /sys/devices/platform/soc/aa00000.qcom,vidc/sku_version` 2> /dev/null
-                if [ $sku_ver -eq 0 ]; then
-                    setprop vendor.media.target_variant "_parrot_v0"
-                elif [ $sku_ver -eq 1 ]; then
-                    setprop vendor.media.target_variant "_parrot_v1"
-                fi
-
-                if [ $build_codename -le "14" ]; then
-                    setprop vendor.netflix.bsp_rev "Q6450-36256-1"
-                fi
-                ;;
-        esac
+    "trinket")
+        setprop vendor.mm.target.enable.qcom_parser 16777215
+        setprop vendor.media.target_variant "_trinket"
         ;;
-    "taro")
-        setprop vendor.mm.target.enable.qcom_parser 1040463
-        case "$soc_hwid" in
-            506|547|564)
-                setprop vendor.media.target_variant "_diwali_v2"
-                setprop vendor.netflix.bsp_rev ""
-                sku_ver=`cat /sys/devices/platform/soc/aa00000.qcom,vidc/sku_version` 2> /dev/null
-                if [ $sku_ver -eq 0 ]; then
-                    setprop vendor.media.target_variant "_diwali_v0"
-                elif [ $sku_ver -eq 1 ]; then
-                    setprop vendor.media.target_variant "_diwali_v1"
-                fi
-
-                if [ $build_codename -le "14" ]; then
-                    setprop vendor.netflix.bsp_rev "Q7450-35705-1"
-                fi
-                ;;
-            591)
-                setprop vendor.media.target_variant "_ukee"
-                if [ $build_codename -le "14" ]; then
-                    setprop vendor.netflix.bsp_rev "Q8450-34634-1"
-                fi
-                ;;
-            530|531|540)
-                setprop vendor.media.target_variant "_cape"
-                if [ $build_codename -le "14" ]; then
-                    setprop vendor.netflix.bsp_rev "Q8450-34634-1"
-                fi
-                ;;
-            *)
-                setprop vendor.media.target_variant "_taro"
-                if [ $build_codename -le "14" ]; then
-                    setprop vendor.netflix.bsp_rev "Q8450-34634-1"
-                fi
-                ;;
-        esac
-        ;;
-    "lahaina")
-        case "$soc_hwid" in
-            450)
-                setprop vendor.media.target_variant "_shima_v3"
-                setprop vendor.netflix.bsp_rev ""
-                sku_ver=`cat /sys/devices/platform/soc/aa00000.qcom,vidc/sku_version` 2> /dev/null
-                if [ $sku_ver -eq 1 ]; then
-                    setprop vendor.media.target_variant "_shima_v1"
-                elif [ $sku_ver -eq 2 ]; then
-                    setprop vendor.media.target_variant "_shima_v2"
-                fi
-                ;;
-            *)
-                setprop vendor.media.target_variant "_lahaina"
-                setprop vendor.netflix.bsp_rev "Q875-32408-1"
-                ;;
-        esac
-        ;;
-    "bengal")
-        setprop vendor.mm.target.enable.qcom_parser 0
-        case "$soc_hwid" in
-            586)
-                setprop vendor.media.target_variant "_khaje_iot"
-                ;;
-            518|561|585)
-                setprop vendor.media.target_variant "_khaje_v0"
-                if [ $build_codename -le "14" ]; then
-                    setprop vendor.netflix.bsp_rev "Q6115-31409-1"
-                fi
-                ;;
-            417|444)
-                setprop vendor.media.target_variant "_bengal_v1"
-                if [ $build_codename -le "14" ]; then
-                    setprop vendor.netflix.bsp_rev "Q6115-31409-1"
-                fi
-                ;;
-        esac
-        ;;
-    "holi")
-        setprop vendor.media.target_variant "_holi"
-        ;;
-    "msmnile")
-        setprop vendor.media.target_variant "_msmnile"
-        ;;
-    "monaco")
-        setprop vendor.media.target_variant "_monaco"
+    "qcs605")
+        setprop vendor.mm.target.enable.qcom_parser 32
+        setprop vendor.media.target_variant "_qcs605"
         ;;
 esac

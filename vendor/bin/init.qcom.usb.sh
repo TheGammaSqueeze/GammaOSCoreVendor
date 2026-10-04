@@ -42,6 +42,7 @@ soc_id=`cat /sys/devices/soc0/soc_id 2> /dev/null`
 esoc_name=`cat /sys/bus/esoc/devices/esoc0/esoc_name 2> /dev/null`
 
 target=`getprop ro.board.platform`
+qhardwaretype=`getprop ro.boot.qhardware`
 
 #
 # Override USB default composition
@@ -104,7 +105,11 @@ if [ "$(getprop persist.vendor.usb.config)" == "" -a "$(getprop ro.build.type)" 
 		          setprop persist.vendor.usb.config diag,serial_cdev,rmnet,dpl,adb
 		      ;;
 	              "msmnile" | "sm6150" | "trinket" | "lito" | "atoll" | "bengal" | "lahaina" | "holi" | "taro" | "kalama" | "crow")
-			  setprop persist.vendor.usb.config diag,adb
+				  	if [ "$qhardwaretype" == "WIFIONLY" ];then
+                        setprop persist.vendor.usb.config diag,adb,serial_cdev
+                    else
+                        setprop persist.vendor.usb.config diag,serial_cdev,rmnet,dpl,qdss,adb
+            		fi
 		      ;;
 	              *)
 		          setprop persist.vendor.usb.config diag,adb
@@ -169,6 +174,7 @@ fi
 #
 # Initialize RNDIS Diag option. If unset, set it to 'none'.
 #
+setprop persist.vendor.usb.config.extra serial_cdev,diag
 diag_extra=`getprop persist.vendor.usb.config.extra`
 if [ "$diag_extra" == "" ]; then
 	setprop persist.vendor.usb.config.extra none
@@ -183,10 +189,59 @@ case "$soc_id" in
 esac
 
 #
-# Initialize UVC conifguration.
+# Initialize UVC0 conifguration.
 #
 if [ -d /config/usb_gadget/g1/functions/uvc.0 ]; then
 	setprop vendor.usb.uvc.function.init 1
+fi
+
+#
+# Initialize multi uvc conifguration.
+#
+if [ "$(getprop persist.vendor.usb.multi.uvc)" == "true" ]; then
+	for i in 1 2 3 4 5 6 7 8 9 10
+	do
+		if [ -d /config/usb_gadget/g1/functions/uvc.$i ]; then
+			cd /config/usb_gadget/g1/functions/uvc.$i
+
+			echo 1024 > streaming_maxpacket
+			echo 0 > streaming_maxburst
+			mkdir control/header/h
+			ln -s control/header/h control/class/fs/
+			ln -s control/header/h control/class/ss
+
+			mkdir -p streaming/uncompressed/u/360p
+			echo -e "166666\n333333\n666666\n1000000\n5000000\n" > streaming/uncompressed/u/360p/dwFrameInterval
+			echo 333333 > streaming/uncompressed/u/360p/dwDefaultFrameInterval
+
+			mkdir -p streaming/mjpeg/m/360p
+			echo 640 > streaming/mjpeg/m/360p/wWidth
+			echo 360 > streaming/mjpeg/m/360p/wHeight
+			echo 460800   > streaming/mjpeg/m/360p/dwMaxVideoFrameBufferSize
+			echo 18432000  > streaming/mjpeg/m/360p/dwMinBitRate
+			echo 55296000 > streaming/mjpeg/m/360p/dwMaxBitRate
+			echo -e "166666\n333333\n666666\n1000000\n5000000\n" > streaming/mjpeg/m/360p/dwFrameInterval
+			echo 333333 > streaming/mjpeg/m/360p/dwDefaultFrameInterval
+
+			echo 0x04 > /config/usb_gadget/g1/functions/uvc.$i/streaming/mjpeg/m/bmaControls
+
+			mkdir -p streaming/h264/h/360p
+			echo 640 > streaming/h264/h/360p/wWidth
+			echo 360 > streaming/h264/h/360p/wHeight
+			echo 12288000 > streaming/h264/h/360p/dwMinBitRate
+			echo 36864000 > streaming/h264/h/360p/dwMaxBitRate
+			echo 333333 > streaming/h264/h/360p/dwDefaultFrameInterval
+			echo -e "166666\n333333\n666666\n1000000\n5000000\n" > streaming/h264/h/360p/dwFrameInterval
+
+			mkdir streaming/header/h
+			ln -s streaming/uncompressed/u streaming/header/h
+			ln -s streaming/mjpeg/m streaming/header/h
+			ln -s streaming/h264/h streaming/header/h
+			ln -s streaming/header/h streaming/class/fs/
+			ln -s streaming/header/h streaming/class/hs/
+			ln -s streaming/header/h streaming/class/ss/
+		fi
+	done
 fi
 
 if [ -d /config/usb_gadget/g1/functions/uac2.0 ]; then

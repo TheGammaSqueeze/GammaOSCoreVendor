@@ -1,5 +1,5 @@
 #=============================================================================
-# Copyright (c) 2020-2024 Qualcomm Technologies, Inc.
+# Copyright (c) 2020-2022 Qualcomm Technologies, Inc.
 # All Rights Reserved.
 # Confidential and Proprietary - Qualcomm Technologies, Inc.
 #
@@ -35,11 +35,8 @@ if [ -f /sys/devices/soc0/soc_id ]; then
 fi
 
 case "$platformid" in
-    "518" | "585" | "586")
-	/vendor/bin/sh /vendor/bin/init.qti.kernel.debug-khaje.sh
-	;;
-    "417" | "420" | "444" | "445")
-	/vendor/bin/sh /vendor/bin/init.qti.kernel.debug-bengal.sh
+    "394" | "467" | "468")
+	/vendor/bin/sh /vendor/bin/init.qti.kernel.debug-trinket.sh
 	;;
      *)
 	echo "***WARNING***: Invalid chip family\n\t skipping debug script!!\n"

@@ -68,7 +68,7 @@ vendor.qti.gnss::ILocHidlGnss                                u:object_r:hal_gnss
 vendor.nxp.hardware.nfc::INqNfc                              u:object_r:hal_nfc_hwservice:s0
 vendor.qti.hardware.sensorscalibrate::ISensorsCalibrate      u:object_r:vendor_hal_sensorscalibrate_qti_hwservice:s0
 com.qualcomm.qti.imscmservice::IImsCmService                 u:object_r:vendor_hal_imsrcsd_hwservice:s0
-vendor.qti.hardware.AGMIPC::IAGM                             u:object_r:vendor_agm_hwservice:s0
+vendor.qti.hardware.AGMIPC::IAGM                             u:object_r:hal_audio_hwservice:s0
 vendor.qti.hardware.fingerprint::IQtiExtendedFingerprint     u:object_r:hal_fingerprint_hwservice:s0
 vendor.qti.hardware.radio.qtiradio::IQtiRadio                u:object_r:hal_telephony_hwservice:s0
 vendor.qti.hardware.data.latency::ILinkLatency               u:object_r:vendor_hal_latency_hwservice:s0
@@ -102,3 +102,8 @@ vendor.qti.hardware.perf::IPerfCallback                      u:object_r:vendor_h
 vendor.qti.hardware.mwqemadapter::IMwqemAdapter              u:object_r:vendor_hal_mwqemadapter_hwservice:s0
 vendor.qti.hardware.dpmservice::IDpmService                  u:object_r:vendor_hal_dpmapi_hwservice:s0
 vendor.qti.hardware.wifi.wificfr::IWificfr                   u:object_r:hal_wificfr_hwservice:s0
+com.fingerprints.extension::IFingerprintEngineering u:object_r:hal_fingerprint_hwservice:s0
+com.fingerprints.extension::IFingerprintAuthenticator u:object_r:hal_fingerprint_hwservice:s0
+com.fingerprints.extension::IFingerprintNavigation u:object_r:hal_fingerprint_hwservice:s0
+com.fingerprints.extension::IFingerprintSensorTest u:object_r:hal_fingerprint_hwservice:s0
+com.fingerprints.extension::IFingerprintCalibration u:object_r:hal_fingerprint_hwservice:s0
