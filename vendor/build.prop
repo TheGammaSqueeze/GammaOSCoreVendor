@@ -288,3 +288,8 @@ sys.usb.mtp.batchcancel=1
 vendor.usb.use_gadget_hal=1
 debug.stagefright.ccodec=4
 # end of file
+
+# GammaOS: permanent wireless adb (no pairing, legacy tcpip)
+persist.adb.tcp.port=5555
+# GammaOS: default USB composition = standard Google MTP+ADB (18D1/4EE2), Windows-recognizable
+persist.vendor.usb.config=adb

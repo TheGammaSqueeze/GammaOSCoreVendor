@@ -15,17 +15,23 @@ fi
 
 cd "$(dirname "$0")"
 
-# --- Recreate empty directories git cannot track -------------------------------
-# git does not store empty directories. These vendor dirs contain no files or
-# symlinks in their subtree, so a fresh checkout is missing them and e2fsdroid
-# would omit mountpoints the platform expects. Recreate them before building.
-# (Regenerate this list with:
-#    for d in $(find vendor -type d|sort); do \
-#      [ -z "$(find "$d" -mindepth 1 ! -type d -print -quit)" ] && echo "$d"; done )
-mkdir -p vendor/bt_firmware
-mkdir -p vendor/dsp
-mkdir -p vendor/firmware_mnt
-mkdir -p vendor/lost+found
+# --- Recreate every directory git cannot guarantee ----------------------------
+# git restores a directory only when it still contains a tracked file, so empty
+# directories (and any whose contents are all git-dropped) vanish on a fresh
+# clone. vendor_dirs.txt is the complete, committed list of vendor directories;
+# recreate them all here so none is ever missing, whatever the checkout state.
+# Regenerate vendor_dirs.txt with ./fs_config.sh (it writes it alongside
+# fs_config.txt from the authoritative source tree).
+if [ ! -f vendor_dirs.txt ]; then
+    echo "ERROR: vendor_dirs.txt missing; run ./fs_config.sh against the source tree" >&2
+    exit 1
+fi
+while IFS= read -r d; do
+    [ -n "$d" ] && mkdir -p "vendor/$d"
+done < vendor_dirs.txt
+# lost+found is a reserved inode mke2fs owns; e2fsdroid keeps the source mode
+# for it rather than the fs_config mode, so set it to match the device (0700).
+chmod 700 vendor/lost+found 2>/dev/null || true
 
 # --- Size the ext4 image from the actual tree ---------------------------------
 # Sized generously: content + 30% + 64 MiB headroom, inodes for every entry

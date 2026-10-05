@@ -3,7 +3,8 @@
 # vendor tree. git stores none of these (no ownership, no xattrs, only the
 # executable bit of the mode), so, like selinux_contexts.txt preserves SELinux
 # labels across a clone, this file preserves ownership/mode/caps. e2fsdroid
-# consumes it via -C. Must run as root to read the real metadata.
+# consumes it via -C. Also writes vendor_dirs.txt (every directory) so
+# build.sh can recreate directories git drops. Must run as root.
 #
 # Numeric uids/gids are written verbatim: the device uses Android AIDs such as
 # 1000 (system), 1002 (bluetooth), 1021 (gps), 2000 (shell); these are correct
@@ -36,7 +37,7 @@ def capmask(path):
         if c.startswith("cap_"): c=c[4:]
         if c in CAP: m|=(1<<CAP[c])
     return m
-entries=[]
+entries=[]; dirs=[]
 for dp,dns,fns in os.walk(SRC):
     dns.sort()
     for p in [dp]+sorted(os.path.join(dp,n) for n in fns):
@@ -47,10 +48,15 @@ for p in entries:
     lst=os.lstat(p)
     rel=os.path.relpath(p,SRC)
     rel='' if rel=='.' else rel            # vendor root -> empty name
+    if st.S_ISDIR(lst.st_mode) and rel:
+        dirs.append(rel)
     cm=0 if st.S_ISLNK(lst.st_mode) else capmask(p)
     lines.append("%s %d %d %04o capabilities=0x%x"%(rel,lst.st_uid,lst.st_gid,st.S_IMODE(lst.st_mode),cm))
 open("fs_config.txt","w").write("\n".join(lines)+"\n")
+# vendor_dirs.txt: every directory, so build.sh can recreate the ones git drops
+open("vendor_dirs.txt","w").write("\n".join(sorted(dirs))+"\n")
 caps=[l for l in lines if not l.endswith("0x0")]
 print("fs_config.txt: %d entries, %d with capabilities"%(len(lines),len(caps)))
+print("vendor_dirs.txt: %d directories"%len(dirs))
 for l in caps: print("  ",l)
 PY
