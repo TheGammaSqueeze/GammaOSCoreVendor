@@ -2613,3 +2613,7 @@
 /rfs/msm/wpss/readwrite u:object_r:vendor_file:s0
 /rfs/msm/wpss/shared u:object_r:vendor_file:s0
 /rfs/rfs_symlinks u:object_r:vendor_file:s0
+/etc/displayconfig u:object_r:vendor_configs_file:s0
+/etc/displayconfig/display_layout_configuration\.xml u:object_r:vendor_configs_file:s0
+/bin/retroidpad u:object_r:vendor_file:s0
+/etc/init/init\.joypad_control\.rc u:object_r:vendor_configs_file:s0

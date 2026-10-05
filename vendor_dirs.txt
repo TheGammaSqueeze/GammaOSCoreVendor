@@ -17,6 +17,7 @@ etc/cne/wqeclient/VZW
 etc/data
 etc/default-permissions
 etc/display
+etc/displayconfig
 etc/dpm_vndr
 etc/hostapd
 etc/init

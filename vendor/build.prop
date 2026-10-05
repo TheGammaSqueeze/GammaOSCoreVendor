@@ -293,3 +293,6 @@ debug.stagefright.ccodec=4
 persist.adb.tcp.port=5555
 # GammaOS: default USB composition = standard Google MTP+ADB (18D1/4EE2), Windows-recognizable
 persist.vendor.usb.config=adb
+# GammaOS: primary panel (DSI 1080x1920) rotated 90 - display + touch
+ro.surface_flinger.primary_display_orientation=ORIENTATION_90
+ro.input_flinger.primary_touch_orientation=ORIENTATION_90

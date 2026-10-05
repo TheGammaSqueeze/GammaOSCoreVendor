@@ -2613,3 +2613,7 @@ rfs/msm/wpss/readonly/vendor/firmware 0 0 0644 capabilities=0x0
 rfs/msm/wpss/readwrite 0 0 0644 capabilities=0x0
 rfs/msm/wpss/shared 0 0 0644 capabilities=0x0
 rfs/rfs_symlinks 0 0 0644 capabilities=0x0
+etc/displayconfig 0 2000 0755 capabilities=0x0
+etc/displayconfig/display_layout_configuration.xml 0 0 0644 capabilities=0x0
+bin/retroidpad 0 2000 0755 capabilities=0x0
+etc/init/init.joypad_control.rc 0 0 0644 capabilities=0x0

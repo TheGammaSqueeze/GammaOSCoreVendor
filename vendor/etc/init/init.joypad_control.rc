@@ -1,0 +1,12 @@
+service retroidpad /vendor/bin/retroidpad "Retroid Pocket Controller"
+    class main
+    user root
+    group root system
+    oneshot
+    disabled
+
+on post-fs-data
+    start retroidpad
+
+on shutdown
+   stop retroidpad
