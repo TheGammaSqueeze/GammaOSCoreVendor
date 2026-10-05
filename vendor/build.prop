@@ -291,8 +291,36 @@ debug.stagefright.ccodec=4
 
 # GammaOS: permanent wireless adb (no pairing, legacy tcpip)
 persist.adb.tcp.port=5555
-# GammaOS: default USB composition = standard Google MTP+ADB (18D1/4EE2), Windows-recognizable
+# GammaOS: default USB composition = adb (adb-only gadget), set up for permanent wireless adb too
 persist.vendor.usb.config=adb
-# GammaOS: primary panel (DSI 1080x1920) rotated 90 - display + touch
+# Dual-screen topology (hardware-natural primary):
+#   PRIMARY  = DSI 1080p TOP panel  (port 130, local:4630947073007009410, HWC display 0)
+#   SECONDARY= DP GH7005 BOTTOM panel(port 4,  local:4613330929536132356)
+# The bottom panel is an INDEPENDENT secondary (not a mirror): the framework
+# RRO vendor/overlay/RPDuoLiteFrameworkOverlay.apk sets
+# config_localDisplaysMirrorContent=false so the secondary gets FLAG_OWN_CONTENT_ONLY,
+# while FLAG_PRESENTATION stays set so games/apps can still project to it.
+# Primary (top DSI, 1080x1920) presented as 1920x1080 landscape.
 ro.surface_flinger.primary_display_orientation=ORIENTATION_90
-ro.input_flinger.primary_touch_orientation=ORIENTATION_90
+# Touch->display mapping (verified). Top digitizer (himax) to the primary (display 0);
+# bottom digitizer (fts_ts) to the secondary (display 1). Logical-id form is used because
+# uniqueId/type forms miss these panels. himax rotated 90 to match the landscape top panel.
+persist.gif.map.himax_touchscreen=0
+persist.gif.rot.himax_touchscreen=90
+persist.gif.map.fts_ts=1
+# --- Deterministic dual-panel pinning (framework + SF patches) ---
+# Pin the framework DEFAULT_DISPLAY to the panel on this physical port regardless of
+# boot-time connector enumeration order (LocalDisplayAdapter). 130 = DSI top panel.
+persist.gammaos.primary_port=130
+# Per-physical-port physical orientation, applied to BOTH primary and secondary so a
+# panel's orientation never depends on which display SF calls primary (SurfaceFlinger
+# getPhysicalDisplayOrientation). Top DSI (port 130) landscape; bottom DP (port 4) native.
+persist.gsf.port_rot.130=ORIENTATION_90
+persist.gsf.port_rot.4=ORIENTATION_0
+# GammaOS nano routes the launcher/XMB to the top panel (port 130).
+persist.gammaos.nano.primary_display=130
+# Enable the GammaOS secondary display (independent bottom panel + its home). The bottom
+# shows the secondary home and games/apps can project to it.
+persist.gammaos.secondary_display.enabled=1
+persist.gammaos.multidisplay.secondary_display=1
+persist.gammaos.multidisplay.dual_focus=1

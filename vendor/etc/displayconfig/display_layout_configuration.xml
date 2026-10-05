@@ -2,9 +2,11 @@
 <layouts>
   <layout>
     <state>-1</state>
+    <!-- DEFAULT/PRIMARY = DSI 1080p TOP panel (port 130) -->
     <display enabled="true" defaultDisplay="true">
       <address>4630947073007009410</address>
     </display>
+    <!-- SECONDARY = DP GH7005 BOTTOM panel (port 4) -->
     <display enabled="true" defaultDisplay="false">
       <address>4613330929536132356</address>
     </display>

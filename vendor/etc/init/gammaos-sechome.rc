@@ -1,0 +1,9 @@
+service gammaos_sechome /vendor/bin/gammaos-sechome.sh
+    class late_start
+    user root
+    group root system
+    oneshot
+    disabled
+
+on property:sys.boot_completed=1
+    start gammaos_sechome

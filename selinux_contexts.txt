@@ -1187,7 +1187,6 @@
 /lib/libdiag\.so u:object_r:vendor_file:s0
 /lib/libdiagjni\.so u:object_r:vendor_file:s0
 /lib/libdisp-aba\.so u:object_r:vendor_file:s0
-/lib/libdisplayconfig\.qti\.so u:object_r:vendor_file:s0
 /lib/libdisplaydebug\.so u:object_r:vendor_file:s0
 /lib/libdisplayqos\.so u:object_r:vendor_file:s0
 /lib/libdisplayskuutils\.so u:object_r:vendor_file:s0
@@ -1976,7 +1975,6 @@
 /lib64/libdiag\.so u:object_r:vendor_file:s0
 /lib64/libdiagjni\.so u:object_r:vendor_file:s0
 /lib64/libdisp-aba\.so u:object_r:vendor_file:s0
-/lib64/libdisplayconfig\.qti\.so u:object_r:vendor_file:s0
 /lib64/libdisplaydebug\.so u:object_r:vendor_file:s0
 /lib64/libdisplayqos\.so u:object_r:vendor_file:s0
 /lib64/libdisplayskuutils\.so u:object_r:vendor_file:s0
@@ -2243,7 +2241,6 @@
 /lib64/libwfdcodecv4l2_proprietary\.so u:object_r:vendor_file:s0
 /lib64/libwfdcommonutils_proprietary\.so u:object_r:vendor_file:s0
 /lib64/libwfdconfigutils_proprietary\.so u:object_r:vendor_file:s0
-/lib64/libwfddisplayconfig_vendor\.so u:object_r:vendor_file:s0
 /lib64/libwfdhdcpcp\.so u:object_r:vendor_file:s0
 /lib64/libwfdhdcpservice_proprietary\.so u:object_r:vendor_file:s0
 /lib64/libwfdmminterface_proprietary\.so u:object_r:vendor_file:s0
@@ -2613,7 +2610,14 @@
 /rfs/msm/wpss/readwrite u:object_r:vendor_file:s0
 /rfs/msm/wpss/shared u:object_r:vendor_file:s0
 /rfs/rfs_symlinks u:object_r:vendor_file:s0
-/etc/displayconfig u:object_r:vendor_configs_file:s0
-/etc/displayconfig/display_layout_configuration\.xml u:object_r:vendor_configs_file:s0
 /bin/retroidpad u:object_r:vendor_file:s0
 /etc/init/init\.joypad_control\.rc u:object_r:vendor_configs_file:s0
+/overlay u:object_r:vendor_overlay_file:s0
+/overlay/RPDuoLiteFrameworkOverlay\.apk u:object_r:vendor_overlay_file:s0
+/lib/libdisplayconfig\.qti\.so u:object_r:vendor_file:s0
+/lib64/libdisplayconfig\.qti\.so u:object_r:vendor_file:s0
+/lib64/libwfddisplayconfig_vendor\.so u:object_r:vendor_file:s0
+/etc/displayconfig u:object_r:vendor_configs_file:s0
+/etc/displayconfig/display_layout_configuration\.xml u:object_r:vendor_configs_file:s0
+/bin/gammaos-sechome\.sh u:object_r:vendor_file:s0
+/etc/init/gammaos-sechome\.rc u:object_r:vendor_configs_file:s0

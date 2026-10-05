@@ -17,7 +17,6 @@ etc/cne/wqeclient/VZW
 etc/data
 etc/default-permissions
 etc/display
-etc/displayconfig
 etc/dpm_vndr
 etc/hostapd
 etc/init
@@ -114,3 +113,5 @@ rfs/msm/slpi/readonly/vendor
 rfs/msm/wpss
 rfs/msm/wpss/readonly
 rfs/msm/wpss/readonly/vendor
+overlay
+etc/displayconfig
