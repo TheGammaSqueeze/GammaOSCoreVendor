@@ -342,6 +342,10 @@ persist.gammaos.nano.cc.bl_bottom=panel1-backlight
 persist.gammaos.nano.cc.bottomdisplay=1
 # The control centre reads the bottom DP digitizer directly (RG DS default gt9xx-0).
 persist.gammaos.nano.cc.touchdev=fts_ts
+# Per-display (top app / bottom app) media volume, as on the RG DS.
+persist.gammaos.audio.multivolume=true
+# Split brightness slot d1 is the BOTTOM panel here (the top on the RG DS).
+persist.gammaos.nano.cc.d1_is_top=0
 # Framework split brightness slots: d0 = top DSI, d1 = bottom DP (MCU-driven).
 persist.gammaos.multidisplay.split_brightness.d0.path=/sys/class/backlight/panel0-backlight
 persist.gammaos.multidisplay.split_brightness.d1.path=/sys/class/backlight/panel1-backlight
