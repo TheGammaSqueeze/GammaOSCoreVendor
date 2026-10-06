@@ -2610,9 +2610,13 @@
         <ctl name="Voice Sidetone Enable" value="1" />
     </path>
 
+    <!-- GammaOS: the built-in DMIC ran at 65 (-19 dB) and the DSP mic calibration never
+         loads on this device (ACDB device 4 lookup fails, stock behaviour), so DS games heard
+         almost nothing. 104 (+20 dB) chosen by ear with the DS mic test ROM together with the
+         drastic-nano Mic Noise Gate (persist mic_gate=3): higher values bring up the room noise. -->
     <path name="speaker-mic">
         <path name="dmic3" />
-        <ctl name="TX_DEC0 Volume" value="65" />
+        <ctl name="TX_DEC0 Volume" value="104" />
     </path>
 
     <path name="speaker-protected">
@@ -2660,7 +2664,7 @@
 
     <path name="handset-mic">
         <path name="dmic3" />
-        <ctl name="TX_DEC0 Volume" value="65" />
+        <ctl name="TX_DEC0 Volume" value="104" />
     </path>
 
     <path name="headphones">
