@@ -335,6 +335,10 @@ persist.gammaos.nano.drm_home_resume=1
 # The DRM home keeps probing for the DP bottom panel until both panels are lit (its
 # HPD arrives ~7 s after the bridge is powered, past the fixed 60 s window on slow boots).
 persist.gammaos.nano.drm_displays=2
+# drastic-nano Low Latency off by default: its combined blocking commit anchors the loop
+# to the DP bottom panel and its one-slot secondary delay is a frame of lag here (the
+# phase trick it implements is for the RG DS twin DSI panels).
+persist.gammaos.drastic_nano.low_latency=0
 # Bottom-screen control centre while a single-screen SurfaceFlinger app runs on
 # the top panel. The top DSI is logical display 0 here (the RG DS default is 2).
 persist.gammaos.nano.ps3xmb.controlcenter=1
