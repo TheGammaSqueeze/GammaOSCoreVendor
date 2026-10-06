@@ -342,12 +342,19 @@ persist.gammaos.nano.drm_displays=2
 # runs the shader at its own on-panel size. Every row is user-changeable in the game menu.
 persist.gammaos.drastic_nano.autoload=1
 persist.gammaos.drastic_nano.drm_half_res=0
-persist.gammaos.drastic_nano.fps_counter=0
+persist.gammaos.drastic_nano.fps_counter=1
 persist.gammaos.drastic_nano.frame_sync=0
 persist.gammaos.drastic_nano.frameskip=0
 persist.gammaos.drastic_nano.hires3d=1
 persist.gammaos.drastic_nano.low_latency=0
-persist.gammaos.drastic_nano.shader=4xLCD_Subpixel
+persist.gammaos.drastic_nano.shader=None
+persist.gammaos.drastic_nano.ff_limit=0
+# Per-screen scale as tuned on the device: the turned top DSI at 93.0 percent of its
+# aspect fit, the bottom DP at the largest integer multiple of the DS screen (Integer),
+# each screen shaded at its own on-panel size.
+persist.gammaos.drastic_nano.drm_screen_fit=1
+persist.gammaos.drastic_nano.drm_top_scale=93.0
+persist.gammaos.drastic_nano.drm_bottom_scale=0
 persist.gammaos.drastic_nano.drm_screen_shader=1
 # Built-in microphone: the codec capture gain is raised in mixer_paths_idp.xml (104); the
 # noise gate in drastic-nano (High) and its mic level (1) were chosen with it by ear. The
