@@ -335,10 +335,26 @@ persist.gammaos.nano.drm_home_resume=1
 # The DRM home keeps probing for the DP bottom panel until both panels are lit (its
 # HPD arrives ~7 s after the bridge is powered, past the fixed 60 s window on slow boots).
 persist.gammaos.nano.drm_displays=2
-# drastic-nano Low Latency off by default: its combined blocking commit anchors the loop
-# to the DP bottom panel and its one-slot secondary delay is a frame of lag here (the
-# phase trick it implements is for the RG DS twin DSI panels).
+# drastic-nano defaults, mirroring the RG DS tuned set. Low Latency ships OFF here: its
+# combined blocking commit anchors the loop to the DP bottom panel and its one-slot
+# secondary delay is a frame of bottom-screen lag (the phase trick is for the RG DS twin
+# DSI panels). Shader Per Screen on: the two panels differ in size, so each DS screen
+# runs the shader at its own on-panel size. Every row is user-changeable in the game menu.
+persist.gammaos.drastic_nano.autoload=1
+persist.gammaos.drastic_nano.drm_half_res=0
+persist.gammaos.drastic_nano.fps_counter=0
+persist.gammaos.drastic_nano.frame_sync=0
+persist.gammaos.drastic_nano.frameskip=0
+persist.gammaos.drastic_nano.hires3d=1
 persist.gammaos.drastic_nano.low_latency=0
+persist.gammaos.drastic_nano.shader=4xLCD_Subpixel
+persist.gammaos.drastic_nano.drm_screen_shader=1
+# AAudio MMAP / EXCLUSIVE, as on the RG DS. The Qualcomm HAL declares an
+# mmap_no_irq_out mix port (48 kHz stereo), so an EXCLUSIVE low-latency client such as
+# drastic-nano bypasses the mixer. 2 is AUTO: try mmap, fall back to the legacy path.
+aaudio.mmap_policy=2
+aaudio.mmap_exclusive_policy=2
+aaudio.hw_burst_min_usec=2000
 # Bottom-screen control centre while a single-screen SurfaceFlinger app runs on
 # the top panel. The top DSI is logical display 0 here (the RG DS default is 2).
 persist.gammaos.nano.ps3xmb.controlcenter=1
