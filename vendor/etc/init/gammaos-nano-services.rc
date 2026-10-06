@@ -1,0 +1,7 @@
+# Nano mode (sys.gammaos.minimal_boot=1) starts class main but not late_start,
+# which keeps the DRM home light. On this SoC the WCN3990 Wi-Fi needs
+# cnss-daemon (class late_start in init.qcom.rc) for the firmware and QMI
+# side: without it the cld driver never completes its configuration, the
+# HAL's driver-state write fails with EINVAL and Wi-Fi cannot be enabled.
+on property:sys.gammaos.minimal_boot=1
+    start cnss-daemon
