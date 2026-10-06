@@ -6,12 +6,25 @@
 on property:sys.gammaos.minimal_boot=1
     start cnss-daemon
 
-# Boot chime: the sound card only exists once the ADSP has loaded its
-# firmware. init.qti.kernel.rc boots the ADSP at early-boot (~10 s), the
-# audio HAL (class hal) started at ~11 s and the card registered ~11.8 s,
-# while the nano boot animation starts at ~6.7 s. The firmware partitions are
-# mounted by the hw rc's mount_all in fs/late-fs, which runs before this block,
-# so boot the ADSP here (~6.4 s); the audio HAL service is class early_hal
-# (started at late-fs) and retries the sound card until it appears.
+# Boot chime: the audio HAL service is class early_hal (late-fs, ~6.7 s) so it
+# is registered by the time the sound card appears; the HAL itself waits for
+# the card. The ADSP keeps its stock early-boot bring-up: booting it at
+# late-fs, before pd-mapper and rmt_storage (class core, started at boot),
+# left its audio services waiting and the card registered later, not earlier.
+
+
+# Boot chime: the sound card only registers once the ADSP's audio services
+# are up, and on this SoC those wait for the MODEM (the ADSP retries its modem
+# SSR hand-shake until the modem is up). The modem is powered by per_proxy,
+# which the stock rc starts with class core at boot (~12.3 s), so the modem
+# came up at ~14.4 s and the card at ~18 s while the nano boot animation
+# starts at ~6.7 s. Start the modem helpers at late-fs instead: pd-mapper and
+# the peripheral manager need only /vendor and qrtr, rmt_storage the modem
+# partitions, all of which are up by then. per_proxy (the modem vote) is
+# started here as well: its stock per_mgr=running trigger was only serviced
+# at ~13 s.
 on late-fs
-    exec_background u:r:vendor_qti_init_shell_bg:s0 -- /vendor/bin/init.qti.write.sh /sys/kernel/boot_adsp/boot 1
+    start vendor.pd_mapper
+    start vendor.rmt_storage
+    start vendor.per_mgr
+    start vendor.per_proxy
