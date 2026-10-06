@@ -332,6 +332,9 @@ persist.gammaos.nano.drastic_nano=1
 persist.gammaos.nano.drm_indep_flip=1
 # The DRM home returns after a drastic-nano session launched from the overlay.
 persist.gammaos.nano.drm_home_resume=1
+# The DRM home keeps probing for the DP bottom panel until both panels are lit (its
+# HPD arrives ~7 s after the bridge is powered, past the fixed 60 s window on slow boots).
+persist.gammaos.nano.drm_displays=2
 # Bottom-screen control centre while a single-screen SurfaceFlinger app runs on
 # the top panel. The top DSI is logical display 0 here (the RG DS default is 2).
 persist.gammaos.nano.ps3xmb.controlcenter=1
