@@ -1,0 +1,11 @@
+# GammaOS RP Duo Lite: keep the charger input limit at the Type-C advertised current in
+# nano mode (see gammaos_usb_icl.sh). The USB gadget's "unconfigured" 100 mA vote is never
+# lifted on the nano boot, which left a 45 W charger discharging the battery.
+service gammaos_usb_icl /vendor/bin/gammaos_usb_icl.sh
+    class main
+    user root
+    group root system
+    disabled
+
+on property:sys.gammaos.minimal_boot=1
+    start gammaos_usb_icl
