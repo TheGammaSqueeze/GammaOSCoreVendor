@@ -330,6 +330,23 @@ persist.gammaos.nano.drastic_nano=1
 # own cadence (pace on the top DSI, flip the DP as soon as its previous flip
 # lands) instead of gating every frame on both vblanks.
 persist.gammaos.nano.drm_indep_flip=1
+# The DRM home returns after a drastic-nano session launched from the overlay.
+persist.gammaos.nano.drm_home_resume=1
+# Bottom-screen control centre while a single-screen SurfaceFlinger app runs on
+# the top panel. The top DSI is logical display 0 here (the RG DS default is 2).
+persist.gammaos.nano.ps3xmb.controlcenter=1
+persist.gammaos.nano.cc.topdisplay=0
+# Control centre brightness sliders: panel0 is the top DSI, panel1 the bottom DP.
+persist.gammaos.nano.cc.bl_top=panel0-backlight
+persist.gammaos.nano.cc.bl_bottom=panel1-backlight
+persist.gammaos.nano.cc.bottomdisplay=1
+# Framework split brightness slots: d0 = top DSI, d1 = bottom DP (MCU-driven).
+persist.gammaos.multidisplay.split_brightness.d0.path=/sys/class/backlight/panel0-backlight
+persist.gammaos.multidisplay.split_brightness.d1.path=/sys/class/backlight/panel1-backlight
+persist.gammaos.multidisplay.split_brightness.d0.min=1
+persist.gammaos.multidisplay.split_brightness.d0.max=255
+persist.gammaos.multidisplay.split_brightness.d1.min=1
+persist.gammaos.multidisplay.split_brightness.d1.max=255
 # Enable the GammaOS secondary display (independent bottom panel + its home). The bottom
 # shows the secondary home and games/apps can project to it.
 persist.gammaos.secondary_display.enabled=1
