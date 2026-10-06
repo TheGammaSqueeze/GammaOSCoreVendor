@@ -319,6 +319,9 @@ persist.gsf.port_rot.130=ORIENTATION_90
 persist.gsf.port_rot.4=ORIENTATION_0
 # GammaOS nano routes the launcher/XMB to the top panel (port 130).
 persist.gammaos.nano.primary_display=130
+# Nano DRM-direct mode: the top DSI panel needs a horizontal flip to read upright
+# (the bottom DP uses its own matrix, default 0deg native landscape).
+persist.gammaos.nano.drm_flip_h=1
 # Enable the GammaOS secondary display (independent bottom panel + its home). The bottom
 # shows the secondary home and games/apps can project to it.
 persist.gammaos.secondary_display.enabled=1
