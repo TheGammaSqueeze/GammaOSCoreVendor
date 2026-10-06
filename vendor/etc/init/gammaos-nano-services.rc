@@ -18,12 +18,26 @@ on property:sys.gammaos.minimal_boot=1
 # SSR hand-shake until the modem is up). The modem is powered by per_proxy,
 # which the stock rc starts with class core at boot (~12.3 s), so the modem
 # came up at ~14.4 s and the card at ~18 s while the nano boot animation
-# starts at ~6.7 s. Start the modem helpers at late-fs instead: pd-mapper and
+# starts at ~6.7 s. Start the modem helpers at post-fs instead (right after the early mount_all
+# that brings up the firmware and persist partitions; late-fs only ran at
+# ~8.9 s here): pd-mapper and
 # the peripheral manager need only /vendor and qrtr, rmt_storage the modem
 # partitions, all of which are up by then. per_proxy (the modem vote) is
 # started here as well: its stock per_mgr=running trigger was only serviced
-# at ~13 s.
-on late-fs
+# at ~13 s. irsc_util first: it installs the IPC router security rules; until
+# it has run (stock: class core at boot, ~12.3 s) the QMI service registry
+# traffic of pd-mapper (user system) is refused and the audio services stall.
+on post-fs
+    # Kernel firmware search path. /vendor/firmware holds the ADSP and CDSP
+    # images this device actually runs (ueventd searches it first; the copy on
+    # the firmware partition is an older build with different segment sizes,
+    # so pointing the kernel there makes the ADSP fail with "truncated file").
+    # With the path set, the ADSP segments and the smart-PA tuning load
+    # directly instead of waiting for ueventd (the first segment waited ~1.7 s);
+    # files not present there (the modem image) keep the ueventd fallback.
+    write /sys/module/firmware_class/parameters/path /vendor/firmware
+    start irsc_util
+    start vendor.tftp_server
     start vendor.pd_mapper
     start vendor.rmt_storage
     start vendor.per_mgr
