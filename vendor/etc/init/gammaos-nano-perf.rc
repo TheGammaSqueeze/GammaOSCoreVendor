@@ -1,0 +1,9 @@
+service gammaos_nano_perf /vendor/bin/gammaos-nano-perf.sh
+    class late_start
+    user root
+    group root system
+    oneshot
+    disabled
+
+on property:sys.gammaos.minimal_boot=1
+    start gammaos_nano_perf

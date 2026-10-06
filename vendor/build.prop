@@ -326,6 +326,10 @@ persist.gammaos.nano.drm_flip_h=1
 # nano's DRM dual-panel path) instead of the com.dsemu.drastic APK, whose Dual-Stack
 # tall-canvas mode assumes two identical stacked panels and goes blank here.
 persist.gammaos.nano.drastic_nano=1
+# The DSI and DP panels run on unlocked vblank clocks: present each CRTC on its
+# own cadence (pace on the top DSI, flip the DP as soon as its previous flip
+# lands) instead of gating every frame on both vblanks.
+persist.gammaos.nano.drm_indep_flip=1
 # Enable the GammaOS secondary display (independent bottom panel + its home). The bottom
 # shows the secondary home and games/apps can project to it.
 persist.gammaos.secondary_display.enabled=1

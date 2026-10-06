@@ -2622,3 +2622,5 @@
 /bin/gammaos-sechome\.sh u:object_r:vendor_file:s0
 /etc/init/gammaos-sechome\.rc u:object_r:vendor_configs_file:s0
 /lib64/libgammaos_drmmaster\.so u:object_r:same_process_hal_file:s0
+/bin/gammaos-nano-perf\.sh u:object_r:vendor_file:s0
+/etc/init/gammaos-nano-perf\.rc u:object_r:vendor_configs_file:s0

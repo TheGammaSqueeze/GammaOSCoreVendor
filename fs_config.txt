@@ -2622,3 +2622,5 @@ etc/displayconfig/display_layout_configuration.xml 0 0 0644 capabilities=0x0
 bin/gammaos-sechome.sh 0 2000 0755 capabilities=0x0
 etc/init/gammaos-sechome.rc 0 0 0644 capabilities=0x0
 lib64/libgammaos_drmmaster.so 0 0 0644 capabilities=0x0
+bin/gammaos-nano-perf.sh 0 2000 0755 capabilities=0x0
+etc/init/gammaos-nano-perf.rc 0 0 0644 capabilities=0x0
