@@ -322,6 +322,10 @@ persist.gammaos.nano.primary_display=130
 # Nano DRM-direct mode: the top DSI panel needs a horizontal flip to read upright
 # (the bottom DP uses its own matrix, default 0deg native landscape).
 persist.gammaos.nano.drm_flip_h=1
+# Route DS ROM launches to the drastic-nano binary (renders both DS screens through
+# nano's DRM dual-panel path) instead of the com.dsemu.drastic APK, whose Dual-Stack
+# tall-canvas mode assumes two identical stacked panels and goes blank here.
+persist.gammaos.nano.drastic_nano=1
 # Enable the GammaOS secondary display (independent bottom panel + its home). The bottom
 # shows the secondary home and games/apps can project to it.
 persist.gammaos.secondary_display.enabled=1

@@ -6,6 +6,10 @@
 # wrapper also shells out to `cmd`). Verify the activity actually landed and
 # retry across the boot window (the DP connector can come up late).
 export PATH=/system/bin:/system/xbin:/vendor/bin
+# Nano DRM-direct mode (sys.gammaos.minimal_boot=1) drives both panels itself and
+# owns the DRM master; the SurfaceFlinger secondary home must NOT be launched there
+# or it flashes the SF launcher onto the bottom panel. SF-mode only.
+if [ "$(getprop sys.gammaos.minimal_boot)" = "1" ]; then exit 0; fi
 while [ "$(getprop sys.boot_completed)" != "1" ]; do sleep 1; done
 sleep 6
 n=0
