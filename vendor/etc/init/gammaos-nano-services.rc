@@ -5,3 +5,13 @@
 # HAL's driver-state write fails with EINVAL and Wi-Fi cannot be enabled.
 on property:sys.gammaos.minimal_boot=1
     start cnss-daemon
+
+# Boot chime: the sound card only exists once the ADSP has loaded its
+# firmware. init.qti.kernel.rc boots the ADSP at early-boot (~10 s), the
+# audio HAL (class hal) started at ~11 s and the card registered ~11.8 s,
+# while the nano boot animation starts at ~6.7 s. The firmware partitions are
+# mounted by the hw rc's mount_all in fs/late-fs, which runs before this block,
+# so boot the ADSP here (~6.4 s); the audio HAL service is class early_hal
+# (started at late-fs) and retries the sound card until it appears.
+on late-fs
+    exec_background u:r:vendor_qti_init_shell_bg:s0 -- /vendor/bin/init.qti.write.sh /sys/kernel/boot_adsp/boot 1
