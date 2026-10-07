@@ -360,6 +360,9 @@ persist.gammaos.drastic_nano.drm_screen_shader=1
 # the little cores, which idle between frames under the stock governors and ramp late
 # (55-58 fps with 27-34 ms worst frames in stock mode; 60 / 18 ms pinned to the big cores).
 persist.gammaos.drastic_nano.cpu_mask=f0
+# Same for the home (nano): its render thread idled on the little cluster in stock mode
+# (30% doubled frames while navigating, 4% in max).
+persist.gammaos.nano.cpu_mask=f0
 # Built-in microphone: the codec capture gain is raised in mixer_paths_idp.xml (104); the
 # noise gate in drastic-nano (High) and its mic level (1) were chosen with it by ear. The
 # mic_level_v2 marker keeps drastic-nano's one-time reset of mic_level from undoing this.
