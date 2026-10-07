@@ -2630,6 +2630,8 @@
 /bin/setfan_cool\.sh u:object_r:vendor_file:s0
 /bin/setfan_off\.sh u:object_r:vendor_file:s0
 /bin/setfan_auto\.sh u:object_r:vendor_file:s0
+/bin/setup\.sh u:object_r:vendor_file:s0
+/etc/GammaEQ\.tar\.gz u:object_r:vendor_configs_file:s0
 /bin/gammaos_usb_icl\.sh u:object_r:vendor_file:s0
 /etc/init/init\.gammaos_charge\.rc u:object_r:vendor_configs_file:s0
 /etc/init/init\.gammaos_fan\.rc u:object_r:vendor_configs_file:s0
