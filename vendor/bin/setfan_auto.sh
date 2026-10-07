@@ -3,8 +3,15 @@
 PROP_NAME="persist.gammaos.fan_mode_auto"
 
 # Thresholds (C): cool if > COOL_ON, max if > MAX_ON
-COOL_ON=70
-MAX_ON=85
+# Thresholds in C on the hottest CPU or GPU zone, with hysteresis so the fan does not
+# flap: the fan comes on (cool) above COOL_ON and goes off below COOL_OFF; it goes to
+# max above MAX_ON and back to cool below MAX_OFF. The RP Duo Lite idles at ~50 C and
+# games around 52 to 56 C with the fan off, so the old 70/85 pair never ran the fan in
+# play; these start it as soon as a game warms the SoC past idle.
+COOL_ON=${COOL_ON:-55}
+COOL_OFF=${COOL_OFF:-50}
+MAX_ON=${MAX_ON:-68}
+MAX_OFF=${MAX_OFF:-62}
 
 # Fan profiles for each mode: PWM duty percentage on /sys/class/gpio5_pwm2
 # (the gpio5_pwm kernel driver: gpio45 on the GP1 clock, gpio1 enable).
@@ -184,23 +191,28 @@ read_gpu_temp_c() {
 compute_desired_from_temps() {
   cpu_temp="$1"
   gpu_temp="$2"
-
-  over_cool=0
-  over_max=0
-
-  [ -n "$cpu_temp" ] && [ "$cpu_temp" -gt "$COOL_ON" ] && over_cool=1
-  [ "$gpu_temp" != "NA" ] && [ "$gpu_temp" -gt "$COOL_ON" ] && over_cool=1
-
-  [ -n "$cpu_temp" ] && [ "$cpu_temp" -gt "$MAX_ON" ] && over_max=1
-  [ "$gpu_temp" != "NA" ] && [ "$gpu_temp" -gt "$MAX_ON" ] && over_max=1
-
-  if [ "$over_max" -eq 1 ]; then
-    echo "max"
-  elif [ "$over_cool" -eq 1 ]; then
-    echo "cool"
-  else
-    echo "off"
+  # Hottest of the two.
+  t=""
+  [ -n "$cpu_temp" ] && t="$cpu_temp"
+  if [ "$gpu_temp" != "NA" ] && [ -n "$gpu_temp" ]; then
+    if [ -z "$t" ] || [ "$gpu_temp" -gt "$t" ]; then t="$gpu_temp"; fi
   fi
+  [ -n "$t" ] || { echo "off"; return 0; }
+  # Hysteresis around the current mode ($last_mode).
+  case "$last_mode" in
+    max)
+      if [ "$t" -ge "$MAX_OFF" ]; then echo "max"
+      elif [ "$t" -ge "$COOL_OFF" ]; then echo "cool"
+      else echo "off"; fi ;;
+    cool)
+      if [ "$t" -gt "$MAX_ON" ]; then echo "max"
+      elif [ "$t" -ge "$COOL_OFF" ]; then echo "cool"
+      else echo "off"; fi ;;
+    *)
+      if [ "$t" -gt "$MAX_ON" ]; then echo "max"
+      elif [ "$t" -gt "$COOL_ON" ]; then echo "cool"
+      else echo "off"; fi ;;
+  esac
 }
 
 # Map a mode to the strength used by that mode (for ramp start values)
