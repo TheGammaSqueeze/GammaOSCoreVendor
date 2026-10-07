@@ -1,0 +1,29 @@
+# GammaOS: dedicated cpuset for the display present path (composer and, through the
+# vendor task_profiles.json override, SurfaceFlinger's main and RenderEngine threads).
+# It sits on the little cluster: once the DP commit stall, the follower present delay
+# and the GPU composition fallbacks were fixed a dual-panel composite costs about 6 ms
+# there (max 9 ms against SurfaceFlinger's 13 ms budget), while on the big cluster the
+# display threads took a third of a core away from big-core-bound emulators (Azahar
+# dropped from 50 to 38 frames per second). The cpuset is kept separate from
+# system-background so the placement stays a one-line change.
+on init
+    mkdir /dev/cpuset/display
+    write /dev/cpuset/display/cpus 0-3
+    copy /dev/cpuset/mems /dev/cpuset/display/mems
+    chown system system /dev/cpuset/display
+    chown system system /dev/cpuset/display/tasks
+    chown system system /dev/cpuset/display/cgroup.procs
+    chmod 0775 /dev/cpuset/display
+    chmod 0664 /dev/cpuset/display/tasks
+    chmod 0664 /dev/cpuset/display/cgroup.procs
+
+# The DSI vblank interrupt (msm_drm) sat on a little core, where a delayed delivery
+# shifted the retire fence by several ms and made SurfaceFlinger skip a vsync. Keep
+# it and the GPU interrupt on big cores; msm_irqbalance ignores both (its conf).
+on boot
+    write /proc/irq/155/smp_affinity_list 7
+    write /proc/irq/35/smp_affinity_list 6
+
+on property:sys.boot_completed=1
+    write /proc/irq/155/smp_affinity_list 7
+    write /proc/irq/35/smp_affinity_list 6

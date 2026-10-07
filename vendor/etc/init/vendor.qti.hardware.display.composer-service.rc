@@ -11,4 +11,5 @@ service vendor.qti.hardware.display.composer /vendor/bin/hw/vendor.qti.hardware.
     capabilities SYS_NICE SYS_ADMIN
     onrestart restart surfaceflinger
     socket pps stream 0660 system system
-    writepid /dev/cpuset/system-background/tasks
+    # GammaOS: dedicated big-core cpuset, see init.gammaos_display.rc.
+    writepid /dev/cpuset/display/tasks

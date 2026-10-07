@@ -675,6 +675,7 @@
 /etc/qdcm_calib_data_td4330_v2_cmd_mode_dsi_truly_panel\.xml u:object_r:vendor_configs_file:s0
 /etc/qdcm_calib_data_td4330_v2_video_mode_dsi_truly_panel\.xml u:object_r:vendor_configs_file:s0
 /etc/qvirtmgr-vndr\.json u:object_r:vendor_configs_file:s0
+/etc/task_profiles\.json u:object_r:vendor_configs_file:s0
 /etc/r_submix_audio_policy_configuration\.xml u:object_r:vendor_configs_file:s0
 /etc/recovery-resource\.dat u:object_r:vendor_configs_file:s0
 /etc/res u:object_r:vendor_configs_file:s0
@@ -2635,4 +2636,5 @@
 /bin/gammaos_usb_icl\.sh u:object_r:vendor_file:s0
 /etc/init/init\.gammaos_charge\.rc u:object_r:vendor_configs_file:s0
 /etc/init/init\.gammaos_fan\.rc u:object_r:vendor_configs_file:s0
+/etc/init/init\.gammaos_display\.rc u:object_r:vendor_configs_file:s0
 /etc/init/gammaos-nano-services\.rc u:object_r:vendor_configs_file:s0
