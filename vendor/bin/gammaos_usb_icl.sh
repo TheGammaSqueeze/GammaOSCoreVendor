@@ -9,9 +9,13 @@
 # an SDP, so it honours that vote. This loop re-votes the input limit to what the
 # Type-C source advertises (1.5 A for Rp-1.5A, 3 A for Rp-3A) whenever the vote sits
 # below it; the hardware AICL still limits the input to what the adapter and cable sustain.
-# Sources advertising only default current and PC ports (an enumerated gadget) are
-# left alone.
+# PC ports (an enumerated gadget) are left alone, and so is a charger the driver is
+# already handling itself (no USB_PSY vote present); a default-current source carrying a
+# stale gadget vote gets the BC1.2 DCP limit (1.5 A), since this port's BC1.2 detection
+# reports every adapter as floating and the AICL settles a weaker adapter lower.
 USB=/sys/class/power_supply/usb
+DEFUA=$(getprop persist.gammaos.charge.default_ua 2>/dev/null)
+case "$DEFUA" in ''|*[!0-9]*) DEFUA=1000000 ;; esac
 SMB=""
 while [ -z "$SMB" ]; do
     for d in /sys/bus/iio/devices/iio:device*; do
@@ -24,13 +28,22 @@ while true; do
         mode=$(cat $SMB/in_index_usb_typec_mode_input 2>/dev/null)
         want=0
         case "$mode" in
+            6) want=$DEFUA ;;    # SOURCE_DEFAULT: a USB-A adapter on an A-to-C cable. BC1.2 reports
+                                 # it "floating" on this port, so the driver never applies the DCP
+                                 # limit itself. 1.0 A: a typical 5 V 2 A adapter on this port sags
+                                 # under the 4.4 V AICL floor just above 1 A and a higher vote makes
+                                 # the limiter hunt (0.45 to 0.75 A measured at 1.5 A); 1.0 A holds.
             7) want=1500000 ;;   # QTI_POWER_SUPPLY_TYPEC_SOURCE_MEDIUM
             8) want=3000000 ;;   # QTI_POWER_SUPPLY_TYPEC_SOURCE_HIGH
         esac
         if [ "$want" != "0" ]; then
             cur=$(cat $USB/input_current_limit 2>/dev/null)
-            case "$cur" in -*|"") cur=0 ;; esac
-            if [ "$cur" -lt "$want" ] && [ "$(cat /sys/class/udc/*/state 2>/dev/null | head -1)" != "configured" ]; then
+            # -22 = no USB_PSY vote at all: the driver's own charger handling is in
+            # charge and the hardware AICL settles the input; leave that alone. Only a
+            # vote the gadget stack left behind (100 mA unconfigured, 500 mA SDP) with no
+            # host enumerating us is replaced.
+            case "$cur" in -*|"") cur=-1 ;; esac
+            if [ "$cur" -ge 0 ] && [ "$cur" -lt "$want" ] && [ "$(cat /sys/class/udc/*/state 2>/dev/null | head -1)" != "configured" ]; then
                 echo $want > $USB/input_current_limit
             fi
         fi
