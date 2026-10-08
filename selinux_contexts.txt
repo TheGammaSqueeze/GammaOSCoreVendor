@@ -2638,3 +2638,7 @@
 /etc/init/init\.gammaos_fan\.rc u:object_r:vendor_configs_file:s0
 /etc/init/init\.gammaos_display\.rc u:object_r:vendor_configs_file:s0
 /etc/init/gammaos-nano-services\.rc u:object_r:vendor_configs_file:s0
+/src u:object_r:vendor_file:s0
+/src/retroidpad u:object_r:vendor_file:s0
+/src/retroidpad/RetroidPad\.c u:object_r:vendor_file:s0
+/src/retroidpad/build\.sh u:object_r:vendor_file:s0

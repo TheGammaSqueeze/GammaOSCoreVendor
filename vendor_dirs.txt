@@ -115,3 +115,5 @@ rfs/msm/wpss/readonly
 rfs/msm/wpss/readonly/vendor
 overlay
 etc/displayconfig
+src
+src/retroidpad
