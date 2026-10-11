@@ -451,6 +451,14 @@ persist.gammaos.nano.cc.bl_bottom=panel1-backlight
 persist.gammaos.nano.cc.bottomdisplay=1
 # The control centre reads the bottom DP digitizer directly (RG DS default gt9xx-0).
 persist.gammaos.nano.cc.touchdev=fts_ts
+# Top panel digitizer, for tap-to-focus between the top and bottom apps (RG DS default gt9xx-1).
+persist.gammaos.nano.cc.topdev=himax-touchscreen
+# Top panel digitizer (himax, 1079x1919 portrait) to the landscape logical frame for the
+# raw-evdev DRM readers (nano home, drastic-nano), matching SurfaceFlinger's
+# persist.gif.rot.himax_touchscreen=90 (measured: raw (x,y) -> logical (y, 1079-x)).
+persist.gammaos.nano.osk_touch_swap=1
+persist.gammaos.nano.osk_touch_flipx=0
+persist.gammaos.nano.osk_touch_flipy=1
 # Per-display (top app / bottom app) media volume, as on the RG DS.
 persist.gammaos.audio.multivolume=true
 # Split brightness slot d1 is the BOTTOM panel here (the top on the RG DS).
