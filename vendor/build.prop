@@ -453,6 +453,8 @@ persist.gammaos.nano.cc.bottomdisplay=1
 persist.gammaos.nano.cc.touchdev=fts_ts
 # Top panel digitizer, for tap-to-focus between the top and bottom apps (RG DS default gt9xx-1).
 persist.gammaos.nano.cc.topdev=himax-touchscreen
+# Control Centre: the Mouse tile is a Fan tile (the Duo Lite has a controllable fan)
+persist.gammaos.nano.cc.fantile=1
 # Top panel digitizer (himax, 1079x1919 portrait) to the landscape logical frame for the
 # raw-evdev DRM readers (nano home, drastic-nano), matching SurfaceFlinger's
 # persist.gif.rot.himax_touchscreen=90 (measured: raw (x,y) -> logical (y, 1079-x)).
