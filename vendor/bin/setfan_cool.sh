@@ -1,7 +1,8 @@
 #!/system/bin/sh
-# RP Duo Lite fan, quiet profile: 60 percent duty ($1 overrides the percentage).
+# RP Duo Lite fan, quiet profile: 25 percent duty, the lowest that spins the fan
+# reliably ($1 overrides the percentage).
 C=/sys/class/gpio5_pwm2
-PCT="${1:-60}"
+PCT="${1:-25}"
 P="$(cat $C/period 2>/dev/null)"; [ -n "$P" ] || P=50000
 D=$(( P * PCT / 100 ))
 i=0
