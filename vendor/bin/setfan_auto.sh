@@ -13,11 +13,12 @@
 # reliably and the same level as the cool mode. The temperature is a moving average
 # over AVG_SAMPLES ticks and the duty moves at most STEP_PCT per tick towards its
 # target, so a brief load spike raises the fan slowly and a drop lets it wind down
-# slowly. The SoC idles at 50 to 54 C and games at 60 to 72 C with the thermal caps
-# lifted, so the fan is off at idle and climbs through play.
-T_OFF=${T_OFF:-58}
-T_ON=${T_ON:-62}
-T_FULL=${T_FULL:-80}
+# slowly. With the thermal caps lifted the SoC sits at 55 to 62 C just navigating a
+# menu (the GPU clocks up for the UI) and 65 to 75 C in play, so the fan stays off
+# for menus and climbs through play.
+T_OFF=${T_OFF:-63}
+T_ON=${T_ON:-68}
+T_FULL=${T_FULL:-85}
 MIN_PCT=${MIN_PCT:-25}
 STEP_PCT=${STEP_PCT:-2}
 AVG_SAMPLES=${AVG_SAMPLES:-5}
