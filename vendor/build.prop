@@ -482,3 +482,10 @@ persist.gammaos.multidisplay.split_brightness.d1.max=255
 persist.gammaos.secondary_display.enabled=1
 persist.gammaos.multidisplay.secondary_display=1
 persist.gammaos.multidisplay.dual_focus=1
+# GammaOS device id (OTA endpoint, screen calibration profile)
+ro.gammaos.device=retroidpocketduolite
+
+ro.sensors.gyroscope_orientation=ORIENTATION_90
+ro.sensors.accelerometer_orientation=ORIENTATION_90
+ro.sensors.magnetometer_orientation=ORIENTATION_90
+ro.sensors.sysui_accelerometer_orientation=270
