@@ -41,10 +41,13 @@ on property:persist.gammaos.performance_mode=powersave && property:sys.screen.st
     start setclock_powersave
 
 # Ultra low power sleep (persist.gammaos.ultra_low_power_saving_mode, the nano "Ultra Low Power
-# Saving" setting): with the screen off and no USB connected, force the SoC to suspend through
-# /vendor/bin/sleep.sh (trimmed wakeup sources, suspend request every 10 s). Screen on, a USB
-# connection or a charger stops it and wake.sh restores the stock wakeup sources. Same shape as
-# the RG DS power rc.
+# Saving" setting): with the screen off, no USB data link and no charger, force the SoC to
+# suspend through /vendor/bin/sleep.sh (radios off, trimmed wakeup sources, every suspend
+# verified and logged in /data/vendor/gammaos/sleep.log). Screen on, USB or a charger stop it
+# and wake.sh restores the radios and the stock wakeup sources. debug.tracing.plug_type is
+# BatteryService's plug state (0 none, 1 AC, 2 USB, 4 wireless, 8 dock) and is written on
+# every build type at once; debug.tracing.battery_stats.charging is not a plug signal (it is
+# deferred up to 15 minutes of awake time), so it is not used.
 service cpu_screen_off /vendor/bin/sleep.sh
     class main
     user root
@@ -77,7 +80,9 @@ service force_wake /system/bin/sh -c "for i in 1 2 3 4 5; do start cpu_screen_on
     priority -20
     writepid /dev/cpuset/top-app/tasks
 
-on property:sys.screen.state=off && property:persist.gammaos.ultra_low_power_saving_mode=1 && property:sys.gammaos.usb.connected=0 && property:sys.boot_completed=1
+# Also re-arms the sleep when the cable is pulled with the screen still off (plug_type -> 0).
+on property:sys.screen.state=off && property:persist.gammaos.ultra_low_power_saving_mode=1 && property:sys.gammaos.usb.connected=0 && property:debug.tracing.plug_type=0 && property:sys.boot_completed=1
+    stop cpu_screen_on
     stop force_wake
     start force_sleep
 
@@ -86,12 +91,27 @@ on property:sys.screen.state=on
     stop cpu_screen_off
     start force_wake
 
-on property:debug.tracing.battery_stats.charging=1
+on property:sys.gammaos.usb.connected=1
     stop force_sleep
     stop cpu_screen_off
     start force_wake
 
-on property:sys.gammaos.usb.connected=1
+on property:debug.tracing.plug_type=1
+    stop force_sleep
+    stop cpu_screen_off
+    start force_wake
+
+on property:debug.tracing.plug_type=2
+    stop force_sleep
+    stop cpu_screen_off
+    start force_wake
+
+on property:debug.tracing.plug_type=4
+    stop force_sleep
+    stop cpu_screen_off
+    start force_wake
+
+on property:debug.tracing.plug_type=8
     stop force_sleep
     stop cpu_screen_off
     start force_wake
