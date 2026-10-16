@@ -16,9 +16,10 @@
 #    charger plug-in (so a plug can wake the SoC and stop this script), re-checked every attempt.
 # 3. Every attempt does the wakeup_count handshake, so a key press or a driver that is mid-
 #    event still counts; a source that keeps refusing for HS_GRACE seconds is overridden with a
-#    plain write to /sys/power/state, which also ignores framework wakelocks. nano's own kernel
-#    wakelocks are honoured: nano_music (screen-off playback) and nano_ota (an update) hold the
-#    sleep off, nano_wake (nano bringing the screen back) for up to 12 s.
+#    plain write to /sys/power/state, which also ignores framework wakelocks. Only two of nano's
+#    kernel wakelocks are honoured: nano_ota (an update must not be frozen mid-write) and, for
+#    up to 12 s, nano_wake (nano bringing the screen back). nano_music (screen-off playback)
+#    is not: ultra low power sleep means the SoC sleeps even if music was playing.
 # 4. Every attempt is checked against the kernel's suspend counter and logged with its length,
 #    the SoC vmin time and the wake reason in /data/vendor/gammaos/sleep.log; aborts are retried
 #    after 1 s and logged at the start of a streak and every 60th. vendor.gammaos.sleep.stats
@@ -88,7 +89,7 @@ active_ws() {
 wake_polls=0
 nano_hold() {
   case " $(cat /sys/power/wake_lock 2>/dev/null) " in
-    *" nano_music "*|*" nano_ota "*) return 0 ;;
+    *" nano_ota "*) return 0 ;;
     *" nano_wake "*)
       wake_polls=$((wake_polls + 1))
       [ $wake_polls -le $WAKE_HOLD_MAX ] && return 0
