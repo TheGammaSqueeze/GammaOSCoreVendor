@@ -81,6 +81,25 @@ vmin_read() {
   [ -r "$VMIN" ] || { echo "0 0"; return; }
   awk '/^Count/{c=$3} /^Accumulated Duration/{d=$4} END{printf "%d %.3f\n", c, d/19200000}' "$VMIN"
 }
+# RPM master sleep stats: per subsystem "numshutdowns" (hex) and "xo_accumulated_duration"
+# (hex, 19.2 MHz ticks). Printed as "APSS:n/s MPSS:n/s ADSP:n/s CDSP:n/s" where n is the
+# shutdown count and s the XO-off seconds; the per-sleep delta names the master that stayed
+# awake and kept the SoC out of vmin.
+MSTATS=$DBG/rpm_master_stats
+masters_read() {
+  [ -r "$MSTATS" ] || { echo ""; return; }
+  awk 'function hex(str,  i, c, v) { v = 0; str = tolower(substr(str, index(str, "0x") + 2));
+         for (i = 1; i <= length(str); i++) { c = index("0123456789abcdef", substr(str, i, 1)); if (c == 0) break; v = v * 16 + c - 1 }
+         return v }
+       /^[A-Z]+[ \t]*$/ && !seen[$1]++ {m=$1} /numshutdowns/ {n[m]=hex($0)} /xo_accumulated_duration/ {x[m]=hex($0)}
+       END {for (k in n) printf "%s:%d/%.1f ", k, n[k], x[k]/19200000}' "$MSTATS"
+}
+masters_delta() {   # $1 before, $2 after -> "APSS:+1/+39.8s ..."
+  echo "$1" | tr " " "\n" | awk -v after="$2" -F'[:/]' 'NF==3 {b_n[$1]=$2; b_x[$1]=$3} END {
+    n=split(after, a, " "); for (i=1;i<=n;i++) { split(a[i], f, "[:/]"); if (f[1]=="") continue;
+      printf "%s:+%d/+%.1fs ", f[1], f[2]-b_n[f[1]], f[3]-b_x[f[1]] } }'
+}
+
 # debugfs wakeup_sources: fields split by runs of tabs, the name padded (and blank for some)
 active_ws() {
   awk -F '\t+' 'NR > 1 && $6 + 0 > 0 { n = $1; gsub(/ +$/, "", n); printf "%s ", (n == "" ? "(unnamed)" : n) }' "$WS" 2>/dev/null
@@ -208,9 +227,9 @@ while still_wanted; do
     radios_off
   fi
   trim_wakeups
-  s0=$(cat $STATS/success); t0=$(boottime); set -- $(vmin_read); vc0=$1; vs0=$2
+  s0=$(cat $STATS/success); t0=$(boottime); set -- $(vmin_read); vc0=$1; vs0=$2; m0="$(masters_read)"
   refused=0; suspend_now || refused=1
-  s1=$(cat $STATS/success); t1=$(boottime); set -- $(vmin_read); vc1=$1; vs1=$2
+  s1=$(cat $STATS/success); t1=$(boottime); set -- $(vmin_read); vc1=$1; vs1=$2; m1="$(masters_read)"
   reason="$(cat $REASON 2>/dev/null)"
   [ $refused -eq 1 ] && reason="refused, wakeup source active: $(active_ws)"
   if [ "$s1" -gt "$s0" ]; then
@@ -218,7 +237,7 @@ while still_wanted; do
     set -- $(awk -v a="$t0" -v b="$t1" -v c="$vs0" -v d="$vs1" -v s="$slept_total" -v v="$vmin_total" \
       'BEGIN{printf "%.1f %.1f %.1f %.1f\n", b-a, d-c, s+(b-a), v+(d-c)}')
     slept_total=$3; vmin_total=$4
-    log "slept ${1}s, vmin ${2}s in $((vc1 - vc0)) entries$([ $aborts -gt 0 ] && echo ", after $aborts aborts"), woke: $reason"
+    log "slept ${1}s, vmin ${2}s in $((vc1 - vc0)) entries, masters $(masters_delta "$m0" "$m1")$([ $aborts -gt 0 ] && echo ", after $aborts aborts"), woke: $reason"
     aborts=0
   else
     fail=$((fail + 1)); aborts=$((aborts + 1))
