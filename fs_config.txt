@@ -2643,3 +2643,5 @@ src 0 2000 0755 capabilities=0x0
 src/retroidpad 0 2000 0755 capabilities=0x0
 src/retroidpad/RetroidPad.c 0 0 0644 capabilities=0x0
 src/retroidpad/build.sh 0 2000 0755 capabilities=0x0
+bin/sleep.sh 0 2000 0755 capabilities=0x0
+bin/wake.sh 0 2000 0755 capabilities=0x0

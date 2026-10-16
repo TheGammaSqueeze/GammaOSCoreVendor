@@ -2643,3 +2643,5 @@
 /src/retroidpad u:object_r:vendor_file:s0
 /src/retroidpad/RetroidPad\.c u:object_r:vendor_file:s0
 /src/retroidpad/build\.sh u:object_r:vendor_file:s0
+/bin/sleep\.sh u:object_r:vendor_file:s0
+/bin/wake\.sh u:object_r:vendor_file:s0
