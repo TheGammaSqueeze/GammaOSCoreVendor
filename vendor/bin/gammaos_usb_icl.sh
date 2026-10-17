@@ -16,6 +16,14 @@
 USB=/sys/class/power_supply/usb
 DEFUA=$(getprop persist.gammaos.charge.default_ua 2>/dev/null)
 case "$DEFUA" in ''|*[!0-9]*) DEFUA=1000000 ;; esac
+# PC port (a host enumerated the gadget): the driver honours the USB 2.0 standard-port vote
+# of 500 mA, 2.5 W, which is less than the device uses with the screen on, so it drained on a
+# PC while charging was reported. PC ports supply at least the USB 3 port current; measured
+# here the host port delivered 898 mA (and no more at a 1.5 A limit), turning a 420 mA
+# drain into a 150 mA charge. The PMIC's AICL still backs off if a port sags.
+PCUA=$(getprop persist.gammaos.charge.pc_ua 2>/dev/null)
+case "$PCUA" in ''|*[!0-9]*) PCUA=900000 ;; esac
+PC_PORT=/sys/class/power_supply/pc_port
 SMB=""
 while [ -z "$SMB" ]; do
     for d in /sys/bus/iio/devices/iio:device*; do
@@ -46,6 +54,16 @@ while true; do
             if [ "$cur" -ge 0 ] && [ "$cur" -lt "$want" ] && [ "$(cat /sys/class/udc/*/state 2>/dev/null | head -1)" != "configured" ]; then
                 echo $want > $USB/input_current_limit
             fi
+        fi
+    fi
+    # PC connection: VBUS present, the PC port supply online and the gadget configured by the
+    # host. Only the gadget's 100/500 mA votes are raised, never a higher limit.
+    if [ "$(cat $USB/present 2>/dev/null)" = "1" ] && [ "$(cat $PC_PORT/online 2>/dev/null)" = "1" ] &&
+       [ "$(cat /sys/class/udc/*/state 2>/dev/null | head -1)" = "configured" ]; then
+        cur=$(cat $USB/input_current_limit 2>/dev/null)
+        case "$cur" in -*|"") cur=-1 ;; esac
+        if [ "$cur" -ge 0 ] && [ "$cur" -le 500000 ] && [ "$cur" -lt "$PCUA" ]; then
+            echo $PCUA > $USB/input_current_limit
         fi
     fi
     sleep 3
