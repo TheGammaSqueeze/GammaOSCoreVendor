@@ -1,0 +1,8 @@
+ 0 0 0755 capabilities=0x0
+lost+found 0 0 0700 capabilities=0x0
+etc 0 0 0755 capabilities=0x0
+etc/selinux 0 0 0755 capabilities=0x0
+etc/selinux/precompiled_sepolicy 0 0 0644 capabilities=0x0
+etc/selinux/precompiled_sepolicy.plat_sepolicy_and_mapping.sha256 0 0 0644 capabilities=0x0
+etc/selinux/precompiled_sepolicy.system_ext_sepolicy_and_mapping.sha256 0 0 0644 capabilities=0x0
+etc/selinux/precompiled_sepolicy.product_sepolicy_and_mapping.sha256 0 0 0644 capabilities=0x0

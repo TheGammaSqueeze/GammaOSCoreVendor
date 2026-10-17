@@ -1,0 +1,4 @@
+/ u:object_r:vendor_file:s0
+/lost\+found u:object_r:vendor_file:s0
+/etc(/.*)? u:object_r:vendor_configs_file:s0
+/etc/selinux/precompiled_sepolicy u:object_r:sepolicy_file:s0
