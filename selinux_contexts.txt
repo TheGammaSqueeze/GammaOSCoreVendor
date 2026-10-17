@@ -932,7 +932,6 @@
 /firmware/ipa_fws\.mdt u:object_r:vendor_firmware_file:s0
 /firmware/mcuapp_firmware\.bin u:object_r:vendor_firmware_file:s0
 /firmware/versioninfo\.txt u:object_r:vendor_firmware_file:s0
-/firmware/wl818s_fw\.bin u:object_r:vendor_firmware_file:s0
 /firmware/wlan u:object_r:vendor_firmware_file:s0
 /firmware/wlan/qca_cld u:object_r:vendor_firmware_file:s0
 /firmware/wlan/qca_cld/WCNSS_qcom_cfg\.ini u:object_r:vendor_firmware_file:s0

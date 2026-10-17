@@ -932,7 +932,6 @@ firmware/ipa_fws.elf 0 0 0644 capabilities=0x0
 firmware/ipa_fws.mdt 0 0 0644 capabilities=0x0
 firmware/mcuapp_firmware.bin 0 0 0644 capabilities=0x0
 firmware/versioninfo.txt 0 0 0644 capabilities=0x0
-firmware/wl818s_fw.bin 0 0 0644 capabilities=0x0
 firmware/wlan 0 2000 0755 capabilities=0x0
 firmware/wlan/qca_cld 0 2000 0755 capabilities=0x0
 firmware/wlan/qca_cld/WCNSS_qcom_cfg.ini 0 0 0644 capabilities=0x0
