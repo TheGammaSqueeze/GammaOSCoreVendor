@@ -1,5 +1,8 @@
 service vendor.qti.hardware.display.allocator /vendor/bin/hw/vendor.qti.hardware.display.allocator-service
-    class hal animation
+    # GammaOS: early_hal (started in late-fs) instead of hal (on boot, about 6 s later behind the
+    # /data setup the allocator does not need). The nano DRM home allocates its scanout buffers
+    # through this HAL and could not draw its first frame until on boot.
+    class early_hal animation
     user system
     group graphics drmrpc
     capabilities SYS_NICE
