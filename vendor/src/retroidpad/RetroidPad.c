@@ -3,7 +3,7 @@
  *
  * Reads the controller MCU packet stream on /dev/ttyHS1 (115200 8N1) and
  * exposes it as a uinput gamepad:
- *   face buttons, Select/Start, thumb clicks, Back/Home
+ *   face buttons, Select/Start, thumb clicks, Back (KEY_BACK) and Home (BTN_MODE)
  *   L1/R1/L2/R2 (digital)
  *   D-pad as ABS_HAT0X/ABS_HAT0Y
  *   left stick ABS_X/ABS_Y, right stick ABS_Z/ABS_RZ (auto-centred at start)
@@ -52,7 +52,12 @@ static const face_map_t face_map[] = {
     { 1u << 11, BTN_START   },
     { 1u << 12, BTN_THUMBL  },
     { 1u << 13, BTN_THUMBR  },
-    { 1u << 14, KEY_BACK    },
+    /* Byte 1 bit 6 is the Home button and bit 7 the Back button (the stock
+     * RsMapping app's table in librsinput.so: KEY_HOME then KEY_BACK, bits read
+     * MSB first per byte). Home goes out as BTN_MODE, the key the rest of GammaOS
+     * expects from a pad's Home button (the emulators' in-game menu, the
+     * framework's BACK/MODE hold); both used to send KEY_BACK. */
+    { 1u << 14, BTN_MODE    },
     { 1u << 15, KEY_BACK    },
 };
 static const size_t face_map_count = sizeof(face_map) / sizeof(face_map[0]);
