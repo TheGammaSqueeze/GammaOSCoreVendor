@@ -1,8 +1,7 @@
 service vendor.qti.hardware.display.composer /vendor/bin/hw/vendor.qti.hardware.display.composer-service
-    # GammaOS: early_hal (late-fs) instead of hal (on boot). SurfaceFlinger cannot register until
-    # the composer is up, and the nano home waits for SurfaceFlinger before its first frame, so
-    # on boot (about 6 s after late-fs, behind the /data setup) held the first frame back.
-    class early_hal animation
+    # Stays in hal (on boot): in late-fs /dev/dri/card0 does not exist yet, the composer's
+    # drmOpen fails, it aborts and its onrestart restarts SurfaceFlinger seconds later.
+    class hal animation
     user system
     group graphics drmrpc
     # GammaOS: libgammaos_drmmaster takes DRM master transiently around each

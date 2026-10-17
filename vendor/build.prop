@@ -105,6 +105,11 @@ ro.surface_flinger.vsync_event_phase_offset_ns=1000000
 # the bottom panel showed intermittent tearing with black bands under it (RetroArch,
 # Sonic Mania); with the hold off the panel is clean and pacing holds up.
 persist.gammaos.sf.follower_backpressure=0
+# GammaOS: start SurfaceFlinger from the composer's running trigger, not early in post-fs.
+# An Adreno client started that early reads a different GPU identity than every later one,
+# so the first SurfaceFlinger aborted on the allocator's buffers (Metadata device version
+# mismatch, RenderEngine "Failed to create a valid texture") and restarted on every boot.
+ro.vendor.gammaos.sf_wait_for_composer=true
 ####################################
 # from variable PRODUCT_PROPERTY_OVERRIDES
 ####################################
