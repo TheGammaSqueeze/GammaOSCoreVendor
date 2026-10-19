@@ -373,6 +373,7 @@ persist.gammaos.drastic_nano.frame_sync=0
 persist.gammaos.drastic_nano.frameskip=0
 persist.gammaos.drastic_nano.hires3d=1
 persist.gammaos.drastic_nano.low_latency=0
+persist.gammaos.drastic_nano.present_age_default=0
 persist.gammaos.drastic_nano.shader=2xPrescaleFast_LCD
 persist.gammaos.drastic_nano.ff_limit=0
 # Per-screen scale as tuned on the device: the turned top DSI at 91.7 percent of its
