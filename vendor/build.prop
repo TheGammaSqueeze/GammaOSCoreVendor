@@ -374,6 +374,9 @@ persist.gammaos.drastic_nano.frameskip=0
 persist.gammaos.drastic_nano.hires3d=1
 persist.gammaos.drastic_nano.low_latency=0
 persist.gammaos.drastic_nano.present_age_default=0
+# Forward pad and touch input to drastic the moment it arrives, outside Low Latency Mode too
+# (measured: the press reaches the emulator 0.2 ms after the evdev event instead of 9.6 ms).
+persist.gammaos.drastic_nano.fast_input_always=1
 persist.gammaos.drastic_nano.shader=2xPrescaleFast_LCD
 persist.gammaos.drastic_nano.ff_limit=0
 # Per-screen scale as tuned on the device: the turned top DSI at 91.7 percent of its
@@ -390,6 +393,13 @@ persist.gammaos.drastic_nano.cpu_mask=f0
 # Same for the home (nano): its render thread idled on the little cluster in stock mode
 # (30% doubled frames while navigating, 4% in max).
 persist.gammaos.nano.cpu_mask=f0
+# azahar-nano defaults. The timing steer holds each finished 3DS frame just ahead of the top
+# panel's vblank (frame ready to scanout ~9-12 ms on Mario Kart 7 and Kirby instead of an offset
+# that drifted anywhere from 6 to 28 ms), and the bottom DP panel's clock follows it. The JIT
+# warm-up list is saved off the emulation thread: on this Adreno device the save ran on it every
+# 30 s, a 44 ms frame and a repeated frame each time.
+persist.gammaos.azahar_nano.pace_offset=1
+persist.gammaos.azahar_nano.jit_save_bg=1
 # GammaEQ speaker tuning, captured from the tuned device (the 'RP Duo Lite' preset in
 # vendor/etc/GammaEQ.tar.gz, extracted to /sdcard/GammaEQ by vendor/bin/setup.sh, which
 # also sets the same values; keep the three in step). enable is listed last so the
