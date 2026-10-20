@@ -460,6 +460,25 @@ persist.gammaos.drastic_nano.hires3d=1
 persist.gammaos.drastic_nano.low_latency=1
 persist.gammaos.drastic_nano.shader=4xLCD_Subpixel
 persist.gammaos.nano.drastic_render_scale=2
+# azahar-nano (3DS) defaults for the RK3568 boards, mirroring the tuned settings on the
+# RG DS (2026-10-16). Every one of these can be changed from the in-game menu and
+# persists as a user pref. Performance props for the Mali-G52 on the vendor Vulkan
+# driver: mediump fragment shaders (fs_mediump), extended dynamic state allowed on the
+# Arm driver (mali_eds, the core's default on Arm, set explicitly so the behaviour is
+# locked), the GPU driver tweaks on (tweaks). The FPS counter ships off.
+persist.gammaos.azahar_nano.backend=drm
+persist.gammaos.azahar_nano.tweaks=1
+persist.gammaos.azahar_nano.fs_mediump=1
+persist.gammaos.azahar_nano.mali_eds=1
+persist.gammaos.azahar_nano.dynres=0
+persist.gammaos.azahar_nano.screen_aa=0
+persist.gammaos.azahar_nano.fps_counter=0
+persist.gammaos.azahar_nano.compile_notice=1
+persist.gammaos.azahar_nano.stick_dpad_swap=1
+persist.gammaos.azahar_nano.lcd_top=0
+persist.gammaos.azahar_nano.lcd_bottom=0
+persist.gammaos.azahar_nano.light_max=0
+persist.gammaos.nano.ctr.zoom=2
 persist.gammaos.nano.ps3xmb=1
 persist.gammaos.nano.overlay=1
 persist.bootanim.skip_nano=0
