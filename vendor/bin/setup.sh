@@ -58,6 +58,11 @@ setprop persist.gammaos.launch.guard.targets "com.retroarch.aarch64,org.ppsspp.p
 # reported "tar: had errors" on every fresh install although the preset had landed.
 tar -xvf /vendor/etc/GammaEQ.tar.gz -C /sdcard
 
+# malisx2, the Vulkan driver azahar-nano uses on this GPU, as an adrenotools package
+# for other emulators (import it as a custom GPU driver). cp, not cp -p: the storage
+# root refuses the vendor file's owner and time stamp.
+cp /vendor/etc/malisx2-g52-f76dbc9.zip /sdcard/malisx2-g52-f76dbc9.zip
+
 launcheruser=$( stat -c "%U" /data/data/com.flycast.emulator)
 launchergroup=$( stat -c "%G" /data/data/com.flycast.emulator)
 tar -xJvf /vendor/etc/flycast.tar.xz -P -C /
