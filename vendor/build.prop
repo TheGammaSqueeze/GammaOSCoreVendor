@@ -367,7 +367,7 @@ persist.gammaos.nano.drm_displays=2
 # (the phase trick is for the RG DS twin DSI panels). Shader Per Screen on: the two panels
 # differ in size, so each DS screen runs the shader at its own on-panel size.
 persist.gammaos.drastic_nano.backend=drm
-persist.gammaos.drastic_nano.autoload=0
+persist.gammaos.drastic_nano.autoload=1
 persist.gammaos.drastic_nano.drm_half_res=0
 persist.gammaos.drastic_nano.fps_counter=0
 persist.gammaos.drastic_nano.frame_sync=0
@@ -382,7 +382,7 @@ persist.gammaos.drastic_nano.zero_copy=0
 # Forward pad and touch input to drastic the moment it arrives, outside Low Latency Mode too
 # (measured: the press reaches the emulator 0.2 ms after the evdev event instead of 9.6 ms).
 persist.gammaos.drastic_nano.fast_input_always=1
-persist.gammaos.drastic_nano.shader=None
+persist.gammaos.drastic_nano.shader=2xPrescaleFast_LCD
 persist.gammaos.drastic_nano.scaling=stretch
 persist.gammaos.drastic_nano.screen_gap=0
 persist.gammaos.drastic_nano.ff_limit=0
