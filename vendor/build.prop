@@ -533,6 +533,10 @@ persist.gammaos.gamepad.hide_source=1
 persist.gammaos.gamepad.full_reload=1
 persist.gammaos.gamepad.devices=Retroid Pocket Controller
 persist.gammaos.nano.cc.touchdev=fts_ts
+# The pad's mode button (BTN_MODE, 316) shows the Control Center over the app on the bottom
+# screen and hides it again, like the Anbernic button on the RG DS; nano reads it from the
+# virtual pad and PhoneWindowManager keeps the press from the app.
+persist.gammaos.nano.cc.keycode=316
 # Top panel digitizer, for tap-to-focus between the top and bottom apps (RG DS default gt9xx-1).
 persist.gammaos.nano.cc.topdev=himax-touchscreen
 # Control Centre: the Mouse tile is a Fan tile (the Duo Lite has a controllable fan)
