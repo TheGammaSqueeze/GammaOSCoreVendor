@@ -63,15 +63,22 @@ if [ "$SCREEN" = "off" ]; then
     i=0
     while [ $i -lt 10 ]; do
         [ "$(getprop sys.gammaos.clock_owner)" = "$GEN" ] || exit 0
+        # The screen came back: the mode script owns the clocks from here, never
+        # re-apply the screen-off floor over a wake.
+        [ "$(getprop sys.screen.state)" = "off" ] || exit 0
         apply_screen_off_settings
         sleep 2
         i=$((i + 1))
     done
 elif [ "$PROP_VALUE" = "powersave" ]; then
+    # Clocks first, thermal caps after: the zone scan takes seconds on a loaded system
+    # and the wake from sleep must not sit at the screen-off clocks while it runs.
+    apply_powersave_settings
     lift_thermal_caps
     i=0
     while [ $i -lt 10 ]; do
         [ "$(getprop sys.gammaos.clock_owner)" = "$GEN" ] || exit 0
+        [ "$(getprop sys.screen.state)" = "off" ] && exit 0
         apply_powersave_settings
         sleep 2
         i=$((i + 1))

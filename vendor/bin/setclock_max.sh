@@ -40,15 +40,17 @@ apply_performance_settings() {
     echo "2016000" > /sys/devices/system/cpu/cpufreq/policy4/scaling_min_freq
     echo "0-3" > /dev/cpuset/display/cpus
 }
+# Clocks first, thermal caps after: the zone scan takes seconds on a loaded system and the
+# wake from sleep must not sit at the screen-off clocks while it runs.
+apply_performance_settings
 lift_thermal_caps
 if [ "$PROP_VALUE" = "max" ]; then
     i=0
     while [ $i -lt 10 ]; do
         [ "$(getprop sys.gammaos.clock_owner)" = "$GEN" ] || exit 0
+        [ "$(getprop sys.screen.state)" = "off" ] && exit 0
         apply_performance_settings
         sleep 2
         i=$((i + 1))
     done
-else
-    apply_performance_settings
 fi

@@ -570,3 +570,12 @@ ro.sensors.gyroscope_orientation=ORIENTATION_90
 ro.sensors.accelerometer_orientation=ORIENTATION_90
 ro.sensors.magnetometer_orientation=ORIENTATION_90
 ro.sensors.sysui_accelerometer_orientation=270
+
+# Quick settings tiles: default pages and the tiles hidden on this device
+persist.gammaos.qs.override_default_tiles_0=internet,bt,performance,fan,gammasplitbrightness
+persist.gammaos.qs.override_default_tiles_1=gammasecondarydisplay,gammashader,rotation,gammaeq,immersivemode
+persist.gammaos.qs.override_default_tiles_2=secondarydisplayapps,launchguard,gammadualfocus,abxy
+persist.gammaos.qs.override_default_tiles_3=analogsensitivity,dpadAnalogToggle,analogdeadzone,analogcalibration
+persist.gammaos.qs.override_default_tiles_4=analogaxis,rightanalogaxis,mappingeditor,deepsleepmode
+persist.gammaos.qs.blacklist_0=dcdimmingemulation,477v,usbcontrollerswitch,gammargb
+persist.gammaos.qs.blacklist_1=globalbfi,gammarefresh

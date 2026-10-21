@@ -19,26 +19,30 @@ service setclock_powersave /vendor/bin/setclock_powersave.sh
     oneshot
     disabled
 
+# restart, not start: each policy script runs for 20 s (and longer under load), and init
+# ignores a start for a oneshot that is still running. A sleep and wake inside that window
+# left the wake's start dropped, the screen-off loop kept the clocks at their lowest point
+# and the device stayed laggy with audio underruns until the next mode change.
 on property:persist.gammaos.performance_mode=max
-    start setclock_max
+    restart setclock_max
 
 on property:persist.gammaos.performance_mode=stock
-    start setclock_stock
+    restart setclock_stock
 
 on property:persist.gammaos.performance_mode=powersave
-    start setclock_powersave
+    restart setclock_powersave
 
 on property:sys.screen.state=off
-    start setclock_powersave
+    restart setclock_powersave
 
 on property:persist.gammaos.performance_mode=max && property:sys.screen.state=on
-    start setclock_max
+    restart setclock_max
 
 on property:persist.gammaos.performance_mode=stock && property:sys.screen.state=on
-    start setclock_stock
+    restart setclock_stock
 
 on property:persist.gammaos.performance_mode=powersave && property:sys.screen.state=on
-    start setclock_powersave
+    restart setclock_powersave
 
 # Ultra low power sleep (persist.gammaos.ultra_low_power_saving_mode, the nano "Ultra Low Power
 # Saving" setting): with the screen off, no USB data link and no charger, force the SoC to

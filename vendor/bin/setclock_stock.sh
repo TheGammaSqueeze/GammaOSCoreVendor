@@ -52,10 +52,14 @@ apply_stock_settings() {
     echo "4-7" > /dev/cpuset/display/cpus
 }
 if [ "$PROP_VALUE" = "stock" ]; then
+    # Clocks first, thermal caps after: the zone scan takes seconds on a loaded system
+    # and the wake from sleep must not sit at the screen-off clocks while it runs.
+    apply_stock_settings
     lift_thermal_caps
     i=0
     while [ $i -lt 10 ]; do
         [ "$(getprop sys.gammaos.clock_owner)" = "$GEN" ] || exit 0
+        [ "$(getprop sys.screen.state)" = "off" ] && exit 0
         apply_stock_settings
         sleep 2
         i=$((i + 1))
