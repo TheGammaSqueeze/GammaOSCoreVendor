@@ -361,31 +361,43 @@ persist.gammaos.nano.drm_home_resume=1
 # The DRM home keeps probing for the DP bottom panel until both panels are lit (its
 # HPD arrives ~7 s after the bridge is powered, past the fixed 60 s window on slow boots).
 persist.gammaos.nano.drm_displays=2
-# drastic-nano defaults, mirroring the RG DS tuned set. Low Latency ships OFF here: its
-# combined blocking commit anchors the loop to the DP bottom panel and its one-slot
-# secondary delay is a frame of bottom-screen lag (the phase trick is for the RG DS twin
-# DSI panels). Shader Per Screen on: the two panels differ in size, so each DS screen
-# runs the shader at its own on-panel size. Every row is user-changeable in the game menu.
-persist.gammaos.drastic_nano.autoload=1
+# drastic-nano defaults: the set as tuned on the device (every row is user-changeable in
+# the game menu). Low Latency ships OFF here: its combined blocking commit anchors the loop
+# to the DP bottom panel and its one-slot secondary delay is a frame of bottom-screen lag
+# (the phase trick is for the RG DS twin DSI panels). Shader Per Screen on: the two panels
+# differ in size, so each DS screen runs the shader at its own on-panel size.
+persist.gammaos.drastic_nano.backend=drm
+persist.gammaos.drastic_nano.autoload=0
 persist.gammaos.drastic_nano.drm_half_res=0
-persist.gammaos.drastic_nano.fps_counter=1
+persist.gammaos.drastic_nano.fps_counter=0
 persist.gammaos.drastic_nano.frame_sync=0
 persist.gammaos.drastic_nano.frameskip=0
+persist.gammaos.drastic_nano.frameskip_type=0
 persist.gammaos.drastic_nano.hires3d=1
+persist.gammaos.drastic_nano.gpu3d=0
+persist.gammaos.drastic_nano.gpu3d_ss=1
 persist.gammaos.drastic_nano.low_latency=0
 persist.gammaos.drastic_nano.present_age_default=0
+persist.gammaos.drastic_nano.zero_copy=0
 # Forward pad and touch input to drastic the moment it arrives, outside Low Latency Mode too
 # (measured: the press reaches the emulator 0.2 ms after the evdev event instead of 9.6 ms).
 persist.gammaos.drastic_nano.fast_input_always=1
-persist.gammaos.drastic_nano.shader=2xPrescaleFast_LCD
+persist.gammaos.drastic_nano.shader=None
+persist.gammaos.drastic_nano.scaling=stretch
+persist.gammaos.drastic_nano.screen_gap=0
 persist.gammaos.drastic_nano.ff_limit=0
-# Per-screen scale as tuned on the device: the turned top DSI at 91.7 percent of its
+# Per-screen scale as tuned on the device: the turned top DSI at 93.9 percent of its
 # aspect fit, the bottom DP at the largest integer multiple of the DS screen (Integer),
-# each screen shaded at its own on-panel size.
+# each screen shaded at its own on-panel size; no layout nudge.
 persist.gammaos.drastic_nano.drm_screen_fit=1
-persist.gammaos.drastic_nano.drm_top_scale=91.7
+persist.gammaos.drastic_nano.drm_top_scale=93.9
 persist.gammaos.drastic_nano.drm_bottom_scale=0
 persist.gammaos.drastic_nano.drm_screen_shader=1
+persist.gammaos.drastic_nano.ltune_dx=0
+persist.gammaos.drastic_nano.ltune_dy=0
+persist.gammaos.drastic_nano.ltune_scale=100
+# A crash leaves a tombstone for the report.
+persist.gammaos.drastic_nano.crash_tombstone=1
 # Keep drastic-nano on the big cluster (cpu4-7): on the SM6125 its hot threads landed on
 # the little cores, which idle between frames under the stock governors and ramp late
 # (55-58 fps with 27-34 ms worst frames in stock mode; 60 / 18 ms pinned to the big cores).
