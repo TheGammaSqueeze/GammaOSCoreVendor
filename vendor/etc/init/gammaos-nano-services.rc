@@ -36,9 +36,35 @@ on post-fs
     # directly instead of waiting for ueventd (the first segment waited ~1.7 s);
     # files not present there (the modem image) keep the ueventd fallback.
     write /sys/module/firmware_class/parameters/path /vendor/firmware
+    # Pick the WL818S bridge firmware (default custom, or stock if the user chose
+    # it) before the DP powers on and the kernel reads wl818s_fw.bin.
+    exec_start vendor.wl818_select
     start irsc_util
     start vendor.tftp_server
     start vendor.pd_mapper
     start vendor.rmt_storage
     start vendor.per_mgr
     start vendor.per_proxy
+
+# WL818S bridge firmware selector: redirects firmware_class.path to the stock
+# backup when /mnt/vendor/persist/wl818/use_stock is 1, else the custom default.
+# Run synchronously from post-fs (exec_start) so the choice is in place before
+# the DP bring-up triggers fw_check.
+service vendor.wl818_select /vendor/bin/wl818_select.sh
+    class core
+    user root
+    group root system
+    oneshot
+    disabled
+
+# After a boot that flashed the bridge firmware, reboot once so the next boot
+# brings the bottom panel up clean (the flashing boot leaves the DP erroring).
+service vendor.wl818_postflash /vendor/bin/wl818_postflash.sh
+    class main
+    user root
+    group root system
+    oneshot
+    disabled
+
+on boot
+    start vendor.wl818_postflash
