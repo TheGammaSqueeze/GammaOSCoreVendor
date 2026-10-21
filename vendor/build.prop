@@ -333,6 +333,7 @@ ro.surface_flinger.primary_display_orientation=ORIENTATION_90
 # uniqueId/type forms miss these panels. himax rotated 90 to match the landscape top panel.
 persist.gif.map.himax_touchscreen=0
 persist.gif.rot.himax_touchscreen=90
+persist.gif.rot.himax-touchscreen=90
 persist.gif.map.fts_ts=1
 # --- Deterministic dual-panel pinning (framework + SF patches) ---
 # Pin the framework DEFAULT_DISPLAY to the panel on this physical port regardless of
@@ -523,6 +524,14 @@ persist.gammaos.nano.cc.bl_top=panel0-backlight
 persist.gammaos.nano.cc.bl_bottom=panel1-backlight
 persist.gammaos.nano.cc.bottomdisplay=1
 # The control centre reads the bottom DP digitizer directly (RG DS default gt9xx-0).
+# GammaOS gamepad (gammapad) as set up on the device: the built-in Retroid Pocket Controller
+# merged into the virtual Xbox pad, the source device hidden from apps, a full reload on a
+# config change.
+persist.gammaos.gamepad.enable=1
+persist.gammaos.gamepad.merge=1
+persist.gammaos.gamepad.hide_source=1
+persist.gammaos.gamepad.full_reload=1
+persist.gammaos.gamepad.devices=Retroid Pocket Controller
 persist.gammaos.nano.cc.touchdev=fts_ts
 # Top panel digitizer, for tap-to-focus between the top and bottom apps (RG DS default gt9xx-1).
 persist.gammaos.nano.cc.topdev=himax-touchscreen
