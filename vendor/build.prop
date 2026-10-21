@@ -412,6 +412,46 @@ persist.gammaos.nano.cpu_mask=f0
 # 30 s, a 44 ms frame and a repeated frame each time.
 persist.gammaos.azahar_nano.pace_offset=1
 persist.gammaos.azahar_nano.jit_save_bg=1
+# The rest of the azahar-nano set as tuned on the device (every row the game menu shows is
+# user-changeable). DRM presenter: nonblocking commits paced to the deadline, fences waited
+# in the presenter, the portrait top DSI drawn upright. Performance: the GammaOS tweaks on,
+# half precision fragment shaders, lights and shadow gathering trimmed, dynamic resolution
+# from 2x, LIFO shader builds. Picture: the Retro LCD shader on both screens, full render
+# scale, no AA. The Turnip driver bundled for the Adreno 610.
+persist.gammaos.azahar_nano.backend=drm
+persist.gammaos.azahar_nano.gpu_driver=gammaos-turnip-adreno-610
+persist.gammaos.azahar_nano.gpu_driver_lib=vulkan.purple.so
+persist.gammaos.azahar_nano.drm_upright=1
+persist.gammaos.azahar_nano.drm_deadline=1
+persist.gammaos.azahar_nano.drm_waitfence=1
+persist.gammaos.azahar_nano.drm_blocking=0
+persist.gammaos.azahar_nano.drm_fifo=0
+persist.gammaos.azahar_nano.drm_nofence=0
+persist.gammaos.azahar_nano.drm_postflip_us=0
+persist.gammaos.azahar_nano.drm_core_tight=0
+persist.gammaos.azahar_nano.tweaks=1
+persist.gammaos.azahar_nano.fs_mediump=1
+persist.gammaos.azahar_nano.light_skip=1
+persist.gammaos.azahar_nano.shadow_gather=1
+persist.gammaos.azahar_nano.dynres=1
+persist.gammaos.azahar_nano.resolution_factor=2
+persist.gammaos.azahar_nano.render_scale_top=100
+persist.gammaos.azahar_nano.render_scale_bottom=100
+persist.gammaos.azahar_nano.build_order=lifo
+persist.gammaos.azahar_nano.jit_unsafe=0
+persist.gammaos.azahar_nano.async_gpu=0
+persist.gammaos.azahar_nano.pipe_workers=0
+persist.gammaos.azahar_nano.pipe_noopt=0
+persist.gammaos.azahar_nano.lut_ssbo=0
+persist.gammaos.azahar_nano.ubwc=0
+persist.gammaos.azahar_nano.uber_strip=0
+persist.gammaos.azahar_nano.stereo_skip=0
+persist.gammaos.azahar_nano.lcd_top=4
+persist.gammaos.azahar_nano.lcd_bottom=4
+persist.gammaos.azahar_nano.screen_aa=0
+persist.gammaos.azahar_nano.fps_counter=0
+persist.gammaos.azahar_nano.compile_notice=1
+persist.gammaos.azahar_nano.stick_dpad_swap=0
 # GammaEQ speaker tuning, captured from the tuned device (the 'RP Duo Lite' preset in
 # vendor/etc/GammaEQ.tar.gz, extracted to /sdcard/GammaEQ by vendor/bin/setup.sh, which
 # also sets the same values; keep the three in step). enable is listed last so the
