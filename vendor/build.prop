@@ -349,6 +349,7 @@ persist.gsf.port_rot.4=ORIENTATION_0
 persist.bootanim.skip_nano=0
 persist.gammaos.nano.ndstheme=4
 persist.gammaos.nano.xmb_mode=1
+persist.gammaos.nano.ps3xmb=1
 # GammaOS nano routes the launcher/XMB to the top panel (port 130).
 persist.gammaos.nano.primary_display=130
 # Nano DRM-direct mode: the top DSI panel needs a horizontal flip to read upright
