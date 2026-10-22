@@ -344,6 +344,11 @@ persist.gammaos.primary_port=130
 # getPhysicalDisplayOrientation). Top DSI (port 130) landscape; bottom DP (port 4) native.
 persist.gsf.port_rot.130=ORIENTATION_90
 persist.gsf.port_rot.4=ORIENTATION_0
+# Boot into GammaOS Nano (0 = nano home, 1 = full Android) with the 3DS theme as the
+# home (ndstheme 4; 0 = XMB, 1 = DSi) and the XMB-style category layout underneath.
+persist.bootanim.skip_nano=0
+persist.gammaos.nano.ndstheme=4
+persist.gammaos.nano.xmb_mode=1
 # GammaOS nano routes the launcher/XMB to the top panel (port 130).
 persist.gammaos.nano.primary_display=130
 # Nano DRM-direct mode: the top DSI panel needs a horizontal flip to read upright
