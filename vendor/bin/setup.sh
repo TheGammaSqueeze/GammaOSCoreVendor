@@ -58,3 +58,9 @@ setprop persist.sys.spk.wide.amount 2.0
 setprop persist.sys.spk.wide.pre 0.75074387
 setprop persist.sys.spk.wide.limit 1.0
 setprop persist.sys.gammaeq.enable 1
+
+# Performance mode: Max Performance out of the box. The nano setup wizard forces max while it
+# runs and hands back the mode it saved at its start (persist.gammaos.nano.setup_prev_perf),
+# so that saved mode has to be max as well or the wizard's finish puts stock back.
+setprop persist.gammaos.performance_mode max
+setprop persist.gammaos.nano.setup_prev_perf max
