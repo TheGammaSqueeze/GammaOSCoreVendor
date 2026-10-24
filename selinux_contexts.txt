@@ -2647,6 +2647,7 @@
 /bin/wake\.sh u:object_r:vendor_file:s0
 /firmware/wl818s_fw\.bin u:object_r:vendor_firmware_file:s0
 /firmware/wl818s_fw_stock\.bin u:object_r:vendor_firmware_file:s0
+/firmware/wl818s_fw_alt\.bin u:object_r:vendor_firmware_file:s0
 /bin/wl818_bootflash u:object_r:vendor_shell_exec:s0
 /bin/early_adb\.sh u:object_r:vendor_shell_exec:s0
 /bin/bootlog\.sh u:object_r:vendor_shell_exec:s0

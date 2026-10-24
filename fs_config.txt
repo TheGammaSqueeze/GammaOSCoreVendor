@@ -2647,6 +2647,7 @@ bin/sleep.sh 0 2000 0755 capabilities=0x0
 bin/wake.sh 0 2000 0755 capabilities=0x0
 firmware/wl818s_fw.bin 0 0 0644 capabilities=0x0
 firmware/wl818s_fw_stock.bin 0 0 0644 capabilities=0x0
+firmware/wl818s_fw_alt.bin 0 0 0644 capabilities=0x0
 bin/wl818_bootflash 0 2000 0755 capabilities=0x0
 bin/early_adb.sh 0 2000 0755 capabilities=0x0
 bin/bootlog.sh 0 2000 0755 capabilities=0x0

@@ -42,6 +42,7 @@
 #define UPGRADE_WAIT_MS 120000 // an upgrade adds ~10 s; generous bound (+16 s for the nano recovery try)
 #define REBOOT_COUNT_FILE "/mnt/vendor/persist/wl818/flash_reboots"
 #define kMaxRebootsInARow 10
+#define ALT_FLAG_FILE "/mnt/vendor/persist/wl818/alt"   // read by wl818_select.sh: 1 = the other base image
 
 static void klog(const char* msg) {
     int fd = open("/dev/kmsg", O_WRONLY | O_CLOEXEC);
@@ -89,7 +90,6 @@ int main(void) {
     }
 
     int success = 0, readback = 0, complete = 0, started = 0;
-    long long tSuccess = 0;
     long long t1 = now_ms();
     char line[2048];
     while (!complete && now_ms() - t1 < (started ? UPGRADE_WAIT_MS : CHECK_WAIT_MS)) {
@@ -105,7 +105,7 @@ int main(void) {
         line[n] = 0;
         if (!strstr(line, "sec-bl-uart")) continue;
         if (strstr(line, "fw_check: starting firmware upgrade")) started = 1;
-        if (strstr(line, "fw_upgrade: SUCCESS")) { success = 1; tSuccess = now_ms(); }
+        if (strstr(line, "fw_upgrade: SUCCESS")) success = 1;
         if (strstr(line, "fw_check: MCU date readback after upgrade=")) readback = 1;
         if (strstr(line, "fw_check: complete")) complete = 1;
     }
@@ -128,9 +128,13 @@ int main(void) {
     // comes too early (rc=-110). A reboot right there power-cycles the bridge mid-commit and
     // the next boots find a silent MCU and upload all over again. Poll the running date and
     // go on as soon as the MCU answers, or after the window.
+    // Let the MCU finish with the image before any reboot: poll its running date for up to
+    // 45 s after the upload and go on as soon as it answers.
+    int mcuAnswered = 0;
     if (complete && success) {
         char d[64] = {};
-        while (now_ms() - tSuccess < 45000) {
+        long long ts = now_ms();
+        while (now_ms() - ts < 45000) {
             FILE* f = fopen("/sys/class/wl818_reset/mcu_date", "r");
             if (f) { if (!fgets(d, sizeof(d), f)) d[0] = 0; fclose(f); }
             size_t n = strlen(d);
@@ -139,8 +143,22 @@ int main(void) {
             d[0] = 0;
             usleep(500000);
         }
-        if (d[0]) snprintf(m, sizeof(m), "%lld ms after the upload the MCU answers with its date (%s)", now_ms() - tSuccess, d);
-        else snprintf(m, sizeof(m), "%lld ms after the upload the MCU still gives no date; going on anyway", now_ms() - tSuccess);
+        if (d[0]) { mcuAnswered = 1; snprintf(m, sizeof(m), "%lld ms after the upload the MCU answers with its date (%s)", now_ms() - ts, d); }
+        else snprintf(m, sizeof(m), "%lld ms after the upload the MCU still gives no date", now_ms() - ts);
+        klog(m);
+    }
+    // Two builds of the custom firmware ship, one per MCU image layout (20260917 and
+    // 20260912 base); an MCU boot-loops on the wrong one and never answers. When an upload
+    // leaves the MCU silent, flip to the other base for the next boot so the two rotate
+    // until one takes; a boot that answers keeps whatever is selected.
+    if (complete && success && !mcuAnswered) {
+        int alt = 0;
+        FILE* f = fopen(ALT_FLAG_FILE, "r");
+        if (f) { if (fscanf(f, "%d", &alt) != 1) alt = 0; fclose(f); }
+        f = fopen(ALT_FLAG_FILE, "w");
+        if (f) { fprintf(f, "%d\n", alt ? 0 : 1); fclose(f); }
+        sync();
+        snprintf(m, sizeof(m), "MCU silent after this upload; the next boot uses the %s base image", alt ? "20260917" : "20260912");
         klog(m);
     }
     if (complete && success && reboots < kMaxRebootsInARow) {

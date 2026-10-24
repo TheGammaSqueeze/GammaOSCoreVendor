@@ -1,7 +1,11 @@
 #!/vendor/bin/sh
 # Select which WL818S bridge firmware the kernel flashes on this boot.
 #
-# Default: /vendor/firmware/wl818s_fw.bin (our custom match60 build, good timings).
+# Default: /vendor/firmware/wl818s_fw.bin (our custom match60 build on the 20260917 base).
+# Alt    : /vendor/firmware/wl818s_fw_alt.bin (the same build on the 20260912 base). An MCU
+#          takes one of the two layouts and boot-loops on the other; which one depends on
+#          what it last ran. wl818_bootflash flips $DIR/alt each time an upload leaves the
+#          MCU silent, so the two rotate until one takes.
 # Backup : /vendor/firmware/wl818s_fw_stock.bin (stock 20260917 from the QFIL).
 #
 # The sec_bl_uart module always requests the basename "wl818s_fw.bin" and searches
@@ -21,6 +25,8 @@ FLAG=$DIR/use_stock
 ACTIVE=$DIR/active
 FCP=/sys/module/firmware_class/parameters/path
 STOCK=/vendor/firmware/wl818s_fw_stock.bin
+ALT=/vendor/firmware/wl818s_fw_alt.bin
+ALTFLAG=$DIR/alt
 klog() { echo "$TAG: $*" > /dev/kmsg 2>/dev/null; }
 
 mkdir -p "$DIR" 2>/dev/null
@@ -48,6 +54,11 @@ if [ "$(cat $FLAG 2>/dev/null)" = "1" ]; then
     else
         klog "stock backup missing ($STOCK); staying on default firmware"
     fi
+elif [ "$(cat $ALTFLAG 2>/dev/null)" = "1" ] && [ -r "$ALT" ]; then
+    mkdir -p "$ACTIVE" 2>/dev/null
+    cp "$ALT" "$ACTIVE/wl818s_fw.bin" 2>/dev/null
+    echo "$ACTIVE" > "$FCP"
+    klog "custom bridge firmware on the alternate base selected (firmware_class.path=$ACTIVE)"
 else
     klog "default (custom) bridge firmware selected (firmware_class.path=$(cat $FCP 2>/dev/null))"
 fi
