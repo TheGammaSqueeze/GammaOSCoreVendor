@@ -39,9 +39,9 @@
 #define DP_CONNECTOR "/sys/class/drm/card0-DP-1" // the DP display is registered: its first open powers it
 #define DRM_WAIT_MS 20000    // the node and the DP connector appear a few seconds into boot
 #define CHECK_WAIT_MS 8000   // no upgrade: DP on, banner read and the date compare take ~1-2 s
-#define UPGRADE_WAIT_MS 120000 // an upgrade adds ~10 s; generous bound
+#define UPGRADE_WAIT_MS 120000 // an upgrade adds ~10 s; generous bound (+16 s for the nano recovery try)
 #define REBOOT_COUNT_FILE "/mnt/vendor/persist/wl818/flash_reboots"
-#define kMaxRebootsInARow 2
+#define kMaxRebootsInARow 10
 
 static void klog(const char* msg) {
     int fd = open("/dev/kmsg", O_WRONLY | O_CLOEXEC);
@@ -89,6 +89,7 @@ int main(void) {
     }
 
     int success = 0, readback = 0, complete = 0, started = 0;
+    long long tSuccess = 0;
     long long t1 = now_ms();
     char line[2048];
     while (!complete && now_ms() - t1 < (started ? UPGRADE_WAIT_MS : CHECK_WAIT_MS)) {
@@ -104,12 +105,16 @@ int main(void) {
         line[n] = 0;
         if (!strstr(line, "sec-bl-uart")) continue;
         if (strstr(line, "fw_check: starting firmware upgrade")) started = 1;
-        if (strstr(line, "fw_upgrade: SUCCESS")) success = 1;
+        if (strstr(line, "fw_upgrade: SUCCESS")) { success = 1; tSuccess = now_ms(); }
         if (strstr(line, "fw_check: MCU date readback after upgrade=")) readback = 1;
         if (strstr(line, "fw_check: complete")) complete = 1;
     }
 
     char m[200];
+    // persist.gammaos.wl818.noreboot=1: log what would happen and never reboot (bench use)
+    char noreboot[PROP_VALUE_MAX] = {};
+    __system_property_get("persist.gammaos.wl818.noreboot", noreboot);
+    const int bench = noreboot[0] == '1';
     int reboots = 0;
     {
         FILE* f = fopen(REBOOT_COUNT_FILE, "r");
@@ -117,6 +122,26 @@ int main(void) {
             if (fscanf(f, "%d", &reboots) != 1) reboots = 0;
             fclose(f);
         }
+    }
+    // Let the MCU finish with the image before any reboot. The upload is acknowledged packet
+    // by packet, but the MCU then commits it and restarts, and the module's 3 s readback
+    // comes too early (rc=-110). A reboot right there power-cycles the bridge mid-commit and
+    // the next boots find a silent MCU and upload all over again. Poll the running date and
+    // go on as soon as the MCU answers, or after the window.
+    if (complete && success) {
+        char d[64] = {};
+        while (now_ms() - tSuccess < 45000) {
+            FILE* f = fopen("/sys/class/wl818_reset/mcu_date", "r");
+            if (f) { if (!fgets(d, sizeof(d), f)) d[0] = 0; fclose(f); }
+            size_t n = strlen(d);
+            while (n && (d[n - 1] == '\n' || d[n - 1] == ' ')) d[--n] = 0;
+            if (n == 8 && d[0] == '2') break;
+            d[0] = 0;
+            usleep(500000);
+        }
+        if (d[0]) snprintf(m, sizeof(m), "%lld ms after the upload the MCU answers with its date (%s)", now_ms() - tSuccess, d);
+        else snprintf(m, sizeof(m), "%lld ms after the upload the MCU still gives no date; going on anyway", now_ms() - tSuccess);
+        klog(m);
     }
     if (complete && success && reboots < kMaxRebootsInARow) {
         FILE* f = fopen(REBOOT_COUNT_FILE, "w");
@@ -128,12 +153,13 @@ int main(void) {
                  readback ? "ok" : "timed out", now_ms() - t0, reboots + 1, kMaxRebootsInARow);
         klog(m);
         sync();
-        if (__system_property_set("sys.powerctl", "reboot") != 0) {
+        if (bench) klog("noreboot set: not rebooting");
+        else if (__system_property_set("sys.powerctl", "reboot") != 0) {
             klog("sys.powerctl set failed");
         }
         // init carries out the reboot once this exec returns; the DRM node is closed by exit.
     } else if (complete && success) {
-        snprintf(m, sizeof(m), "bridge firmware uploaded again but %d reboots in a row did not settle it; not rebooting (Volume-Up at boot selects the stock firmware)", reboots);
+        snprintf(m, sizeof(m), "bridge firmware uploaded again but %d reboots in a row did not settle it; not rebooting", reboots);
         klog(m);
     } else if (!complete) {
         snprintf(m, sizeof(m), "no fw_check result within %d s (upgrade started: %d); nothing to do",
