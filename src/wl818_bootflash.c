@@ -31,6 +31,9 @@
 #include <stdio.h>
 #include <string.h>
 #include <sys/system_properties.h>
+#include <sys/ioctl.h>
+#include <sys/types.h>
+#include <drm/drm.h>
 #include <time.h>
 #include <unistd.h>
 
@@ -40,6 +43,7 @@
 #define DRM_WAIT_MS 20000    // the node and the DP connector appear a few seconds into boot
 #define CHECK_WAIT_MS 8000   // no upgrade: DP on, banner read and the date compare take ~1-2 s
 #define UPGRADE_WAIT_MS 120000 // an upgrade adds ~10 s; generous bound (+16 s for the nano recovery try)
+#define HOLD_WAIT_MS 120000  // the DRM handle stays open until nano has the node (bounded)
 #define REBOOT_COUNT_FILE "/mnt/vendor/persist/wl818/flash_reboots"
 #define kMaxRebootsInARow 10
 #define ALT_FLAG_FILE "/mnt/vendor/persist/wl818/alt"   // read by wl818_select.sh: 1 = the other base image
@@ -82,8 +86,11 @@ int main(void) {
         usleep(50000);
     }
     if (dfd >= 0) {
+        // the first opener of a DRM node is its master until it drops that: give it up at
+        // once, so nano's SET_MASTER succeeds while this handle (and the hold below) stays open
+        if (ioctl(dfd, DRM_IOCTL_DROP_MASTER, 0) != 0) klog("DROP_MASTER on the DRM node failed (nano may not get master while the hold lasts)");
         char m[96];
-        snprintf(m, sizeof(m), "opened %s after %lld ms (DP power-on requested)", DRM_NODE, now_ms() - t0);
+        snprintf(m, sizeof(m), "opened %s after %lld ms (DP power-on requested, master dropped)", DRM_NODE, now_ms() - t0);
         klog(m);
     } else {
         klog(DRM_NODE " did not appear; watching the log anyway");
@@ -193,7 +200,64 @@ int main(void) {
                  started, success, readback);
         klog(m);
     }
-    if (dfd >= 0) close(dfd);
+    // Never be the last close of the DRM node. This tool is the first opener of card0 on a
+    // boot; if it also closes it before nano has the node open, the kernel's last-close path
+    // (sde_kms_lastclose) hands the pipes back to its boot splash client and the DSI panel is
+    // left in the splash handoff state: the home still flips, but a blank frame and a
+    // backlight 0 at sleep no longer reach the top panel (it stays lit on the last frame
+    // until SurfaceFlinger power-cycles it). A child holds the handle in its own session
+    // (init kills the service's process group when this exec returns) until nano reports
+    // the DRM home up, bounded, then lets go: nano's open keeps the node from closing.
+    if (dfd >= 0) {
+        // the parent only returns once the child has left the session and the cgroup: init
+        // kills both within milliseconds of this exec returning
+        int hs[2] = {-1, -1};
+        if (pipe(hs) != 0) hs[0] = hs[1] = -1;
+        pid_t pid = fork();
+        if (pid == 0) {
+            if (hs[0] >= 0) close(hs[0]);
+            // own session, and out of the service's cgroup: init kills every task left in
+            // it when this exec returns (the hold died at 10 s and the close went ahead)
+            setsid();
+            close(kfd);
+            {
+                int cg = open("/sys/fs/cgroup/cgroup.procs", O_WRONLY | O_CLOEXEC);
+                if (cg >= 0) {
+                    char pb[32];
+                    int n = snprintf(pb, sizeof(pb), "%d\n", (int)getpid());
+                    if (write(cg, pb, (size_t)n) != n) klog("could not leave the service cgroup; the hold may be cut short");
+                    close(cg);
+                } else {
+                    klog("no cgroup.procs to leave the service cgroup; the hold may be cut short");
+                }
+            }
+            if (hs[1] >= 0) { (void)!write(hs[1], "d", 1); close(hs[1]); }
+            char v[PROP_VALUE_MAX] = {};
+            long long th = now_ms();
+            while (now_ms() - th < HOLD_WAIT_MS) {
+                v[0] = 0;
+                __system_property_get("sys.gammaos.nano.drm_active", v);
+                if (v[0] == '1') break;
+                usleep(200000);
+            }
+            snprintf(m, sizeof(m), "DRM node released %lld ms later (nano drm_active=%s)", now_ms() - th, v[0] ? v : "unset");
+            klog(m);
+            close(dfd);
+            _exit(0);
+        }
+        if (pid < 0) klog("fork for the DRM hold failed; closing the node now");
+        if (hs[1] >= 0) close(hs[1]);
+        if (hs[0] >= 0) {
+            if (pid > 0) {
+                char b;
+                struct pollfd hp = {.fd = hs[0], .events = POLLIN};
+                if (poll(&hp, 1, 2000) > 0) (void)!read(hs[0], &b, 1);
+                else klog("the DRM hold did not report in; it may be cut short");
+            }
+            close(hs[0]);
+        }
+        // the parent's copy closes with the exit; the child's keeps the node open
+    }
     close(kfd);
     return 0;
 }
