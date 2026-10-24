@@ -69,6 +69,12 @@ on post-fs
 on late-fs
     wait_for_prop hwservicemanager.ready true
     #exec_start wait_for_keymaster
+    # GammaOS: bridge firmware check before /data is mounted (synchronous). The
+    # system's late-fs block has already started gammaos-nano, so the check runs
+    # in parallel with the home; a boot that flashes the bridge reboots here with
+    # nothing of /data touched yet. See vendor.wl818_bootflash in
+    # gammaos-nano-services.rc.
+    exec_start vendor.wl818_bootflash
     mount_all --late
 
 on post-fs-data

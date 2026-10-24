@@ -5,7 +5,10 @@ service retroidpad /vendor/bin/retroidpad "Retroid Pocket Controller"
     oneshot
     disabled
 
-on post-fs-data
+# post-fs, not post-fs-data: the pad needs only /dev/ttyHS1 and uinput (it
+# retries the serial open), so it is up before the long first boot after a
+# factory reset or a fresh install settles.
+on post-fs
     start retroidpad
 
 on shutdown

@@ -2638,6 +2638,7 @@
 /etc/init/init\.gammaos_fan\.rc u:object_r:vendor_configs_file:s0
 /etc/init/init\.gammaos_display\.rc u:object_r:vendor_configs_file:s0
 /etc/init/gammaos-nano-services\.rc u:object_r:vendor_configs_file:s0
+/etc/init/init\.gammaos-early-adb\.rc u:object_r:vendor_configs_file:s0
 /src u:object_r:vendor_file:s0
 /src/retroidpad u:object_r:vendor_file:s0
 /src/retroidpad/RetroidPad\.c u:object_r:vendor_file:s0
@@ -2646,6 +2647,7 @@
 /bin/wake\.sh u:object_r:vendor_file:s0
 /firmware/wl818s_fw\.bin u:object_r:vendor_firmware_file:s0
 /firmware/wl818s_fw_stock\.bin u:object_r:vendor_firmware_file:s0
-/bin/wl818_postflash\.sh u:object_r:vendor_shell_exec:s0
+/bin/wl818_bootflash u:object_r:vendor_shell_exec:s0
+/bin/early_adb\.sh u:object_r:vendor_shell_exec:s0
 /bin/wl818_select\.sh u:object_r:vendor_shell_exec:s0
 /bin/wl818_volup u:object_r:vendor_shell_exec:s0

@@ -57,14 +57,20 @@ service vendor.wl818_select /vendor/bin/wl818_select.sh
     oneshot
     disabled
 
-# After a boot that flashed the bridge firmware, reboot once so the next boot
-# brings the bottom panel up clean (the flashing boot leaves the DP erroring).
-service vendor.wl818_postflash /vendor/bin/wl818_postflash.sh
-    class main
+# Bridge firmware check brought forward to late-fs: opens the DRM node (the
+# first open powers the DP, which runs the module's fw_check), watches the
+# kernel log and, when this boot flashed the bridge, reboots once right away so
+# the next boot brings the bottom panel up clean (the flashing boot leaves the
+# DP erroring). It runs synchronously (exec_start) from hw/init.target.rc's
+# late-fs block, right before mount_all --late mounts /data: a reboot during
+# the first boot's data setup left the device in recovery ("Can't load Android
+# system"), and there nothing of /data has been touched yet. The system's
+# late-fs block has already started gammaos-nano, so the home is not delayed.
+# It also does not wait for the long first boot after a factory reset or a
+# fresh install.
+service vendor.wl818_bootflash /vendor/bin/wl818_bootflash
+    class core
     user root
-    group root system
+    group root system graphics
     oneshot
     disabled
-
-on boot
-    start vendor.wl818_postflash
