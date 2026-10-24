@@ -353,6 +353,13 @@ persist.gammaos.nano.ps3xmb=1
 persist.gammaos.ultra_low_power_saving_mode=1
 # GammaOS nano routes the launcher/XMB to the top panel (port 130).
 persist.gammaos.nano.primary_display=130
+# Bottom panel (DP bridge) colour calibration, measured on the device: Screen Calibration's
+# values and the matrix they publish, so the panel is corrected from the first frame.
+persist.gammaos.nano.screencal.bottom.saturation=41
+persist.gammaos.nano.screencal.bottom.red=95
+persist.gammaos.nano.screencal.bottom.green=99
+persist.gammaos.nano.screencal.bottom.blue=97
+persist.gammaos.display.screen_matrix.bottom=0.830,0.053,0.052,0.100,0.916,0.102,0.019,0.020,0.815,0.000,0.000,0.000
 # Nano DRM-direct mode: the top DSI panel needs a horizontal flip to read upright
 # (the bottom DP uses its own matrix, default 0deg native landscape).
 persist.gammaos.nano.drm_flip_h=1
