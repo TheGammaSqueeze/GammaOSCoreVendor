@@ -68,7 +68,7 @@ service cpu_screen_on /vendor/bin/wake.sh
     priority -20
     writepid /dev/cpuset/top-app/tasks
 
-service force_sleep /system/bin/sh -c "sleep 5; start cpu_screen_off;"
+service force_sleep /vendor/bin/force_sleep.sh
     class main
     user root
     group root system
