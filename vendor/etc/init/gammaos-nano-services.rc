@@ -74,3 +74,15 @@ service vendor.wl818_bootflash /vendor/bin/wl818_bootflash
     group root system graphics
     oneshot
     disabled
+
+# Boot log keeper: the kernel log copied to /metadata/gammaos/boot_dmesg.txt every
+# 2 s until boot completes, for boots that never reach adb or /data (see bootlog.sh).
+service vendor.bootlog /vendor/bin/bootlog.sh
+    class core
+    user root
+    group root system
+    oneshot
+    disabled
+
+on post-fs
+    start vendor.bootlog
