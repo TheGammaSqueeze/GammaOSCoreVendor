@@ -9,7 +9,7 @@ tar -xvf /vendor/etc/GammaEQ.tar.gz -C /sdcard
 # GammaOS Turnip, the Vulkan driver azahar-nano uses on this GPU, as an adrenotools
 # package for other emulators (import it as a custom GPU driver). cp, not cp -p: the
 # storage root refuses the vendor file's owner and time stamp.
-cp /vendor/etc/gammaos-turnip-adreno-610-f55db9d4a3.zip /sdcard/gammaos-turnip-adreno-610-f55db9d4a3.zip
+cp /vendor/etc/gammaos-turnip-adreno-610-05ff906825.zip /sdcard/gammaos-turnip-adreno-610-05ff906825.zip
 
 # Speaker tuning, the same values as the preset and the build.prop defaults.
 setprop persist.sys.gammaeq.spk_only 1
