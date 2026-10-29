@@ -210,7 +210,10 @@ vendor.audio.feature.maxx_audio.enable=false
 vendor.audio.feature.ras.enable=true
 vendor.audio.feature.record_play_concurency.enable=false
 vendor.audio.feature.src_trkn.enable=true
-vendor.audio.feature.spkr_prot.enable=true
+# GammaOS: Qualcomm speaker protection off. Its feedback capture never starts here (no ACDB
+# calibration), and each failed start left the speaker route on, so headphones played next to the
+# speakers. The aw883xx amplifiers protect the speakers themselves.
+vendor.audio.feature.spkr_prot.enable=false
 vendor.audio.feature.ssrec.enable=true
 vendor.audio.feature.usb_offload.enable=true
 vendor.audio.feature.usb_offload_burst_mode.enable=false
