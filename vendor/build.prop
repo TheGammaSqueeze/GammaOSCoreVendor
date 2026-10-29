@@ -434,7 +434,7 @@ persist.gammaos.azahar_nano.jit_save_bg=1
 # user-changeable). DRM presenter: nonblocking commits paced to the deadline, fences waited
 # in the presenter, the portrait top DSI drawn upright. Performance: the GammaOS tweaks on,
 # half precision fragment shaders, lights and shadow gathering trimmed, dynamic resolution
-# from 2x, LIFO shader builds. Picture: the Retro LCD shader on both screens, full render
+# from 1.5x, LIFO shader builds. Picture: the Retro LCD shader on both screens, full render
 # scale, no AA. The Turnip driver bundled for the Adreno 610.
 persist.gammaos.azahar_nano.backend=drm
 persist.gammaos.azahar_nano.gpu_driver=gammaos-turnip-adreno-610
@@ -452,7 +452,11 @@ persist.gammaos.azahar_nano.fs_mediump=1
 persist.gammaos.azahar_nano.light_skip=1
 persist.gammaos.azahar_nano.shadow_gather=1
 persist.gammaos.azahar_nano.dynres=1
-persist.gammaos.azahar_nano.resolution_factor=2
+# The internal resolution a fresh azahar-nano config starts at (a value the user has set is
+# kept). 1.5x lands every rendered pixel on a whole number of output pixels: 3 on the 1080-line
+# top panel without a screen shader, 2 in the 720-line buffer of the LCD shaders (2x gives 2.25
+# and 1.5). Kirby: Planet Robobot renders in 6.1 ms of GPU time at 1.5x against 9.0 ms at 2x.
+persist.gammaos.azahar_nano.resolution_factor=1.5
 persist.gammaos.azahar_nano.render_scale_top=100
 persist.gammaos.azahar_nano.render_scale_bottom=100
 persist.gammaos.azahar_nano.build_order=lifo
