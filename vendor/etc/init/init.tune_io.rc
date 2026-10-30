@@ -1,20 +1,21 @@
 on late-fs
-    # boot time fs tune
+    # boot-time fs tune - the RG DS boots from the eMMC (mmcblk2). Generous read-ahead
+    # on the boot device speeds first boot and game loads.
     write /sys/block/mmcblk2/queue/iostats 0
     write /sys/block/mmcblk2/queue/read_ahead_kb 2048
     write /sys/block/mmcblk2/queue/nr_requests 256
-    write /sys/block/dm-0/queue/read_ahead_kb 2048
-    write /sys/block/dm-1/queue/read_ahead_kb 2048
-    write /sys/block/dm-2/queue/read_ahead_kb 2048
-    write /sys/block/dm-3/queue/read_ahead_kb 2048
-
-
-on property:sys.boot_completed=1
-    # end boot time fs tune
-    write /sys/block/mmcblk2/queue/read_ahead_kb 128
-    write /sys/block/mmcblk2/queue/nr_requests 128
+    # dm-0..3 = system, system_dlkm, vendor, vendor_dlkm (compressed erofs). Their page
+    # cache is evicted and refaulted through boot, and a big read-ahead turns every
+    # refault into megabytes of reads and decompression that evict yet more cache.
+    # Keep these small; game data lives on userdata and the SD volumes.
     write /sys/block/dm-0/queue/read_ahead_kb 128
     write /sys/block/dm-1/queue/read_ahead_kb 128
     write /sys/block/dm-2/queue/read_ahead_kb 128
     write /sys/block/dm-3/queue/read_ahead_kb 128
+
+on property:sys.boot_completed=1
+    # runtime: restore iostats and trim the request queue depth. The system/vendor
+    # dm devices stay at the small boot value set above.
+    write /sys/block/mmcblk2/queue/read_ahead_kb 128
+    write /sys/block/mmcblk2/queue/nr_requests 128
     write /sys/block/mmcblk2/queue/iostats 1
