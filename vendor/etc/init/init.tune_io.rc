@@ -5,19 +5,22 @@ on late-fs
     write /sys/block/mmcblk0/queue/iostats 0
     write /sys/block/mmcblk0/queue/read_ahead_kb 2048
     write /sys/block/mmcblk0/queue/nr_requests 256
-    write /sys/block/dm-0/queue/read_ahead_kb 2048
-    write /sys/block/dm-1/queue/read_ahead_kb 2048
-    write /sys/block/dm-2/queue/read_ahead_kb 2048
-    write /sys/block/dm-3/queue/read_ahead_kb 2048
+    # dm-0..3 = system, system_dlkm, vendor, vendor_dlkm (compressed erofs). On the
+    # 1 GB board their page cache is evicted and refaulted all through boot (~70k
+    # file refaults by two minutes), and a big read-ahead turns every refault into
+    # megabytes of SD reads and decompression that evict yet more cache, queueing
+    # installd's unlock work behind it. Keep these small; game data lives on
+    # userdata and the SD volumes, which this does not touch.
+    write /sys/block/dm-0/queue/read_ahead_kb 128
+    write /sys/block/dm-1/queue/read_ahead_kb 128
+    write /sys/block/dm-2/queue/read_ahead_kb 128
+    write /sys/block/dm-3/queue/read_ahead_kb 128
 
 
 on property:sys.boot_completed=1
-    # runtime: keep read-ahead generous (SD benefits from it for sequential game
-    # asset loads), just restore iostats and trim the request queue depth.
+    # runtime: keep the boot card's read-ahead generous (SD benefits from it for
+    # sequential game asset loads), restore iostats and trim the request queue depth.
+    # The system/vendor dm devices stay at the small boot value set above.
     write /sys/block/mmcblk0/queue/read_ahead_kb 512
     write /sys/block/mmcblk0/queue/nr_requests 128
-    write /sys/block/dm-0/queue/read_ahead_kb 512
-    write /sys/block/dm-1/queue/read_ahead_kb 512
-    write /sys/block/dm-2/queue/read_ahead_kb 512
-    write /sys/block/dm-3/queue/read_ahead_kb 512
     write /sys/block/mmcblk0/queue/iostats 1
