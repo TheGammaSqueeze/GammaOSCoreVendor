@@ -334,11 +334,14 @@ persist.gammaos.primary_port=146
 persist.gsf.port_rot.146=ORIENTATION_90
 persist.gsf.port_rot.147=ORIENTATION_0
 # Touch to display mapping, from the stock input-port-associations.xml
-# (port 146 = fts_ts, port 147 = fts_ts_sec): the top digitizer to the primary
-# (display 0) rotated with the panel, the bottom digitizer to the secondary.
+# (port 146 = fts_ts, port 147 = fts_ts_sec), by logical display id: 0 is the
+# top panel and 2 the bottom here (display 1 is not used, as on the RG DS), not
+# 0 and 1 as on the Duo Lite. The persist.gif.map.port.* form cannot reach the
+# bottom panel: its lookup only sees the first INTERNAL viewport. The top
+# digitizer is rotated with the panel.
 persist.gif.map.fts_ts=0
 persist.gif.rot.fts_ts=90
-persist.gif.map.fts_ts_sec=1
+persist.gif.map.fts_ts_sec=2
 
 # Boot into GammaOS Nano (0 = nano home, 1 = full Android) with the 3DS theme as
 # the home (ndstheme 4) and the XMB-style category layout underneath.
@@ -346,9 +349,13 @@ persist.bootanim.skip_nano=0
 persist.gammaos.nano.ndstheme=4
 persist.gammaos.nano.xmb_mode=1
 persist.gammaos.nano.ps3xmb=1
-# GammaOS nano routes the launcher/XMB to the top panel. The value is the CRTC
-# enumeration index (0 = the top panel's CRTC), not a port number.
-persist.gammaos.nano.primary_display=0
+# GammaOS nano routes the launcher/XMB to the top panel. The SurfaceFlinger and
+# overlay paths read this as the PHYSICAL PORT (146 = top): it picks the panel
+# that holds the XMB and the launched app, and the Control Centre goes to the
+# other one. The DRM path reads it as a CRTC index and takes 0 (the top panel's
+# CRTC) for an out-of-range value, so the port is right for both. 0 here put the
+# Control Centre over the app on the top panel.
+persist.gammaos.nano.primary_display=146
 # Route DS ROM launches to drastic-nano (both DS screens through nano's DRM
 # dual-panel path).
 persist.gammaos.nano.drastic_nano=1
@@ -359,6 +366,10 @@ persist.gammaos.nano.drm_indep_flip=1
 persist.gammaos.nano.drm_home_resume=1
 # The DRM home waits for both panels.
 persist.gammaos.nano.drm_displays=2
+# Both panels default to 120 Hz, and drastic-nano paces one DS frame per refresh
+# (it ran at double speed). Cap drastic-nano's DRM mode at 60 Hz: each panel also
+# lists a 60 Hz mode of the same size. The nano home keeps 120 Hz.
+persist.gammaos.drastic_nano.drm_max_hz=60
 # Nano DRM-direct mode: the top panel needs a horizontal flip to read upright,
 # as on the Duo Lite. Nano flips in the panel's portrait frame, so drm_flip_h
 # mirrors the landscape picture top to bottom and drm_flip_v left to right.
@@ -393,7 +404,6 @@ persist.gammaos.drastic_nano.scaling=stretch
 persist.gammaos.drastic_nano.screen_gap=0
 persist.gammaos.drastic_nano.ff_limit=0
 persist.gammaos.drastic_nano.drm_screen_fit=1
-persist.gammaos.drastic_nano.drm_top_scale=93.9
 persist.gammaos.drastic_nano.drm_bottom_scale=0
 persist.gammaos.drastic_nano.drm_screen_shader=1
 persist.gammaos.drastic_nano.ltune_dx=0
@@ -433,6 +443,10 @@ persist.gammaos.azahar_nano.uber_strip=0
 persist.gammaos.azahar_nano.stereo_skip=0
 persist.gammaos.azahar_nano.lcd_top=4
 persist.gammaos.azahar_nano.lcd_bottom=4
+# The LCD shaders draw at the full panel resolution here (1080 short side). The
+# default 720 suits the Duo Lite's bandwidth; on this 1080-line top panel it made
+# the plane stretch the LCD grid 1.5x into big cells.
+persist.gammaos.azahar_nano.lcd_short_side=1080
 persist.gammaos.azahar_nano.screen_aa=0
 persist.gammaos.azahar_nano.fps_counter=0
 persist.gammaos.azahar_nano.compile_notice=1
@@ -442,7 +456,8 @@ persist.gammaos.azahar_nano.stick_dpad_swap=0
 # the top panel (the top panel is logical display 0).
 persist.gammaos.nano.ps3xmb.controlcenter=1
 persist.gammaos.nano.cc.topdisplay=0
-persist.gammaos.nano.cc.bottomdisplay=1
+# The bottom panel is logical display 2 (display 1 is not used), as on the RG DS.
+persist.gammaos.nano.cc.bottomdisplay=2
 # Control centre brightness sliders: panel0 is the top panel, panel1 the bottom.
 persist.gammaos.nano.cc.bl_top=panel0-backlight
 persist.gammaos.nano.cc.bl_bottom=panel1-backlight
