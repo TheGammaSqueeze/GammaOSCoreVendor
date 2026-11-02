@@ -16,3 +16,12 @@ service vendor.gammaos_backlight_props /vendor/bin/gammaos_backlight_props.sh
 
 on post-fs
     start vendor.gammaos_backlight_props
+
+# Touch report rate: both FocalTech controllers (top fts_ts, bottom fts_ts_sec) run
+# at 120 Hz by default (register 0x88 = 12). 0x18 asks for 240 Hz; the controllers
+# top out at ~182 Hz (5.5 ms between reports, measured), a third less sampling delay
+# than 120 Hz for every touch reader. The driver keeps the value across suspend and
+# applies it again on resume. fts_report_rate takes a hex value.
+on boot
+    write /sys/devices/platform/soc/8c0000.qcom,qupv3_2_geni_se/880000.i2c/i2c-8/8-0038/fts_report_rate 18
+    write /sys/devices/platform/soc/ac0000.qcom,qupv3_1_geni_se/a98000.i2c/i2c-6/6-0038/fts_report_rate 18
