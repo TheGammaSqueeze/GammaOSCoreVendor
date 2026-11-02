@@ -1,15 +1,17 @@
 /*
- * RetroidPad.c - Retroid Pocket MCU gamepad bridge (Duo Lite build)
+ * RetroidPad.c - Retroid Pocket MCU gamepad bridge (Retroid Pocket Duo build)
  *
  * Reads the controller MCU packet stream on /dev/ttyHS1 (115200 8N1) and
  * exposes it as a uinput gamepad:
  *   face buttons, Select/Start, thumb clicks, Back (KEY_BACK) and Home (BTN_MODE)
- *   L1/R1/L2/R2 (digital)
+ *   L1/R1 (digital), L2/R2 analog as ABS_BRAKE/ABS_GAS 0..255, plus BTN_TL2/BTN_TR2
+ *   once a trigger is pressed past TRIG_PRESS_PCT (released below TRIG_RELEASE_PCT)
  *   D-pad as ABS_HAT0X/ABS_HAT0Y
  *   left stick ABS_X/ABS_Y, right stick ABS_Z/ABS_RZ (auto-centred at start)
  *
  * Packet: A5 D3 5A 3D <seq> <cmd> <len lo> <len hi> <data...> <xor checksum>
- * cmd 0x02 len 14: d[0..1] buttons, d[2] L2 bit0, d[4] R2 bit0,
+ * cmd 0x02 len 14: d[0..1] buttons, d[2..3] L2, d[4..5] R2 (uint16 hall sensors,
+ *                  about 1880 at rest),
  *                  d[6..7] LX, d[8..9] LY, d[10..11] RX, d[12..13] RY (int16)
  *
  * Build:
@@ -41,6 +43,47 @@
 #define STICK_FUZZ       8
 #define STICK_CAL_FRAMES 50      /* packets averaged for the centre */
 
+#define TRIG_MAX         255     /* ABS_BRAKE / ABS_GAS range */
+#define TRIG_SPAN_MIN    1500    /* raw travel assumed for a full press until a deeper
+                                  * press is seen (the Duo travels about 1650 to 1690:
+                                  * 1880 at rest down to 190..230); the span then
+                                  * follows the real travel */
+#define TRIG_DIR_LOCK    150     /* raw travel from rest that fixes the press direction */
+#define TRIG_DEAD_PCT    4       /* travel below this % of the span reads 0 */
+#define TRIG_PRESS_PCT   60      /* BTN_TL2/BTN_TR2 down at this % ... */
+#define TRIG_RELEASE_PCT 45      /* ... and up again below this % (hysteresis) */
+
+typedef struct {
+    int rest;     /* raw value at rest, averaged with the stick centres */
+    int dir;      /* +1 or -1 once known: which way the raw value moves on a press */
+    int span;     /* raw travel of a full press */
+    int value;    /* last ABS value sent */
+    int button;   /* last BTN_TL2/BTN_TR2 state sent */
+} trigger_t;
+
+/* Maps a raw hall reading to 0..TRIG_MAX and updates the digital state with
+ * hysteresis, so sensor noise around the threshold cannot chatter the button. */
+static void trigger_update(trigger_t *t, int raw, int *value, int *button) {
+    int dev = raw - t->rest;
+    if (t->dir == 0) {
+        if (dev >= TRIG_DIR_LOCK) t->dir = 1;
+        else if (dev <= -TRIG_DIR_LOCK) t->dir = -1;
+    }
+    int travel = t->dir ? dev * t->dir : 0;
+    if (travel < 0) travel = 0;
+    if (travel > t->span) t->span = travel;
+    int dead = t->span * TRIG_DEAD_PCT / 100;
+    int v = 0;
+    if (travel > dead)
+        v = (int)(((long)(travel - dead) * TRIG_MAX + (t->span - dead) / 2) / (t->span - dead));
+    if (v > TRIG_MAX) v = TRIG_MAX;
+    int b = t->button;
+    if (!b && v >= TRIG_MAX * TRIG_PRESS_PCT / 100) b = 1;
+    else if (b && v < TRIG_MAX * TRIG_RELEASE_PCT / 100) b = 0;
+    *value = v;
+    *button = b;
+}
+
 typedef struct { uint16_t mask; int code; } face_map_t;
 
 static const face_map_t face_map[] = {
@@ -65,7 +108,7 @@ static const size_t face_map_count = sizeof(face_map) / sizeof(face_map[0]);
 
 static int calib_LX = 0, calib_LY = 0, calib_RX = 0, calib_RY = 0;
 static int calib_done = 0;
-static long cal_sum[4];
+static long cal_sum[6];
 static int cal_n = 0;
 
 static ssize_t write_all(int fd, const void *buf, size_t len) {
@@ -145,6 +188,8 @@ static int uinput_create(const char *devname) {
     UI_CHECK(ioctl(fd, UI_SET_ABSBIT, ABS_Y));
     UI_CHECK(ioctl(fd, UI_SET_ABSBIT, ABS_Z));
     UI_CHECK(ioctl(fd, UI_SET_ABSBIT, ABS_RZ));
+    UI_CHECK(ioctl(fd, UI_SET_ABSBIT, ABS_BRAKE));
+    UI_CHECK(ioctl(fd, UI_SET_ABSBIT, ABS_GAS));
 
     struct uinput_user_dev uidev;
     memset(&uidev, 0, sizeof(uidev));
@@ -159,6 +204,8 @@ static int uinput_create(const char *devname) {
     set_abs(&uidev, ABS_Y,  -STICK_CLIP, STICK_CLIP, STICK_FUZZ, STICK_FLAT);
     set_abs(&uidev, ABS_Z,  -STICK_CLIP, STICK_CLIP, STICK_FUZZ, STICK_FLAT);
     set_abs(&uidev, ABS_RZ, -STICK_CLIP, STICK_CLIP, STICK_FUZZ, STICK_FLAT);
+    set_abs(&uidev, ABS_BRAKE, 0, TRIG_MAX, 0, 0);
+    set_abs(&uidev, ABS_GAS,   0, TRIG_MAX, 0, 0);
     UI_CHECK(write_all(fd, &uidev, sizeof(uidev)));
     UI_CHECK(ioctl(fd, UI_DEV_CREATE));
 #undef UI_CHECK
@@ -209,6 +256,8 @@ int main(int argc, char *argv[]) {
     uint16_t prev_buttons = 0;
     int prev_hatX = 0, prev_hatY = 0;
     int prev_L1 = 0, prev_R1 = 0, prev_L2 = 0, prev_R2 = 0;
+    int prev_L2a = 0, prev_R2a = 0;
+    trigger_t trig_L2 = { .span = TRIG_SPAN_MIN }, trig_R2 = { .span = TRIG_SPAN_MIN };
     int prev_LX = 0, prev_LY = 0, prev_RX = 0, prev_RY = 0;
 
     while (1) {
@@ -268,23 +317,28 @@ int main(int argc, char *argv[]) {
                 int16_t raw_LY = (int16_t)(d[8]  | (d[9]  << 8));
                 int16_t raw_RX = (int16_t)(d[10] | (d[11] << 8));
                 int16_t raw_RY = (int16_t)(d[12] | (d[13] << 8));
+                int raw_L2 = d[2] | (d[3] << 8);
+                int raw_R2 = d[4] | (d[5] << 8);
 
                 if (!calib_done) {
                     cal_sum[0] += raw_LX; cal_sum[1] += raw_LY;
                     cal_sum[2] += raw_RX; cal_sum[3] += raw_RY;
+                    cal_sum[4] += raw_L2; cal_sum[5] += raw_R2;
                     if (++cal_n >= STICK_CAL_FRAMES) {
                         calib_LX = (int)(cal_sum[0] / cal_n);
                         calib_LY = (int)(cal_sum[1] / cal_n);
                         calib_RX = (int)(cal_sum[2] / cal_n);
                         calib_RY = (int)(cal_sum[3] / cal_n);
+                        trig_L2.rest = (int)(cal_sum[4] / cal_n);
+                        trig_R2.rest = (int)(cal_sum[5] / cal_n);
                         calib_done = 1;
-                        printf("[INFO] Stick centre LX=%d LY=%d RX=%d RY=%d\n",
-                               calib_LX, calib_LY, calib_RX, calib_RY);
+                        printf("[INFO] Stick centre LX=%d LY=%d RX=%d RY=%d, trigger rest L2=%d R2=%d\n",
+                               calib_LX, calib_LY, calib_RX, calib_RY, trig_L2.rest, trig_R2.rest);
                     }
                 }
                 if (debug) {
-                    printf("btn=%04x d2=%02x d3=%02x d4=%02x d5=%02x LX=%d LY=%d RX=%d RY=%d\n",
-                           buttons, d[2], d[3], d[4], d[5], raw_LX, raw_LY, raw_RX, raw_RY);
+                    printf("btn=%04x L2=%d R2=%d LX=%d LY=%d RX=%d RY=%d\n",
+                           buttons, raw_L2, raw_R2, raw_LX, raw_LY, raw_RX, raw_RY);
                     fflush(stdout);
                 }
                 int LX = calib_done ? clip_stick(-(raw_LX - calib_LX)) : 0;
@@ -312,8 +366,15 @@ int main(int argc, char *argv[]) {
 
                 int L1 = (buttons & (1u<<8)) ? 1 : 0;
                 int R1 = (buttons & (1u<<9)) ? 1 : 0;
-                int L2 = (d[2] & 0x01) ? 1 : 0;
-                int R2 = (d[4] & 0x01) ? 1 : 0;
+                int L2 = 0, R2 = 0, L2a = 0, R2a = 0;
+                if (calib_done) {
+                    trigger_update(&trig_L2, raw_L2, &L2a, &L2);
+                    trigger_update(&trig_R2, raw_R2, &R2a, &R2);
+                    trig_L2.value = L2a; trig_L2.button = L2;
+                    trig_R2.value = R2a; trig_R2.button = R2;
+                }
+                if (L2a != prev_L2a) EMIT(EV_ABS, ABS_BRAKE, L2a);
+                if (R2a != prev_R2a) EMIT(EV_ABS, ABS_GAS,   R2a);
                 if (L1 != prev_L1) EMIT(EV_KEY, BTN_TL,  L1);
                 if (R1 != prev_R1) EMIT(EV_KEY, BTN_TR,  R1);
                 if (L2 != prev_L2) EMIT(EV_KEY, BTN_TL2, L2);
@@ -332,6 +393,7 @@ int main(int argc, char *argv[]) {
                 prev_buttons = buttons;
                 prev_hatX = hatX; prev_hatY = hatY;
                 prev_L1 = L1; prev_R1 = R1; prev_L2 = L2; prev_R2 = R2;
+                prev_L2a = L2a; prev_R2a = R2a;
                 prev_LX = LX; prev_LY = LY; prev_RX = RX; prev_RY = RY;
             }
             offset += packet_len;
