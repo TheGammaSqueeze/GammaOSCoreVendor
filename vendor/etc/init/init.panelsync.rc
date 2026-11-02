@@ -1,0 +1,21 @@
+# Locks the top panel's refresh to the bottom panel (both are command-mode
+# panels running on their own oscillators). Started explicitly on boot so it
+# runs in the nano and the full Android boot alike; stays idle while
+# persist.gammaos.panelsync is 0.
+#
+# dsi_dcs.ko gives panelsync a DCS path that does not hold the display
+# driver's global lock (source: /vendor/src/dsi_dcs/dsi_dcs-source.zip).
+# Without it panelsync falls back to the debugfs tx_cmd, which stalls both
+# panels for 40-70 ms per write.
+service panelsync /vendor/bin/panelsync
+    class main
+    user root
+    group root graphics
+    disabled
+
+on boot
+    insmod /vendor/lib/gammaos/dsi_dcs.ko
+    start panelsync
+
+on shutdown
+    stop panelsync

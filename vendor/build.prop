@@ -370,6 +370,11 @@ persist.gammaos.nano.drm_displays=2
 # touch latency). drastic-nano paces one DS frame per refresh and ran at double
 # speed there, so it switches the panels to their 60 Hz mode for its session.
 persist.gammaos.drastic_nano.drm_max_hz=60
+# panelsync locks the top panel's refresh to the bottom panel's (0 = off)
+persist.gammaos.panelsync=1
+# drastic-nano paces to the measured vblank rate: these command-mode panels run
+# at their own oscillator (59.89 Hz), not the mode's nominal 60.00
+persist.gammaos.drastic_nano.measure_refresh=1
 # Nano DRM-direct mode: the top panel needs a horizontal flip to read upright,
 # as on the Duo Lite. Nano flips in the panel's portrait frame, so drm_flip_h
 # mirrors the landscape picture top to bottom and drm_flip_v left to right.

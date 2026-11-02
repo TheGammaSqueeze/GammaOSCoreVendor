@@ -196,3 +196,6 @@ rfs/msm/wpss/readonly
 rfs/msm/wpss/readonly/vendor
 src
 src/retroidpad
+src/panelsync
+lib/gammaos
+src/dsi_dcs
