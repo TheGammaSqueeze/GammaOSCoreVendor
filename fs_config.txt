@@ -2756,6 +2756,7 @@ lib64/libfmq.so 0 0 0644 capabilities=0x0
 lib64/libframecapture.so 0 0 0644 capabilities=0x0
 lib64/libgame_enhance.so 0 0 0644 capabilities=0x0
 lib64/libgamepoweroptfeature.so 0 0 0644 capabilities=0x0
+lib64/libgammaos_drmmaster.so 0 0 0644 capabilities=0x0
 lib64/libgatekeeper.so 0 0 0644 capabilities=0x0
 lib64/libgdtap.so 0 0 0644 capabilities=0x0
 lib64/libgeofencing.so 0 0 0644 capabilities=0x0

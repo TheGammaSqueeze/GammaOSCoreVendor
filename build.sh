@@ -33,7 +33,11 @@ while IFS= read -r d; do
 done < vendor_dirs.txt
 # lost+found is a reserved inode mke2fs owns; e2fsdroid keeps the source mode
 # for it rather than the fs_config mode, so set it to match the device (0700).
+# Its owner too: e2fsdroid keeps that from the source as well, and a checkout
+# owned by the building user would otherwise give the device a lost+found owned
+# by that uid instead of root.
 chmod 700 vendor/lost+found 2>/dev/null || true
+chown 0:0 vendor/lost+found 2>/dev/null || true
 
 # --- Size the ext4 image from the actual tree ---------------------------------
 # Sized tightly: content + 5% + 16 MiB for ext4 metadata, inodes for every entry

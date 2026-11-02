@@ -3781,3 +3781,4 @@
 /src/retroidpad/build\.sh u:object_r:vendor_file:s0
 /bin/gammaos_backlight_props\.sh u:object_r:vendor_file:s0
 /etc/init/gammaos-nano-services\.rc u:object_r:vendor_configs_file:s0
+/lib64/libgammaos_drmmaster\.so u:object_r:same_process_hal_file:s0
