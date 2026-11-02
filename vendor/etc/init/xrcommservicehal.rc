@@ -1,0 +1,10 @@
+# File: xrcommservicehal.rc
+#
+# Copyright (c) Qualcomm Technologies, Inc. and/or its subsidiaries.
+# All Rights Reserved.
+# Confidential and Proprietary - Qualcomm Technologies, Inc.
+
+service xrcommhald /vendor/bin/hw/xrcommservicehal
+    class late_start
+    user system
+    group system

@@ -1,0 +1,20 @@
+<?xml version="1.0" ?>
+<!--
+Copyright (c) Qualcomm Technologies, Inc. and/or its subsidiaries.
+SPDX-License-Identifier: BSD-3-Clause-Clear
+-->
+<Targets>
+  <Target name="canoe">
+    <MixerResolution width="1440" height="2560">
+      <Offsets corner_radius="5" left="5" top="5" right="-3" bottom="-3"/>
+    </MixerResolution>
+    <MixerResolution width="1080" height="1920">
+      <Offsets corner_radius="5" left="4" top="4" right="-2" bottom="-2"/>
+    </MixerResolution>
+    <MixerResolution width="720" height="1280">
+      <Offsets corner_radius="5" left="1" top="1" right="0" bottom="0"/>
+    </MixerResolution>
+    <DimmingWidth>16</DimmingWidth>
+  </Target>
+</Targets>
+

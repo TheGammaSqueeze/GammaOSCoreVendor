@@ -1,0 +1,18 @@
+# Nano mode (sys.gammaos.minimal_boot=1) starts class main but not late_start,
+# which keeps the DRM home light. Wi-Fi needs cnss-daemon (class late_start in
+# hw/init.qcom.rc) for the firmware and QMI side; without it the cld driver
+# never completes its configuration and Wi-Fi cannot be enabled.
+on property:sys.gammaos.minimal_boot=1
+    start cnss-daemon
+
+# Backlight ranges for split brightness, read from the panels (see
+# gammaos_backlight_props.sh).
+service vendor.gammaos_backlight_props /vendor/bin/gammaos_backlight_props.sh
+    class core
+    user root
+    group root system
+    oneshot
+    disabled
+
+on post-fs
+    start vendor.gammaos_backlight_props

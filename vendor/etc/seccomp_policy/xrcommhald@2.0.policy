@@ -1,0 +1,24 @@
+fcntl: 1
+sendto: 1
+connect: 1
+writev: 1
+socket: arg0 == AF_UNIX
+openat: 1
+fstat: 1
+mmap: 1
+close: 1
+getuid: 1
+rt_sigaction: 1
+flock: 1
+faccessat: 1
+prctl: 1
+ioctl: 1
+read: 1
+futex: 1
+dup: 1
+mprotect: arg2 in ~PROT_EXEC || arg2 in ~PROT_WRITE
+munmap: 1
+sendmsg: 1
+recvmsg: 1
+shutdown: 1
+write: 1

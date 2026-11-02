@@ -1,0 +1,37 @@
+<?xml version='1.0' encoding='utf-8'?>
+
+<!--
+Copyright (c) Qualcomm Technologies, Inc. and/or its subsidiaries.
+SPDX-License-Identifier: BSD-3-Clause-Clear
+-->
+
+<LargeCompPerfHintThreshold>
+  <DeviceThresholdList>
+    <DefaultDevice version="1"/>
+      <Device version="1">
+        <FpsThresholdMap fps="120" PerfHintThreshold="8"/>
+        <FpsThresholdMap fps="144" PerfHintThreshold="6"/>
+        <FpsThresholdMap fps="180" PerfHintThreshold="8"/>
+        <FpsThresholdMap fps="240" PerfHintThreshold="4"/>
+      </Device>
+      <Device version="2">
+        <FpsThresholdMap fps="60" PerfHintThreshold="2"/>
+        <FpsThresholdMap fps="90" PerfHintThreshold="2"/>
+        <FpsThresholdMap fps="120" PerfHintThreshold="2"/>
+        <FpsThresholdMap fps="144" PerfHintThreshold="2"/>
+        <FpsThresholdMap fps="180" PerfHintThreshold="2"/>
+      </Device>
+      <Device version="3">
+        <FpsThresholdMap fps="120" PerfHintThreshold="4"/>
+        <FpsThresholdMap fps="144" PerfHintThreshold="4"/>
+        <FpsThresholdMap fps="180" PerfHintThreshold="4"/>
+        <FpsThresholdMap fps="244" PerfHintThreshold="4"/>
+      </Device>
+      <Device version="4">
+        <FpsThresholdMap fps="120" PerfHintThreshold="2"/>
+        <FpsThresholdMap fps="144" PerfHintThreshold="2"/>
+        <FpsThresholdMap fps="180" PerfHintThreshold="2"/>
+        <FpsThresholdMap fps="244" PerfHintThreshold="2"/>
+      </Device>
+  </DeviceThresholdList>
+</LargeCompPerfHintThreshold>

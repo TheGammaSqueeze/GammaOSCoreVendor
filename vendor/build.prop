@@ -1,0 +1,492 @@
+####################################
+# from generate-common-build-props
+# These properties identify this partition image.
+####################################
+ro.product.vendor.brand=qti
+ro.product.vendor.device=sun
+ro.product.vendor.manufacturer=Moorechip
+ro.product.vendor.model=Retroid Pocket Duo
+ro.product.vendor.name=sun
+ro.vendor.product.cpu.abilist=arm64-v8a
+ro.vendor.product.cpu.abilist32=
+ro.vendor.product.cpu.abilist64=arm64-v8a
+ro.vendor.build.date=Wed Sep 30 11:58:28 HKT 2026
+ro.vendor.build.date.utc=1790740708
+ro.vendor.build.fingerprint=qti/sun/sun:15/AQ3A.260423.001/eng.RPDuo.20260930.115836:user/release-keys
+ro.vendor.build.id=AQ3A.260423.001
+ro.vendor.build.tags=release-keys
+ro.vendor.build.type=user
+ro.vendor.build.version.incremental=eng.RPDuo.20260930.115836
+ro.vendor.build.version.release=15
+ro.vendor.build.version.release_or_codename=15
+ro.vendor.build.version.sdk=35
+####################################
+# from out/target/product/sun/obj/ETC/android_info_prop_intermediates/android_info.prop
+####################################
+####################################
+# from variable ADDITIONAL_VENDOR_PROPERTIES
+####################################
+ro.bionic.arch=arm64
+ro.bionic.cpu_variant=oryon
+ro.bionic.2nd_arch=
+ro.bionic.2nd_cpu_variant=
+persist.sys.dalvik.vm.lib.2=libart.so
+dalvik.vm.isa.arm64.variant=oryon
+dalvik.vm.isa.arm64.features=default
+ro.minui.pixel_format=RGBX_8888
+ro.boot.dynamic_partitions=true
+ro.product.first_api_level=35
+ro.board.first_api_level=202404
+ro.board.api_level=202404
+ro.board.api_frozen=true
+ro.vendor.build.security_patch=2026-04-05
+ro.product.board=sun
+ro.board.platform=sun
+ro.hwui.use_vulkan=true
+ro.build.ab_update=true
+ro.vendor.build.ab_ota_partitions=abl,boot,dtbo,init_boot,odm,recovery,system_dlkm,uefi,vbmeta,vendor,vendor_boot,vendor_dlkm,xbl,xbl_config
+####################################
+# from variable PRODUCT_VENDOR_PROPERTIES
+####################################
+ro.vendor.bt.bdaddr_path=/mnt/vendor/persist/quec_bt_mac
+ro.virtual_ab.enabled=true
+ro.virtual_ab.compression.enabled=true
+ro.virtual_ab.userspace.snapshots.enabled=true
+ro.virtual_ab.io_uring.enabled=true
+ro.virtual_ab.compression.xor.enabled=true
+ro.virtual_ab.batch_writes=true
+ro.virtual_ab.compression.threads=true
+external_storage.projid.enabled=1
+external_storage.casefold.enabled=1
+external_storage.sdcardfs.enabled=0
+ro.zygote=zygote64
+dalvik.vm.dex2oat64.enabled=true
+keyguard.no_require_sim=true
+ro.com.android.dataroaming=true
+ro.config.ringtone=Ring_Synth_04.ogg
+# Removed by post_process_props.py because overridden by ro.config.notification_sound?=OnTheHunt.ogg
+#ro.config.notification_sound?=pixiedust.ogg
+# Removed by post_process_props.py because overridden by ro.zygote=zygote64
+#ro.zygote?=zygote32
+ro.logd.size.stats=64K
+log.tag.stats_log=I
+ro.carrier=unknown
+ro.config.notification_sound=OnTheHunt.ogg
+ro.config.alarm_alert=Alarm_Classic.ogg
+ro.recovery.usb.vid=18D1
+ro.recovery.usb.adb.pid=D001
+ro.recovery.usb.fastboot.pid=4EE0
+dalvik.vm.heapstartsize=16m
+dalvik.vm.heapgrowthlimit=256m
+dalvik.vm.heapsize=512m
+dalvik.vm.heaptargetutilization=0.5
+dalvik.vm.heapminfree=8m
+dalvik.vm.heapmaxfree=32m
+ro.vendor.vm.ssr.enable=false
+vendor.audio.hdr.spf.record.enable=false
+vendor.audio.hdr.record.enable=false
+vendor.audio.offload.buffer.size.kb=32
+vendor.audio.compress_capture.enabled=true
+vendor.audio.compress_capture.aac=true
+vendor.audio.hal.aidl.enabled=true
+ro.usb.uvc.enabled=true
+####################################
+# from variable PRODUCT_DEFAULT_PROPERTY_OVERRIDES
+####################################
+ro.adb.secure=1
+ro.surface_flinger.has_wide_color_display=true
+ro.surface_flinger.has_HDR_display=true
+ro.surface_flinger.use_color_management=true
+ro.surface_flinger.wcg_composition_dataspace=143261696
+ro.surface_flinger.protected_contents=true
+ro.surface_flinger.use_content_detection_for_refresh_rate=true
+ro.surface_flinger.set_touch_timer_ms=200
+ro.surface_flinger.force_hwc_copy_for_virtual_displays=true
+ro.surface_flinger.max_frame_buffer_acquired_buffers=3
+ro.surface_flinger.max_virtual_display_dimension=4096
+ro.surface_flinger.clear_slots_with_set_layer_buffer=false
+ro.surface_flinger.game_default_frame_rate_override=60
+####################################
+# from variable PRODUCT_PROPERTY_OVERRIDES
+####################################
+ro.soc.manufacturer=Moorechip
+ro.control_privapp_permissions=log
+persist.vendor.qcomsysd.enabled=1
+vendor.power.pasr.enabled=true
+vendor.pasr.activemode.enabled=true
+persist.backup.ntpServer=0.pool.ntp.org
+sys.vendor.shutdown.waittime=500
+ro.frp.pst=/dev/block/bootdevice/by-name/frp
+ro.vendor.beluga.p=0x3
+ro.vendor.beluga.c=0x4800
+ro.vendor.beluga.s=0x900
+ro.vendor.beluga.t=0x240
+ro.soc.manufacturer=Moorechip
+ro.lockscreen.disable.default=true
+ro.sf.lcd_density=369
+ro.surface_flinger.running_without_sync_framework=true
+wifi.aware.interface=wifi-aware0
+ro.incremental.enable=yes
+persist.vendor.qfp=true
+ro.vendor.qspm.enable=true
+persist.vendor.radio.enableadvancedscan=true
+persist.sys.fuse.passthrough.enable=true
+ro.mediaserver.64b.enable=true
+ro.hardware.vulkan=adreno
+ro.hardware.egl=adreno
+ro.gfx.driver.1=com.qualcomm.qti.gpudrivers.sun.api35
+ro.opengles.version=196610
+graphics.gpu.profiler.support=true
+ro.audio.flinger_standbytime_ms=2000
+vendor.audio_hal.timecheck_timeoutMS=8000
+vendor.audio_hal.period_size=192
+vendor.audio.ull_record_period_multiplier=2
+vendor.audio.offload.track.enable=true
+vendor.audio.offload.multiple.enabled=false
+vendor.audio.flac.sw.decoder.24bit=true
+persist.vendor.bt.a2dp_offload_cap=sbc-aptx-aptxtws-aptxhd-aac-ldac
+ro.bluetooth.a2dp_offload.supported=true
+persist.bluetooth.a2dp_offload.disabled=false
+persist.bluetooth.a2dp_offload.cap=sbc-aac-aptx-aptxhd-ldac
+vendor.audio.use.sw.alac.decoder=true
+vendor.audio.use.sw.ape.decoder=true
+vendor.audio.use.sw.mpegh.decoder=true
+vendor.audio.hw.aac.encoder=false
+vendor.audio.adm.buffering.ms=2
+vendor.audio.volume.headset.gain.depcal=true
+vendor.audio.c2.preferred=true
+debug.c2.use_dmabufheaps=1
+vendor.qc2audio.suspend.enabled=true
+vendor.qc2audio.per_frame.flac.dec.enabled=true
+debug.stagefright.omx_default_rank=0
+vendor.audio.hal.output.suspend.supported=true
+persist.vendor.bt.aac_frm_ctl.enabled=true
+persist.vendor.bt.aac_vbr_frm_ctl.enabled=true
+vendor.audio.feature.a2dp_offload.enable=true
+vendor.audio.feature.battery_listener.enable=true
+vendor.audio.feature.hfp.enable=true
+vendor.audio.feature.kpi_optimize.enable=true
+vendor.audio.feature.dmabuf.cma.memory.enable=false
+aaudio.mmap_policy=2
+aaudio.mmap_exclusive_policy=2
+aaudio.hw_burst_min_usec=2000
+persist.vendor.qcom.bluetooth.aac_vbr_ctl.enabled=true
+persist.vendor.qcom.bluetooth.aptxadaptiver2_1_support=true
+persist.sys.fflag.override.settings_bluetooth_hearing_aid=true
+persist.vendor.qcom.bluetooth.lossless_aptx_adaptive_le.enabled=true
+bluetooth.profile.bap.broadcast.assist.enabled=true
+bluetooth.profile.bap.broadcast.source.enabled=true
+bluetooth.profile.bap.unicast.client.enabled=true
+bluetooth.profile.vcp.controller.enabled=true
+bluetooth.profile.csip.set_coordinator.enabled=true
+bluetooth.profile.mcp.server.enabled=true
+bluetooth.profile.ccp.server.enabled=true
+bluetooth.profile.hap.client.enabled=true
+persist.vendor.qcom.bluetooth.dualmode_transport_support=true
+persist.bluetooth.leaudio_offload.disabled=false
+ro.vendor.bluetooth.btconfigstore=false
+persist.vendor.qcom.bluetooth.fmd_header=8:02:01:06:18:16:AA:FE:40
+persist.vendor.qcom.bluetooth.fmd_config_info=80:0C:60:90:0F:00:00:14:01
+bluetooth.profile.asha.central.enabled=true
+persist.vendor.qti.btadvaudio.target.support.xpan=true
+persist.vendor.qcom.bluetooth.aac_vbr_ctl.enabled=true
+persist.vendor.qcom.bluetooth.aptxadaptiver2_1_support=true
+persist.sys.fflag.override.settings_bluetooth_hearing_aid=true
+persist.vendor.qcom.bluetooth.lossless_aptx_adaptive_le.enabled=true
+bluetooth.profile.bap.broadcast.assist.enabled=true
+bluetooth.profile.bap.broadcast.source.enabled=true
+bluetooth.profile.bap.unicast.client.enabled=true
+bluetooth.profile.vcp.controller.enabled=true
+bluetooth.profile.csip.set_coordinator.enabled=true
+bluetooth.profile.mcp.server.enabled=true
+bluetooth.profile.ccp.server.enabled=true
+bluetooth.profile.hap.client.enabled=true
+persist.vendor.qcom.bluetooth.dualmode_transport_support=true
+persist.bluetooth.leaudio_offload.disabled=false
+ro.vendor.bluetooth.btconfigstore=false
+persist.vendor.qcom.bluetooth.fmd_header=8:02:01:06:18:16:AA:FE:40
+persist.vendor.qcom.bluetooth.fmd_config_info=80:0C:60:90:0F:00:00:14:01
+bluetooth.profile.asha.central.enabled=true
+persist.vendor.qti.btadvaudio.target.support.xpan=true
+ro.camera.enableCamera1MaxZsl=1
+ro.camera.disableHeicUltraHDR=true
+vendor.trustedui.service_start=0
+vendor.trustedui_listener.service_start=0
+vendor.trustedui_listener.service.enabled=true
+vendor.secureprocessor.service_start=0
+vendor.wv.oemcrypto.debug.enable_external_display_check=false
+drm.service.enabled=true
+vendor.wv.oemcrypto.debug.enable_hlos_data_path=true
+persist.demo.hdmirotationlock=false
+persist.sys.sf.color_saturation=1.0
+persist.sys.sf.color_mode=0
+debug.sf.hw=0
+debug.egl.hw=0
+debug.sf.latch_unsignaled=0
+debug.sf.auto_latch_unsignaled=1
+debug.mdpcomp.logs=0
+vendor.gralloc.disable_ubwc=0
+vendor.gralloc.enable_logs=0
+vendor.display.disable_scaler=0
+vendor.display.disable_excl_rect=0
+vendor.display.disable_excl_rect_partial_fb=1
+vendor.display.comp_mask=0
+vendor.display.enable_optimize_refresh=0
+vendor.display.use_smooth_motion=1
+vendor.display.disable_stc_dimming=1
+vendor.display.enable_dpps_dynamic_fps=1
+debug.sf.disable_client_composition_cache=1
+debug.sf.enable_gl_backpressure=1
+debug.sf.enable_advanced_sf_phase_offset=1
+vendor.display.vds_allow_hwc=1
+debug.sf.use_phase_offsets_as_durations=1
+debug.sf.late.app.duration=13666666
+debug.sf.early.app.duration=13666666
+debug.sf.earlyGl.app.duration=13666666
+vendor.display.enable_async_vds_creation=1
+vendor.display.enable_rounded_corner=1
+vendor.display.disable_3d_adaptive_tm=1
+vendor.display.disable_sdr_dimming=0
+vendor.display.enable_rc_support=1
+vendor.display.disable_sdr_histogram=1
+vendor.display.enable_hdr10_gpu_target=1
+debug.sf.predict_hwc_composition_strategy=0
+debug.sf.treat_170m_as_sRGB=1
+debug.graphics.game_default_frame_rate.disabled=1
+vendor.display.enable_display_extensions=1
+vendor.gralloc.enable_snapalloc=1
+vendor.display.disable_fp16_support=1
+debug.sf.early.sf.duration=10500000
+debug.sf.earlyGl.sf.duration=10500000
+debug.sf.late.sf.duration=10500000
+vendor.display.disable_offline_rotator=1
+vendor.display.enable_async_powermode=0
+vendor.display.disable_hw_recovery_dump=1
+vendor.display.enable_early_wakeup=1
+persist.vendor.dpm.vndr.feature=11
+persist.vendor.rcs.singlereg.feature=0
+avf.remote_attestation.enabled=false
+vendor.keymint.retry_timer=5
+ro.hardware.keystore_desede=true
+ro.crypto.metadata_init_delete_all_keys.enabled=true
+vendor.gatekeeper.is_security_level_spu=1
+debug.stagefright.c2inputsurface=-1
+debug.stagefright.ccodec=4
+debug.c2.use_dmabufheaps=1
+media.c2.hal.selection=aidl
+debug.stagefright.c2inputsurface=-1
+debug.stagefright.ccodec=4
+debug.c2.use_dmabufheaps=1
+media.c2.hal.selection=aidl
+debug.stagefright.c2inputsurface=-1
+debug.stagefright.ccodec=4
+debug.c2.use_dmabufheaps=1
+media.c2.hal.selection=aidl
+ro.vendor.extension_library=libqti-perfd-client.so
+ro.vendor.perf-hal.ver=3.0
+ro.vendor.perf.scroll_opt=1
+vendor.perf.framepacing.enable=1
+persist.vendor.data.mutualex.mode=wifipreferred
+vendor.spu.rkp_enabled=true
+ro.hardware.keystore_desede=true
+persist.vendor.radio.apm_sim_not_pwdn=1
+persist.vendor.radio.sib16_support=1
+persist.vendor.radio.custom_ecc=1
+persist.vendor.radio.procedure_bytes=SKIP
+persist.radio.multisim.config=dsds
+vendor.usb.rndis.func.name=gsi
+vendor.usb.rmnet.func.name=gsi
+vendor.usb.rmnet.inst.name=rmnet
+vendor.usb.dpl.inst.name=dpl
+vendor.usb.controller=a600000.dwc3
+vendor.usb.qdss.inst.name=qdss_sw
+vendor.usb.diag.func.name=ffs
+vendor.usb.use_ffs_mtp=1
+sys.usb.mtp.batchcancel=1
+vendor.usb.use_gadget_hal=1
+debug.stagefright.c2inputsurface=-1
+debug.stagefright.ccodec=4
+debug.c2.use_dmabufheaps=1
+media.c2.hal.selection=aidl
+wifi.aware.interface=wifi-aware0
+# ---------------------------------------------------------------------------
+# GammaOS (Retroid Pocket Duo)
+# ---------------------------------------------------------------------------
+# GammaOS device id (OTA endpoint, screen calibration profile)
+ro.gammaos.device=retroidpocketduo
+
+# Permanent wireless adb (no pairing, legacy tcpip)
+persist.adb.tcp.port=5555
+# Default USB composition = adb only. Stock asks for diag,adb, which sends the
+# gadget HAL through a reconfiguration that dropped adb here.
+persist.vendor.usb.config=adb
+
+# Dual-screen topology (both panels are DSI):
+#   PRIMARY   = top    vtdr6130 AMOLED 1080x1920, port 146 (portrait, mounted landscape)
+#   SECONDARY = bottom xingxing 4.5" 1280x960,     port 147 (native landscape)
+# Stock sets persist.panel.orientation=90 for the top panel.
+ro.surface_flinger.primary_display_orientation=ORIENTATION_90
+# Pin the framework DEFAULT_DISPLAY to the top panel whatever the connector
+# enumeration order (LocalDisplayAdapter).
+persist.gammaos.primary_port=146
+# Per-port physical orientation, applied whichever display SurfaceFlinger calls
+# primary: top landscape, bottom native.
+persist.gsf.port_rot.146=ORIENTATION_90
+persist.gsf.port_rot.147=ORIENTATION_0
+# Touch to display mapping, from the stock input-port-associations.xml
+# (port 146 = fts_ts, port 147 = fts_ts_sec): the top digitizer to the primary
+# (display 0) rotated with the panel, the bottom digitizer to the secondary.
+persist.gif.map.fts_ts=0
+persist.gif.rot.fts_ts=90
+persist.gif.map.fts_ts_sec=1
+
+# Boot into GammaOS Nano (0 = nano home, 1 = full Android) with the 3DS theme as
+# the home (ndstheme 4) and the XMB-style category layout underneath.
+persist.bootanim.skip_nano=0
+persist.gammaos.nano.ndstheme=4
+persist.gammaos.nano.xmb_mode=1
+persist.gammaos.nano.ps3xmb=1
+# GammaOS nano routes the launcher/XMB to the top panel. The value is the CRTC
+# enumeration index (0 = the top panel's CRTC), not a port number.
+persist.gammaos.nano.primary_display=0
+# Route DS ROM launches to drastic-nano (both DS screens through nano's DRM
+# dual-panel path).
+persist.gammaos.nano.drastic_nano=1
+# Present each CRTC on its own cadence instead of gating every frame on both
+# vblanks.
+persist.gammaos.nano.drm_indep_flip=1
+# The DRM home returns after a drastic-nano session launched from the overlay.
+persist.gammaos.nano.drm_home_resume=1
+# The DRM home waits for both panels.
+persist.gammaos.nano.drm_displays=2
+# Nano DRM-direct mode: the top panel needs a horizontal flip to read upright,
+# as on the Duo Lite. Nano flips in the panel's portrait frame, so drm_flip_h
+# mirrors the landscape picture top to bottom and drm_flip_v left to right.
+# Nano reads these at its DRM setup, before /data's persistent props load, so
+# only this build.prop value counts there.
+persist.gammaos.nano.drm_flip_h=1
+# Top panel digitizer (fts_ts, portrait) to the landscape logical frame for the
+# raw-evdev DRM readers (nano home, drastic-nano), checked on the device: axes
+# swapped, then the logical y flipped (the same as the Duo Lite's top digitizer).
+persist.gammaos.nano.osk_touch_swap=1
+persist.gammaos.nano.osk_touch_flipx=0
+persist.gammaos.nano.osk_touch_flipy=1
+
+# drastic-nano defaults as tuned on the Duo Lite, whose panels have the same
+# sizes (every row is user-changeable in the game menu).
+persist.gammaos.drastic_nano.backend=drm
+persist.gammaos.drastic_nano.autoload=1
+persist.gammaos.drastic_nano.drm_half_res=0
+persist.gammaos.drastic_nano.fps_counter=0
+persist.gammaos.drastic_nano.frame_sync=0
+persist.gammaos.drastic_nano.frameskip=0
+persist.gammaos.drastic_nano.frameskip_type=0
+persist.gammaos.drastic_nano.hires3d=1
+persist.gammaos.drastic_nano.gpu3d=0
+persist.gammaos.drastic_nano.gpu3d_ss=1
+persist.gammaos.drastic_nano.low_latency=0
+persist.gammaos.drastic_nano.present_age_default=0
+persist.gammaos.drastic_nano.zero_copy=0
+persist.gammaos.drastic_nano.fast_input_always=1
+persist.gammaos.drastic_nano.shader=2xPrescaleFast_LCD
+persist.gammaos.drastic_nano.scaling=stretch
+persist.gammaos.drastic_nano.screen_gap=0
+persist.gammaos.drastic_nano.ff_limit=0
+persist.gammaos.drastic_nano.drm_screen_fit=1
+persist.gammaos.drastic_nano.drm_top_scale=93.9
+persist.gammaos.drastic_nano.drm_bottom_scale=0
+persist.gammaos.drastic_nano.drm_screen_shader=1
+persist.gammaos.drastic_nano.ltune_dx=0
+persist.gammaos.drastic_nano.ltune_dy=0
+persist.gammaos.drastic_nano.ltune_scale=100
+persist.gammaos.drastic_nano.crash_tombstone=1
+
+# azahar-nano defaults as tuned on the Duo Lite (same panel sizes). No bundled
+# GPU driver: the Lite's Turnip build is for its Adreno 610.
+persist.gammaos.azahar_nano.pace_offset=1
+persist.gammaos.azahar_nano.jit_save_bg=1
+persist.gammaos.azahar_nano.backend=drm
+persist.gammaos.azahar_nano.drm_upright=1
+persist.gammaos.azahar_nano.drm_deadline=1
+persist.gammaos.azahar_nano.drm_waitfence=1
+persist.gammaos.azahar_nano.drm_blocking=0
+persist.gammaos.azahar_nano.drm_fifo=0
+persist.gammaos.azahar_nano.drm_nofence=0
+persist.gammaos.azahar_nano.drm_postflip_us=0
+persist.gammaos.azahar_nano.drm_core_tight=0
+persist.gammaos.azahar_nano.tweaks=1
+persist.gammaos.azahar_nano.fs_mediump=1
+persist.gammaos.azahar_nano.light_skip=1
+persist.gammaos.azahar_nano.shadow_gather=1
+persist.gammaos.azahar_nano.dynres=1
+persist.gammaos.azahar_nano.resolution_factor=1.5
+persist.gammaos.azahar_nano.render_scale_top=100
+persist.gammaos.azahar_nano.render_scale_bottom=100
+persist.gammaos.azahar_nano.build_order=lifo
+persist.gammaos.azahar_nano.jit_unsafe=0
+persist.gammaos.azahar_nano.async_gpu=0
+persist.gammaos.azahar_nano.pipe_workers=0
+persist.gammaos.azahar_nano.pipe_noopt=0
+persist.gammaos.azahar_nano.lut_ssbo=0
+persist.gammaos.azahar_nano.ubwc=0
+persist.gammaos.azahar_nano.uber_strip=0
+persist.gammaos.azahar_nano.stereo_skip=0
+persist.gammaos.azahar_nano.lcd_top=4
+persist.gammaos.azahar_nano.lcd_bottom=4
+persist.gammaos.azahar_nano.screen_aa=0
+persist.gammaos.azahar_nano.fps_counter=0
+persist.gammaos.azahar_nano.compile_notice=1
+persist.gammaos.azahar_nano.stick_dpad_swap=0
+
+# Bottom-screen control centre while a single-screen SurfaceFlinger app runs on
+# the top panel (the top panel is logical display 0).
+persist.gammaos.nano.ps3xmb.controlcenter=1
+persist.gammaos.nano.cc.topdisplay=0
+persist.gammaos.nano.cc.bottomdisplay=1
+# Control centre brightness sliders: panel0 is the top panel, panel1 the bottom.
+persist.gammaos.nano.cc.bl_top=panel0-backlight
+persist.gammaos.nano.cc.bl_bottom=panel1-backlight
+# The control centre reads the bottom digitizer directly; the top digitizer is
+# used for tap-to-focus between the top and bottom apps.
+persist.gammaos.nano.cc.touchdev=fts_ts_sec
+persist.gammaos.nano.cc.topdev=fts_ts
+# The pad's mode button (BTN_MODE, 316) shows and hides the Control Center over
+# the app on the bottom screen.
+persist.gammaos.nano.cc.keycode=316
+
+# GammaOS gamepad (gammapad): the built-in Retroid Pocket Controller merged into
+# the virtual Xbox pad, the source device hidden from apps, a full reload on a
+# config change.
+persist.gammaos.gamepad.enable=1
+persist.gammaos.gamepad.merge=1
+persist.gammaos.gamepad.hide_source=1
+persist.gammaos.gamepad.full_reload=1
+persist.gammaos.gamepad.devices=Retroid Pocket Controller
+
+# Per-display (top app / bottom app) media volume.
+persist.gammaos.audio.multivolume=true
+# Split brightness: slot d0 = top panel, d1 = bottom panel. The max values are
+# read from the panels at boot by gammaos_backlight_props.sh (the top panel's is
+# 8191, not 255).
+persist.gammaos.nano.cc.d1_is_top=0
+persist.gammaos.multidisplay.split_brightness.d0.path=/sys/class/backlight/panel0-backlight
+persist.gammaos.multidisplay.split_brightness.d1.path=/sys/class/backlight/panel1-backlight
+persist.gammaos.multidisplay.split_brightness.d0.min=1
+persist.gammaos.multidisplay.split_brightness.d1.min=1
+
+# GammaOS secondary display: the bottom panel is independent, shows the
+# secondary home, and games/apps can project to it.
+persist.gammaos.secondary_display.enabled=1
+persist.gammaos.multidisplay.secondary_display=1
+persist.gammaos.multidisplay.dual_focus=1
+
+# Quick settings tiles: default pages and the tiles hidden on this device
+persist.gammaos.qs.override_default_tiles_0=internet,bt,performance,gammasplitbrightness
+persist.gammaos.qs.override_default_tiles_1=gammasecondarydisplay,gammashader,rotation,gammaeq,immersivemode
+persist.gammaos.qs.override_default_tiles_2=secondarydisplayapps,launchguard,gammadualfocus,abxy
+persist.gammaos.qs.override_default_tiles_3=analogsensitivity,dpadAnalogToggle,analogdeadzone,analogcalibration
+persist.gammaos.qs.override_default_tiles_4=analogaxis,rightanalogaxis,mappingeditor,deepsleepmode
+persist.gammaos.qs.blacklist_0=dcdimmingemulation,477v,usbcontrollerswitch,gammargb
+persist.gammaos.qs.blacklist_1=globalbfi,gammarefresh
+
+# end of file

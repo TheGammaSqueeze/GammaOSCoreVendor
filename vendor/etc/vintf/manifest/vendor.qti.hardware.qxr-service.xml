@@ -1,0 +1,16 @@
+<!--
+    Input:
+        vendor/qcom/proprietary/xrcomm/xrcomm/service/xml/qxrv2/vendor.qti.hardware.qxr-service.xml
+-->
+<manifest version="8.0" type="device">
+    <hal format="aidl">
+        <name>vendor.qti.hardware.qxr</name>
+        <version>2</version>
+        <fqname>IQXRAudioService/default</fqname>
+        <fqname>IQXRCamService/default</fqname>
+        <fqname>IQXRCommService/default</fqname>
+        <fqname>IQXRCoreService/default</fqname>
+        <fqname>IQXRModService/default</fqname>
+        <fqname>IQXRSplitService/default</fqname>
+    </hal>
+</manifest>

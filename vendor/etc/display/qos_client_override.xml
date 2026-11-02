@@ -1,0 +1,15 @@
+<?xml version="1.0" ?>
+<!--
+Copyright (c) Qualcomm Technologies, Inc. and/or its subsidiaries.
+All rights reserved.
+Confidential and Proprietary - Qualcomm Technologies, Inc.
+-->
+<Targets>
+    <Target name="art">
+        <camera_config>C2_Peak</camera_config>
+    </Target>
+
+    <Target name="default">
+        <camera_config>C2_Peak</camera_config>
+    </Target>
+</Targets>

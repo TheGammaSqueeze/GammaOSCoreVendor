@@ -1,0 +1,27 @@
+# File: xrcommservice.rc
+#
+# Copyright (c) Qualcomm Technologies, Inc. and/or its subsidiaries.
+# All Rights Reserved.
+# Confidential and Proprietary - Qualcomm Technologies, Inc.
+
+on post-fs-data
+    mkdir /data/vendor/xrcomm 0770 system system
+
+# Add socket for xrcommservice
+service xrcommd /vendor/bin/hw/xrcommservice
+    class late_start
+    user system
+    group system inet wifi
+    socket xrcommservice stream 0660 system system
+
+service xrcomm_usb_mtu_set_sh /vendor/bin/init.xrcommd.usb_mtu_set.sh
+    class main
+    user root
+    group root
+    oneshot
+    disabled
+
+on property:vendor.xrcomm.set_mtu_usb=enable
+    start xrcomm_usb_mtu_set_sh
+
+#    interface aidl vendor.qti.hardware.qxr

@@ -1,0 +1,8 @@
+# Copyright (c) Qualcomm Technologies, Inc. and/or its subsidiaries.
+# All rights reserved.
+# Confidential and Proprietary - Qualcomm Technologies, Inc.
+
+service vendor.c2pa /vendor/bin/hw/vendor.qti.hardware.c2pa-aidl-service-qti
+    class hal
+    user system
+    group system

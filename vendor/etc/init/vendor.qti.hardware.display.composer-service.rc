@@ -1,0 +1,26 @@
+service vendor.qti.hardware.display.composer /vendor/bin/hw/vendor.qti.hardware.display.composer-service
+    class hal animation
+    user system
+    group graphics drmrpc
+    capabilities SYS_NICE
+    onrestart restart surfaceflinger
+    socket pps stream 0660 system system
+    writepid /dev/cpuset/system-background/tasks
+
+on boot
+    chown system system /sys/bus/i2c/devices/4-0028/red_led
+    chown system system /sys/bus/i2c/devices/4-0028/green_led
+    chown system system /sys/bus/i2c/devices/4-0028/blue_led
+    chown system system /sys/bus/i2c/devices/4-0028/led_status
+    chown system system /sys/bus/i2c/devices/4-0029/red_led
+    chown system system /sys/bus/i2c/devices/4-0029/green_led
+    chown system system /sys/bus/i2c/devices/4-0029/blue_led
+    chown system system /sys/bus/i2c/devices/4-0029/led_status
+    chown system system /sys/kernel/rtimd/rtimd_eye/left_eye_shift_left
+    chown system system /sys/kernel/rtimd/rtimd_eye/left_eye_shift_top
+    chown system system /sys/kernel/rtimd/rtimd_eye/left_eye_shift_right
+    chown system system /sys/kernel/rtimd/rtimd_eye/left_eye_shift_bottom
+    chown system system /sys/kernel/rtimd/rtimd_eye/right_eye_shift_left
+    chown system system /sys/kernel/rtimd/rtimd_eye/right_eye_shift_top
+    chown system system /sys/kernel/rtimd/rtimd_eye/right_eye_shift_right
+    chown system system /sys/kernel/rtimd/rtimd_eye/right_eye_shift_bottom

@@ -1,0 +1,13 @@
+# GammaOS: USB adb without system_server (debuggable builds), see early_adb.sh.
+# A service rather than property triggers: init enables property triggers only
+# after the boot stage, so an "on property:apexd.status=activated" rule never
+# fires during post-fs-data, and the first boot spends a minute there.
+service vendor.early_adb /vendor/bin/early_adb.sh
+    class core
+    user root
+    group root system shell
+    oneshot
+    disabled
+
+on post-fs
+    start vendor.early_adb

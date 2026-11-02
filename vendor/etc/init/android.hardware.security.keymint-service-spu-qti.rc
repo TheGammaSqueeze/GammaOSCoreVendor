@@ -1,0 +1,19 @@
+# Copyright (c) Qualcomm Technologies, Inc. and/or its subsidiaries.
+# All Rights Reserved.
+# Confidential and Proprietary - Qualcomm Technologies, Inc.
+
+on init && property:ro.boot.product.vendor.sku=pineapple
+    enable vendor.keymint-spu-qti
+    setprop ro.strongbox.manufacturer "QTI"
+    setprop ro.strongbox.model "SM8650"
+
+on init && property:ro.boot.product.vendor.sku=sun
+    enable vendor.keymint-spu-qti
+    setprop ro.strongbox.manufacturer "QTI"
+    setprop ro.strongbox.model "SM8750"
+
+service vendor.keymint-spu-qti /vendor/bin/hw/android.hardware.security.keymint-service-spu-qti
+    disabled
+    class early_hal
+    user system
+    group system drmrpc

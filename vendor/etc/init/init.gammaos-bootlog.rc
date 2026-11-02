@@ -1,0 +1,12 @@
+# GammaOS: boot log keeper on the raw logdump partition, for boots that never
+# reach adb (see /vendor/bin/bootlog.sh). Started at init, right after ueventd's
+# coldboot created the by-name links; logcat joins once logd is up.
+service vendor.bootlog /vendor/bin/bootlog.sh
+    class core
+    user root
+    group root system log
+    oneshot
+    disabled
+
+on init
+    start vendor.bootlog

@@ -1,0 +1,81 @@
+<?xml version="1.0" ?>
+<!--
+Changes from Qualcomm Technologies, Inc. are provided under the following license:
+Copyright (c) Qualcomm Technologies, Inc. and/or its subsidiaries.
+SPDX-License-Identifier: BSD-3-Clause-Clear
+-->
+<Targets>
+  <Target name="anorak">
+    <PanelResolution width="7104" height="3840">
+      <ScalingFactor x="1.5" y="1.5"/>
+      <ScalingFactor x="2" y="2"/>
+      <ScalingFactor x="2.5" y="2.5"/>
+    </PanelResolution>
+    <PanelResolution width="5088" height="2544">
+      <ScalingFactor x="1.5" y="1.5"/>
+      <ScalingFactor x="2" y="2"/>
+      <ScalingFactor x="2.5" y="2.5"/>
+    </PanelResolution>
+  </Target>
+
+  <Target name="sun">
+    <PanelResolution width="1440" height="3200">
+      <ScalingFactor x="1.5" y="1.5"/>
+      <ScalingFactor x="2" y="2"/>
+      <ScalingFactor x="2" y="1"/>
+      <ScalingFactor x="2.5" y="2.5"/>
+    </PanelResolution>
+    <PanelResolution width="1080" height="2400">
+      <ScalingFactor x="1.5" y="1.5"/>
+      <ScalingFactor x="2" y="2"/>
+      <ScalingFactor x="2.5" y="2.5"/>
+    </PanelResolution>
+  </Target>
+
+  <Target name="canoe">
+    <PanelResolution width="1440" height="3200">
+      <ScalingFactor x="1.5" y="1.5"/>
+      <ScalingFactor x="2" y="2"/>
+      <ScalingFactor x="2" y="1"/>
+      <ScalingFactor x="2.5" y="2.5"/>
+      <ScalingResolution w="1080" h="2400"/>
+    </PanelResolution>
+    <PanelResolution width="1440" height="3120">
+      <ScalingFactor x="1.5" y="1.5"/>
+      <ScalingFactor x="2" y="2"/>
+      <ScalingFactor x="2" y="1"/>
+      <ScalingFactor x="2.5" y="2.5"/>
+    </PanelResolution>
+    <PanelResolution width="1080" height="2400">
+      <ScalingFactor x="1.5" y="1.5"/>
+      <ScalingFactor x="2" y="2"/>
+      <ScalingFactor x="2.5" y="2.5"/>
+    </PanelResolution>
+  </Target>
+
+  <Target name="art">
+    <PanelResolution width="1440" height="3200">
+      <ScalingFactor x="1.5" y="1.5"/>
+      <ScalingFactor x="2" y="2"/>
+      <ScalingFactor x="2.5" y="2.5"/>
+      <ScalingResolution w="1080" h="2400"/>
+    </PanelResolution>
+    <PanelResolution width="1440" height="3120">
+      <ScalingFactor x="1.5" y="1.5"/>
+      <ScalingFactor x="2" y="2"/>
+      <ScalingFactor x="2.5" y="2.5"/>
+    </PanelResolution>
+    <PanelResolution width="1080" height="2400">
+      <ScalingFactor x="1.5" y="1.5"/>
+      <ScalingFactor x="2" y="2"/>
+      <ScalingFactor x="2.5" y="2.5"/>
+    </PanelResolution>
+  </Target>
+
+  <Target name="hamoa">
+    <PanelResolution width="2880" height="1800">
+      <ScalingFactor x="1.5" y="1.5"/>
+      <ScalingFactor x="2" y="2"/>
+    </PanelResolution>
+ </Target>
+</Targets>

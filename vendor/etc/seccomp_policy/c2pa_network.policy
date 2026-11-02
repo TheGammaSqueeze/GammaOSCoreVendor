@@ -1,0 +1,56 @@
+# Copyright (c) Qualcomm Technologies, Inc. and/or its subsidiaries.
+# All rights reserved.
+# Confidential and Proprietary - Qualcomm Technologies, Inc.
+
+mmap: arg2 in ~PROT_EXEC || arg2 in ~PROT_WRITE
+munmap: 1
+mprotect: arg2 in ~PROT_EXEC || arg2 in ~PROT_WRITE
+prctl: 1
+openat: 1
+close: 1
+read: 1
+fstat: 1
+readlinkat: 1
+newfstatat: 1
+mremap: 1
+fstatfs: 1
+pread64: 1
+rt_sigaction: 1
+faccessat: 1
+rt_sigprocmask: 1
+futex: 1
+socket: arg0 == AF_UNIX
+connect: 1
+writev: 1
+getrandom: 1
+fcntl: 1
+lseek: 1
+execve: 1
+getpid: 1
+set_tid_address: 1
+sched_getscheduler: 1
+sigaltstack: 1
+sched_getaffinity: 1
+getuid: 1
+pipe2: 1
+write: 1
+clone: 1
+restart_syscall: 1
+exit: 1
+exit_group: 1
+rt_sigreturn: 1
+socketpair: 1
+ppoll: 1
+sendmsg: 1
+recvmsg: 1
+shutdown: 1
+eventfd2: 1
+setsockopt: 1
+getsockopt: 1
+recvfrom: 1
+getsockname: 1
+madvise: 1
+gettid: 1
+getrlimit: 1
+nanosleep: 1
+dup: 1

@@ -1,0 +1,431 @@
+<?xml version='1.0' encoding='utf-8' standalone='yes' ?>
+<!--
+Copyright (c) 2021, The Linux Foundation. All rights reserved.
+
+Redistribution and use in source and binary forms, with or without
+modification, are permitted provided that the following conditions are
+met:
+    * Redistributions of source code must retain the above copyright
+      notice, this list of conditions and the following disclaimer.
+    * Redistributions in binary form must reproduce the above
+      copyright notice, this list of conditions and the following
+      disclaimer in the documentation and/or other materials provided
+      with the distribution.
+    * Neither the name of The Linux Foundation nor the names of its
+      contributors may be used to endorse or promote products derived
+      from this software without specific prior written permission.
+
+THIS SOFTWARE IS PROVIDED "AS IS" AND ANY EXPRESS OR IMPLIED
+WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF
+MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT
+ARE DISCLAIMED.  IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS
+BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR
+CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF
+SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR
+BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
+WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE
+OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN
+IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+-->
+
+<!--
+Changes from Qualcomm Technologies, Inc. are provided under the following license:
+Copyright (c) Qualcomm Technologies, Inc. and/or its subsidiaries.
+SPDX-License-Identifier: BSD-3-Clause-Clear
+-->
+
+<displayConfiguration>
+  <screenBrightnessMap interpolation="linear">
+    <point>
+      <value>0.0000</value>
+      <nits>0.1024</nits>
+    </point>
+    <point>
+      <value>0.0195</value>
+      <nits>1.9899</nits>
+    </point>
+    <point>
+       <value>0.0392</value>
+       <nits>3.0768</nits>
+    </point>
+    <point>
+      <value>0.0587</value>
+      <nits>5.2126</nits>
+    </point>
+    <point>
+      <value>0.0784</value>
+      <nits>8.2822</nits>
+    </point>
+    <point>
+      <value>0.0980</value>
+      <nits>12.3083</nits>
+    </point>
+    <point>
+      <value>0.1176</value>
+      <nits>17.1537</nits>
+    </point>
+    <point>
+      <value>0.1372</value>
+      <nits>22.1807</nits>
+    </point>
+    <point>
+    <value>0.1568</value>
+      <nits>28.7787</nits>
+    </point>
+    <point>
+      <value>0.1764</value>
+      <nits>36.5476</nits>
+    </point>
+    <point>
+      <value>0.1961</value>
+      <nits>44.6762</nits>
+    </point>
+    <point>
+      <value>0.2156</value>
+      <nits>52.7743</nits>
+    </point>
+    <point>
+      <value>0.2353</value>
+      <nits>59.3706</nits>
+    </point>
+    <point>
+      <value>0.2548</value>
+      <nits>68.7847</nits>
+    </point>
+    <point>
+      <value>0.2744</value>
+      <nits>79.6466</nits>
+    </point>
+    <point>
+      <value>0.2941</value>
+      <nits>91.2872</nits>
+    </point>
+    <point>
+      <value>0.3136</value>
+      <nits>104.1706</nits>
+    </point>
+    <point>
+      <value>0.3333</value>
+      <nits>118.8852</nits>
+    </point>
+    <point>
+      <value>0.3528</value>
+      <nits>134.6011</nits>
+    </point>
+    <point>
+      <value>0.3725</value>
+      <nits>151.7822</nits>
+    </point>
+    <point>
+      <value>0.3921</value>
+      <nits>169.7627</nits>
+    </point>
+    <point>
+      <value>0.4117</value>
+      <nits>189.3232</nits>
+    </point>
+    <point>
+      <value>0.4313</value>
+      <nits>209.1817</nits>
+    </point>
+    <point>
+      <value>0.4509</value>
+      <nits>230.7113</nits>
+    </point>
+    <point>
+      <value>0.4705</value>
+      <nits>253.9043</nits>
+    </point>
+    <point>
+      <value>0.4902</value>
+      <nits>277.9642</nits>
+    </point>
+    <point>
+      <value>0.5097</value>
+      <nits>291.9995</nits>
+    </point>
+    <point>
+      <value>0.5294</value>
+      <nits>293.9546</nits>
+    </point>
+    <point>
+      <value>0.5490</value>
+      <nits>296.5182</nits>
+    </point>
+    <point>
+      <value>0.5686</value>
+      <nits>298.2066</nits>
+    </point>
+    <point>
+      <value>0.5882</value>
+      <nits>300.6782</nits>
+    </point>
+    <point>
+      <value>0.6077</value>
+      <nits>303.0736</nits>
+    </point>
+    <point>
+      <value>0.6274</value>
+      <nits>305.1302</nits>
+    </point>
+    <point>
+      <value>0.6471</value>
+      <nits>307.3772</nits>
+    </point>
+    <point>
+      <value>0.6666</value>
+      <nits>309.2362</nits>
+    </point>
+    <point>
+      <value>0.6862</value>
+      <nits>311.6347</nits>
+    </point>
+    <point>
+      <value>0.7058</value>
+      <nits>313.4147</nits>
+    </point>
+    <point>
+      <value>0.7254</value>
+      <nits>315.9726</nits>
+    </point>
+    <point>
+      <value>0.7451</value>
+      <nits>318.3932</nits>
+    </point>
+    <point>
+      <value>0.7646</value>
+      <nits>320.9541</nits>
+    </point>
+    <point>
+      <value>0.7843</value>
+      <nits>323.4762</nits>
+    </point>
+    <point>
+      <value>0.8038</value>
+      <nits>325.4252</nits>
+    </point>
+    <point>
+      <value>0.8235</value>
+      <nits>327.9953</nits>
+    </point>
+    <point>
+      <value>0.8431</value>
+      <nits>330.3232</nits>
+    </point>
+    <point>
+      <value>0.8627</value>
+      <nits>332.4612</nits>
+    </point>
+    <point>
+      <value>0.8823</value>
+      <nits>335.3071</nits>
+    </point>
+    <point>
+      <value>0.9018</value>
+      <nits>337.3554</nits>
+    </point>
+    <point>
+      <value>0.9215</value>
+      <nits>339.8132</nits>
+    </point>
+    <point>
+      <value>0.9412</value>
+      <nits>342.4646</nits>
+    </point>
+    <point>
+      <value>0.9607</value>
+      <nits>344.3436</nits>
+    </point>
+    <point>
+      <value>0.9803</value>
+      <nits>346.9848</nits>
+    </point>
+    <point>
+      <value>1.0000</value>
+      <nits>350.0</nits>
+    </point>
+  </screenBrightnessMap>
+  <autoBrightness enabled="true">
+    <brighteningLightDebounceMillis>2000</brighteningLightDebounceMillis>
+    <darkeningLightDebounceMillis>4000</darkeningLightDebounceMillis>
+    <brighteningLightDebounceIdleMillis>2000</brighteningLightDebounceIdleMillis>
+    <darkeningLightDebounceIdleMillis>1000</darkeningLightDebounceIdleMillis>
+    <luxToBrightnessMapping>
+      <mode>default</mode>
+      <setting>normal</setting>
+      <map>
+        <point>
+          <first>0</first>
+          <second>0</second>
+        </point>
+        <point>
+            <first>40</first>
+            <second>0.1961</second>
+        </point>
+        <point>
+            <first>89</first>
+            <second>0.2039</second>
+        </point>
+        <point>
+            <first>92</first>
+            <second>0.2196</second>
+        </point>
+        <point>
+            <first>95</first>
+            <second>0.2353</second>
+        </point>
+        <point>
+            <first>100</first>
+            <second>0.2745</second>
+        </point>
+        <point>
+            <first>125</first>
+            <second>0.3137</second>
+        </point>
+        <point>
+            <first>150</first>
+            <second>0.3529</second>
+        </point>
+        <point>
+            <first>175</first>
+            <second>0.3922</second>
+        </point>
+        <point>
+            <first>200</first>
+            <second>0.4510</second>
+        </point>
+        <point>
+            <first>225</first>
+            <second>0.4706</second>
+        </point>
+        <point>
+            <first>250</first>
+            <second>0.5490</second>
+        </point>
+        <point>
+            <first>300</first>
+            <second>0.6275</second>
+        </point>
+        <point>
+            <first>400</first>
+            <second>0.7059</second>
+        </point>
+        <point>
+            <first>500</first>
+            <second>0.7843</second>
+        </point>
+        <point>
+            <first>800</first>
+            <second>0.8627</second>
+        </point>
+        <point>
+            <first>1200</first>
+            <second>0.9412</second>
+        </point>
+      </map>
+    </luxToBrightnessMapping>
+    <luxToBrightnessMapping>
+      <mode>doze</mode>
+      <setting>normal</setting>
+      <map>
+        <point>
+          <first>0</first>
+          <second>0</second>
+        </point>
+        <point>
+            <first>40</first>
+            <second>0.1176</second>
+        </point>
+        <point>
+            <first>89</first>
+            <second>0.1216</second>
+        </point>
+        <point>
+            <first>92</first>
+            <second>0.1333</second>
+        </point>
+        <point>
+            <first>95</first>
+            <second>0.1412</second>
+        </point>
+        <point>
+            <first>100</first>
+            <second>0.1647</second>
+        </point>
+        <point>
+            <first>125</first>
+            <second>0.1882</second>
+        </point>
+        <point>
+            <first>150</first>
+            <second>0.2118</second>
+        </point>
+        <point>
+            <first>175</first>
+            <second>0.2353</second>
+        </point>
+        <point>
+            <first>200</first>
+            <second>0.2706</second>
+        </point>
+        <point>
+            <first>225</first>
+            <second>0.2824</second>
+        </point>
+        <point>
+            <first>250</first>
+            <second>0.3294</second>
+        </point>
+        <point>
+            <first>300</first>
+            <second>0.3765</second>
+        </point>
+        <point>
+            <first>400</first>
+            <second>0.4235</second>
+        </point>
+        <point>
+            <first>500</first>
+            <second>0.4706</second>
+        </point>
+        <point>
+            <first>800</first>
+            <second>0.5176</second>
+        </point>
+        <point>
+            <first>1200</first>
+            <second>0.5647</second>
+        </point>
+      </map>
+    </luxToBrightnessMapping>
+    <idleStylusTimeoutMillis>10000</idleStylusTimeoutMillis>
+  </autoBrightness>
+  <highBrightnessMode enabled="true">
+    <transitionPoint>0.85</transitionPoint>
+    <minimumHdrPercentOfScreen>0.1</minimumHdrPercentOfScreen>
+
+    <minimumLux>10000</minimumLux>
+    <timing>
+      <timeWindowSecs>1800</timeWindowSecs>  // Window in which we restrict HBM.
+      <timeMaxSecs>300</timeMaxSecs>         // Maximum time of HBM allowed in that window.
+      <timeMinSecs>60</timeMinSecs>          // Minimum time remaining required to switch
+    </timing>                                //   HBM on for.
+
+    <sdrHdrRatioMap>
+      <point>
+        <sdrNits>2.000</sdrNits>
+        <hdrRatio>8.000</hdrRatio>
+      </point>
+      <point>
+        <sdrNits>500.000</sdrNits>
+        <hdrRatio>1.5</hdrRatio>
+      </point>
+    </sdrHdrRatioMap>
+  </highBrightnessMode>
+  <screenBrightnessRampFastDecrease>0.06</screenBrightnessRampFastDecrease>
+  <screenBrightnessRampFastIncrease>0.06</screenBrightnessRampFastIncrease>
+  <screenBrightnessRampSlowDecrease>0.04</screenBrightnessRampSlowDecrease>
+  <screenBrightnessRampSlowIncrease>0.04</screenBrightnessRampSlowIncrease>
+  <screenBrightnessRampIncreaseMaxMillis>3000</screenBrightnessRampIncreaseMaxMillis>
+  <screenBrightnessRampDecreaseMaxMillis>3000</screenBrightnessRampDecreaseMaxMillis>
+</displayConfiguration>

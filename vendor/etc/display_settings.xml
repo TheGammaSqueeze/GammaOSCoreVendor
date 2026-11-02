@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<display-settings>
+    <!-- Identify physical displays by port rather than unstable logical display IDs. -->
+    <config identifier="1" />
+
+    <!-- The secondary builtin display hosts SECONDARY_HOME and needs its wallpaper layer. -->
+    <display name="port:147" shouldShowSystemDecors="true" />
+</display-settings>
