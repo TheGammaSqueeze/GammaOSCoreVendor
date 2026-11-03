@@ -15,12 +15,14 @@
 # reliably and the same level as the cool mode. The temperature is a moving average
 # over AVG_SAMPLES ticks and the duty moves at most STEP_PCT per tick towards its
 # target, so a brief load spike raises the fan slowly and a drop lets it wind down
-# slowly. The SoC sits at 56 to 58 C idling in the nano menu, so the fan stays off for
-# menus and climbs through play.
-T_OFF=${T_OFF:-63}
-T_ON=${T_ON:-68}
-T_FULL=${T_FULL:-85}
-MIN_PCT=${MIN_PCT:-25}
+# slowly. The Duo runs about 10 C cooler than the Duo Lite: 43 to 46 C idle and 52 to 57 C
+# in Super Mario 3D Land at 6x in max mode after 90 s, so the Lite's curve (on at 68 C) never
+# started the fan in play. On at 55 C, off at 50 C, full at 75 C. MIN_PCT is 30: 25 percent
+# started the fan from a stop only at 390 to 930 rpm, too close to the stall point.
+T_OFF=${T_OFF:-50}
+T_ON=${T_ON:-55}
+T_FULL=${T_FULL:-75}
+MIN_PCT=${MIN_PCT:-30}
 STEP_PCT=${STEP_PCT:-2}
 AVG_SAMPLES=${AVG_SAMPLES:-5}
 SLEEP_SECS=${SLEEP_SECS:-2}
