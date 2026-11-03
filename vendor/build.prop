@@ -372,6 +372,9 @@ persist.gammaos.nano.drm_displays=2
 persist.gammaos.drastic_nano.flip_grid=1
 # azahar-nano likewise: each 3DS frame stays up a whole number of refreshes
 persist.gammaos.azahar_nano.flip_grid=1
+# and the nano home: the XMB renders at about 60 fps on these panels, the grid
+# keeps every frame up exactly two refreshes
+persist.gammaos.nano.drm_flip_grid=2
 # panelsync locks the top panel's refresh to the bottom panel's (0 = off)
 persist.gammaos.panelsync=1
 # drastic-nano paces to the measured vblank rate: these command-mode panels run
