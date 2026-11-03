@@ -1,0 +1,46 @@
+# GammaOS RP Duo clock policies (persist.gammaos.performance_mode: max, stock, powersave),
+# re-applied on every screen on, and the screen-off floor.
+service setclock_max /vendor/bin/setclock_max.sh
+    class main
+    user root
+    group root system
+    oneshot
+    disabled
+
+service setclock_stock /vendor/bin/setclock_stock.sh
+    class main
+    user root
+    group root system
+    oneshot
+    disabled
+
+service setclock_powersave /vendor/bin/setclock_powersave.sh
+    class main
+    user root
+    group root system
+    oneshot
+    disabled
+
+# restart, not start: each policy script runs for 20 s (and longer under load), and init
+# ignores a start for a oneshot that is still running. A sleep and wake inside that window
+# left the wake's start dropped and the clocks at the screen-off floor (seen on the Duo Lite).
+on property:persist.gammaos.performance_mode=max
+    restart setclock_max
+
+on property:persist.gammaos.performance_mode=stock
+    restart setclock_stock
+
+on property:persist.gammaos.performance_mode=powersave
+    restart setclock_powersave
+
+on property:sys.screen.state=off
+    restart setclock_powersave
+
+on property:persist.gammaos.performance_mode=max && property:sys.screen.state=on
+    restart setclock_max
+
+on property:persist.gammaos.performance_mode=stock && property:sys.screen.state=on
+    restart setclock_stock
+
+on property:persist.gammaos.performance_mode=powersave && property:sys.screen.state=on
+    restart setclock_powersave
