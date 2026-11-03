@@ -370,6 +370,8 @@ persist.gammaos.nano.drm_displays=2
 # each DS frame for exactly two refreshes (flip grid) and paces at half the
 # measured refresh rate.
 persist.gammaos.drastic_nano.flip_grid=1
+# azahar-nano likewise: each 3DS frame stays up a whole number of refreshes
+persist.gammaos.azahar_nano.flip_grid=1
 # panelsync locks the top panel's refresh to the bottom panel's (0 = off)
 persist.gammaos.panelsync=1
 # drastic-nano paces to the measured vblank rate: these command-mode panels run
